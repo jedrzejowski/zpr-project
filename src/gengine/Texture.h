@@ -7,7 +7,7 @@
 
 #include <string>
 #include <GL/glew.h>
-#include "../lib/stb_image.h"
+#include "src/lib/stb_image.h"
 
 using namespace std;
 

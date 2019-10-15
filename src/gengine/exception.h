@@ -14,7 +14,7 @@ namespace gengine {
 
 	public:
 
-		explicit exception(std::string& msg1) : msg(msg1) {};
+		explicit exception(std::string &msg1) : msg(msg1) {};
 
 		explicit exception(const char *msg1) : msg(msg1) {};
 

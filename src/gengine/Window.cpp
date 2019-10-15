@@ -2,7 +2,7 @@
 // Created by adam on 23.04.18.
 //
 
-#include <src/exception.h>
+#include "src/gengine/exception.h"
 #include "Window.h"
 
 using namespace gengine;
@@ -10,7 +10,7 @@ using namespace gengine;
 void Window::open() {
 
 	if (glfwInit() != GL_TRUE)
-		throw gkom::exception("GLFW initialization failed");
+		throw exception("GLFW initialization failed");
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -22,13 +22,13 @@ void Window::open() {
 	glfwWin = glfwCreateWindow(WIDTH, HEIGHT, getTitle().c_str(), nullptr, nullptr);
 
 	if (glfwWin == nullptr)
-		throw gkom::exception("Can't open GLFW window");
+		throw exception("Can't open GLFW window");
 
 	glfwMakeContextCurrent(glfwWin);
 
 	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK)
-		throw gkom::exception("GLEW initialization failed");
+		throw exception("GLEW initialization failed");
 
 	glViewport(0, 0, WIDTH, HEIGHT);
 	glEnable(GL_DEPTH_TEST);

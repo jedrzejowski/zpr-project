@@ -1,14 +1,14 @@
 #pragma once
 
 #include <GL/glew.h>
-#include "Animation.h"
+#include "Scene.h"
 
 namespace gengine {
 	class Abs3DObj {
 	protected:
 
 		GLuint VAO, VBO, EBO;
-		Animation* anim;
+		Scene* anim;
 
 		struct Point3DeX* vertices;
 		struct SimpleTriangle* indices;
@@ -20,7 +20,7 @@ namespace gengine {
 	public:
 		glm::mat4 modelMatrix;
 
-		Abs3DObj(Animation* anim);
+		Abs3DObj(Scene* anim);
 
 		~Abs3DObj();
 		virtual void render(Window *window) = 0;

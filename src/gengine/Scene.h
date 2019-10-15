@@ -11,7 +11,7 @@
 
 namespace gengine {
 
-	class Animation {
+	class Scene {
 
 	protected:
 		Light* light;

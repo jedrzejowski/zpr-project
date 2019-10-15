@@ -8,7 +8,7 @@
 using namespace std;
 using namespace gengine;
 
-Abs3DObj::Abs3DObj(Animation *anim) : anim(anim) {
+Abs3DObj::Abs3DObj(Scene *anim) : anim(anim) {
 
 	glGenVertexArrays(1, &VAO);
 	glBindVertexArray(VAO);

@@ -2,9 +2,9 @@
 // Created by adam on 07.04.18.
 //
 
-#include "src/FileSystem.h"
 #include "exception.h"
 #include "Shader.h"
+#include "Resources.h"
 
 using namespace gengine;
 
@@ -29,14 +29,14 @@ Shader::Shader(std::string vertexPath, std::string fragmentPath) {
 	//Vertex Shader
 	vertexPath.insert(0, "../shaders/vertex/");
 	vertexPath.append(".vert");
-	std::string vertexCode = gkom::FileSystem::loadTextFile(vertexPath);
+	std::string vertexCode = Resources::get().loadTextFile(vertexPath);
 	GLuint vertexId = compileShader(vertexCode.c_str(), GL_VERTEX_SHADER);
 
 
 	//FragmentShader
 	fragmentPath.insert(0, "../shaders/fragment/");
 	fragmentPath.append(".frag");
-	std::string fragmentCode = gkom::FileSystem::loadTextFile(fragmentPath);
+	std::string fragmentCode = Resources::get().loadTextFile(fragmentPath);
 	GLuint fragmentId = compileShader(fragmentCode.c_str(), GL_FRAGMENT_SHADER);
 
 	// link Shader program
@@ -52,7 +52,7 @@ Shader::Shader(std::string vertexPath, std::string fragmentPath) {
 		GLchar infoLog[512];
 		glGetProgramInfoLog(shaderId, sizeof(infoLog), nullptr, infoLog);
 		std::string msg = std::string("Shader program linking:\n") + infoLog;
-		throw gkom::exception(msg);
+		throw exception(msg);
 	}
 
 	// Delete the shaders as they're linked into our program now and no longer necessery

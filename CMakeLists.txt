@@ -32,14 +32,32 @@ target_sources(${APP_TARGET} PUBLIC
 
         src/gengine/Window.h
         src/gengine/Window.cpp
-        src/gengine/Animation.h
-        src/gengine/Animation.cpp
+        src/gengine/Scene.h
+        src/gengine/Scene.cpp
         src/gengine/Abs3DObj.cpp
         src/gengine/Abs3DObj.h
 
         src/gengine/gEngine.h)
 
+## block
+target_sources(${APP_TARGET} PUBLIC
+        src/block/block.h
+        src/block/block.cpp
+        src/block/types/stone.h
+        src/block/types/stone.cpp)
+
+## chunk
+target_sources(${APP_TARGET} PUBLIC
+        src/map/chunk.h
+        src/map/chunk.cpp
+        src/map/map.h
+        src/map/map.cpp)
+
 # Biblioteki
+
+## stb
+target_sources(${APP_TARGET} PUBLIC
+        src/lib/stb_image.h)
 
 ## glfw
 find_package(glfw3 REQUIRED)
@@ -62,7 +80,7 @@ link_libraries(${GLM_LIBRARY_DIRS})
 
 target_link_libraries(
         ${APP_TARGET}
-        ${GLFW_LIBRARIES}
+        glfw
         ${OPENGL_LIBRARIES}
         ${GLEW_LIBRARIES}
         ${GLM_LIBRARIES}

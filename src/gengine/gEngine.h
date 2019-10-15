@@ -8,6 +8,6 @@
 #include "Camera.h"
 
 #include "Window.h"
-#include "Animation.h"
+#include "Scene.h"
 #include "Abs3DObj.h"
 

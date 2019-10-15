@@ -2,8 +2,8 @@
 // Created by adam on 14.04.18.
 //
 
-#include <src/3d/Point3D.h>
+#include "Point3D.h"
 
-#include "Animation.h"
+#include "Scene.h"
 
 using namespace gengine;

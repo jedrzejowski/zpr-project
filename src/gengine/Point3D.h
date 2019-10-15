@@ -1,10 +1,6 @@
-//
-// Created by adam on 07.04.18.
-//
+#pragma once
 
-#ifndef GKOM_ANIMATION_POINT_H
-#define GKOM_ANIMATION_POINT_H
-
+#include "src/types.h"
 #include <GL/glew.h>
 #include <glm/vec3.hpp>
 
@@ -122,4 +118,3 @@ namespace gengine {
 																					  color(R, G, B) {}
 	};
 }
-#endif //GKOM_ANIMATION_POINT_H

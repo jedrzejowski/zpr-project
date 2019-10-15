@@ -38,7 +38,7 @@ void Texture::loadTexture(string path) {
 
 		glGenerateMipmap(GL_TEXTURE_2D);
 	} else
-		throw exception("Failed to load texture: " + path);
+		throw exception("Failed to load texture");
 
 	stbi_image_free(data);
 }

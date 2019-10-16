@@ -2,6 +2,7 @@
 // Created by adam on 07.04.18.
 //
 
+#include <src/logger.h>
 #include "exception.h"
 #include "Shader.h"
 #include "Resources.h"
@@ -25,11 +26,10 @@ GLuint compileShader(const GLchar *shaderCode, GLenum shaderType) {
 	return shader_id;
 }
 
-Shader::Shader(std::string vertexPath, std::string fragmentPath) {
+Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath) {
 	//Vertex Shader
 	std::string vertexCode = Resources::get().loadTextFile(vertexPath);
 	GLuint vertexId = compileShader(vertexCode.c_str(), GL_VERTEX_SHADER);
-
 
 	//FragmentShader
 	std::string fragmentCode = Resources::get().loadTextFile(fragmentPath);
@@ -48,6 +48,7 @@ Shader::Shader(std::string vertexPath, std::string fragmentPath) {
 		GLchar infoLog[512];
 		glGetProgramInfoLog(shaderId, sizeof(infoLog), nullptr, infoLog);
 		std::string msg = std::string("Shader program linking:\n") + infoLog;
+		Logger::get().info(std::string("Błąd podczas kompilacji szejdera:\n") + infoLog);
 		throw exception(msg);
 	}
 

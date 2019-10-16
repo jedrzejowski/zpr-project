@@ -6,7 +6,7 @@
 namespace map {
 	class Chunk : public gengine::Abs3DObj {
 	protected:
-		gengine::Texture *stoneTex;
+		const gengine::Texture *stoneTex;
 	public:
 		Chunk();
 		static ushort MAX_X, MAX_Y, MAX_Z;

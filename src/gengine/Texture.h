@@ -20,9 +20,9 @@ namespace gengine {
 
 		explicit Texture(const std::string &path);
 
-		void use();
+		void use() const;
 
-		GLuint getID() {
+		GLuint getID() const {
 			return texID;
 		}
 	};

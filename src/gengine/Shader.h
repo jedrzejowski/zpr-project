@@ -17,10 +17,7 @@ namespace gengine {
 	class Shader {
 		GLuint shaderId;
 	public:
-		Shader(std::string vertexPath, std::string fragmentPath);
-
-		Shader(const char *vertexPath, const char *fragmentPath) :
-				Shader(std::string(vertexPath), std::string(fragmentPath)) {}
+		Shader(const std::string &vertexPath, const std::string &fragmentPath);
 
 		void use() const {
 			glUseProgram(getID());

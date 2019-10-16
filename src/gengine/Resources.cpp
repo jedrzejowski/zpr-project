@@ -1,4 +1,5 @@
 
+#include <src/logger.h>
 #include "Resources.h"
 #include "Texture.h"
 
@@ -9,7 +10,9 @@ std::string gengine::Resources::absPath(const std::string &path) {
 void gengine::Resources::load(std::string &path) {
 }
 
-std::string gengine::Resources::loadTextFile(const std::string &path) {
+std::string gengine::Resources::loadTextFile(const std::string &path) {\
+	Logger::get().log("gengine::Resources::loadTextFile loading \"" + path +"\"");
+
 	std::ifstream file;
 	file.exceptions(std::ifstream::badbit);
 	file.open(this->absPath(path));
@@ -26,6 +29,7 @@ gengine::Resources &gengine::Resources::get() {
 
 const gengine::Texture *gengine::Resources::getTexture(std::string path) {
 	path = absPath(path);
+
 	if (textures.count(path))
 		return textures[path];
 

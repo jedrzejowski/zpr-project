@@ -4,6 +4,7 @@
 
 #define STB_IMAGE_IMPLEMENTATION
 
+#include "src/logger.h"
 #include "exception.h"
 #include "Texture.h"
 #include "Resources.h"
@@ -44,7 +45,7 @@ void Texture::loadTexture(const std::string &path) {
 	stbi_image_free(data);
 }
 
-void Texture::use() {
+void Texture::use() const {
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, getID());
 }

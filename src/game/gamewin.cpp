@@ -3,8 +3,10 @@
 //
 
 #include "gamewin.h"
+#include "gamescene.h"
 
 void GameWin::initObjects() {
+	setScene(new GameScene);
 }
 
 std::string GameWin::getTitle() {

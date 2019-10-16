@@ -1,18 +1,13 @@
-//
-// Created by adam on 15.10.2019.
-//
-
+#include "src/logger.h"
 #include "chunk.h"
-
 
 ushort map::Chunk::MAX_X = 16;
 ushort map::Chunk::MAX_Y = 16;
 ushort map::Chunk::MAX_Z = 16;
 
-
 map::Chunk::Chunk() : Abs3DObj() {
 
-	stoneTex = gengine::Resources::get().getTexture("qwe");
+	stoneTex = gengine::Resources::get().getTexture("texture/block/stone.png");
 
 	verticesNum = 4;
 	indicesNum = 2;
@@ -33,4 +28,7 @@ map::Chunk::Chunk() : Abs3DObj() {
 }
 
 void map::Chunk::render(gengine::Window *window) {
+	Logger::get().info("render");
+	stoneTex->use();
+	draw();
 }

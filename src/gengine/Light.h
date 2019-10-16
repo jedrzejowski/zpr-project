@@ -1,11 +1,8 @@
-//
-// Created by adam on 19.04.18.
-//
-
-#ifndef GKOM_ANIMATION_LIGHT_H
-#define GKOM_ANIMATION_LIGHT_H
+#pragma once
 
 #include <glm/vec3.hpp>
+
+#include "_classdef.h"
 
 namespace gengine {
 
@@ -19,6 +16,3 @@ namespace gengine {
 		glm::vec3 specular;
 	};
 }
-
-
-#endif //GKOM_ANIMATION_LIGHT_H

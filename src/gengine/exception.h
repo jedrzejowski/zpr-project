@@ -3,6 +3,8 @@
 #include <string>
 #include <iostream>
 
+#include "_classdef.h"
+
 namespace gengine {
 
 

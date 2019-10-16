@@ -6,17 +6,17 @@
 
 #include "exception.h"
 #include "Texture.h"
+#include "Resources.h"
 
 using namespace gengine;
 
 Texture::Texture() = default;
 
-Texture::Texture(const string &path) {
+Texture::Texture(const std::string &path) {
 	loadTexture(path);
 }
 
-void Texture::loadTexture(string path) {
-	path.insert(0, "../textures/");
+void Texture::loadTexture(const std::string &path) {
 
 	glGenTextures(1, &texID);
 	glBindTexture(GL_TEXTURE_2D, texID); // all upcoming GL_TEXTURE_2D operations now have effect on this texture object
@@ -27,7 +27,8 @@ void Texture::loadTexture(string path) {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	auto data = stbi_load(path.c_str(), &width, &height, &nrChannels, 0);
+	auto data = stbi_load(path.c_str(),
+						  &width, &height, &nrChannels, 0);
 
 	if (data) {
 

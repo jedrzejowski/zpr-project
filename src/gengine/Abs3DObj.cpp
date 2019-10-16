@@ -5,10 +5,9 @@
 #include "Abs3DObj.h"
 #include "Point3D.h"
 
-using namespace std;
 using namespace gengine;
 
-Abs3DObj::Abs3DObj(Scene *anim) : anim(anim) {
+Abs3DObj::Abs3DObj() {
 
 	glGenVertexArrays(1, &VAO);
 	glBindVertexArray(VAO);

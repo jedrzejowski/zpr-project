@@ -1,6 +1,9 @@
 #include <iostream>
 
+#include "src/game/gamewin.h"
+
 int main() {
-	std::cout << "Hello, World!" << std::endl;
+	auto window = new GameWin();
+	window->open();
 	return 0;
 }

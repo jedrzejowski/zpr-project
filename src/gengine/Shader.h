@@ -1,13 +1,10 @@
-//
-// Created by adam on 07.04.18.
-//
-
-#ifndef GKOM_ANIMATION_SHADER_H
-#define GKOM_ANIMATION_SHADER_H
+#pragma once
 
 #include <string>
 #include <GL/glew.h>
 #include <glm/glm.hpp>
+
+#include "_classdef.h"
 #include "Light.h"
 
 namespace gengine {
@@ -50,6 +47,3 @@ namespace gengine {
 		void setLight(const std::string &name, const Light &light) const;
 	};
 }
-
-
-#endif //GKOM_ANIMATION_SHADER_H

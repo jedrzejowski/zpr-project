@@ -1,14 +1,11 @@
-//
-// Created by adam on 19.04.18.
-//
-
-#ifndef GKOM_ANIMATION_CAMERA_H
-#define GKOM_ANIMATION_CAMERA_H
+#pragma once
 
 #include <glm/vec3.hpp>
 #include <glm/mat4x4.hpp>
 #include <glm/detail/type_mat4x4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+
+#include "_classdef.h"
 
 namespace gengine {
 
@@ -24,5 +21,3 @@ namespace gengine {
 	};
 }
 
-
-#endif //GKOM_ANIMATION_CAMERA_H

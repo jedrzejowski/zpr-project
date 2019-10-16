@@ -5,39 +5,26 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <map>
 
+#include "_classdef.h"
 
 namespace gengine {
 	class Resources {
 	private:
 		std::vector<std::string> roots;
 
-		Resources() {
-
-		}
+		std::map<std::string, Texture*> textures;
 	public:
 
-		std::string absPath(std::string& path){
-			return "/home/adam/Programowanie/studia/zpr-project/" + path;
-		}
+		std::string absPath(const std::string &path);
 
-		void load(std::string path){
+		void load(std::string &path);
 
-		}
+		std::string loadTextFile(const std::string &path);
 
-		std::string loadTextFile(std::string path){
-			std::ifstream file;
-			file.exceptions(std::ifstream::badbit);
-			file.open(this->absPath(path));
-			std::stringstream shader_stream;
-			shader_stream << file.rdbuf();
-			file.close();
-			return shader_stream.str();
-		}
+		static Resources &get();
 
-		static Resources &get() {
-			static Resources resources;
-			return resources;
-		}
+		const Texture *getTexture(std::string path);
 	};
 }

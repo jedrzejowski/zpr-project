@@ -14,6 +14,7 @@ add_executable(${APP_TARGET} src/main.cpp)
 
 #gengine
 target_sources(${APP_TARGET} PUBLIC
+        src/gengine/_classdef.h
         src/gengine/exception.h
         src/gengine/Resources.h
         src/gengine/Resources.cpp
@@ -46,12 +47,21 @@ target_sources(${APP_TARGET} PUBLIC
         src/block/types/stone.h
         src/block/types/stone.cpp)
 
-## chunk
+## map
 target_sources(${APP_TARGET} PUBLIC
+        src/map/_class.h
+        src/map/Map.h
         src/map/chunk.h
         src/map/chunk.cpp
-        src/map/map.h
-        src/map/map.cpp)
+        src/map/worldmap.h
+        src/map/worldmap.cpp)
+
+## game
+target_sources(${APP_TARGET} PUBLIC
+        src/game/gamewin.h
+        src/game/gamewin.cpp
+        src/game/gamescene.h
+        src/game/gamescene.cpp)
 
 # Biblioteki
 

@@ -1,9 +1,6 @@
-//
-// Created by adam on 14.04.18.
-//
+#pragma once
 
-#ifndef GKOM_ANIMATION_ANIMATION_H
-#define GKOM_ANIMATION_ANIMATION_H
+#include "_classdef.h"
 
 #include "Light.h"
 #include "Shader.h"
@@ -19,7 +16,8 @@ namespace gengine {
 
 	public:
 
-		virtual void render(Window *window) = 0;
+		virtual void render3D(Window *window) = 0;
+		virtual void renderGUI(Window *window) = 0;
 
 		const Light& getLight() const{
 			return *light;
@@ -30,6 +28,3 @@ namespace gengine {
 		}
 	};
 }
-
-
-#endif //GKOM_ANIMATION_ANIMATION_H

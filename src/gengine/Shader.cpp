@@ -27,15 +27,11 @@ GLuint compileShader(const GLchar *shaderCode, GLenum shaderType) {
 
 Shader::Shader(std::string vertexPath, std::string fragmentPath) {
 	//Vertex Shader
-	vertexPath.insert(0, "../shaders/vertex/");
-	vertexPath.append(".vert");
 	std::string vertexCode = Resources::get().loadTextFile(vertexPath);
 	GLuint vertexId = compileShader(vertexCode.c_str(), GL_VERTEX_SHADER);
 
 
 	//FragmentShader
-	fragmentPath.insert(0, "../shaders/fragment/");
-	fragmentPath.append(".frag");
 	std::string fragmentCode = Resources::get().loadTextFile(fragmentPath);
 	GLuint fragmentId = compileShader(fragmentCode.c_str(), GL_FRAGMENT_SHADER);
 

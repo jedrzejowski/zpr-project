@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GL/glew.h>
+#include "_classdef.h"
 #include "Scene.h"
 
 namespace gengine {
@@ -8,7 +9,6 @@ namespace gengine {
 	protected:
 
 		GLuint VAO, VBO, EBO;
-		Scene* anim;
 
 		struct Point3DeX* vertices;
 		struct SimpleTriangle* indices;
@@ -20,9 +20,9 @@ namespace gengine {
 	public:
 		glm::mat4 modelMatrix;
 
-		Abs3DObj(Scene* anim);
-
+		Abs3DObj();
 		~Abs3DObj();
+
 		virtual void render(Window *window) = 0;
 
 		void insertObjToBuffers();

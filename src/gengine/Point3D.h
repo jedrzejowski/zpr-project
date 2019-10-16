@@ -1,12 +1,12 @@
 #pragma once
 
-#include "src/types.h"
 #include <GL/glew.h>
 #include <glm/vec3.hpp>
 
-namespace gengine {
+#include "src/types.h"
+#include "_classdef.h"
 
-	struct Point3DeX;
+namespace gengine {
 
 	struct Point3D {
 		static uint SIZE;

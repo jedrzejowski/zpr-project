@@ -1,15 +1,10 @@
-//
-// Created by adam on 08.04.18.
-//
-
-#ifndef GKOM_ANIMATION_TEXTURE_H
-#define GKOM_ANIMATION_TEXTURE_H
+#pragma once
 
 #include <string>
 #include <GL/glew.h>
-#include "src/lib/stb_image.h"
 
-using namespace std;
+#include "_classdef.h"
+#include "src/lib/stb_image.h"
 
 namespace gengine {
 
@@ -18,12 +13,12 @@ namespace gengine {
 		GLuint texID;
 		int width, height, nrChannels;
 
-		void loadTexture(string path);
+		void loadTexture(const std::string &path);
 
 	public:
 		Texture();
 
-		explicit Texture(const string &path);
+		explicit Texture(const std::string &path);
 
 		void use();
 
@@ -34,5 +29,3 @@ namespace gengine {
 
 }
 
-
-#endif //GKOM_ANIMATION_TEXTURE_H

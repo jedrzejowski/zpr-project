@@ -3,3 +3,9 @@
 //
 
 #include "block.h"
+
+
+void block::Block::setPosition(map::Chunk *chunk, const block::position &pos) {
+	this->pos = pos;
+	this->chunk = chunk;
+}

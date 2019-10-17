@@ -2,7 +2,7 @@
 
 #include <map>
 
-#include "_class.h"
+#include "_classdef.h"
 
 namespace map {
 	class WorldMap {

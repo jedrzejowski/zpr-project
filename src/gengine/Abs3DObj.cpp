@@ -41,6 +41,7 @@ void Abs3DObj::draw() {
 }
 
 void Abs3DObj::draw(uint from, uint count) {
+
 	glBindVertexArray(VAO);
 	glDrawRangeElements(GL_TRIANGLES, 3 * from, 3 * (from + count) - 1, 3 * count, GL_UNSIGNED_INT, nullptr);
 

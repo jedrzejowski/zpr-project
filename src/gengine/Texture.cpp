@@ -45,7 +45,7 @@ void Texture::loadTexture(const std::string &path) {
 	stbi_image_free(data);
 }
 
-void Texture::use() const {
-	glActiveTexture(GL_TEXTURE0);
+void Texture::use(const int &num) const {
+	glActiveTexture(GL_TEXTURE0 + num);
 	glBindTexture(GL_TEXTURE_2D, getID());
 }

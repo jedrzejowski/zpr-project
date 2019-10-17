@@ -33,6 +33,7 @@ void GameScene::render3D(gengine::Window *window) {
 	shader->setVec3("cameraPos", camera.position);
 
 	shader->setLight("light", *light);
+	shader->setMat4("model", glm::mat4(1.0f));
 
 	shader->setVec3("material.specular", 0.5f, 0.5f, 0.5f);
 	shader->setFloat("material.shininess", 64.0f);

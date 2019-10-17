@@ -45,6 +45,8 @@ target_sources(${APP_TARGET} PUBLIC
 
 ## block
 target_sources(${APP_TARGET} PUBLIC
+        src/block/Blocks.h
+        src/block/_classdef.h
         src/block/block.h
         src/block/block.cpp
         src/block/types/stone.h
@@ -52,7 +54,7 @@ target_sources(${APP_TARGET} PUBLIC
 
 ## map
 target_sources(${APP_TARGET} PUBLIC
-        src/map/_class.h
+        src/map/_classdef.h
         src/map/Map.h
         src/map/chunk.h
         src/map/chunk.cpp

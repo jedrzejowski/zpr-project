@@ -6,8 +6,7 @@
 class GameScene : public gengine::Scene {
 protected:
 	map::WorldMap *worldMap;
-	map::Chunk* chunk;
-	gengine::Shader *shader;
+	map::Renderer* mapRenderer;
 public:
 	GameScene();
 	void render3D(gengine::Window *window) override;

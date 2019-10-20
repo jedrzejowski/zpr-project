@@ -59,7 +59,11 @@ target_sources(${APP_TARGET} PUBLIC
         src/map/chunk.h
         src/map/chunk.cpp
         src/map/worldmap.h
-        src/map/worldmap.cpp)
+        src/map/worldmap.cpp
+        src/map/renderer.h
+        src/map/renderer.cpp
+        src/map/chunkrenderer.h
+        src/map/chunkrenderer.cpp)
 
 ## game
 target_sources(${APP_TARGET} PUBLIC

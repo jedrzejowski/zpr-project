@@ -24,4 +24,10 @@ bool map::WorldMap::loadChunk(int x, int y) {
 
 void map::WorldMap::setChunk(int x, int y, map::Chunk *chunk) {
 	chunks[ChunkPos(x, y)] = chunk;
+
+	visibleChunks.push_back(chunk);
+}
+
+const std::vector<map::Chunk *> &map::WorldMap::getVisibleChunk() {
+	return visibleChunks;
 }

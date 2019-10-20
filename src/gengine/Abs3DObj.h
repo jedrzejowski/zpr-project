@@ -23,7 +23,7 @@ namespace gengine {
 		Abs3DObj();
 		~Abs3DObj();
 
-		virtual void render(Window *window) = 0;
+		virtual void render(Scene *scene) = 0;
 
 		void insertObjToBuffers();
 

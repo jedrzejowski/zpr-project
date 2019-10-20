@@ -5,4 +5,6 @@ namespace map {
 
 	class Chunk;
 	class Map;
+	class Renderer;
+	class ChunkRenderer;
 }

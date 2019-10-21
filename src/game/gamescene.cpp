@@ -3,11 +3,13 @@
 //
 
 #include "gamescene.h"
+#include "player.h"
 
 game::GameScene::GameScene() {
 	worldMap = new map::WorldMap();
 	worldMap->setChunk(0, 0, new map::Chunk());
 	mapRenderer = new map::Renderer(worldMap);
+	player = new Player();
 }
 
 void game::GameScene::render3D(engine::Window *window) {

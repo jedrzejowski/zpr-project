@@ -1,7 +1,7 @@
 #pragma once
 
 #include "src/_classdef.h"
-#include "src/gengine/gEngine.h"
+#include "src/engine/Engine.h"
 
 namespace game {
 	class MainWindow : public engine::Window {

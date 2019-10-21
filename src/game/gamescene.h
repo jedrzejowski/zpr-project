@@ -1,7 +1,7 @@
 #pragma once
 
 #include "src/_classdef.h"
-#include "src/gengine/gEngine.h"
+#include "src/engine/Engine.h"
 #include "src/map/Map.h"
 
 namespace game {
@@ -9,6 +9,7 @@ namespace game {
 	protected:
 		map::WorldMap *worldMap;
 		map::Renderer *mapRenderer;
+		Player* player;
 	public:
 		GameScene();
 		void render3D(engine::Window *window) override;

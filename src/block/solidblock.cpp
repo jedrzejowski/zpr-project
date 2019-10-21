@@ -1,5 +1,5 @@
 #include "solidblock.h"
-#include "src/gengine/gEngine.h"
+#include "src/engine/Engine.h"
 
 block::SolidBlock::SolidBlock() : Block() {
 }

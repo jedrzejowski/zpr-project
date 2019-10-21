@@ -1,5 +1,6 @@
 #pragma once
 
-#include "_classdef.h"
+#include "src/_classdef.h"
 #include "block.h"
+#include "solidblock.h"
 #include "types/stone.h"

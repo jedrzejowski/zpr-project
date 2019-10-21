@@ -7,7 +7,7 @@
 #include "Shader.h"
 #include "Resources.h"
 
-using namespace gengine;
+using namespace engine;
 
 GLuint compileShader(const GLchar *shaderCode, GLenum shaderType) {
 	GLuint shader_id = glCreateShader(shaderType);

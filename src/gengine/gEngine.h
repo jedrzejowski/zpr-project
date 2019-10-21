@@ -1,6 +1,6 @@
 #pragma once
 
-#include "_classdef.h"
+#include "src/_classdef.h"
 
 #include "exception.h"
 #include "Point3D.h"

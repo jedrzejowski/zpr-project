@@ -3,14 +3,13 @@
 #include <GL/glew.h>
 #include <glm/vec3.hpp>
 
-#include "src/types.h"
-#include "_classdef.h"
+#include "src/_classdef.h"
 
-namespace gengine {
+namespace engine {
 
 	struct Point3D {
-		static uint SIZE;
-		static uint OFFSET;
+		static uint32_t SIZE;
+		static uint32_t OFFSET;
 
 		static float DistanceBetween(const Point3D &point1, const Point3D &point2);
 
@@ -26,8 +25,8 @@ namespace gengine {
 	};
 
 	struct Normal {
-		static uint SIZE;
-		static uint OFFSET;
+		static uint32_t SIZE;
+		static uint32_t OFFSET;
 
 		GLfloat x = 0.0f;
 		GLfloat y = 0.0f;
@@ -41,8 +40,8 @@ namespace gengine {
 	};
 
 	struct Color {
-		static uint SIZE;
-		static uint OFFSET;
+		static uint32_t SIZE;
+		static uint32_t OFFSET;
 
 		GLfloat R = 0.0f;
 		GLfloat G = 0.0f;
@@ -56,8 +55,8 @@ namespace gengine {
 	};
 
 	struct TexCoord {
-		static uint SIZE;
-		static uint OFFSET;
+		static uint32_t SIZE;
+		static uint32_t OFFSET;
 
 		GLfloat X = 0.0f;
 		GLfloat Y = 0.0f;
@@ -68,16 +67,16 @@ namespace gengine {
 	};
 
 	struct SimpleTriangle {
-		uint first;
-		uint second;
-		uint third;
+		uint32_t first;
+		uint32_t second;
+		uint32_t third;
 
-		static uint SIZE;
+		static uint32_t SIZE;
 
 		SimpleTriangle() : first(0), second(0), third(0) {}
 
-		SimpleTriangle(const uint first, const uint second, const uint third) : first(first), second(second),
-																				third(third) {}
+		SimpleTriangle(const uint32_t first, const uint32_t second, const uint32_t third) : first(first), second(second),
+																					  third(third) {}
 
 		SimpleTriangle operator+(const int &n);
 
@@ -85,7 +84,7 @@ namespace gengine {
 	};
 
 	struct Point3DeX {
-		static uint SIZE;
+		static uint32_t SIZE;
 
 		static void BindGlVAP();
 

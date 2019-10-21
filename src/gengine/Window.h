@@ -4,12 +4,12 @@
 #include <GLFW/glfw3.h>
 #include <mutex>
 
-#include "_classdef.h"
+#include "src/_classdef.h"
 
 #include "Camera.h"
 #include "Scene.h"
 
-namespace gengine {
+namespace engine {
 	class Window {
 	protected:
 		std::mutex rendering;

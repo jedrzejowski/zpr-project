@@ -2,9 +2,9 @@
 
 #include <glm/vec3.hpp>
 
-#include "_classdef.h"
+#include "src/_classdef.h"
 
-namespace gengine {
+namespace engine {
 
 	class Light {
 	public:

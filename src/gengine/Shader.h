@@ -4,10 +4,10 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 
-#include "_classdef.h"
+#include "src/_classdef.h"
 #include "Light.h"
 
-namespace gengine {
+namespace engine {
 
 	struct Material {
 		glm::vec3 specular;

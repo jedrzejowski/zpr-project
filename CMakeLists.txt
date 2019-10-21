@@ -11,13 +11,13 @@ set(CMAKE_CXX_STANDARD 17)
 
 include_directories(${PROJECT_SOURCE_DIR})
 add_executable(${APP_TARGET}
+        src/_classdef.h
         src/main.cpp
         src/logger.h
         src/logger.cpp)
 
-#gengine
+#engine
 target_sources(${APP_TARGET} PUBLIC
-        src/gengine/_classdef.h
         src/gengine/exception.h
         src/gengine/Resources.h
         src/gengine/Resources.cpp
@@ -46,15 +46,15 @@ target_sources(${APP_TARGET} PUBLIC
 ## block
 target_sources(${APP_TARGET} PUBLIC
         src/block/Blocks.h
-        src/block/_classdef.h
         src/block/block.h
         src/block/block.cpp
+        src/block/solidblock.h
+        src/block/solidblock.cpp
         src/block/types/stone.h
         src/block/types/stone.cpp)
 
 ## map
 target_sources(${APP_TARGET} PUBLIC
-        src/map/_classdef.h
         src/map/Map.h
         src/map/chunk.h
         src/map/chunk.cpp
@@ -86,10 +86,12 @@ link_libraries(${GLFW_LIBRARY_DIRS})
 ## opengl
 find_package(OpenGL REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIRS})
+link_libraries(${OPENGL_LIBRARY_DIRS})
 
 ## glew
 find_package(GLEW REQUIRED)
 include_directories(${GLEW_INCLUDE_DIRS})
+link_libraries(${GLEW_LIBRARY_DIRS})
 
 ## glm
 find_package(glm REQUIRED)

@@ -3,9 +3,9 @@
 #include <string>
 #include <iostream>
 
-#include "_classdef.h"
+#include "src/_classdef.h"
 
-namespace gengine {
+namespace engine {
 
 
 	class exception : std::exception {

@@ -1,22 +1,21 @@
 #pragma once
 
 #include <GL/glew.h>
-#include "_classdef.h"
+#include <vector>
+#include "src/_classdef.h"
 #include "Scene.h"
 
-namespace gengine {
+namespace engine {
 	class Abs3DObj {
 	protected:
 
 		GLuint VAO, VBO, EBO;
 
-		struct Point3DeX* vertices;
-		struct SimpleTriangle* indices;
-		uint verticesNum;
-		uint indicesNum;
+		std::vector<engine::Point3DeX> vertices;
+		std::vector<engine::SimpleTriangle> indices;
 
 		void draw();
-		void draw(uint from, uint count);
+		void draw(uint32_t from, uint32_t count);
 	public:
 		glm::mat4 modelMatrix;
 
@@ -26,7 +25,6 @@ namespace gengine {
 		virtual void render(Scene *scene) = 0;
 
 		void insertObjToBuffers();
-
 	};
 }
 

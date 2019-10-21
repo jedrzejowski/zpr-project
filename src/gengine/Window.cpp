@@ -6,7 +6,7 @@
 #include "exception.h"
 #include "Window.h"
 
-using namespace gengine;
+using namespace engine;
 
 
 Window::Window() {

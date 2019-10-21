@@ -7,14 +7,14 @@
 
 #include "Point3D.h"
 
-using namespace gengine;
+using namespace engine;
 
-uint Point3D::SIZE = sizeof(Point3D);
-uint Normal::SIZE = sizeof(Normal);
-uint Color::SIZE = sizeof(Color);
-uint TexCoord::SIZE = sizeof(TexCoord);
-uint Point3DeX::SIZE = sizeof(Point3DeX);
-uint SimpleTriangle::SIZE = sizeof(SimpleTriangle);
+uint32_t Point3D::SIZE = sizeof(Point3D);
+uint32_t Normal::SIZE = sizeof(Normal);
+uint32_t Color::SIZE = sizeof(Color);
+uint32_t TexCoord::SIZE = sizeof(TexCoord);
+uint32_t Point3DeX::SIZE = sizeof(Point3DeX);
+uint32_t SimpleTriangle::SIZE = sizeof(SimpleTriangle);
 
 SimpleTriangle SimpleTriangle::operator+(const int &n) {
 	return SimpleTriangle(this->first + n, this->second + n, this->third + n);
@@ -27,10 +27,10 @@ SimpleTriangle &SimpleTriangle::operator+=(const int &n) {
 	return *this;
 }
 
-uint Point3D::OFFSET = 0;
-uint Normal::OFFSET = Point3D::OFFSET + Point3D::SIZE;
-uint Color::OFFSET = Normal::OFFSET + Normal::SIZE;
-uint TexCoord::OFFSET = Color::OFFSET + Color::SIZE;
+uint32_t Point3D::OFFSET = 0;
+uint32_t Normal::OFFSET = Point3D::OFFSET + Point3D::SIZE;
+uint32_t Color::OFFSET = Normal::OFFSET + Normal::SIZE;
+uint32_t TexCoord::OFFSET = Color::OFFSET + Color::SIZE;
 
 void Point3DeX::BindGlVAP() {
 
@@ -50,7 +50,7 @@ void Point3DeX::BindGlVAP() {
 void Point3DeX::CalcNormals(Point3DeX *points, size_t pSize, SimpleTriangle *triangles, size_t tSize) {
 	glm::vec3 temp1, temp2, temp3, temp4;
 
-	for (uint i = 0; i < tSize; i++) {
+	for (uint32_t i = 0; i < tSize; i++) {
 		temp1 = glm::vec3(points[triangles[i].first].point.x,
 						  points[triangles[i].first].point.y,
 						  points[triangles[i].first].point.z);

@@ -6,4 +6,4 @@
 
 #include "Scene.h"
 
-using namespace gengine;
+using namespace engine;

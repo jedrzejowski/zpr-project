@@ -1,12 +1,12 @@
 #pragma once
 
-#include "_classdef.h"
+#include "src/_classdef.h"
 
 #include "Light.h"
 #include "Shader.h"
 #include "Window.h"
 
-namespace gengine {
+namespace engine {
 
 	class Scene {
 

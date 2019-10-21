@@ -2,7 +2,7 @@
 
 #include <map>
 #include "src/gengine/gEngine.h"
-#include "_classdef.h"
+#include "src/_classdef.h"
 
 namespace map {
 	class WorldMap {

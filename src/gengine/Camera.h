@@ -5,9 +5,9 @@
 #include <glm/detail/type_mat4x4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "_classdef.h"
+#include "src/_classdef.h"
 
-namespace gengine {
+namespace engine {
 
 	class Camera {
 	public:

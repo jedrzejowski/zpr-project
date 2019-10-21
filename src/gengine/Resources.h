@@ -7,9 +7,9 @@
 #include <sstream>
 #include <map>
 
-#include "_classdef.h"
+#include "src/_classdef.h"
 
-namespace gengine {
+namespace engine {
 	class Resources {
 	private:
 		std::vector<std::string> roots;

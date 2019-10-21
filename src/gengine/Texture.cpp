@@ -9,7 +9,7 @@
 #include "Texture.h"
 #include "Resources.h"
 
-using namespace gengine;
+using namespace engine;
 
 Texture::Texture() = default;
 

@@ -3,10 +3,10 @@
 #include <string>
 #include <GL/glew.h>
 
-#include "_classdef.h"
+#include "src/_classdef.h"
 #include "src/lib/stb_image.h"
 
-namespace gengine {
+namespace engine {
 
 	class Texture {
 	private:

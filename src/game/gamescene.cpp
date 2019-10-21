@@ -10,9 +10,9 @@ GameScene::GameScene() {
 	mapRenderer = new map::Renderer(worldMap);
 }
 
-void GameScene::render3D(gengine::Window *window) {
-	mapRenderer->render();
+void GameScene::render3D(engine::Window *window) {
+	mapRenderer->render(this);
 }
 
-void GameScene::renderGUI(gengine::Window *window) {
+void GameScene::renderGUI(engine::Window *window) {
 }

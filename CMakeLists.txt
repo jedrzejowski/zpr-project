@@ -18,30 +18,30 @@ add_executable(${APP_TARGET}
 
 #engine
 target_sources(${APP_TARGET} PUBLIC
-        src/gengine/exception.h
-        src/gengine/Resources.h
-        src/gengine/Resources.cpp
+        src/engine/exception.h
+        src/engine/Resources.h
+        src/engine/Resources.cpp
 
-        src/gengine/Point3D.h
-        src/gengine/Point3D.cpp
+        src/engine/Point3D.h
+        src/engine/Point3D.cpp
 
-        src/gengine/Texture.h
-        src/gengine/Texture.cpp
-        src/gengine/Light.h
-        src/gengine/Light.cpp
-        src/gengine/Shader.h
-        src/gengine/Shader.cpp
-        src/gengine/Camera.h
-        src/gengine/Camera.cpp
+        src/engine/Texture.h
+        src/engine/Texture.cpp
+        src/engine/Light.h
+        src/engine/Light.cpp
+        src/engine/Shader.h
+        src/engine/Shader.cpp
+        src/engine/Camera.h
+        src/engine/Camera.cpp
 
-        src/gengine/Window.h
-        src/gengine/Window.cpp
-        src/gengine/Scene.h
-        src/gengine/Scene.cpp
-        src/gengine/Abs3DObj.cpp
-        src/gengine/Abs3DObj.h
+        src/engine/Window.h
+        src/engine/Window.cpp
+        src/engine/Scene.h
+        src/engine/Scene.cpp
+        src/engine/Abs3DObj.cpp
+        src/engine/Abs3DObj.h
 
-        src/gengine/gEngine.h)
+        src/engine/Engine.h)
 
 ## block
 target_sources(${APP_TARGET} PUBLIC
@@ -69,8 +69,15 @@ target_sources(${APP_TARGET} PUBLIC
 target_sources(${APP_TARGET} PUBLIC
         src/game/gamewin.h
         src/game/gamewin.cpp
+        src/game/player.h
+        src/game/player.cpp
         src/game/gamescene.h
         src/game/gamescene.cpp)
+
+### inne
+#target_sources(${APP_TARGET} PUBLIC
+#        src/lib/cord.h
+#        src/lib/cord.cpp)
 
 # Biblioteki
 

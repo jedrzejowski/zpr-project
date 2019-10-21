@@ -10,14 +10,11 @@ map::ChunkRenderer::ChunkRenderer(Chunk *chunk) {
 
 void map::ChunkRenderer::initVerticles() {
 	this->visibleBlocks = chunk->getAllBlocks();
-	Logger::get().log(std::to_string(visibleBlocks.size()));
 
 	for (auto iter : visibleBlocks) {
 		auto block = iter.second;
 		block->insertToBuffers(vertices, indices);
-		Logger::get().log(std::to_string(vertices.size()));
 	}
-
 
 	insertObjToBuffers();
 }

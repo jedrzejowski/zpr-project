@@ -5,10 +5,10 @@
 #include "gamewin.h"
 #include "gamescene.h"
 
-void GameWin::initObjects() {
+void game::MainWindow::initObjects() {
 	setScene(new GameScene);
 }
 
-std::string GameWin::getTitle() {
+std::string game::MainWindow::getTitle() {
 	return "dupa";
 }

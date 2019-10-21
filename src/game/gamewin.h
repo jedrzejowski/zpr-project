@@ -1,9 +1,12 @@
 #pragma once
 
+#include "src/_classdef.h"
 #include "src/gengine/gEngine.h"
 
-class GameWin : public engine::Window {
-public:
-	void initObjects() override;
-	std::string getTitle() override;
-};
+namespace game {
+	class MainWindow : public engine::Window {
+	public:
+		void initObjects() override;
+		std::string getTitle() override;
+	};
+}

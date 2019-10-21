@@ -80,3 +80,11 @@ namespace map {
 
 	class ChunkRenderer;
 }
+
+namespace game {
+	class Player;
+
+	class MainWindow;
+
+	class GameScene;
+}

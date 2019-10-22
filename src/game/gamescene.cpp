@@ -53,6 +53,7 @@ void game::GameScene::initKeyboardEvents() {
 
 	keyboard.Space.onPress.connect([this, &keyboard]() {
 
-		player->moveUp(keyboard.getDeltaTimeOfState());
+		auto time = keyboard.getDeltaTimeOfState();
+		player->moveUp(keyboard.isShiftPressed() ? -time : time);
 	});
 }

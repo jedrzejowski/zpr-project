@@ -59,5 +59,7 @@ namespace engine {
 		inline double getTimeOfLastState() const { return timeOfLastState; }
 
 		inline double getDeltaTimeOfState() const { return timeOfCurrentState - timeOfLastState; }
+
+		bool isShiftPressed() const;
 	};
 }

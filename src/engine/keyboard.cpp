@@ -29,6 +29,10 @@ void engine::Keyboard::clearSignals() {
 		iter.second->clearSignals();
 }
 
+bool engine::Keyboard::isShiftPressed() const {
+	return LShift.isPressed() || RShift.isPressed();
+}
+
 void engine::Key::setState(GLFWwindow *window) {
 
 	lastState = currentState;

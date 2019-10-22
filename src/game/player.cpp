@@ -7,6 +7,9 @@ game::Player::Player() {
 }
 
 void game::Player::moveForward(double time) {
+	auto forwardVec = glm::normalize(camera.front);
+	forwardVec *= time;
+	camera.position += forwardVec;
 }
 
 void game::Player::moveBackward(double time) {

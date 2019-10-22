@@ -4,7 +4,7 @@
 
 #include <mutex>
 #include "exception.h"
-#include "Window.h"
+#include "window.h"
 
 using namespace engine;
 
@@ -54,7 +54,16 @@ Scene *Window::setScene(Scene *scene) {
 
 	auto oldScene = this->currentScene;
 	currentScene = scene;
+	this->keyboard.clearSignals();
+
+	currentScene->setWindow(this);
+	onSceneChanged.emit(oldScene, currentScene);
+
 	return oldScene;
+}
+
+Scene *Window::getScene() const {
+	return currentScene;
 }
 
 void Window::mainLoop() {
@@ -89,8 +98,14 @@ void Window::mainLoop() {
 //	glMatrixMode(GL_MODELVIEW);
 //	glLoadIdentity();
 //	this->currentScene->renderGUI(this);
+
+		keyboard.loopIter(glfwWin);
 	}
 
 	glfwSwapBuffers(glfwWin);
 	glfwPollEvents();
+}
+
+const Keyboard &Window::getKeyboard() const {
+	return keyboard;
 }

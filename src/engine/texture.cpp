@@ -4,10 +4,9 @@
 
 #define STB_IMAGE_IMPLEMENTATION
 
-#include "src/logger.h"
 #include "exception.h"
-#include "Texture.h"
-#include "Resources.h"
+#include "texture.h"
+#include "resources.h"
 
 using namespace engine;
 

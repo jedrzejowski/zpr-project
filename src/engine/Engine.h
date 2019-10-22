@@ -3,16 +3,16 @@
 #include "src/_classdef.h"
 
 #include "exception.h"
-#include "Point3D.h"
+#include "point3D.h"
 
-#include "Resources.h"
+#include "resources.h"
 
-#include "Texture.h"
-#include "Light.h"
-#include "Shader.h"
-#include "Camera.h"
+#include "texture.h"
+#include "light.h"
+#include "shader.h"
+#include "camera.h"
 
-#include "Window.h"
-#include "Scene.h"
-#include "Abs3DObj.h"
+#include "window.h"
+#include "scene.h"
+#include "abs3DObj.h"
 

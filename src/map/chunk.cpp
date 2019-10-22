@@ -1,4 +1,3 @@
-#include "src/logger.h"
 #include "chunk.h"
 
 map::Chunk::Chunk() {

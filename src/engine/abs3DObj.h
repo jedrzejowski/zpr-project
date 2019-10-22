@@ -3,10 +3,10 @@
 #include <GL/glew.h>
 #include <vector>
 #include "src/_classdef.h"
-#include "Scene.h"
+#include "scene.h"
 
 namespace engine {
-	class Abs3DObj {
+	class abs3DObj {
 	protected:
 
 		GLuint VAO, VBO, EBO;
@@ -19,8 +19,8 @@ namespace engine {
 	public:
 		glm::mat4 modelMatrix;
 
-		Abs3DObj();
-		~Abs3DObj();
+		abs3DObj();
+		~abs3DObj();
 
 		virtual void render(Scene *scene) = 0;
 

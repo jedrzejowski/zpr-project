@@ -2,12 +2,12 @@
 // Created by adam on 07.04.18.
 //
 
-#include "Abs3DObj.h"
-#include "Point3D.h"
+#include "abs3DObj.h"
+#include "point3D.h"
 
 using namespace engine;
 
-Abs3DObj::Abs3DObj() {
+abs3DObj::abs3DObj() {
 
 	glGenVertexArrays(1, &VAO);
 	glBindVertexArray(VAO);
@@ -15,13 +15,13 @@ Abs3DObj::Abs3DObj() {
 	glGenBuffers(1, &EBO);
 }
 
-Abs3DObj::~Abs3DObj() {
+abs3DObj::~abs3DObj() {
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
 	glDeleteBuffers(1, &EBO);
 }
 
-void Abs3DObj::insertObjToBuffers() {
+void abs3DObj::insertObjToBuffers() {
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, Point3DeX::SIZE * vertices.size(), &vertices[0], GL_STATIC_DRAW);
@@ -33,14 +33,14 @@ void Abs3DObj::insertObjToBuffers() {
 
 }
 
-void Abs3DObj::draw() {
+void abs3DObj::draw() {
 
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, 3 * indices.size(), GL_UNSIGNED_INT, nullptr);
 
 }
 
-void Abs3DObj::draw(uint32_t from, uint32_t count) {
+void abs3DObj::draw(uint32_t from, uint32_t count) {
 
 	glBindVertexArray(VAO);
 	glDrawRangeElements(GL_TRIANGLES, 3 * from, 3 * (from + count) - 1, 3 * count, GL_UNSIGNED_INT, nullptr);

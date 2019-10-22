@@ -10,16 +10,15 @@ namespace map {
 	private:
 		const engine::Texture *blockTexture;
 		engine::Shader *shader;
-		engine::Light *light;
 
-		WorldMap *worldMap;
-		std::vector<ChunkRenderer*> chunkRenderers;
+		const game::Player *player;
+		const WorldMap *worldMap;
+
+		std::vector<ChunkRenderer *> chunkRenderers;
 	public:
-		explicit Renderer(WorldMap *worldMap);
+		explicit Renderer(const game::Player *player, const WorldMap *worldMap);
 		~Renderer();
 
-		WorldMap *getWorldMap() const;
-
-		void render(engine::Scene* scene);
+		void render(engine::Scene *scene);
 	};
 }

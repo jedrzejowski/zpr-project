@@ -4,8 +4,8 @@
 
 #include <src/logger.h>
 #include "exception.h"
-#include "Shader.h"
-#include "Resources.h"
+#include "shader.h"
+#include "resources.h"
 
 using namespace engine;
 
@@ -48,7 +48,7 @@ Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath) {
 		GLchar infoLog[512];
 		glGetProgramInfoLog(shaderId, sizeof(infoLog), nullptr, infoLog);
 		std::string msg = std::string("Shader program linking:\n") + infoLog;
-		Logger::get().info(std::string("Błąd podczas kompilacji szejdera:\n") + infoLog);
+		logger.info(std::string("Błąd podczas kompilacji szejdera:\n") + infoLog);
 		throw exception(msg);
 	}
 

@@ -1,13 +1,14 @@
 #pragma once
 
 #include <map>
-#include "src/engine/Engine.h"
 #include "src/_classdef.h"
+#include "src/engine/Engine.h"
+#include "src/lib/object.h"
 
 namespace map {
-	class WorldMap {
+	class WorldMap : public Object {
 	protected:
-		std::map<ChunkPos, Chunk *> chunks;
+		mutable std::map<ChunkPos, Chunk *> chunks;
 		std::vector<Chunk *> visibleChunks;
 
 		Chunk *genChunk(int x, int y);
@@ -15,8 +16,8 @@ namespace map {
 		WorldMap();
 		void setChunk(int x, int y, Chunk *chunk);
 
-		Chunk *getChunk(int x, int y);
-		const std::vector<Chunk *>& getVisibleChunk();
+		Chunk *getChunk(int x, int y) const;
+		const std::vector<Chunk *>& getVisibleChunk() const;
 		bool loadChunk(int x, int y);
 	};
 }

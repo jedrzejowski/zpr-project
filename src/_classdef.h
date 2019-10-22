@@ -4,10 +4,13 @@
 #include <vector>
 #include <tuple>
 
-template <typename... Args>
+template<typename... Args>
 class Signal;
+
 class SignalObj;
+
 class TreeObj;
+
 class Object;
 
 namespace engine {
@@ -20,9 +23,9 @@ namespace engine {
 	struct TexCoord;
 	struct SimpleTriangle;
 
-	class Abs3DObj;
+	class abs3DObj;
 
-	class Camera;
+	class camera;
 
 	class Light;
 
@@ -37,6 +40,10 @@ namespace engine {
 	class Texture;
 
 	class Window;
+
+	class Key;
+
+	class Keyboard;
 }
 
 namespace block {
@@ -94,3 +101,5 @@ namespace game {
 
 	class GameScene;
 }
+
+#include "src/logger.h"

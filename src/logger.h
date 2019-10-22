@@ -21,13 +21,15 @@
 #define TTY_COLOR_BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
 #define TTY_COLOR_BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
 
+#define logger Logger::get()
+
 class Logger {
 private:
 	Logger();
 public:
 	static Logger &get() {
-		static Logger logger = Logger();
-		return logger;
+		static Logger l = Logger();
+		return l;
 	}
 	void msg(const std::string &str, const std::string &color = TTY_COLOR_RESET);
 	void err(const std::string &str);

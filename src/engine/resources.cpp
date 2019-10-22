@@ -1,7 +1,7 @@
 
 #include <src/logger.h>
-#include "Resources.h"
-#include "Texture.h"
+#include "resources.h"
+#include "texture.h"
 
 std::string engine::Resources::absPath(const std::string &path) {
 	return "/home/adam/Programowanie/studia/zpr-project/res/" + path;
@@ -11,7 +11,7 @@ void engine::Resources::load(std::string &path) {
 }
 
 std::string engine::Resources::loadTextFile(const std::string &path) {\
-	Logger::get().log("engine::Resources::loadTextFile loading \"" + path +"\"");
+	logger.log("engine::Resources::loadTextFile loading \"" + path +"\"");
 
 	std::ifstream file;
 	file.exceptions(std::ifstream::badbit);

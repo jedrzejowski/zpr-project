@@ -22,27 +22,29 @@ add_executable(${APP_TARGET}
 #engine
 target_sources(${APP_TARGET} PUBLIC
         src/engine/exception.h
-        src/engine/Resources.h
-        src/engine/Resources.cpp
+        src/engine/resources.h
+        src/engine/resources.cpp
 
-        src/engine/Point3D.h
-        src/engine/Point3D.cpp
+        src/engine/point3D.h
+        src/engine/point3D.cpp
 
-        src/engine/Texture.h
-        src/engine/Texture.cpp
-        src/engine/Light.h
-        src/engine/Light.cpp
-        src/engine/Shader.h
-        src/engine/Shader.cpp
-        src/engine/Camera.h
-        src/engine/Camera.cpp
+        src/engine/texture.h
+        src/engine/texture.cpp
+        src/engine/light.h
+        src/engine/light.cpp
+        src/engine/shader.h
+        src/engine/shader.cpp
+        src/engine/camera.h
+        src/engine/camera.cpp
 
-        src/engine/Window.h
-        src/engine/Window.cpp
-        src/engine/Scene.h
-        src/engine/Scene.cpp
-        src/engine/Abs3DObj.cpp
-        src/engine/Abs3DObj.h
+        src/engine/window.h
+        src/engine/window.cpp
+        src/engine/scene.h
+        src/engine/scene.cpp
+        src/engine/keyboard.h
+        src/engine/keyboard.cpp
+        src/engine/abs3DObj.cpp
+        src/engine/abs3DObj.h
 
         src/engine/Engine.h)
 

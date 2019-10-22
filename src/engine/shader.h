@@ -5,7 +5,7 @@
 #include <glm/glm.hpp>
 
 #include "src/_classdef.h"
-#include "Light.h"
+#include "light.h"
 
 namespace engine {
 

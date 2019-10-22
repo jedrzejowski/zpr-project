@@ -72,7 +72,7 @@ public:
 	}
 
 	// calls all connected functions
-	void emit(Args... p) {
+	void emit(Args... p) const {
 		for (auto const &it : slots) {
 			it.second(std::forward<Args>(p)...);
 		}

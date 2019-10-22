@@ -7,7 +7,7 @@
 map::WorldMap::WorldMap() {
 }
 
-map::Chunk *map::WorldMap::getChunk(int x, int y) {
+map::Chunk *map::WorldMap::getChunk(int x, int y) const {
 	auto pos = ChunkPos(x, y);
 	if (chunks.count(pos) == 1)
 		return chunks[pos];
@@ -28,6 +28,6 @@ void map::WorldMap::setChunk(int x, int y, map::Chunk *chunk) {
 	visibleChunks.push_back(chunk);
 }
 
-const std::vector<map::Chunk *> &map::WorldMap::getVisibleChunk() {
+const std::vector<map::Chunk *> &map::WorldMap::getVisibleChunk() const {
 	return visibleChunks;
 }

@@ -1,13 +1,21 @@
-#include "src/engine/Engine.h"
 #include "src/_classdef.h"
+#include "src/engine/Engine.h"
+#include "src/lib/object.h"
 
 namespace game {
-	class Player {
+	class Player : public Object {
 	protected:
-		engine::Point3D position;
+		engine::camera camera;
 	public:
 		Player();
 
-		const engine::Point3D& getPosition();
+		void moveForward(float distance);
+		void moveBackward(float distance);
+		void moveLeft(float distance);
+		void moveRight(float distance);
+		void moveUp(float distance);
+		void moveDown(float distance);
+
+		const engine::camera& getCamera() const;
 	};
 }

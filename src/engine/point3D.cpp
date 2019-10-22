@@ -5,7 +5,7 @@
 #include <math.h>
 #include <glm/gtx/normal.hpp>
 
-#include "Point3D.h"
+#include "point3D.h"
 
 using namespace engine;
 

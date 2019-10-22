@@ -19,9 +19,9 @@ namespace engine {
 	struct TexCoord;
 	struct SimpleTriangle;
 
-	class abs3DObj;
+	class Abs3DObj;
 
-	class camera;
+	class Camera;
 
 	class Light;
 

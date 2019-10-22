@@ -10,14 +10,21 @@
 namespace engine {
 
 	class Scene : public Object {
-	protected:
+	private:
 		Window *window;
+		Keyboard *keyboard;
+		Mouse *mouse;
 	public:
-		Window *getWindow() const;
-		void setWindow(Window *window);
 		const Signal<> onWindowChanged;
 
 		virtual void render3D(Window *window) = 0;
 		virtual void renderGUI(Window *window) = 0;
+
+		Window *getWindow() const;
+		void setWindow(Window *window);
+		Keyboard *getKeyboard() const;
+		void setKeyboard(Keyboard *keyboard);
+		Mouse *getMouse() const;
+		void setMouse(Mouse *mouse);
 	};
 }

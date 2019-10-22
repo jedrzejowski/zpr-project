@@ -7,15 +7,22 @@
 
 namespace game {
 	class GameScene : public engine::Scene {
-	protected:
+	private:
+
+		engine::Keyboard gameKeyboard;
+		engine::Keyboard guiKeyboard;
+
 		map::WorldMap *worldMap;
 		map::Renderer *mapRenderer;
 		Player* player;
 
 		void initKeyboardEvents();
+		void initMouseEvents();
 	public:
 		GameScene();
 		void render3D(engine::Window *window) override;
 		void renderGUI(engine::Window *window) override;
+
+
 	};
 }

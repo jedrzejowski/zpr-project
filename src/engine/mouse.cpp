@@ -3,3 +3,8 @@
 //
 
 #include "mouse.h"
+#include "window.h"
+
+engine::Mouse::Mouse(engine::Window *window) : Object(window) {
+
+}

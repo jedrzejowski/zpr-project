@@ -7,7 +7,7 @@
 
 namespace map {
 
-	class ChunkRenderer : public engine::abs3DObj {
+	class ChunkRenderer : public engine::Abs3DObj {
 	private:
 		Chunk *chunk;
 

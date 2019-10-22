@@ -1,9 +1,7 @@
 #pragma once
 
-#include <GL/glew.h>
-#include <glm/vec3.hpp>
-
 #include "src/_classdef.h"
+#include "opengl.h"
 
 namespace engine {
 

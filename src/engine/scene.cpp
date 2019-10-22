@@ -17,3 +17,19 @@ void Scene::setWindow(Window *window) {
 	setParent(window);
 	onWindowChanged.emit();
 }
+
+Keyboard *Scene::getKeyboard() const {
+	return keyboard;
+}
+
+void Scene::setKeyboard(Keyboard *keyboard) {
+	Scene::keyboard = keyboard;
+}
+
+void Scene::setMouse(Mouse *mouse) {
+	Scene::mouse = mouse;
+}
+
+Mouse *Scene::getMouse() const {
+	return mouse;
+}

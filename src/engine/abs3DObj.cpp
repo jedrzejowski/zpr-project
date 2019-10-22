@@ -7,7 +7,7 @@
 
 using namespace engine;
 
-abs3DObj::abs3DObj() {
+Abs3DObj::Abs3DObj() {
 
 	glGenVertexArrays(1, &VAO);
 	glBindVertexArray(VAO);
@@ -15,13 +15,13 @@ abs3DObj::abs3DObj() {
 	glGenBuffers(1, &EBO);
 }
 
-abs3DObj::~abs3DObj() {
+Abs3DObj::~Abs3DObj() {
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
 	glDeleteBuffers(1, &EBO);
 }
 
-void abs3DObj::insertObjToBuffers() {
+void Abs3DObj::insertObjToBuffers() {
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, Point3DeX::SIZE * vertices.size(), &vertices[0], GL_STATIC_DRAW);
@@ -33,14 +33,14 @@ void abs3DObj::insertObjToBuffers() {
 
 }
 
-void abs3DObj::draw() {
+void Abs3DObj::draw() {
 
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, 3 * indices.size(), GL_UNSIGNED_INT, nullptr);
 
 }
 
-void abs3DObj::draw(uint32_t from, uint32_t count) {
+void Abs3DObj::draw(uint32_t from, uint32_t count) {
 
 	glBindVertexArray(VAO);
 	glDrawRangeElements(GL_TRIANGLES, 3 * from, 3 * (from + count) - 1, 3 * count, GL_UNSIGNED_INT, nullptr);

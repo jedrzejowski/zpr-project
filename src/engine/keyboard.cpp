@@ -1,4 +1,5 @@
 #include "keyboard.h"
+#include "window.h"
 
 /**
  * Makro jest po to aby kod był czytelniejszy,
@@ -7,6 +8,7 @@
 #define addKey(key) keys.insert(std::pair<int, Key*>(key.keyCode, &key))
 
 engine::Keyboard::Keyboard() {
+
 	addKey(W);
 	addKey(A);
 	addKey(S);
@@ -16,14 +18,15 @@ engine::Keyboard::Keyboard() {
 	addKey(Space);
 }
 
-void engine::Keyboard::loopIter(GLFWwindow *window) {
+void engine::Keyboard::updateState(GLFWwindow *window) {
+	timeOfLastState = timeOfCurrentState;
+	timeOfCurrentState = glfwGetTime();
+
 	for (auto &iter : keys)
 		iter.second->setState(window);
 }
 
 void engine::Keyboard::clearSignals() {
-	timeOfLastState = timeOfCurrentState;
-	timeOfCurrentState = glfwGetTime();
 
 	for (auto &iter : keys)
 		iter.second->clearSignals();
@@ -31,6 +34,15 @@ void engine::Keyboard::clearSignals() {
 
 bool engine::Keyboard::isShiftPressed() const {
 	return LShift.isPressed() || RShift.isPressed();
+}
+
+double engine::Keyboard::getTimeOfCurrentState() const { return timeOfCurrentState; }
+
+double engine::Keyboard::getTimeOfLastState() const { return timeOfLastState; }
+
+double engine::Keyboard::getDeltaTimeOfState() const {
+
+	return timeOfCurrentState - timeOfLastState;
 }
 
 void engine::Key::setState(GLFWwindow *window) {

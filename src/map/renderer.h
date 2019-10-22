@@ -13,10 +13,13 @@ namespace map {
 
 		const game::Player *player;
 		const WorldMap *worldMap;
+		const engine::Scene *scene;
 
 		std::vector<ChunkRenderer *> chunkRenderers;
 	public:
-		explicit Renderer(const game::Player *player, const WorldMap *worldMap);
+		explicit Renderer(const engine::Scene *scene,
+						  const game::Player *player,
+						  const WorldMap *worldMap);
 		~Renderer();
 
 		void render(engine::Scene *scene);

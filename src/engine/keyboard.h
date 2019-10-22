@@ -1,4 +1,6 @@
-#include <GLFW/glfw3.h>
+#pragma once
+
+#include "opengl.h"
 #include "src/_classdef.h"
 #include "src/lib/object.h"
 
@@ -41,7 +43,7 @@ namespace engine {
 		double timeOfCurrentState = glfwGetTime();
 	protected:
 		std::map<int, Key *> keys;
-		void loopIter(GLFWwindow *window);
+		void updateState(GLFWwindow *widow);
 	public:
 		Keyboard();
 		void clearSignals();
@@ -54,11 +56,9 @@ namespace engine {
 		Key RShift = GLFW_KEY_RIGHT_SHIFT;
 		Key Space = GLFW_KEY_SPACE;
 
-		inline double getTimeOfCurrentState() const { return timeOfCurrentState; }
-
-		inline double getTimeOfLastState() const { return timeOfLastState; }
-
-		inline double getDeltaTimeOfState() const { return timeOfCurrentState - timeOfLastState; }
+		double getTimeOfCurrentState() const;
+		double getTimeOfLastState() const;
+		double getDeltaTimeOfState() const;
 
 		bool isShiftPressed() const;
 	};

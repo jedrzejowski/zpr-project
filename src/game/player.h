@@ -5,7 +5,7 @@
 namespace game {
 	class Player : public Object {
 	protected:
-		engine::camera camera;
+		engine::Camera camera;
 	public:
 		Player();
 
@@ -16,6 +16,6 @@ namespace game {
 		void moveUp(double time);
 		void moveDown(double time);
 
-		const engine::camera& getCamera() const;
+		const engine::Camera& getCamera() const;
 	};
 }

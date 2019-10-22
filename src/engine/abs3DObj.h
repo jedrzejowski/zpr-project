@@ -1,12 +1,11 @@
 #pragma once
 
-#include <GL/glew.h>
 #include <vector>
 #include "src/_classdef.h"
 #include "scene.h"
 
 namespace engine {
-	class abs3DObj {
+	class Abs3DObj {
 	protected:
 
 		GLuint VAO, VBO, EBO;
@@ -19,8 +18,8 @@ namespace engine {
 	public:
 		glm::mat4 modelMatrix;
 
-		abs3DObj();
-		~abs3DObj();
+		Abs3DObj();
+		~Abs3DObj();
 
 		virtual void render(Scene *scene) = 0;
 

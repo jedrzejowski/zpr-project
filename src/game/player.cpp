@@ -38,6 +38,6 @@ void game::Player::moveRight(double time) {
 	moveLeft(-time);
 }
 
-const engine::camera &game::Player::getCamera() const {
+const engine::Camera &game::Player::getCamera() const {
 	return camera;
 }

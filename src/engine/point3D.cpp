@@ -3,7 +3,6 @@
 //
 
 #include <math.h>
-#include <glm/gtx/normal.hpp>
 
 #include "point3D.h"
 

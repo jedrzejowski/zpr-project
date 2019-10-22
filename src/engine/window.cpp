@@ -1,10 +1,7 @@
-//
-// Created by adam on 23.04.18.
-//
+#include "window.h"
 
 #include <mutex>
 #include "exception.h"
-#include "window.h"
 
 using namespace engine;
 
@@ -54,7 +51,6 @@ Scene *Window::setScene(Scene *scene) {
 
 	auto oldScene = this->currentScene;
 	currentScene = scene;
-	this->keyboard.clearSignals();
 
 	currentScene->setWindow(this);
 	onSceneChanged.emit(oldScene, currentScene);
@@ -81,6 +77,17 @@ void Window::mainLoop() {
 
 	if (currentScene != nullptr) {
 
+		// Sprawdzanie wielkosci okna
+		{
+			//https://www.glfw.org/docs/latest/window_guide.html#window_size
+			int l, t, b, r, w, h;
+			glfwGetWindowSize(glfwWin, &w, &h);
+			glfwGetWindowFrameSize(glfwWin, &l, &t, &r, &b);
+
+			width = w - l - r;
+			height = h - t - b;
+		}
+
 		// Renderowanie sceny
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
@@ -88,7 +95,7 @@ void Window::mainLoop() {
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 
-		this->currentScene->render3D(this);
+		currentScene->render3D(this);
 //
 //	// Renderowanie interfejsu użytkownika
 //	glClear(GL_DEPTH_BUFFER_BIT);
@@ -99,13 +106,22 @@ void Window::mainLoop() {
 //	glLoadIdentity();
 //	this->currentScene->renderGUI(this);
 
-		keyboard.loopIter(glfwWin);
+		auto keyboard = currentScene->getKeyboard();
+		if (keyboard != nullptr) keyboard->updateState(glfwWin);
 	}
 
 	glfwSwapBuffers(glfwWin);
 	glfwPollEvents();
 }
 
-const Keyboard &Window::getKeyboard() const {
-	return keyboard;
+GLFWwindow *Window::getGlfwWindow() const {
+	return glfwWin;
+}
+
+GLuint Window::getWidth() const {
+	return width;
+}
+
+GLuint Window::getHeight() const {
+	return height;
 }

@@ -1,7 +1,5 @@
 #pragma once
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
 #include <mutex>
 
 #include "src/_classdef.h"
@@ -10,14 +8,14 @@
 #include "camera.h"
 #include "scene.h"
 #include "keyboard.h"
+#include "mouse.h"
 
 namespace engine {
 	class Window : public Object {
 	protected:
 		std::mutex rendering;
-		Keyboard keyboard;
 
-		GLuint width = 800, height = 600;
+		int width = 800, height = 600;
 		GLFWwindow *glfwWin;
 
 		Scene *currentScene;
@@ -37,9 +35,10 @@ namespace engine {
 		Scene *getScene() const;
 		const Signal<Scene *, Scene *> onSceneChanged;
 
-
 		virtual std::string getTitle() = 0;
 
-		const Keyboard &getKeyboard() const;
+		GLFWwindow *getGlfwWindow() const;
+		GLuint getWidth() const;
+		GLuint getHeight() const;
 	};
 }

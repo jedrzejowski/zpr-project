@@ -1,9 +1,9 @@
 #pragma once
 
 #include <string>
-#include <GL/glew.h>
 
 #include "src/_classdef.h"
+#include "opengl.h"
 #include "src/lib/stb_image.h"
 
 namespace engine {

@@ -1,8 +1,6 @@
 #pragma once
 
 #include <string>
-#include <GL/glew.h>
-#include <glm/glm.hpp>
 
 #include "src/_classdef.h"
 #include "light.h"

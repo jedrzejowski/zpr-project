@@ -13,12 +13,11 @@ game::GameScene::GameScene() {
 	player = new Player();
 	player->setParent(this);
 
-	mapRenderer = new map::Renderer(player, worldMap);
+	mapRenderer = new map::Renderer(this, player, worldMap);
 	mapRenderer->setParent(this);
 
-	onWindowChanged.connect([this]() {
-		initKeyboardEvents();
-	});
+	initKeyboardEvents();
+	setKeyboard(&gameKeyboard);
 }
 
 void game::GameScene::render3D(engine::Window *window) {
@@ -29,31 +28,29 @@ void game::GameScene::renderGUI(engine::Window *window) {
 }
 
 void game::GameScene::initKeyboardEvents() {
-	auto &keyboard = getWindow()->getKeyboard();
 
-	keyboard.W.onPress.connect([this, &keyboard]() {
-
-		player->moveForward(keyboard.getDeltaTimeOfState());
+	gameKeyboard.W.onPress.connect([this] {
+		player->moveForward(gameKeyboard.getDeltaTimeOfState());
 	});
 
-	keyboard.S.onPress.connect([this, &keyboard]() {
+	gameKeyboard.S.onPress.connect([this] {
 
-		player->moveBackward(keyboard.getDeltaTimeOfState());
+		player->moveBackward(gameKeyboard.getDeltaTimeOfState());
 	});
 
-	keyboard.D.onPress.connect([this, &keyboard]() {
+	gameKeyboard.D.onPress.connect([this] {
 
-		player->moveRight(keyboard.getDeltaTimeOfState());
+		player->moveRight(gameKeyboard.getDeltaTimeOfState());
 	});
 
-	keyboard.A.onPress.connect([this, &keyboard]() {
+	gameKeyboard.A.onPress.connect([this] {
 
-		player->moveLeft(keyboard.getDeltaTimeOfState());
+		player->moveLeft(gameKeyboard.getDeltaTimeOfState());
 	});
 
-	keyboard.Space.onPress.connect([this, &keyboard]() {
+	gameKeyboard.Space.onPress.connect([this] {
 
-		auto time = keyboard.getDeltaTimeOfState();
-		player->moveUp(keyboard.isShiftPressed() ? -time : time);
+		auto time = gameKeyboard.getDeltaTimeOfState();
+		player->moveUp(gameKeyboard.isShiftPressed() ? -time : time);
 	});
 }

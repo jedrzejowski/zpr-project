@@ -31,12 +31,28 @@ void game::GameScene::renderGUI(engine::Window *window) {
 void game::GameScene::initKeyboardEvents() {
 	auto &keyboard = getWindow()->getKeyboard();
 
-	logger.warn("inicljowanie");
-	keyboard.W.onPressed.connect([]() {
-		logger.warn("W pressed");
+	keyboard.W.onPress.connect([this, &keyboard]() {
+
+		player->moveForward(keyboard.getDeltaTimeOfState());
 	});
 
-	keyboard.W.onPress.connect([]() {
-		logger.warn("W press");
+	keyboard.S.onPress.connect([this, &keyboard]() {
+
+		player->moveBackward(keyboard.getDeltaTimeOfState());
+	});
+
+	keyboard.D.onPress.connect([this, &keyboard]() {
+
+		player->moveRight(keyboard.getDeltaTimeOfState());
+	});
+
+	keyboard.A.onPress.connect([this, &keyboard]() {
+
+		player->moveLeft(keyboard.getDeltaTimeOfState());
+	});
+
+	keyboard.Space.onPress.connect([this, &keyboard]() {
+
+		player->moveUp(keyboard.getDeltaTimeOfState());
 	});
 }

@@ -22,6 +22,9 @@ void engine::Keyboard::loopIter(GLFWwindow *window) {
 }
 
 void engine::Keyboard::clearSignals() {
+	timeOfLastState = timeOfCurrentState;
+	timeOfCurrentState = glfwGetTime();
+
 	for (auto &iter : keys)
 		iter.second->clearSignals();
 }
@@ -32,12 +35,16 @@ void engine::Key::setState(GLFWwindow *window) {
 	currentState = glfwGetKey(window, keyCode);
 
 	if (currentState == GLFW_RELEASE) {
-		if (lastState == GLFW_PRESS)
+		if (lastState == GLFW_PRESS) {
 			onReleased.emit();
+			timeOfLastChange = glfwGetTime();
+		}
 		onRelease.emit();
 	} else {//GLFW_PRESS
-		if (lastState == GLFW_RELEASE)
+		if (lastState == GLFW_RELEASE) {
 			onPressed.emit();
+			timeOfLastChange = glfwGetTime();
+		}
 		onPress.emit();
 	}
 }

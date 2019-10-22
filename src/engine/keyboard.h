@@ -8,6 +8,7 @@ namespace engine {
 	class Key : public Object {
 		friend Keyboard;
 	private:
+		double timeOfLastChange = glfwGetTime();
 		int lastState = GLFW_RELEASE;
 		int currentState = GLFW_RELEASE;
 
@@ -21,13 +22,11 @@ namespace engine {
 
 	public:
 
-		inline bool isPressed() const {
-			return currentState == GLFW_PRESS;
-		}
+		inline bool isPressed() const { return currentState == GLFW_PRESS; }
 
-		inline bool isReleased() const {
-			return currentState == GLFW_RELEASE;
-		}
+		inline bool isReleased() const { return currentState == GLFW_RELEASE; }
+
+		inline double getTimeOfLastChange() const { return timeOfLastChange; }
 
 		const Signal<> onPress;
 		const Signal<> onPressed;
@@ -37,6 +36,9 @@ namespace engine {
 
 	class Keyboard : public Object {
 		friend Window;
+	private:
+		double timeOfLastState = glfwGetTime();
+		double timeOfCurrentState = glfwGetTime();
 	protected:
 		std::map<int, Key *> keys;
 		void loopIter(GLFWwindow *window);
@@ -51,5 +53,11 @@ namespace engine {
 		Key LShift = GLFW_KEY_LEFT_SHIFT;
 		Key RShift = GLFW_KEY_RIGHT_SHIFT;
 		Key Space = GLFW_KEY_SPACE;
+
+		inline double getTimeOfCurrentState() const { return timeOfCurrentState; }
+
+		inline double getTimeOfLastState() const { return timeOfLastState; }
+
+		inline double getDeltaTimeOfState() const { return timeOfCurrentState - timeOfLastState; }
 	};
 }

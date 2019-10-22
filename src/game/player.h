@@ -9,12 +9,12 @@ namespace game {
 	public:
 		Player();
 
-		void moveForward(float distance);
-		void moveBackward(float distance);
-		void moveLeft(float distance);
-		void moveRight(float distance);
-		void moveUp(float distance);
-		void moveDown(float distance);
+		void moveForward(double time);
+		void moveBackward(double time);
+		void moveLeft(double time);
+		void moveRight(double time);
+		void moveUp(double time);
+		void moveDown(double time);
 
 		const engine::camera& getCamera() const;
 	};

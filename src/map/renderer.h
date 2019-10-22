@@ -1,11 +1,12 @@
 #pragma once
 
-#include "src/engine/Engine.h"
 #include "src/_classdef.h"
+#include "src/engine/Engine.h"
 #include "worldmap.h"
+#include "src/lib/object.h"
 
 namespace map {
-	class Renderer {
+	class Renderer : public Object {
 	private:
 		const engine::Texture *blockTexture;
 		engine::Shader *shader;
@@ -14,7 +15,7 @@ namespace map {
 		WorldMap *worldMap;
 		std::vector<ChunkRenderer*> chunkRenderers;
 	public:
-		Renderer(WorldMap *worldMap);
+		explicit Renderer(WorldMap *worldMap);
 		~Renderer();
 
 		WorldMap *getWorldMap() const;

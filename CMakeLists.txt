@@ -14,7 +14,10 @@ add_executable(${APP_TARGET}
         src/_classdef.h
         src/main.cpp
         src/logger.h
-        src/logger.cpp)
+        src/logger.cpp
+        src/lib/signal.h
+        src/lib/object.h
+        src/lib/object.cpp)
 
 #engine
 target_sources(${APP_TARGET} PUBLIC

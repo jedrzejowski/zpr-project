@@ -4,6 +4,12 @@
 #include <vector>
 #include <tuple>
 
+template <typename... Args>
+class Signal;
+class SignalObj;
+class TreeObj;
+class Object;
+
 namespace engine {
 	class exception;
 

@@ -2,7 +2,7 @@
 #include "chunk.h"
 #include "chunkrenderer.h"
 
-map::Renderer::Renderer(map::WorldMap *worldMap) {
+map::Renderer::Renderer(map::WorldMap *worldMap) : Object() {
 	this->worldMap = worldMap;
 
 	shader = new engine::Shader("shader/basic.vert", "shader/basic.frag");
@@ -12,13 +12,12 @@ map::Renderer::Renderer(map::WorldMap *worldMap) {
 	for (auto chunk : worldMap->getVisibleChunk()) {
 		chunkRenderers.push_back(new map::ChunkRenderer(chunk));
 	}
-
 }
 
 map::Renderer::~Renderer() {
 }
 
-void map::Renderer::render(engine::Scene* scene) {
+void map::Renderer::render(engine::Scene *scene) {
 
 	shader->use();
 	blockTexture->use();

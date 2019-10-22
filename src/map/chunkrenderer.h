@@ -11,7 +11,7 @@ namespace map {
 	private:
 		Chunk *chunk;
 
-		std::map<block::cord3D, block::Block *> visibleBlocks;
+		std::map<cord3D, block::Block *> visibleBlocks;
 
 	protected:
 

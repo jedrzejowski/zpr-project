@@ -7,10 +7,6 @@
 template<typename... Args>
 class Signal;
 
-class SignalObj;
-
-class TreeObj;
-
 class Object;
 
 namespace engine {
@@ -44,36 +40,11 @@ namespace engine {
 	class Key;
 
 	class Keyboard;
+
+	class Mouse;
 }
 
 namespace block {
-	struct cord3D {
-		uint16_t x, y, z;
-
-		cord3D() : x(0), y(0), z(0) {}
-		cord3D(uint16_t x, uint16_t y, uint16_t z) : x(x), y(y), z(z) {}
-		bool operator<(const cord3D &sec) const {
-			return toInt64() < sec.toInt64();
-		}
-		int64_t toInt64() const {
-			int64_t out = x;
-			out = out << 16;
-			out = out | y;
-			out = out << 16;
-			out = out | z;
-			return out;
-		}
-	};
-
-	struct cord2D {
-		uint16_t x, y;
-
-		cord2D() : x(0), y(0) {}
-		cord2D(uint16_t x, uint16_t y) : x(x), y(y) {}
-		bool operator<(const cord2D &sec) const {
-			return (x < sec.x) && (y < sec.y);
-		}
-	};
 
 	class Block;
 
@@ -101,5 +72,39 @@ namespace game {
 
 	class GameScene;
 }
+
+struct cord3D {
+	uint16_t x, y, z;
+
+	cord3D() : x(0), y(0), z(0) {}
+	cord3D(uint16_t x, uint16_t y, uint16_t z) : x(x), y(y), z(z) {}
+	bool operator<(const cord3D &sec) const {
+		return toUInt64() < sec.toUInt64();
+	}
+	uint64_t toUInt64() const {
+		uint64_t out = x;
+		out = out << 16;
+		out = out | y;
+		out = out << 16;
+		out = out | z;
+		return out;
+	}
+};
+
+struct cord2D {
+	uint16_t x, y;
+
+	cord2D() : x(0), y(0) {}
+	cord2D(uint16_t x, uint16_t y) : x(x), y(y) {}
+	bool operator<(const cord2D &sec) const {
+		return toUInt32() < sec.toUInt32();
+	}
+	uint32_t toUInt32() const {
+		uint32_t out = x;
+		out = out << 16;
+		out = out | y;
+		return out;
+	}
+};
 
 #include "src/logger.h"

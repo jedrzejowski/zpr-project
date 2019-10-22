@@ -41,10 +41,13 @@ target_sources(${APP_TARGET} PUBLIC
         src/engine/window.cpp
         src/engine/scene.h
         src/engine/scene.cpp
-        src/engine/keyboard.h
-        src/engine/keyboard.cpp
         src/engine/abs3DObj.cpp
         src/engine/abs3DObj.h
+
+        src/engine/keyboard.h
+        src/engine/keyboard.cpp
+        src/engine/mouse.h
+        src/engine/mouse.cpp
 
         src/engine/Engine.h)
 

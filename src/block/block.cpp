@@ -7,7 +7,7 @@
 block::Block::Block() {
 }
 
-void block::Block::setPosition(map::Chunk *chunk, const block::cord3D &pos) {
+void block::Block::setPosition(map::Chunk *chunk, const cord3D &pos) {
 	this->position = pos;
 	this->chunk = chunk;
 }

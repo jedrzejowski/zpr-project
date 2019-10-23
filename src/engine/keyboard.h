@@ -37,7 +37,7 @@ namespace engine {
 	};
 
 	class Keyboard : public Object {
-		friend Window;
+		friend InputInterface;
 	private:
 		double timeOfLastState = glfwGetTime();
 		double timeOfCurrentState = glfwGetTime();

@@ -9,17 +9,15 @@ namespace game {
 	class GameScene : public engine::Scene {
 	private:
 
-		engine::Keyboard gameKeyboard;
-		engine::Keyboard guiKeyboard;
-		engine::Mouse mouse;
+		engine::InputInterface gameInput;
+		engine::InputInterface menuInput;
 
 		map::WorldMap *worldMap;
 		map::Renderer *mapRenderer;
 		Player* player;
 
-		void initKeyboardEvents();
-
-		void initMouseEvents();
+		void initGameEvents();
+		void initMenuEvents();
 	public:
 		GameScene();
 		void render3D(engine::Window *window) override;

@@ -2,6 +2,7 @@
 
 #include <mutex>
 #include "exception.h"
+#include "inputInterface.h"
 
 using namespace engine;
 
@@ -64,10 +65,6 @@ Scene *Window::getScene() const {
 void Window::mainLoop() {
 	std::lock_guard<std::mutex> guard(rendering);
 
-	currentFrame = (float) glfwGetTime();
-	deltaTime = currentFrame - lastFrame;
-	lastFrame = currentFrame;
-
 	glViewport(0, 0, winWidth, winHeight);
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -108,11 +105,8 @@ void Window::mainLoop() {
 //	this->currentScene->renderGUI(this);
 
 		{
-			auto keyboard = currentScene->getKeyboard();
-			if (keyboard != nullptr) keyboard->updateState(glfwWin);
-
-			auto mouse = currentScene->getMouse();
-			if (mouse != nullptr) mouse->updateState(glfwWin);
+			auto ii = currentScene->getInputInterface();
+			if (ii != nullptr) ii->updateState(glfwWin);
 		}
 	}
 

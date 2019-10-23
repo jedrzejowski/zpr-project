@@ -23,9 +23,6 @@ public:
 
 	Signal() : currentId(0) {}
 
-	// copy creates new signal
-	Signal(Signal const &other) : currentId(0) {}
-
 	// connects a member function to this Signal
 	template<typename T>
 	int connect(T *inst, void (T::*func)(Args...)) {
@@ -78,6 +75,7 @@ public:
 		}
 	}
 
-	// assignment creates new Signal
-	Signal &operator=(Signal const &other) = delete;
+	// Usunięcie możliwości kopiowania obiektu
+	Signal(const Signal&) = delete;
+	void operator=(const Signal&) = delete;
 };

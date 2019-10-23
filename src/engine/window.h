@@ -12,18 +12,15 @@
 
 namespace engine {
 	class Window : public Object {
-	protected:
+	private:
 		std::mutex rendering;
 
 		int winWidth = 800, winHeight = 600, winTopOffset, winLeftOffset, winRightOffset, winBottomOffset;
 
 		GLFWwindow *glfwWin;
 
-		Scene *currentScene;
+		Scene *currentScene = nullptr;
 
-		float currentFrame = 0.0f, deltaTime = 0.0f, lastFrame = 0.0f;
-
-	private:
 		void mainLoop();
 	public:
 		Window();

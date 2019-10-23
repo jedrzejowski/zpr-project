@@ -16,3 +16,7 @@
 #include "scene.h"
 #include "abs3DObj.h"
 
+#include "mouse.h"
+#include "keyboard.h"
+#include "inputInterface.h"
+

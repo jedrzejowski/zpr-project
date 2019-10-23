@@ -49,6 +49,8 @@ target_sources(${APP_TARGET} PUBLIC
         src/engine/keyboard.cpp
         src/engine/mouse.h
         src/engine/mouse.cpp
+        src/engine/inputInterface.h
+        src/engine/inputInterface.cpp
 
         src/engine/Engine.h)
 

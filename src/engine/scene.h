@@ -12,8 +12,7 @@ namespace engine {
 	class Scene : public Object {
 	private:
 		Window *window;
-		Keyboard *keyboard;
-		Mouse *mouse;
+		InputInterface* inputInterface;
 	public:
 		const Signal<> onWindowChanged;
 
@@ -22,9 +21,8 @@ namespace engine {
 
 		Window *getWindow() const;
 		void setWindow(Window *window);
-		Keyboard *getKeyboard() const;
-		void setKeyboard(Keyboard *keyboard);
-		Mouse *getMouse() const;
-		void setMouse(Mouse *mouse);
+
+		InputInterface *getInputInterface() const;
+		void setInputInterface(InputInterface *inputInterface);
 	};
 }

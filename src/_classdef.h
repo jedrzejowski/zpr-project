@@ -42,6 +42,8 @@ namespace engine {
 	class Keyboard;
 
 	class Mouse;
+
+	class InputInterface;
 }
 
 namespace block {

@@ -16,12 +16,9 @@ game::GameScene::GameScene() {
 	mapRenderer = new map::Renderer(this, player, worldMap);
 	mapRenderer->setParent(this);
 
-	initKeyboardEvents();
-	setKeyboard(&gameKeyboard);
+	initGameEvents();
 
-	mouse.setAttachedToCenter(true);
-	initMouseEvents();
-	setMouse(&mouse);
+	setInputInterface(&gameInput);
 }
 
 void game::GameScene::render3D(engine::Window *window) {
@@ -31,38 +28,41 @@ void game::GameScene::render3D(engine::Window *window) {
 void game::GameScene::renderGUI(engine::Window *window) {
 }
 
-void game::GameScene::initKeyboardEvents() {
+void game::GameScene::initGameEvents() {
 
-	gameKeyboard.W.onPress.connect([this] {
-		player->moveForward(gameKeyboard.getDeltaTimeOfState());
+	auto &keyboard = gameInput.getKeyboard();
+	auto &mouse = gameInput.getMouse();
+
+	mouse.setAttachedToCenter(true);
+
+	keyboard.W.onPress.connect([&] {
+		player->moveForward(keyboard.getDeltaTimeOfState());
 	});
 
-	gameKeyboard.S.onPress.connect([this] {
+	keyboard.S.onPress.connect([&] {
 
-		player->moveBackward(gameKeyboard.getDeltaTimeOfState());
+		player->moveBackward(keyboard.getDeltaTimeOfState());
 	});
 
-	gameKeyboard.D.onPress.connect([this] {
+	keyboard.D.onPress.connect([&] {
 
-		player->moveRight(gameKeyboard.getDeltaTimeOfState());
+		player->moveRight(keyboard.getDeltaTimeOfState());
 	});
 
-	gameKeyboard.A.onPress.connect([this] {
+	keyboard.A.onPress.connect([&] {
 
-		player->moveLeft(gameKeyboard.getDeltaTimeOfState());
+		player->moveLeft(keyboard.getDeltaTimeOfState());
 	});
 
-	gameKeyboard.Space.onPress.connect([this] {
+	keyboard.Space.onPress.connect([&] {
 
-		auto time = gameKeyboard.getDeltaTimeOfState();
-		player->moveUp(gameKeyboard.isShiftPressed() ? -time : time);
+		auto time = keyboard.getDeltaTimeOfState();
+		player->moveUp(keyboard.isShiftPressed() ? -time : time);
 	});
-}
-void game::GameScene::initMouseEvents() {
-	mouse.onMove.connect([this](double dx, double dy) {
+
+	mouse.onMove.connect([&](double dx, double dy) {
 
 		player->rotateLeft(dx);
 		player->rotateUp(dy);
-
 	});
 }

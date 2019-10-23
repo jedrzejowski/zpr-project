@@ -1,12 +1,13 @@
 #pragma once
 
+#include "opengl.h"
 #include "src/_classdef.h"
-#include "src/engine/Engine.h"
 #include "src/lib/object.h"
+
 
 namespace engine {
 	class Mouse : public Object {
-		friend Window;
+		friend InputInterface;
 	private:
 		double curX, curY;
 		double lastX, lastY;

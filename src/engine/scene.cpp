@@ -18,18 +18,10 @@ void Scene::setWindow(Window *window) {
 	onWindowChanged.emit();
 }
 
-Keyboard *Scene::getKeyboard() const {
-	return keyboard;
+InputInterface *Scene::getInputInterface() const {
+	return inputInterface;
 }
 
-void Scene::setKeyboard(Keyboard *keyboard) {
-	Scene::keyboard = keyboard;
-}
-
-void Scene::setMouse(Mouse *mouse) {
-	Scene::mouse = mouse;
-}
-
-Mouse *Scene::getMouse() const {
-	return mouse;
+void Scene::setInputInterface(InputInterface *inputInterface) {
+	Scene::inputInterface = inputInterface;
 }

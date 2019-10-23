@@ -1,3 +1,5 @@
+#pragma once
+
 #include "src/_classdef.h"
 #include <src/lib/perlin.h>
 

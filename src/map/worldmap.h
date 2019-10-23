@@ -14,12 +14,12 @@ namespace map {
 		mutable std::map<coord2D, Chunk *> chunks;
 
 
-		Chunk *genChunk(const coord2D& coord) const;
+		Chunk *genChunk(const coord2D& coord);
 	public:
 		WorldMap();
 		void setChunk(Chunk *chunk);
 
 		Chunk *getChunk(const coord2D& position) const;
-		bool loadChunk(const coord2D& position);
+		bool loadChunk(const coord2D& position) const;
 	};
 }

@@ -20,8 +20,6 @@ void map::ChunkRenderer::initVerticles() {
 									  coord.y * Chunk::Size.y,
 									  0
 							  ));
-	logger.log(chunkPos);
-
 
 	for (auto iter : visibleBlocks) {
 		auto block = iter.second;

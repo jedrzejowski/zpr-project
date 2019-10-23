@@ -6,7 +6,7 @@ block::SolidBlock::SolidBlock() : Block() {
 
 void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices,
 										std::vector<engine::SimpleTriangle> &indices) {
-
+	Block *block;
 
 	auto vOffest = vertices.size();
 	auto iOffest = indices.size();
@@ -20,7 +20,8 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	auto tex_Xx = engine::TexCoord((float(texSide.x) - 1) / texCols, float(texSide.x) / texRows);
 
 	// płaszczna z
-	{
+	block = this->getNeighbor(0, 0, -1);
+	if (block == nullptr || !block->isSolid()) {
 		vertices.emplace_back(engine::Point3D(position.x, position.y, position.z), tex_xx);
 		vertices.emplace_back(engine::Point3D(position.x + 1, position.y, position.z), tex_xX);
 		vertices.emplace_back(engine::Point3D(position.x + 1, position.y + 1, position.z), tex_XX);
@@ -33,7 +34,8 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	}
 
 	// płaszczna Z
-	{
+	block = this->getNeighbor(0, 0, +1);
+	if (block == nullptr || !block->isSolid()) {
 		vertices.emplace_back(engine::Point3D(position.x, position.y, position.z + 1), tex_xx);
 		vertices.emplace_back(engine::Point3D(position.x + 1, position.y, position.z + 1), tex_xX);
 		vertices.emplace_back(engine::Point3D(position.x + 1, position.y + 1, position.z + 1), tex_XX);
@@ -46,7 +48,8 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	}
 
 	// płaszczna x
-	{
+	block = this->getNeighbor(-1, 0, 0);
+	if (block == nullptr || !block->isSolid()) {
 		vertices.emplace_back(engine::Point3D(position.x, position.y, position.z), tex_xx);
 		vertices.emplace_back(engine::Point3D(position.x, position.y + 1, position.z), tex_xX);
 		vertices.emplace_back(engine::Point3D(position.x, position.y + 1, position.z + 1), tex_XX);
@@ -59,7 +62,8 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	}
 
 	// płaszczna X
-	{
+	block = this->getNeighbor(+1, 0, 0);
+	if (block == nullptr || !block->isSolid()) {
 		vertices.emplace_back(engine::Point3D(position.x + 1, position.y, position.z), tex_xx);
 		vertices.emplace_back(engine::Point3D(position.x + 1, position.y + 1, position.z), tex_xX);
 		vertices.emplace_back(engine::Point3D(position.x + 1, position.y + 1, position.z + 1), tex_XX);
@@ -72,7 +76,8 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	}
 
 	// płaszczna y
-	{
+	block = this->getNeighbor(0,-1, 0);
+	if (block == nullptr || !block->isSolid()) {
 		vertices.emplace_back(engine::Point3D(position.x, position.y, position.z), tex_xx);
 		vertices.emplace_back(engine::Point3D(position.x + 1, position.y, position.z), tex_xX);
 		vertices.emplace_back(engine::Point3D(position.x + 1, position.y, position.z + 1), tex_XX);
@@ -85,7 +90,8 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	}
 
 	// płaszczna Y
-	{
+	block = this->getNeighbor(0, +1, 0);
+	if (block == nullptr || !block->isSolid()) {
 		vertices.emplace_back(engine::Point3D(position.x, position.y + 1, position.z), tex_xx);
 		vertices.emplace_back(engine::Point3D(position.x + 1, position.y + 1, position.z), tex_xX);
 		vertices.emplace_back(engine::Point3D(position.x + 1, position.y + 1, position.z + 1), tex_XX);

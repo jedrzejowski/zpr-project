@@ -2,18 +2,17 @@
 
 const coord3D map::Chunk::Size = coord3D(16, 16, 16);
 
-map::Chunk::Chunk(const coord2D &position) :
+map::Chunk::Chunk(WorldMap *worldMap, const coord2D &position) :
+		Object(worldMap),
+		worldMap(worldMap),
 		position(position) {
-
-//	addBlock(coord3D(0, 0, 0), new block::Stone());
-//	addBlock(coord3D(1, 0, 0), new block::Stone());
-//	addBlock(coord3D(0, 1, 0), new block::Stone());
-
 }
 
 
 block::Block *map::Chunk::getBlock(const coord3D &position) {
-	return blocks[position];
+	if (blocks.count(position) == 1)
+		return blocks[position];
+	return nullptr;
 }
 
 bool map::Chunk::addBlock(const coord3D &position, block::Block *block) {
@@ -29,4 +28,11 @@ std::map<coord3D, block::Block *> map::Chunk::getAllBlocks() {
 
 const coord2D &map::Chunk::getPosition() const {
 	return position;
+}
+
+map::Chunk *map::Chunk::getNeighbor(int64_t dx, int64_t dy) const {
+	auto neighborPos = position;
+	neighborPos.x += dx;
+	neighborPos.y += dy;
+	return worldMap->getChunk(neighborPos);
 }

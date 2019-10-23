@@ -58,7 +58,7 @@ namespace block {
 namespace map {
 	class Chunk;
 
-	class Map;
+	class WorldMap;
 
 	class Renderer;
 

@@ -17,6 +17,10 @@ map::Renderer::Renderer(const engine::Scene *scene,
 	blockTexture = engine::Resources::get().getTexture("texture.png");
 
 
+	worldMap->loadChunk(coord2D(0, 0));
+	worldMap->loadChunk(coord2D(1, 0));
+	worldMap->loadChunk(coord2D(1, 1));
+	worldMap->loadChunk(coord2D(0, 1));
 	chunkRenderers.push_back(new map::ChunkRenderer(this, worldMap->getChunk(coord2D(0, 0))));
 	chunkRenderers.push_back(new map::ChunkRenderer(this, worldMap->getChunk(coord2D(1, 0))));
 	chunkRenderers.push_back(new map::ChunkRenderer(this, worldMap->getChunk(coord2D(1, 1))));

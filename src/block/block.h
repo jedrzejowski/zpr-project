@@ -15,6 +15,10 @@ namespace block {
 
 		virtual void insertToBuffers(std::vector<engine::Point3DeX> &vertices,
 									 std::vector<engine::SimpleTriangle> &indices) = 0;
+
+		virtual bool isSolid();
+
+		Block *getNeighbor(int64_t dx, int64_t dy, int64_t dz) const;
 	};
 }
 

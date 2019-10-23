@@ -15,6 +15,10 @@ namespace block {
 
 		void insertToBuffers(std::vector<engine::Point3DeX> &vertices,
 							 std::vector<engine::SimpleTriangle> &indices) override;
+
+		bool isSolid() override {
+			return true;
+		};
 	};
 }
 

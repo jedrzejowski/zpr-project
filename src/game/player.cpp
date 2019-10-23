@@ -1,63 +1,79 @@
+#include <src/func/clip.h>
 #include "player.h"
 
 game::Player::Player() {
-	camera.position = glm::vec3(4.0f);
-	camera.front = glm::vec3(-4.0f);
-	camera.up = glm::vec3(0.0f, 0.0f, 1.0f);
+	position = glm::vec3(4.0f);
+	angleH = 0;
+	angleV = 0;
 }
 
-void game::Player::moveForward(double time) {
-	auto forwardVec = glm::normalize(camera.front);
-	forwardVec *= time;
-	camera.position += forwardVec;
+glm::vec3 game::Player::topVec() const {
+	return glm::vec3(0.0f, 0.0f, 1.0f);
 }
 
-void game::Player::moveBackward(double time) {
+glm::vec3 game::Player::frontVec() const {
+	glm::vec3 frontVec = glm::vec3(1.0f, 0.f, 0.f);
+	frontVec = glm::rotateY(frontVec, glm::radians(angleV));
+	frontVec = glm::rotateZ(frontVec, glm::radians(angleH));
+	return glm::normalize(frontVec);
+}
+
+glm::vec3 game::Player::leftVec() const {
+	return glm::normalize(glm::cross(topVec(), frontVec()));
+}
+
+
+void game::Player::moveForward(float time) {
+	glm::vec3 forward = glm::vec3(1.0f, 0.f, 0.f);
+	forward = glm::rotateZ(forward, glm::radians(angleH));
+	forward *= time * keyboardPrecision;
+	position += forward;
+}
+
+void game::Player::moveBackward(float time) {
 	moveForward(-time);
 }
 
-void game::Player::moveUp(double time) {
-	auto topVec = glm::vec3(0.0f, 0.0f, 1.0f);
-	topVec *= time;
-	camera.position += topVec;
+void game::Player::moveUp(float time) {
+	auto vec = topVec();
+	vec *= time * keyboardPrecision;
+	position += vec;
 }
 
-void game::Player::moveDown(double time) {
+void game::Player::moveDown(float time) {
 	moveUp(-time);
 }
 
-void game::Player::moveLeft(double time) {
-	auto leftVec = glm::cross(camera.up, camera.front);
-	// TODO sprawdzić czy noramlizacja jest potrzebna
-	leftVec = glm::normalize(leftVec);
-	leftVec *= time;
-	camera.position += leftVec;
+void game::Player::moveLeft(float time) {
+	auto vec = leftVec();
+	vec *= time * keyboardPrecision;
+	position += vec;
 }
 
-void game::Player::moveRight(double time) {
+void game::Player::moveRight(float time) {
 	moveLeft(-time);
 }
 
-const engine::Camera &game::Player::getCamera() const {
-	return camera;
+void game::Player::rotateUp(float dy) {
+	angleV = angleV + dy / mousePrecision;
 }
 
-void game::Player::rotateUp(double dy) {
-	auto topVec = glm::vec3(0.0f, 0.0f, 1.0f);
-	auto rotVec = glm::rotateY(camera.front, (float) dy / 200);
-	camera.front = rotVec;
-}
-
-void game::Player::rotateDown(double dy) {
+void game::Player::rotateDown(float dy) {
 	rotateUp(-dy);
 }
 
-void game::Player::rotateLeft(double dx) {
-	auto topVec = glm::vec3(0.0f, 0.0f, 1.0f);
-	auto rotVec = glm::rotateZ(camera.front, (float) dx / 200);
-	camera.front = rotVec;
+void game::Player::rotateRight(float dx) {
+	angleH = angleH + dx / mousePrecision;
 }
 
-void game::Player::rotateRight(double dx) {
-	rotateLeft(-dx);
+void game::Player::rotateLeft(float dx) {
+	rotateRight(-dx);
+}
+
+engine::Camera game::Player::getCamera() const {
+	auto camera = engine::Camera();
+	camera.position = position;
+	camera.up = topVec();
+	camera.front = frontVec();
+	return camera;
 }

@@ -35,6 +35,7 @@ void map::Renderer::render(engine::Scene *scene) {
 	shader->use();
 	blockTexture->use();
 
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
 	shader->setMat4("projection", glm::perspective(glm::radians(45.0f),
@@ -42,11 +43,9 @@ void map::Renderer::render(engine::Scene *scene) {
 												   (float) this->scene->getWindow()->getSceneHeight(),
 												   0.1f, 100.0f));
 
-	auto &camera = player->getCamera();
+	auto camera = player->getCamera();
 	shader->setMat4("camera", camera.getMatrix());
 	shader->setVec3("cameraPos", camera.position);
-
-	shader->setMat4("model", glm::mat4(1.0f));
 
 	for (auto *chunkRenderer : chunkRenderers)
 		chunkRenderer->render(scene);

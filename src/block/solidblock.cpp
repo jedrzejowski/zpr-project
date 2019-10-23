@@ -14,10 +14,10 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	static float texCols = 2;
 	static float texRows = 4;
 
-	auto tex_xx = engine::TexCoord((float(texSide.x) - 1) / texCols, (float(texSide.x) - 1) / texRows);
-	auto tex_xX = engine::TexCoord(float(texSide.x) / texCols, (float(texSide.x) - 1) / texRows);
-	auto tex_XX = engine::TexCoord(float(texSide.x) / texCols, float(texSide.x) / texRows);
-	auto tex_Xx = engine::TexCoord((float(texSide.x) - 1) / texCols, float(texSide.x) / texRows);
+	auto tex_xx = engine::TexCoord((float(texSide.x) - 1) / texCols, (float(texSide.y) - 1) / texRows);
+	auto tex_xX = engine::TexCoord(float(texSide.x) / texCols, (float(texSide.y) - 1) / texRows);
+	auto tex_XX = engine::TexCoord(float(texSide.x) / texCols, float(texSide.y) / texRows);
+	auto tex_Xx = engine::TexCoord((float(texSide.x) - 1) / texCols, float(texSide.y) / texRows);
 
 	// płaszczna z
 	block = this->getNeighbor(0, 0, -1);

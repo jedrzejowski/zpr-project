@@ -65,7 +65,9 @@ target_sources(${APP_TARGET} PUBLIC
         src/block/solidblock.h
         src/block/solidblock.cpp
         src/block/types/stone.h
-        src/block/types/stone.cpp)
+        src/block/types/stone.cpp
+        src/block/types/dirt.h
+        src/block/types/dirt.cpp)
 
 ## map
 target_sources(${APP_TARGET} PUBLIC

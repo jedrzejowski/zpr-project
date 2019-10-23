@@ -5,22 +5,30 @@
 namespace game {
 	class Player : public Object {
 	protected:
-		engine::Camera camera;
+		glm::vec3 position;
+		float angleV = 0, angleH = 0;
+		float mousePrecision = 20;
+		float keyboardPrecision = 20;
+
+		glm::vec3 topVec() const;
+		glm::vec3 frontVec() const;
+		glm::vec3 leftVec() const;
+
 	public:
 		Player();
 
-		void moveForward(double time);
-		void moveBackward(double time);
-		void moveLeft(double time);
-		void moveRight(double time);
-		void moveUp(double time);
-		void moveDown(double time);
+		void moveForward(float time);
+		void moveBackward(float time);
+		void moveLeft(float time);
+		void moveRight(float time);
+		void moveUp(float time);
+		void moveDown(float time);
 
-		void rotateUp(double dy);
-		void rotateDown(double dy);
-		void rotateLeft(double dx);
-		void rotateRight(double dx);
+		void rotateUp(float dy);
+		void rotateDown(float dy);
+		void rotateLeft(float dx);
+		void rotateRight(float dx);
 
-		const engine::Camera& getCamera() const;
+		engine::Camera getCamera() const;
 	};
 }

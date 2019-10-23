@@ -51,12 +51,15 @@ void game::GameScene::initGameEvents() {
 	});
 
 	keyboard.Space.onPress.connect([&] {
-		auto time = keyboard.getDeltaTimeOfState();
-		player->moveUp(keyboard.isShiftPressed() ? -time : time);
+		player->moveUp(keyboard.getDeltaTimeOfState());
+	});
+
+	keyboard.LShift.onPress.connect([&] {
+		player->moveDown(keyboard.getDeltaTimeOfState());
 	});
 
 	mouse.onMove.connect([&](double dx, double dy) {
-		player->rotateLeft(dx);
+		player->rotateRight(dx);
 		player->rotateDown(dy);
 	});
 }

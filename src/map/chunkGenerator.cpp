@@ -26,13 +26,21 @@ void map::ChunkGenerator::fillChunk(map::Chunk *chunk) {
 
 			int64_t z = noise.getHeight(
 					x + chunk->position.x * Chunk::Size.x,
-					y+ chunk->position.y * Chunk::Size.y
+					y + chunk->position.y * Chunk::Size.y
 			) + Chunk::Size.z / 2;
 
 			z = clip((int64_t) 0, z, Chunk::Size.z - 1);
 
+			int dirtLeft = 3;
+
 			for (; z >= 0; z--) {
-				chunk->addBlock(coord3D(x, y, z), new block::Stone());
+				if (dirtLeft > 0) {
+
+					chunk->addBlock(coord3D(x, y, z), new block::Dirt());
+					dirtLeft--;
+				} else {
+					chunk->addBlock(coord3D(x, y, z), new block::Stone());
+				}
 			}
 		}
 	}

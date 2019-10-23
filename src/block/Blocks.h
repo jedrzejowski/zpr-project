@@ -4,3 +4,4 @@
 #include "block.h"
 #include "solidblock.h"
 #include "types/stone.h"
+#include "types/dirt.h"

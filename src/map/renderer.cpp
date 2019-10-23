@@ -17,7 +17,7 @@ map::Renderer::Renderer(const engine::Scene *scene,
 	blockTexture = engine::Resources::get().getTexture("texture.png");
 
 	for (auto chunk : worldMap->getVisibleChunk()) {
-		chunkRenderers.push_back(new map::ChunkRenderer(chunk));
+		chunkRenderers.push_back(new map::ChunkRenderer(this, chunk));
 	}
 }
 
@@ -40,9 +40,12 @@ void map::Renderer::render(engine::Scene *scene) {
 	shader->setMat4("camera", camera.getMatrix());
 	shader->setVec3("cameraPos", camera.position);
 
-
 	shader->setMat4("model", glm::mat4(1.0f));
 
 	for (auto *chunkRenderer : chunkRenderers)
 		chunkRenderer->render(scene);
+}
+
+engine::Shader *map::Renderer::getShader() const {
+	return shader;
 }

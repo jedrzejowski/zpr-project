@@ -7,6 +7,7 @@ block::SolidBlock::SolidBlock() : Block() {
 void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices,
 										std::vector<engine::SimpleTriangle> &indices) {
 
+
 	auto vOffest = vertices.size();
 	auto iOffest = indices.size();
 

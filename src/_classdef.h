@@ -56,8 +56,6 @@ namespace block {
 }
 
 namespace map {
-	typedef std::pair<int, int> ChunkPos;
-
 	class Chunk;
 
 	class Map;
@@ -75,37 +73,28 @@ namespace game {
 	class GameScene;
 }
 
-struct cord3D {
-	uint16_t x, y, z;
+struct coord3D {
+	int64_t x, y, z;
 
-	cord3D() : x(0), y(0), z(0) {}
-	cord3D(uint16_t x, uint16_t y, uint16_t z) : x(x), y(y), z(z) {}
-	bool operator<(const cord3D &sec) const {
-		return toUInt64() < sec.toUInt64();
-	}
-	uint64_t toUInt64() const {
-		uint64_t out = x;
-		out = out << 16;
-		out = out | y;
-		out = out << 16;
-		out = out | z;
-		return out;
+	coord3D() : x(0), y(0), z(0) {}
+	coord3D(int64_t x, int64_t y, int64_t z) : x(x), y(y), z(z) {}
+	bool operator<(const coord3D &sec) const {
+		if (x >= sec.x) return false;
+		if (y >= sec.y) return false;
+		if (z >= sec.z) return false;
+		return true;
 	}
 };
 
-struct cord2D {
-	uint16_t x, y;
+struct coord2D {
+	int64_t x, y;
 
-	cord2D() : x(0), y(0) {}
-	cord2D(uint16_t x, uint16_t y) : x(x), y(y) {}
-	bool operator<(const cord2D &sec) const {
-		return toUInt32() < sec.toUInt32();
-	}
-	uint32_t toUInt32() const {
-		uint32_t out = x;
-		out = out << 16;
-		out = out | y;
-		return out;
+	coord2D() : x(0), y(0) {}
+	coord2D(int64_t x, int64_t y) : x(x), y(y) {}
+	bool operator<(const coord2D &sec) const {
+		if (x >= sec.x) return false;
+		if (y >= sec.y) return false;
+		return true;
 	}
 };
 

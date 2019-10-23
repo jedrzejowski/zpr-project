@@ -1,24 +1,29 @@
 #include "chunk.h"
 
-map::Chunk::Chunk() {
+map::Chunk::Chunk(const coord2D &position) :
+		position(position) {
 
-	addBlock(cord3D(0, 0, 0), new block::Stone());
-	addBlock(cord3D(1, 0, 0), new block::Stone());
-	addBlock(cord3D(0, 1, 0), new block::Stone());
+	addBlock(coord3D(0, 0, 0), new block::Stone());
+	addBlock(coord3D(1, 0, 0), new block::Stone());
+	addBlock(coord3D(0, 1, 0), new block::Stone());
 }
 
 
-block::Block *map::Chunk::getBlock(const cord3D &position) {
+block::Block *map::Chunk::getBlock(const coord3D &position) {
 	return blocks[position];
 }
 
-bool map::Chunk::addBlock(const cord3D &position, block::Block *block) {
+bool map::Chunk::addBlock(const coord3D &position, block::Block *block) {
 	block->setPosition(this, position);
 
 	blocks[position] = block;
 	return false;
 }
 
-std::map<cord3D, block::Block *> map::Chunk::getAllBlocks() {
+std::map<coord3D, block::Block *> map::Chunk::getAllBlocks() {
 	return blocks;
+}
+
+const coord2D &map::Chunk::getPosition() const {
+	return position;
 }

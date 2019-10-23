@@ -8,7 +8,9 @@
 
 game::GameScene::GameScene() {
 	worldMap = new map::WorldMap();
-	worldMap->setChunk(0, 0, new map::Chunk());
+
+	auto chunk = new map::Chunk(coord2D(0, 0));
+	worldMap->setChunk(chunk);
 
 	player = new Player();
 	player->setParent(this);
@@ -40,28 +42,23 @@ void game::GameScene::initGameEvents() {
 	});
 
 	keyboard.S.onPress.connect([&] {
-
 		player->moveBackward(keyboard.getDeltaTimeOfState());
 	});
 
 	keyboard.D.onPress.connect([&] {
-
 		player->moveRight(keyboard.getDeltaTimeOfState());
 	});
 
 	keyboard.A.onPress.connect([&] {
-
 		player->moveLeft(keyboard.getDeltaTimeOfState());
 	});
 
 	keyboard.Space.onPress.connect([&] {
-
 		auto time = keyboard.getDeltaTimeOfState();
 		player->moveUp(keyboard.isShiftPressed() ? -time : time);
 	});
 
 	mouse.onMove.connect([&](double dx, double dy) {
-
 		player->rotateLeft(dx);
 		player->rotateUp(dy);
 	});

@@ -6,9 +6,9 @@
 namespace block {
 	class SolidBlock : public Block {
 	protected:
-		cord2D texTop;
-		cord2D texSide;
-		cord2D texBottom;
+		coord2D texTop;
+		coord2D texSide;
+		coord2D texBottom;
 	public:
 
 		SolidBlock();

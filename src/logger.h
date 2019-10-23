@@ -1,6 +1,9 @@
 #pragma once
 
 #include <string>
+#include <iostream>
+#include <string>
+#include <time.h>
 
 //https://stackoverflow.com/questions/9158150/colored-output-in-c
 #define TTY_COLOR_RESET   "\033[0m"
@@ -21,21 +24,60 @@
 #define TTY_COLOR_BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
 #define TTY_COLOR_BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
 
-#define logger Logger::get()
+#define logger (Logger())
 
 class Logger {
-private:
-	Logger();
 public:
-	static Logger &get() {
-		static Logger l = Logger();
-		return l;
+	Logger() {
+		std::cout << "[ " << currentDateTime() << " ] ";
 	}
-	void msg(const std::string &str, const std::string &color = TTY_COLOR_RESET);
-	void err(const std::string &str);
-	void warn(const std::string &str);
-	void info(const std::string &str);
-	void log(const std::string &str);
+
+	~Logger() {
+		std::cout << TTY_COLOR_RESET << std::endl;
+	}
+//	static Logger &get() {
+//		static Logger l = Logger();
+//		return l;
+//	}
+
+//https://stackoverflow.com/questions/997946/how-to-get-current-time-and-date-in-c
+	std::string currentDateTime() {
+		time_t now = time(0);
+		struct tm tstruct;
+		char buf[80];
+		tstruct = *localtime(&now);
+
+		strftime(buf, sizeof(buf), "%Y-%m-%d ⏲ %X", &tstruct);
+
+		return buf;
+	}
+
+	template<typename T>
+	Logger &msg(const T &obj, const std::string &color = TTY_COLOR_RESET) {
+		std::cout << obj<< TTY_COLOR_RESET << std::endl;
+
+		return *this;
+	}
+
+	template<typename T>
+	Logger &err(const T &obj) {
+		return msg(obj, TTY_COLOR_RED);
+	}
+
+	template<typename T>
+	Logger &warn(const T &obj) {
+		return msg(obj, TTY_COLOR_YELLOW);
+	}
+
+	template<typename T>
+	Logger &info(const T &obj) {
+		return msg(obj, TTY_COLOR_CYAN);
+	}
+
+	template<typename T>
+	Logger &log(const T &obj) {
+		return msg(obj, TTY_COLOR_WHITE);
+	}
 };
 
 

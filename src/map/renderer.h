@@ -22,6 +22,9 @@ namespace map {
 						  const WorldMap *worldMap);
 		~Renderer();
 
+
+		engine::Shader *getShader() const;
+
 		void render(engine::Scene *scene);
 	};
 }

@@ -37,21 +37,6 @@ namespace engine {
 		Normal(GLfloat x, GLfloat y, GLfloat z) : x(x), y(y), z(z) {}
 	};
 
-	struct Color {
-		static uint32_t SIZE;
-		static uint32_t OFFSET;
-
-		GLfloat R = 0.0f;
-		GLfloat G = 0.0f;
-		GLfloat B = 0.0f;
-
-		Color() : Color(0.0f, 0.0f, 0.0f) {}
-
-		Color(GLfloat gray) : R(gray), G(gray), B(gray) {}
-
-		Color(GLfloat R, GLfloat G, GLfloat B) : R(R), G(G), B(B) {}
-	};
-
 	struct TexCoord {
 		static uint32_t SIZE;
 		static uint32_t OFFSET;
@@ -73,8 +58,9 @@ namespace engine {
 
 		SimpleTriangle() : first(0), second(0), third(0) {}
 
-		SimpleTriangle(const uint32_t first, const uint32_t second, const uint32_t third) : first(first), second(second),
-																					  third(third) {}
+		SimpleTriangle(const uint32_t first, const uint32_t second, const uint32_t third) : first(first),
+																							second(second),
+																							third(third) {}
 
 		SimpleTriangle operator+(const int &n);
 
@@ -90,28 +76,16 @@ namespace engine {
 
 		Point3D point;
 		Normal normal;
-		Color color;
 		TexCoord texture;
 
 		Point3DeX() {}
 
 		Point3DeX(Point3D p) : point(p) {}
 
-		Point3DeX(Point3D p, Color c) : point(p), color(c) {}
-
 		Point3DeX(Point3D p, TexCoord t) : point(p), texture(t) {}
 
-		Point3DeX(Point3D p, Color c, TexCoord t) : point(p), color(c), texture(t) {}
-
-		Point3DeX(GLfloat X, GLfloat Y, GLfloat Z) : point(X, Y, Z), color() {}
-
-		Point3DeX(GLfloat X, GLfloat Y, GLfloat Z, Color c) : point(X, Y, Z), color(c) {}
+		Point3DeX(GLfloat X, GLfloat Y, GLfloat Z) : point(X, Y, Z) {}
 
 		Point3DeX(GLfloat X, GLfloat Y, GLfloat Z, TexCoord t) : point(X, Y, Z), texture(t) {}
-
-		Point3DeX(GLfloat X, GLfloat Y, GLfloat Z, Color c, TexCoord t) : point(X, Y, Z), color(c), texture(t) {}
-
-		Point3DeX(GLfloat X, GLfloat Y, GLfloat Z, GLfloat R, GLfloat G, GLfloat B) : point(X, Y, Z),
-																					  color(R, G, B) {}
 	};
 }

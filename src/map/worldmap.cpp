@@ -1,16 +1,12 @@
-//
-// Created by adam on 15.10.2019.
-//
-
 #include "worldmap.h"
+#include "chunk.h"
 
 map::WorldMap::WorldMap() {
 }
 
-map::Chunk *map::WorldMap::getChunk(int x, int y) const {
-	auto pos = ChunkPos(x, y);
-	if (chunks.count(pos) == 1)
-		return chunks[pos];
+map::Chunk *map::WorldMap::getChunk(const coord2D &position) const {
+	if (chunks.count(position) == 1)
+		return chunks[position];
 	return nullptr;
 }
 
@@ -18,12 +14,12 @@ map::Chunk *map::WorldMap::genChunk(int x, int y) {
 	return nullptr;
 }
 
-bool map::WorldMap::loadChunk(int x, int y) {
+bool map::WorldMap::loadChunk(const coord2D& position) {
 	return false;
 }
 
-void map::WorldMap::setChunk(int x, int y, map::Chunk *chunk) {
-	chunks[ChunkPos(x, y)] = chunk;
+void map::WorldMap::setChunk(map::Chunk *chunk) {
+	chunks[chunk->getPosition()] = chunk;
 
 	visibleChunks.push_back(chunk);
 }

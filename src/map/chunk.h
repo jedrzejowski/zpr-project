@@ -6,15 +6,18 @@
 namespace map {
 	class Chunk {
 	protected:
+		coord2D position;
 		std::vector<engine::SimpleTriangle> indicesVec;
-		std::map<cord3D, block::Block *> blocks;
+		std::map<coord3D, block::Block *> blocks;
 
 	public:
-		Chunk();
+		Chunk(const coord2D &position);
 
-		bool addBlock(const cord3D &position, block::Block *block);
-		block::Block *getBlock(const cord3D &position);
-		std::map<cord3D, block::Block *> getAllBlocks();
+		bool addBlock(const coord3D &position, block::Block *block);
+		block::Block *getBlock(const coord3D &position);
+		std::map<coord3D, block::Block *> getAllBlocks();
+
+		const coord2D &getPosition() const;
 	};
 }
 

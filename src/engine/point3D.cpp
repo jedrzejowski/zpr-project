@@ -1,7 +1,3 @@
-//
-// Created by adam on 07.04.18.
-//
-
 #include <math.h>
 
 #include "point3D.h"
@@ -10,7 +6,6 @@ using namespace engine;
 
 uint32_t Point3D::SIZE = sizeof(Point3D);
 uint32_t Normal::SIZE = sizeof(Normal);
-uint32_t Color::SIZE = sizeof(Color);
 uint32_t TexCoord::SIZE = sizeof(TexCoord);
 uint32_t Point3DeX::SIZE = sizeof(Point3DeX);
 uint32_t SimpleTriangle::SIZE = sizeof(SimpleTriangle);
@@ -28,8 +23,7 @@ SimpleTriangle &SimpleTriangle::operator+=(const int &n) {
 
 uint32_t Point3D::OFFSET = 0;
 uint32_t Normal::OFFSET = Point3D::OFFSET + Point3D::SIZE;
-uint32_t Color::OFFSET = Normal::OFFSET + Normal::SIZE;
-uint32_t TexCoord::OFFSET = Color::OFFSET + Color::SIZE;
+uint32_t TexCoord::OFFSET = Normal::OFFSET + Normal::SIZE;
 
 void Point3DeX::BindGlVAP() {
 
@@ -39,11 +33,8 @@ void Point3DeX::BindGlVAP() {
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, Point3DeX::SIZE, (void *) Normal::OFFSET);
 	glEnableVertexAttribArray(1);
 
-	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, Point3DeX::SIZE, (void *) Color::OFFSET);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, Point3DeX::SIZE, (void *) TexCoord::OFFSET);
 	glEnableVertexAttribArray(2);
-
-	glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, Point3DeX::SIZE, (void *) TexCoord::OFFSET);
-	glEnableVertexAttribArray(3);
 }
 
 void Point3DeX::CalcNormals(Point3DeX *points, size_t pSize, SimpleTriangle *triangles, size_t tSize) {

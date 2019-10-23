@@ -18,6 +18,10 @@ game::GameScene::GameScene() {
 
 	initKeyboardEvents();
 	setKeyboard(&gameKeyboard);
+
+	mouse.setAttachedToCenter(true);
+	initMouseEvents();
+	setMouse(&mouse);
 }
 
 void game::GameScene::render3D(engine::Window *window) {
@@ -52,5 +56,13 @@ void game::GameScene::initKeyboardEvents() {
 
 		auto time = gameKeyboard.getDeltaTimeOfState();
 		player->moveUp(gameKeyboard.isShiftPressed() ? -time : time);
+	});
+}
+void game::GameScene::initMouseEvents() {
+	mouse.onMove.connect([this](double dx, double dy) {
+
+		player->rotateLeft(dx);
+		player->rotateUp(dy);
+
 	});
 }

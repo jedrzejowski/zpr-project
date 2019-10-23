@@ -32,8 +32,8 @@ void map::Renderer::render(engine::Scene *scene) {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
 	shader->setMat4("projection", glm::perspective(glm::radians(45.0f),
-												   (float) this->scene->getWindow()->getWidth() /
-												   (float) this->scene->getWindow()->getHeight(),
+												   (float) this->scene->getWindow()->getSceneWidth() /
+												   (float) this->scene->getWindow()->getSceneHeight(),
 												   0.1f, 100.0f));
 
 	auto &camera = player->getCamera();

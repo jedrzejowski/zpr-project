@@ -41,3 +41,23 @@ void game::Player::moveRight(double time) {
 const engine::Camera &game::Player::getCamera() const {
 	return camera;
 }
+
+void game::Player::rotateUp(double dy) {
+	auto topVec = glm::vec3(0.0f, 0.0f, 1.0f);
+	auto rotVec = glm::rotateY(camera.front, (float) dy / 200);
+	camera.front = rotVec;
+}
+
+void game::Player::rotateDown(double dy) {
+	rotateUp(-dy);
+}
+
+void game::Player::rotateLeft(double dx) {
+	auto topVec = glm::vec3(0.0f, 0.0f, 1.0f);
+	auto rotVec = glm::rotateZ(camera.front, (float) dx / 200);
+	camera.front = rotVec;
+}
+
+void game::Player::rotateRight(double dx) {
+	rotateLeft(-dx);
+}

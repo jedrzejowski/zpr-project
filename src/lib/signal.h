@@ -79,7 +79,5 @@ public:
 	}
 
 	// assignment creates new Signal
-	Signal &operator=(Signal const &other) {
-		disconnectAll();
-	}
+	Signal &operator=(Signal const &other) = delete;
 };

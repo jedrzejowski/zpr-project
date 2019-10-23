@@ -11,12 +11,14 @@ namespace game {
 
 		engine::Keyboard gameKeyboard;
 		engine::Keyboard guiKeyboard;
+		engine::Mouse mouse;
 
 		map::WorldMap *worldMap;
 		map::Renderer *mapRenderer;
 		Player* player;
 
 		void initKeyboardEvents();
+
 		void initMouseEvents();
 	public:
 		GameScene();

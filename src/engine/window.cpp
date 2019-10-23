@@ -21,7 +21,7 @@ void Window::open() {
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
-	glfwWin = glfwCreateWindow(width, height, getTitle().c_str(), nullptr, nullptr);
+	glfwWin = glfwCreateWindow(winWidth, winHeight, getTitle().c_str(), nullptr, nullptr);
 
 	if (glfwWin == nullptr)
 		throw exception("Can't open GLFW window");
@@ -32,7 +32,6 @@ void Window::open() {
 	if (glewInit() != GLEW_OK)
 		throw exception("GLEW initialization failed");
 
-	glViewport(0, 0, width, height);
 	glEnable(GL_DEPTH_TEST);
 
 //	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -69,7 +68,7 @@ void Window::mainLoop() {
 	deltaTime = currentFrame - lastFrame;
 	lastFrame = currentFrame;
 
-	glViewport(0, 0, width, height);
+	glViewport(0, 0, winWidth, winHeight);
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -80,12 +79,14 @@ void Window::mainLoop() {
 		// Sprawdzanie wielkosci okna
 		{
 			//https://www.glfw.org/docs/latest/window_guide.html#window_size
-			int l, t, b, r, w, h;
-			glfwGetWindowSize(glfwWin, &w, &h);
-			glfwGetWindowFrameSize(glfwWin, &l, &t, &r, &b);
-
-			width = w - l - r;
-			height = h - t - b;
+			glfwGetWindowSize(glfwWin,
+							  &winWidth,
+							  &winHeight);
+			glfwGetWindowFrameSize(glfwWin,
+								   &winLeftOffset,
+								   &winTopOffset,
+								   &winRightOffset,
+								   &winBottomOffset);;
 		}
 
 		// Renderowanie sceny
@@ -106,8 +107,13 @@ void Window::mainLoop() {
 //	glLoadIdentity();
 //	this->currentScene->renderGUI(this);
 
-		auto keyboard = currentScene->getKeyboard();
-		if (keyboard != nullptr) keyboard->updateState(glfwWin);
+		{
+			auto keyboard = currentScene->getKeyboard();
+			if (keyboard != nullptr) keyboard->updateState(glfwWin);
+
+			auto mouse = currentScene->getMouse();
+			if (mouse != nullptr) mouse->updateState(glfwWin);
+		}
 	}
 
 	glfwSwapBuffers(glfwWin);
@@ -118,10 +124,35 @@ GLFWwindow *Window::getGlfwWindow() const {
 	return glfwWin;
 }
 
-GLuint Window::getWidth() const {
-	return width;
+
+int Window::getWinWidth() const {
+	return winWidth;
 }
 
-GLuint Window::getHeight() const {
-	return height;
+int Window::getWinHeight() const {
+	return winHeight;
+}
+
+int Window::getWinTopOffset() const {
+	return winTopOffset;
+}
+
+int Window::getWinLeftOffset() const {
+	return winLeftOffset;
+}
+
+int Window::getWinRightOffset() const {
+	return winRightOffset;
+}
+
+int Window::getWinBottomOffset() const {
+	return winBottomOffset;
+}
+
+int Window::getSceneWidth() const {
+	return winWidth - winLeftOffset - winRightOffset;
+}
+
+int Window::getSceneHeight() const {
+	return winHeight - winTopOffset - winBottomOffset;
 }

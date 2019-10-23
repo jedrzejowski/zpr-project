@@ -16,6 +16,11 @@ namespace game {
 		void moveUp(double time);
 		void moveDown(double time);
 
+		void rotateUp(double dy);
+		void rotateDown(double dy);
+		void rotateLeft(double dx);
+		void rotateRight(double dx);
+
 		const engine::Camera& getCamera() const;
 	};
 }

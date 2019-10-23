@@ -15,7 +15,8 @@ namespace engine {
 	protected:
 		std::mutex rendering;
 
-		int width = 800, height = 600;
+		int winWidth = 800, winHeight = 600, winTopOffset, winLeftOffset, winRightOffset, winBottomOffset;
+
 		GLFWwindow *glfwWin;
 
 		Scene *currentScene;
@@ -38,7 +39,13 @@ namespace engine {
 		virtual std::string getTitle() = 0;
 
 		GLFWwindow *getGlfwWindow() const;
-		GLuint getWidth() const;
-		GLuint getHeight() const;
+		int getSceneWidth() const;
+		int getSceneHeight() const;
+		int getWinWidth() const;
+		int getWinHeight() const;
+		int getWinTopOffset() const;
+		int getWinLeftOffset() const;
+		int getWinRightOffset() const;
+		int getWinBottomOffset() const;
 	};
 }

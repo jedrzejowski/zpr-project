@@ -1,6 +1,6 @@
 #include "renderer.h"
 #include "chunk.h"
-#include "chunkrenderer.h"
+#include "chunkRenderer.h"
 #include "src/game/player.h"
 #include "src/engine/Engine.h"
 
@@ -16,9 +16,11 @@ map::Renderer::Renderer(const engine::Scene *scene,
 	shader->setInt("material.diffuse", 0);
 	blockTexture = engine::Resources::get().getTexture("texture.png");
 
-	for (auto chunk : worldMap->getVisibleChunk()) {
-		chunkRenderers.push_back(new map::ChunkRenderer(this, chunk));
-	}
+
+	chunkRenderers.push_back(new map::ChunkRenderer(this, worldMap->getChunk(coord2D(0, 0))));
+	chunkRenderers.push_back(new map::ChunkRenderer(this, worldMap->getChunk(coord2D(1, 0))));
+	chunkRenderers.push_back(new map::ChunkRenderer(this, worldMap->getChunk(coord2D(1, 1))));
+	chunkRenderers.push_back(new map::ChunkRenderer(this, worldMap->getChunk(coord2D(0, 1))));
 }
 
 map::Renderer::~Renderer() {

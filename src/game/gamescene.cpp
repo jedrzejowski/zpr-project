@@ -9,9 +9,6 @@
 game::GameScene::GameScene() {
 	worldMap = new map::WorldMap();
 
-	auto chunk = new map::Chunk(coord2D(0, 0));
-	worldMap->setChunk(chunk);
-
 	player = new Player();
 	player->setParent(this);
 
@@ -60,6 +57,6 @@ void game::GameScene::initGameEvents() {
 
 	mouse.onMove.connect([&](double dx, double dy) {
 		player->rotateLeft(dx);
-		player->rotateUp(dy);
+		player->rotateDown(dy);
 	});
 }

@@ -24,24 +24,22 @@
 #define TTY_COLOR_BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
 #define TTY_COLOR_BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
 
-#define logger (Logger())
+#define logger (Logger(__FILE__, __LINE__))
 
 class Logger {
+private:
+	bool first = true;
 public:
-	Logger() {
-		std::cout << "[ " << currentDateTime() << " ] ";
+	Logger(const char *file, int line) {
+		std::cout << "[ " << currentDateTime() << " @ " << file << ":" << line << " ] ";
 	}
 
 	~Logger() {
 		std::cout << TTY_COLOR_RESET << std::endl;
 	}
-//	static Logger &get() {
-//		static Logger l = Logger();
-//		return l;
-//	}
 
-//https://stackoverflow.com/questions/997946/how-to-get-current-time-and-date-in-c
 	std::string currentDateTime() {
+		//https://stackoverflow.com/questions/997946/how-to-get-current-time-and-date-in-c
 		time_t now = time(0);
 		struct tm tstruct;
 		char buf[80];
@@ -54,8 +52,12 @@ public:
 
 	template<typename T>
 	Logger &msg(const T &obj, const std::string &color = TTY_COLOR_RESET) {
-		std::cout << obj<< TTY_COLOR_RESET << std::endl;
+		if (!first)
+			std::cout << std::endl;
 
+		std::cout << obj << TTY_COLOR_RESET;
+
+		first = false;
 		return *this;
 	}
 
@@ -79,5 +81,3 @@ public:
 		return msg(obj, TTY_COLOR_WHITE);
 	}
 };
-
-

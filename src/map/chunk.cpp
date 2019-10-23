@@ -1,11 +1,14 @@
 #include "chunk.h"
 
+const coord3D map::Chunk::Size = coord3D(16, 16, 16);
+
 map::Chunk::Chunk(const coord2D &position) :
 		position(position) {
 
-	addBlock(coord3D(0, 0, 0), new block::Stone());
-	addBlock(coord3D(1, 0, 0), new block::Stone());
-	addBlock(coord3D(0, 1, 0), new block::Stone());
+//	addBlock(coord3D(0, 0, 0), new block::Stone());
+//	addBlock(coord3D(1, 0, 0), new block::Stone());
+//	addBlock(coord3D(0, 1, 0), new block::Stone());
+
 }
 
 

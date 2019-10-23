@@ -14,3 +14,8 @@
 #include <glm/gtx/string_cast.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/normal.hpp>
+
+
+inline std::ostream &operator<<(std::ostream &out, const glm::mat4 &g) {
+	return out << glm::to_string(g);
+}

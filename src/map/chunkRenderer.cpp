@@ -1,4 +1,4 @@
-#include "chunkrenderer.h"
+#include "chunkRenderer.h"
 #include "renderer.h"
 #include "chunk.h"
 
@@ -14,9 +14,14 @@ void map::ChunkRenderer::initVerticles() {
 	this->visibleBlocks = chunk->getAllBlocks();
 
 	auto coord = chunk->getPosition();
-	chunkPos = glm::translate(glm::mat4(1), glm::vec3(coord.x, coord.y, 0));
+	chunkPos = glm::translate(glm::mat4(1),
+							  glm::vec3(
+									  coord.x * Chunk::Size.x,
+									  coord.y * Chunk::Size.y,
+									  0
+							  ));
+	logger.log(chunkPos);
 
-	logger.log(glm::to_string(chunkPos));
 
 	for (auto iter : visibleBlocks) {
 		auto block = iter.second;

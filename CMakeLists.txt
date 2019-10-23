@@ -17,7 +17,10 @@ add_executable(${APP_TARGET}
         src/logger.cpp
         src/lib/signal.h
         src/lib/object.h
-        src/lib/object.cpp)
+        src/lib/object.cpp
+        src/lib/perlin.h
+        src/lib/perlin.cpp
+        src/func/clip.h)
 
 #engine
 target_sources(${APP_TARGET} PUBLIC
@@ -73,8 +76,10 @@ target_sources(${APP_TARGET} PUBLIC
         src/map/worldmap.cpp
         src/map/renderer.h
         src/map/renderer.cpp
-        src/map/chunkrenderer.h
-        src/map/chunkrenderer.cpp)
+        src/map/chunkRenderer.h
+        src/map/chunkRenderer.cpp
+        src/map/chunkGenerator.h
+        src/map/chunkGenerator.cpp)
 
 ## game
 target_sources(${APP_TARGET} PUBLIC

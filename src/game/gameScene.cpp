@@ -3,10 +3,12 @@
 //
 
 #include <src/logger.h>
-#include "gamescene.h"
+#include "gameScene.h"
 #include "player.h"
+#include "inGameMenu.h"
 
 game::GameScene::GameScene() {
+	inGameMenu = new InGameMenu(this);
 	worldMap = new map::WorldMap();
 
 	player = new Player();
@@ -25,6 +27,7 @@ void game::GameScene::render3D(engine::Window *window) {
 }
 
 void game::GameScene::renderGUI(engine::Window *window) {
+	inGameMenu->render(this);
 }
 
 void game::GameScene::initGameEvents() {

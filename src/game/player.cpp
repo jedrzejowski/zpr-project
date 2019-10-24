@@ -1,4 +1,4 @@
-#include <src/func/clip.h>
+#include <cmath>
 #include "player.h"
 
 game::Player::Player() {
@@ -55,7 +55,8 @@ void game::Player::moveRight(float time) {
 }
 
 void game::Player::rotateUp(float dy) {
-	angleV = angleV + dy / mousePrecision;
+	angleV = std::clamp(angleV + dy / mousePrecision,
+						-80.f, 80.f);
 }
 
 void game::Player::rotateDown(float dy) {
@@ -63,7 +64,7 @@ void game::Player::rotateDown(float dy) {
 }
 
 void game::Player::rotateRight(float dx) {
-	angleH = angleH + dx / mousePrecision;
+	angleH = fmod(angleH + dx / mousePrecision, 360);
 }
 
 void game::Player::rotateLeft(float dx) {

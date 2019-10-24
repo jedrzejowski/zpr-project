@@ -1,7 +1,7 @@
 #pragma once
 
 #include "src/_classdef.h"
-#include "opengl.h"
+#include "src/opengl.h"
 
 namespace engine {
 

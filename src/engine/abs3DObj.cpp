@@ -3,7 +3,7 @@
 //
 
 #include "abs3DObj.h"
-#include "point3D.h"
+#include "point.h"
 
 using namespace engine;
 
@@ -24,12 +24,12 @@ Abs3DObj::~Abs3DObj() {
 void Abs3DObj::insertObjToBuffers() {
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, Point3DeX::SIZE * vertices.size(), &vertices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Point3DeX) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
 
 	Point3DeX::BindGlVAP();
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, SimpleTriangle::SIZE * indices.size(), &indices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(SimpleTriangle) * indices.size(), &indices[0], GL_STATIC_DRAW);
 
 }
 

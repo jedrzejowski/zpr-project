@@ -57,55 +57,65 @@ Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath) {
 	glDeleteShader(fragmentId);
 }
 
-void Shader::setBool(const std::string &name, bool value) const {
+
+void Shader::bind() {
+	glUseProgram(getID());
+}
+
+
+void Shader::unbind() {
+
+}
+
+void Shader::setBool(const std::string &name, bool value) {
 	glUniform1i(glGetUniformLocation(getID(), name.c_str()), (int) value);
 }
 
-void Shader::setInt(const std::string &name, int value) const {
+void Shader::setInt(const std::string &name, int value) {
 	glUniform1i(glGetUniformLocation(getID(), name.c_str()), value);
 }
 
-void Shader::setFloat(const std::string &name, float value) const {
+void Shader::setFloat(const std::string &name, float value) {
 	glUniform1f(glGetUniformLocation(getID(), name.c_str()), value);
 }
 
-void Shader::setVec2(const std::string &name, const glm::vec2 &value) const {
+void Shader::setVec2(const std::string &name, const glm::vec2 &value) {
 	glUniform2fv(glGetUniformLocation(getID(), name.c_str()), 1, &value[0]);
 }
 
-void Shader::setVec2(const std::string &name, float x, float y) const {
+void Shader::setVec2(const std::string &name, float x, float y) {
 	glUniform2f(glGetUniformLocation(getID(), name.c_str()), x, y);
 }
 
-void Shader::setVec3(const std::string &name, const glm::vec3 &value) const {
+void Shader::setVec3(const std::string &name, const glm::vec3 &value) {
 	glUniform3fv(glGetUniformLocation(getID(), name.c_str()), 1, &value[0]);
 }
 
-void Shader::setVec3(const std::string &name, float x, float y, float z) const {
+void Shader::setVec3(const std::string &name, float x, float y, float z) {
 	glUniform3f(glGetUniformLocation(getID(), name.c_str()), x, y, z);
 }
 
-void Shader::setVec4(const std::string &name, const glm::vec4 &value) const {
+void Shader::setVec4(const std::string &name, const glm::vec4 &value) {
 	glUniform4fv(glGetUniformLocation(getID(), name.c_str()), 1, &value[0]);
 }
 
-void Shader::setVec4(const std::string &name, float x, float y, float z, float w) const {
+void Shader::setVec4(const std::string &name, float x, float y, float z, float w) {
 	glUniform4f(glGetUniformLocation(getID(), name.c_str()), x, y, z, w);
 }
 
-void Shader::setMat2(const std::string &name, const glm::mat2 &mat) const {
+void Shader::setMat2(const std::string &name, const glm::mat2 &mat) {
 	glUniformMatrix2fv(glGetUniformLocation(getID(), name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
-void Shader::setMat3(const std::string &name, const glm::mat3 &mat) const {
+void Shader::setMat3(const std::string &name, const glm::mat3 &mat) {
 	glUniformMatrix3fv(glGetUniformLocation(getID(), name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
-void Shader::setMat4(const std::string &name, const glm::mat4 &mat) const {
+void Shader::setMat4(const std::string &name, const glm::mat4 &mat) {
 	glUniformMatrix4fv(glGetUniformLocation(getID(), name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
-void Shader::setLight(const std::string &name, const Light &light) const {
+void Shader::setLight(const std::string &name, const Light &light) {
 	setVec3(name + ".position", light.position);
 	setVec3(name + ".ambient", light.ambient);
 	setVec3(name + ".specular", light.specular);

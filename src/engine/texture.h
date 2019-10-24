@@ -3,7 +3,7 @@
 #include <string>
 
 #include "src/_classdef.h"
-#include "opengl.h"
+#include "src/opengl.h"
 #include "src/lib/stb_image.h"
 
 namespace engine {

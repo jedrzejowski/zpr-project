@@ -2,7 +2,6 @@
 // Created by adam on 23.10.2019.
 //
 
-#include <src/func/clip.h>
 #include "chunkGenerator.h"
 #include "chunk.h"
 
@@ -29,7 +28,7 @@ void map::ChunkGenerator::fillChunk(map::Chunk *chunk) {
 					y + chunk->position.y * Chunk::Size.y
 			) + Chunk::Size.z / 2;
 
-			z = clip((int64_t) 0, z, Chunk::Size.z - 1);
+			z = std::clamp(z, (int64_t) 0, Chunk::Size.z - 1);
 
 			int dirtLeft = 3;
 

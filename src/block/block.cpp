@@ -1,5 +1,4 @@
 #include "block.h"
-#include "src/func/clip.h"
 #include "src/map/Map.h"
 
 block::Block::Block() {
@@ -17,7 +16,7 @@ block::Block *block::Block::getNeighbor(int64_t dx, int64_t dy, int64_t dz) cons
 			y = position.y + dy,
 			z = position.z + dz;
 
-	if (z != clip((int64_t) 0, z, map::Chunk::Size.y - 1)) return nullptr;
+	if (z != std::clamp(z, (int64_t) 0, map::Chunk::Size.y - 1)) return nullptr;
 
 	while (x < 0) {
 		targetChunk = targetChunk->getNeighbor(-1, 0);

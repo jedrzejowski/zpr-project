@@ -44,6 +44,14 @@ namespace engine {
 	class Mouse;
 
 	class InputInterface;
+
+	class FpsCounter;
+}
+
+namespace gui {
+	class Abs2DObj;
+
+	class Button;
 }
 
 namespace block {

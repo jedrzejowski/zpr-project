@@ -2,8 +2,8 @@
 // Created by adam on 16.10.2019.
 //
 
-#include "gamewin.h"
-#include "gamescene.h"
+#include "gameWin.h"
+#include "gameScene.h"
 
 void game::MainWindow::initObjects() {
 	setScene(new GameScene);

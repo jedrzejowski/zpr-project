@@ -12,7 +12,7 @@ map::Renderer::Renderer(const engine::Scene *scene,
 	this->player = player;
 	this->worldMap = worldMap;
 
-	shader = new engine::Shader("shader/basic.vert", "shader/basic.frag");
+	shader = new engine::Shader("shader/game.vert", "shader/game.frag");
 	shader->setInt("material.diffuse", 0);
 	blockTexture = engine::Resources::get().getTexture("texture.png");
 
@@ -32,9 +32,10 @@ map::Renderer::~Renderer() {
 
 void map::Renderer::render(engine::Scene *scene) {
 
-	shader->use();
+	shader->bind();
 	blockTexture->use();
 
+//	glEnable(GL_CULL_FACE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 

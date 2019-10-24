@@ -1,13 +1,12 @@
 #pragma once
 
 #include "src/_classdef.h"
-#include "opengl.h"
+#include "src/opengl.h"
 
 namespace engine {
 
+
 	struct Point3D {
-		static uint32_t SIZE;
-		static uint32_t OFFSET;
 
 		static float DistanceBetween(const Point3D &point1, const Point3D &point2);
 
@@ -23,8 +22,6 @@ namespace engine {
 	};
 
 	struct Normal {
-		static uint32_t SIZE;
-		static uint32_t OFFSET;
 
 		GLfloat x = 0.0f;
 		GLfloat y = 0.0f;
@@ -38,8 +35,6 @@ namespace engine {
 	};
 
 	struct TexCoord {
-		static uint32_t SIZE;
-		static uint32_t OFFSET;
 
 		GLfloat X = 0.0f;
 		GLfloat Y = 0.0f;
@@ -54,8 +49,6 @@ namespace engine {
 		uint32_t second;
 		uint32_t third;
 
-		static uint32_t SIZE;
-
 		SimpleTriangle() : first(0), second(0), third(0) {}
 
 		SimpleTriangle(const uint32_t first, const uint32_t second, const uint32_t third) : first(first),
@@ -68,7 +61,6 @@ namespace engine {
 	};
 
 	struct Point3DeX {
-		static uint32_t SIZE;
 
 		static void BindGlVAP();
 
@@ -78,7 +70,7 @@ namespace engine {
 		Normal normal;
 		TexCoord texture;
 
-		Point3DeX() {}
+		Point3DeX() = default;
 
 		Point3DeX(Point3D p) : point(p) {}
 
@@ -88,4 +80,5 @@ namespace engine {
 
 		Point3DeX(GLfloat X, GLfloat Y, GLfloat Z, TexCoord t) : point(X, Y, Z), texture(t) {}
 	};
+
 }

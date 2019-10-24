@@ -1,6 +1,6 @@
 #pragma once
 
-#include "opengl.h"
+#include "src/opengl.h"
 #include "src/_classdef.h"
 #include "src/lib/object.h"
 

@@ -4,6 +4,7 @@
 #include "src/engine/Engine.h"
 #include "src/map/Map.h"
 #include "src/lib/object.h"
+#include "inGameMenu.h"
 
 namespace game {
 	class GameScene : public engine::Scene {
@@ -11,6 +12,7 @@ namespace game {
 
 		engine::InputInterface gameInput;
 		engine::InputInterface menuInput;
+		InGameMenu* inGameMenu;
 
 		map::WorldMap *worldMap;
 		map::Renderer *mapRenderer;

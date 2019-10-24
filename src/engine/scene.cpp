@@ -2,7 +2,7 @@
 // Created by adam on 14.04.18.
 //
 
-#include "point3D.h"
+#include "point.h"
 
 #include "scene.h"
 

@@ -19,18 +19,17 @@ add_executable(${APP_TARGET}
         src/lib/object.h
         src/lib/object.cpp
         src/lib/perlin.h
-        src/lib/perlin.cpp
-        src/func/clip.h)
+        src/lib/perlin.cpp)
 
-#engine
+## engine
 target_sources(${APP_TARGET} PUBLIC
-        src/engine/opengl.h
+        src/opengl.h
         src/engine/exception.h
         src/engine/resources.h
         src/engine/resources.cpp
 
-        src/engine/point3D.h
-        src/engine/point3D.cpp
+        src/engine/point.h
+        src/engine/point.cpp
 
         src/engine/texture.h
         src/engine/texture.cpp
@@ -55,7 +54,17 @@ target_sources(${APP_TARGET} PUBLIC
         src/engine/inputInterface.h
         src/engine/inputInterface.cpp
 
+        src/engine/fpsCounter.h
+        src/engine/fpsCounter.cpp
+
         src/engine/Engine.h)
+
+
+#engine
+target_sources(${APP_TARGET} PUBLIC
+        src/gui/GUI.h
+        src/gui/button.h
+        src/gui/button.cpp)
 
 ## block
 target_sources(${APP_TARGET} PUBLIC
@@ -85,12 +94,14 @@ target_sources(${APP_TARGET} PUBLIC
 
 ## game
 target_sources(${APP_TARGET} PUBLIC
-        src/game/gamewin.h
-        src/game/gamewin.cpp
+        src/game/gameWin.h
+        src/game/gameWin.cpp
         src/game/player.h
         src/game/player.cpp
-        src/game/gamescene.h
-        src/game/gamescene.cpp)
+        src/game/gameScene.h
+        src/game/gameScene.cpp
+        src/game/inGameMenu.h
+        src/game/inGameMenu.cpp)
 
 ### inne
 #target_sources(${APP_TARGET} PUBLIC

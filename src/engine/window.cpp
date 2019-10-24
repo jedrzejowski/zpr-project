@@ -71,6 +71,8 @@ void Window::mainLoop() {
 
 	//https://stackoverflow.com/questions/7240747/how-to-draw-2d-3d-stuffs-in-opengl-together
 
+	double nowTime, lastTime;
+
 	if (currentScene != nullptr) {
 
 		// Sprawdzanie wielkosci okna
@@ -87,22 +89,12 @@ void Window::mainLoop() {
 		}
 
 		// Renderowanie sceny
-		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
-//	glFrustum(-aspect * near / lens, aspect * near / lens, -near / lens, near / lens, near, far);
-		glMatrixMode(GL_MODELVIEW);
-		glLoadIdentity();
-
 		currentScene->render3D(this);
-//
-//	// Renderowanie interfejsu użytkownika
-//	glClear(GL_DEPTH_BUFFER_BIT);
-//	glMatrixMode(GL_PROJECTION);
-//	glLoadIdentity();
-//	glOrtho(0, width, 0, height, 0, 1);
-//	glMatrixMode(GL_MODELVIEW);
-//	glLoadIdentity();
-//	this->currentScene->renderGUI(this);
+
+		// Renderowanie interfejsu użytkownika
+		glClear(GL_DEPTH_BUFFER_BIT); // Musimy wyczyścić sprawdzanie głębi ponieważ rysujemy interfejs
+		this->currentScene->renderGUI(this);
+
 
 		{
 			auto ii = currentScene->getInputInterface();

@@ -1,40 +1,24 @@
 #include <math.h>
 
-#include "point3D.h"
+#include "point.h"
 
 using namespace engine;
 
-uint32_t Point3D::SIZE = sizeof(Point3D);
-uint32_t Normal::SIZE = sizeof(Normal);
-uint32_t TexCoord::SIZE = sizeof(TexCoord);
-uint32_t Point3DeX::SIZE = sizeof(Point3DeX);
-uint32_t SimpleTriangle::SIZE = sizeof(SimpleTriangle);
-
-SimpleTriangle SimpleTriangle::operator+(const int &n) {
-	return SimpleTriangle(this->first + n, this->second + n, this->third + n);
-}
-
-SimpleTriangle &SimpleTriangle::operator+=(const int &n) {
-	this->first += n;
-	this->second += n;
-	this->third += n;
-	return *this;
-}
-
-uint32_t Point3D::OFFSET = 0;
-uint32_t Normal::OFFSET = Point3D::OFFSET + Point3D::SIZE;
-uint32_t TexCoord::OFFSET = Normal::OFFSET + Normal::SIZE;
-
 void Point3DeX::BindGlVAP() {
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, Point3DeX::SIZE, (void *) Point3D::OFFSET);
+	uint64_t offset = 0;
+
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Point3DeX), (void *) offset);
 	glEnableVertexAttribArray(0);
+	offset += sizeof(Point3D);
 
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, Point3DeX::SIZE, (void *) Normal::OFFSET);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Point3DeX), (void *) offset);
 	glEnableVertexAttribArray(1);
+	offset += sizeof(Normal);
 
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, Point3DeX::SIZE, (void *) TexCoord::OFFSET);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Point3DeX), (void *) offset);
 	glEnableVertexAttribArray(2);
+	offset += sizeof(TexCoord);
 }
 
 void Point3DeX::CalcNormals(Point3DeX *points, size_t pSize, SimpleTriangle *triangles, size_t tSize) {
@@ -75,4 +59,16 @@ float Point3D::DistanceBetween(const Point3D &point1, const Point3D &point2) {
 			pow(point1.y - point2.y, 2) +
 			pow(point1.z - point2.z, 2)
 	);
+}
+
+
+SimpleTriangle SimpleTriangle::operator+(const int &n) {
+	return SimpleTriangle(this->first + n, this->second + n, this->third + n);
+}
+
+SimpleTriangle &SimpleTriangle::operator+=(const int &n) {
+	this->first += n;
+	this->second += n;
+	this->third += n;
+	return *this;
 }

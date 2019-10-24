@@ -3,7 +3,7 @@
 #include "src/_classdef.h"
 
 #include "exception.h"
-#include "point3D.h"
+#include "point.h"
 
 #include "resources.h"
 

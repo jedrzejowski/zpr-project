@@ -17,11 +17,11 @@ namespace map {
 
 	protected:
 
-		void initVerticles();
+		void updateBuffers() override ;
 
 	public:
 		ChunkRenderer(Renderer *renderer, Chunk *chunk);
 
-		void render(engine::Scene *scene) override;
+		void render(const engine::Scene *scene) override;
 	};
 }

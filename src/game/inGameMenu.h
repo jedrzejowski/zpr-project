@@ -6,14 +6,17 @@
 namespace game {
 	class InGameMenu : public gui::Interface {
 	private:
-		GameScene *scene;
-		engine::InputInterface *inputInterface = nullptr;
-
+		GameScene *gameScene;
+		engine::InputInterface *inputInterface;
 		gui::Button *button;
+
+		void initInputInterface();
 
 	public:
 		explicit InGameMenu(GameScene *scene);
 
 		engine::InputInterface *getInputInterface() const;
+
+		const Signal<> onMenuExit;
 	};
 }

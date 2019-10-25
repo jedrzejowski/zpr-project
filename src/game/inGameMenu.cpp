@@ -12,9 +12,22 @@ game::InGameMenu::InGameMenu(game::GameScene *scene) :
 	button = new gui::Button();
 	addObject(glm::vec3(0, 0, 0), button);
 
-	refreshBuffers();
+	initInputInterface();
 }
 
 engine::InputInterface *game::InGameMenu::getInputInterface() const {
 	return inputInterface;
 }
+
+void game::InGameMenu::initInputInterface() {
+	inputInterface = new engine::InputInterface(this);
+
+	auto &keyboard = inputInterface->getKeyboard();
+	auto &mouse = inputInterface->getMouse();
+
+
+	keyboard.Escape.onPressed([&] {
+		onMenuExit();
+	});
+}
+

@@ -39,7 +39,7 @@ public:
 
 	// connects a const member function to this Signal
 	template<typename T>
-	int connect(T *inst, void (T::*func)(Args...) const) const {
+	int connect(T *inst, const void (T::*func)(Args...)) const {
 		auto id = connect([=](Args... args) {
 			(inst->*func)(args...);
 		});
@@ -53,7 +53,7 @@ public:
 
 	// connects a std::function to the signal. The returned
 	// value can be used to disconnect the function again
-	int connect(std::function<void(Args...)> const &slot) const {
+	int connect(const std::function<void(Args...)> &slot) const {
 		slots.insert(std::make_pair(++currentId, slot));
 		return currentId;
 	}
@@ -73,6 +73,14 @@ public:
 		for (auto const &it : slots) {
 			it.second(std::forward<Args>(p)...);
 		}
+	}
+
+	inline void operator()(const std::function<void(Args...)> &slot) const {
+		connect(slot);
+	}
+
+	inline void operator()(Args... p) const {
+		emit(p...);
 	}
 
 	// Usunięcie możliwości kopiowania obiektu

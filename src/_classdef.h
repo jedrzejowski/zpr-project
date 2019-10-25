@@ -82,6 +82,12 @@ namespace game {
 
 	class MainWindow;
 
+	class MainGame;
+
+	class PlayerInterface;
+
+	class InGameMenu;
+
 	class GameScene;
 }
 

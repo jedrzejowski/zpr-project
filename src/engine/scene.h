@@ -16,8 +16,7 @@ namespace engine {
 	public:
 		const Signal<> onWindowChanged;
 
-		virtual void render3D(Window *window) = 0;
-		virtual void renderGUI(Window *window) = 0;
+		virtual void render(Window *window) = 0;
 
 		Window *getWindow() const;
 		void setWindow(Window *window);

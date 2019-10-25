@@ -16,19 +16,12 @@ namespace game {
 	private:
 		GameSceneState interfaceState;
 
-		engine::InputInterface gameInput;
+		MainGame* mainGame;
 		InGameMenu *inGameMenu;
 
-		map::WorldMap *worldMap;
-		map::Renderer *mapRenderer;
-		Player *player;
-
-		void initGameEvents();
-		void initMenuEvents();
 	public:
 		GameScene();
-		void render3D(engine::Window *window) override;
-		void renderGUI(engine::Window *window) override;
+		void render(engine::Window *window) override;
 
 		GameSceneState getInterfaceState() const;
 		void setInterfaceState(GameSceneState interfaceState);

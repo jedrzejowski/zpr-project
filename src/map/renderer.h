@@ -11,20 +11,16 @@ namespace map {
 		const engine::Texture *blockTexture;
 		engine::Shader *shader;
 
-		const game::Player *player;
 		const WorldMap *worldMap;
-		const engine::Scene *scene;
 
 		std::vector<ChunkRenderer *> chunkRenderers;
 	public:
-		explicit Renderer(const engine::Scene *scene,
-						  const game::Player *player,
-						  const WorldMap *worldMap);
+		explicit Renderer(const WorldMap *worldMap);
 		~Renderer();
-
 
 		engine::Shader *getShader() const;
 
-		void render(engine::Scene *scene);
+		void render(const engine::Camera &camera,
+					const engine::Scene *scene);
 	};
 }

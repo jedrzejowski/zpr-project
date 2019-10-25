@@ -105,7 +105,9 @@ target_sources(${APP_TARGET} PUBLIC
         src/game/gameScene.h
         src/game/gameScene.cpp
         src/game/inGameMenu.h
-        src/game/inGameMenu.cpp)
+        src/game/inGameMenu.cpp
+        src/game/mainGame.h
+        src/game/mainGame.cpp)
 
 ### inne
 #target_sources(${APP_TARGET} PUBLIC

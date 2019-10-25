@@ -18,16 +18,16 @@ namespace gui {
 		engine::Shader *shader;
 		const engine::Texture *texture;
 
-		bool needBufferRefresh = true;
+	protected:
+		void updateBuffers() override;
 
 	public:
-		Interface(engine::Scene *parent = nullptr);
-		void render(engine::Scene *scene);
+		explicit Interface(engine::Scene *parent = nullptr);
+		void render(const engine::Scene *scene) override;
 
 		void addObject(glm::vec3 position, GuiObject *object);
 		void removeObject(GuiObject *object);
 
-		void refreshBuffers();
 	};
 }
 

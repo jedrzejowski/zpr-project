@@ -11,8 +11,9 @@ namespace engine {
 		Keyboard keyboard;
 
 		void updateState(GLFWwindow *window);
+
 	public:
-		InputInterface();
+		explicit InputInterface(Object* parent = nullptr);
 
 		const Signal<Window *> onAttached;
 		const Signal<Window *> onUnattached;

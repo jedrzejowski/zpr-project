@@ -7,10 +7,9 @@ map::ChunkRenderer::ChunkRenderer(map::Renderer *renderer, Chunk *chunk)
 	this->renderer = renderer;
 	this->chunk = chunk;
 
-	initVerticles();
 }
 
-void map::ChunkRenderer::initVerticles() {
+void map::ChunkRenderer::updateBuffers() {
 	this->visibleBlocks = chunk->getAllBlocks();
 
 	auto coord = chunk->getPosition();
@@ -25,12 +24,9 @@ void map::ChunkRenderer::initVerticles() {
 		auto block = iter.second;
 		block->insertToBuffers(vertices, indices);
 	}
-
-	iChangedBuffers();
-	insertToBuffers();
 }
 
-void map::ChunkRenderer::render(engine::Scene *scene) {
+void map::ChunkRenderer::render(const engine::Scene *scene) {
 	renderer->getShader()->setMat4("chunkPos", chunkPos);
 	draw();
 }

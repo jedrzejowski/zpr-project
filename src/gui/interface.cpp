@@ -19,7 +19,7 @@ void gui::Interface::addObject(glm::vec3 position, gui::GuiObject *object) {
 			object
 	});
 
-	iChangedBuffers();
+	setNeedRefreshBuffers(true);
 }
 
 void gui::Interface::removeObject(gui::GuiObject *object) {
@@ -30,10 +30,11 @@ void gui::Interface::removeObject(gui::GuiObject *object) {
 		}
 	}
 
-	iChangedBuffers();
+	setNeedRefreshBuffers(true);
 }
 
-void gui::Interface::render(engine::Scene *scene) {
+void gui::Interface::render(const engine::Scene *scene) {
+
 	shader->bind();
 	texture->use();
 
@@ -45,8 +46,6 @@ void gui::Interface::render(engine::Scene *scene) {
 		// przeniesienie do górnego lewego obszaru
 		topLeft = glm::translate(topLeft, glm::vec3(-1, -1, 0));
 		shader->setMat4("topLeft", topLeft);
-
-
 	}
 
 	draw();
@@ -54,7 +53,7 @@ void gui::Interface::render(engine::Scene *scene) {
 	shader->unbind();
 }
 
-void gui::Interface::refreshBuffers() {
+void gui::Interface::updateBuffers() {
 
 	vertices.clear();
 	indices.clear();
@@ -62,8 +61,4 @@ void gui::Interface::refreshBuffers() {
 	for (auto iter : objects) {
 		iter->object->insertToBuffers(vertices, indices);
 	}
-
-	insertToBuffers();
-
-	needBufferRefresh = false;
 }

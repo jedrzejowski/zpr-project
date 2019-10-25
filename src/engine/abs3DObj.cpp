@@ -19,38 +19,34 @@ Abs3DObj::~Abs3DObj() {
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
 	glDeleteBuffers(1, &EBO);
-	logger.log("delete Abs3DObj");
 }
 
 void Abs3DObj::insertToBuffers() {
-	if (!needRefreshBuffers)
-		return;
+	logger.log("insertToBuffers");
+	updateBuffers();
+	needRefreshBuffers = false;
+
+	glBindVertexArray(VAO);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Point3DeX) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
+	verticesLengthInBuffer = sizeof(Point3DeX) * vertices.size();
+	glBufferData(GL_ARRAY_BUFFER, verticesLengthInBuffer, &vertices[0], GL_STATIC_DRAW);
 
 	Point3DeX::BindGlVAP();
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(SimpleTriangle) * indices.size(), &indices[0], GL_STATIC_DRAW);
-
-	needRefreshBuffers = false;
+	indicesLengthInBuffer = sizeof(SimpleTriangle) * indices.size();
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesLengthInBuffer, &indices[0], GL_STATIC_DRAW);
 }
 
 void Abs3DObj::draw() {
 
-	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, 3 * indices.size(), GL_UNSIGNED_INT, nullptr);
-}
+	if (needRefreshBuffers)
+		insertToBuffers();
 
-void Abs3DObj::draw(uint32_t from, uint32_t count) {
 
 	glBindVertexArray(VAO);
-	glDrawRangeElements(GL_TRIANGLES, 3 * from, 3 * (from + count) - 1, 3 * count, GL_UNSIGNED_INT, nullptr);
-}
-
-void Abs3DObj::iChangedBuffers() {
-	needRefreshBuffers = true;
+	glDrawElements(GL_TRIANGLES, 3 * indicesLengthInBuffer, GL_UNSIGNED_INT, nullptr);
 }
 
 bool Abs3DObj::isNeedRefreshBuffers() const {

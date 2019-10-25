@@ -35,11 +35,13 @@ void Window::open() {
 
 	glEnable(GL_DEPTH_TEST);
 
+//	vsync
+//	glfwSwapInterval(0);
+
 //	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 	initObjects();
 
-	logger.err("firstframe");
 	while (!glfwWindowShouldClose(glfwWin)) {
 		mainLoop();
 	}
@@ -88,21 +90,12 @@ void Window::mainLoop() {
 
 	//https://stackoverflow.com/questions/7240747/how-to-draw-2d-3d-stuffs-in-opengl-together
 
-	double nowTime, lastTime;
-
 	if (currentScene != nullptr) {
 
-		// Renderowanie sceny
-		currentScene->render3D(this);
+		currentScene->render(this);
 
-		// Renderowanie interfejsu użytkownika
-		glClear(GL_DEPTH_BUFFER_BIT); // Musimy wyczyścić sprawdzanie głębi ponieważ rysujemy interfejs
-		currentScene->renderGUI(this);
-
-		{
-			auto ii = currentScene->getInputInterface();
-			if (ii != nullptr) ii->updateState(glfwWin);
-		}
+		auto ii = currentScene->getInputInterface();
+		if (ii != nullptr) ii->updateState(glfwWin);
 	}
 
 	glfwSwapBuffers(glfwWin);

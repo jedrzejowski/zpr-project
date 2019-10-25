@@ -4,12 +4,14 @@
 
 #include "inputInterface.h"
 
-engine::InputInterface::InputInterface() {
+engine::InputInterface::InputInterface(Object *parent) :
+		Object(parent) {
 }
 
 engine::Mouse &engine::InputInterface::getMouse() {
 	return mouse;
 }
+
 engine::Keyboard &engine::InputInterface::getKeyboard() {
 	return keyboard;
 }

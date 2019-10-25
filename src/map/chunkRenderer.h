@@ -9,9 +9,9 @@ namespace map {
 
 	class ChunkRenderer : public Object, public engine::Abs3DObj {
 	private:
-		Chunk *chunk;
+		Chunk *chunk = nullptr;
 		glm::mat4 chunkPos;
-		Renderer *renderer;
+		Renderer *renderer = nullptr;
 
 		std::map<coord3D, block::Block *> visibleBlocks;
 

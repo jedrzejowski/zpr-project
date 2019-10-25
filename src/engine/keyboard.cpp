@@ -7,7 +7,7 @@
  */
 #define addKey(key) keys.insert(std::pair<int, Key*>(key.keyCode, &key))
 
-engine::Keyboard::Keyboard() {
+engine::Keyboard::Keyboard(Object *parent) : Object(parent) {
 
 	addKey(W);
 	addKey(A);
@@ -42,8 +42,20 @@ double engine::Keyboard::getTimeOfCurrentState() const { return timeOfCurrentSta
 double engine::Keyboard::getTimeOfLastState() const { return timeOfLastState; }
 
 double engine::Keyboard::getDeltaTimeOfState() const {
-
 	return timeOfCurrentState - timeOfLastState;
+}
+
+void engine::Keyboard::attachedToScene(const engine::Scene *scene) {
+	auto window = scene->getWindow();
+	if (window == nullptr) return;
+	auto glfwWindow = window->getGlfwWindow();
+	if (glfwWindow == nullptr) return;
+
+	for (auto &iter : keys)
+		iter.second->attachedToWindow(glfwWindow);
+}
+
+void engine::Keyboard::unattachedFromScene(const engine::Scene *scene) {
 }
 
 void engine::Key::setState(GLFWwindow *window) {
@@ -71,4 +83,8 @@ void engine::Key::clearSignals() {
 	onPressed.disconnectAll();
 	onRelease.disconnectAll();
 	onReleased.disconnectAll();
+}
+
+void engine::Key::attachedToWindow(GLFWwindow *window) {
+	currentState = lastState = glfwGetKey(window, keyCode);
 }

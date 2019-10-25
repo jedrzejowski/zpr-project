@@ -16,8 +16,8 @@ namespace game {
 	private:
 		GameSceneState interfaceState;
 
-		MainGame* mainGame;
-		InGameMenu *inGameMenu;
+		MainGame* mainGame = nullptr;
+		InGameMenu *inGameMenu = nullptr;
 
 	public:
 		GameScene();

@@ -11,7 +11,7 @@ namespace engine {
 	class Texture {
 	private:
 		GLuint texID;
-		int width, height, nrChannels;
+		int width = 0, height = 0, nrChannels = 0;
 
 		void loadTexture(const std::string &path);
 
@@ -26,6 +26,5 @@ namespace engine {
 			return texID;
 		}
 	};
-
 }
 

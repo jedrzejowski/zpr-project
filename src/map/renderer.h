@@ -8,10 +8,10 @@
 namespace map {
 	class Renderer : public Object {
 	private:
-		const engine::Texture *blockTexture;
-		engine::Shader *shader;
+		const engine::Texture *blockTexture = nullptr;
+		engine::Shader *shader = nullptr;
 
-		const WorldMap *worldMap;
+		const WorldMap *worldMap = nullptr;
 
 		std::vector<ChunkRenderer *> chunkRenderers;
 	public:

@@ -5,7 +5,7 @@
 #include "mouse.h"
 #include "window.h"
 
-engine::Mouse::Mouse(engine::Window *window) : Object(window) {
+engine::Mouse::Mouse(Object *parent) : Object(parent) {
 }
 
 void engine::Mouse::updateState(GLFWwindow *window) {
@@ -80,5 +80,19 @@ bool engine::Mouse::isAttachedToCenter() const {
 
 void engine::Mouse::setAttachedToCenter(bool attachedToCenter) {
 	Mouse::attachedToCenter = attachedToCenter;
+}
+
+void engine::Mouse::attachedToScene(const engine::Scene *scene) {
+	auto window = scene->getWindow();
+	if (window == nullptr) return;
+	auto glfwWindow = window->getGlfwWindow();
+	if (glfwWindow == nullptr) return;
+
+	glfwGetCursorPos(glfwWindow, &curX, &curY);
+	lastX = curX;
+	lastY = curY;
+}
+
+void engine::Mouse::unattachedFromScene(const engine::Scene *scene) {
 }
 

@@ -70,6 +70,10 @@ void game::MainGame::initInputInterface() {
 		player->rotateRight(dx);
 		player->rotateDown(dy);
 	});
+
+	mouse.onLeave([&]() {
+		onMenuRequest();
+	});
 }
 
 engine::InputInterface *game::MainGame::getInputInterface() const {

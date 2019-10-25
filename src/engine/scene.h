@@ -11,8 +11,8 @@ namespace engine {
 
 	class Scene : public Object {
 	private:
-		Window *window;
-		InputInterface *inputInterface;
+		Window *window = nullptr;
+		InputInterface *inputInterface = nullptr;
 	public:
 		const Signal<> onWindowChanged;
 

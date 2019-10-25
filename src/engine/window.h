@@ -15,10 +15,11 @@ namespace engine {
 	private:
 		std::mutex rendering;
 
-		int winWidth = 800, winHeight = 600, winTopOffset, winLeftOffset, winRightOffset, winBottomOffset;
+		int winWidth = 800, winHeight = 600,
+				winTopOffset = 0, winLeftOffset = 0,
+				winRightOffset = 0, winBottomOffset = 0;
 
-		GLFWwindow *glfwWin;
-
+		GLFWwindow *glfwWin = nullptr;
 		Scene *currentScene = nullptr;
 
 		void mainLoop();

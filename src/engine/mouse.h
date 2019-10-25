@@ -9,17 +9,15 @@ namespace engine {
 	class Mouse : public Object {
 		friend InputInterface;
 	private:
-		double curX, curY;
-		double lastX, lastY;
+		double curX = 0, curY = 0;
+		double lastX = 0, lastY = 0;
 		bool inWindow = false;
-		bool attachedToCenter;
-
-		int mode;
+		bool attachedToCenter = false;
 
 		void updateState(GLFWwindow *window);
 
 	public:
-		Mouse(Window *window = nullptr);
+		Mouse(Object *parent = nullptr);
 
 		const Signal<double, double> onMove;
 		const Signal<> onLeave;
@@ -35,6 +33,9 @@ namespace engine {
 
 		bool isAttachedToCenter() const;
 		void setAttachedToCenter(bool attachedToCenter);
+
+		void attachedToScene(const Scene *pScene);
+		void unattachedFromScene(const Scene *pScene);
 	};
 }
 

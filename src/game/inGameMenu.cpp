@@ -25,7 +25,6 @@ void game::InGameMenu::initInputInterface() {
 	auto &keyboard = inputInterface->getKeyboard();
 	auto &mouse = inputInterface->getMouse();
 
-
 	keyboard.Escape.onPressed([&] {
 		onMenuExit();
 	});

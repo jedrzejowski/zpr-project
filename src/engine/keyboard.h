@@ -21,6 +21,7 @@ namespace engine {
 		void clearSignals();
 
 		void setState(GLFWwindow *window);
+		void attachedToWindow(GLFWwindow *window);
 
 	public:
 
@@ -45,7 +46,7 @@ namespace engine {
 		std::map<int, Key *> keys;
 		void updateState(GLFWwindow *widow);
 	public:
-		Keyboard();
+		explicit Keyboard(Object* parent = nullptr);
 		void clearSignals();
 
 		Key W = GLFW_KEY_W;
@@ -62,5 +63,8 @@ namespace engine {
 		double getDeltaTimeOfState() const;
 
 		bool isShiftPressed() const;
+
+		void attachedToScene(const Scene *scene);
+		void unattachedFromScene(const Scene *scene);
 	};
 }

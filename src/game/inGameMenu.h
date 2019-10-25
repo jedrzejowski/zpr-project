@@ -6,9 +6,9 @@
 namespace game {
 	class InGameMenu : public gui::Interface {
 	private:
-		GameScene *gameScene;
-		engine::InputInterface *inputInterface;
-		gui::Button *button;
+		GameScene *gameScene = nullptr;
+		engine::InputInterface *inputInterface = nullptr;
+		gui::Button *button = nullptr;
 
 		void initInputInterface();
 

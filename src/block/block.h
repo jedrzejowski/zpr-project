@@ -5,7 +5,7 @@
 namespace block {
 	class Block {
 	protected:
-		map::Chunk *chunk;
+		map::Chunk *chunk = nullptr;
 		coord3D position;
 
 	public:

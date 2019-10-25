@@ -20,3 +20,13 @@ void engine::InputInterface::updateState(GLFWwindow *window) {
 	keyboard.updateState(window);
 	mouse.updateState(window);
 }
+
+void engine::InputInterface::attachedToScene(const Scene *scene) {
+	keyboard.attachedToScene(scene);
+	mouse.attachedToScene(scene);
+}
+
+void engine::InputInterface::unattachedFromScene(const engine::Scene *scene) {
+	keyboard.unattachedFromScene(scene);
+	mouse.unattachedFromScene(scene);
+}

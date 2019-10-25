@@ -15,8 +15,8 @@ namespace gui {
 	private:
 		std::list<InterfaceItem *> objects;
 
-		engine::Shader *shader;
-		const engine::Texture *texture;
+		engine::Shader *shader = nullptr;
+		const engine::Texture *texture = nullptr;
 
 	protected:
 		void updateBuffers() override;

@@ -28,11 +28,9 @@
 //#define logger //
 
 class Logger {
-private:
-	bool first = true;
 public:
 	Logger(const char *file, int line) {
-		std::cout << "[ " << currentDateTime() << " @ " << file << ":" << line << " ] ";
+		std::cout << "[ " << currentDateTime() << " @ " << file << ":" << line << " ]";
 	}
 
 	~Logger() {
@@ -53,12 +51,9 @@ public:
 
 	template<typename T>
 	Logger &msg(const T &obj, const std::string &color = TTY_COLOR_RESET) {
-		if (!first)
-			std::cout << std::endl;
 
-		std::cout << obj << TTY_COLOR_RESET;
+		std::cout << " " << color << obj << TTY_COLOR_RESET;
 
-		first = false;
 		return *this;
 	}
 

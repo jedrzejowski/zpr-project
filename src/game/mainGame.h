@@ -6,11 +6,11 @@
 namespace game {
 	class MainGame : public Object {
 	private:
-		GameScene *gameScene;
-		engine::InputInterface *inputInterface;
-		map::WorldMap *worldMap;
-		map::Renderer *mapRenderer;
-		Player *player;
+		GameScene *gameScene = nullptr;
+		engine::InputInterface *inputInterface = nullptr;
+		map::WorldMap *worldMap = nullptr;
+		map::Renderer *mapRenderer = nullptr;
+		Player *player = nullptr;
 
 		void initInputInterface();
 

@@ -1,10 +1,6 @@
-//
-// Created by adam on 14.04.18.
-//
-
-#include "point.h"
-
 #include "scene.h"
+#include "point.h"
+#include "inputInterface.h"
 
 using namespace engine;
 
@@ -19,9 +15,15 @@ void Scene::setWindow(Window *window) {
 }
 
 InputInterface *Scene::getInputInterface() const {
-	return inputInterface;
+	return this->inputInterface;
 }
 
 void Scene::setInputInterface(InputInterface *inputInterface) {
-	Scene::inputInterface = inputInterface;
+	if (this->inputInterface != nullptr)
+		this->inputInterface->unattachedFromScene(this);
+
+	this->inputInterface = inputInterface;
+
+	if (this->inputInterface != nullptr)
+		this->inputInterface->attachedToScene(this);
 }

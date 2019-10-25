@@ -20,5 +20,8 @@ namespace engine {
 
 		Mouse &getMouse();
 		Keyboard &getKeyboard();
+
+		void unattachedFromScene(const Scene* scene);
+		void attachedToScene(const Scene* scene);
 	};
 }

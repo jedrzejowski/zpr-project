@@ -5,14 +5,12 @@
 #include "inGameMenu.h"
 #include "gameScene.h"
 
-game::InGameMenu::InGameMenu(game::GameScene *scene) : Abs3DObj() {
+game::InGameMenu::InGameMenu(game::GameScene *scene) :
+		Interface(scene) {
 
-	shader = new engine::Shader("shader/interface.vert", "shader/interface.frag");
+
 	button = new gui::Button();
-}
+	addObject(glm::vec3(0, 0, 0), button);
 
-void game::InGameMenu::render(engine::Scene *scene) {
-	shader->bind();
-
-	button->render(scene);
+	refreshBuffers();
 }

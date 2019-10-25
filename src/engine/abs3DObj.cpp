@@ -13,12 +13,15 @@ Abs3DObj::Abs3DObj() {
 	glBindVertexArray(VAO);
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &EBO);
+
+	logger.log("new Abs3DObj").warn(VAO).warn(VBO).warn(EBO);
 }
 
 Abs3DObj::~Abs3DObj() {
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
 	glDeleteBuffers(1, &EBO);
+	logger.log("delete Abs3DObj");
 }
 
 void Abs3DObj::insertObjToBuffers() {

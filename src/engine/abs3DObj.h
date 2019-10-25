@@ -16,7 +16,6 @@ namespace engine {
 		void draw();
 		void draw(uint32_t from, uint32_t count);
 	public:
-		glm::mat4 modelMatrix;
 
 		Abs3DObj();
 		~Abs3DObj();

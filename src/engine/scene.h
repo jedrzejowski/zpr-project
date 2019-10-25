@@ -12,7 +12,7 @@ namespace engine {
 	class Scene : public Object {
 	private:
 		Window *window;
-		InputInterface* inputInterface;
+		InputInterface *inputInterface;
 	public:
 		const Signal<> onWindowChanged;
 
@@ -24,5 +24,7 @@ namespace engine {
 
 		InputInterface *getInputInterface() const;
 		void setInputInterface(InputInterface *inputInterface);
+
+		const Signal<> onRefreshBuffers;
 	};
 }

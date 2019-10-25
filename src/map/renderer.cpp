@@ -50,6 +50,8 @@ void map::Renderer::render(engine::Scene *scene) {
 
 	for (auto *chunkRenderer : chunkRenderers)
 		chunkRenderer->render(scene);
+
+	shader->unbind();
 }
 
 engine::Shader *map::Renderer::getShader() const {

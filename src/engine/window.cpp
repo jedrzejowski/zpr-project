@@ -39,6 +39,7 @@ void Window::open() {
 
 	initObjects();
 
+	logger.err("firstframe");
 	while (!glfwWindowShouldClose(glfwWin)) {
 		mainLoop();
 	}
@@ -63,6 +64,9 @@ Scene *Window::getScene() const {
 }
 
 void Window::mainLoop() {
+	if (currentScene != nullptr)
+		currentScene->onRefreshBuffers.emit();
+
 	std::lock_guard<std::mutex> guard(rendering);
 
 	glViewport(0, 0, winWidth, winHeight);
@@ -93,8 +97,7 @@ void Window::mainLoop() {
 
 		// Renderowanie interfejsu użytkownika
 		glClear(GL_DEPTH_BUFFER_BIT); // Musimy wyczyścić sprawdzanie głębi ponieważ rysujemy interfejs
-		this->currentScene->renderGUI(this);
-
+		currentScene->renderGUI(this);
 
 		{
 			auto ii = currentScene->getInputInterface();

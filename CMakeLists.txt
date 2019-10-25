@@ -63,6 +63,10 @@ target_sources(${APP_TARGET} PUBLIC
 #engine
 target_sources(${APP_TARGET} PUBLIC
         src/gui/GUI.h
+        src/gui/interface.h
+        src/gui/interface.cpp
+        src/gui/guiObj.h
+        src/gui/guiObj.cpp
         src/gui/button.h
         src/gui/button.cpp)
 

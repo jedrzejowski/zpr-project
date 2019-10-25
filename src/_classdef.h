@@ -49,7 +49,9 @@ namespace engine {
 }
 
 namespace gui {
-	class Abs2DObj;
+	class Interface;
+
+	class GuiObject;
 
 	class Button;
 }

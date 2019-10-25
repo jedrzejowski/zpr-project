@@ -8,7 +8,6 @@
 #include "inGameMenu.h"
 
 game::GameScene::GameScene() {
-	inGameMenu = new InGameMenu(this);
 	worldMap = new map::WorldMap();
 
 	player = new Player();
@@ -20,6 +19,8 @@ game::GameScene::GameScene() {
 	initGameEvents();
 
 	setInputInterface(&gameInput);
+
+	inGameMenu = new InGameMenu(this);
 }
 
 void game::GameScene::render3D(engine::Window *window) {

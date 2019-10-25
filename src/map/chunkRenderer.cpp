@@ -26,7 +26,8 @@ void map::ChunkRenderer::initVerticles() {
 		block->insertToBuffers(vertices, indices);
 	}
 
-	insertObjToBuffers();
+	iChangedBuffers();
+	insertToBuffers();
 }
 
 void map::ChunkRenderer::render(engine::Scene *scene) {

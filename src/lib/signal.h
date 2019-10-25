@@ -25,7 +25,7 @@ public:
 
 	// connects a member function to this Signal
 	template<typename T>
-	int connect(T *inst, void (T::*func)(Args...)) {
+	int connect(T *inst, void (T::*func)(Args...)) const {
 		auto id = connect([=](Args... args) {
 			(inst->*func)(args...);
 		});
@@ -39,7 +39,7 @@ public:
 
 	// connects a const member function to this Signal
 	template<typename T>
-	int connect(T *inst, void (T::*func)(Args...) const) {
+	int connect(T *inst, void (T::*func)(Args...) const) const {
 		auto id = connect([=](Args... args) {
 			(inst->*func)(args...);
 		});
@@ -76,6 +76,6 @@ public:
 	}
 
 	// Usunięcie możliwości kopiowania obiektu
-	Signal(const Signal&) = delete;
-	void operator=(const Signal&) = delete;
+	Signal(const Signal &) = delete;
+	void operator=(const Signal &) = delete;
 };

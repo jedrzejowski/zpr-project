@@ -31,16 +31,12 @@ void engine::Mouse::updateState(GLFWwindow *window) {
 	}
 
 	if (isAttachedToCenter()) {
-		int width, height, top, left, right, bottom;
+		int width, height;
 
-		glfwGetWindowSize(window, &width, &height);
-		glfwGetWindowFrameSize(window, &left, &top, &right, &bottom);
+		glfwGetWindowSize(window, &width, &height);;
 
-		double sceneWidth = width - left - right,
-				sceneHeight = height - top - bottom;
-
-		double sceneXCenter = left + sceneWidth / 2,
-				sceneYCenter = top + sceneHeight / 2;
+		double sceneXCenter = width / 2,
+				sceneYCenter = height / 2;
 
 		glfwSetCursorPos(window, sceneXCenter, sceneYCenter);
 

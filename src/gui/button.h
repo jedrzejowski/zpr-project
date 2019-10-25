@@ -6,7 +6,7 @@
 
 namespace gui {
 	class Button : public GuiObject {
-	protected:
+	private:
 		std::string label;
 
 	public:

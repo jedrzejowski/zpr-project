@@ -7,16 +7,21 @@
 #include "inGameMenu.h"
 
 namespace game {
+	enum GameSceneState {
+		Game,
+		Menu
+	};
+
 	class GameScene : public engine::Scene {
 	private:
+		GameSceneState interfaceState;
 
 		engine::InputInterface gameInput;
-		engine::InputInterface menuInput;
-		InGameMenu* inGameMenu;
+		InGameMenu *inGameMenu;
 
 		map::WorldMap *worldMap;
 		map::Renderer *mapRenderer;
-		Player* player;
+		Player *player;
 
 		void initGameEvents();
 		void initMenuEvents();
@@ -25,6 +30,7 @@ namespace game {
 		void render3D(engine::Window *window) override;
 		void renderGUI(engine::Window *window) override;
 
-
+		GameSceneState getInterfaceState() const;
+		void setInterfaceState(GameSceneState interfaceState);
 	};
 }

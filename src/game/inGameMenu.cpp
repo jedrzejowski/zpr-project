@@ -14,3 +14,7 @@ game::InGameMenu::InGameMenu(game::GameScene *scene) :
 
 	refreshBuffers();
 }
+
+engine::InputInterface *game::InGameMenu::getInputInterface() const {
+	return inputInterface;
+}

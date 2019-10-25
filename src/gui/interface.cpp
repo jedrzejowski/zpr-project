@@ -19,7 +19,7 @@ void gui::Interface::addObject(glm::vec3 position, gui::GuiObject *object) {
 			object
 	});
 
-	needBufferRefresh = true;
+	iChangedBuffers();
 }
 
 void gui::Interface::removeObject(gui::GuiObject *object) {
@@ -30,15 +30,24 @@ void gui::Interface::removeObject(gui::GuiObject *object) {
 		}
 	}
 
-	needBufferRefresh = true;
+	iChangedBuffers();
 }
 
 void gui::Interface::render(engine::Scene *scene) {
 	shader->bind();
 	texture->use();
 
-	if (needBufferRefresh)
-		refreshBuffers();
+	auto window = scene->getWindow();
+	if (window != nullptr) {
+		auto topLeft = glm::mat4(1);
+		// odbicie lustrazne względem osi Y
+		topLeft[1][1] = -1.f;
+		// przeniesienie do górnego lewego obszaru
+		topLeft = glm::translate(topLeft, glm::vec3(-1, -1, 0));
+		shader->setMat4("topLeft", topLeft);
+
+
+	}
 
 	draw();
 
@@ -54,7 +63,7 @@ void gui::Interface::refreshBuffers() {
 		iter->object->insertToBuffers(vertices, indices);
 	}
 
-	insertObjToBuffers();
+	insertToBuffers();
 
 	needBufferRefresh = false;
 }

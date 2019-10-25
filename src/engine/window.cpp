@@ -69,7 +69,20 @@ void Window::mainLoop() {
 
 	std::lock_guard<std::mutex> guard(rendering);
 
-	glViewport(0, 0, winWidth, winHeight);
+	// Sprawdzanie wielkosci okna
+	{
+		//https://www.glfw.org/docs/latest/window_guide.html#window_size
+		glfwGetWindowSize(glfwWin,
+						  &winWidth,
+						  &winHeight);
+		glfwGetWindowFrameSize(glfwWin,
+							   &winLeftOffset,
+							   &winTopOffset,
+							   &winRightOffset,
+							   &winBottomOffset);;
+	}
+
+	glViewport(winLeftOffset, winBottomOffset, winWidth, winHeight);
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -78,19 +91,6 @@ void Window::mainLoop() {
 	double nowTime, lastTime;
 
 	if (currentScene != nullptr) {
-
-		// Sprawdzanie wielkosci okna
-		{
-			//https://www.glfw.org/docs/latest/window_guide.html#window_size
-			glfwGetWindowSize(glfwWin,
-							  &winWidth,
-							  &winHeight);
-			glfwGetWindowFrameSize(glfwWin,
-								   &winLeftOffset,
-								   &winTopOffset,
-								   &winRightOffset,
-								   &winBottomOffset);;
-		}
 
 		// Renderowanie sceny
 		currentScene->render3D(this);
@@ -136,12 +136,4 @@ int Window::getWinRightOffset() const {
 
 int Window::getWinBottomOffset() const {
 	return winBottomOffset;
-}
-
-int Window::getSceneWidth() const {
-	return winWidth - winLeftOffset - winRightOffset;
-}
-
-int Window::getSceneHeight() const {
-	return winHeight - winTopOffset - winBottomOffset;
 }

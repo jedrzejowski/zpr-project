@@ -17,10 +17,9 @@ game::GameScene::GameScene() {
 	mapRenderer->setParent(this);
 
 	initGameEvents();
-
-	setInputInterface(&gameInput);
-
 	inGameMenu = new InGameMenu(this);
+
+	setInterfaceState(Game);
 }
 
 void game::GameScene::render3D(engine::Window *window) {
@@ -28,7 +27,8 @@ void game::GameScene::render3D(engine::Window *window) {
 }
 
 void game::GameScene::renderGUI(engine::Window *window) {
-	inGameMenu->render(this);
+	if (interfaceState == Menu)
+		inGameMenu->render(this);
 }
 
 void game::GameScene::initGameEvents() {
@@ -62,8 +62,29 @@ void game::GameScene::initGameEvents() {
 		player->moveDown(keyboard.getDeltaTimeOfState());
 	});
 
+	keyboard.Escape.onPressed.connect([&] {
+		setInterfaceState(Menu);
+	});
+
 	mouse.onMove.connect([&](double dx, double dy) {
 		player->rotateRight(dx);
 		player->rotateDown(dy);
 	});
+}
+
+game::GameSceneState game::GameScene::getInterfaceState() const {
+	return interfaceState;
+}
+
+void game::GameScene::setInterfaceState(game::GameSceneState interfaceState) {
+	GameScene::interfaceState = interfaceState;
+
+	switch (interfaceState) {
+		case Game:
+			setInputInterface(&gameInput);
+			break;
+		case Menu:
+			setInputInterface(inGameMenu->getInputInterface());
+			break;
+	}
 }

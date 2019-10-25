@@ -55,6 +55,7 @@ namespace engine {
 		Key LShift = GLFW_KEY_LEFT_SHIFT;
 		Key RShift = GLFW_KEY_RIGHT_SHIFT;
 		Key Space = GLFW_KEY_SPACE;
+		Key Escape = GLFW_KEY_ESCAPE;
 
 		double getTimeOfCurrentState() const;
 		double getTimeOfLastState() const;

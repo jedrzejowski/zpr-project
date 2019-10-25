@@ -16,6 +16,7 @@ engine::Keyboard::Keyboard() {
 	addKey(LShift);
 	addKey(RShift);
 	addKey(Space);
+	addKey(Escape);
 }
 
 void engine::Keyboard::updateState(GLFWwindow *window) {

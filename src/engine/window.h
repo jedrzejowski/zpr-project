@@ -36,8 +36,6 @@ namespace engine {
 		virtual std::string getTitle() = 0;
 
 		GLFWwindow *getGlfwWindow() const;
-		int getSceneWidth() const;
-		int getSceneHeight() const;
 		int getWinWidth() const;
 		int getWinHeight() const;
 		int getWinTopOffset() const;

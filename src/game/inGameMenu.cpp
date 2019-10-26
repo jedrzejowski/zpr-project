@@ -9,8 +9,14 @@ game::InGameMenu::InGameMenu(game::GameScene *scene) :
 		Interface(scene) {
 
 
-	button = new gui::Button();
-	addObject(glm::vec3(0, 0, 0), button);
+	resumeBtn = new gui::Button(this);
+	optionsBtn = new gui::Button(this);
+	saveBtn = new gui::Button(this);
+
+	float btnWidth = 0.13;
+	addObject(glm::vec2(0, 0.5 - btnWidth * 2), glm::vec2(1, btnWidth), resumeBtn);
+	addObject(glm::vec2(0, 0.5 - btnWidth / 2), glm::vec2(1, btnWidth), optionsBtn);
+	addObject(glm::vec2(0, 0.5 + btnWidth), glm::vec2(1, btnWidth), saveBtn);
 
 	initInputInterface();
 }

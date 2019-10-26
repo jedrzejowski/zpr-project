@@ -7,16 +7,25 @@
 namespace gui {
 	class GuiObject : public Object {
 	protected:
-		glm::vec3 position;
+		glm::mat4 model = glm::mat4(1);
 	public:
 
-		explicit GuiObject(Interface* parent = nullptr);
+		explicit GuiObject(Object *parent = nullptr);
 
 		virtual void insertToBuffers(std::vector<engine::Point3DeX> &vertices,
 									 std::vector<engine::SimpleTriangle> &indices) = 0;
 
-		const glm::vec3 &getPosition() const;
-		void setPosition(const glm::vec3 &postion);
+
+		void insertSquareToBuffers(
+				float x, float y,
+				float width, float height,
+				float textureX, float textureY,
+				float textureWidth, float textureHeight,
+				std::vector<engine::Point3DeX> &vertices,
+				std::vector<engine::SimpleTriangle> &indices);
+
+		const glm::mat4 &getModel() const;
+		void setModel(const glm::mat4 &model);
 	};
 }
 

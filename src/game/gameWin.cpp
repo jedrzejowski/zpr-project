@@ -6,6 +6,7 @@
 #include "gameScene.h"
 
 void game::MainWindow::initObjects() {
+
 	setScene(new GameScene);
 }
 

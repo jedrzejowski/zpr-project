@@ -7,7 +7,7 @@
 
 namespace gui {
 	struct InterfaceItem {
-		glm::vec3 position;
+		glm::mat4 model;
 		GuiObject *object;
 	};
 
@@ -25,9 +25,9 @@ namespace gui {
 		explicit Interface(engine::Scene *parent = nullptr);
 		void render(const engine::Scene *scene) override;
 
-		void addObject(glm::vec3 position, GuiObject *object);
+		void addObject(glm::vec2 position, glm::vec2 size, GuiObject *object);
+		void addObject(glm::mat4 model, GuiObject *object);
 		void removeObject(GuiObject *object);
-
 	};
 }
 

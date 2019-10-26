@@ -14,7 +14,7 @@ convert res/texture/block/oak_log.png \
 convert res/texture1.png \
         res/texture2.png  \
         -background none \
-        +append res/texture.png
+        +append res/block.png
 
 rm res/texture1.png \
    res/texture2.png

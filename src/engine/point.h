@@ -19,6 +19,10 @@ namespace engine {
 		Point3D(GLfloat x, GLfloat y) : Point3D(x, y, 0.0f) {}
 
 		Point3D(GLfloat x, GLfloat y, GLfloat z) : x(x), y(y), z(z) {}
+
+		Point3D(glm::vec3 vec) : x(vec.x), y(vec.y), z(vec.z) {}
+
+		Point3D(glm::vec4 vec) : x(vec.x / vec[3]), y(vec.y / vec[3]), z(vec.z / vec[3]) {}
 	};
 
 	struct Normal {
@@ -36,12 +40,12 @@ namespace engine {
 
 	struct TexCoord {
 
-		GLfloat X = 0.0f;
-		GLfloat Y = 0.0f;
+		GLfloat x = 0.0f;
+		GLfloat y = 0.0f;
 
 		TexCoord() : TexCoord(0.0f, 0.0f) {}
 
-		TexCoord(GLfloat X, GLfloat Y) : X(X), Y(Y) {}
+		TexCoord(GLfloat x, GLfloat y) : x(x), y(y) {}
 	};
 
 	struct SimpleTriangle {
@@ -76,9 +80,12 @@ namespace engine {
 
 		Point3DeX(Point3D p, TexCoord t) : point(p), texture(t) {}
 
-		Point3DeX(GLfloat X, GLfloat Y, GLfloat Z) : point(X, Y, Z) {}
+		Point3DeX(glm::vec3 p, TexCoord t) : point(p), texture(t) {}
 
-		Point3DeX(GLfloat X, GLfloat Y, GLfloat Z, TexCoord t) : point(X, Y, Z), texture(t) {}
+		Point3DeX(glm::vec4 p, TexCoord t) : point(p), texture(t) {}
+
+		Point3DeX(GLfloat x, GLfloat y, GLfloat z) : point(x, y, z) {}
+
+		Point3DeX(GLfloat x, GLfloat y, GLfloat z, TexCoord t) : point(x, y, z), texture(t) {}
 	};
-
 }

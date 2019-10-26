@@ -84,9 +84,8 @@ void Window::mainLoop() {
 							   &winBottomOffset);;
 	}
 
-	glViewport(winLeftOffset, winBottomOffset, winWidth, winHeight);
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT);
 
 	//https://stackoverflow.com/questions/7240747/how-to-draw-2d-3d-stuffs-in-opengl-together
 

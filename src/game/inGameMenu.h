@@ -8,7 +8,10 @@ namespace game {
 	private:
 		GameScene *gameScene = nullptr;
 		engine::InputInterface *inputInterface = nullptr;
-		gui::Button *button = nullptr;
+
+		gui::Button *resumeBtn = nullptr,
+				*optionsBtn = nullptr,
+				*saveBtn = nullptr;
 
 		void initInputInterface();
 

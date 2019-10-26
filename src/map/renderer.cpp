@@ -10,7 +10,7 @@ map::Renderer::Renderer(const map::WorldMap *worldMap) :
 
 	shader = new engine::Shader("shader/game.vert", "shader/game.frag");
 	shader->setInt("material.diffuse", 0);
-	blockTexture = engine::Resources::get().getTexture("texture.png");
+	blockTexture = engine::Resources::get().getTexture("texture/block.png");
 
 
 	worldMap->loadChunk(coord2D(0, 0));
@@ -28,13 +28,16 @@ map::Renderer::~Renderer() {
 
 void map::Renderer::render(const engine::Camera &camera,
 						   const engine::Scene *scene) {
+	auto window = scene->getWindow();
+
+	glViewport(window->getWinLeftOffset(), window->getWinBottomOffset(),
+			   window->getWinWidth(), window->getWinHeight());
+	glClear(GL_DEPTH_BUFFER_BIT);
 
 	shader->bind();
 	blockTexture->use();
 
 //	glEnable(GL_CULL_FACE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
 	shader->setMat4("projection",
 					glm::perspective(glm::radians(45.0f),

@@ -9,13 +9,22 @@ gui::Interface::Interface(engine::Scene *parent) :
 		Object(parent) {
 
 	shader = new engine::Shader("shader/interface.vert", "shader/interface.frag");
-	texture = engine::Resources::get().getTexture("texture/interface.png");
+	texture = engine::Resources::get().getTexture("texture/gui.png");
 }
 
-void gui::Interface::addObject(glm::vec3 position, gui::GuiObject *object) {
+
+void gui::Interface::addObject(glm::vec2 position, glm::vec2 size, gui::GuiObject *object) {
+	auto model = glm::mat4(1);
+	model = glm::translate(model, glm::vec3(position, 0.f));
+	model = glm::scale(model, glm::vec3(size, 0.f));
+	addObject(model, object);
+}
+
+
+void gui::Interface::addObject(glm::mat4 model, gui::GuiObject *object) {
 
 	objects.push_back(new InterfaceItem{
-			position,
+			model,
 			object
 	});
 
@@ -34,17 +43,24 @@ void gui::Interface::removeObject(gui::GuiObject *object) {
 }
 
 void gui::Interface::render(const engine::Scene *scene) {
+	auto window = scene->getWindow();
+	auto size = std::min(window->getWinWidth(), window->getWinHeight());
+
+	glViewport((window->getWinWidth() - size) / 2, (window->getWinHeight() - size) / 2,
+			   size, size);
+
+	glClear(GL_DEPTH_BUFFER_BIT);
 
 	shader->bind();
 	texture->use();
 
-	auto window = scene->getWindow();
-	if (window != nullptr) {
+	{
 		auto topLeft = glm::mat4(1);
 		// odbicie lustrazne względem osi Y
 		topLeft[1][1] = -1.f;
 		// przeniesienie do górnego lewego obszaru
 		topLeft = glm::translate(topLeft, glm::vec3(-1, -1, 0));
+		topLeft = glm::scale(topLeft, glm::vec3(2));
 		shader->setMat4("topLeft", topLeft);
 	}
 
@@ -59,6 +75,7 @@ void gui::Interface::updateBuffers() {
 	indices.clear();
 
 	for (auto iter : objects) {
+		iter->object->setModel(iter->model);
 		iter->object->insertToBuffers(vertices, indices);
 	}
 }

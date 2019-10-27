@@ -2,7 +2,8 @@
 
 #include "src/_classdef.h"
 #include "src/engine/Engine.h"
-#include "guiObj.h"
+
+#include "rectangleObj.h"
 
 namespace gui {
 	enum ButtonState {
@@ -12,16 +13,13 @@ namespace gui {
 		Disabled
 	};
 
-	class Button : public GuiObject {
-	private:
+	class Button : public RectangleObj {
 		std::string label;
-
 		ButtonState state;
 
 	public:
+
 		explicit Button(Object* parent = nullptr);
-		void insertToBuffers(std::vector<engine::Point3DeX> &vertices,
-							 std::vector<engine::SimpleTriangle> &indices) override;
 
 		const std::string &getLabel() const;
 		void setLabel(const std::string &label);

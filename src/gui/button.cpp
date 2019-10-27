@@ -1,18 +1,10 @@
 #include "button.h"
 #include "src/lib/object.h"
 
-gui::Button::Button(Object *parent) : GuiObject(parent) {
-}
-
-
-void gui::Button::insertToBuffers(std::vector<engine::Point3DeX> &vertices,
-								  std::vector<engine::SimpleTriangle> &indices) {
-
-	insertSquareToBuffers(
-			0, 0, 1, 1,
-			0, 1 / 3.f, 1, 1 / 3.f,
-			vertices, indices
-	);
+gui::Button::Button(Object *parent) :
+		RectangleObj(parent) {
+	setSize(glm::vec3(1, 0.13, 0));
+	setState(Idle);
 }
 
 const std::string &gui::Button::getLabel() const {
@@ -29,4 +21,31 @@ gui::ButtonState gui::Button::getState() const {
 
 void gui::Button::setState(gui::ButtonState state) {
 	Button::state = state;
+
+	switch (state) {
+		case Idle:
+			setTexture(
+					glm::vec2(0, 1/3.f),
+					glm::vec2(1, 2 / 3.f)
+			);
+			break;
+		case Hover:
+			setTexture(
+					glm::vec2(0, 2 / 3.f),
+					glm::vec2(1, 1)
+			);
+			break;
+		case Clicked:
+			setTexture(
+					glm::vec2(0, 0),
+					glm::vec2(1, 1 / 3.f)
+			);
+			break;
+		case Disabled:
+			setTexture(
+					glm::vec2(0, 0),
+					glm::vec2(1, 1 / 3.f)
+			);
+			break;
+	}
 }

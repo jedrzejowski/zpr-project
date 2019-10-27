@@ -9,9 +9,9 @@ engine::Mouse::Mouse(Object *parent) : Object(parent) {
 }
 
 void engine::Mouse::updateState(GLFWwindow *window) {
-	lastX = curX;
-	lastY = curY;
-	glfwGetCursorPos(window, &curX, &curY);
+
+	lastPosition = currentPosition;
+	currentPosition = getPosFromGLFW(window);
 
 	{
 		bool was = inWindow;
@@ -24,10 +24,10 @@ void engine::Mouse::updateState(GLFWwindow *window) {
 	}
 
 	if (isInWindow()) {
-		auto dx = getDeltaX(), dy = getDeltaY();
+		auto delta = getDeltaY();
 
-		if (dx != 0 || dy != 0)
-			onMove.emit(dx, dy);
+		if (delta != glm::vec2(0.f, 0.f))
+			onMove.emit(delta);
 	}
 
 	if (isAttachedToCenter()) {
@@ -35,41 +35,14 @@ void engine::Mouse::updateState(GLFWwindow *window) {
 
 		glfwGetWindowSize(window, &width, &height);;
 
-		double sceneXCenter = width / 2,
-				sceneYCenter = height / 2;
+		currentPosition = glm::vec2(width / 2, height / 2);
 
-		glfwSetCursorPos(window, sceneXCenter, sceneYCenter);
-
-		lastX = curX;
-		lastY = curY;
-		curX = sceneXCenter;
-		curY = sceneYCenter;
+		setPosToGLFW(window, currentPosition);
+		lastPosition = currentPosition;
 	}
 }
 
-double engine::Mouse::getCurX() const {
-	return curX;
-}
 
-double engine::Mouse::getCurY() const {
-	return curY;
-}
-
-double engine::Mouse::getLastX() const {
-	return lastX;
-}
-
-double engine::Mouse::getLastY() const {
-	return lastY;
-}
-
-double engine::Mouse::getDeltaX() const {
-	return lastX - curX;
-}
-
-double engine::Mouse::getDeltaY() const {
-	return lastY - curY;
-}
 bool engine::Mouse::isInWindow() const {
 	return inWindow;
 }
@@ -88,11 +61,35 @@ void engine::Mouse::attachedToScene(const engine::Scene *scene) {
 	auto glfwWindow = window->getGlfwWindow();
 	if (glfwWindow == nullptr) return;
 
-	glfwGetCursorPos(glfwWindow, &curX, &curY);
-	lastX = curX;
-	lastY = curY;
+	currentPosition = getPosFromGLFW(glfwWindow);
+	lastPosition = currentPosition;
 }
 
 void engine::Mouse::unattachedFromScene(const engine::Scene *scene) {
 }
 
+const glm::vec2 &engine::Mouse::getLastPosition() const {
+	return lastPosition;
+}
+
+const glm::vec2 &engine::Mouse::getCurrentPosition() const {
+	return currentPosition;
+}
+
+glm::vec2 engine::Mouse::getDeltaX() const {
+	return lastPosition - currentPosition;
+}
+
+glm::vec2 engine::Mouse::getDeltaY() const {
+	return lastPosition - currentPosition;
+}
+
+glm::vec2 engine::Mouse::getPosFromGLFW(GLFWwindow *window) {
+	double tx, ty;
+	glfwGetCursorPos(window, &tx, &ty);
+	return glm::vec2(tx, ty);
+}
+
+void engine::Mouse::setPosToGLFW(GLFWwindow *window, const glm::vec2 &pos) {
+	glfwSetCursorPos(window, pos.x, pos.y);
+}

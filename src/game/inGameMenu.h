@@ -7,18 +7,13 @@ namespace game {
 	class InGameMenu : public gui::Interface {
 	private:
 		GameScene *gameScene = nullptr;
-		engine::InputInterface *inputInterface = nullptr;
 
 		gui::Button *resumeBtn = nullptr,
 				*optionsBtn = nullptr,
 				*saveBtn = nullptr;
 
-		void initInputInterface();
-
 	public:
 		explicit InGameMenu(GameScene *scene);
-
-		engine::InputInterface *getInputInterface() const;
 
 		const Signal<> onMenuExit;
 	};

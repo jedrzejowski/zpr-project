@@ -66,9 +66,9 @@ void game::MainGame::initInputInterface() {
 		onMenuRequest();
 	});
 
-	mouse.onMove([&](double dx, double dy) {
-		player->rotateRight(dx);
-		player->rotateDown(dy);
+	mouse.onMove([&](const glm::vec2& delta) {
+		player->rotateRight(delta.x);
+		player->rotateDown(delta.y);
 	});
 
 	mouse.onLeave([&]() {

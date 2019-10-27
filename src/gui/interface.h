@@ -14,9 +14,12 @@ namespace gui {
 	class Interface : public Object, public engine::Abs3DObj {
 	private:
 		std::list<InterfaceItem *> objects;
+		engine::InputInterface *inputInterface;
 
 		engine::Shader *shader = nullptr;
 		const engine::Texture *texture = nullptr;
+
+		void handleMouseMove();
 
 	protected:
 		void updateBuffers() override;
@@ -28,6 +31,8 @@ namespace gui {
 		void addObject(glm::vec2 position, glm::vec2 size, GuiObject *object);
 		void addObject(glm::mat4 model, GuiObject *object);
 		void removeObject(GuiObject *object);
+
+		engine::InputInterface *getInputInterface() const;
 	};
 }
 

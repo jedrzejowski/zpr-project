@@ -7,16 +7,20 @@
 
 gui::Interface::Interface(engine::Scene *parent) :
 		Object(parent) {
-
+	inputInterface = new engine::InputInterface(this);
 	shader = new engine::Shader("shader/interface.vert", "shader/interface.frag");
 	texture = engine::Resources::get().getTexture("texture/gui.png");
+
+	inputInterface->getMouse().onMove([&](const glm::vec2 &delta) {
+		handleMouseMove();
+	});
 }
 
 
 void gui::Interface::addObject(glm::vec2 position, glm::vec2 size, gui::GuiObject *object) {
 	auto model = glm::mat4(1);
+	model = glm::scale(model, glm::vec3(size, 1.f));
 	model = glm::translate(model, glm::vec3(position, 0.f));
-	model = glm::scale(model, glm::vec3(size, 0.f));
 	addObject(model, object);
 }
 
@@ -77,5 +81,21 @@ void gui::Interface::updateBuffers() {
 	for (auto iter : objects) {
 		iter->object->setModel(iter->model);
 		iter->object->insertToBuffers(vertices, indices);
+	}
+}
+
+engine::InputInterface *gui::Interface::getInputInterface() const {
+	return inputInterface;
+}
+
+void gui::Interface::handleMouseMove() {
+	auto position = getInputInterface()->getMouse().getCurrentPosition();
+
+	logger.log(glm::to_string(position));
+	for (auto iter : objects) {
+		auto &object = iter->object;
+		if (object->isCollisionWithMouse(position)) {
+			object->onHover(position);
+		}
 	}
 }

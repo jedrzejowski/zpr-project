@@ -53,6 +53,8 @@ namespace gui {
 
 	class GuiObject;
 
+	class RectangleObj;
+
 	class Button;
 }
 

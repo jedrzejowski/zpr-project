@@ -40,13 +40,13 @@ namespace engine {
 	class Keyboard : public Object {
 		friend InputInterface;
 	private:
+		InputInterface* inputInterface;
 		double timeOfLastState = glfwGetTime();
 		double timeOfCurrentState = glfwGetTime();
-	protected:
 		std::map<int, Key *> keys;
-		void updateState(GLFWwindow *widow);
+		void updateState();
 	public:
-		explicit Keyboard(Object* parent = nullptr);
+		explicit Keyboard(InputInterface* ii);
 		void clearSignals();
 
 		Key W = GLFW_KEY_W;

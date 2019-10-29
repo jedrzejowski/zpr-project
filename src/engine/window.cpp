@@ -129,3 +129,21 @@ int Window::getWinRightOffset() const {
 int Window::getWinBottomOffset() const {
 	return winBottomOffset;
 }
+
+ViewPort Window::getViewPort() const {
+	return viewPort;
+}
+
+void Window::setViewPort(ViewPort viewPort) {
+	Window::viewPort = viewPort;
+
+	switch (viewPort) {
+		case OneTwoOne:
+			glViewport(winLeftOffset, winBottomOffset, winWidth, winHeight);
+			break;
+		case Square:
+			auto size = std::min(winWidth, winHeight);
+			glViewport((winWidth - size) / 2, (winHeight - size) / 2, size, size);
+			break;
+	}
+}

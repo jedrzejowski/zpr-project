@@ -13,7 +13,6 @@ namespace map {
 	protected:
 		WorldMap* worldMap = nullptr;
 		const coord2D position;
-		std::vector<engine::SimpleTriangle> indicesVec;
 		std::map<coord3D, block::Block *> blocks;
 
 	public:

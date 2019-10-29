@@ -11,6 +11,11 @@
 #include "mouse.h"
 
 namespace engine {
+	enum ViewPort{
+		OneTwoOne,
+		Square,
+	};
+
 	class Window : public Object {
 	private:
 		std::mutex rendering;
@@ -21,6 +26,7 @@ namespace engine {
 
 		GLFWwindow *glfwWin = nullptr;
 		Scene *currentScene = nullptr;
+		ViewPort viewPort;
 
 		void mainLoop();
 	public:
@@ -43,5 +49,8 @@ namespace engine {
 		int getWinLeftOffset() const;
 		int getWinRightOffset() const;
 		int getWinBottomOffset() const;
+
+		ViewPort getViewPort() const;
+		void setViewPort(ViewPort viewPort);
 	};
 }

@@ -50,9 +50,7 @@ void gui::Interface::render(const engine::Scene *scene) {
 	auto window = scene->getWindow();
 	auto size = std::min(window->getWinWidth(), window->getWinHeight());
 
-	glViewport((window->getWinWidth() - size) / 2, (window->getWinHeight() - size) / 2,
-			   size, size);
-
+	window->setViewPort(engine::ViewPort::Square);
 	glClear(GL_DEPTH_BUFFER_BIT);
 
 	shader->bind();
@@ -89,13 +87,12 @@ engine::InputInterface *gui::Interface::getInputInterface() const {
 }
 
 void gui::Interface::handleMouseMove() {
-	auto position = getInputInterface()->getMouse().getCurrentPosition();
+	auto &mouse = getInputInterface()->getMouse();
 
-	logger.log(glm::to_string(position));
 	for (auto iter : objects) {
 		auto &object = iter->object;
-		if (object->isCollisionWithMouse(position)) {
-			object->onHover(position);
+		if (object->isCollisionWithMouse(mouse)) {
+//			object->onHover();
 		}
 	}
 }

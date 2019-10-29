@@ -1,8 +1,8 @@
 #include "button.h"
 #include "src/lib/object.h"
 
-gui::Button::Button(Object *parent) :
-		RectangleObj(parent) {
+gui::Button::Button(Interface *interface) :
+		RectangleObj(interface) {
 	setSize(glm::vec3(1, 0.13, 0));
 	setState(Idle);
 }

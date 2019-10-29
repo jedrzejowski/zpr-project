@@ -47,6 +47,8 @@ target_sources(${APP_TARGET} PUBLIC
         src/engine/abs3DObj.cpp
         src/engine/abs3DObj.h
 
+        src/engine/inputDevice.h
+        src/engine/inputDevice.cpp
         src/engine/keyboard.h
         src/engine/keyboard.cpp
         src/engine/mouse.h

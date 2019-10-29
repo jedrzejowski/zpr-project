@@ -1,7 +1,7 @@
 #include "rectangleObj.h"
 
-gui::RectangleObj::RectangleObj(Object *parent) :
-		GuiObject(parent) {
+gui::RectangleObj::RectangleObj(Interface* interface) :
+		GuiObject(interface) {
 }
 
 void gui::RectangleObj::insertToBuffers(std::vector<engine::Point3DeX> &vertices,
@@ -27,8 +27,9 @@ void gui::RectangleObj::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	indices.push_back(engine::SimpleTriangle(2, 3, 0) + offset);
 }
 
-bool gui::RectangleObj::isCollisionWithMouse(const glm::vec2& mousePosition) {
-	logger.log(glm::to_string(mousePosition));
+bool gui::RectangleObj::isCollisionWithMouse(const engine::Mouse& mouse) {
+
+
 	return false;
 }
 

@@ -30,8 +30,7 @@ void map::Renderer::render(const engine::Camera &camera,
 						   const engine::Scene *scene) {
 	auto window = scene->getWindow();
 
-	glViewport(window->getWinLeftOffset(), window->getWinBottomOffset(),
-			   window->getWinWidth(), window->getWinHeight());
+	window->setViewPort(engine::ViewPort::OneTwoOne);
 	glClear(GL_DEPTH_BUFFER_BIT);
 
 	shader->bind();

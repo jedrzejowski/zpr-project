@@ -3,10 +3,11 @@
 #include "src/opengl.h"
 #include "src/_classdef.h"
 #include "src/lib/object.h"
+#include "inputDevice.h"
 
 
 namespace engine {
-	class Mouse : public Object {
+	class Mouse : public InputDevice {
 		friend InputInterface;
 	private:
 		glm::vec2 lastPosition;
@@ -14,12 +15,10 @@ namespace engine {
 		bool inWindow = false;
 		bool attachedToCenter = false;
 
-		void updateState(GLFWwindow *window);
-		glm::vec2 getPosFromGLFW(GLFWwindow *window);
-		void setPosToGLFW(GLFWwindow *window, const glm::vec2 &pos);
+		void updateState() override;
 
 	public:
-		Mouse(Object *parent = nullptr);
+		explicit Mouse(InputInterface *ii);
 
 		const Signal<const glm::vec2 &> onMove;
 		const Signal<> onLeave;
@@ -35,8 +34,8 @@ namespace engine {
 		bool isAttachedToCenter() const;
 		void setAttachedToCenter(bool attachedToCenter);
 
-		void attachedToScene(const Scene *pScene);
-		void unattachedFromScene(const Scene *pScene);
+		glm::vec2 getPosition();
+		void setPosition(const glm::vec2 &pos);
 	};
 }
 

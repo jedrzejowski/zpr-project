@@ -19,7 +19,7 @@ namespace gui {
 
 	public:
 
-		explicit Button(Object* parent = nullptr);
+		explicit Button(Interface* interface);
 
 		const std::string &getLabel() const;
 		void setLabel(const std::string &label);

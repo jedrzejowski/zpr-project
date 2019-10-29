@@ -1,5 +1,6 @@
 #include "keyboard.h"
 #include "window.h"
+#include "inputInterface.h"
 
 /**
  * Makro jest po to aby kod był czytelniejszy,
@@ -7,7 +8,9 @@
  */
 #define addKey(key) keys.insert(std::pair<int, Key*>(key.keyCode, &key))
 
-engine::Keyboard::Keyboard(Object *parent) : Object(parent) {
+engine::Keyboard::Keyboard(InputInterface *ii) :
+		Object(ii),
+		inputInterface(ii) {
 
 	addKey(W);
 	addKey(A);
@@ -19,7 +22,7 @@ engine::Keyboard::Keyboard(Object *parent) : Object(parent) {
 	addKey(Escape);
 }
 
-void engine::Keyboard::updateState(GLFWwindow *window) {
+void engine::Keyboard::updateState() {
 	timeOfLastState = timeOfCurrentState;
 	timeOfCurrentState = glfwGetTime();
 

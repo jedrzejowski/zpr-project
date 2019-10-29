@@ -19,12 +19,12 @@ namespace gui {
 		glm::vec2 textureStart, textureEnd;
 	public:
 
-		explicit RectangleObj(Object *parent = nullptr);
+		explicit RectangleObj(Interface *interface);
 
 		void insertToBuffers(std::vector<engine::Point3DeX> &vertices,
 							 std::vector<engine::SimpleTriangle> &indices) override;
 
-		bool isCollisionWithMouse(const glm::vec2& mousePosition) override;
+		bool isCollisionWithMouse(const engine::Mouse& mouse) override;
 
 		const glm::vec3 &getPosition() const;
 		void setPosition(const glm::vec3 &position);

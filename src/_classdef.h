@@ -37,6 +37,8 @@ namespace engine {
 
 	class Window;
 
+	class InputDevice;
+
 	class Key;
 
 	class Keyboard;

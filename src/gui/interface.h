@@ -6,6 +6,7 @@
 #include "src/engine/Engine.h"
 
 namespace gui {
+
 	struct InterfaceItem {
 		glm::mat4 model;
 		GuiObject *object;
@@ -33,6 +34,8 @@ namespace gui {
 		void removeObject(GuiObject *object);
 
 		engine::InputInterface *getInputInterface() const;
+
+
 	};
 }
 

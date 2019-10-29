@@ -3,6 +3,7 @@
 #include "src/opengl.h"
 #include "src/_classdef.h"
 #include "src/lib/object.h"
+#include "inputDevice.h"
 
 
 namespace engine {
@@ -20,8 +21,8 @@ namespace engine {
 
 		void clearSignals();
 
-		void setState(GLFWwindow *window);
-		void attachedToWindow(GLFWwindow *window);
+		void initState(GLFWwindow *window);
+		void updateState(GLFWwindow *window);
 
 	public:
 
@@ -37,16 +38,17 @@ namespace engine {
 		const Signal<> onReleased;
 	};
 
-	class Keyboard : public Object {
+	class Keyboard : public InputDevice {
 		friend InputInterface;
 	private:
-		InputInterface* inputInterface;
 		double timeOfLastState = glfwGetTime();
 		double timeOfCurrentState = glfwGetTime();
 		std::map<int, Key *> keys;
-		void updateState();
+	protected:
+		void initState(GLFWwindow *window) override;
+		void updateState(GLFWwindow *window) override;
 	public:
-		explicit Keyboard(InputInterface* ii);
+		explicit Keyboard(InputInterface *ii);
 		void clearSignals();
 
 		Key W = GLFW_KEY_W;
@@ -63,8 +65,5 @@ namespace engine {
 		double getDeltaTimeOfState() const;
 
 		bool isShiftPressed() const;
-
-		void attachedToScene(const Scene *scene);
-		void unattachedFromScene(const Scene *scene);
 	};
 }

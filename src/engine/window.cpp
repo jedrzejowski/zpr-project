@@ -1,7 +1,7 @@
 #include "window.h"
 
 #include <mutex>
-#include "exception.h"
+#include "src/exception.h"
 #include "inputInterface.h"
 
 using namespace engine;
@@ -93,8 +93,15 @@ void Window::mainLoop() {
 
 		currentScene->render(this);
 
-		auto ii = currentScene->getInputInterface();
-		if (ii != nullptr) ii->updateState(glfwWin);
+		auto currentInputInterface = currentScene->getInputInterface();
+
+		if (currentInputInterface != nullptr) {
+			if (lastInputInterface == currentInputInterface)
+				currentInputInterface->updateState(glfwWin);
+			else currentInputInterface->initState(glfwWin);
+		}
+
+		lastInputInterface = currentInputInterface;
 	}
 
 	glfwSwapBuffers(glfwWin);

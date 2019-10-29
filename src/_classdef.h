@@ -124,3 +124,4 @@ struct coord2D {
 };
 
 #include "src/logger.h"
+#include "src/exception.h"

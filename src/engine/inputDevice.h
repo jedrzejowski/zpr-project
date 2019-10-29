@@ -4,21 +4,22 @@
 #include "src/_classdef.h"
 #include "src/lib/object.h"
 
-
 namespace engine {
+
 	class InputDevice : public Object {
 		friend InputInterface;
 	private:
 		InputInterface *inputInterface;
 
-		virtual void updateState() = 0;
+		void _updateState(GLFWwindow *window);
 
 	protected:
-		GLFWwindow *getGLFWwindow();
+
+		virtual void updateState(GLFWwindow *window) = 0;
+		virtual void initState(GLFWwindow *window) = 0;
 
 	public:
 		explicit InputDevice(InputInterface *ii);
-
 	};
 }
 

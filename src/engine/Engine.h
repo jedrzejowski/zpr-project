@@ -2,7 +2,7 @@
 
 #include "src/_classdef.h"
 
-#include "exception.h"
+#include "src/exception.h"
 #include "point.h"
 
 #include "resources.h"

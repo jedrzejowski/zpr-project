@@ -4,7 +4,7 @@
 
 #define STB_IMAGE_IMPLEMENTATION
 
-#include "exception.h"
+#include "src/exception.h"
 #include "texture.h"
 #include "resources.h"
 

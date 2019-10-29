@@ -24,7 +24,7 @@ add_executable(${APP_TARGET}
 ## engine
 target_sources(${APP_TARGET} PUBLIC
         src/opengl.h
-        src/engine/exception.h
+        src/exception.h
         src/engine/resources.h
         src/engine/resources.cpp
 

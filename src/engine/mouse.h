@@ -15,7 +15,13 @@ namespace engine {
 		bool inWindow = false;
 		bool attachedToCenter = false;
 
-		void updateState() override;
+
+		glm::vec2 getGlfwPosition(GLFWwindow *window);
+		void setGlfwPosition(GLFWwindow *window, const glm::vec2 &pos);
+
+	protected:
+		void initState(GLFWwindow *window) override;
+		void updateState(GLFWwindow *window) override;
 
 	public:
 		explicit Mouse(InputInterface *ii);
@@ -33,9 +39,6 @@ namespace engine {
 
 		bool isAttachedToCenter() const;
 		void setAttachedToCenter(bool attachedToCenter);
-
-		glm::vec2 getPosition();
-		void setPosition(const glm::vec2 &pos);
 	};
 }
 

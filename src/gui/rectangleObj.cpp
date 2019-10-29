@@ -27,7 +27,7 @@ void gui::RectangleObj::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	indices.push_back(engine::SimpleTriangle(2, 3, 0) + offset);
 }
 
-bool gui::RectangleObj::isCollisionWithMouse(const engine::Mouse& mouse) {
+bool gui::RectangleObj::isCollisionWithMouse(const engine::Mouse* mouse) {
 
 
 	return false;

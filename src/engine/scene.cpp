@@ -20,10 +20,10 @@ InputInterface *Scene::getInputInterface() const {
 
 void Scene::setInputInterface(InputInterface *inputInterface) {
 	if (this->inputInterface != nullptr)
-		this->inputInterface->unattachedFromScene(this);
+		this->inputInterface->unattachFromScene();
 
 	this->inputInterface = inputInterface;
 
 	if (this->inputInterface != nullptr)
-		this->inputInterface->attachedToScene(this);
+		this->inputInterface->attachToScene(this);
 }

@@ -8,23 +8,25 @@ namespace engine {
 		friend Window;
 	private:
 		const Scene* scene = nullptr;
-		Mouse mouse;
-		Keyboard keyboard;
+		Mouse *mouse;
+		Keyboard *keyboard;
 
+		void initState(GLFWwindow *window);
 		void updateState(GLFWwindow *window);
 
 	public:
 		explicit InputInterface(Object* parent = nullptr);
 
-		const Signal<Window *> onAttached;
-		const Signal<Window *> onUnattached;
+		const Signal<> onAttached;
+		const Signal<> onUnattached;
 
-		Mouse &getMouse();
-		Keyboard &getKeyboard();
+		Mouse *getMouse();
+		Keyboard *getKeyboard();
 
 		bool isAttachedToScene();
-		void unattachedFromScene(const Scene* scene);
-		void attachedToScene(const Scene* scene);
+		void attachToScene(const Scene* scene);
+		void unattachFromScene();
 		const Scene *getScene() const;
+
 	};
 }

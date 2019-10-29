@@ -11,7 +11,7 @@ gui::Interface::Interface(engine::Scene *parent) :
 	shader = new engine::Shader("shader/interface.vert", "shader/interface.frag");
 	texture = engine::Resources::get().getTexture("texture/gui.png");
 
-	inputInterface->getMouse().onMove([&](const glm::vec2 &delta) {
+	inputInterface->getMouse()->onMove([&](const glm::vec2 &delta) {
 		handleMouseMove();
 	});
 }
@@ -87,7 +87,7 @@ engine::InputInterface *gui::Interface::getInputInterface() const {
 }
 
 void gui::Interface::handleMouseMove() {
-	auto &mouse = getInputInterface()->getMouse();
+	auto mouse = getInputInterface()->getMouse();
 
 	for (auto iter : objects) {
 		auto &object = iter->object;

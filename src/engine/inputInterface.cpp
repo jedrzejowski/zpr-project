@@ -5,37 +5,41 @@
 #include "inputInterface.h"
 
 engine::InputInterface::InputInterface(Object *parent) :
-		Object(parent),
-		mouse(this),
-		keyboard(this) {
+		Object(parent) {
+
+	mouse = new Mouse(this);
+	keyboard = new Keyboard(this);
 }
 
-engine::Mouse &engine::InputInterface::getMouse() {
+engine::Mouse *engine::InputInterface::getMouse() {
 	return mouse;
 }
 
-engine::Keyboard &engine::InputInterface::getKeyboard() {
+engine::Keyboard *engine::InputInterface::getKeyboard() {
 	return keyboard;
 }
 
+void engine::InputInterface::initState(GLFWwindow *window) {
+	keyboard->initState(window);
+	mouse->initState(window);
+}
+
 void engine::InputInterface::updateState(GLFWwindow *window) {
-	keyboard.updateState(window);
-	mouse.updateState();
+	keyboard->updateState(window);
+	mouse->updateState(window);
 }
 
 bool engine::InputInterface::isAttachedToScene() {
 	return scene == nullptr;
 }
 
-void engine::InputInterface::attachedToScene(const Scene *scene) {
+void engine::InputInterface::attachToScene(const Scene *scene) {
 	this->scene = scene;
-	keyboard.attachedToScene(scene);
-	mouse.attachedToScene(scene);
+	onAttached.emit();
 }
 
-void engine::InputInterface::unattachedFromScene(const engine::Scene *scene) {
-	keyboard.unattachedFromScene(scene);
-	mouse.unattachedFromScene(scene);
+void engine::InputInterface::unattachFromScene() {
+	onUnattached();
 	this->scene = nullptr;
 }
 

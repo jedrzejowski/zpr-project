@@ -9,8 +9,7 @@
 #define addKey(key) keys.insert(std::pair<int, Key*>(key.keyCode, &key))
 
 engine::Keyboard::Keyboard(InputInterface *ii) :
-		Object(ii),
-		inputInterface(ii) {
+		InputDevice(ii) {
 
 	addKey(W);
 	addKey(A);
@@ -20,14 +19,24 @@ engine::Keyboard::Keyboard(InputInterface *ii) :
 	addKey(RShift);
 	addKey(Space);
 	addKey(Escape);
+
+
+	ii->onAttached([&] {
+	});
 }
 
-void engine::Keyboard::updateState() {
+void engine::Keyboard::initState(GLFWwindow *window) {
+
+	for (auto &iter : keys)
+		iter.second->initState(window);
+}
+
+void engine::Keyboard::updateState(GLFWwindow *window) {
 	timeOfLastState = timeOfCurrentState;
 	timeOfCurrentState = glfwGetTime();
 
 	for (auto &iter : keys)
-		iter.second->setState(window);
+		iter.second->updateState(window);
 }
 
 void engine::Keyboard::clearSignals() {
@@ -48,20 +57,7 @@ double engine::Keyboard::getDeltaTimeOfState() const {
 	return timeOfCurrentState - timeOfLastState;
 }
 
-void engine::Keyboard::attachedToScene(const engine::Scene *scene) {
-	auto window = scene->getWindow();
-	if (window == nullptr) return;
-	auto glfwWindow = window->getGlfwWindow();
-	if (glfwWindow == nullptr) return;
-
-	for (auto &iter : keys)
-		iter.second->attachedToWindow(glfwWindow);
-}
-
-void engine::Keyboard::unattachedFromScene(const engine::Scene *scene) {
-}
-
-void engine::Key::setState(GLFWwindow *window) {
+void engine::Key::updateState(GLFWwindow *window) {
 
 	lastState = currentState;
 	currentState = glfwGetKey(window, keyCode);
@@ -88,6 +84,6 @@ void engine::Key::clearSignals() {
 	onReleased.disconnectAll();
 }
 
-void engine::Key::attachedToWindow(GLFWwindow *window) {
+void engine::Key::initState(GLFWwindow *window) {
 	currentState = lastState = glfwGetKey(window, keyCode);
 }

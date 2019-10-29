@@ -16,7 +16,7 @@ namespace gui {
 		virtual void insertToBuffers(std::vector<engine::Point3DeX> &vertices,
 									 std::vector<engine::SimpleTriangle> &indices) = 0;
 
-		virtual bool isCollisionWithMouse(const engine::Mouse &mouse) = 0;
+		virtual bool isCollisionWithMouse(const engine::Mouse *mouse) = 0;
 
 		const glm::mat4 &getModel() const;
 		void setModel(const glm::mat4 &model);

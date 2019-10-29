@@ -3,7 +3,7 @@
 //
 
 #include <src/logger.h>
-#include "exception.h"
+#include "src/exception.h"
 #include "shader.h"
 #include "resources.h"
 

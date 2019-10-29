@@ -6,16 +6,19 @@
 #include "window.h"
 #include "inputInterface.h"
 
-engine::Mouse::Mouse(engine::InputInterface *ii) : InputDevice(ii) {
+engine::Mouse::Mouse(engine::InputInterface *ii) :
+		InputDevice(ii) {
 }
 
-void engine::Mouse::updateState() {
-	auto *window = getGLFWwindow();
-	if (window == nullptr)
-		return;
+void engine::Mouse::initState(GLFWwindow *window) {
+	lastPosition = getGlfwPosition(window);
+	updateState(window);
+}
+
+void engine::Mouse::updateState(GLFWwindow *window) {
 
 	lastPosition = currentPosition;
-	currentPosition = getPosFromGLFW();
+	currentPosition = getGlfwPosition(window);
 
 	{
 		bool was = inWindow;
@@ -39,7 +42,7 @@ void engine::Mouse::updateState() {
 
 		glfwGetWindowSize(window, &width, &height);;
 
-		setPosition(glm::vec2(width / 2, height / 2));
+		setGlfwPosition(window, glm::vec2(width / 2, height / 2));
 	}
 }
 
@@ -54,18 +57,6 @@ bool engine::Mouse::isAttachedToCenter() const {
 
 void engine::Mouse::setAttachedToCenter(bool attachedToCenter) {
 	Mouse::attachedToCenter = attachedToCenter;
-}
-
-void engine::Mouse::attachedToScene(const engine::Scene *scene) {
-	auto window = scene->getWindow();
-	if (window == nullptr) return;
-	auto glfwWindow = window->getGlfwWindow();
-	if (glfwWindow == nullptr) return;
-
-	lastPosition = currentPosition = getPosFromGLFW(glfwWindow);
-}
-
-void engine::Mouse::unattachedFromScene(const engine::Scene *scene) {
 }
 
 const glm::vec2 &engine::Mouse::getLastPosition() const {
@@ -84,20 +75,13 @@ glm::vec2 engine::Mouse::getDeltaY() const {
 	return lastPosition - currentPosition;
 }
 
-glm::vec2 engine::Mouse::getPosition() {
-	auto *window = getGLFWwindow();
-	if (window == nullptr)
-		return glm::vec2(0, 0);
-
+glm::vec2 engine::Mouse::getGlfwPosition(GLFWwindow *window) {
 	double tx, ty;
 	glfwGetCursorPos(window, &tx, &ty);
 	return glm::vec2(tx, ty);
 }
 
-void engine::Mouse::setPosition(const glm::vec2 &pos) {
-	auto *window = getGLFWwindow();
-	if (window == nullptr)
-		return;
+void engine::Mouse::setGlfwPosition(GLFWwindow *window, const glm::vec2 &pos) {
 
 	glfwSetCursorPos(window, pos.x, pos.y);
 

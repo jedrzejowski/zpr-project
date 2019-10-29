@@ -27,6 +27,7 @@ namespace engine {
 		GLFWwindow *glfwWin = nullptr;
 		Scene *currentScene = nullptr;
 		ViewPort viewPort;
+		InputInterface* lastInputInterface = nullptr;
 
 		void mainLoop();
 	public:

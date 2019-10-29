@@ -17,7 +17,7 @@ game::InGameMenu::InGameMenu(game::GameScene *scene) :
 	addObject(glm::vec2(0, 0.4), glm::vec2(1), optionsBtn);
 	addObject(glm::vec2(0, 0.6), glm::vec2(1), saveBtn);
 
-	getInputInterface()->getKeyboard().Escape.onPressed([&] {
+	getInputInterface()->getKeyboard()->Escape.onPressed([&] {
 		onMenuExit();
 	});
 }

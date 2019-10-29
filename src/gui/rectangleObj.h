@@ -24,7 +24,7 @@ namespace gui {
 		void insertToBuffers(std::vector<engine::Point3DeX> &vertices,
 							 std::vector<engine::SimpleTriangle> &indices) override;
 
-		bool isCollisionWithMouse(const engine::Mouse& mouse) override;
+		bool isCollisionWithMouse(const engine::Mouse* mouse) override;
 
 		const glm::vec3 &getPosition() const;
 		void setPosition(const glm::vec3 &position);

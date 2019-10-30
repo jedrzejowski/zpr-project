@@ -154,3 +154,14 @@ void Window::setViewPort(ViewPort viewPort) {
 			break;
 	}
 }
+
+glm::vec2 Window::scalePixelPosToViewPortPos(ViewPort viewPort, glm::vec2 pos) {
+	if (winWidth > winHeight) {
+		pos.x -= float(winWidth - winHeight) / 2;
+		pos /= winHeight;
+	} else {
+		pos.y -= float(winHeight - winWidth) / 2;
+		pos /= winWidth;
+	}
+	return pos;
+}

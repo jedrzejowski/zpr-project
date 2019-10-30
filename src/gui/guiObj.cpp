@@ -18,3 +18,7 @@ void gui::GuiObject::setModel(const glm::mat4 &model) {
 const gui::Interface* gui::GuiObject::getInterface() const {
 	return interface;
 }
+
+gui::Interface *gui::GuiObject::getInterface() {
+	return interface;
+}

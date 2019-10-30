@@ -39,9 +39,13 @@ namespace engine {
 
 	class InputDevice;
 
-	class Key;
+	class InputButton;
+
+	class KeyboardBtn;
 
 	class Keyboard;
+
+	class MouseBtn;
 
 	class Mouse;
 

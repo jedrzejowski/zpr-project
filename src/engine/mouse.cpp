@@ -8,11 +8,24 @@
 
 engine::Mouse::Mouse(engine::InputInterface *ii) :
 		InputDevice(ii) {
+
+	addBtn(Left);
+	addBtn(Right);
+	addBtn(Middle);
 }
 
 void engine::Mouse::initState(GLFWwindow *window) {
-	lastPosition = getGlfwPosition(window);
-	updateState(window);
+	lastPosition = currentPosition = getGlfwPosition(window);
+
+	if (isAttachedToCenter()) {
+		int width, height;
+
+		glfwGetWindowSize(window, &width, &height);;
+
+		setGlfwPosition(window, glm::vec2(width / 2, height / 2));
+	}
+
+	InputDevice::initState(window);
 }
 
 void engine::Mouse::updateState(GLFWwindow *window) {
@@ -44,6 +57,8 @@ void engine::Mouse::updateState(GLFWwindow *window) {
 
 		setGlfwPosition(window, glm::vec2(width / 2, height / 2));
 	}
+
+	InputDevice::updateState(window);
 }
 
 
@@ -89,3 +104,6 @@ void engine::Mouse::setGlfwPosition(GLFWwindow *window, const glm::vec2 &pos) {
 }
 
 
+int engine::MouseBtn::getGlfwState(GLFWwindow *window) {
+	return glfwGetMouseButton(window, getBtnCode());
+}

@@ -14,7 +14,7 @@ add_executable(${APP_TARGET}
         src/_classdef.h
         src/main.cpp
         src/logger.h
-        src/logger.cpp
+        src/exception.h
         src/lib/signal.h
         src/lib/object.h
         src/lib/object.cpp
@@ -24,7 +24,6 @@ add_executable(${APP_TARGET}
 ## engine
 target_sources(${APP_TARGET} PUBLIC
         src/opengl.h
-        src/exception.h
         src/engine/resources.h
         src/engine/resources.cpp
 
@@ -49,6 +48,8 @@ target_sources(${APP_TARGET} PUBLIC
 
         src/engine/inputDevice.h
         src/engine/inputDevice.cpp
+        src/engine/inputButton.h
+        src/engine/inputButton.cpp
         src/engine/keyboard.h
         src/engine/keyboard.cpp
         src/engine/mouse.h

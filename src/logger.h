@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <time.h>
+#include <glm/gtx/string_cast.hpp>
 
 //https://stackoverflow.com/questions/9158150/colored-output-in-c
 #define TTY_COLOR_RESET   "\033[0m"

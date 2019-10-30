@@ -16,6 +16,18 @@
 #include <glm/gtx/normal.hpp>
 
 
+inline std::ostream &operator<<(std::ostream &out, const glm::vec2 &g) {
+	return out << glm::to_string(g);
+}
+
+inline std::ostream &operator<<(std::ostream &out, const glm::vec3 &g) {
+	return out << glm::to_string(g);
+}
+
+inline std::ostream &operator<<(std::ostream &out, const glm::vec4 &g) {
+	return out << glm::to_string(g);
+}
+
 inline std::ostream &operator<<(std::ostream &out, const glm::mat4 &g) {
 	return out << glm::to_string(g);
 }

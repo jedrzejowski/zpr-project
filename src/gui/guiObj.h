@@ -8,7 +8,7 @@ namespace gui {
 	class GuiObject : public Object {
 	private:
 		glm::mat4 model = glm::mat4(1);
-		const Interface *interface;
+		Interface *interface;
 	public:
 
 		explicit GuiObject(Interface *interface);
@@ -21,11 +21,13 @@ namespace gui {
 		const glm::mat4 &getModel() const;
 		void setModel(const glm::mat4 &model);
 
-		const Interface* getInterface() const;
+		const Interface *getInterface() const;
+		Interface *getInterface();
 
-		const Signal<const glm::vec2 &> onHover;
-		const Signal<const glm::vec2 &> onPressed;
-		const Signal<const glm::vec2 &> onReleased;
+		const Signal<> onHover;
+		const Signal<> onLeave;
+		const Signal<> onPressed;
+		const Signal<> onReleased;
 	};
 }
 

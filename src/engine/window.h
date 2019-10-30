@@ -11,7 +11,7 @@
 #include "mouse.h"
 
 namespace engine {
-	enum ViewPort{
+	enum ViewPort {
 		OneTwoOne,
 		Square,
 	};
@@ -27,7 +27,7 @@ namespace engine {
 		GLFWwindow *glfwWin = nullptr;
 		Scene *currentScene = nullptr;
 		ViewPort viewPort;
-		InputInterface* lastInputInterface = nullptr;
+		InputInterface *lastInputInterface = nullptr;
 
 		void mainLoop();
 	public:
@@ -53,5 +53,6 @@ namespace engine {
 
 		ViewPort getViewPort() const;
 		void setViewPort(ViewPort viewPort);
+		glm::vec2 scalePixelPosToViewPortPos(ViewPort viewPort, glm::vec2 pos);
 	};
 }

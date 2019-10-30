@@ -6,13 +6,23 @@
 #include "guiObj.h"
 
 gui::Interface::Interface(engine::Scene *parent) :
-		Object(parent) {
+		Object(parent),
+		scene(parent) {
 	inputInterface = new engine::InputInterface(this);
 	shader = new engine::Shader("shader/interface.vert", "shader/interface.frag");
 	texture = engine::Resources::get().getTexture("texture/gui.png");
 
+
+	inputInterface->onAttached([&] {
+		updateMouseState(true);
+	});
+
 	inputInterface->getMouse()->onMove([&](const glm::vec2 &delta) {
-		handleMouseMove();
+		updateMouseState();
+	});
+
+	inputInterface->getMouse()->Left.onPressed([&] {
+		updateMouseState();
 	});
 }
 
@@ -86,13 +96,32 @@ engine::InputInterface *gui::Interface::getInputInterface() const {
 	return inputInterface;
 }
 
-void gui::Interface::handleMouseMove() {
+engine::Scene *gui::Interface::getScene() const {
+	return scene;
+}
+
+
+void gui::Interface::updateMouseState(bool initial) {
 	auto mouse = getInputInterface()->getMouse();
 
 	for (auto iter : objects) {
-		auto &object = iter->object;
-		if (object->isCollisionWithMouse(mouse)) {
-//			object->onHover();
+		if (initial) {
+			iter->wasIn = false;
+		}
+
+		if (iter->object->isCollisionWithMouse(mouse)) {
+			if (iter->wasIn) {
+
+
+			} else {
+				iter->object->onHover();
+				iter->wasIn = true;
+			}
+		} else {
+			if (iter->wasIn) {
+				iter->object->onLeave();
+				iter->wasIn = false;
+			}
 		}
 	}
 }

@@ -5,6 +5,14 @@ gui::Button::Button(Interface *interface) :
 		RectangleObj(interface) {
 	setSize(glm::vec3(1, 0.13, 0));
 	setState(Idle);
+
+	onHover([&] {
+		setState(Hover);
+	});
+
+	onLeave([&] {
+		setState(Idle);
+	});
 }
 
 const std::string &gui::Button::getLabel() const {
@@ -25,7 +33,7 @@ void gui::Button::setState(gui::ButtonState state) {
 	switch (state) {
 		case Idle:
 			setTexture(
-					glm::vec2(0, 1/3.f),
+					glm::vec2(0, 1 / 3.f),
 					glm::vec2(1, 2 / 3.f)
 			);
 			break;

@@ -4,65 +4,30 @@
 #include "src/_classdef.h"
 #include "src/lib/object.h"
 #include "inputDevice.h"
+#include "inputButton.h"
 
 
 namespace engine {
 
-	class Key : public Object {
+	class KeyboardBtn : public InputButton {
 		friend Keyboard;
-	private:
-		double timeOfLastChange = glfwGetTime();
-		int lastState = GLFW_RELEASE;
-		int currentState = GLFW_RELEASE;
-
-		const int keyCode;
-
-		Key(int keyCode) : keyCode(keyCode) {}
-
-		void clearSignals();
-
-		void initState(GLFWwindow *window);
-		void updateState(GLFWwindow *window);
-
-	public:
-
-		inline bool isPressed() const { return currentState == GLFW_PRESS; }
-
-		inline bool isReleased() const { return currentState == GLFW_RELEASE; }
-
-		inline double getTimeOfLastChange() const { return timeOfLastChange; }
-
-		const Signal<> onPress;
-		const Signal<> onPressed;
-		const Signal<> onRelease;
-		const Signal<> onReleased;
+		int getGlfwState(GLFWwindow *window) override;
+		KeyboardBtn(int btnCode) : InputButton(btnCode) {};
 	};
 
 	class Keyboard : public InputDevice {
 		friend InputInterface;
-	private:
-		double timeOfLastState = glfwGetTime();
-		double timeOfCurrentState = glfwGetTime();
-		std::map<int, Key *> keys;
-	protected:
-		void initState(GLFWwindow *window) override;
-		void updateState(GLFWwindow *window) override;
 	public:
 		explicit Keyboard(InputInterface *ii);
-		void clearSignals();
 
-		Key W = GLFW_KEY_W;
-		Key A = GLFW_KEY_A;
-		Key S = GLFW_KEY_S;
-		Key D = GLFW_KEY_D;
-		Key LShift = GLFW_KEY_LEFT_SHIFT;
-		Key RShift = GLFW_KEY_RIGHT_SHIFT;
-		Key Space = GLFW_KEY_SPACE;
-		Key Escape = GLFW_KEY_ESCAPE;
-
-		double getTimeOfCurrentState() const;
-		double getTimeOfLastState() const;
-		double getDeltaTimeOfState() const;
+		KeyboardBtn W = GLFW_KEY_W;
+		KeyboardBtn A = GLFW_KEY_A;
+		KeyboardBtn S = GLFW_KEY_S;
+		KeyboardBtn D = GLFW_KEY_D;
+		KeyboardBtn LShift = GLFW_KEY_LEFT_SHIFT;
+		KeyboardBtn RShift = GLFW_KEY_RIGHT_SHIFT;
+		KeyboardBtn Space = GLFW_KEY_SPACE;
+		KeyboardBtn Escape = GLFW_KEY_ESCAPE;
 
 		bool isShiftPressed() const;
 	};

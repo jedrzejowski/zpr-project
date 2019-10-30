@@ -1,6 +1,7 @@
 #include "rectangleObj.h"
+#include "interface.h"
 
-gui::RectangleObj::RectangleObj(Interface* interface) :
+gui::RectangleObj::RectangleObj(Interface *interface) :
 		GuiObject(interface) {
 }
 
@@ -27,10 +28,15 @@ void gui::RectangleObj::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	indices.push_back(engine::SimpleTriangle(2, 3, 0) + offset);
 }
 
-bool gui::RectangleObj::isCollisionWithMouse(const engine::Mouse* mouse) {
+bool gui::RectangleObj::isCollisionWithMouse(const engine::Mouse *mouse) {
 
+	auto window = getInterface()->getScene()->getWindow();
+	if (window == nullptr) return false;
 
-	return false;
+	auto position = window->scalePixelPosToViewPortPos(engine::ViewPort::Square, mouse->getCurrentPosition());
+
+	return point_xy.x < position.x && position.x < point_XY.x &&
+		   point_xy.y < position.y && position.y < point_XY.y;
 }
 
 const glm::vec3 &gui::RectangleObj::getPosition() const {
@@ -55,6 +61,8 @@ const glm::vec2 &gui::RectangleObj::getTextureStart() const {
 
 void gui::RectangleObj::setTextureStart(const glm::vec2 &textureStart) {
 	RectangleObj::textureStart = textureStart;
+
+	getInterface()->setNeedRefreshBuffers(true);
 }
 
 const glm::vec2 &gui::RectangleObj::getTextureEnd() const {
@@ -68,5 +76,6 @@ void gui::RectangleObj::setTextureEnd(const glm::vec2 &textureEnd) {
 void gui::RectangleObj::setTexture(const glm::vec2 &textureStart, const glm::vec2 &textureEnd) {
 	setTextureStart(textureStart);
 	setTextureEnd(textureEnd);
+
 }
 

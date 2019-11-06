@@ -7,15 +7,10 @@
 
 namespace engine {
 
-	struct Material {
-		glm::vec3 specular;
-		float shininess;
-	};
-
-	class Shader {
+	class ShaderProgram {
 		GLuint shaderId;
 	public:
-		Shader(const std::string &vertexPath, const std::string &fragmentPath);
+		ShaderProgram(const std::string &vertexPath, const std::string &fragmentPath);
 
 		virtual void bind();
 		virtual void unbind();

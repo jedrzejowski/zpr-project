@@ -38,6 +38,9 @@ void engine::Sub3DObj::insertToBuffers(std::vector<engine::Point3DeX> &vertices,
 		indices[i] += vOffset;
 
 	setNeedRefreshBuffers(false);
+
+	for (auto &child : getChildrens())
+		child->insertToBuffers(vertices, indices);
 }
 
 bool engine::Sub3DObj::isNeedRefreshBuffers() const {

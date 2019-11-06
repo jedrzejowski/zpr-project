@@ -31,7 +31,7 @@ namespace engine {
 
 	class Material;
 
-	class Shader;
+	class ShaderProgram;
 
 	class Texture;
 
@@ -56,6 +56,8 @@ namespace engine {
 
 namespace gui {
 	class Interface;
+
+	class InterfaceShader;
 
 	class GuiObject;
 

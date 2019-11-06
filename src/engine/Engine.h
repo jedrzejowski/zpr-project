@@ -9,7 +9,7 @@
 
 #include "texture.h"
 #include "light.h"
-#include "shader.h"
+#include "shaderProgram.h"
 #include "camera.h"
 
 #include "window.h"

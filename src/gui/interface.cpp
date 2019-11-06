@@ -8,8 +8,6 @@ gui::Interface::Interface(engine::Scene *parent) :
 		Object(parent),
 		scene(parent) {
 	inputInterface = new engine::InputInterface(this);
-	shader = new engine::Shader("shader/interface.vert", "shader/interface.frag");
-	texture = engine::Resources::get().getTexture("texture/gui.png");
 
 	// Przeliczenie względnej pozycji myszki na dziedzinę interfejsu
 	inputInterface->getMouse()->onMove([&](const glm::vec2 &delta) {
@@ -32,18 +30,13 @@ gui::Interface::Interface(engine::Scene *parent) :
 void gui::Interface::render(const engine::Scene *scene) {
 	auto window = scene->getWindow();
 	auto size = std::min(window->getWinWidth(), window->getWinHeight());
-
 	window->setViewPort(engine::ViewPort::Square);
-	glClear(GL_DEPTH_BUFFER_BIT);
 
-	shader->bind();
-	texture->use(0);
-
-	shader->setMat4("model", getModel());
+	interfaceShader.bind();
 
 	draw();
 
-	shader->unbind();
+	interfaceShader.unbind();
 }
 
 engine::InputInterface *gui::Interface::getInputInterface() const {

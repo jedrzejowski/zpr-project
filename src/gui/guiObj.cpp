@@ -7,6 +7,12 @@ gui::GuiObject::GuiObject(Interface *interface) :
 		interface(interface) {
 }
 
+gui::GuiObject::GuiObject(GuiObject *parent) :
+		Object(parent),
+		Sub3DObj(parent),
+		guiParent(parent),
+		interface(parent->getInterface()) {
+}
 
 const glm::mat4 &gui::GuiObject::getModel() const {
 	return model;
@@ -14,6 +20,7 @@ const glm::mat4 &gui::GuiObject::getModel() const {
 
 void gui::GuiObject::setModel(const glm::mat4 &model) {
 	GuiObject::model = model;
+	setNeedRefreshBuffers(true);
 }
 
 const gui::Interface* gui::GuiObject::getInterface() const {

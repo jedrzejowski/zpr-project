@@ -8,7 +8,7 @@ map::Renderer::Renderer(const map::WorldMap *worldMap) :
 		Object() {
 	this->worldMap = worldMap;
 
-	shader = new engine::Shader("shader/game.vert", "shader/game.frag");
+	shader = new engine::ShaderProgram("shader/game.vert", "shader/game.frag");
 	shader->setInt("material.diffuse", 0);
 	blockTexture = engine::Resources::get().getTexture("texture/block.png");
 
@@ -53,6 +53,6 @@ void map::Renderer::render(const engine::Camera &camera,
 	shader->unbind();
 }
 
-engine::Shader *map::Renderer::getShader() const {
+engine::ShaderProgram *map::Renderer::getShader() const {
 	return shader;
 }

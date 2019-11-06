@@ -4,7 +4,7 @@
 #include "src/lib/object.h"
 
 #include "light.h"
-#include "shader.h"
+#include "shaderProgram.h"
 #include "window.h"
 
 namespace engine {

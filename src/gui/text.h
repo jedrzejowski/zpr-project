@@ -2,26 +2,23 @@
 
 #include "src/_classdef.h"
 #include "src/lib/object.h"
+#include "guiObj.h"
 
 namespace gui {
 
-	class Text : public Object {
+	class Text : public GuiObject {
 	private:
 		glm::mat4 model = glm::mat4(1);
 		std::string content;
 
 	public:
-		explicit Text(Object* parent = nullptr);
-
-		virtual void insertToBuffers(std::vector<engine::Point3DeX> &vertices,
-									 std::vector<engine::SimpleTriangle> &indices) = 0;
-
-
-		const glm::mat4 &getModel() const;
-		void setModel(const glm::mat4 &model);
+		explicit Text(Interface* interface);
+		explicit Text(GuiObject* parent);
 
 		const std::string &getContent() const;
 		void setContent(const std::string &content);
+
+		void updateBuffers() override;
 	};
 }
 

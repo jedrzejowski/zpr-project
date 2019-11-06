@@ -12,7 +12,8 @@ gui::RectangleObj::RectangleObj(Interface *interface) :
 		bool isCollision = isCollisionWithMouse(mousePosition);
 
 		if (isCollision) {
-			if (!wasMouseIn) onEnter();
+			if (!wasMouseIn)
+				onEnter();
 			onHover();
 			wasMouseIn = true;
 		} else {
@@ -73,7 +74,6 @@ void gui::RectangleObj::setTexture(const glm::vec2 &textureStart, const glm::vec
 }
 
 void gui::RectangleObj::updateBuffers() {
-
 	auto recModel = glm::mat4(1);
 	recModel = glm::translate(recModel, glm::vec3(position, 0));
 	recModel = glm::scale(recModel, glm::vec3(size, 0));

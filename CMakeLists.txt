@@ -35,8 +35,8 @@ target_sources(${APP_TARGET} PUBLIC
         src/engine/texture.cpp
         src/engine/light.h
         src/engine/light.cpp
-        src/engine/shader.h
-        src/engine/shader.cpp
+        src/engine/shaderProgram.h
+        src/engine/shaderProgram.cpp
         src/engine/camera.h
         src/engine/camera.cpp
 
@@ -71,6 +71,8 @@ target_sources(${APP_TARGET} PUBLIC
         src/gui/GUI.h
         src/gui/interface.h
         src/gui/interface.cpp
+        src/gui/interfaceShader.h
+        src/gui/interfaceShader.cpp
         src/gui/text.h
         src/gui/text.cpp
         src/gui/guiObj.h

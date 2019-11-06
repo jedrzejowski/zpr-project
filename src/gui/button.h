@@ -4,6 +4,7 @@
 #include "src/engine/Engine.h"
 
 #include "rectangleObj.h"
+#include "text.h"
 
 namespace gui {
 	enum ButtonState {
@@ -16,6 +17,7 @@ namespace gui {
 	class Button : public RectangleObj {
 		std::string label;
 		ButtonState state;
+		Text* text;
 
 	public:
 

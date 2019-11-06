@@ -4,7 +4,7 @@
 
 #include <src/logger.h>
 #include "src/exception.h"
-#include "shader.h"
+#include "shaderProgram.h"
 #include "resources.h"
 
 using namespace engine;
@@ -20,14 +20,14 @@ GLuint compileShader(const GLchar *shaderCode, GLenum shaderType) {
 	if (!success) {
 		GLchar infoLog[512];
 		glGetShaderInfoLog(shader_id, sizeof(infoLog), nullptr, infoLog);
-		std::string msg = std::string("Shader compilation: ") + infoLog;
+		std::string msg = std::string("ShaderProgram compilation: ") + infoLog;
 		throw exception(msg);
 	}
 	return shader_id;
 }
 
-Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath) {
-	//Vertex Shader
+ShaderProgram::ShaderProgram(const std::string &vertexPath, const std::string &fragmentPath) {
+	//Vertex ShaderProgram
 	std::string vertexCode = Resources::get().loadTextFile(vertexPath);
 	GLuint vertexId = compileShader(vertexCode.c_str(), GL_VERTEX_SHADER);
 
@@ -35,7 +35,7 @@ Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath) {
 	std::string fragmentCode = Resources::get().loadTextFile(fragmentPath);
 	GLuint fragmentId = compileShader(fragmentCode.c_str(), GL_FRAGMENT_SHADER);
 
-	// link Shader program
+	// link ShaderProgram program
 	shaderId = glCreateProgram();
 	glAttachShader(shaderId, vertexId);
 	glAttachShader(shaderId, fragmentId);
@@ -47,7 +47,7 @@ Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath) {
 	if (!success) {
 		GLchar infoLog[512];
 		glGetProgramInfoLog(shaderId, sizeof(infoLog), nullptr, infoLog);
-		std::string msg = std::string("Shader program linking:\n") + infoLog;
+		std::string msg = std::string("ShaderProgram program linking:\n") + infoLog;
 		logger.info(std::string("Błąd podczas kompilacji szejdera:\n") + infoLog);
 		throw exception(msg);
 	}
@@ -58,64 +58,64 @@ Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath) {
 }
 
 
-void Shader::bind() {
+void ShaderProgram::bind() {
 	glUseProgram(getID());
 }
 
 
-void Shader::unbind() {
+void ShaderProgram::unbind() {
 
 }
 
-void Shader::setBool(const std::string &name, bool value) {
+void ShaderProgram::setBool(const std::string &name, bool value) {
 	glUniform1i(glGetUniformLocation(getID(), name.c_str()), (int) value);
 }
 
-void Shader::setInt(const std::string &name, int value) {
+void ShaderProgram::setInt(const std::string &name, int value) {
 	glUniform1i(glGetUniformLocation(getID(), name.c_str()), value);
 }
 
-void Shader::setFloat(const std::string &name, float value) {
+void ShaderProgram::setFloat(const std::string &name, float value) {
 	glUniform1f(glGetUniformLocation(getID(), name.c_str()), value);
 }
 
-void Shader::setVec2(const std::string &name, const glm::vec2 &value) {
+void ShaderProgram::setVec2(const std::string &name, const glm::vec2 &value) {
 	glUniform2fv(glGetUniformLocation(getID(), name.c_str()), 1, &value[0]);
 }
 
-void Shader::setVec2(const std::string &name, float x, float y) {
+void ShaderProgram::setVec2(const std::string &name, float x, float y) {
 	glUniform2f(glGetUniformLocation(getID(), name.c_str()), x, y);
 }
 
-void Shader::setVec3(const std::string &name, const glm::vec3 &value) {
+void ShaderProgram::setVec3(const std::string &name, const glm::vec3 &value) {
 	glUniform3fv(glGetUniformLocation(getID(), name.c_str()), 1, &value[0]);
 }
 
-void Shader::setVec3(const std::string &name, float x, float y, float z) {
+void ShaderProgram::setVec3(const std::string &name, float x, float y, float z) {
 	glUniform3f(glGetUniformLocation(getID(), name.c_str()), x, y, z);
 }
 
-void Shader::setVec4(const std::string &name, const glm::vec4 &value) {
+void ShaderProgram::setVec4(const std::string &name, const glm::vec4 &value) {
 	glUniform4fv(glGetUniformLocation(getID(), name.c_str()), 1, &value[0]);
 }
 
-void Shader::setVec4(const std::string &name, float x, float y, float z, float w) {
+void ShaderProgram::setVec4(const std::string &name, float x, float y, float z, float w) {
 	glUniform4f(glGetUniformLocation(getID(), name.c_str()), x, y, z, w);
 }
 
-void Shader::setMat2(const std::string &name, const glm::mat2 &mat) {
+void ShaderProgram::setMat2(const std::string &name, const glm::mat2 &mat) {
 	glUniformMatrix2fv(glGetUniformLocation(getID(), name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
-void Shader::setMat3(const std::string &name, const glm::mat3 &mat) {
+void ShaderProgram::setMat3(const std::string &name, const glm::mat3 &mat) {
 	glUniformMatrix3fv(glGetUniformLocation(getID(), name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
-void Shader::setMat4(const std::string &name, const glm::mat4 &mat) {
+void ShaderProgram::setMat4(const std::string &name, const glm::mat4 &mat) {
 	glUniformMatrix4fv(glGetUniformLocation(getID(), name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
-void Shader::setLight(const std::string &name, const Light &light) {
+void ShaderProgram::setLight(const std::string &name, const Light &light) {
 	setVec3(name + ".position", light.position);
 	setVec3(name + ".ambient", light.ambient);
 	setVec3(name + ".specular", light.specular);

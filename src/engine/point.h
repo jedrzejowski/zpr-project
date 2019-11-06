@@ -42,11 +42,12 @@ namespace engine {
 
 		float x = 0.0f;
 		float y = 0.0f;
-		uint32_t no = 1;
+		uint32_t no = 0;
 
 		TexCoord() : TexCoord(0.0f, 0.0f) {}
 
 		TexCoord(float x, float y) : x(x), y(y) {}
+		TexCoord(float x, float y, uint32_t no) : x(x), y(y), no(no) {}
 	};
 
 	struct SimpleTriangle {

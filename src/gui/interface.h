@@ -4,6 +4,7 @@
 #include "src/_classdef.h"
 #include "src/lib/object.h"
 #include "src/engine/Engine.h"
+#include "interfaceShader.h"
 
 namespace gui {
 
@@ -11,13 +12,10 @@ namespace gui {
 	private:
 		engine::InputInterface *inputInterface;
 		engine::Scene *scene;
-
-		engine::Shader *shader = nullptr;
-		const engine::Texture *texture = nullptr;
-
 		glm::vec2 scaleSize = glm::vec2(1);
-
 		glm::vec2 mouseScaledPosition = glm::vec2(0);
+		InterfaceShader interfaceShader;
+
 	public:
 		explicit Interface(engine::Scene *scene);
 		void render(const engine::Scene *scene) override;

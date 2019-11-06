@@ -9,7 +9,7 @@ namespace map {
 	class Renderer : public Object {
 	private:
 		const engine::Texture *blockTexture = nullptr;
-		engine::Shader *shader = nullptr;
+		engine::ShaderProgram *shader = nullptr;
 
 		const WorldMap *worldMap = nullptr;
 
@@ -18,7 +18,7 @@ namespace map {
 		explicit Renderer(const WorldMap *worldMap);
 		~Renderer();
 
-		engine::Shader *getShader() const;
+		engine::ShaderProgram *getShader() const;
 
 		void render(const engine::Camera &camera,
 					const engine::Scene *scene);

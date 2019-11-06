@@ -62,13 +62,25 @@ void Abs3DObj::setNeedRefreshBuffers(bool needRefreshBuffers) {
 	Abs3DObj::needRefreshBuffers = needRefreshBuffers;
 }
 
+
+void recursiveUpdateBuffers(Sub3DObj *obj) {
+
+	if (obj->isNeedRefreshBuffers())
+		obj->updateBuffers();
+
+	for (auto &child : obj->getChildrens()) {
+		if (child->isNeedRefreshBuffers())
+			child->updateBuffers();
+		recursiveUpdateBuffers(child);
+	}
+}
+
 void Abs3DObj::updateBuffers() {
 	verticesBuf.clear();
 	indicesBuf.clear();
 
 	for (auto &child : getChildrens()) {
-		if (child->isNeedRefreshBuffers())
-			child->updateBuffers();
+		recursiveUpdateBuffers(child);
 		child->insertToBuffers(verticesBuf, indicesBuf);
 	}
 }

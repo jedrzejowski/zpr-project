@@ -26,6 +26,8 @@
 #define TTY_COLOR_BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
 
 #define logger (Logger(__FILE__, __LINE__))
+#define fastLog(var) (logger.log(#var).log("=").log(var))
+
 //#define logger //
 
 class Logger {

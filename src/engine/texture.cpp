@@ -7,6 +7,7 @@
 #include "src/exception.h"
 #include "texture.h"
 #include "resources.h"
+#include "point.h"
 
 using namespace engine;
 
@@ -24,8 +25,14 @@ void Texture::loadTexture(const std::string &path) {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
+	// To jest aby tektury wygladały jak kwadratowe, czyli jak w MC
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
+	// To jest aby nie było lini pomiędzy dwoma tekturami
+	// https://community.khronos.org/t/2d-texture-problem-lines-between-textures/57809
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
 	auto data = stbi_load(path.c_str(),
 						  &width, &height, &nrChannels, 0);
@@ -47,4 +54,20 @@ void Texture::loadTexture(const std::string &path) {
 void Texture::use(const int &num) const {
 	glActiveTexture(GL_TEXTURE0 + num);
 	glBindTexture(GL_TEXTURE_2D, getID());
+}
+
+int Texture::getWidth() const {
+	return width;
+}
+
+int Texture::getHeight() const {
+	return height;
+}
+
+int Texture::getNrChannels() const {
+	return nrChannels;
+}
+
+Color Texture::getColor(int x, int y) {
+	return Color();
 }

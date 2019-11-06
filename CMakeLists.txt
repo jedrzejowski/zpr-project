@@ -16,6 +16,7 @@ add_executable(${APP_TARGET}
         src/logger.h
         src/exception.h
         src/lib/signal.h
+        src/lib/signal.cpp
         src/lib/object.h
         src/lib/object.cpp
         src/lib/perlin.h
@@ -43,8 +44,10 @@ target_sources(${APP_TARGET} PUBLIC
         src/engine/window.cpp
         src/engine/scene.h
         src/engine/scene.cpp
-        src/engine/abs3DObj.cpp
-        src/engine/abs3DObj.h
+        src/engine/abs3Dobj.cpp
+        src/engine/abs3Dobj.h
+        src/engine/sub3Dobj.cpp
+        src/engine/sub3Dobj.h
 
         src/engine/inputDevice.h
         src/engine/inputDevice.cpp
@@ -68,6 +71,8 @@ target_sources(${APP_TARGET} PUBLIC
         src/gui/GUI.h
         src/gui/interface.h
         src/gui/interface.cpp
+        src/gui/text.h
+        src/gui/text.cpp
         src/gui/guiObj.h
         src/gui/guiObj.cpp
         src/gui/rectangleObj.h

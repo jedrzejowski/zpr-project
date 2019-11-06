@@ -13,11 +13,11 @@ public:
 	~Object();
 
 	// Usunięcie możliwości kopiowania obiektu
-	Object(const Object&) = delete;
-	void operator=(const Object&) = delete;
+	Object(const Object &) = delete;
+	void operator=(const Object &) = delete;
 
 	Object *getParent() const;
 	void setParent(Object *parent);
 
-	Signal<Object*> onDestroy;
+	const Signal<Object *> onDestroy;
 };

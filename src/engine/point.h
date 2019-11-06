@@ -10,15 +10,15 @@ namespace engine {
 
 		static float DistanceBetween(const Point3D &point1, const Point3D &point2);
 
-		GLfloat x = 0.0f;
-		GLfloat y = 0.0f;
-		GLfloat z = 0.0f;
+		float x = 0.0f;
+		float y = 0.0f;
+		float z = 0.0f;
 
 		Point3D() : Point3D(0.0f, 0.0f) {}
 
-		Point3D(GLfloat x, GLfloat y) : Point3D(x, y, 0.0f) {}
+		Point3D(float x, float y) : Point3D(x, y, 0.0f) {}
 
-		Point3D(GLfloat x, GLfloat y, GLfloat z) : x(x), y(y), z(z) {}
+		Point3D(float x, float y, float z) : x(x), y(y), z(z) {}
 
 		Point3D(glm::vec3 vec) : x(vec.x), y(vec.y), z(vec.z) {}
 
@@ -27,25 +27,26 @@ namespace engine {
 
 	struct Normal {
 
-		GLfloat x = 0.0f;
-		GLfloat y = 0.0f;
-		GLfloat z = 0.0f;
+		float x = 0.0f;
+		float y = 0.0f;
+		float z = 0.0f;
 
 		Normal() : Normal(0.0f, 0.0f) {}
 
-		Normal(GLfloat x, GLfloat y) : Normal(x, y, 0.0f) {}
+		Normal(float x, float y) : Normal(x, y, 0.0f) {}
 
-		Normal(GLfloat x, GLfloat y, GLfloat z) : x(x), y(y), z(z) {}
+		Normal(float x, float y, float z) : x(x), y(y), z(z) {}
 	};
 
 	struct TexCoord {
 
-		GLfloat x = 0.0f;
-		GLfloat y = 0.0f;
+		float x = 0.0f;
+		float y = 0.0f;
+		uint32_t no = 1;
 
 		TexCoord() : TexCoord(0.0f, 0.0f) {}
 
-		TexCoord(GLfloat x, GLfloat y) : x(x), y(y) {}
+		TexCoord(float x, float y) : x(x), y(y) {}
 	};
 
 	struct SimpleTriangle {
@@ -55,13 +56,32 @@ namespace engine {
 
 		SimpleTriangle() : first(0), second(0), third(0) {}
 
-		SimpleTriangle(const uint32_t first, const uint32_t second, const uint32_t third) : first(first),
-																							second(second),
-																							third(third) {}
+		SimpleTriangle(const uint32_t first, const uint32_t second, const uint32_t third) :
+				first(first), second(second), third(third) {}
 
 		SimpleTriangle operator+(const int &n);
 
 		SimpleTriangle &operator+=(const int &n);
+	};
+
+	inline std::ostream &operator<<(std::ostream &out, const SimpleTriangle &tringle) {
+		return out << "SimpleTriangle(" << tringle.first << ", " << tringle.second << ", " << tringle.third << ")";
+	}
+
+	struct Color {
+
+		float r = 0.0f;
+		float g = 0.0f;
+		float b = 0.0f;
+		float a = 1.0f;
+
+		Color() : Color(0.0f, 0.0f, 0.0f) {}
+
+		Color(float gray) : r(gray), g(gray), b(gray) {}
+
+		Color(float r, float g, float b) : r(r), g(g), b(b) {}
+
+		Color(float r, float g, float b, float a) : r(r), g(g), b(b), a(a) {}
 	};
 
 	struct Point3DeX {
@@ -84,8 +104,8 @@ namespace engine {
 
 		Point3DeX(glm::vec4 p, TexCoord t) : point(p), texture(t) {}
 
-		Point3DeX(GLfloat x, GLfloat y, GLfloat z) : point(x, y, z) {}
+		Point3DeX(float x, float y, float z) : point(x, y, z) {}
 
-		Point3DeX(GLfloat x, GLfloat y, GLfloat z, TexCoord t) : point(x, y, z), texture(t) {}
+		Point3DeX(float x, float y, float z, TexCoord t) : point(x, y, z), texture(t) {}
 	};
 }

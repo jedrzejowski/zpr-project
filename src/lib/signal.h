@@ -16,33 +16,16 @@
 
 template<typename... Args>
 class Signal {
+	typedef std::function<void(Args...)> Slot;
 private:
 	mutable std::map<int, std::function<void(Args...)>> slots;
 	mutable int currentId;
 public:
-
 	Signal() : currentId(0) {}
 
-	// connects a member function to this Signal
 	template<typename T>
-	int connect(T *inst, void (T::*func)(Args...)) const {
-		auto id = connect([=](Args... args) {
-			(inst->*func)(args...);
-		});
-
-		inst->onDestroy.connect([this, id](Object *obj) {
-			this->disconnect(id);
-		});
-
-		return id;
-	}
-
-	// connects a const member function to this Signal
-	template<typename T>
-	int connect(T *inst, const void (T::*func)(Args...)) const {
-		auto id = connect([=](Args... args) {
-			(inst->*func)(args...);
-		});
+	int connect(const T *inst, const Slot &slot) const {
+		auto id = connect(slot);
 
 		inst->onDestroy.connect([this, id](Object *obj) {
 			this->disconnect(id);
@@ -53,7 +36,7 @@ public:
 
 	// connects a std::function to the signal. The returned
 	// value can be used to disconnect the function again
-	int connect(const std::function<void(Args...)> &slot) const {
+	int connect(const Slot &slot) const {
 		slots.insert(std::make_pair(++currentId, slot));
 		return currentId;
 	}
@@ -70,16 +53,20 @@ public:
 
 	// calls all connected functions
 	void emit(Args... p) const {
-		for (auto const &it : slots) {
+		for (const auto &it : slots) {
 			it.second(std::forward<Args>(p)...);
 		}
 	}
 
-	inline void operator()(const std::function<void(Args...)> &slot) const {
+	void operator()(const Object *inst, const Slot &slot) const {
+		connect(inst, slot);
+	}
+
+	void operator()(const Slot &slot) const {
 		connect(slot);
 	}
 
-	inline void operator()(Args... p) const {
+	void operator()(Args... p) const {
 		emit(p...);
 	}
 

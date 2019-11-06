@@ -62,6 +62,8 @@ namespace gui {
 	class RectangleObj;
 
 	class Button;
+
+	class Text;
 }
 
 namespace block {

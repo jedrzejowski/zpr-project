@@ -6,7 +6,7 @@ gui::Button::Button(Interface *interface) :
 	setSize(glm::vec3(1, 0.13, 0));
 	setState(Idle);
 
-	onHover([&] {
+	onEnter([&] {
 		setState(Hover);
 	});
 

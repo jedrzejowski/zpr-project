@@ -14,7 +14,8 @@
 
 #include "window.h"
 #include "scene.h"
-#include "abs3DObj.h"
+#include "abs3Dobj.h"
+#include "sub3Dobj.h"
 
 #include "mouse.h"
 #include "keyboard.h"

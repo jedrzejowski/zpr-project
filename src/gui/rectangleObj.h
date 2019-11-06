@@ -8,8 +8,9 @@ namespace gui {
 
 	class RectangleObj : public GuiObject {
 	private:
-		glm::vec3 position = glm::vec3(0);
-		glm::vec3 size = glm::vec3(1);
+
+		glm::vec2 position = glm::vec2(0);
+		glm::vec2 size = glm::vec2(1);
 
 		glm::vec3 point_xy,
 				point_Xy,
@@ -17,19 +18,21 @@ namespace gui {
 				point_XY;
 
 		glm::vec2 textureStart, textureEnd;
+
+		bool wasMouseIn = false;
+
 	public:
 
 		explicit RectangleObj(Interface *interface);
 
-		void insertToBuffers(std::vector<engine::Point3DeX> &vertices,
-							 std::vector<engine::SimpleTriangle> &indices) override;
+		bool isCollisionWithMouse(const glm::vec2 &mousePosition);
+		void updateBuffers() override;
 
-		bool isCollisionWithMouse(const engine::Mouse* mouse) override;
+		const glm::vec2 &getPosition() const;
+		void setPosition(const glm::vec2 &position);
+		const glm::vec2 &getSize() const;
+		void setSize(const glm::vec2 &size);
 
-		const glm::vec3 &getPosition() const;
-		void setPosition(const glm::vec3 &position);
-		const glm::vec3 &getSize() const;
-		void setSize(const glm::vec3 &size);
 
 		const glm::vec2 &getTextureStart() const;
 		void setTextureStart(const glm::vec2 &textureStart);

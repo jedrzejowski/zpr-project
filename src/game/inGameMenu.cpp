@@ -8,14 +8,12 @@
 game::InGameMenu::InGameMenu(game::GameScene *scene) :
 		Interface(scene) {
 
-
 	resumeBtn = new gui::Button(this);
+	resumeBtn->setPosition(glm::vec2(0, 0.2));
 	optionsBtn = new gui::Button(this);
+	optionsBtn->setPosition(glm::vec2(0, 0.4));
 	saveBtn = new gui::Button(this);
-
-	addObject(glm::vec2(0, 0.2), glm::vec2(1), resumeBtn);
-	addObject(glm::vec2(0, 0.4), glm::vec2(1), optionsBtn);
-	addObject(glm::vec2(0, 0.6), glm::vec2(1), saveBtn);
+	saveBtn->setPosition(glm::vec2(0, 0.6));
 
 	getInputInterface()->getKeyboard()->Escape.onPressed([&] {
 		onMenuExit();

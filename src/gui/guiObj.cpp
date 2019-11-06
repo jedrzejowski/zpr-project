@@ -3,6 +3,7 @@
 
 gui::GuiObject::GuiObject(Interface *interface) :
 		Object(interface),
+		Sub3DObj(interface),
 		interface(interface) {
 }
 

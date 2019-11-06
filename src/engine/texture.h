@@ -25,6 +25,12 @@ namespace engine {
 		GLuint getID() const {
 			return texID;
 		}
+
+		int getWidth() const;
+		int getHeight() const;
+		int getNrChannels() const;
+
+		Color getColor(int x, int y);
 	};
 }
 

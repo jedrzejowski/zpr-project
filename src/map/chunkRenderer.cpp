@@ -22,7 +22,7 @@ void map::ChunkRenderer::updateBuffers() {
 
 	for (auto iter : visibleBlocks) {
 		auto block = iter.second;
-		block->insertToBuffers(vertices, indices);
+		block->insertToBuffers(verticesBuf, indicesBuf);
 	}
 }
 

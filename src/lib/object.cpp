@@ -19,10 +19,10 @@ Object *Object::getParent() const {
 	return parent;
 }
 
-void Object::setParent(Object *parent) {
+void Object::setParent(Object *newParent) {
 	if (this->parent != nullptr)
 		this->parent->childrens.remove(this);
-	this->parent = parent;
+	this->parent = newParent;
 	if (this->parent != nullptr)
 		this->parent->childrens.push_back(this);
 }

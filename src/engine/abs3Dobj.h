@@ -3,9 +3,10 @@
 #include <vector>
 #include "src/_classdef.h"
 #include "scene.h"
+#include "sub3Dobj.h"
 
 namespace engine {
-	class Abs3DObj {
+	class Abs3DObj : public Sub3DObj {
 	private:
 		GLuint VAO, VBO, EBO;
 		bool needRefreshBuffers = true;
@@ -13,12 +14,9 @@ namespace engine {
 				indicesLengthInBuffer = 0;
 	protected:
 
-		std::vector<engine::Point3DeX> vertices;
-		std::vector<engine::SimpleTriangle> indices;
-
 		void draw();
-		virtual void updateBuffers() {};
-		void insertToBuffers();
+		void insertToGPU();
+		void updateBuffers() override;
 
 	public:
 
@@ -29,6 +27,7 @@ namespace engine {
 
 		bool isNeedRefreshBuffers() const;
 		void setNeedRefreshBuffers(bool needRefreshBuffers);
+
 	};
 }
 

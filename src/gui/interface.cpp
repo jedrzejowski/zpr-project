@@ -3,7 +3,6 @@
 //
 
 #include "interface.h"
-#include "guiObj.h"
 
 gui::Interface::Interface(engine::Scene *parent) :
 		Object(parent),
@@ -12,49 +11,23 @@ gui::Interface::Interface(engine::Scene *parent) :
 	shader = new engine::Shader("shader/interface.vert", "shader/interface.frag");
 	texture = engine::Resources::get().getTexture("texture/gui.png");
 
-
-	inputInterface->onAttached([&] {
-		updateMouseState(true);
-	});
-
+	// Przeliczenie względnej pozycji myszki na dziedzinę interfejsu
 	inputInterface->getMouse()->onMove([&](const glm::vec2 &delta) {
-		updateMouseState();
+		auto mousePosition = inputInterface->getMouse()->getCurrentPosition();
+		auto win = inputInterface->getScene()->getWindow();
+		mousePosition.x -= float(win->getWinWidth()) / 2 + 0.5;
+		mousePosition.y -= float(win->getWinHeight()) / 2 + 0.5;
+		auto size = std::min(win->getWinWidth(), win->getWinHeight());
+		mousePosition.x /= size;
+		mousePosition.y /= size;
+		mousePosition.x += 0.5;
+		mousePosition.y += 0.5;
+		mousePosition /= getScaleSize();
+
+		mouseScaledPosition = mousePosition;
 	});
-
-	inputInterface->getMouse()->Left.onPressed([&] {
-		updateMouseState();
-	});
 }
 
-
-void gui::Interface::addObject(glm::vec2 position, glm::vec2 size, gui::GuiObject *object) {
-	auto model = glm::mat4(1);
-	model = glm::scale(model, glm::vec3(size, 1.f));
-	model = glm::translate(model, glm::vec3(position, 0.f));
-	addObject(model, object);
-}
-
-
-void gui::Interface::addObject(glm::mat4 model, gui::GuiObject *object) {
-
-	objects.push_back(new InterfaceItem{
-			model,
-			object
-	});
-
-	setNeedRefreshBuffers(true);
-}
-
-void gui::Interface::removeObject(gui::GuiObject *object) {
-	for (const auto iter : objects) {
-		if (iter->object == object) {
-			objects.remove(iter);
-			return;
-		}
-	}
-
-	setNeedRefreshBuffers(true);
-}
 
 void gui::Interface::render(const engine::Scene *scene) {
 	auto window = scene->getWindow();
@@ -64,32 +37,13 @@ void gui::Interface::render(const engine::Scene *scene) {
 	glClear(GL_DEPTH_BUFFER_BIT);
 
 	shader->bind();
-	texture->use();
+	texture->use(0);
 
-	{
-		auto topLeft = glm::mat4(1);
-		// odbicie lustrazne względem osi Y
-		topLeft[1][1] = -1.f;
-		// przeniesienie do górnego lewego obszaru
-		topLeft = glm::translate(topLeft, glm::vec3(-1, -1, 0));
-		topLeft = glm::scale(topLeft, glm::vec3(2));
-		shader->setMat4("topLeft", topLeft);
-	}
+	shader->setMat4("model", getModel());
 
 	draw();
 
 	shader->unbind();
-}
-
-void gui::Interface::updateBuffers() {
-
-	vertices.clear();
-	indices.clear();
-
-	for (auto iter : objects) {
-		iter->object->setModel(iter->model);
-		iter->object->insertToBuffers(vertices, indices);
-	}
 }
 
 engine::InputInterface *gui::Interface::getInputInterface() const {
@@ -100,28 +54,27 @@ engine::Scene *gui::Interface::getScene() const {
 	return scene;
 }
 
+const glm::vec2 &gui::Interface::getScaleSize() const {
+	return scaleSize;
+}
 
-void gui::Interface::updateMouseState(bool initial) {
-	auto mouse = getInputInterface()->getMouse();
+void gui::Interface::setScaleSize(const glm::vec2 &scaleSize) {
+	Interface::scaleSize = scaleSize;
+}
 
-	for (auto iter : objects) {
-		if (initial) {
-			iter->wasIn = false;
-		}
+glm::mat4 gui::Interface::getModel() {
+	auto topLeft = glm::mat4(1);
 
-		if (iter->object->isCollisionWithMouse(mouse)) {
-			if (iter->wasIn) {
+	// odbicie lustrazne względem osi Y
+	topLeft[1][1] = -1.f;
+	// przeniesienie do górnego lewego obszaru
+	topLeft = glm::translate(topLeft, glm::vec3(-1, -1, 0));
+	topLeft = glm::scale(topLeft, glm::vec3(2));
+	topLeft = glm::scale(topLeft, glm::vec3(1 / scaleSize.x, 1 / scaleSize.y, 1));
 
+	return topLeft;
+}
 
-			} else {
-				iter->object->onHover();
-				iter->wasIn = true;
-			}
-		} else {
-			if (iter->wasIn) {
-				iter->object->onLeave();
-				iter->wasIn = false;
-			}
-		}
-	}
+glm::vec2 gui::Interface::getMouseScaledPosition() {
+	return mouseScaledPosition;
 }

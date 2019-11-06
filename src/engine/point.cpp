@@ -18,7 +18,11 @@ void Point3DeX::BindGlVAP() {
 
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Point3DeX), (void *) offset);
 	glEnableVertexAttribArray(2);
-	offset += sizeof(TexCoord);
+	offset += sizeof(float) * 2;
+
+	glVertexAttribPointer(3, 1, GL_UNSIGNED_INT, GL_FALSE, sizeof(Point3DeX), (void *) offset);
+	glEnableVertexAttribArray(2);
+	offset += sizeof(uint32_t);
 }
 
 void Point3DeX::CalcNormals(Point3DeX *points, size_t pSize, SimpleTriangle *triangles, size_t tSize) {

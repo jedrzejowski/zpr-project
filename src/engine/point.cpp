@@ -20,8 +20,8 @@ void Point3DeX::BindGlVAP() {
 	glEnableVertexAttribArray(2);
 	offset += sizeof(float) * 2;
 
-	glVertexAttribPointer(3, 1, GL_UNSIGNED_INT, GL_FALSE, sizeof(Point3DeX), (void *) offset);
-	glEnableVertexAttribArray(2);
+	glVertexAttribIPointer(3, 1, GL_UNSIGNED_INT, sizeof(Point3DeX), (void *) offset);
+	glEnableVertexAttribArray(3);
 	offset += sizeof(uint32_t);
 }
 

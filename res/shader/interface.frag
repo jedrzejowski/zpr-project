@@ -8,13 +8,15 @@ uniform sampler2D guiTexture;
 uniform sampler2D fontTexture;
 
 void main() {
+    vec4 outColor;
+
     if (TexNum == uint(0)) {
-        FragColor = texture(guiTexture, TexCoord);
-        return;
+        outColor = texture(guiTexture, TexCoord);
     }
 
     if (TexNum == uint(1)) {
-        FragColor = texture(fontTexture, TexCoord);
-        return;
+        outColor = texture(fontTexture, TexCoord);
     }
+
+    FragColor = outColor;
 }

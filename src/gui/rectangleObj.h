@@ -21,6 +21,8 @@ namespace gui {
 
 		bool wasMouseIn = false;
 
+		void refreshModel();
+
 	public:
 
 		explicit RectangleObj(Interface *interface);

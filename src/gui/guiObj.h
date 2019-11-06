@@ -15,11 +15,13 @@ namespace gui {
 		explicit GuiObject(Interface *interface);
 		explicit GuiObject(GuiObject *parent);
 
-		const glm::mat4 &getModel() const;
+		glm::mat4 getModel() const;
 		void setModel(const glm::mat4 &model);
 
 		const Interface *getInterface() const;
 		Interface *getInterface();
+
+		GuiObject *getGuiParent() const;
 
 		const Signal<> onHover;
 		const Signal<> onEnter;

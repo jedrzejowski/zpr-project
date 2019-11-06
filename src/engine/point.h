@@ -44,8 +44,7 @@ namespace engine {
 		float y = 0.0f;
 		uint32_t no = 0;
 
-		TexCoord() : TexCoord(0.0f, 0.0f) {}
-
+		TexCoord() = default;
 		TexCoord(float x, float y) : x(x), y(y) {}
 		TexCoord(float x, float y, uint32_t no) : x(x), y(y), no(no) {}
 	};

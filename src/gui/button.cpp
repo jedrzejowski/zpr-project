@@ -6,16 +6,20 @@ gui::Button::Button(Interface *interface) :
 	setSize(glm::vec3(1, 0.13, 0));
 	setState(Idle);
 
-	text = new Text(this);
-	text->setContent("dupa");
+	{
+		text = new Text(this);
+		text->setContent("dupa");
+		auto model = text->getModel();
+		model = glm::translate(model, glm::vec3(0, 0, -.1));
+//		model = glm::scale(model, glm::vec3(0.1, 0.1, 1));
+		text->setModel(model);
+	}
 
 	onEnter([&] {
-		logger.log("enter");
 		setState(Hover);
 	});
 
 	onLeave([&] {
-		logger.log("leave");
 		setState(Idle);
 	});
 }

@@ -8,6 +8,7 @@
 #include "texture.h"
 #include "resources.h"
 #include "point.h"
+#include "shaderProgram.h"
 
 using namespace engine;
 
@@ -34,10 +35,13 @@ void Texture::loadTexture(const std::string &path) {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+
 	auto data = stbi_load(path.c_str(),
 						  &width, &height, &nrChannels, 0);
 
 	if (data) {
+		logger.log(path).log(nrChannels);
 
 		if (nrChannels == 3)
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);

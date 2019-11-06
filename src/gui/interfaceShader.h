@@ -17,7 +17,7 @@ namespace gui {
 		void bind();
 		void unbind();
 
-		void setModel(const glm::mat4& );
+		void setModel(const glm::mat4& model);
 	};
 }
 

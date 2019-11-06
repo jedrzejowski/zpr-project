@@ -8,7 +8,7 @@ gui::RectangleObj::RectangleObj(Interface *interface) :
 	interface->getInputInterface()->getMouse()->onMove(this, [this](const glm::vec2 &delta) {
 
 		auto mousePosition = this->getInterface()->getMouseScaledPosition();
-		mousePosition = this->getModel() * glm::vec4(mousePosition, 0, 1);
+//		mousePosition = this->getModel() * glm::vec4(mousePosition, 0, 1);
 		bool isCollision = isCollisionWithMouse(mousePosition);
 
 		if (isCollision) {
@@ -38,6 +38,7 @@ const glm::vec2 &gui::RectangleObj::getPosition() const {
 
 void gui::RectangleObj::setPosition(const glm::vec2 &position) {
 	RectangleObj::position = position;
+	refreshModel();
 }
 
 const glm::vec2 &gui::RectangleObj::getSize() const {
@@ -46,6 +47,7 @@ const glm::vec2 &gui::RectangleObj::getSize() const {
 
 void gui::RectangleObj::setSize(const glm::vec2 &size) {
 	RectangleObj::size = size;
+	refreshModel();
 }
 
 const glm::vec2 &gui::RectangleObj::getTextureStart() const {
@@ -73,15 +75,20 @@ void gui::RectangleObj::setTexture(const glm::vec2 &textureStart, const glm::vec
 	setTextureEnd(textureEnd);
 }
 
-void gui::RectangleObj::updateBuffers() {
+void gui::RectangleObj::refreshModel() {
 	auto recModel = glm::mat4(1);
 	recModel = glm::translate(recModel, glm::vec3(position, 0));
-	recModel = glm::scale(recModel, glm::vec3(size, 0));
+	recModel = glm::scale(recModel, glm::vec3(size, 1));
+	setModel(recModel);
+}
 
-	point_xy = getModel() * recModel * glm::vec4(0, 0, 0, 1);
-	point_Xy = getModel() * recModel * glm::vec4(1, 0, 0, 1);
-	point_XY = getModel() * recModel * glm::vec4(1, 1, 0, 1);
-	point_xY = getModel() * recModel * glm::vec4(0, 1, 0, 1);
+
+void gui::RectangleObj::updateBuffers() {
+
+	point_xy = getModel() * glm::vec4(0, 0, 0, 1);
+	point_Xy = getModel() * glm::vec4(1, 0, 0, 1);
+	point_XY = getModel() * glm::vec4(1, 1, 0, 1);
+	point_xY = getModel() * glm::vec4(0, 1, 0, 1);
 
 	verticesBuf.clear();
 	verticesBuf.emplace_back(point_xy, engine::TexCoord(textureStart.x, textureStart.y));

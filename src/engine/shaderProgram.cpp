@@ -64,7 +64,7 @@ void ShaderProgram::bind() {
 
 
 void ShaderProgram::unbind() {
-
+	glUseProgram(0);
 }
 
 void ShaderProgram::setBool(const std::string &name, bool value) {
@@ -115,11 +115,8 @@ void ShaderProgram::setMat4(const std::string &name, const glm::mat4 &mat) {
 	glUniformMatrix4fv(glGetUniformLocation(getID(), name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }
 
-void ShaderProgram::setLight(const std::string &name, const Light &light) {
-	setVec3(name + ".position", light.position);
-	setVec3(name + ".ambient", light.ambient);
-	setVec3(name + ".specular", light.specular);
-	setVec3(name + ".diffuse", light.diffuse);
+void ShaderProgram::setUniformNameToId(const std::string &name, int id) {
+	glUniform1i(glGetUniformLocation(getID(), name.c_str()), id);
 }
 
 

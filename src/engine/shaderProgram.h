@@ -33,6 +33,6 @@ namespace engine {
 		void setMat3(const std::string &name, const glm::mat3 &mat);
 		void setMat4(const std::string &name, const glm::mat4 &mat);
 
-		void setLight(const std::string &name, const Light &light);
+		void setUniformNameToId(const std::string& name, int id);
 	};
 }

@@ -14,5 +14,5 @@ void main() {
     gl_Position = model * vec4(iPosition, 1.f);
 
     TexCoord = iTexCoord;
-    TexNum = iTexNum;
+    TexNum = uint(iTexNum);
 }

@@ -13,6 +13,10 @@ Abs3DObj::Abs3DObj() {
 	glBindVertexArray(VAO);
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &EBO);
+
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	Point3DeX::BindGlVAP();
 }
 
 Abs3DObj::~Abs3DObj() {
@@ -30,8 +34,6 @@ void Abs3DObj::insertToGPU() {
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	verticesLengthInBuffer = sizeof(Point3DeX) * verticesBuf.size();
 	glBufferData(GL_ARRAY_BUFFER, verticesLengthInBuffer, &verticesBuf[0], GL_STATIC_DRAW);
-
-	Point3DeX::BindGlVAP();
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	indicesLengthInBuffer = sizeof(SimpleTriangle) * indicesBuf.size();
@@ -69,7 +71,7 @@ void recursiveUpdateBuffers(Sub3DObj *obj) {
 		obj->updateBuffers();
 
 	for (auto &child : obj->getChildrens()) {
-		if (child->isNeedRefreshBuffers())
+//		if (child->isNeedRefreshBuffers())
 			child->updateBuffers();
 		recursiveUpdateBuffers(child);
 	}

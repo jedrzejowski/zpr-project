@@ -12,7 +12,12 @@ gui::Interface::Interface(engine::Scene *parent) :
 	// Przeliczenie względnej pozycji myszki na dziedzinę interfejsu
 	inputInterface->getMouse()->onMove([&](const glm::vec2 &delta) {
 		auto mousePosition = inputInterface->getMouse()->getCurrentPosition();
-		auto win = inputInterface->getScene()->getWindow();
+
+		auto scene = inputInterface->getScene();
+		if (scene == nullptr) return;
+		auto win = scene->getWindow();
+		if (win == nullptr) return;
+
 		mousePosition.x -= float(win->getWinWidth()) / 2 + 0.5;
 		mousePosition.y -= float(win->getWinHeight()) / 2 + 0.5;
 		auto size = std::min(win->getWinWidth(), win->getWinHeight());
@@ -33,6 +38,7 @@ void gui::Interface::render(const engine::Scene *scene) {
 	window->setViewPort(engine::ViewPort::Square);
 
 	interfaceShader.bind();
+	interfaceShader.setModel(getModel());
 
 	draw();
 

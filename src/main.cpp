@@ -1,8 +1,8 @@
-#include "src/game/gameWin.h"
+#include "mainWin.h"
 
 int main() {
 	try {
-		auto window = new game::MainWindow();
+		auto window = new MainWindow();
 		window->open();
 		return 0;
 	} catch (ZprException& e) {

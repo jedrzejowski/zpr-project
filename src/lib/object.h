@@ -21,3 +21,4 @@ public:
 
 	const Signal<Object *> onDestroy;
 };
+

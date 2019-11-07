@@ -3,15 +3,14 @@
 
 gui::Button::Button(Interface *interface) :
 		RectangleObj(interface) {
-	setSize(glm::vec3(1, 0.13, 0));
 	setState(Idle);
 
 	{
 		text = new Text(this);
-		text->setContent("dupa");
+		text->setContent("to jest tekst");
 		auto model = text->getModel();
-		model = glm::translate(model, glm::vec3(0, 0, -.1));
-//		model = glm::scale(model, glm::vec3(0.1, 0.1, 1));
+		model = glm::translate(model, glm::vec3(0, 0.13 / 4, -.1));
+		model = glm::scale(model, glm::vec3(0.13 / 2, 0.13 / 2, 1));
 		text->setModel(model);
 	}
 
@@ -65,4 +64,8 @@ void gui::Button::setState(gui::ButtonState state) {
 			);
 			break;
 	}
+}
+
+glm::vec2 gui::Button::getBaseSize() {
+	return glm::vec2(1, 0.13);
 }

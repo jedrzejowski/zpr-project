@@ -16,7 +16,7 @@ gui::GuiObject::GuiObject(GuiObject *parent) :
 
 glm::mat4 gui::GuiObject::getModel() const {
 	if (guiParent != nullptr)
-		return model * guiParent->getModel();
+		return guiParent->getModel() * model;
 
 	return model;
 }

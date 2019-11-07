@@ -28,5 +28,7 @@ namespace gui {
 
 		ButtonState getState() const;
 		void setState(ButtonState state);
+
+		glm::vec2 getBaseSize() override;
 	};
 }

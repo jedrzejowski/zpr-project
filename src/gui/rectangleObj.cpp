@@ -85,10 +85,12 @@ void gui::RectangleObj::refreshModel() {
 
 void gui::RectangleObj::updateBuffers() {
 
+	auto baseSize = getBaseSize();
+
 	point_xy = getModel() * glm::vec4(0, 0, 0, 1);
-	point_Xy = getModel() * glm::vec4(1, 0, 0, 1);
-	point_XY = getModel() * glm::vec4(1, 1, 0, 1);
-	point_xY = getModel() * glm::vec4(0, 1, 0, 1);
+	point_Xy = getModel() * glm::vec4(baseSize.x, 0, 0, 1);
+	point_XY = getModel() * glm::vec4(baseSize.x, baseSize.y, 0, 1);
+	point_xY = getModel() * glm::vec4(0, baseSize.y, 0, 1);
 
 	verticesBuf.clear();
 	verticesBuf.emplace_back(point_xy, engine::TexCoord(textureStart.x, textureStart.y));

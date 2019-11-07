@@ -8,7 +8,6 @@ namespace gui {
 
 	class Text : public GuiObject {
 	private:
-		glm::mat4 model = glm::mat4(1);
 		std::string content;
 
 	public:

@@ -11,5 +11,5 @@ void game::MainWindow::initObjects() {
 }
 
 std::string game::MainWindow::getTitle() {
-	return "dupa";
+	return "ZprCraft";
 }

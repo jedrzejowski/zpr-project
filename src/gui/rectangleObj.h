@@ -34,6 +34,7 @@ namespace gui {
 		void setPosition(const glm::vec2 &position);
 		const glm::vec2 &getSize() const;
 		void setSize(const glm::vec2 &size);
+		virtual glm::vec2 getBaseSize() = 0;
 
 
 		const glm::vec2 &getTextureStart() const;

@@ -81,6 +81,7 @@ public:
 	}
 
 	Logger &enter() {
-		return msg(std::endl);
+		std::cout << std::endl;
+		return *this;
 	}
 };

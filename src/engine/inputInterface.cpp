@@ -8,7 +8,7 @@ engine::InputInterface::InputInterface(Object *parent) :
 		Object(parent) {
 
 	mouse = new Mouse(this);
-//	keyboard = new Keyboard(this);
+	keyboard = new Keyboard(this);
 }
 
 engine::Mouse *engine::InputInterface::getMouse() {

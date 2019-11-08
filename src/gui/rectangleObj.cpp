@@ -108,3 +108,7 @@ void gui::RectangleObj::updateBuffers() {
 	indicesBuf.emplace_back(2, 3, 0);
 }
 
+gui::RectangleObj::~RectangleObj() {
+	logger.log("~RectangleObj()");
+}
+

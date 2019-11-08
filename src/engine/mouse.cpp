@@ -103,6 +103,10 @@ void engine::Mouse::setGlfwPosition(GLFWwindow *window, const glm::vec2 &pos) {
 	lastPosition = currentPosition = pos;
 }
 
+engine::Mouse::~Mouse() {
+	logger.log("~Mouse");
+}
+
 
 int engine::MouseBtn::getGlfwState(GLFWwindow *window) {
 	return glfwGetMouseButton(window, getBtnCode());

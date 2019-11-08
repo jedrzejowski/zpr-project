@@ -15,8 +15,6 @@ add_executable(${APP_TARGET}
         src/main.cpp
         src/logger.h
         src/exception.h
-        src/lib/signal.h
-        src/lib/signal.cpp
         src/lib/object.h
         src/lib/object.cpp
         src/lib/perlin.h

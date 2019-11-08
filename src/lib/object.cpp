@@ -1,3 +1,4 @@
+#include <sstream>
 #include "object.h"
 
 Object::Object(Object *parent) {
@@ -6,13 +7,12 @@ Object::Object(Object *parent) {
 
 Object::~Object() {
 
-	onDestroy.emit(this);
-
-	for (const auto &obj:childrens)
+	for (auto &obj : childrens)
 		delete (obj);
 
-	if (parent != nullptr)
-		parent->childrens.remove(this);
+	setParent(nullptr);
+
+	onDestroy.emit(this);
 }
 
 Object *Object::getParent() const {
@@ -25,4 +25,12 @@ void Object::setParent(Object *newParent) {
 	this->parent = newParent;
 	if (this->parent != nullptr)
 		this->parent->childrens.push_back(this);
+}
+
+void Object::dumpParentTree() {
+	std::stringstream output;
+
+
+
+	logger.log("Dump of object").log(this).enter().log(output);
 }

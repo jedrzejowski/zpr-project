@@ -20,5 +20,7 @@ public:
 	void setParent(Object *parent);
 
 	const Signal<Object *> onDestroy;
+
+	void dumpParentTree();
 };
 

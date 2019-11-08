@@ -67,7 +67,7 @@ void Window::swapScene() {
 
 	onSceneChanged.emit(oldScene, currentScene);
 
-//	delete oldScene;
+	delete oldScene;
 }
 
 Scene *Window::getScene() const {

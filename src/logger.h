@@ -79,4 +79,8 @@ public:
 	Logger &log(const T &obj) {
 		return msg(obj, TTY_COLOR_WHITE);
 	}
+
+	Logger &enter() {
+		return msg(std::endl);
+	}
 };

@@ -12,18 +12,23 @@ gui::RectangleObj::RectangleObj(Interface *interface) :
 		bool isCollision = isCollisionWithMouse(mousePosition);
 
 		if (isCollision) {
-			if (!wasMouseIn)
+			if (!isMouseIn)
 				onEnter();
 			onHover();
-			wasMouseIn = true;
 		} else {
-			if (wasMouseIn)
+			if (isMouseIn)
 				onLeave();
-			wasMouseIn = false;
 		}
+
+		isMouseIn = isCollision;
 	});
 
 	interface->getInputInterface()->getMouse()->Left.onPressed(this, [&] {
+		if (isMouseIn) onPressed();
+	});
+
+	interface->getInputInterface()->getMouse()->Left.onReleased(this, [&] {
+		if (isMouseIn) onReleased();
 	});
 }
 

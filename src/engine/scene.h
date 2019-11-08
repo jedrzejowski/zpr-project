@@ -20,6 +20,7 @@ namespace engine {
 
 		Window *getWindow() const;
 		void setWindow(Window *window);
+		bool isInWindow();
 
 		InputInterface *getInputInterface() const;
 		void setInputInterface(InputInterface *inputInterface);

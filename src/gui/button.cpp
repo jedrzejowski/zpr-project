@@ -7,7 +7,6 @@ gui::Button::Button(Interface *interface) :
 
 	{
 		text = new Text(this);
-		text->setContent("to jest tekst");
 		auto model = text->getModel();
 		model = glm::translate(model, glm::vec3(0, 0.13 / 4, -.1));
 		model = glm::scale(model, glm::vec3(0.13 / 2, 0.13 / 2, 1));
@@ -20,6 +19,10 @@ gui::Button::Button(Interface *interface) :
 
 	onLeave([&] {
 		setState(Idle);
+	});
+
+	onPressed([&] {
+		onClicked();
 	});
 }
 
@@ -68,4 +71,12 @@ void gui::Button::setState(gui::ButtonState state) {
 
 glm::vec2 gui::Button::getBaseSize() {
 	return glm::vec2(1, 0.13);
+}
+
+const std::string &gui::Button::getText() {
+	return text->getContent();
+}
+
+void gui::Button::setText(const std::string &text) {
+	this->text->setContent(text);
 }

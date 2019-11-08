@@ -9,12 +9,12 @@ namespace game {
 		GameScene *gameScene = nullptr;
 
 		gui::Button *resumeBtn = nullptr,
-				*optionsBtn = nullptr,
 				*saveBtn = nullptr;
 
 	public:
 		explicit InGameMenu(GameScene *scene);
 
 		const Signal<> onMenuExit;
+		const Signal<> onSaveAndExit;
 	};
 }

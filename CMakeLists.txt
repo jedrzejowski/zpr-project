@@ -21,6 +21,8 @@ add_executable(${APP_TARGET}
         src/lib/object.cpp
         src/lib/perlin.h
         src/lib/perlin.cpp
+        src/lib/appSettings.h
+        src/lib/appSettings.cpp
         src/mainWin.h
         src/mainWin.cpp)
 
@@ -125,8 +127,6 @@ target_sources(${APP_TARGET} PUBLIC
 ## menu
 target_sources(${APP_TARGET} PUBLIC
         src/menu/Menu.h
-        src/menu/mainMenu.h
-        src/menu/mainMenu.cpp
         src/menu/welcome.h
         src/menu/welcome.cpp
         src/menu/settings.h

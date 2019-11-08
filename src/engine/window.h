@@ -26,10 +26,12 @@ namespace engine {
 
 		GLFWwindow *glfwWin = nullptr;
 		Scene *currentScene = nullptr;
+		Scene *nextScene = nullptr;
 		ViewPort viewPort;
 		InputInterface *lastInputInterface = nullptr;
 
 		void mainLoop();
+		void swapScene();
 	public:
 		Window();
 
@@ -37,7 +39,7 @@ namespace engine {
 
 		void open();
 
-		Scene *setScene(Scene *scene);
+		void setScene(Scene *scene);
 		Scene *getScene() const;
 		const Signal<Scene *, Scene *> onSceneChanged;
 

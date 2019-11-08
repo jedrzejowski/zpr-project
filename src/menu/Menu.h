@@ -1,3 +1,5 @@
 #pragma once
 
-#include "mainMenu.h"
+#include "settings.h"
+#include "welcome.h"
+#include "worlds.h"

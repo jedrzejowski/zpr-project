@@ -44,21 +44,30 @@ void Window::open() {
 
 	while (!glfwWindowShouldClose(glfwWin)) {
 		mainLoop();
+		swapScene();
 	}
 
 	glfwTerminate();
 }
 
-Scene *Window::setScene(Scene *scene) {
-	std::lock_guard<std::mutex> guard(rendering);
+void Window::setScene(Scene *scene) {
+	nextScene = scene;
+	//TODO dodać zwracanie wyjątku kiedy jest już jakaś scena w kolejce
+}
+
+void Window::swapScene() {
+	if (nextScene == nullptr) return;
 
 	auto oldScene = this->currentScene;
-	currentScene = scene;
+	currentScene = nextScene;
+	nextScene = nullptr;
 
-	currentScene->setWindow(this);
+	if (currentScene != nullptr)
+		currentScene->setWindow(this);
+
 	onSceneChanged.emit(oldScene, currentScene);
 
-	return oldScene;
+//	delete oldScene;
 }
 
 Scene *Window::getScene() const {
@@ -89,10 +98,13 @@ void Window::mainLoop() {
 
 	//https://stackoverflow.com/questions/7240747/how-to-draw-2d-3d-stuffs-in-opengl-together
 
-	if (currentScene != nullptr) {
-
+	if (currentScene != nullptr)
 		currentScene->render(this);
 
+	glfwSwapBuffers(glfwWin);
+
+	glfwPollEvents();
+	if (currentScene != nullptr) {
 		auto currentInputInterface = currentScene->getInputInterface();
 
 		if (currentInputInterface != nullptr) {
@@ -103,9 +115,6 @@ void Window::mainLoop() {
 
 		lastInputInterface = currentInputInterface;
 	}
-
-	glfwSwapBuffers(glfwWin);
-	glfwPollEvents();
 }
 
 GLFWwindow *Window::getGlfwWindow() const {

@@ -29,6 +29,11 @@ namespace gui {
 		ButtonState getState() const;
 		void setState(ButtonState state);
 
+		const std::string& getText();
+		void setText(const std::string& text);
+
 		glm::vec2 getBaseSize() override;
+
+		const Signal<> onClicked;
 	};
 }

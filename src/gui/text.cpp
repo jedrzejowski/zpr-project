@@ -26,8 +26,6 @@ void gui::Text::updateBuffers() {
 	int offset = 0;
 	int charInd = 0;
 
-	logger.log(getModel());
-
 	for (auto c : content) {
 		int x = (int) c % 16;
 		int y = (int) c / 16;

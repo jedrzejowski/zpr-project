@@ -19,7 +19,7 @@ namespace gui {
 
 		glm::vec2 textureStart, textureEnd;
 
-		bool wasMouseIn = false;
+		bool isMouseIn = false;
 
 		void refreshModel();
 

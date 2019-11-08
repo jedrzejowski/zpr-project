@@ -1,8 +1,8 @@
-#include <src/logger.h>
 #include "gameScene.h"
 #include "player.h"
 #include "inGameMenu.h"
 #include "mainGame.h"
+#include "src/menu/welcome.h"
 
 game::GameScene::GameScene() {
 
@@ -11,13 +11,16 @@ game::GameScene::GameScene() {
 
 	setInterfaceState(Game);
 
-
 	mainGame->onMenuRequest([&]() {
 		setInterfaceState(Menu);
 	});
 
 	inGameMenu->onMenuExit([&]() {
 		setInterfaceState(Game);
+	});
+
+	inGameMenu->onSaveAndExit([&]{
+		getWindow()->setScene(new menu::WelcomeScene);
 	});
 }
 

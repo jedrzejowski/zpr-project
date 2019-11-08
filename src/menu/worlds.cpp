@@ -3,3 +3,6 @@
 //
 
 #include "worlds.h"
+
+void menu::WorldsScene::render(engine::Window *window) {
+}

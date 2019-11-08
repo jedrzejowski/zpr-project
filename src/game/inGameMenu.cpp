@@ -9,11 +9,18 @@ game::InGameMenu::InGameMenu(game::GameScene *scene) :
 		Interface(scene) {
 
 	resumeBtn = new gui::Button(this);
-	resumeBtn->setPosition(glm::vec2(0, 0.2));
-	optionsBtn = new gui::Button(this);
-	optionsBtn->setPosition(glm::vec2(0, 0.4));
+	resumeBtn->setText("Wznow gre");
+	resumeBtn->setPosition(glm::vec2(0, 0.3));
+	resumeBtn->onClicked([&] {
+		onMenuExit();
+	});
+
 	saveBtn = new gui::Button(this);
-	saveBtn->setPosition(glm::vec2(0, 0.6));
+	saveBtn->setText("Zapisz i wyjdz");
+	saveBtn->setPosition(glm::vec2(0, 0.5));
+	saveBtn->onClicked([&] {
+		onSaveAndExit();
+	});
 
 	getInputInterface()->getKeyboard()->Escape.onPressed([&] {
 		onMenuExit();

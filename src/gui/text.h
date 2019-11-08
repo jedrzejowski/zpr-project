@@ -8,7 +8,7 @@ namespace gui {
 
 	class Text : public GuiObject {
 	private:
-		std::string content;
+		std::string content = "Text";
 
 	public:
 		explicit Text(Interface* interface);

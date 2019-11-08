@@ -8,7 +8,7 @@
 
 void MainWindow::initObjects() {
 //	auto scene = new game::GameScene;
-	auto scene = new menu::MainMenu;
+	auto scene = new menu::WelcomeScene;
 	setScene(scene);
 }
 

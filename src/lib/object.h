@@ -10,7 +10,7 @@ private:
 	std::list<Object *> childrens;
 public:
 	explicit Object(Object *parent = nullptr);
-	~Object();
+	virtual ~Object();
 
 	// Usunięcie możliwości kopiowania obiektu
 	Object(const Object &) = delete;

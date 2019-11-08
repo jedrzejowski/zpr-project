@@ -103,6 +103,14 @@ namespace game {
 	class GameScene;
 }
 
+namespace menu {
+	class WelcomeScene;
+
+	class SettingsScene;
+
+	class WorldssScene;
+}
+
 struct coord3D {
 	int64_t x, y, z;
 

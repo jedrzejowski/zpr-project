@@ -14,6 +14,8 @@ void Scene::setWindow(Window *window) {
 	onWindowChanged.emit();
 }
 
+
+
 InputInterface *Scene::getInputInterface() const {
 	return this->inputInterface;
 }
@@ -26,4 +28,8 @@ void Scene::setInputInterface(InputInterface *inputInterface) {
 
 	if (this->inputInterface != nullptr)
 		this->inputInterface->attachToScene(this);
+}
+
+bool Scene::isInWindow() {
+	return window == nullptr;
 }

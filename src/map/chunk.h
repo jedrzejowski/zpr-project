@@ -1,6 +1,7 @@
 #pragma once
 
 #include "src/_classdef.h"
+#include "src/lib/coord.h"
 #include "src/lib/object.h"
 #include "src/engine/Engine.h"
 #include "src/block/Blocks.h"
@@ -10,22 +11,23 @@ namespace map {
 	class Chunk : public Object {
 		friend ChunkRenderer;
 		friend ChunkGenerator;
+		friend ChunkLoader;
 	protected:
-		WorldMap* worldMap = nullptr;
-		const coord2D position;
-		std::map<coord3D, block::Block *> blocks;
+		World* worldMap = nullptr;
+		const Coord2D position;
+		std::map<Coord3D, block::Block *> blocks;
 
 	public:
-		static const coord3D Size;
+		static const Coord3D Size;
 
-		Chunk(WorldMap* worldMap, const coord2D &position);
+		Chunk(World* worldMap, const Coord2D &position);
 
-		bool addBlock(const coord3D &position, block::Block *block);
-		block::Block *getBlock(const coord3D &position);
-		std::map<coord3D, block::Block *> getAllBlocks();
+		bool addBlock(const Coord3D &position, block::Block *block);
+		block::Block *getBlock(const Coord3D &position);
+		std::map<Coord3D, block::Block *> getAllBlocks();
 
-		const coord2D &getPosition() const;
-		Chunk * getNeighbor(int64_t dx, int64_t dy) const;
+		const Coord2D &getPosition() const;
+		Chunk * getNeighbor(CoordDim dx, CoordDim dy) const;
 
 	};
 }

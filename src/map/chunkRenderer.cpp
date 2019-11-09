@@ -1,8 +1,8 @@
 #include "chunkRenderer.h"
-#include "renderer.h"
+#include "worldRenderer.h"
 #include "chunk.h"
 
-map::ChunkRenderer::ChunkRenderer(map::Renderer *renderer, Chunk *chunk)
+map::ChunkRenderer::ChunkRenderer(map::WorldRenderer *renderer, Chunk *chunk)
 		: Object(renderer) {
 	this->renderer = renderer;
 	this->chunk = chunk;

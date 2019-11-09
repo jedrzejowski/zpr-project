@@ -15,12 +15,15 @@ add_executable(${APP_TARGET}
         src/main.cpp
         src/logger.h
         src/exception.h
+        src/lib/coord.h
         src/lib/object.h
         src/lib/object.cpp
         src/lib/perlin.h
         src/lib/perlin.cpp
         src/lib/appSettings.h
         src/lib/appSettings.cpp
+        src/lib/backWorkerQueue.h
+        src/lib/backWorkerQueue.cpp
         src/mainWin.h
         src/mainWin.cpp)
 
@@ -101,14 +104,16 @@ target_sources(${APP_TARGET} PUBLIC
         src/map/Map.h
         src/map/chunk.h
         src/map/chunk.cpp
-        src/map/worldmap.h
-        src/map/worldmap.cpp
-        src/map/renderer.h
-        src/map/renderer.cpp
+        src/map/world.h
+        src/map/world.cpp
+        src/map/worldRenderer.h
+        src/map/worldRenderer.cpp
         src/map/chunkRenderer.h
         src/map/chunkRenderer.cpp
         src/map/chunkGenerator.h
-        src/map/chunkGenerator.cpp)
+        src/map/chunkGenerator.cpp
+        src/map/chunkLoader.h
+        src/map/chunkLoader.cpp)
 
 ## game
 target_sources(${APP_TARGET} PUBLIC
@@ -139,6 +144,9 @@ target_sources(${APP_TARGET} PUBLIC
 
 # Biblioteki
 
+## wątki
+find_package(Threads REQUIRED)
+
 ## stb
 target_sources(${APP_TARGET} PUBLIC
         src/lib/stb_image.h)
@@ -166,6 +174,7 @@ link_libraries(${GLM_LIBRARY_DIRS})
 
 target_link_libraries(
         ${APP_TARGET}
+        ${CMAKE_THREAD_LIBS_INIT}
         glfw
         ${OPENGL_LIBRARIES}
         ${GLEW_LIBRARIES}

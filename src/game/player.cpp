@@ -1,11 +1,15 @@
 #include <cmath>
 #include "player.h"
+#include "src/lib/coord.h"
+#include "src/map/chunk.h"
 
-game::Player::Player() {
+game::Player::Player(map::World *world) :
+		world(world) {
 	position = glm::vec3(4.0f);
 	angleH = 0;
 	angleV = 0;
 }
+
 
 glm::vec3 game::Player::topVec() const {
 	return glm::vec3(0.0f, 0.0f, 1.0f);
@@ -77,4 +81,27 @@ engine::Camera game::Player::getCamera() const {
 	camera.up = topVec();
 	camera.front = frontVec();
 	return camera;
+}
+
+float game::Player::getChunkRenderDistance() const {
+	return chunkRenderDistance;
+}
+
+float game::Player::getChunkLoadDistance() const {
+	return chunkLoadDistance;
+}
+
+void game::Player::requestChunks() {
+	auto currentChunk = getCurrentChunk();
+
+	for (CoordDim x = currentChunk.x - chunkLoadDistance; x < currentChunk.x + chunkLoadDistance; x++) {
+		for (CoordDim y = currentChunk.y - chunkLoadDistance; y < currentChunk.y + chunkLoadDistance; y++) {
+			world->requestChunk(Coord2D(x, y));
+		}
+	}
+}
+
+Coord2D game::Player::getCurrentChunk() const {
+	auto playerCoord = Coord2D(position);
+	return Coord2D(playerCoord.x / map::Chunk::Size.x, playerCoord.y / map::Chunk::Size.y);
 }

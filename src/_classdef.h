@@ -9,6 +9,8 @@ class Signal;
 
 class Object;
 
+class BackWorkerQueue;
+
 namespace engine {
 	class exception;
 
@@ -75,18 +77,22 @@ namespace block {
 	class SolidBlock;
 
 	class Stone;
+
+	class Dirt;
 }
 
 namespace map {
+	class World;
+
+	class WorldRenderer;
+
 	class Chunk;
-
-	class WorldMap;
-
-	class Renderer;
 
 	class ChunkRenderer;
 
 	class ChunkGenerator;
+
+	class ChunkLoader;
 }
 
 namespace game {
@@ -111,33 +117,6 @@ namespace menu {
 	class WorldssScene;
 }
 
-struct coord3D {
-	int64_t x, y, z;
-
-	coord3D() : x(0), y(0), z(0) {}
-	coord3D(int64_t x, int64_t y, int64_t z) : x(x), y(y), z(z) {}
-	bool operator<(const coord3D &sec) const {
-		if (x < sec.x) return true;
-		if (x > sec.x) return false;
-
-		if (y < sec.y) return true;
-		if (y > sec.y) return false;
-
-		return z < sec.z;
-	}
-};
-
-struct coord2D {
-	int64_t x, y;
-
-	coord2D() : x(0), y(0) {}
-	coord2D(int64_t x, int64_t y) : x(x), y(y) {}
-	bool operator<(const coord2D &sec) const {
-		if (x < sec.x) return true;
-		if (x > sec.x) return false;
-		return y < sec.y;
-	}
-};
 
 #include "src/logger.h"
 #include "src/exception.h"

@@ -41,6 +41,7 @@ ShaderProgram::ShaderProgram(const std::string &vertexPath, const std::string &f
 	glAttachShader(shaderId, fragmentId);
 	glLinkProgram(shaderId);
 
+
 	// Print linking errors if any
 	GLint success;
 	glGetProgramiv(shaderId, GL_LINK_STATUS, &success);
@@ -57,11 +58,13 @@ ShaderProgram::ShaderProgram(const std::string &vertexPath, const std::string &f
 	glDeleteShader(fragmentId);
 }
 
+ShaderProgram::~ShaderProgram() {
+	glDeleteProgram(getID());
+}
 
 void ShaderProgram::bind() {
 	glUseProgram(getID());
 }
-
 
 void ShaderProgram::unbind() {
 	glUseProgram(0);
@@ -118,5 +121,4 @@ void ShaderProgram::setMat4(const std::string &name, const glm::mat4 &mat) {
 void ShaderProgram::setUniformNameToId(const std::string &name, int id) {
 	glUniform1i(glGetUniformLocation(getID(), name.c_str()), id);
 }
-
 

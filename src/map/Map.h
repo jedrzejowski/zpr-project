@@ -2,5 +2,5 @@
 
 #include "src/_classdef.h"
 #include "chunk.h"
-#include "worldmap.h"
-#include "renderer.h"
+#include "world.h"
+#include "worldRenderer.h"

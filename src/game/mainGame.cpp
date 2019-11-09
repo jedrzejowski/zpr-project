@@ -8,12 +8,12 @@ game::MainGame::MainGame(GameScene *scene) :
 		Object(scene) {
 	gameScene = scene;
 
-	worldMap = new map::WorldMap();
+	worldMap = new map::World();
 
-	player = new Player();
+	player = new Player(worldMap);
 	player->setParent(this);
 
-	mapRenderer = new map::Renderer(worldMap);
+	mapRenderer = new map::WorldRenderer(worldMap);
 	mapRenderer->setParent(this);
 
 	initInputInterface();
@@ -78,5 +78,10 @@ void game::MainGame::initInputInterface() {
 
 engine::InputInterface *game::MainGame::getInputInterface() const {
 	return inputInterface;
+}
+
+void game::MainGame::pollEvents() {
+	worldMap->syncChunkWithLoader();
+	player->requestChunks();
 }
 

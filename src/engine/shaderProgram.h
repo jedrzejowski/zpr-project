@@ -11,12 +11,13 @@ namespace engine {
 		GLuint shaderId;
 	public:
 		ShaderProgram(const std::string &vertexPath, const std::string &fragmentPath);
+		~ShaderProgram();
 
 		virtual void bind();
 		virtual void unbind();
 
 		// returns program ID
-		GLuint getID() const {
+		inline GLuint getID() const {
 			return shaderId;
 		}
 

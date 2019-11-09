@@ -25,6 +25,8 @@ namespace engine {
 		InputInterface *getInputInterface() const;
 		void setInputInterface(InputInterface *inputInterface);
 
+		virtual void pollEvents() {};
+
 		const Signal<> onRefreshBuffers;
 	};
 }

@@ -2,21 +2,21 @@
 
 #include "src/_classdef.h"
 #include "src/engine/Engine.h"
-#include "worldmap.h"
+#include "world.h"
 #include "src/lib/object.h"
 
 namespace map {
-	class Renderer : public Object {
+	class WorldRenderer : public Object {
 	private:
 		const engine::Texture *blockTexture = nullptr;
 		engine::ShaderProgram *shader = nullptr;
 
-		const WorldMap *worldMap = nullptr;
+		const World *worldMap = nullptr;
 
 		std::vector<ChunkRenderer *> chunkRenderers;
 	public:
-		explicit Renderer(const WorldMap *worldMap);
-		~Renderer();
+		explicit WorldRenderer(const World *worldMap);
+		~WorldRenderer();
 
 		engine::ShaderProgram *getShader() const;
 

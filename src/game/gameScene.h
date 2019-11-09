@@ -25,5 +25,7 @@ namespace game {
 
 		GameSceneState getInterfaceState() const;
 		void setInterfaceState(GameSceneState interfaceState);
+
+		void pollEvents() override;
 	};
 }

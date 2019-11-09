@@ -55,3 +55,7 @@ void game::GameScene::setInterfaceState(game::GameSceneState interfaceState) {
 			break;
 	}
 }
+
+void game::GameScene::pollEvents() {
+	mainGame->pollEvents();
+}

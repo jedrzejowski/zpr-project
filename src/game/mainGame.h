@@ -8,8 +8,8 @@ namespace game {
 	private:
 		GameScene *gameScene = nullptr;
 		engine::InputInterface *inputInterface = nullptr;
-		map::WorldMap *worldMap = nullptr;
-		map::Renderer *mapRenderer = nullptr;
+		map::World *worldMap = nullptr;
+		map::WorldRenderer *mapRenderer = nullptr;
 		Player *player = nullptr;
 
 		void initInputInterface();
@@ -24,5 +24,7 @@ namespace game {
 		const Signal<> onMenuRequest;
 
 		engine::InputInterface *getInputInterface() const;
+
+		void pollEvents();
 	};
 }

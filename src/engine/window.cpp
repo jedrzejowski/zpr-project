@@ -115,6 +115,9 @@ void Window::mainLoop() {
 
 		lastInputInterface = currentInputInterface;
 	}
+
+	if (currentScene != nullptr)
+		currentScene->pollEvents();
 }
 
 GLFWwindow *Window::getGlfwWindow() const {

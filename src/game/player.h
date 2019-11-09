@@ -1,21 +1,25 @@
 #include "src/_classdef.h"
+#include "src/lib/coord.h"
 #include "src/engine/Engine.h"
 #include "src/lib/object.h"
 
 namespace game {
 	class Player : public Object {
 	protected:
+		map::World *world;
 		glm::vec3 position;
+
 		float angleV = 0, angleH = 0;
 		float mousePrecision = 20;
 		float keyboardPrecision = 20;
+		CoordDim chunkRenderDistance = 4, chunkLoadDistance = 6;
 
 		glm::vec3 topVec() const;
 		glm::vec3 frontVec() const;
 		glm::vec3 leftVec() const;
 
 	public:
-		Player();
+		explicit Player(map::World *world);
 
 		void moveForward(float time);
 		void moveBackward(float time);
@@ -29,6 +33,12 @@ namespace game {
 		void rotateLeft(float dx);
 		void rotateRight(float dx);
 
+		float getChunkRenderDistance() const;
+		float getChunkLoadDistance() const;
+		Coord2D getCurrentChunk() const;
+
 		engine::Camera getCamera() const;
+
+		void requestChunks();
 	};
 }

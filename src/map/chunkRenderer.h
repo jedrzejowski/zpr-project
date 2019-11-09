@@ -11,16 +11,16 @@ namespace map {
 	private:
 		Chunk *chunk = nullptr;
 		glm::mat4 chunkPos;
-		Renderer *renderer = nullptr;
+		WorldRenderer *renderer = nullptr;
 
-		std::map<coord3D, block::Block *> visibleBlocks;
+		std::map<Coord3D, block::Block *> visibleBlocks;
 
 	protected:
 
 		void updateBuffers() override ;
 
 	public:
-		ChunkRenderer(Renderer *renderer, Chunk *chunk);
+		ChunkRenderer(WorldRenderer *renderer, Chunk *chunk);
 
 		void render(const engine::Scene *scene) override;
 	};

@@ -4,19 +4,19 @@
 block::Block::Block() {
 }
 
-void block::Block::setPosition(map::Chunk *chunk, const coord3D &pos) {
+void block::Block::setPosition(map::Chunk *chunk, const Coord3D &pos) {
 	this->position = pos;
 	this->chunk = chunk;
 }
 
-block::Block *block::Block::getNeighbor(int64_t dx, int64_t dy, int64_t dz) const {
+block::Block *block::Block::getNeighbor(CoordDim dx, CoordDim dy, CoordDim dz) const {
 	auto targetChunk = this->chunk;
 
-	int64_t x = position.x + dx,
+	CoordDim x = position.x + dx,
 			y = position.y + dy,
 			z = position.z + dz;
 
-	if (z != std::clamp(z, (int64_t) 0, map::Chunk::Size.y - 1)) return nullptr;
+	if (z != std::clamp(z, (CoordDim) 0, map::Chunk::Size.y - 1)) return nullptr;
 
 	while (x < 0) {
 		targetChunk = targetChunk->getNeighbor(-1, 0);
@@ -46,7 +46,7 @@ block::Block *block::Block::getNeighbor(int64_t dx, int64_t dy, int64_t dz) cons
 		if (targetChunk == nullptr) return nullptr;
 	}
 
-	return targetChunk->getBlock(coord3D(x, y, z));
+	return targetChunk->getBlock(Coord3D(x, y, z));
 }
 
 bool block::Block::isSolid() {

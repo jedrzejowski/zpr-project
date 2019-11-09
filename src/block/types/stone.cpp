@@ -5,7 +5,7 @@
 #include "stone.h"
 
 block::Stone::Stone() : SolidBlock() {
-	texTop = coord2D(1, 3);
-	texSide = coord2D(1, 3);
-	texBottom = coord2D(1, 3);
+	texTop = Coord2D(1, 3);
+	texSide = Coord2D(1, 3);
+	texBottom = Coord2D(1, 3);
 }

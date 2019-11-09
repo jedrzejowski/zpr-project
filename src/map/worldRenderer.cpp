@@ -1,33 +1,23 @@
-#include "renderer.h"
+#include "worldRenderer.h"
 #include "chunk.h"
 #include "chunkRenderer.h"
 #include "src/game/player.h"
 #include "src/engine/Engine.h"
 
-map::Renderer::Renderer(const map::WorldMap *worldMap) :
+map::WorldRenderer::WorldRenderer(const map::World *worldMap) :
+		worldMap(worldMap),
 		Object() {
-	this->worldMap = worldMap;
 
 	shader = new engine::ShaderProgram("shader/game.vert", "shader/game.frag");
 	shader->setInt("material.diffuse", 0);
 	blockTexture = engine::Resources::get().getTexture("texture/block.png");
-
-
-	worldMap->loadChunk(coord2D(0, 0));
-	worldMap->loadChunk(coord2D(1, 0));
-	worldMap->loadChunk(coord2D(1, 1));
-	worldMap->loadChunk(coord2D(0, 1));
-	chunkRenderers.push_back(new map::ChunkRenderer(this, worldMap->getChunk(coord2D(0, 0))));
-	chunkRenderers.push_back(new map::ChunkRenderer(this, worldMap->getChunk(coord2D(1, 0))));
-	chunkRenderers.push_back(new map::ChunkRenderer(this, worldMap->getChunk(coord2D(1, 1))));
-	chunkRenderers.push_back(new map::ChunkRenderer(this, worldMap->getChunk(coord2D(0, 1))));
 }
 
-map::Renderer::~Renderer() {
+map::WorldRenderer::~WorldRenderer() {
 }
 
-void map::Renderer::render(const engine::Camera &camera,
-						   const engine::Scene *scene) {
+void map::WorldRenderer::render(const engine::Camera &camera,
+								const engine::Scene *scene) {
 	auto window = scene->getWindow();
 
 	window->setViewPort(engine::ViewPort::OneTwoOne);
@@ -53,6 +43,6 @@ void map::Renderer::render(const engine::Camera &camera,
 	shader->unbind();
 }
 
-engine::ShaderProgram *map::Renderer::getShader() const {
+engine::ShaderProgram *map::WorldRenderer::getShader() const {
 	return shader;
 }

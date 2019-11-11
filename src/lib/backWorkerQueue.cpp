@@ -9,16 +9,23 @@ BackWorkerQueue::BackWorkerQueue() :
 		thread(&BackWorkerQueue::threadWorker, this) {
 }
 
+BackWorkerQueue::~BackWorkerQueue() {
+	endWorker = true;
+	waitingForData.unlock();
+
+	thread.join();
+}
+
 
 void BackWorkerQueue::threadWorker() {
-	while (!destructing) {
+	while (!endWorker) {
 		queueAccess.lock();
 
 		if (queue.empty()) {
 			queueAccess.unlock();
 			waitingForData.lock();
 
-			if (destructing) return;
+			if (endWorker) return;
 
 			waitingForData.lock();
 			waitingForData.unlock();
@@ -34,7 +41,7 @@ void BackWorkerQueue::threadWorker() {
 	}
 }
 
-void BackWorkerQueue::push(BackWorkerQueue::Function function) {
+void BackWorkerQueue::push(const BackWorkerQueue::Function &function) {
 	queueAccess.lock();
 
 	queue.push(function);
@@ -44,12 +51,15 @@ void BackWorkerQueue::push(BackWorkerQueue::Function function) {
 }
 
 bool BackWorkerQueue::isDestroying() {
-	return destructing;
+	return endWorker;
 }
 
-BackWorkerQueue::~BackWorkerQueue() {
-	destructing = true;
+void BackWorkerQueue::awaitForQueueEnd() {
+	endWorker = true;
 	waitingForData.unlock();
 
 	thread.join();
+	thread = std::thread(&BackWorkerQueue::threadWorker, this);
+
+	endWorker = false;
 }

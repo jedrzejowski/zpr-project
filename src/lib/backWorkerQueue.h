@@ -17,14 +17,16 @@ private:
 	std::mutex waitingForData, queueAccess;
 	std::thread thread;
 
-	bool destructing = false;
+	bool endWorker = false;
 
 	void threadWorker();
 public:
 	BackWorkerQueue();
 	~BackWorkerQueue();
-	void push(Function function);
+	void push(const Function &function);
 
 	bool isDestroying();
+
+	void awaitForQueueEnd();
 };
 

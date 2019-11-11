@@ -44,3 +44,11 @@ inline std::ostream &operator<<(std::ostream &out, const Coord3D &coord) {
 inline std::ostream &operator<<(std::ostream &out, const Coord2D &coord) {
 	return out << "Coord2D(" << coord.x << ", " << coord.y << ")";
 }
+
+inline bool operator==(const Coord2D &left, const Coord2D &right) {
+	return left.x == right.x && left.y == right.y;
+}
+
+inline bool operator==(const Coord3D &left, const Coord3D &right) {
+	return left.x == right.x && left.y == right.y && left.z == right.z;
+}

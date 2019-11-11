@@ -16,13 +16,13 @@ namespace engine {
 
 		void draw();
 		void insertToGPU();
-		void updateBuffers() override;
 
 	public:
 
 		Abs3DObj();
 		~Abs3DObj();
 
+		void updateBuffers() override;
 		virtual void render(const Scene *scene) = 0;
 
 		bool isNeedRefreshBuffers() const;

@@ -1,6 +1,7 @@
 #include <cmath>
 #include "player.h"
 #include "src/lib/coord.h"
+#include "src/map/world.h"
 #include "src/map/chunk.h"
 
 game::Player::Player(map::World *world) :

@@ -66,7 +66,7 @@ void game::MainGame::initInputInterface() {
 		onMenuRequest();
 	});
 
-	mouse->onMove([&](const glm::vec2& delta) {
+	mouse->onMove([&](const glm::vec2 &delta) {
 		player->rotateRight(delta.x);
 		player->rotateDown(delta.y);
 	});
@@ -82,6 +82,7 @@ engine::InputInterface *game::MainGame::getInputInterface() const {
 
 void game::MainGame::pollEvents() {
 	worldMap->syncChunkWithLoader();
+	mapRenderer->syncWithWorld();
 	player->requestChunks();
 }
 

@@ -2,25 +2,32 @@
 
 #include "src/_classdef.h"
 #include "src/engine/Engine.h"
-#include "world.h"
 #include "src/lib/object.h"
+#include "world.h"
 
 namespace map {
 	class WorldRenderer : public Object {
 	private:
+		const World *worldMap = nullptr;
 		const engine::Texture *blockTexture = nullptr;
 		engine::ShaderProgram *shader = nullptr;
 
-		const World *worldMap = nullptr;
+		BackWorkerQueue worker;
 
-		std::vector<ChunkRenderer *> chunkRenderers;
+		std::list<ChunkRenderer *> chunkRenderers;
+
 	public:
 		explicit WorldRenderer(const World *worldMap);
 		~WorldRenderer();
 
 		engine::ShaderProgram *getShader() const;
 
+		void injectChunkRenderer(ChunkRenderer *chunkRenderer);
+		void ejectChunkRenderer(ChunkRenderer *chunkRenderer);
+
 		void render(const engine::Camera &camera,
 					const engine::Scene *scene);
+
+		void syncWithWorld();
 	};
 }

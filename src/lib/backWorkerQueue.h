@@ -5,20 +5,26 @@
 #include <functional>
 #include <thread>
 
+#include "src/_classdef.h"
+
 class BackWorkerQueue {
 	typedef std::function<void()> Function;
 private:
 	std::thread::id mainThreadId;
+	std::mutex objectAlive;
 
 	std::queue<Function> queue;
 	std::mutex waitingForData, queueAccess;
 	std::thread thread;
 
-	void pop();
+	bool destructing = false;
 
 	void threadWorker();
 public:
 	BackWorkerQueue();
-	void push(Function &function);
+	~BackWorkerQueue();
+	void push(Function function);
+
+	bool isDestroying();
 };
 

@@ -4,7 +4,7 @@
 
 map::ChunkRenderer::ChunkRenderer(map::WorldRenderer *renderer, Chunk *chunk)
 		: Object(renderer) {
-	this->renderer = renderer;
+	this->worldRenderer = renderer;
 	this->chunk = chunk;
 
 }
@@ -24,10 +24,12 @@ void map::ChunkRenderer::updateBuffers() {
 		auto block = iter.second;
 		block->insertToBuffers(verticesBuf, indicesBuf);
 	}
+
+	setNeedRefreshBuffers(false);
 }
 
 void map::ChunkRenderer::render(const engine::Scene *scene) {
-	renderer->getShader()->setMat4("chunkPos", chunkPos);
+	worldRenderer->getShader()->setMat4("chunkPos", chunkPos);
 	draw();
 }
 

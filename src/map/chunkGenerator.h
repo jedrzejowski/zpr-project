@@ -8,8 +8,8 @@ namespace map {
 	private:
 		PerlinNoise noise;
 	public:
-		ChunkGenerator();
+		explicit ChunkGenerator();
 
-		void fillChunk(Chunk* chunk);
+		void fillChunk(Chunk *chunk);
 	};
 }

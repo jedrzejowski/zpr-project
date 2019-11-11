@@ -1,4 +1,5 @@
 #include "chunk.h"
+#include "world.h"
 
 const Coord3D map::Chunk::Size = Coord3D(16, 16, 16);
 
@@ -15,7 +16,7 @@ block::Block *map::Chunk::getBlock(const Coord3D &position) {
 	return nullptr;
 }
 
-bool map::Chunk::addBlock(const Coord3D &position, block::Block *block) {
+bool map::Chunk::setBlock(const Coord3D &position, block::Block *block) {
 	block->setPosition(this, position);
 
 	blocks[position] = block;

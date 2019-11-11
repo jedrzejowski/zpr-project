@@ -11,6 +11,12 @@ map::WorldRenderer::WorldRenderer(const map::World *worldMap) :
 	shader = new engine::ShaderProgram("shader/game.vert", "shader/game.frag");
 	shader->setInt("material.diffuse", 0);
 	blockTexture = engine::Resources::get().getTexture("texture/block.png");
+
+	worldMap->onChunkInserted([&](map::Chunk *chunk) {
+
+		auto cr = new ChunkRenderer(this, chunk);
+		chunkRenderers.push_back(cr);
+	});
 }
 
 map::WorldRenderer::~WorldRenderer() {
@@ -19,8 +25,8 @@ map::WorldRenderer::~WorldRenderer() {
 void map::WorldRenderer::render(const engine::Camera &camera,
 								const engine::Scene *scene) {
 	auto window = scene->getWindow();
-
 	window->setViewPort(engine::ViewPort::OneTwoOne);
+
 	glClear(GL_DEPTH_BUFFER_BIT);
 
 	shader->bind();
@@ -46,3 +52,13 @@ void map::WorldRenderer::render(const engine::Camera &camera,
 engine::ShaderProgram *map::WorldRenderer::getShader() const {
 	return shader;
 }
+
+void map::WorldRenderer::syncWithWorld() {
+}
+
+void map::WorldRenderer::injectChunkRenderer(map::ChunkRenderer *chunkRenderer) {
+}
+
+void map::WorldRenderer::ejectChunkRenderer(map::ChunkRenderer *chunkRenderer) {
+}
+

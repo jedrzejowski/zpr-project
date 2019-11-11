@@ -5,7 +5,6 @@
 #include "src/lib/object.h"
 #include "src/engine/Engine.h"
 #include "src/block/Blocks.h"
-#include "Map.h"
 
 namespace map {
 	class Chunk : public Object {
@@ -22,7 +21,7 @@ namespace map {
 
 		Chunk(World* worldMap, const Coord2D &position);
 
-		bool addBlock(const Coord3D &position, block::Block *block);
+		bool setBlock(const Coord3D &position, block::Block *block);
 		block::Block *getBlock(const Coord3D &position);
 		std::map<Coord3D, block::Block *> getAllBlocks();
 

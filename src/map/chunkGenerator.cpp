@@ -35,10 +35,10 @@ void map::ChunkGenerator::fillChunk(map::Chunk *chunk) {
 			for (; z >= 0; z--) {
 				if (dirtLeft > 0) {
 
-					chunk->addBlock(Coord3D(x, y, z), new block::Dirt());
+					chunk->setBlock(Coord3D(x, y, z), new block::Dirt());
 					dirtLeft--;
 				} else {
-					chunk->addBlock(Coord3D(x, y, z), new block::Stone());
+					chunk->setBlock(Coord3D(x, y, z), new block::Stone());
 				}
 			}
 		}

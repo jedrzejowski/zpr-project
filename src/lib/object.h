@@ -52,9 +52,10 @@ public:
 		emit(p...);
 	}
 
-	// Usunięcie możliwości kopiowania obiektu
 	Signal(const Signal &) = delete;
 	void operator=(const Signal &) = delete;
+	Signal(const Signal &&) = delete;
+	void operator=(const Signal &&) = delete;
 };
 
 
@@ -67,7 +68,6 @@ public:
 	explicit Object(Object *parent = nullptr);
 	virtual ~Object();
 
-	// Usunięcie możliwości kopiowania obiektu
 	Object(const Object &) = delete;
 	void operator=(const Object &) = delete;
 	Object(const Object &&) = delete;

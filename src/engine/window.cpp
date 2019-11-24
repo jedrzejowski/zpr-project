@@ -42,7 +42,15 @@ void Window::open() {
 
 	initObjects();
 
+	double lastTime = -1, nowTime = 0;
 	while (!glfwWindowShouldClose(glfwWin)) {
+
+		lastTime = nowTime;
+		nowTime = glfwGetTime();
+		auto delta = nowTime - lastTime;
+
+		logger.log("fps").log(1 / delta);
+
 		mainLoop();
 		swapScene();
 	}

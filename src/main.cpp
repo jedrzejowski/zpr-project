@@ -1,13 +1,16 @@
+#include <src/lib/jsonFile.h>
 #include "mainWin.h"
 
 int main() {
 	try {
 
-		auto window = new MainWindow();
-		window->open();
-		return 0;
+		logger.log(JsonFile::getConfigDir());
 
-	} catch (ZprException& e) {
+//		auto window = new MainWindow();
+//		window->open();
+
+		return 0;
+	} catch (ZprException &e) {
 		logger.err(e.what());
 	}
 }

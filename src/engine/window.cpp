@@ -13,7 +13,7 @@ Window::Window() {
 void Window::open() {
 
 	if (glfwInit() != GL_TRUE)
-		throw exception("GLFW initialization failed");
+		throw zprException("GLFW initialization failed");
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -25,13 +25,13 @@ void Window::open() {
 	glfwWin = glfwCreateWindow(winWidth, winHeight, getTitle().c_str(), nullptr, nullptr);
 
 	if (glfwWin == nullptr)
-		throw exception("Can't open GLFW window");
+		throw zprException("Can't open GLFW window");
 
 	glfwMakeContextCurrent(glfwWin);
 
 	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK)
-		throw exception("GLEW initialization failed");
+		throw zprException("GLEW initialization failed");
 
 	glEnable(GL_DEPTH_TEST);
 

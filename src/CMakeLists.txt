@@ -14,6 +14,10 @@ add_executable(${APP_TARGET}
         lib/backWorkerQueue.h
         lib/backWorkerQueue.cpp
         lib/stb_image.h
+        lib/json.hpp
+        lib/jsonFile.h
+        lib/jsonFile.cpp
+        lib/cfgpath.h
         mainWin.h
         mainWin.cpp)
 

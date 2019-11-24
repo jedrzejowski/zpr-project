@@ -28,7 +28,7 @@ void map::World::syncChunkWithLoader() {
 
 void map::World::insertChunk(map::Chunk *chunk) {
 	if (hasChunk(chunk->getPosition()))
-		throw exception("inserting chunk which position already exist");
+		throw zprException("inserting chunk which position already exist");
 
 	chunks[chunk->getPosition()] = chunk;
 	onChunkInserted(chunk);
@@ -36,7 +36,7 @@ void map::World::insertChunk(map::Chunk *chunk) {
 
 map::Chunk *map::World::ejectChunk(const Coord2D &position) {
 	if (!hasChunk(position))
-		throw exception("ejecting chunk not inserted chunk");
+		throw zprException("ejecting chunk not inserted chunk");
 
 	auto chunk = chunks[position];
 	chunks.erase(position);

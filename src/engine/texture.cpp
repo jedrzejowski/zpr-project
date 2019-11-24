@@ -50,7 +50,7 @@ void Texture::loadTexture(const std::string &path) {
 
 		glGenerateMipmap(GL_TEXTURE_2D);
 	} else
-		throw exception("Failed to load texture");
+		throw zprException("Failed to load texture");
 
 	stbi_image_free(data);
 }

@@ -33,6 +33,8 @@ void BackWorkerQueue::threadWorker() {
 			queueAccess.lock();
 		}
 
+		if (endWorker) return;
+
 		Function function = queue.front();
 		queue.pop();
 		queueAccess.unlock();

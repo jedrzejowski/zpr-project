@@ -11,6 +11,8 @@ class Object;
 
 class BackWorkerQueue;
 
+class JsonFile;
+
 namespace engine {
 	class exception;
 

@@ -31,4 +31,4 @@ public:
 	};
 };
 
-#define exception(what) ZprException(__FILE__, __LINE__, what)
+#define zprException(what) ZprException(__FILE__, __LINE__, what)

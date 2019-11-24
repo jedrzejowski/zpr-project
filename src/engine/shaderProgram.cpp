@@ -21,7 +21,7 @@ GLuint compileShader(const GLchar *shaderCode, GLenum shaderType) {
 		GLchar infoLog[512];
 		glGetShaderInfoLog(shader_id, sizeof(infoLog), nullptr, infoLog);
 		std::string msg = std::string("ShaderProgram compilation: ") + infoLog;
-		throw exception(msg);
+		throw zprException(msg);
 	}
 	return shader_id;
 }
@@ -50,7 +50,7 @@ ShaderProgram::ShaderProgram(const std::string &vertexPath, const std::string &f
 		glGetProgramInfoLog(shaderId, sizeof(infoLog), nullptr, infoLog);
 		std::string msg = std::string("ShaderProgram program linking:\n") + infoLog;
 		logger.info(std::string("Błąd podczas kompilacji szejdera:\n") + infoLog);
-		throw exception(msg);
+		throw zprException(msg);
 	}
 
 	// Delete the shaders as they're linked into our program now and no longer necessery

@@ -4,6 +4,7 @@ add_executable(${APP_TARGET}
         main.cpp
         logger.h
         exception.h
+        vars.h
         lib/coord.h
         lib/object.h
         lib/object.cpp

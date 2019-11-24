@@ -1,3 +1,5 @@
+#include <fstream>
+#include <iomanip>
 #include "jsonFile.h"
 #include "cfgpath.h"
 
@@ -6,12 +8,29 @@ JsonFile::JsonFile() {
 }
 
 
-JsonFile *JsonFile::load(const std::string &path) {
-	return nullptr;
+JsonFile *JsonFile::load(std::string path) {
+
+	path = getConfigDir() + path;
+	std::ifstream fileStream(path);
+
+	if (!fileStream.is_open())
+		throw zprException("cant read file");
+
+	auto *file = new JsonFile();
+	file->path = path;
+
+	// taki ficzer biblioteki
+	fileStream >> file->data;
+
+	fileStream.close();
+
+	return file;
 }
 
-void JsonFile::save(std::string path) {
-	if (path.empty()) path = this->path;
+void JsonFile::save() {
+	std::ofstream fileStream(path);
+	// taki ficzer biblioteki
+	fileStream << std::setw(4) << data << std::endl;
 }
 
 const std::string &JsonFile::getConfigDir() {
@@ -20,7 +39,7 @@ const std::string &JsonFile::getConfigDir() {
 	if (cfgDir.empty()) {
 
 		char temp[MAX_PATH];
-		get_user_config_folder(temp, sizeof(temp), "ZprCraft");
+		get_user_config_folder(temp, sizeof(temp), AppName.c_str());
 		if (temp[0] == 0)
 			throw zprException("error while getting user config path");
 

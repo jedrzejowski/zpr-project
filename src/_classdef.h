@@ -120,5 +120,6 @@ namespace menu {
 }
 
 
+#include "src/vars.h"
 #include "src/logger.h"
 #include "src/exception.h"

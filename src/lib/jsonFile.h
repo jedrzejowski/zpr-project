@@ -16,9 +16,9 @@ public:
 
 	static const std::string& getConfigDir();
 
-	static JsonFile *load(const std::string &path);
+	static JsonFile *load(std::string path);
 
-	void save(std::string path = "");
+	void save();
 
 	bool has(const std::string &key) const;
 

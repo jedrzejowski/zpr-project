@@ -18,6 +18,9 @@ public:
 	explicit ZprException(const char *file, int line, const char *msg1) :
 			file(file), line(line), msg(msg1) {};
 
+	explicit ZprException(const char *file, int line, char *msg1) :
+			file(file), line(line), msg(msg1) {};
+
 	const char *getFile() const {
 		return file.c_str();;
 	}

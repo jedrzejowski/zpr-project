@@ -8,15 +8,16 @@ using json = nlohmann::json;
 
 class JsonFile {
 private:
-	json data;
+	json data = {};
 	std::string path;
 
-public:
 	explicit JsonFile();
+public:
 
-	static const std::string& getConfigDir();
+	static const std::string &getConfigDir();
 
 	static JsonFile *load(std::string path);
+	static JsonFile *create(std::string path);
 
 	void save();
 

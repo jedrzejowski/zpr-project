@@ -10,6 +10,8 @@ add_executable(${APP_TARGET}
         lib/object.cpp
         lib/perlin.h
         lib/perlin.cpp
+        lib/fs.h
+        lib/fs.cpp
         lib/appSettings.h
         lib/appSettings.cpp
         lib/backWorkerQueue.h

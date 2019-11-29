@@ -21,7 +21,7 @@ Poniżej przedstawiono skrypt do kompilacji na systemie Linux
 ```
 cd /tmp # tu można zmienić wedle upodobania
 
-git clone https://github.com/jedrzejowski/zpr-project zpr-craft-jedrzejowski-kretkowski
+git clone https://github.com/jedrzejowski/zpr-project --branch szkielet_aplikacji zpr-craft-jedrzejowski-kretkowski
 cd zpr-craft-jedrzejowski-kretkowski
 
 mkdir bin

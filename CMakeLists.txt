@@ -13,6 +13,11 @@ set(CMAKE_CXX_STANDARD 17)
 ## wątki
 find_package(Threads REQUIRED)
 
+## boost
+find_package(Boost COMPONENTS system filesystem REQUIRED)
+include_directories(${BOOST_INCLUDE_DIR})
+link_libraries(${Boost_LIBRARIES})
+
 ## glfw
 find_package(glfw3 REQUIRED)
 include_directories(${GLFW_INCLUDE_DIRS})
@@ -35,6 +40,8 @@ link_libraries(${GLM_LIBRARY_DIRS})
 
 set(LIBRARIES
         ${CMAKE_THREAD_LIBS_INIT}
+        ${Boost_FILESYSTEM_LIBRARY}
+        ${Boost_SYSTEM_LIBRARY}
         glfw
         ${OPENGL_LIBRARIES}
         ${GLEW_LIBRARIES}
@@ -48,3 +55,6 @@ add_subdirectory(src)
 add_subdirectory(test)
 
 target_link_libraries(${APP_TARGET} ${LIBRARIES})
+
+
+# Inne pliki

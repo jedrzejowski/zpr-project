@@ -1,4 +1,6 @@
 
+file(COPY ../res/ DESTINATION res)
+
 add_executable(${APP_TARGET}
         _classdef.h
         main.cpp

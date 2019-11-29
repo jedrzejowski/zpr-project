@@ -1,4 +1,3 @@
-#include <src/lib/jsonFile.h>
 #include "mainWin.h"
 
 int main(int argc, char *argv[]) {

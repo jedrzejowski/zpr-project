@@ -14,6 +14,13 @@ Gra jest wynikiem projektu na przedmiot ZPR
 Do kompilacji potrzebne są następujące programy/biblioteki: cmake, boost, OpenGL, GLM, GLEW, glfw3 i git.
 Każda dystrybucja Linuxa zawiera te biblioteki i najczęściej są one już w systemie po instalacji systemu
 
+Poniżej przedstawiono kilka przykładowe komendy do instalacji na wybranych systemach operacyjnych:
+
+| System | Komenda |
+| ------ | ------- |
+| Ubuntu | `# apt-get install git cmake libboost-filesystem-dev libglm-dev libglew-dev libglfw3-dev` |
+| ArchLinux | `# pacman -S git cmake glew glm boost glfw-x11` |
+
 ### Kompilacja
 
 Poniżej przedstawiono skrypt do kompilacji na systemie Linux
@@ -41,5 +48,6 @@ cd ..
 
 ## Autorzy
 
-Adam Jędrzejowski <adam@jedrzejowski.pl>
+Adam Jędrzejowski <[adam@jedrzejowski.pl](mailto:adam@jedrzejowski.pl)>
+
 Marcin Kretkowski

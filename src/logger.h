@@ -3,8 +3,7 @@
 #include <string>
 #include <iostream>
 #include <string>
-#include <time.h>
-#include <glm/gtx/string_cast.hpp>
+#include <ctime>
 
 //https://stackoverflow.com/questions/9158150/colored-output-in-c
 #define TTY_COLOR_RESET   "\033[0m"
@@ -26,7 +25,7 @@
 #define TTY_COLOR_BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
 
 #define logger (Logger(__FILE__, __LINE__))
-#define fastLog(var) (logger.log(#var).log("=").log(var))
+//#define fastLog(var) (logger.log(#var).log("=").log(var))
 
 //#define logger //
 

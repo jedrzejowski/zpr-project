@@ -8,9 +8,9 @@ namespace game {
 	private:
 		GameScene *gameScene = nullptr;
 		engine::InputInterface *inputInterface = nullptr;
-		map::World *worldMap = nullptr;
-		map::WorldRenderer *mapRenderer = nullptr;
-		Player *player = nullptr;
+		map::WorldPtr worldMap;
+		map::WorldRendererPtr mapRenderer = nullptr;
+		PlayerPtr player;
 
 		void initInputInterface();
 

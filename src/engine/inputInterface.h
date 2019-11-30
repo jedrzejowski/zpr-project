@@ -8,8 +8,8 @@ namespace engine {
 		friend Window;
 	private:
 		const Scene* scene = nullptr;
-		Mouse *mouse;
-		Keyboard *keyboard;
+		MousePtr mouse;
+		KeyboardPtr keyboard;
 
 		void initState(GLFWwindow *window);
 		void updateState(GLFWwindow *window);
@@ -20,8 +20,8 @@ namespace engine {
 		const Signal<> onAttached;
 		const Signal<> onUnattached;
 
-		Mouse *getMouse();
-		Keyboard *getKeyboard();
+		MousePtr getMouse();
+		KeyboardPtr getKeyboard();
 
 		bool isAttachedToScene();
 		void attachToScene(const Scene* scene);

@@ -8,7 +8,7 @@
 namespace map {
 	class WorldRenderer : public Object {
 	private:
-		const World *worldMap = nullptr;
+		const WorldPtr worldMap;
 		const engine::Texture *blockTexture = nullptr;
 		engine::ShaderProgram *shader = nullptr;
 
@@ -17,7 +17,7 @@ namespace map {
 		std::list<ChunkRenderer *> chunkRenderers;
 
 	public:
-		explicit WorldRenderer(const World *worldMap);
+		explicit WorldRenderer(const WorldPtr& worldMap);
 		~WorldRenderer();
 
 		engine::ShaderProgram *getShader() const;

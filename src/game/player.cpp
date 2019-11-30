@@ -4,7 +4,7 @@
 #include "src/map/world.h"
 #include "src/map/chunk.h"
 
-game::Player::Player(map::World *world) :
+game::Player::Player(map::WorldPtr& world) :
 		world(world) {
 	position = glm::vec3(4.0f);
 	angleH = 0;

@@ -26,12 +26,12 @@ namespace engine {
 		void setGlfwPosition(GLFWwindow *window, const glm::vec2 &pos);
 
 		explicit Mouse(InputInterface *ii);
-		~Mouse() override;
 	protected:
 		void initState(GLFWwindow *window) override;
 		void updateState(GLFWwindow *window) override;
 
 	public:
+		~Mouse() override;
 
 		const Signal<const glm::vec2 &> onMove;
 		const Signal<> onLeave;

@@ -49,7 +49,7 @@ void Window::open() {
 		nowTime = glfwGetTime();
 		auto delta = nowTime - lastTime;
 
-		logger.log("fps").log(1 / delta);
+//		logger.log("fps").log(1 / delta);
 
 		mainLoop();
 		swapScene();

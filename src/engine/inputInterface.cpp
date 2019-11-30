@@ -4,18 +4,20 @@
 
 #include "inputInterface.h"
 
+#include <memory>
+
 engine::InputInterface::InputInterface(Object *parent) :
 		Object(parent) {
 
-	mouse = new Mouse(this);
-	keyboard = new Keyboard(this);
+	mouse = MousePtr(new Mouse(this));
+	keyboard = KeyboardPtr(new Keyboard(this));
 }
 
-engine::Mouse *engine::InputInterface::getMouse() {
+engine::MousePtr engine::InputInterface::getMouse() {
 	return mouse;
 }
 
-engine::Keyboard *engine::InputInterface::getKeyboard() {
+engine::KeyboardPtr engine::InputInterface::getKeyboard() {
 	return keyboard;
 }
 

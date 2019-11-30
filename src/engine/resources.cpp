@@ -4,7 +4,6 @@
 boost::filesystem::path executablePath;
 
 boost::filesystem::path engine::Resources::absPath(const std::string &path) {
-	logger.log(executablePath / "res" / path);
 	return executablePath / "res" / path;
 }
 

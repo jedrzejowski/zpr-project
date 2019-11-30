@@ -6,7 +6,7 @@
 namespace game {
 	class Player : public Object {
 	protected:
-		map::World *world;
+		map::WorldPtr world;
 		glm::vec3 position;
 
 		float angleV = 0, angleH = 0;
@@ -19,7 +19,7 @@ namespace game {
 		glm::vec3 leftVec() const;
 
 	public:
-		explicit Player(map::World *world);
+		explicit Player(map::WorldPtr& world);
 
 		void moveForward(float time);
 		void moveBackward(float time);

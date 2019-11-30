@@ -17,6 +17,10 @@ Object *Object::getParent() const {
 }
 
 void Object::setParent(Object *newParent) {
+	if (newParent != nullptr)
+		logger.warn("ustawienie rodzica");
+
+
 	if (this->parent != nullptr)
 		this->parent->childrens.remove(this);
 	this->parent = newParent;

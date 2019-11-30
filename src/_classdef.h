@@ -3,6 +3,7 @@
 #include <utility>
 #include <vector>
 #include <tuple>
+#include <memory>
 
 template<typename... Args>
 class Signal;
@@ -49,9 +50,13 @@ namespace engine {
 
 	class Keyboard;
 
+	typedef std::shared_ptr<Keyboard> KeyboardPtr;
+
 	class MouseBtn;
 
 	class Mouse;
+
+	typedef std::shared_ptr<Mouse> MousePtr;
 
 	class InputInterface;
 
@@ -86,7 +91,11 @@ namespace block {
 namespace map {
 	class World;
 
+	typedef std::shared_ptr<World> WorldPtr;
+
 	class WorldRenderer;
+
+	typedef std::shared_ptr<WorldRenderer> WorldRendererPtr;
 
 	class Chunk;
 
@@ -99,6 +108,8 @@ namespace map {
 
 namespace game {
 	class Player;
+
+	typedef std::shared_ptr<Player> PlayerPtr;
 
 	class MainWindow;
 
@@ -119,6 +130,7 @@ namespace menu {
 	class WorldssScene;
 }
 
+#undef class
 
 #include "src/vars.h"
 #include "src/logger.h"

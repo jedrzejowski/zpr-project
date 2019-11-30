@@ -4,9 +4,8 @@
 #include "src/game/player.h"
 #include "src/engine/Engine.h"
 
-map::WorldRenderer::WorldRenderer(const map::World *worldMap) :
-		worldMap(worldMap),
-		Object() {
+map::WorldRenderer::WorldRenderer(const map::WorldPtr& worldMap) :
+		worldMap(worldMap) {
 
 	shader = new engine::ShaderProgram("shader/game.vert", "shader/game.frag");
 	shader->setInt("material.diffuse", 0);

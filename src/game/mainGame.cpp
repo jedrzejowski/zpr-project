@@ -8,13 +8,11 @@ game::MainGame::MainGame(GameScene *scene) :
 		Object(scene) {
 	gameScene = scene;
 
-	worldMap = new map::World();
+	worldMap = std::make_shared<map::World>();
 
-	player = new Player(worldMap);
-	player->setParent(this);
+	player = std::make_shared<Player>(worldMap);
 
-	mapRenderer = new map::WorldRenderer(worldMap);
-	mapRenderer->setParent(this);
+	mapRenderer = std::make_shared<map::WorldRenderer>(worldMap);
 
 	initInputInterface();
 }

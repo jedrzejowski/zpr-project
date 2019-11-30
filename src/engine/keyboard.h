@@ -17,8 +17,9 @@ namespace engine {
 
 	class Keyboard : public InputDevice {
 		friend InputInterface;
-	public:
+	private:
 		explicit Keyboard(InputInterface *ii);
+	public:
 
 		KeyboardBtn W = GLFW_KEY_W;
 		KeyboardBtn A = GLFW_KEY_A;

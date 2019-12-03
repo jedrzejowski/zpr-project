@@ -32,16 +32,11 @@ git clone https://github.com/jedrzejowski/zpr-project --branch szkielet_aplikacj
 cd zpr-craft-jedrzejowski-kretkowski
 
 mkdir bin
-cmake -S . -B bin
-
 cd bin
+cmake ..
 make
-
-cd test
 ctest
-
-cd ..
-./src/zpr_app
+./zpr_app
 
 ```
 

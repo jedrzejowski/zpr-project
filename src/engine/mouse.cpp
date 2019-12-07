@@ -35,7 +35,7 @@ void engine::Mouse::updateState(GLFWwindow *window) {
 
 	{
 		bool was = inWindow;
-		inWindow = glfwGetWindowAttrib(window, GLFW_HOVERED);
+		inWindow = glfwGetWindowAttrib(window, GLFW_FOCUSED);
 
 		if (was != inWindow) {
 			if (was) onLeave.emit();

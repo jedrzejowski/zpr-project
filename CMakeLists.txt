@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.10)
 project(zpr_project)
 find_package(PkgConfig)
 
@@ -51,8 +51,20 @@ set(LIBRARIES
 # Główny projekt
 
 include_directories(${PROJECT_SOURCE_DIR})
-add_subdirectory(src)
-add_subdirectory(test)
+
+
+
+# Pliki projetku
+include_directories(${PROJECT_SOURCE_DIR}/src)
+file(GLOB_RECURSE CPP_FILES "${PROJECT_SOURCE_DIR}/src/*.cpp")
+file(GLOB_RECURSE HEADER_FILES "${PROJECT_SOURCE_DIR}/src/*.h")
+
+add_executable(${APP_TARGET}
+        ${HEADER_FILES} ${CPP_FILES})
+
+file(COPY res/ DESTINATION res)
+
+include(tests.cmake)
 
 target_link_libraries(${APP_TARGET} ${LIBRARIES})
 

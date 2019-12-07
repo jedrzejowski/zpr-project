@@ -57,11 +57,13 @@ int main() {
 		logger.log("end").log(4);
 	});
 
-	worker1->awaitForQueueEnd();
-	worker2->awaitForQueueEnd();
+	return 1;
 
-	delete (worker1);
-	delete (worker2);
-
-	return 4 - counter;
+//	worker1->awaitForQueueEnd();
+//	worker2->awaitForQueueEnd();
+//
+//	delete (worker1);
+//	delete (worker2);
+//
+//	return 4 - counter;
 }

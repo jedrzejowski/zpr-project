@@ -24,6 +24,7 @@ include_directories(${GLFW_INCLUDE_DIRS})
 link_libraries(${GLFW_LIBRARY_DIRS})
 
 ## opengl
+set(OpenGL_GL_PREFERENCE GLVND)
 find_package(OpenGL REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIRS})
 link_libraries(${OPENGL_LIBRARY_DIRS})

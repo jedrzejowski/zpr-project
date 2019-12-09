@@ -31,7 +31,7 @@ const Coord2D &map::Chunk::getPosition() const {
 	return position;
 }
 
-map::Chunk *map::Chunk::getNeighbor(CoordDim dx, CoordDim dy) const {
+map::ChunkPtr map::Chunk::getNeighbor(CoordDim dx, CoordDim dy) const {
 	auto neighborPos = position;
 	neighborPos.x += dx;
 	neighborPos.y += dy;

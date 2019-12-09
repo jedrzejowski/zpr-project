@@ -2,7 +2,7 @@
 #include "worldRenderer.h"
 #include "chunk.h"
 
-map::ChunkRenderer::ChunkRenderer(map::WorldRenderer *renderer, Chunk *chunk)
+map::ChunkRenderer::ChunkRenderer(map::WorldRenderer *renderer, map::ChunkPtr chunk)
 		: Object(renderer) {
 	this->worldRenderer = renderer;
 	this->chunk = chunk;

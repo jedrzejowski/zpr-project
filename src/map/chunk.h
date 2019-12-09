@@ -26,7 +26,7 @@ namespace map {
 		std::map<Coord3D, block::Block *> getAllBlocks();
 
 		const Coord2D &getPosition() const;
-		Chunk * getNeighbor(CoordDim dx, CoordDim dy) const;
+		ChunkPtr getNeighbor(CoordDim dx, CoordDim dy) const;
 
 	};
 }

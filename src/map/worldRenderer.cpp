@@ -11,7 +11,7 @@ map::WorldRenderer::WorldRenderer(const map::WorldPtr& worldMap) :
 	shader->setInt("material.diffuse", 0);
 	blockTexture = engine::Resources::get().getTexture("texture/block.png");
 
-	worldMap->onChunkInserted([&](map::Chunk *chunk) {
+	worldMap->onChunkInserted([&](map::ChunkPtr chunk) {
 
 		auto cr = new ChunkRenderer(this, chunk);
 		chunkRenderers.push_back(cr);

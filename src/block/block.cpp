@@ -19,28 +19,28 @@ block::Block *block::Block::getNeighbor(CoordDim dx, CoordDim dy, CoordDim dz) c
 	if (z != std::clamp(z, (CoordDim) 0, map::Chunk::Size.y - 1)) return nullptr;
 
 	while (x < 0) {
-		targetChunk = targetChunk->getNeighbor(-1, 0);
+		targetChunk = targetChunk->getNeighbor(-1, 0).operator->();
 		x += map::Chunk::Size.x;
 
 		if (targetChunk == nullptr) return nullptr;
 	}
 
 	while (x >= map::Chunk::Size.x) {
-		targetChunk = targetChunk->getNeighbor(+1, 0);
+		targetChunk = targetChunk->getNeighbor(+1, 0).operator->();
 		x -= map::Chunk::Size.x;
 
 		if (targetChunk == nullptr) return nullptr;
 	}
 
 	while (y < 0) {
-		targetChunk = targetChunk->getNeighbor(0, -1);
+		targetChunk = targetChunk->getNeighbor(0, -1).operator->();
 		y += map::Chunk::Size.y;
 
 		if (targetChunk == nullptr) return nullptr;
 	}
 
 	while (y >= map::Chunk::Size.y) {
-		targetChunk = targetChunk->getNeighbor(0, +1);
+		targetChunk = targetChunk->getNeighbor(0, +1).operator->();
 		y -= map::Chunk::Size.y;
 
 		if (targetChunk == nullptr) return nullptr;

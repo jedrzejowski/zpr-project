@@ -21,12 +21,12 @@ namespace map {
 		std::list<Coord2D> unloadingChunksCoords;
 
 		std::mutex chunkListAccess;
-		std::list<Chunk *> chunksToRemove;
-		std::list<Chunk *> chunksToAdd;
+		std::list<map::ChunkPtr > chunksToRemove;
+		std::list<map::ChunkPtr > chunksToAdd;
 
-		Chunk *readChunkFromFile(const Coord2D &coord);
-		Chunk *generateNewChunk(const Coord2D &coord);
-		void saveChunkToFile(Chunk *chunk);
+		ChunkPtr readChunkFromFile(const Coord2D &coord);
+		ChunkPtr generateNewChunk(const Coord2D &coord);
+		void saveChunkToFile(ChunkPtr chunk);
 
 	public:
 		explicit ChunkLoader(World *world);

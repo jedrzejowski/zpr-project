@@ -99,6 +99,8 @@ namespace map {
 
 	class Chunk;
 
+	typedef std::shared_ptr<Chunk> ChunkPtr;
+
 	class ChunkRenderer;
 
 	class ChunkGenerator;
@@ -129,8 +131,6 @@ namespace menu {
 
 	class WorldssScene;
 }
-
-#undef class
 
 #include "src/vars.h"
 #include "src/logger.h"

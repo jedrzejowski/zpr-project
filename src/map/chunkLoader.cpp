@@ -73,12 +73,10 @@ bool map::ChunkLoader::isChunkUnloading(const Coord2D &coord) {
 	return std::find(unloadingChunksCoords.begin(), unloadingChunksCoords.end(), coord) != unloadingChunksCoords.end();;
 }
 
-map::Chunk *map::ChunkLoader::generateNewChunk(const Coord2D &coord) {
-	auto chunk = new Chunk(world, coord);
-	chunkGenerator.fillChunk(chunk);
-	return chunk;
+map::ChunkPtr map::ChunkLoader::generateNewChunk(const Coord2D &coord) {
+	return chunkGenerator.newVirginChunk(world, coord);
 }
 
-map::Chunk *map::ChunkLoader::readChunkFromFile(const Coord2D &coord) {
+map::ChunkPtr map::ChunkLoader::readChunkFromFile(const Coord2D &coord) {
 	return generateNewChunk(coord);
 }

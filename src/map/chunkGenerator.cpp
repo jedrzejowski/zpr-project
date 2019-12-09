@@ -19,14 +19,16 @@ map::ChunkGenerator::ChunkGenerator() {
 
 }
 
-void map::ChunkGenerator::fillChunk(map::Chunk *chunk) {
+map::ChunkPtr map::ChunkGenerator::newVirginChunk(map::World *worldMap, const Coord2D &position) {
+	auto chunk = std::make_shared<map::Chunk>(worldMap, position);
+
 	for (CoordDim x = 0; x < Chunk::Size.x; x++) {
 		for (CoordDim y = 0; y < Chunk::Size.y; y++) {
 
 			CoordDim z = noise.getHeight(
 					x + chunk->position.x * Chunk::Size.x,
 					y + chunk->position.y * Chunk::Size.y
-			) + Chunk::Size.z / 2;
+			) + (Chunk::Size.z / 2);
 
 			z = std::clamp(z, (CoordDim) 0, Chunk::Size.z - 1);
 

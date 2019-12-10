@@ -8,9 +8,9 @@
 #include "chunkLoader.h"
 
 namespace map {
-	class World : public Object {
+	class World : public Object, public std::enable_shared_from_this<World> {
 	protected:
-		ChunkLoader *chunkLoader;
+		ChunkLoader chunkLoader;
 		std::map<Coord2D, map::ChunkPtr> chunks;
 
 	public:
@@ -25,7 +25,7 @@ namespace map {
 
 		void syncChunkWithLoader();
 
-		const Signal<ChunkPtr > onChunkInserted;
-		const Signal<ChunkPtr > onChunkEjected;
+		const Signal<ChunkPtr> onChunkInserted;
+		const Signal<ChunkPtr> onChunkEjected;
 	};
 }

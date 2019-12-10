@@ -14,7 +14,7 @@ namespace map {
 
 		BackWorkerQueue worker;
 
-		std::list<ChunkRenderer *> chunkRenderers;
+		std::list<ChunkRendererPtr> chunkRenderers;
 
 	public:
 		explicit WorldRenderer(const WorldPtr& worldMap);
@@ -22,8 +22,8 @@ namespace map {
 
 		engine::ShaderProgram *getShader() const;
 
-		void injectChunkRenderer(ChunkRenderer *chunkRenderer);
-		void ejectChunkRenderer(ChunkRenderer *chunkRenderer);
+		void injectChunkRenderer(ChunkRendererPtr& chunkRenderer);
+		void ejectChunkRenderer(ChunkRendererPtr& chunkRenderer);
 
 		void render(const engine::Camera &camera,
 					const engine::Scene *scene);

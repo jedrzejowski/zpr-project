@@ -1,9 +1,8 @@
 #include "world.h"
 #include "chunk.h"
 
-map::World::World() {
-
-	chunkLoader = new ChunkLoader(this);
+map::World::World() :
+		chunkLoader(this) {
 }
 
 bool map::World::hasChunk(const Coord2D &position) {
@@ -18,12 +17,12 @@ map::ChunkPtr map::World::getChunk(const Coord2D &position) {
 }
 
 void map::World::requestChunk(Coord2D position) {
-	chunkLoader->load(position);
+	chunkLoader.load(position);
 }
 
 
 void map::World::syncChunkWithLoader() {
-	chunkLoader->syncWithWorld();
+	chunkLoader.syncWithWorld();
 }
 
 void map::World::insertChunk(map::ChunkPtr chunk) {

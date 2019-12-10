@@ -12,14 +12,14 @@ namespace map {
 		friend ChunkGenerator;
 		friend ChunkLoader;
 	protected:
-		World* worldMap = nullptr;
+		WorldPtr worldMap;
 		const Coord2D position;
 		std::map<Coord3D, block::Block *> blocks;
 
 	public:
 		static const Coord3D Size;
 
-		Chunk(World* worldMap, const Coord2D &position);
+		Chunk(WorldPtr& worldMap, const Coord2D &position);
 
 		bool setBlock(const Coord3D &position, block::Block *block);
 		block::Block *getBlock(const Coord3D &position);

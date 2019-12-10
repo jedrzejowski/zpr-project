@@ -11,6 +11,6 @@ namespace map {
 	public:
 		explicit ChunkGenerator();
 
-		map::ChunkPtr newVirginChunk(World *worldMap, const Coord2D &position);
+		map::ChunkPtr newVirginChunk(World* worldMap, const Coord2D &position);
 	};
 }

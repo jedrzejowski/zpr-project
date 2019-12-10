@@ -4,6 +4,7 @@
 
 #include "chunkGenerator.h"
 #include "chunk.h"
+#include "world.h"
 
 map::ChunkGenerator::ChunkGenerator() {
 	noise.set(1, 0.03, 4, 3, 26849);
@@ -20,7 +21,7 @@ map::ChunkGenerator::ChunkGenerator() {
 }
 
 map::ChunkPtr map::ChunkGenerator::newVirginChunk(map::World *worldMap, const Coord2D &position) {
-	auto chunk = std::make_shared<map::Chunk>(worldMap, position);
+	auto chunk = std::make_shared<map::Chunk>(worldMap->shared_from_this(), position);
 
 	for (CoordDim x = 0; x < Chunk::Size.x; x++) {
 		for (CoordDim y = 0; y < Chunk::Size.y; y++) {
@@ -45,4 +46,6 @@ map::ChunkPtr map::ChunkGenerator::newVirginChunk(map::World *worldMap, const Co
 			}
 		}
 	}
+
+	return chunk;
 }

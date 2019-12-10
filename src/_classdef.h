@@ -92,6 +92,7 @@ namespace map {
 	class World;
 
 	typedef std::shared_ptr<World> WorldPtr;
+	typedef std::weak_ptr<World> WorldWPtr;
 
 	class WorldRenderer;
 
@@ -103,9 +104,14 @@ namespace map {
 
 	class ChunkRenderer;
 
+	typedef std::shared_ptr<ChunkRenderer> ChunkRendererPtr;
+	typedef std::weak_ptr<ChunkRenderer> ChunkRendererWPtr;
+
 	class ChunkGenerator;
 
 	class ChunkLoader;
+
+	typedef std::shared_ptr<ChunkLoader> ChunkLoaderPtr;
 }
 
 namespace game {

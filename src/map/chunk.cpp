@@ -1,10 +1,9 @@
 #include "chunk.h"
 #include "world.h"
 
-const Coord3D map::Chunk::Size = Coord3D(16, 16, 16);
+const auto Size = Coord3D(16, 16, 16);
 
-map::Chunk::Chunk(World *worldMap, const Coord2D &position) :
-		Object(worldMap),
+map::Chunk::Chunk(WorldPtr &worldMap, const Coord2D &position) :
 		worldMap(worldMap),
 		position(position) {
 }

@@ -4,7 +4,7 @@
 #include "src/lib/coord.h"
 #include "src/lib/object.h"
 #include "src/lib/backWorkerQueue.h"
-#include "world.h"
+#include "chunkGenerator.h"
 
 namespace map {
 
@@ -12,24 +12,23 @@ namespace map {
 	class ChunkLoader : public Object {
 		friend World;
 	private:
-		World *world;
-		WorldRenderer *renderer;
-		BackWorkerQueue worker;
+		World* world;
 		ChunkGenerator chunkGenerator;
+		BackWorkerQueue worker;
 
 		std::list<Coord2D> loadingChunksCoords;
 		std::list<Coord2D> unloadingChunksCoords;
 
 		std::mutex chunkListAccess;
-		std::list<map::ChunkPtr > chunksToRemove;
-		std::list<map::ChunkPtr > chunksToAdd;
+		std::list<map::ChunkPtr> chunksToRemove;
+		std::list<map::ChunkPtr> chunksToAdd;
 
 		ChunkPtr readChunkFromFile(const Coord2D &coord);
 		ChunkPtr generateNewChunk(const Coord2D &coord);
 		void saveChunkToFile(ChunkPtr chunk);
 
 	public:
-		explicit ChunkLoader(World *world);
+		explicit ChunkLoader(World* world);
 		~ChunkLoader() override;
 
 		void load(Coord2D coord);

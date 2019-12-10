@@ -6,10 +6,10 @@
 #include "chunk.h"
 #include "worldRenderer.h"
 #include "chunkRenderer.h"
+#include "world.h"
 
 map::ChunkLoader::ChunkLoader(map::World *world) :
-		world(world),
-		Object(world) {
+		world(world) {
 }
 
 void map::ChunkLoader::load(Coord2D coord) {

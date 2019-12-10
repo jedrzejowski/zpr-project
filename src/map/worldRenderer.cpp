@@ -4,7 +4,7 @@
 #include "src/game/player.h"
 #include "src/engine/Engine.h"
 
-map::WorldRenderer::WorldRenderer(const map::WorldPtr& worldMap) :
+map::WorldRenderer::WorldRenderer(const map::WorldPtr &worldMap) :
 		worldMap(worldMap) {
 
 	shader = new engine::ShaderProgram("shader/game.vert", "shader/game.frag");
@@ -13,7 +13,7 @@ map::WorldRenderer::WorldRenderer(const map::WorldPtr& worldMap) :
 
 	worldMap->onChunkInserted([&](map::ChunkPtr chunk) {
 
-		auto cr = new ChunkRenderer(this, chunk);
+		auto cr = std::make_shared<ChunkRenderer>(this, chunk);
 		chunkRenderers.push_back(cr);
 	});
 }
@@ -42,7 +42,7 @@ void map::WorldRenderer::render(const engine::Camera &camera,
 	shader->setMat4("camera", camera.getMatrix());
 	shader->setVec3("cameraPos", camera.position);
 
-	for (auto *chunkRenderer : chunkRenderers)
+	for (auto &chunkRenderer : chunkRenderers)
 		chunkRenderer->render(scene);
 
 	shader->unbind();
@@ -55,9 +55,9 @@ engine::ShaderProgram *map::WorldRenderer::getShader() const {
 void map::WorldRenderer::syncWithWorld() {
 }
 
-void map::WorldRenderer::injectChunkRenderer(map::ChunkRenderer *chunkRenderer) {
+void map::WorldRenderer::injectChunkRenderer(map::ChunkRendererPtr &chunkRenderer) {
 }
 
-void map::WorldRenderer::ejectChunkRenderer(map::ChunkRenderer *chunkRenderer) {
+void map::WorldRenderer::ejectChunkRenderer(map::ChunkRendererPtr &chunkRenderer) {
 }
 

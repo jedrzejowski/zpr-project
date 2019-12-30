@@ -65,7 +65,8 @@ private:
 	std::list<Object *> childrens;
 
 public:
-	explicit Object(Object *parent = nullptr);
+	explicit Object();
+	explicit Object(Object *parent);
 	virtual ~Object();
 
 	Object(const Object &) = delete;

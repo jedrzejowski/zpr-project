@@ -10,10 +10,11 @@
 
 
 menu::WelcomeScene::WelcomeScene() {
-	interface = new gui::Interface(this);
+
+	interface = std::make_shared<gui::Interface>();
 	setInputInterface(interface->getInputInterface());
 
-	worldsBtn = new gui::Button(interface);
+	worldsBtn = std::make_shared<gui::Button>(interface);
 	worldsBtn->setPosition(glm::vec2(0, 0.3));
 	worldsBtn->setText("Graj");
 
@@ -29,9 +30,9 @@ menu::WelcomeScene::WelcomeScene() {
 		getWindow()->setScene(new game::GameScene);
 	});
 
-	settingsBtn->onClicked([&] {
-		getWindow()->setScene(new SettingsScene);
-	});
+//	settingsBtn->onClicked([&] {
+//		getWindow()->setScene(new SettingsScene);
+//	});
 }
 
 void menu::WelcomeScene::render(engine::Window *window) {

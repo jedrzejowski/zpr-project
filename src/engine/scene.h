@@ -12,7 +12,11 @@ namespace engine {
 	class Scene : public Object {
 	private:
 		Window *window = nullptr;
-		InputInterface *inputInterface = nullptr;
+		InputInterfacePtr inputInterface;
+
+	protected:
+		Scene();
+
 	public:
 		const Signal<> onWindowChanged;
 
@@ -22,8 +26,8 @@ namespace engine {
 		void setWindow(Window *window);
 		bool isInWindow();
 
-		InputInterface *getInputInterface() const;
-		void setInputInterface(InputInterface *inputInterface);
+		InputInterfacePtr getInputInterface();
+		void setInputInterface(InputInterfacePtr interfacePtr);
 
 		virtual void pollEvents() {};
 

@@ -6,8 +6,7 @@
 
 #include <memory>
 
-engine::InputInterface::InputInterface(Object *parent) :
-		Object(parent) {
+engine::InputInterface::InputInterface() {
 
 	mouse = MousePtr(new Mouse(this));
 	keyboard = KeyboardPtr(new Keyboard(this));

@@ -13,7 +13,6 @@ namespace map {
 		friend World;
 	private:
 		World* world;
-		ChunkGenerator chunkGenerator;
 		BackWorkerQueue worker;
 
 		std::list<Coord2D> loadingChunksCoords;

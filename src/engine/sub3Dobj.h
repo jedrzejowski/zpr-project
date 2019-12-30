@@ -9,8 +9,8 @@
 namespace engine {
 	class Sub3DObj {
 	private:
-		std::list<Sub3DObj *> childrens;
-		Sub3DObj *parent3D = nullptr;
+		std::list<Sub3DObj *> children;
+		Sub3DObjWPtr parent;
 		bool needRefreshBuffers = true;
 
 	protected:
@@ -19,12 +19,12 @@ namespace engine {
 		std::vector<engine::SimpleTriangle> indicesBuf;
 
 	public:
-		explicit Sub3DObj(Sub3DObj *parent = nullptr);
+		explicit Sub3DObj(Sub3DObjPtr parent);
 
-		Sub3DObj *get3DParent() const;
-		void set3DParent(Sub3DObj *newParent);
+		Sub3DObjPtr getParent() const;
+		void setParent(Sub3DObjPtr parent);
 
-		const std::list<Sub3DObj *> &getChildrens() const;
+		const std::list<Sub3DObj *> &getChildren() const;
 
 		void insertToBuffers(
 				std::vector<engine::Point3DeX> &vertices,

@@ -4,6 +4,9 @@
 
 using namespace engine;
 
+Scene::Scene() {
+}
+
 Window *Scene::getWindow() const {
 	return window;
 }
@@ -14,17 +17,15 @@ void Scene::setWindow(Window *window) {
 	onWindowChanged.emit();
 }
 
-
-
-InputInterface *Scene::getInputInterface() const {
+InputInterfacePtr Scene::getInputInterface() {
 	return this->inputInterface;
 }
 
-void Scene::setInputInterface(InputInterface *inputInterface) {
+void Scene::setInputInterface(InputInterfacePtr interfacePtr) {
 	if (this->inputInterface != nullptr)
 		this->inputInterface->unattachFromScene();
 
-	this->inputInterface = inputInterface;
+	this->inputInterface = interfacePtr;
 
 	if (this->inputInterface != nullptr)
 		this->inputInterface->attachToScene(this);

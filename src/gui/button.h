@@ -14,14 +14,14 @@ namespace gui {
 		Disabled
 	};
 
-	class Button : public RectangleObj {
+	class Button : public RectangleObj, public std::enable_shared_from_this<Button> {
 		std::string label;
 		ButtonState state;
-		Text* text;
+		TextPtr text;
 
 	public:
 
-		explicit Button(Interface* interface);
+		explicit Button(InterfacePtr interface);
 
 		const std::string &getLabel() const;
 		void setLabel(const std::string &label);

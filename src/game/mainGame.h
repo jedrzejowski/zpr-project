@@ -2,12 +2,13 @@
 
 #include "src/_classdef.h"
 #include "src/lib/object.h"
+#include "src/engine/Engine.h"
 
 namespace game {
 	class MainGame : public Object {
 	private:
 		GameScene *gameScene = nullptr;
-		engine::InputInterface *inputInterface = nullptr;
+		engine::InputInterfacePtr inputInterface;
 		map::WorldPtr worldMap;
 		map::WorldRendererPtr mapRenderer = nullptr;
 		PlayerPtr player;
@@ -23,7 +24,7 @@ namespace game {
 
 		const Signal<> onMenuRequest;
 
-		engine::InputInterface *getInputInterface() const;
+		engine::InputInterfacePtr getInputInterface();
 
 		void pollEvents();
 	};

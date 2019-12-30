@@ -9,8 +9,11 @@
 
 namespace map {
 	class World : public Object, public std::enable_shared_from_this<World> {
+		friend ChunkLoader;
+		friend ChunkGenerator;
 	protected:
 		ChunkLoader chunkLoader;
+		ChunkGenerator chunkGenerator;
 		std::map<Coord2D, map::ChunkPtr> chunks;
 
 	public:

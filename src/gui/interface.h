@@ -10,18 +10,16 @@ namespace gui {
 
 	class Interface : public Object, public engine::Abs3DObj {
 	private:
-		engine::InputInterface *inputInterface;
-		engine::Scene *scene;
+		engine::InputInterfacePtr inputInterface;
 		glm::vec2 scaleSize = glm::vec2(1);
 		glm::vec2 mouseScaledPosition = glm::vec2(0);
 		InterfaceShader interfaceShader;
 
 	public:
-		explicit Interface(engine::Scene *scene);
-		void render(const engine::Scene *scene) override;
+		explicit Interface();
+		void render(const engine::ScenePtr scene) override;
 
-		engine::InputInterface *getInputInterface() const;
-		engine::Scene *getScene() const;
+		engine::InputInterfacePtr getInputInterface();
 
 		const glm::vec2 &getScaleSize() const;
 		void setScaleSize(const glm::vec2 &scaleSize);

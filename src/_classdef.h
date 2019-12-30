@@ -26,6 +26,14 @@ namespace engine {
 
 	class Abs3DObj;
 
+	typedef std::shared_ptr<Abs3DObj> Abs3DObjPtr;
+	typedef std::weak_ptr<Abs3DObj> Abs3DObjWPtr;
+
+	class Sub3DObj;
+
+	typedef std::shared_ptr<Sub3DObj> Sub3DObjPtr;
+	typedef std::weak_ptr<Sub3DObj> Sub3DObjWPtr;
+
 	class Camera;
 
 	class Light;
@@ -33,6 +41,9 @@ namespace engine {
 	class Resources;
 
 	class Scene;
+
+	typedef std::shared_ptr<Scene> ScenePtr;
+	typedef std::weak_ptr<Scene> SceneWPtr;
 
 	class Material;
 
@@ -60,21 +71,37 @@ namespace engine {
 
 	class InputInterface;
 
+	typedef std::shared_ptr<InputInterface> InputInterfacePtr;
+
 	class FpsCounter;
 }
 
 namespace gui {
 	class Interface;
 
+	typedef std::shared_ptr<Interface> InterfacePtr;
+	typedef std::weak_ptr<Interface> InterfaceWPtr;
+
 	class InterfaceShader;
 
 	class GuiObject;
 
+	typedef std::shared_ptr<GuiObject> GuiObjectPtr;
+	typedef std::weak_ptr<GuiObject> GuiObjectWPtr;
+
 	class RectangleObj;
+
+	typedef std::shared_ptr<RectangleObj> RectangleObjPtr;
+	typedef std::weak_ptr<RectangleObj> RectangleObjWPtr;
 
 	class Button;
 
+	typedef std::shared_ptr<Button> ButtonPtr;
+
 	class Text;
+
+	typedef std::shared_ptr<Text> TextPtr;
+	typedef std::weak_ptr<Text> TextWPtr;
 }
 
 namespace block {

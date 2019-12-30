@@ -10,7 +10,7 @@ namespace engine {
 
 		int maxSize = 100;
 	public:
-		FpsCounter(Object *parent = nullptr);
+		FpsCounter();
 
 		void tickFrame();
 

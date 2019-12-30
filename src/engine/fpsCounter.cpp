@@ -5,8 +5,7 @@
 #include "fpsCounter.h"
 #include "src/opengl.h"
 
-engine::FpsCounter::FpsCounter(Object *parent) :
-		Object(parent) {
+engine::FpsCounter::FpsCounter() {
 }
 
 void engine::FpsCounter::tickFrame() {
@@ -15,6 +14,7 @@ void engine::FpsCounter::tickFrame() {
 	if (fifo.size() > maxSize)
 		fifo.pop();
 }
+
 float engine::FpsCounter::getNowFPS() {
-	return fifo.back()/1000;
+	return fifo.back() / 1000;
 }

@@ -15,7 +15,7 @@ namespace engine {
 		void updateState(GLFWwindow *window);
 
 	public:
-		explicit InputInterface(Object* parent = nullptr);
+		explicit InputInterface();
 
 		const Signal<> onAttached;
 		const Signal<> onUnattached;

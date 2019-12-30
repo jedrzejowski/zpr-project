@@ -7,7 +7,7 @@
 
 using namespace engine;
 
-Abs3DObj::Abs3DObj() {
+Abs3DObj::Abs3DObj(Sub3DObjPtr parent) : Sub3DObj(parent) {
 
 	glGenVertexArrays(1, &VAO);
 	glBindVertexArray(VAO);
@@ -54,7 +54,7 @@ void Abs3DObj::draw() {
 bool Abs3DObj::isNeedRefreshBuffers() const {
 	bool out = needRefreshBuffers;
 
-	for (auto &child : getChildrens())
+	for (auto &child : getChildren())
 		out = out || child->isNeedRefreshBuffers();
 
 	return out;
@@ -70,7 +70,7 @@ void recursiveUpdateBuffers(Sub3DObj *obj) {
 	if (obj->isNeedRefreshBuffers())
 		obj->updateBuffers();
 
-	for (auto &child : obj->getChildrens()) {
+	for (auto &child : obj->getChildren()) {
 //		if (child->isNeedRefreshBuffers())
 			child->updateBuffers();
 		recursiveUpdateBuffers(child);
@@ -81,7 +81,7 @@ void Abs3DObj::updateBuffers() {
 	verticesBuf.clear();
 	indicesBuf.clear();
 
-	for (auto &child : getChildrens()) {
+	for (auto &child : getChildren()) {
 		recursiveUpdateBuffers(child);
 		child->insertToBuffers(verticesBuf, indicesBuf);
 	}

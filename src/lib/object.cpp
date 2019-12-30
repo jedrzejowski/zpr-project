@@ -5,6 +5,9 @@ Object::Object(Object *parent) {
 	setParent(parent);
 }
 
+Object::Object() {
+}
+
 Object::~Object() {
 	onDestroy.emit(this);
 
@@ -47,4 +50,3 @@ void Object::dumpParentTree() {
 
 	logger.log("Dump of object").log(this).enter().log(output.rdbuf());
 }
-

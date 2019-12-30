@@ -2,7 +2,8 @@
 #include "chunk.h"
 
 map::World::World() :
-		chunkLoader(this) {
+		chunkLoader(this),
+		chunkGenerator(this) {
 }
 
 bool map::World::hasChunk(const Coord2D &position) {

@@ -8,9 +8,10 @@ namespace map {
 	class ChunkGenerator {
 	private:
 		PerlinNoise noise;
+		World* world;
 	public:
-		explicit ChunkGenerator();
+		explicit ChunkGenerator(World* world);
 
-		map::ChunkPtr newVirginChunk(World* worldMap, const Coord2D &position);
+		map::ChunkPtr newVirginChunk(const Coord2D &position);
 	};
 }

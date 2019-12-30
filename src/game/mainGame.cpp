@@ -4,8 +4,7 @@
 #include "player.h"
 #include "gameScene.h"
 
-game::MainGame::MainGame(GameScene *scene) :
-		Object(scene) {
+game::MainGame::MainGame(GameScene *scene) {
 	gameScene = scene;
 
 	worldMap = std::make_shared<map::World>();
@@ -29,7 +28,7 @@ void game::MainGame::renderPlayerInterface() {
 }
 
 void game::MainGame::initInputInterface() {
-	inputInterface = new engine::InputInterface(this);
+	inputInterface = std::make_shared<engine::InputInterface>();
 
 	auto keyboard = inputInterface->getKeyboard();
 	auto mouse = inputInterface->getMouse();
@@ -74,7 +73,7 @@ void game::MainGame::initInputInterface() {
 	});
 }
 
-engine::InputInterface *game::MainGame::getInputInterface() const {
+engine::InputInterfacePtr game::MainGame::getInputInterface() {
 	return inputInterface;
 }
 

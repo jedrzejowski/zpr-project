@@ -4,10 +4,9 @@
 
 #include "interface.h"
 
-gui::Interface::Interface(engine::Scene *parent) :
-		Object(parent),
-		scene(parent) {
-	inputInterface = new engine::InputInterface(this);
+gui::Interface::Interface() : Abs3DObj() {
+
+	inputInterface = std::make_shared<engine::InputInterface>();
 
 	// Przeliczenie względnej pozycji myszki na dziedzinę interfejsu
 	inputInterface->getMouse()->onMove([&](const glm::vec2 &delta) {
@@ -32,7 +31,7 @@ gui::Interface::Interface(engine::Scene *parent) :
 }
 
 
-void gui::Interface::render(const engine::Scene *scene) {
+void gui::Interface::render(const engine::ScenePtr scene) {
 	auto window = scene->getWindow();
 	auto size = std::min(window->getWinWidth(), window->getWinHeight());
 	window->setViewPort(engine::ViewPort::Square);
@@ -45,12 +44,8 @@ void gui::Interface::render(const engine::Scene *scene) {
 	interfaceShader.unbind();
 }
 
-engine::InputInterface *gui::Interface::getInputInterface() const {
+engine::InputInterfacePtr gui::Interface::getInputInterface() {
 	return inputInterface;
-}
-
-engine::Scene *gui::Interface::getScene() const {
-	return scene;
 }
 
 const glm::vec2 &gui::Interface::getScaleSize() const {

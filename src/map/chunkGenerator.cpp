@@ -6,7 +6,8 @@
 #include "chunk.h"
 #include "world.h"
 
-map::ChunkGenerator::ChunkGenerator() {
+map::ChunkGenerator::ChunkGenerator(World *world) {
+	this->world = world;
 	noise.set(1, 0.03, 4, 3, 26849);
 
 //	lenght=8192
@@ -20,8 +21,9 @@ map::ChunkGenerator::ChunkGenerator() {
 
 }
 
-map::ChunkPtr map::ChunkGenerator::newVirginChunk(map::World *worldMap, const Coord2D &position) {
-	auto chunk = std::make_shared<map::Chunk>(worldMap->shared_from_this(), position);
+map::ChunkPtr map::ChunkGenerator::newVirginChunk(const Coord2D &position) {
+	auto ptr = world->shared_from_this();
+	auto chunk = std::make_shared<map::Chunk>(ptr, position);
 
 	for (CoordDim x = 0; x < Chunk::Size.x; x++) {
 		for (CoordDim y = 0; y < Chunk::Size.y; y++) {

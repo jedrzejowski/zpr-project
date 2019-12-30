@@ -1,12 +1,12 @@
 #include "button.h"
 #include "src/lib/object.h"
 
-gui::Button::Button(Interface *interface) :
+gui::Button::Button(InterfacePtr interface) :
 		RectangleObj(interface) {
 	setState(Idle);
 
 	{
-		text = new Text(this);
+		text = std::make_shared<Text>(this->shared_from_this());
 		auto model = text->getModel();
 		model = glm::translate(model, glm::vec3(0, 0.13 / 4, -.1));
 		model = glm::scale(model, glm::vec3(0.13 / 2, 0.13 / 2, 1));

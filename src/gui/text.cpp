@@ -1,11 +1,11 @@
 
 #include "text.h"
 
-gui::Text::Text(gui::Interface *interface) :
+gui::Text::Text(gui::InterfacePtr interface) :
 		GuiObject(interface) {
 }
 
-gui::Text::Text(gui::GuiObject *parent) :
+gui::Text::Text(gui::GuiObjectPtr parent) :
 		GuiObject(parent) {
 }
 

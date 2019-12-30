@@ -5,24 +5,26 @@
 #include "sub3Dobj.h"
 #include "point.h"
 
-engine::Sub3DObj::Sub3DObj(engine::Sub3DObj *parent) {
-	set3DParent(parent);
+engine::Sub3DObj::Sub3DObj(engine::Sub3DObjPtr parent) {
+	setParent(parent);
 }
 
-engine::Sub3DObj *engine::Sub3DObj::get3DParent() const {
-	return parent3D;
+engine::Sub3DObjPtr engine::Sub3DObj::getParent() const {
+	return parent.lock();
 }
 
-void engine::Sub3DObj::set3DParent(engine::Sub3DObj *newParent) {
-	if (this->parent3D != nullptr)
-		this->parent3D->childrens.remove(this);
-	this->parent3D = newParent;
-	if (this->parent3D != nullptr)
-		this->parent3D->childrens.push_back(this);
+void engine::Sub3DObj::setParent(engine::Sub3DObjPtr newParent) {
+	if (!this->parent.expired())
+		this->parent.lock()->children.remove(this);
+
+	this->parent = newParent;
+
+	if (newParent != nullptr)
+		this->parent.lock()->children.push_back(this);
 }
 
-const std::list<engine::Sub3DObj *> &engine::Sub3DObj::getChildrens() const {
-	return childrens;
+const std::list<engine::Sub3DObj *> &engine::Sub3DObj::getChildren() const {
+	return children;
 }
 
 void engine::Sub3DObj::insertToBuffers(std::vector<engine::Point3DeX> &vertices,
@@ -39,7 +41,7 @@ void engine::Sub3DObj::insertToBuffers(std::vector<engine::Point3DeX> &vertices,
 
 	setNeedRefreshBuffers(false);
 
-	for (auto &child : getChildrens())
+	for (auto &child : getChildren())
 		child->insertToBuffers(vertices, indices);
 }
 

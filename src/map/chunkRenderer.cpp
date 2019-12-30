@@ -3,7 +3,7 @@
 #include "chunk.h"
 
 map::ChunkRenderer::ChunkRenderer(map::WorldRenderer *renderer, map::ChunkPtr chunk)
-		: Object(renderer) {
+		: Object(renderer), Abs3DObj(engine::Sub3DObjPtr()), Abs3DObj(engine::Sub3DObjPtr()) {
 	this->worldRenderer = renderer;
 	this->chunk = chunk;
 

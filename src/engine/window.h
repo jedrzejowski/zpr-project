@@ -28,7 +28,7 @@ namespace engine {
 		Scene *currentScene = nullptr;
 		Scene *nextScene = nullptr;
 		ViewPort viewPort;
-		InputInterface *lastInputInterface = nullptr;
+		InputInterfacePtr lastInputInterface = nullptr;
 
 		void mainLoop();
 		void swapScene();

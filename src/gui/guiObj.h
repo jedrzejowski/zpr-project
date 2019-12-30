@@ -8,20 +8,20 @@ namespace gui {
 	class GuiObject : public Object, public engine::Sub3DObj {
 	private:
 		glm::mat4 model = glm::mat4(1);
-		Interface *interface = nullptr;
-		GuiObject *guiParent = nullptr;
+		InterfaceWPtr interface;
+		GuiObjectWPtr guiParent;
 	public:
 
-		explicit GuiObject(Interface *interface);
-		explicit GuiObject(GuiObject *parent);
+		explicit GuiObject(InterfacePtr interface);
+		explicit GuiObject(GuiObjectPtr parent);
 
 		glm::mat4 getModel() const;
 		void setModel(const glm::mat4 &model);
 
-		const Interface *getInterface() const;
-		Interface *getInterface();
+		const InterfacePtr getInterface() const;
+		InterfacePtr getInterface();
 
-		GuiObject *getGuiParent() const;
+		GuiObjectPtr getGuiParent() const;
 
 		const Signal<> onHover;
 		const Signal<> onEnter;

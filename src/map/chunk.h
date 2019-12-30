@@ -23,7 +23,7 @@ namespace map {
 
 		bool setBlock(const Coord3D &position, block::Block *block);
 		block::Block *getBlock(const Coord3D &position);
-		std::map<Coord3D, block::Block *> getAllBlocks();
+		std::map<Coord3D, block::Block *>& getAllBlocks();
 
 		const Coord2D &getPosition() const;
 		ChunkPtr getNeighbor(CoordDim dx, CoordDim dy) const;

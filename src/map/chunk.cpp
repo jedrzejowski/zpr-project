@@ -1,7 +1,7 @@
 #include "chunk.h"
 #include "world.h"
 
-const auto Size = Coord3D(16, 16, 16);
+const Coord3D map::Chunk::Size = Coord3D(16, 16, 16);
 
 map::Chunk::Chunk(WorldPtr &worldMap, const Coord2D &position) :
 		worldMap(worldMap),
@@ -22,7 +22,7 @@ bool map::Chunk::setBlock(const Coord3D &position, block::Block *block) {
 	return false;
 }
 
-std::map<Coord3D, block::Block *> map::Chunk::getAllBlocks() {
+std::map<Coord3D, block::Block *> &map::Chunk::getAllBlocks() {
 	return blocks;
 }
 

@@ -1,7 +1,7 @@
 #include "rectangleObj.h"
 #include "interface.h"
 
-gui::RectangleObj::RectangleObj(Interface *interface) :
+gui::RectangleObj::RectangleObj(InterfacePtr interface) :
 		GuiObject(interface) {
 
 

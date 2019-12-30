@@ -1,40 +1,37 @@
 #include "guiObj.h"
 #include "interface.h"
 
-gui::GuiObject::GuiObject(Interface *interface) :
-		Object(interface),
+gui::GuiObject::GuiObject(InterfacePtr interface) :
 		Sub3DObj(interface),
 		interface(interface) {
 }
 
-gui::GuiObject::GuiObject(GuiObject *parent) :
-		Object(parent),
+gui::GuiObject::GuiObject(GuiObjectPtr parent) :
 		Sub3DObj(parent),
 		guiParent(parent),
 		interface(parent->getInterface()) {
 }
 
 glm::mat4 gui::GuiObject::getModel() const {
-	if (guiParent != nullptr)
-		return guiParent->getModel() * model;
+	if (!guiParent.expired())
+		return guiParent.lock()->getModel() * model;
 
 	return model;
 }
 
-void gui::GuiObject::
-setModel(const glm::mat4 &model) {
+void gui::GuiObject::setModel(const glm::mat4 &model) {
 	GuiObject::model = model;
 	setNeedRefreshBuffers(true);
 }
 
-const gui::Interface *gui::GuiObject::getInterface() const {
-	return interface;
+const gui::InterfacePtr gui::GuiObject::getInterface() const {
+	return interface.lock();
 }
 
-gui::Interface *gui::GuiObject::getInterface() {
-	return interface;
+gui::InterfacePtr gui::GuiObject::getInterface() {
+	return interface.lock();
 }
 
-gui::GuiObject *gui::GuiObject::getGuiParent() const {
-	return guiParent;
+gui::GuiObjectPtr gui::GuiObject::getGuiParent() const {
+	return guiParent.lock();
 }

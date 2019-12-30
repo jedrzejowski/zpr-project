@@ -11,8 +11,8 @@ namespace gui {
 		std::string content = "Text";
 
 	public:
-		explicit Text(Interface* interface);
-		explicit Text(GuiObject* parent);
+		explicit Text(InterfacePtr interface);
+		explicit Text(GuiObjectPtr parent);
 
 		const std::string &getContent() const;
 		void setContent(const std::string &content);

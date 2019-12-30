@@ -8,8 +8,8 @@ namespace menu {
 
 	class WelcomeScene : public engine::Scene {
 	private:
-		gui::Interface *interface;
-		gui::Button *worldsBtn, *settingsBtn, *quitBtn;
+		gui::InterfacePtr interface;
+		gui::ButtonPtr worldsBtn, settingsBtn, quitBtn;
 
 	public:
 		explicit WelcomeScene();

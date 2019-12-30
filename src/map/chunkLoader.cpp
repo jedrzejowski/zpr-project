@@ -8,7 +8,7 @@
 #include "chunkRenderer.h"
 #include "world.h"
 
-map::ChunkLoader::ChunkLoader(map::World *world) :
+map::ChunkLoader::ChunkLoader(World *world) :
 		world(world) {
 }
 
@@ -74,7 +74,7 @@ bool map::ChunkLoader::isChunkUnloading(const Coord2D &coord) {
 }
 
 map::ChunkPtr map::ChunkLoader::generateNewChunk(const Coord2D &coord) {
-	return chunkGenerator.newVirginChunk(world, coord);
+	return world->chunkGenerator.newVirginChunk(coord);
 }
 
 map::ChunkPtr map::ChunkLoader::readChunkFromFile(const Coord2D &coord) {

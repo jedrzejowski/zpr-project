@@ -4,16 +4,27 @@
 #include "player.h"
 #include "gameScene.h"
 
-game::MainGame::MainGame(GameSceneWPtr scene) {
+game::MainGame::MainGame(GameScenePtr &scene) {
 	gameScene = scene;
+}
 
-	worldMap = std::make_shared<map::World>();
 
-	player = std::make_shared<Player>(worldMap);
+game::MainGamePtr game::MainGame::create(game::GameScenePtr &scene) {
+	struct trick : MainGame {
+		trick(GameScenePtr &scene) : MainGame(scene) {}
+	};
 
-	mapRenderer = std::make_shared<map::WorldRenderer>(worldMap);
+	auto self = std::make_shared<trick>(scene);
 
-	initInputInterface();
+	self->worldMap = std::make_shared<map::World>();
+
+	self->player = std::make_shared<Player>();
+
+	self->mapRenderer = std::make_shared<map::WorldRenderer>(self->worldMap);
+
+	self->initInputInterface();
+
+	return self;
 }
 
 
@@ -80,6 +91,5 @@ engine::InputInterfacePtr game::MainGame::getInputInterface() {
 void game::MainGame::pollEvents() {
 	worldMap->syncChunkWithLoader();
 	mapRenderer->syncWithWorld();
-	player->requestChunks();
+	worldMap->loadForPlayer(player);
 }
-

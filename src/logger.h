@@ -36,7 +36,7 @@ public:
 	}
 
 	~Logger() {
-		std::cout << TTY_COLOR_RESET << std::endl;
+		std::cout << TTY_COLOR_RESET << std::endl << std::flush;
 	}
 
 	std::string currentDateTime() {
@@ -82,5 +82,14 @@ public:
 	Logger &enter() {
 		std::cout << std::endl;
 		return *this;
+	}
+	template<typename T>
+	Logger &constructor(const T *obj) {
+		return msg(std::string("") + typeid(obj).name() + "()").log(obj);
+	}
+
+	template<typename T>
+	Logger &destructor(const T *obj) {
+		return msg(std::string("~") + typeid(obj).name() + "()").log(obj);
 	}
 };

@@ -21,13 +21,13 @@ InputInterfacePtr Scene::getInputInterface() {
 }
 
 void Scene::setInputInterface(InputInterfacePtr interfacePtr) {
-//	if (this->inputInterface)
-//		this->inputInterface->unattachFromScene();
+	if (this->inputInterface)
+		this->inputInterface->unattachFromScene();
 
-	this->inputInterface = interfacePtr;
+	this->inputInterface = std::move(interfacePtr);
 
-//	if (this->inputInterface != nullptr)
-//		this->inputInterface->attachToScene(this->shared_from_this());
+	if (this->inputInterface != nullptr)
+		this->inputInterface->attachToScene(this->shared_from_this());
 }
 
 bool Scene::isInWindow() {

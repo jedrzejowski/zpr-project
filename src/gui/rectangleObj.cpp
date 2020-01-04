@@ -3,9 +3,14 @@
 
 gui::RectangleObj::RectangleObj(InterfacePtr interface) :
 		GuiObject(interface) {
+}
 
+void gui::RectangleObj::initInputInterface() {
 
-	interface->getInputInterface()->getMouse()->onMove(this, [this](const glm::vec2 &delta) {
+	auto ii = getInterface()->getInputInterface();
+	auto self = this->shared_from_this();
+
+	ii->getMouse()->onMove(self, [this](const glm::vec2 &delta) {
 
 		auto mousePosition = this->getInterface()->getMouseScaledPosition();
 //		mousePosition = this->getModel() * glm::vec4(mousePosition, 0, 1);
@@ -23,11 +28,11 @@ gui::RectangleObj::RectangleObj(InterfacePtr interface) :
 		isMouseIn = isCollision;
 	});
 
-	interface->getInputInterface()->getMouse()->Left.onPressed(this, [&] {
+	ii->getMouse()->Left.onPressed(self, [&] {
 		if (isMouseIn) onPressed();
 	});
 
-	interface->getInputInterface()->getMouse()->Left.onReleased(this, [&] {
+	ii->getMouse()->Left.onReleased(self, [&] {
 		if (isMouseIn) onReleased();
 	});
 }
@@ -111,4 +116,3 @@ void gui::RectangleObj::updateBuffers() {
 gui::RectangleObj::~RectangleObj() {
 	logger.log("~RectangleObj()");
 }
-

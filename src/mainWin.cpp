@@ -8,7 +8,7 @@
 
 void MainWindow::initObjects() {
 //	auto scene = new game::GameScene;
-	auto scene = std::make_shared<menu::WelcomeScene>();
+	auto scene = menu::WelcomeScene::create();
 	setScene(scene);
 }
 

@@ -70,8 +70,8 @@ void Window::swapScene() {
 	currentScene = nextScene;
 	nextScene = nullptr;
 
-	oldScene->setWindow(std::weak_ptr<Window>());
-	currentScene->setWindow(this->shared_from_this());
+	if (oldScene) oldScene->setWindow(std::weak_ptr<Window>());
+	if (currentScene) currentScene->setWindow(this->shared_from_this());
 
 	onSceneChanged.emit(oldScene, currentScene);
 }

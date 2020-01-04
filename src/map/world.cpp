@@ -1,5 +1,6 @@
 #include "world.h"
 #include "chunk.h"
+#include "src/game/Game.h"
 
 map::World::World() :
 		chunkLoader(this),
@@ -30,6 +31,7 @@ void map::World::insertChunk(map::ChunkPtr chunk) {
 	if (hasChunk(chunk->getPosition()))
 		throw zprException("inserting chunk which position already exist");
 
+	logger.log("inserting chunk");
 	chunks[chunk->getPosition()] = chunk;
 	onChunkInserted(chunk);
 }
@@ -44,4 +46,30 @@ map::ChunkPtr map::World::ejectChunk(const Coord2D &position) {
 	onChunkEjected(chunk);
 
 	return chunk;
+}
+
+void map::World::loadForPlayer(game::PlayerPtr &player) {
+	auto playerChunk = player->getCurrentChunk();
+	auto chunkLoadDistance = player->getChunkUnloadDistance();
+
+	// ładowanie chunków
+	for (CoordDim x = playerChunk.x - chunkLoadDistance; x < playerChunk.x + chunkLoadDistance; x++) {
+		for (CoordDim y = playerChunk.y - chunkLoadDistance; y < playerChunk.y + chunkLoadDistance; y++) {
+			requestChunk(Coord2D(x, y));
+		}
+	}
+
+	// wyładowanie chunków
+	for (const auto& it : chunks) {
+		auto chunk = it.second;
+
+		auto pos = chunk->getPosition();
+
+		if (pos.x > playerChunk.x + chunkLoadDistance ||
+			pos.x < playerChunk.x - chunkLoadDistance ||
+			pos.y > playerChunk.y + chunkLoadDistance ||
+			pos.y < playerChunk.y - chunkLoadDistance) {
+			chunkLoader.unload(pos);
+		}
+	}
 }

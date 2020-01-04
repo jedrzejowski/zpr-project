@@ -5,12 +5,30 @@
 #include "src/menu/welcome.h"
 
 game::GameScene::GameScene() {
+	logger.constructor(this);
+}
+game::GameScene::~GameScene() {
+	logger.destructor(this);
+}
 
-	mainGame = std::make_shared<MainGame>(this->shared_from_this());
-	inGameMenu = std::make_shared<InGameMenu>(this->shared_from_this());
 
-	setInterfaceState(Game);
+game::GameScenePtr game::GameScene::create() {
+	struct trick : GameScene {
+	};
 
+	GameScenePtr self = std::make_shared<trick>();
+
+	self->mainGame = MainGame::create(self);
+	self->inGameMenu = InGameMenu::create(self);
+
+	self->setInterfaceState(Game);
+
+	self->initEvents();
+
+	return self;
+}
+
+void game::GameScene::initEvents() {
 	mainGame->onMenuRequest([&]() {
 		setInterfaceState(Menu);
 	});
@@ -23,9 +41,10 @@ game::GameScene::GameScene() {
 		auto winWPtr = getWindow();
 		if (winWPtr.expired()) return;
 		auto winPtr = winWPtr.lock();
-		winPtr->setScene(std::make_shared<menu::WelcomeScene>());
+		winPtr->setScene(menu::WelcomeScene::create());
 	});
 }
+
 
 void game::GameScene::render(engine::WindowPtr window) {
 
@@ -49,6 +68,7 @@ game::GameSceneState game::GameScene::getInterfaceState() const {
 
 void game::GameScene::setInterfaceState(game::GameSceneState interfaceState) {
 	this->interfaceState = interfaceState;
+
 
 	switch (interfaceState) {
 		case Game:

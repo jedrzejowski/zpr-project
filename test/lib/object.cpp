@@ -3,7 +3,7 @@
 std::list<Object *> listOfObjects;
 
 Object *createObject(Object* parent = nullptr) {
-	auto object = new Object(parent);
+	auto object = new Object();
 
 	listOfObjects.push_back(object);
 

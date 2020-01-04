@@ -12,14 +12,14 @@ namespace game {
 		float angleV = 0, angleH = 0;
 		float mousePrecision = 20;
 		float keyboardPrecision = 20;
-		CoordDim chunkRenderDistance = 4, chunkLoadDistance = 6;
+		CoordDim chunkRenderDistance = 4, chunkUnloadDistance = 6;
 
 		glm::vec3 topVec() const;
 		glm::vec3 frontVec() const;
 		glm::vec3 leftVec() const;
 
 	public:
-		explicit Player(map::WorldPtr& world);
+		explicit Player();
 
 		void moveForward(float time);
 		void moveBackward(float time);
@@ -34,11 +34,9 @@ namespace game {
 		void rotateRight(float dx);
 
 		float getChunkRenderDistance() const;
-		float getChunkLoadDistance() const;
+		float getChunkUnloadDistance() const;
 		Coord2D getCurrentChunk() const;
 
 		engine::Camera getCamera() const;
-
-		void requestChunks();
 	};
 }

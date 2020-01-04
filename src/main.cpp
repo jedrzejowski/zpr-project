@@ -4,7 +4,7 @@ int main(int argc, char *argv[]) {
 	engine::Resources::setExecutablePath(argv[0]);
 	try {
 
-		auto window = new MainWindow();
+		auto window = std::make_shared<MainWindow>();
 		window->open();
 
 		return 0;

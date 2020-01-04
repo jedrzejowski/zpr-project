@@ -1,7 +1,7 @@
 #include "button.h"
 #include "src/lib/object.h"
 
-gui::Button::Button(InterfacePtr interface) :
+gui::Button::Button(InterfacePtr &interface) :
 		RectangleObj(interface) {
 	setState(Idle);
 
@@ -16,6 +16,23 @@ gui::Button::Button(InterfacePtr interface) :
 	onPressed([&] {
 		onClicked();
 	});
+}
+
+gui::ButtonPtr gui::Button::create(gui::InterfacePtr interface) {
+	struct trick : Button {
+		trick(InterfacePtr &interface) : Button(interface) {}
+	};
+
+	auto self = std::make_shared<trick>(interface);
+	self->initInputInterface();
+
+	self->text = std::make_shared<Text>(self);
+	auto model = self->text->getModel();
+	model = glm::translate(model, glm::vec3(0, 0.13 / 4, -.1));
+	model = glm::scale(model, glm::vec3(0.13 / 2, 0.13 / 2, 1));
+	self->text->setModel(model);
+
+	return self;
 }
 
 gui::ButtonState gui::Button::getState() const {
@@ -57,25 +74,10 @@ glm::vec2 gui::Button::getBaseSize() {
 	return glm::vec2(1, 0.13);
 }
 
-void gui::Button::initText() {
-	if (text != nullptr)
-		return;
-
-	auto t = this->shared_from_this();
-	text = std::make_shared<Text>(t);
-	auto model = text->getModel();
-	model = glm::translate(model, glm::vec3(0, 0.13 / 4, -.1));
-	model = glm::scale(model, glm::vec3(0.13 / 2, 0.13 / 2, 1));
-	text->setModel(model);
-}
-
-
 const std::string &gui::Button::getText() {
-	initText();
 	return text->getContent();
 }
 
 void gui::Button::setText(const std::string &text) {
-	initText();
 	this->text->setContent(text);
 }

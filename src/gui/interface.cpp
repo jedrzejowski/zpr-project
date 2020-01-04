@@ -34,8 +34,15 @@ gui::Interface::Interface() : Abs3DObj() {
 
 
 void gui::Interface::render(const engine::ScenePtr scene) {
-	auto window = scene->getWindow().lock();
-	auto size = std::min(window->getWinWidth(), window->getWinHeight());
+	auto windowWPtr = scene->getWindow();
+
+	if (windowWPtr.expired()) {
+		logger.err("gui::Interface::render(): rendering with expired Window object");
+		return;
+	}
+
+	auto window = windowWPtr.lock();
+
 	window->setViewPort(engine::ViewPort::Square);
 
 	interfaceShader.bind();

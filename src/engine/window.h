@@ -16,7 +16,7 @@ namespace engine {
 		Square,
 	};
 
-	class Window : public Object, virtual_enable_shared_from_this<Window> {
+	class Window : public Object, public virtual_enable_shared_from_this<Window> {
 	private:
 		std::mutex rendering;
 

@@ -16,6 +16,7 @@ namespace engine {
 
 	public:
 		explicit InputInterface();
+		~InputInterface() override;
 
 		const Signal<> onAttached;
 		const Signal<> onUnattached;

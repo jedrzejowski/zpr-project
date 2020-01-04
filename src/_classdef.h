@@ -9,6 +9,8 @@ template<typename... Args>
 class Signal;
 
 class Object;
+typedef std::shared_ptr<Object> ObjectPtr;
+typedef std::weak_ptr<Object> ObjectWPtr;
 
 class BackWorkerQueue;
 

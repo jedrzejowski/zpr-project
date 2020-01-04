@@ -1,11 +1,9 @@
 #include <cmath>
 #include "player.h"
 #include "src/lib/coord.h"
-#include "src/map/world.h"
 #include "src/map/chunk.h"
 
-game::Player::Player(map::WorldPtr& world) :
-		world(world) {
+game::Player::Player(){
 	position = glm::vec3(4.0f);
 	angleH = 0;
 	angleV = 0;
@@ -88,18 +86,8 @@ float game::Player::getChunkRenderDistance() const {
 	return chunkRenderDistance;
 }
 
-float game::Player::getChunkLoadDistance() const {
-	return chunkLoadDistance;
-}
-
-void game::Player::requestChunks() {
-	auto currentChunk = getCurrentChunk();
-
-	for (CoordDim x = currentChunk.x - chunkLoadDistance; x < currentChunk.x + chunkLoadDistance; x++) {
-		for (CoordDim y = currentChunk.y - chunkLoadDistance; y < currentChunk.y + chunkLoadDistance; y++) {
-			world->requestChunk(Coord2D(x, y));
-		}
-	}
+float game::Player::getChunkUnloadDistance() const {
+	return chunkUnloadDistance;
 }
 
 Coord2D game::Player::getCurrentChunk() const {

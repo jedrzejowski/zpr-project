@@ -6,7 +6,7 @@
 
 namespace gui {
 
-	class RectangleObj : public GuiObject {
+	class RectangleObj : public GuiObject, public virtual_enable_shared_from_this<RectangleObj> {
 	private:
 
 		glm::vec2 position = glm::vec2(0);
@@ -22,6 +22,10 @@ namespace gui {
 		bool isMouseIn = false;
 
 		void refreshModel();
+
+	protected:
+
+		void initInputInterface();
 
 	public:
 

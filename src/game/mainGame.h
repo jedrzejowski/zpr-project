@@ -15,9 +15,9 @@ namespace game {
 
 		void initInputInterface();
 
+		explicit MainGame(GameScenePtr& scene);
 	public:
-
-		explicit MainGame(GameSceneWPtr scene);
+		static MainGamePtr create(GameScenePtr& scene);
 
 		void renderWorld();
 		void renderPlayerInterface();

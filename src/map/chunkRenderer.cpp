@@ -2,11 +2,9 @@
 #include "worldRenderer.h"
 #include "chunk.h"
 
-map::ChunkRenderer::ChunkRenderer(map::WorldRenderer *renderer, map::ChunkPtr chunk)
-		: Object(renderer), Abs3DObj() {
+map::ChunkRenderer::ChunkRenderer(map::WorldRenderer *renderer, map::ChunkPtr chunk) : Abs3DObj() {
 	this->worldRenderer = renderer;
 	this->chunk = chunk;
-
 }
 
 void map::ChunkRenderer::updateBuffers() {

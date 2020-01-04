@@ -9,38 +9,52 @@
 #include "src/game/gameScene.h"
 
 
-menu::WelcomeScene::WelcomeScene() {
+menu::WelcomeScene::WelcomeScene() {}
 
-	interface = std::make_shared<gui::Interface>();
-	setInputInterface(interface->getInputInterface());
+menu::WelcomeScenePtr menu::WelcomeScene::create() {
+	struct trick : public WelcomeScene {
+	};
+	auto self = std::make_shared<trick>();
 
-	worldsBtn = std::make_shared<gui::Button>(interface);
-	worldsBtn->setPosition(glm::vec2(0, 0.3));
-	worldsBtn->setText("Graj");
+	self->interface = std::make_shared<gui::Interface>();
+	self->setInputInterface(self->interface->getInputInterface());
 
-	settingsBtn = std::make_shared<gui::Button>(interface);
-	settingsBtn->setPosition(glm::vec2(0, 0.5));
-	settingsBtn->setText("Ustawienia");
+	self->playBtn = gui::Button::create(self->interface);
+	self->playBtn->setPosition(glm::vec2(0, 0.3));
+	self->playBtn->setText("Graj");
 
-	quitBtn = std::make_shared<gui::Button>(interface);
-	quitBtn->setPosition(glm::vec2(0, 0.7));
-	quitBtn->setText("Koniec");
+	self->settingsBtn = gui::Button::create(self->interface);
+	self->settingsBtn->setPosition(glm::vec2(0, 0.5));
+	self->settingsBtn->setText("Ustawienia");
 
-	worldsBtn->onClicked([&] {
+	self->quitBtn = gui::Button::create(self->interface);
+	self->quitBtn->setPosition(glm::vec2(0, 0.7));
+	self->quitBtn->setText("Koniec");
+
+	self->initBtnActions();
+
+	return self;
+}
+
+
+void menu::WelcomeScene::initBtnActions() {
+	playBtn->onClicked([&] {
 
 		auto winWPtr = getWindow();
 		if (winWPtr.expired()) return;
 		auto winPtr = winWPtr.lock();
 
-		auto newScene = std::make_shared<game::GameScene>();
+		auto newScene = game::GameScene::create();
 
 		winPtr->setScene(newScene);
 	});
 
-//	settingsBtn->onClicked([&] {
+
+	//	settingsBtn->onClicked([&] {
 //		getWindow()->setScene(new SettingsScene);
 //	});
 }
+
 
 void menu::WelcomeScene::render(engine::WindowPtr window) {
 	auto ptr = this->shared_from_this();

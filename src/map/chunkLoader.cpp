@@ -28,8 +28,9 @@ void map::ChunkLoader::load(Coord2D coord) {
 }
 
 void map::ChunkLoader::unload(Coord2D coord) {
-//	if (isChunkUnloading(coord)) return;
-//	if (!isChunkLoaded(coord)) return;
+	if (!isChunkLoaded(coord)) return;
+
+	chunksToRemove.push_back(coord);
 }
 
 map::ChunkLoader::~ChunkLoader() {
@@ -38,6 +39,7 @@ map::ChunkLoader::~ChunkLoader() {
 void map::ChunkLoader::syncWithWorld() {
 	if (chunksToAdd.empty() && chunksToRemove.empty()) return;
 	chunkListAccess.lock();
+
 	if (chunksToAdd.empty() && chunksToRemove.empty()) {
 		chunkListAccess.unlock();
 		return;
@@ -50,19 +52,27 @@ void map::ChunkLoader::syncWithWorld() {
 		world->insertChunk(chunk);
 	}
 
-//	while (!chunksToRemove.empty()) {
-//		auto chunk = chunksToRemove.back();
-//		chunksToRemove.pop_back();
-//
-//		world->ejectChunk(chunk->getPosition());
-//	}
+	while (!chunksToRemove.empty()) {
+		auto pos = chunksToRemove.back();
+		chunksToRemove.pop_back();
+
+		auto chunk = world->ejectChunk(pos);
+
+		worker.push([this, chunk] {
+
+			chunk->save();
+
+			chunkListAccess.lock();
+			unloadingChunksCoords.remove(chunk->getPosition());
+			chunkListAccess.unlock();
+		});
+	}
 
 	chunkListAccess.unlock();
 }
 
 bool map::ChunkLoader::isChunkLoaded(const Coord2D &coord) {
-	auto chunk = world->getChunk(coord);
-	return chunk == nullptr;
+	return world->chunks.count(coord) == 1;
 }
 
 bool map::ChunkLoader::isChunkLoading(const Coord2D &coord) {

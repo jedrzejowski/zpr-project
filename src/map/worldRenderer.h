@@ -14,7 +14,7 @@ namespace map {
 
 		BackWorkerQueue worker;
 
-		std::list<ChunkRendererPtr> chunkRenderers;
+		std::map<Coord2D, ChunkRendererPtr> chunkRenderers;
 
 	public:
 		explicit WorldRenderer(const WorldPtr& worldMap);

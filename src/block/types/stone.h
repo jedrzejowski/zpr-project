@@ -7,6 +7,7 @@ namespace block {
 	class Stone : public SolidBlock {
 	public:
 		Stone();
+		int typeId() override;
 	};
 }
 

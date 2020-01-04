@@ -12,22 +12,26 @@ namespace map {
 		friend ChunkGenerator;
 		friend ChunkLoader;
 	protected:
-		WorldPtr worldMap;
+		World *worldMap;
 		const Coord2D position;
 		std::map<Coord3D, block::Block *> blocks;
 
 	public:
 		static const Coord3D Size;
 
-		Chunk(WorldPtr& worldMap, const Coord2D &position);
+		Chunk(World *worldMap, const Coord2D &position);
+		~Chunk() override;
 
 		bool setBlock(const Coord3D &position, block::Block *block);
 		block::Block *getBlock(const Coord3D &position);
-		std::map<Coord3D, block::Block *>& getAllBlocks();
+		std::map<Coord3D, block::Block *> &getAllBlocks();
 
 		const Coord2D &getPosition() const;
 		ChunkPtr getNeighbor(CoordDim dx, CoordDim dy) const;
 
+		json toJSON() const;
+
+		void save();
 	};
 }
 

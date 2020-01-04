@@ -22,8 +22,7 @@ map::ChunkGenerator::ChunkGenerator(World *world) {
 }
 
 map::ChunkPtr map::ChunkGenerator::newVirginChunk(const Coord2D &position) {
-	auto ptr = world->shared_from_this();
-	auto chunk = std::make_shared<map::Chunk>(ptr, position);
+	auto chunk = std::make_shared<map::Chunk>(world, position);
 
 	for (CoordDim x = 0; x < Chunk::Size.x; x++) {
 		for (CoordDim y = 0; y < Chunk::Size.y; y++) {

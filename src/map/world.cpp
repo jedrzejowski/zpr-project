@@ -1,11 +1,19 @@
 #include "world.h"
 #include "chunk.h"
 #include "src/game/Game.h"
+#include "lib/appSettings.h"
 
-map::World::World() :
+map::World::World(std::string codeName) :
+		codeName(codeName),
 		chunkLoader(this),
 		chunkGenerator(this) {
+	logger.constructor(this);
 }
+
+map::World::~World() {
+	logger.destructor(this);
+}
+
 
 bool map::World::hasChunk(const Coord2D &position) {
 	return chunks.count(position) == 1;
@@ -31,7 +39,6 @@ void map::World::insertChunk(map::ChunkPtr chunk) {
 	if (hasChunk(chunk->getPosition()))
 		throw zprException("inserting chunk which position already exist");
 
-	logger.log("inserting chunk");
 	chunks[chunk->getPosition()] = chunk;
 	onChunkInserted(chunk);
 }
@@ -60,7 +67,7 @@ void map::World::loadForPlayer(game::PlayerPtr &player) {
 	}
 
 	// wyładowanie chunków
-	for (const auto& it : chunks) {
+	for (const auto &it : chunks) {
 		auto chunk = it.second;
 
 		auto pos = chunk->getPosition();
@@ -69,7 +76,24 @@ void map::World::loadForPlayer(game::PlayerPtr &player) {
 			pos.x < playerChunk.x - chunkLoadDistance ||
 			pos.y > playerChunk.y + chunkLoadDistance ||
 			pos.y < playerChunk.y - chunkLoadDistance) {
+
 			chunkLoader.unload(pos);
 		}
 	}
+}
+
+const std::string &map::World::getDisplayName() const {
+	return displayName;
+}
+
+void map::World::setDisplayName(const std::string &displayName) {
+	World::displayName = displayName;
+}
+
+const std::string &map::World::getCodeName() const {
+	return codeName;
+}
+
+boost::filesystem::path map::World::getDirectory() {
+	return AppSettings::get().getCfgDir() / "worlds" / getCodeName();
 }

@@ -15,19 +15,28 @@ namespace map {
 		ChunkLoader chunkLoader;
 		ChunkGenerator chunkGenerator;
 		std::map<Coord2D, map::ChunkPtr> chunks;
+		std::string codeName;
+		std::string displayName;
 
 		ChunkPtr ejectChunk(const Coord2D &position);
 		void insertChunk(map::ChunkPtr chunk);
 	public:
-		World();
+		World(std::string codeName);
+		~World() override;
 
 		bool hasChunk(const Coord2D &position);
 		ChunkPtr getChunk(const Coord2D &position);
-		void loadForPlayer(game::PlayerPtr& player);
+		void loadForPlayer(game::PlayerPtr &player);
 
 		void requestChunk(Coord2D position);
 
 		void syncChunkWithLoader();
+
+		boost::filesystem::path getDirectory();
+
+		const std::string &getDisplayName() const;
+		void setDisplayName(const std::string &displayName);
+		const std::string &getCodeName() const;
 
 		const Signal<ChunkPtr> onChunkInserted;
 		const Signal<ChunkPtr> onChunkEjected;

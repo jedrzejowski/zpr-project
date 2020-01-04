@@ -5,6 +5,10 @@
 
 typedef int64_t CoordDim;
 
+inline std::string coordDim2string(CoordDim dim) {
+	return std::string(dim < 0 ? "m" : "p") + std::to_string(std::abs(dim));
+}
+
 struct Coord3D {
 	CoordDim x, y, z;
 
@@ -21,6 +25,18 @@ struct Coord3D {
 
 		return z < sec.z;
 	}
+
+	json toJSON() const {
+		json j;
+		j["x"] = x;
+		j["y"] = y;
+		j["z"] = z;
+		return j;
+	}
+
+	std::string toStringId() const {
+		return coordDim2string(x) + "_" + coordDim2string(y) + "_" + coordDim2string(z);
+	}
 };
 
 struct Coord2D {
@@ -34,6 +50,17 @@ struct Coord2D {
 		if (x < sec.x) return true;
 		if (x > sec.x) return false;
 		return y < sec.y;
+	}
+
+	json toJSON() const {
+		json j;
+		j["x"] = x;
+		j["y"] = y;
+		return j;
+	}
+
+	std::string toStringId() const {
+		return coordDim2string(x) + "_" + coordDim2string(y);
 	}
 };
 

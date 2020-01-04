@@ -4,17 +4,23 @@
 #include <vector>
 #include <tuple>
 #include <memory>
+#include "lib/json.hpp"
+
+using json = nlohmann::json;
 
 template<typename... Args>
 class Signal;
 
 class Object;
+
 typedef std::shared_ptr<Object> ObjectPtr;
 typedef std::weak_ptr<Object> ObjectWPtr;
 
 class BackWorkerQueue;
 
 class JsonFile;
+
+class AppSettings;
 
 namespace engine {
 	class exception;
@@ -111,6 +117,8 @@ namespace gui {
 
 namespace block {
 
+	typedef int BlockTypeId;
+
 	class Block;
 
 	class SolidBlock;
@@ -154,30 +162,36 @@ namespace game {
 	class MainWindow;
 
 	class MainGame;
+
 	typedef std::shared_ptr<MainGame> MainGamePtr;
 	typedef std::weak_ptr<MainGame> MainGameWPtr;
 
 	class PlayerInterface;
 
 	class InGameMenu;
+
 	typedef std::shared_ptr<InGameMenu> InGameMenuPtr;
 	typedef std::weak_ptr<InGameMenu> InGameMenuWPtr;
 
 	class GameScene;
+
 	typedef std::shared_ptr<GameScene> GameScenePtr;
 	typedef std::weak_ptr<GameScene> GameSceneWPtr;
 }
 
 namespace menu {
 	class WelcomeScene;
+
 	typedef std::shared_ptr<WelcomeScene> WelcomeScenePtr;
 	typedef std::weak_ptr<WelcomeScene> WelcomeSceneWPtr;
 
 	class SettingsScene;
+
 	typedef std::shared_ptr<SettingsScene> SettingsScenePtr;
 	typedef std::weak_ptr<SettingsScene> CSettingsSceneWPtr;
 
 	class WorldScene;
+
 	typedef std::shared_ptr<WorldScene> WorldScenePtr;
 	typedef std::weak_ptr<WorldScene> WorldSceneWPtr;
 }

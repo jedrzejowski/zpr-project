@@ -19,6 +19,10 @@ namespace block {
 
 		virtual bool isSolid();
 
+		virtual json toJSON();
+
+		virtual int typeId() = 0;
+
 		Block *getNeighbor(CoordDim dx, CoordDim dy, CoordDim dz) const;
 	};
 }

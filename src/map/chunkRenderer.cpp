@@ -3,8 +3,14 @@
 #include "chunk.h"
 
 map::ChunkRenderer::ChunkRenderer(map::WorldRenderer *renderer, map::ChunkPtr chunk) : Abs3DObj() {
+	logger.constructor(this);
 	this->worldRenderer = renderer;
 	this->chunk = chunk;
+}
+
+
+map::ChunkRenderer::~ChunkRenderer() {
+	logger.destructor(this);
 }
 
 void map::ChunkRenderer::updateBuffers() {

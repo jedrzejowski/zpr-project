@@ -7,6 +7,7 @@ namespace block {
 	class Dirt : public SolidBlock {
 	public:
 		Dirt();
+		int typeId() override;
 	};
 }
 

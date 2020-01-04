@@ -11,10 +11,14 @@ map::WorldRenderer::WorldRenderer(const map::WorldPtr &worldMap) :
 	shader->setInt("material.diffuse", 0);
 	blockTexture = engine::Resources::get().getTexture("texture/block.png");
 
-	worldMap->onChunkInserted([&](map::ChunkPtr chunk) {
+	worldMap->onChunkInserted([&](const map::ChunkPtr &chunk) {
 
 		auto cr = std::make_shared<ChunkRenderer>(this, chunk);
-		chunkRenderers.push_back(cr);
+		chunkRenderers[chunk->getPosition()] = cr;
+	});
+
+	worldMap->onChunkEjected([&](const map::ChunkPtr &chunk) {
+		chunkRenderers.erase(chunk->getPosition());
 	});
 }
 
@@ -42,8 +46,8 @@ void map::WorldRenderer::render(const engine::Camera &camera,
 	shader->setMat4("camera", camera.getMatrix());
 	shader->setVec3("cameraPos", camera.position);
 
-	for (auto &chunkRenderer : chunkRenderers)
-		chunkRenderer->render(scene);
+	for (const auto &it : chunkRenderers)
+		it.second->render(scene);
 
 	shader->unbind();
 }

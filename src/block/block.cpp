@@ -52,3 +52,11 @@ block::Block *block::Block::getNeighbor(CoordDim dx, CoordDim dy, CoordDim dz) c
 bool block::Block::isSolid() {
 	return false;
 }
+
+json block::Block::toJSON() {
+	json j;
+
+	j["typeId"] = typeId();
+
+	return j;
+}

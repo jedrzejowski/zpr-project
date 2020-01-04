@@ -16,7 +16,7 @@ game::MainGamePtr game::MainGame::create(game::GameScenePtr &scene) {
 
 	auto self = std::make_shared<trick>(scene);
 
-	self->worldMap = std::make_shared<map::World>();
+	self->worldMap = std::make_shared<map::World>("default");
 
 	self->player = std::make_shared<Player>();
 

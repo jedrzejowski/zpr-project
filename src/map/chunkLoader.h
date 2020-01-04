@@ -15,12 +15,15 @@ namespace map {
 		World* world;
 		BackWorkerQueue worker;
 
-		std::list<Coord2D> loadingChunksCoords;
+		std::list<Coord2D> chunksToRemove;
 		std::list<Coord2D> unloadingChunksCoords;
 
-		std::mutex chunkListAccess;
-		std::list<map::ChunkPtr> chunksToRemove;
+
+		std::list<Coord2D> loadingChunksCoords;
 		std::list<map::ChunkPtr> chunksToAdd;
+
+
+		std::mutex chunkListAccess;
 
 		ChunkPtr readChunkFromFile(const Coord2D &coord);
 		ChunkPtr generateNewChunk(const Coord2D &coord);

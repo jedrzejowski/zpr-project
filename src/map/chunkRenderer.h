@@ -17,6 +17,7 @@ namespace map {
 
 	public:
 		explicit ChunkRenderer(WorldRenderer *renderer, ChunkPtr chunk);
+		~ChunkRenderer() override;
 
 		void updateBuffers() override;
 

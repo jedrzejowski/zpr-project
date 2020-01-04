@@ -76,7 +76,7 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	}
 
 	// płaszczna y
-	block = this->getNeighbor(0,-1, 0);
+	block = this->getNeighbor(0, -1, 0);
 	if (block == nullptr || !block->isSolid()) {
 		vertices.emplace_back(engine::Point3D(position.x, position.y, position.z), tex_xx);
 		vertices.emplace_back(engine::Point3D(position.x + 1, position.y, position.z), tex_xX);
@@ -103,3 +103,4 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 		vOffest += 4;
 	}
 }
+

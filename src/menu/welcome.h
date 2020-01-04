@@ -6,14 +6,16 @@
 
 namespace menu {
 
-	class WelcomeScene : public engine::Scene {
+	class WelcomeScene : public engine::Scene, virtual_enable_shared_from_this<WelcomeScene> {
+		using virtual_enable_shared_from_this<WelcomeScene>::shared_from_this;
 	private:
 		gui::InterfacePtr interface;
 		gui::ButtonPtr worldsBtn, settingsBtn, quitBtn;
 
 	public:
 		explicit WelcomeScene();
-		void render(engine::Window *window) override;
+		~WelcomeScene();
+		void render(engine::WindowPtr window) override;
 	};
 }
 

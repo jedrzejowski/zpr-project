@@ -31,19 +31,19 @@ void engine::InputInterface::updateState(GLFWwindow *window) {
 }
 
 bool engine::InputInterface::isAttachedToScene() {
-	return scene == nullptr;
+	return !scene.expired();
 }
 
-void engine::InputInterface::attachToScene(const Scene *scene) {
+void engine::InputInterface::attachToScene(SceneWPtr scene) {
 	this->scene = scene;
-	onAttached.emit();
+	onAttached();
 }
 
 void engine::InputInterface::unattachFromScene() {
 	onUnattached();
-	this->scene = nullptr;
+	this->scene = SceneWPtr();
 }
 
-const engine::Scene *engine::InputInterface::getScene() const {
+engine::SceneWPtr engine::InputInterface::getScene() const {
 	return scene;
 }

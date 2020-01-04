@@ -16,7 +16,7 @@ namespace engine {
 		Square,
 	};
 
-	class Window : public Object {
+	class Window : public Object, virtual_enable_shared_from_this<Window> {
 	private:
 		std::mutex rendering;
 
@@ -25,8 +25,8 @@ namespace engine {
 				winRightOffset = 0, winBottomOffset = 0;
 
 		GLFWwindow *glfwWin = nullptr;
-		Scene *currentScene = nullptr;
-		Scene *nextScene = nullptr;
+		ScenePtr currentScene;
+		ScenePtr nextScene;
 		ViewPort viewPort;
 		InputInterfacePtr lastInputInterface = nullptr;
 
@@ -39,9 +39,9 @@ namespace engine {
 
 		void open();
 
-		void setScene(Scene *scene);
-		Scene *getScene() const;
-		const Signal<Scene *, Scene *> onSceneChanged;
+		void setScene(ScenePtr scene);
+		ScenePtr getScene() const;
+		const Signal<ScenePtr, ScenePtr> onSceneChanged;
 
 		virtual std::string getTitle() = 0;
 

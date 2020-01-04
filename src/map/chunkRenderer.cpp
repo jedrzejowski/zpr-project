@@ -3,7 +3,7 @@
 #include "chunk.h"
 
 map::ChunkRenderer::ChunkRenderer(map::WorldRenderer *renderer, map::ChunkPtr chunk)
-		: Object(renderer), Abs3DObj(engine::Sub3DObjPtr()), Abs3DObj(engine::Sub3DObjPtr()) {
+		: Object(renderer), Abs3DObj() {
 	this->worldRenderer = renderer;
 	this->chunk = chunk;
 
@@ -28,7 +28,7 @@ void map::ChunkRenderer::updateBuffers() {
 	setNeedRefreshBuffers(false);
 }
 
-void map::ChunkRenderer::render(const engine::Scene *scene) {
+void map::ChunkRenderer::render(const engine::ScenePtr scene) {
 	worldRenderer->getShader()->setMat4("chunkPos", chunkPos);
 	draw();
 }

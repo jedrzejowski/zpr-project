@@ -6,9 +6,10 @@
 #include "src/lib/object.h"
 #include "chunkGenerator.h"
 #include "chunkLoader.h"
+#include "src/lib/virtual_enable_shared_from_this.h"
 
 namespace map {
-	class World : public Object, public std::enable_shared_from_this<World> {
+	class World : public Object,  virtual_enable_shared_from_this<World> {
 		friend ChunkLoader;
 		friend ChunkGenerator;
 	protected:

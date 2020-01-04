@@ -26,7 +26,7 @@ namespace map {
 		void ejectChunkRenderer(ChunkRendererPtr& chunkRenderer);
 
 		void render(const engine::Camera &camera,
-					const engine::Scene *scene);
+					const engine::ScenePtr scene);
 
 		void syncWithWorld();
 	};

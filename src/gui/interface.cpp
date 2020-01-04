@@ -12,14 +12,16 @@ gui::Interface::Interface() : Abs3DObj() {
 	inputInterface->getMouse()->onMove([&](const glm::vec2 &delta) {
 		auto mousePosition = inputInterface->getMouse()->getCurrentPosition();
 
-		auto scene = inputInterface->getScene();
-		if (scene == nullptr) return;
-		auto win = scene->getWindow();
-		if (win == nullptr) return;
+		auto sceneWPtr = inputInterface->getScene();
+		if (sceneWPtr.expired()) return;
+		auto scenePtr = sceneWPtr.lock();
+		auto winWPtr = scenePtr->getWindow();
+		if (winWPtr.expired()) return;
+		auto winPtr = winWPtr.lock();
 
-		mousePosition.x -= float(win->getWinWidth()) / 2 + 0.5;
-		mousePosition.y -= float(win->getWinHeight()) / 2 + 0.5;
-		auto size = std::min(win->getWinWidth(), win->getWinHeight());
+		mousePosition.x -= float(winPtr->getWinWidth()) / 2 + 0.5;
+		mousePosition.y -= float(winPtr->getWinHeight()) / 2 + 0.5;
+		auto size = std::min(winPtr->getWinWidth(), winPtr->getWinHeight());
 		mousePosition.x /= size;
 		mousePosition.y /= size;
 		mousePosition.x += 0.5;
@@ -32,7 +34,7 @@ gui::Interface::Interface() : Abs3DObj() {
 
 
 void gui::Interface::render(const engine::ScenePtr scene) {
-	auto window = scene->getWindow();
+	auto window = scene->getWindow().lock();
 	auto size = std::min(window->getWinWidth(), window->getWinHeight());
 	window->setViewPort(engine::ViewPort::Square);
 

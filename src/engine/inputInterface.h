@@ -7,7 +7,7 @@ namespace engine {
 	class InputInterface : public Object {
 		friend Window;
 	private:
-		const Scene* scene = nullptr;
+		SceneWPtr scene;
 		MousePtr mouse;
 		KeyboardPtr keyboard;
 
@@ -24,9 +24,9 @@ namespace engine {
 		KeyboardPtr getKeyboard();
 
 		bool isAttachedToScene();
-		void attachToScene(const Scene* scene);
+		void attachToScene(SceneWPtr scene);
 		void unattachFromScene();
-		const Scene *getScene() const;
+		SceneWPtr getScene() const;
 
 	};
 }

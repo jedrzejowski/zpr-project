@@ -18,16 +18,23 @@ menu::WelcomeScene::WelcomeScene() {
 	worldsBtn->setPosition(glm::vec2(0, 0.3));
 	worldsBtn->setText("Graj");
 
-	settingsBtn = new gui::Button(interface);
+	settingsBtn = std::make_shared<gui::Button>(interface);
 	settingsBtn->setPosition(glm::vec2(0, 0.5));
 	settingsBtn->setText("Ustawienia");
 
-	quitBtn = new gui::Button(interface);
+	quitBtn = std::make_shared<gui::Button>(interface);
 	quitBtn->setPosition(glm::vec2(0, 0.7));
 	quitBtn->setText("Koniec");
 
 	worldsBtn->onClicked([&] {
-		getWindow()->setScene(new game::GameScene);
+
+		auto winWPtr = getWindow();
+		if (winWPtr.expired()) return;
+		auto winPtr = winWPtr.lock();
+
+		auto newScene = std::make_shared<game::GameScene>();
+
+		winPtr->setScene(newScene);
 	});
 
 //	settingsBtn->onClicked([&] {
@@ -35,6 +42,10 @@ menu::WelcomeScene::WelcomeScene() {
 //	});
 }
 
-void menu::WelcomeScene::render(engine::Window *window) {
-	interface->render(this);
+void menu::WelcomeScene::render(engine::WindowPtr window) {
+	auto ptr = this->shared_from_this();
+	interface->render(ptr);
+}
+menu::WelcomeScene::~WelcomeScene() {
+	logger.log("usuwanie WelcomeScene");
 }

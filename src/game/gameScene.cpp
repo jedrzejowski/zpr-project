@@ -6,8 +6,8 @@
 
 game::GameScene::GameScene() {
 
-	mainGame = new MainGame(this);
-	inGameMenu = new InGameMenu(this);
+	mainGame = std::make_shared<MainGame>(this->shared_from_this());
+	inGameMenu = std::make_shared<InGameMenu>(this->shared_from_this());
 
 	setInterfaceState(Game);
 
@@ -19,23 +19,27 @@ game::GameScene::GameScene() {
 		setInterfaceState(Game);
 	});
 
-	inGameMenu->onSaveAndExit([&]{
-		getWindow()->setScene(new menu::WelcomeScene);
+	inGameMenu->onSaveAndExit([&] {
+		auto winWPtr = getWindow();
+		if (winWPtr.expired()) return;
+		auto winPtr = winWPtr.lock();
+		winPtr->setScene(std::make_shared<menu::WelcomeScene>());
 	});
 }
 
-void game::GameScene::render(engine::Window *window) {
+void game::GameScene::render(engine::WindowPtr window) {
 
 	mainGame->renderWorld();
 
 	// Renderowanie interfejsu użytkownika
 	glClear(GL_DEPTH_BUFFER_BIT); // Musimy wyczyścić sprawdzanie głębi ponieważ rysujemy interfejs
 
+	auto me = shared_from_this();
+
 	if (interfaceState == Game)
 		mainGame->renderPlayerInterface();
-	if (interfaceState == Menu) {
-		inGameMenu->render(this);
-	}
+	if (interfaceState == Menu)
+		inGameMenu->render(me);
 }
 
 

@@ -22,8 +22,8 @@ map::WorldRenderer::~WorldRenderer() {
 }
 
 void map::WorldRenderer::render(const engine::Camera &camera,
-								const engine::Scene *scene) {
-	auto window = scene->getWindow();
+								const engine::ScenePtr scene) {
+	auto window = scene->getWindow().lock();
 	window->setViewPort(engine::ViewPort::OneTwoOne);
 
 	glClear(GL_DEPTH_BUFFER_BIT);
@@ -35,8 +35,8 @@ void map::WorldRenderer::render(const engine::Camera &camera,
 
 	shader->setMat4("projection",
 					glm::perspective(glm::radians(45.0f),
-									 (float) scene->getWindow()->getWinWidth() /
-									 (float) scene->getWindow()->getWinHeight(),
+									 (float) window->getWinWidth() /
+									 (float) window->getWinHeight(),
 									 0.1f, 100.0f));
 
 	shader->setMat4("camera", camera.getMatrix());

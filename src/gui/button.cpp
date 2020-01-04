@@ -5,14 +5,6 @@ gui::Button::Button(InterfacePtr interface) :
 		RectangleObj(interface) {
 	setState(Idle);
 
-	{
-		text = std::make_shared<Text>(this->shared_from_this());
-		auto model = text->getModel();
-		model = glm::translate(model, glm::vec3(0, 0.13 / 4, -.1));
-		model = glm::scale(model, glm::vec3(0.13 / 2, 0.13 / 2, 1));
-		text->setModel(model);
-	}
-
 	onEnter([&] {
 		setState(Hover);
 	});
@@ -24,14 +16,6 @@ gui::Button::Button(InterfacePtr interface) :
 	onPressed([&] {
 		onClicked();
 	});
-}
-
-const std::string &gui::Button::getLabel() const {
-	return label;
-}
-
-void gui::Button::setLabel(const std::string &label) {
-	Button::label = label;
 }
 
 gui::ButtonState gui::Button::getState() const {
@@ -73,10 +57,25 @@ glm::vec2 gui::Button::getBaseSize() {
 	return glm::vec2(1, 0.13);
 }
 
+void gui::Button::initText() {
+	if (text != nullptr)
+		return;
+
+	auto t = this->shared_from_this();
+	text = std::make_shared<Text>(t);
+	auto model = text->getModel();
+	model = glm::translate(model, glm::vec3(0, 0.13 / 4, -.1));
+	model = glm::scale(model, glm::vec3(0.13 / 2, 0.13 / 2, 1));
+	text->setModel(model);
+}
+
+
 const std::string &gui::Button::getText() {
+	initText();
 	return text->getContent();
 }
 
 void gui::Button::setText(const std::string &text) {
+	initText();
 	this->text->setContent(text);
 }

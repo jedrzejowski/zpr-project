@@ -53,6 +53,9 @@ namespace engine {
 
 	class Window;
 
+	typedef std::shared_ptr<Window> WindowPtr;
+	typedef std::weak_ptr<Window> WindowWPtr;
+
 	class InputDevice;
 
 	class InputButton;
@@ -149,22 +152,35 @@ namespace game {
 	class MainWindow;
 
 	class MainGame;
+	typedef std::shared_ptr<MainGame> MainGamePtr;
+	typedef std::weak_ptr<MainGame> MainGameWPtr;
 
 	class PlayerInterface;
 
 	class InGameMenu;
+	typedef std::shared_ptr<InGameMenu> InGameMenuPtr;
+	typedef std::weak_ptr<InGameMenu> InGameMenuWPtr;
 
 	class GameScene;
+	typedef std::shared_ptr<GameScene> GameScenePtr;
+	typedef std::weak_ptr<GameScene> GameSceneWPtr;
 }
 
 namespace menu {
 	class WelcomeScene;
+	typedef std::shared_ptr<WelcomeScene> WelcomeScenePtr;
+	typedef std::weak_ptr<WelcomeScene> WelcomeSceneWPtr;
 
 	class SettingsScene;
+	typedef std::shared_ptr<SettingsScene> SettingsScenePtr;
+	typedef std::weak_ptr<SettingsScene> CSettingsSceneWPtr;
 
-	class WorldssScene;
+	class WorldScene;
+	typedef std::shared_ptr<WorldScene> WorldScenePtr;
+	typedef std::weak_ptr<WorldScene> WorldSceneWPtr;
 }
 
 #include "src/vars.h"
 #include "src/logger.h"
 #include "src/exception.h"
+#include "src/lib/virtual_enable_shared_from_this.h"

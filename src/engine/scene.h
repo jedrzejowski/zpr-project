@@ -9,9 +9,9 @@
 
 namespace engine {
 
-	class Scene : public Object {
+	class Scene : public Object, virtual_enable_shared_from_this<Scene> {
 	private:
-		Window *window = nullptr;
+		WindowWPtr window;
 		InputInterfacePtr inputInterface;
 
 	protected:
@@ -20,10 +20,10 @@ namespace engine {
 	public:
 		const Signal<> onWindowChanged;
 
-		virtual void render(Window *window) = 0;
+		virtual void render(WindowPtr window) = 0;
 
-		Window *getWindow() const;
-		void setWindow(Window *window);
+		WindowWPtr getWindow() const;
+		void setWindow(WindowWPtr window);
 		bool isInWindow();
 
 		InputInterfacePtr getInputInterface();

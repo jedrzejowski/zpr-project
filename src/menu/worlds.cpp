@@ -4,5 +4,5 @@
 
 #include "worlds.h"
 
-void menu::WorldsScene::render(engine::Window *window) {
+void menu::WorldsScene::render(engine::WindowPtr window) {
 }

@@ -4,15 +4,13 @@
 #include "src/gui/GUI.h"
 
 namespace game {
-	class InGameMenu : public gui::Interface {
+	class InGameMenu : public gui::Interface, virtual_enable_shared_from_this<InGameMenu> {
 	private:
-		GameScene *gameScene = nullptr;
 
-		gui::Button *resumeBtn = nullptr,
-				*saveBtn = nullptr;
+		gui::ButtonPtr resumeBtn, saveBtn;
 
 	public:
-		explicit InGameMenu(GameScene *scene);
+		explicit InGameMenu(GameSceneWPtr scene);
 
 		const Signal<> onMenuExit;
 		const Signal<> onSaveAndExit;

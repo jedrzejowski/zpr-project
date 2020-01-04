@@ -12,16 +12,17 @@ namespace game {
 		Menu
 	};
 
-	class GameScene : public engine::Scene {
+	class GameScene : public engine::Scene, virtual_enable_shared_from_this<GameScene> {
+		using virtual_enable_shared_from_this<GameScene>::shared_from_this;
 	private:
 		GameSceneState interfaceState;
 
-		MainGame* mainGame = nullptr;
-		InGameMenu *inGameMenu = nullptr;
+		MainGamePtr mainGame = nullptr;
+		InGameMenuPtr inGameMenu = nullptr;
 
 	public:
 		GameScene();
-		void render(engine::Window *window) override;
+		void render(engine::WindowPtr window) override;
 
 		GameSceneState getInterfaceState() const;
 		void setInterfaceState(GameSceneState interfaceState);

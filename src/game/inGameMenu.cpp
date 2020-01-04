@@ -5,17 +5,17 @@
 #include "inGameMenu.h"
 #include "gameScene.h"
 
-game::InGameMenu::InGameMenu(game::GameScene *scene) :
-		Interface(scene) {
+game::InGameMenu::InGameMenu(game::GameSceneWPtr scene) :
+		Interface() {
 
-	resumeBtn = new gui::Button(this);
+	resumeBtn = std::make_shared<gui::Button>(this->shared_from_this());
 	resumeBtn->setText("Wznow gre");
 	resumeBtn->setPosition(glm::vec2(0, 0.3));
 	resumeBtn->onClicked([&] {
 		onMenuExit();
 	});
 
-	saveBtn = new gui::Button(this);
+	saveBtn = std::make_shared<gui::Button>(this->shared_from_this());
 	saveBtn->setText("Zapisz i wyjdz");
 	saveBtn->setPosition(glm::vec2(0, 0.5));
 	saveBtn->onClicked([&] {

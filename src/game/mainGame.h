@@ -7,7 +7,7 @@
 namespace game {
 	class MainGame : public Object {
 	private:
-		GameScene *gameScene = nullptr;
+		GameSceneWPtr gameScene;
 		engine::InputInterfacePtr inputInterface;
 		map::WorldPtr worldMap;
 		map::WorldRendererPtr mapRenderer = nullptr;
@@ -17,7 +17,7 @@ namespace game {
 
 	public:
 
-		explicit MainGame(GameScene *scene);
+		explicit MainGame(GameSceneWPtr scene);
 
 		void renderWorld();
 		void renderPlayerInterface();

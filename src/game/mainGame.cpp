@@ -4,7 +4,7 @@
 #include "player.h"
 #include "gameScene.h"
 
-game::MainGame::MainGame(GameScene *scene) {
+game::MainGame::MainGame(GameSceneWPtr scene) {
 	gameScene = scene;
 
 	worldMap = std::make_shared<map::World>();
@@ -20,7 +20,7 @@ game::MainGame::MainGame(GameScene *scene) {
 void game::MainGame::renderWorld() {
 	mapRenderer->render(
 			player->getCamera(),
-			gameScene
+			gameScene.lock()
 	);
 }
 

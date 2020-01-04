@@ -2,6 +2,7 @@
 
 #include "src/_classdef.h"
 #include "src/engine/Engine.h"
+#include "src/lib/virtual_enable_shared_from_this.h"
 
 #include "rectangleObj.h"
 #include "text.h"
@@ -14,10 +15,12 @@ namespace gui {
 		Disabled
 	};
 
-	class Button : public RectangleObj, public std::enable_shared_from_this<Button> {
-		std::string label;
+	class Button : public RectangleObj,  virtual_enable_shared_from_this<Button> {
 		ButtonState state;
 		TextPtr text;
+
+	private:
+		void initText();
 
 	public:
 

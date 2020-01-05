@@ -49,12 +49,8 @@ json map::Chunk::toJSON() const {
 
 	auto jblocks = json::object();
 
-	for (const auto &it : blocks) {
-		logger.log(it.first.toStringId()).log(it.second->toJSON());
-
+	for (const auto &it : blocks)
 		jblocks[it.first.toStringId()] = it.second->toJSON();
-	}
-
 	j["blocks"] = jblocks;
 
 	return j;

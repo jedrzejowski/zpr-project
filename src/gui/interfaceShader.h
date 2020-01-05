@@ -10,6 +10,7 @@ namespace gui {
 		engine::ShaderProgram *shader = nullptr;
 		const engine::Texture *guiTexture = nullptr;
 		const engine::Texture *fontTexture = nullptr;
+		const engine::Texture *blockTexture = nullptr;
 
 	public:
 		explicit InterfaceShader();

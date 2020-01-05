@@ -49,7 +49,6 @@ json AppSettings::loadJSON(boost::filesystem::path path) {
 }
 
 void AppSettings::saveJSON(boost::filesystem::path path, json content) {
-	logger.log(path).log(path.parent_path());
 	boost::filesystem::create_directories(path.parent_path());
 
 	std::ofstream fileStream(path);

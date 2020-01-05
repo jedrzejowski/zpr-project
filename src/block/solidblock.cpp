@@ -11,7 +11,7 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	auto vOffest = vertices.size();
 	auto iOffest = indices.size();
 
-	static float texCols = 2;
+	static float texCols = 3;
 	static float texRows = 4;
 
 	auto tex_xx = engine::TexCoord((float(texSide.x) - 1) / texCols, (float(texSide.y) - 1) / texRows);

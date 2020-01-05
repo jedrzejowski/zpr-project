@@ -35,9 +35,6 @@ void game::MainGame::renderWorld() {
 	);
 }
 
-void game::MainGame::renderPlayerInterface() {
-}
-
 void game::MainGame::initInputInterface() {
 	inputInterface = std::make_shared<engine::InputInterface>();
 

@@ -60,3 +60,13 @@ json block::Block::toJSON() {
 
 	return j;
 }
+
+const float block::Block::TexColumns = 3;
+const float block::Block::TexRows = 4;
+
+std::tuple<glm::vec2, glm::vec2> block::Block::getBlockText(int x, int y) {
+	return {
+			glm::vec2((float(x) - 1) / TexColumns, (float(y) - 1) / TexRows),
+			glm::vec2(float(x) / TexColumns, float(y) / TexRows)
+	};
+}

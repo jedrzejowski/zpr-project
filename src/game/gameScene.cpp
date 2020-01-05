@@ -2,6 +2,7 @@
 #include "player.h"
 #include "inGameMenu.h"
 #include "mainGame.h"
+#include "playerInterface.h"
 #include "src/menu/welcome.h"
 
 game::GameScene::GameScene() {
@@ -20,6 +21,7 @@ game::GameScenePtr game::GameScene::create() {
 
 	self->mainGame = MainGame::create(self);
 	self->inGameMenu = InGameMenu::create(self);
+	self->playerInterface = PlayerInterface::create(self);
 
 	self->setInterfaceState(Game);
 
@@ -56,7 +58,7 @@ void game::GameScene::render(engine::WindowPtr window) {
 	auto me = shared_from_this();
 
 	if (interfaceState == Game)
-		mainGame->renderPlayerInterface();
+		playerInterface->render(me);
 	if (interfaceState == Menu)
 		inGameMenu->render(me);
 }

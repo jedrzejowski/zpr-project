@@ -177,6 +177,11 @@ namespace game {
 
 	typedef std::shared_ptr<GameScene> GameScenePtr;
 	typedef std::weak_ptr<GameScene> GameSceneWPtr;
+
+	class PlayerInterface;
+
+	typedef std::shared_ptr<PlayerInterface> PlayerInterfacePtr;
+	typedef std::weak_ptr<PlayerInterface> PlayerInterfaceWPtr;
 }
 
 namespace menu {

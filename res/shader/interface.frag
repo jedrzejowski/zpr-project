@@ -6,6 +6,7 @@ flat in uint TexNum;
 
 uniform sampler2D guiTexture;
 uniform sampler2D fontTexture;
+uniform sampler2D blockTexture;
 
 void main() {
     vec4 outColor;
@@ -16,6 +17,10 @@ void main() {
 
     if (TexNum == uint(1)) {
         outColor = texture(fontTexture, TexCoord);
+    }
+
+    if (TexNum == uint(2)) {
+        outColor = texture(blockTexture, TexCoord);
     }
 
     FragColor = outColor;

@@ -10,6 +10,10 @@ namespace block {
 		Coord3D position;
 
 	public:
+		static const float TexColumns;
+		static const float TexRows;
+		static std::tuple<glm::vec2, glm::vec2> getBlockText(int x, int y);
+
 		Block();
 
 		void setPosition(map::Chunk *chunk, const Coord3D &pos);

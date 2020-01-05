@@ -38,7 +38,6 @@ map::ChunkPtr map::ChunkGenerator::newVirginChunk(const Coord2D &position) {
 
 			for (; z >= 0; z--) {
 				if (dirtLeft > 0) {
-
 					chunk->setBlock(Coord3D(x, y, z), new block::Dirt());
 					dirtLeft--;
 				} else {

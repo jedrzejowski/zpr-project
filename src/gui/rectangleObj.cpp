@@ -80,9 +80,20 @@ void gui::RectangleObj::setTextureEnd(const glm::vec2 &textureEnd) {
 	setNeedRefreshBuffers(true);
 }
 
-void gui::RectangleObj::setTexture(const glm::vec2 &textureStart, const glm::vec2 &textureEnd) {
+uint32_t gui::RectangleObj::getTextureNo() const {
+	return textureNo;
+}
+
+void gui::RectangleObj::setTextureNo(uint32_t textureNo) {
+	RectangleObj::textureNo = textureNo;
+
+	setNeedRefreshBuffers(true);
+}
+
+void gui::RectangleObj::setTexture(const glm::vec2 &textureStart, const glm::vec2 &textureEnd, uint32_t textureNo) {
 	setTextureStart(textureStart);
 	setTextureEnd(textureEnd);
+	setTextureNo(textureNo);
 }
 
 void gui::RectangleObj::refreshModel() {
@@ -103,10 +114,10 @@ void gui::RectangleObj::updateBuffers() {
 	point_xY = getModel() * glm::vec4(0, baseSize.y, 0, 1);
 
 	verticesBuf.clear();
-	verticesBuf.emplace_back(point_xy, engine::TexCoord(textureStart.x, textureStart.y));
-	verticesBuf.emplace_back(point_Xy, engine::TexCoord(textureEnd.x, textureStart.y));
-	verticesBuf.emplace_back(point_XY, engine::TexCoord(textureEnd.x, textureEnd.y));
-	verticesBuf.emplace_back(point_xY, engine::TexCoord(textureStart.x, textureEnd.y));
+	verticesBuf.emplace_back(point_xy, engine::TexCoord(textureStart.x, textureStart.y, textureNo));
+	verticesBuf.emplace_back(point_Xy, engine::TexCoord(textureEnd.x, textureStart.y, textureNo));
+	verticesBuf.emplace_back(point_XY, engine::TexCoord(textureEnd.x, textureEnd.y, textureNo));
+	verticesBuf.emplace_back(point_xY, engine::TexCoord(textureStart.x, textureEnd.y, textureNo));
 
 	indicesBuf.clear();
 	indicesBuf.emplace_back(0, 1, 2);
@@ -116,3 +127,5 @@ void gui::RectangleObj::updateBuffers() {
 gui::RectangleObj::~RectangleObj() {
 	logger.log("~RectangleObj()");
 }
+
+

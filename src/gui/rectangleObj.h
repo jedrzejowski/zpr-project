@@ -18,6 +18,7 @@ namespace gui {
 				point_XY;
 
 		glm::vec2 textureStart, textureEnd;
+		uint32_t textureNo;
 
 		bool isMouseIn = false;
 
@@ -39,14 +40,18 @@ namespace gui {
 		void setPosition(const glm::vec2 &position);
 		const glm::vec2 &getSize() const;
 		void setSize(const glm::vec2 &size);
-		virtual glm::vec2 getBaseSize() = 0;
 
+		virtual glm::vec2 getBaseSize() {
+			return glm::vec2(1, 1);
+		}
 
 		const glm::vec2 &getTextureStart() const;
 		void setTextureStart(const glm::vec2 &textureStart);
 		const glm::vec2 &getTextureEnd() const;
 		void setTextureEnd(const glm::vec2 &textureEnd);
-		void setTexture(const glm::vec2 &textureStart, const glm::vec2 &textureEnd);
+		uint32_t getTextureNo() const;
+		void setTextureNo(uint32_t textureNo);
+		void setTexture(const glm::vec2 &textureStart, const glm::vec2 &textureEnd, uint32_t textureNo = 0);
 	};
 }
 

@@ -8,10 +8,12 @@ gui::InterfaceShader::InterfaceShader() {
 	shader = new engine::ShaderProgram("shader/interface.vert", "shader/interface.frag");
 	guiTexture = engine::Resources::get().getTexture("texture/gui.png");
 	fontTexture = engine::Resources::get().getTexture("texture/font.png");
+	blockTexture = engine::Resources::get().getTexture("texture/block.png");
 
 	shader->bind();
 	shader->setUniformNameToId("guiTexture", 0);
 	shader->setUniformNameToId("fontTexture", 1);
+	shader->setUniformNameToId("blockTexture", 2);
 	shader->unbind();
 }
 
@@ -24,6 +26,7 @@ void gui::InterfaceShader::bind() {
 
 	guiTexture->use(0);
 	fontTexture->use(1);
+	blockTexture->use(2);
 }
 
 void gui::InterfaceShader::unbind() {

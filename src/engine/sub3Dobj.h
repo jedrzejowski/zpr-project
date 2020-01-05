@@ -32,7 +32,7 @@ namespace engine {
 
 		virtual void updateBuffers() = 0;
 
-		bool isNeedRefreshBuffers() const;
-		void setNeedRefreshBuffers(bool needRefreshBuffers);
+		virtual bool isNeedRefreshBuffers() const;
+		virtual void setNeedRefreshBuffers(bool needRefreshBuffers);
 	};
 }

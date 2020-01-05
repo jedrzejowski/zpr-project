@@ -3,7 +3,7 @@
 #include "src/lib/coord.h"
 #include "src/map/chunk.h"
 
-game::Player::Player(){
+game::Player::Player() {
 	position = glm::vec3(4.0f);
 	angleH = 0;
 	angleV = 0;
@@ -90,7 +90,17 @@ float game::Player::getChunkUnloadDistance() const {
 	return chunkUnloadDistance;
 }
 
-Coord2D game::Player::getCurrentChunk() const {
-	auto playerCoord = Coord2D(position);
-	return Coord2D(playerCoord.x / map::Chunk::Size.x, playerCoord.y / map::Chunk::Size.y);
+block::FullPosition game::Player::getFullPosition() const {
+
+	auto chunk = Coord2D(position.x / map::Chunk::Size.x, position.y / map::Chunk::Size.y);
+
+	return block::FullPosition(
+			chunk,
+			Coord3D(
+					position.x - chunk.x * map::Chunk::Size.x,
+					position.y - chunk.y * map::Chunk::Size.y,
+					position.z
+			)
+	);
 }
+

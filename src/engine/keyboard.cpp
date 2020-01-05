@@ -13,6 +13,16 @@ engine::Keyboard::Keyboard(InputInterface *ii) :
 	addBtn(RShift);
 	addBtn(Space);
 	addBtn(Escape);
+	addBtn(Num0);
+	addBtn(Num1);
+	addBtn(Num2);
+	addBtn(Num3);
+	addBtn(Num4);
+	addBtn(Num5);
+	addBtn(Num6);
+	addBtn(Num7);
+	addBtn(Num8);
+	addBtn(Num9);
 }
 
 bool engine::Keyboard::isShiftPressed() const {

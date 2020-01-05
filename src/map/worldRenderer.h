@@ -6,28 +6,26 @@
 #include "world.h"
 
 namespace map {
-	class WorldRenderer : public Object {
+	class WorldRenderer : public Object, public virtual_enable_shared_from_this<WorldRenderer> {
 	private:
 		const WorldPtr worldMap;
 		const engine::Texture *blockTexture = nullptr;
-		engine::ShaderProgram *shader = nullptr;
+		WorldShaderPtr shader;
 
 		BackWorkerQueue worker;
 
 		std::map<Coord2D, ChunkRendererPtr> chunkRenderers;
 
-	public:
 		explicit WorldRenderer(const WorldPtr& worldMap);
-		~WorldRenderer();
+		void initEvents();
+	public:
+		static WorldRendererPtr create(const WorldPtr &worldMap);
+		~WorldRenderer() override;
 
-		engine::ShaderProgram *getShader() const;
+		WorldShaderPtr getShader() const;
 
-		void injectChunkRenderer(ChunkRendererPtr& chunkRenderer);
-		void ejectChunkRenderer(ChunkRendererPtr& chunkRenderer);
 
 		void render(const engine::Camera &camera,
 					const engine::ScenePtr scene);
-
-		void syncWithWorld();
 	};
 }

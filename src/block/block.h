@@ -4,6 +4,9 @@
 #include "src/lib/coord.h"
 
 namespace block {
+
+
+
 	class Block {
 	protected:
 		map::Chunk *chunk;

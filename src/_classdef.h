@@ -57,6 +57,14 @@ namespace engine {
 
 	class ShaderProgram;
 
+	typedef std::shared_ptr<ShaderProgram> ShaderProgramPtr;
+	typedef std::weak_ptr<ShaderProgram> ShaderProgramWPtr;
+
+	class Shader;
+
+	typedef std::shared_ptr<Shader> ShaderPtr;
+	typedef std::weak_ptr<Shader> ShaderWPtr;
+
 	class Texture;
 
 	class Window;
@@ -121,6 +129,8 @@ namespace block {
 
 	class Block;
 
+	class FullPosition;
+
 	class SolidBlock;
 
 	class Stone;
@@ -137,6 +147,12 @@ namespace map {
 	class WorldRenderer;
 
 	typedef std::shared_ptr<WorldRenderer> WorldRendererPtr;
+	typedef std::weak_ptr<WorldRenderer> WorldRendererWPtr;
+
+	class WorldShader;
+
+	typedef std::shared_ptr<WorldShader> WorldShaderPtr;
+	typedef std::weak_ptr<WorldShader> WorldShaderWPtr;
 
 	class Chunk;
 
@@ -182,6 +198,11 @@ namespace game {
 
 	typedef std::shared_ptr<PlayerInterface> PlayerInterfacePtr;
 	typedef std::weak_ptr<PlayerInterface> PlayerInterfaceWPtr;
+
+	class SelectedBlock;
+
+	typedef std::shared_ptr<SelectedBlock> SelectedBlockPtr;
+	typedef std::weak_ptr<SelectedBlock> SelectedBlockWPtr;
 }
 
 namespace menu {

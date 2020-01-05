@@ -1,28 +1,50 @@
 #include "worldRenderer.h"
+
+#include <utility>
 #include "chunk.h"
 #include "chunkRenderer.h"
 #include "src/game/player.h"
 #include "src/engine/Engine.h"
+#include "src/game/selectedBlock.h"
+#include "worldShader.h"
 
 map::WorldRenderer::WorldRenderer(const map::WorldPtr &worldMap) :
 		worldMap(worldMap) {
+	logger.constructor(this);
 
-	shader = new engine::ShaderProgram("shader/game.vert", "shader/game.frag");
-	shader->setInt("material.diffuse", 0);
+	shader = std::make_shared<map::WorldShader>();
 	blockTexture = engine::Resources::get().getTexture("texture/block.png");
+}
 
-	worldMap->onChunkInserted([&](const map::ChunkPtr &chunk) {
+map::WorldRendererPtr map::WorldRenderer::create(const map::WorldPtr &worldMap) {
+	struct trick : WorldRenderer {
+		trick(const map::WorldPtr &worldMap) : WorldRenderer(worldMap) {}
+	};
+
+	map::WorldRendererPtr self = std::make_shared<trick>(worldMap);
+
+	self->initEvents();
+
+	return self;
+}
+
+
+void map::WorldRenderer::initEvents() {
+	auto tt = this->shared_from_this();
+	worldMap->onChunkInserted(this->shared_from_this(), [&](const map::ChunkPtr &chunk) {
 
 		auto cr = std::make_shared<ChunkRenderer>(this, chunk);
 		chunkRenderers[chunk->getPosition()] = cr;
 	});
 
-	worldMap->onChunkEjected([&](const map::ChunkPtr &chunk) {
+	worldMap->onChunkEjected(this->shared_from_this(), [&](const map::ChunkPtr &chunk) {
 		chunkRenderers.erase(chunk->getPosition());
 	});
 }
 
+
 map::WorldRenderer::~WorldRenderer() {
+	logger.destructor(this);
 }
 
 void map::WorldRenderer::render(const engine::Camera &camera,
@@ -35,16 +57,14 @@ void map::WorldRenderer::render(const engine::Camera &camera,
 	shader->bind();
 	blockTexture->use();
 
-//	glEnable(GL_CULL_FACE);
+//	glEnable(GL_CULL_FACE); // tak aby tyły nie były renderowane
 
-	shader->setMat4("projection",
-					glm::perspective(glm::radians(45.0f),
-									 (float) window->getWinWidth() /
-									 (float) window->getWinHeight(),
-									 0.1f, 100.0f));
+	shader->setProjection(glm::perspective(glm::radians(45.0f),
+										   (float) window->getWinWidth() /
+										   (float) window->getWinHeight(),
+										   0.1f, 100.0f));
 
-	shader->setMat4("camera", camera.getMatrix());
-	shader->setVec3("cameraPos", camera.position);
+	shader->setCamera(camera);
 
 	for (const auto &it : chunkRenderers)
 		it.second->render(scene);
@@ -52,16 +72,6 @@ void map::WorldRenderer::render(const engine::Camera &camera,
 	shader->unbind();
 }
 
-engine::ShaderProgram *map::WorldRenderer::getShader() const {
+map::WorldShaderPtr map::WorldRenderer::getShader() const {
 	return shader;
 }
-
-void map::WorldRenderer::syncWithWorld() {
-}
-
-void map::WorldRenderer::injectChunkRenderer(map::ChunkRendererPtr &chunkRenderer) {
-}
-
-void map::WorldRenderer::ejectChunkRenderer(map::ChunkRendererPtr &chunkRenderer) {
-}
-

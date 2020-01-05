@@ -35,7 +35,7 @@ namespace game {
 
 		float getChunkRenderDistance() const;
 		float getChunkUnloadDistance() const;
-		Coord2D getCurrentChunk() const;
+		block::FullPosition getFullPosition() const;
 
 		engine::Camera getCamera() const;
 	};

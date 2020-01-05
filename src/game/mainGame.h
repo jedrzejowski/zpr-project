@@ -13,6 +13,8 @@ namespace game {
 		map::WorldRendererPtr mapRenderer = nullptr;
 		PlayerPtr player;
 
+		SelectedBlockPtr selectedBlock;
+
 		void initInputInterface();
 
 		explicit MainGame(GameScenePtr& scene);
@@ -20,12 +22,17 @@ namespace game {
 		static MainGamePtr create(GameScenePtr& scene);
 
 		void renderWorld();
-		void renderPlayerInterface();
 
 		const Signal<> onMenuRequest;
 
 		engine::InputInterfacePtr getInputInterface();
 
 		void pollEvents();
+
+		const GameSceneWPtr &getGameScene() const;
+		const map::WorldPtr &getWorldMap() const;
+		const map::WorldRendererPtr &getMapRenderer() const;
+		const PlayerPtr &getPlayer() const;
+		const SelectedBlockPtr &getSelectedBlock() const;
 	};
 }

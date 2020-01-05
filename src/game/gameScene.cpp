@@ -85,3 +85,15 @@ void game::GameScene::setInterfaceState(game::GameSceneState interfaceState) {
 void game::GameScene::pollEvents() {
 	mainGame->pollEvents();
 }
+
+const game::MainGamePtr &game::GameScene::getMainGame() const {
+	return mainGame;
+}
+
+const game::PlayerInterfacePtr &game::GameScene::getPlayerInterface() const {
+	return playerInterface;
+}
+
+const game::InGameMenuPtr &game::GameScene::getInGameMenu() const {
+	return inGameMenu;
+}

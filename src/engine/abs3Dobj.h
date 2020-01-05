@@ -14,7 +14,7 @@ namespace engine {
 				indicesLengthInBuffer = 0;
 	protected:
 
-		void draw();
+		void drawTriangles();
 		void insertToGPU();
 
 	public:
@@ -25,8 +25,8 @@ namespace engine {
 		void updateBuffers() override;
 		virtual void render(const ScenePtr scene) = 0;
 
-		bool isNeedRefreshBuffers() const;
-		void setNeedRefreshBuffers(bool needRefreshBuffers);
+		bool isNeedRefreshBuffers() const override;
+		void setNeedRefreshBuffers(bool needRefreshBuffers) override;
 
 	};
 }

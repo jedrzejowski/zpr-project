@@ -31,6 +31,10 @@ namespace game {
 		GameSceneState getInterfaceState() const;
 		void setInterfaceState(GameSceneState interfaceState);
 
+		const MainGamePtr &getMainGame() const;
+		const PlayerInterfacePtr &getPlayerInterface() const;
+		const InGameMenuPtr &getInGameMenu() const;
+
 		void pollEvents() override;
 	};
 }

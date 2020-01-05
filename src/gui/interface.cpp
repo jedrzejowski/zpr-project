@@ -48,7 +48,7 @@ void gui::Interface::render(const engine::ScenePtr scene) {
 	interfaceShader.bind();
 	interfaceShader.setModel(getModel());
 
-	draw();
+	drawTriangles();
 
 	interfaceShader.unbind();
 }

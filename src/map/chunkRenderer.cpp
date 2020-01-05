@@ -1,6 +1,7 @@
 #include "chunkRenderer.h"
 #include "worldRenderer.h"
 #include "chunk.h"
+#include "worldShader.h"
 
 map::ChunkRenderer::ChunkRenderer(map::WorldRenderer *renderer, map::ChunkPtr chunk) : Abs3DObj() {
 	logger.constructor(this);
@@ -33,7 +34,7 @@ void map::ChunkRenderer::updateBuffers() {
 }
 
 void map::ChunkRenderer::render(const engine::ScenePtr scene) {
-	worldRenderer->getShader()->setMat4("chunkPos", chunkPos);
-	draw();
+	worldRenderer->getShader()->setChunkPos(chunkPos);
+	drawTriangles();
 }
 

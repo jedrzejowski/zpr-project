@@ -9,12 +9,16 @@ namespace game {
 		explicit PlayerInterface(game::GameScenePtr &scene);
 
 		std::vector<gui::RectangleObjPtr> items;
+		gui::RectangleObjPtr background;
 		int selected = 0;
 
 		void addItem(int texX, int texY);
+		void setItemState(int index, bool selected);
 
 	public:
 		static PlayerInterfacePtr create(game::GameScenePtr &scene);
 		~PlayerInterface() override;
+
+		void setItem(int index);
 	};
 }

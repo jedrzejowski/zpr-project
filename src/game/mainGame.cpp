@@ -3,6 +3,8 @@
 #include "src/map/Map.h"
 #include "player.h"
 #include "gameScene.h"
+#include "playerInterface.h"
+#include "selectedBlock.h"
 
 game::MainGame::MainGame(GameScenePtr &scene) {
 	gameScene = scene;
@@ -14,13 +16,15 @@ game::MainGamePtr game::MainGame::create(game::GameScenePtr &scene) {
 		trick(GameScenePtr &scene) : MainGame(scene) {}
 	};
 
-	auto self = std::make_shared<trick>(scene);
+	game::MainGamePtr self = std::make_shared<trick>(scene);
 
 	self->worldMap = std::make_shared<map::World>("default");
 
 	self->player = std::make_shared<Player>();
 
-	self->mapRenderer = std::make_shared<map::WorldRenderer>(self->worldMap);
+	self->mapRenderer = map::WorldRenderer::create(self->worldMap);
+
+	self->selectedBlock = std::make_shared<game::SelectedBlock>(self);
 
 	self->initInputInterface();
 
@@ -79,6 +83,46 @@ void game::MainGame::initInputInterface() {
 	mouse->onLeave([&]() {
 		onMenuRequest();
 	});
+
+	keyboard->Num1.onPressed([this] {
+		if (gameScene.expired()) return;
+		gameScene.lock()->getPlayerInterface()->setItem(0);
+	});
+
+	keyboard->Num2.onPressed([this] {
+		if (gameScene.expired()) return;
+		gameScene.lock()->getPlayerInterface()->setItem(1);
+	});
+
+	keyboard->Num3.onPressed([this] {
+		if (gameScene.expired()) return;
+		gameScene.lock()->getPlayerInterface()->setItem(2);
+	});
+
+	keyboard->Num4.onPressed([this] {
+		if (gameScene.expired()) return;
+		gameScene.lock()->getPlayerInterface()->setItem(3);
+	});
+
+	keyboard->Num5.onPressed([this] {
+		if (gameScene.expired()) return;
+		gameScene.lock()->getPlayerInterface()->setItem(4);
+	});
+
+	keyboard->Num6.onPressed([this] {
+		if (gameScene.expired()) return;
+		gameScene.lock()->getPlayerInterface()->setItem(5);
+	});
+
+	keyboard->Num7.onPressed([this] {
+		if (gameScene.expired()) return;
+		gameScene.lock()->getPlayerInterface()->setItem(6);
+	});
+
+	keyboard->Num8.onPressed([this] {
+		if (gameScene.expired()) return;
+		gameScene.lock()->getPlayerInterface()->setItem(7);
+	});
 }
 
 engine::InputInterfacePtr game::MainGame::getInputInterface() {
@@ -87,6 +131,26 @@ engine::InputInterfacePtr game::MainGame::getInputInterface() {
 
 void game::MainGame::pollEvents() {
 	worldMap->syncChunkWithLoader();
-	mapRenderer->syncWithWorld();
 	worldMap->loadForPlayer(player);
+	selectedBlock->update();
+}
+
+const game::GameSceneWPtr &game::MainGame::getGameScene() const {
+	return gameScene;
+}
+
+const map::WorldPtr &game::MainGame::getWorldMap() const {
+	return worldMap;
+}
+
+const map::WorldRendererPtr &game::MainGame::getMapRenderer() const {
+	return mapRenderer;
+}
+
+const game::PlayerPtr &game::MainGame::getPlayer() const {
+	return player;
+}
+
+const game::SelectedBlockPtr &game::MainGame::getSelectedBlock() const {
+	return selectedBlock;
 }

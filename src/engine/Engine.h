@@ -11,6 +11,7 @@
 #include "light.h"
 #include "shaderProgram.h"
 #include "camera.h"
+#include "shader.h"
 
 #include "window.h"
 #include "scene.h"

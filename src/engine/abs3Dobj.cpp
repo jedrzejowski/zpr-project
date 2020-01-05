@@ -42,7 +42,7 @@ void Abs3DObj::insertToGPU() {
 	setNeedRefreshBuffers(false);
 }
 
-void Abs3DObj::draw() {
+void Abs3DObj::drawTriangles() {
 
 	if (isNeedRefreshBuffers())
 		insertToGPU();
@@ -71,7 +71,7 @@ void recursiveUpdateBuffers(Sub3DObj *obj) {
 		obj->updateBuffers();
 
 	for (auto &child : obj->getChildren()) {
-//		if (child->isNeedRefreshBuffers())
+		if (child->isNeedRefreshBuffers())
 			child->updateBuffers();
 		recursiveUpdateBuffers(child);
 	}

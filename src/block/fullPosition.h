@@ -18,6 +18,8 @@ namespace block {
 
 		bool isValid();
 
+		glm::vec3 toVec() const;
+
 		FullPosition getNeighbor(CoordDim dx, CoordDim dy, CoordDim dz) const;
 	};
 }

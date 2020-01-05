@@ -62,3 +62,11 @@ bool block::FullPosition::isValid() {
 		   0 <= block.z && block.z < map::Chunk::Size.z;
 }
 
+glm::vec3 block::FullPosition::toVec() const {
+	return glm::vec3(
+			map::Chunk::Size.x * chunk.x + block.x,
+			map::Chunk::Size.x * chunk.y + block.y,
+			block.z
+	);
+}
+

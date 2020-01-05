@@ -4,6 +4,7 @@
 #include "src/_classdef.h"
 #include "type_ids.h"
 #include "fullPosition.h"
+#include "wall.h"
 #include "block.h"
 #include "solidblock.h"
 #include "types/stone.h"

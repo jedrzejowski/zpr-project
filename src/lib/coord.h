@@ -2,6 +2,7 @@
 
 #include <cinttypes>
 #include "src/opengl.h"
+#include "json.hpp"
 
 typedef int64_t CoordDim;
 

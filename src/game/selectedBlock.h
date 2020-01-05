@@ -10,13 +10,17 @@ namespace game {
 	private:
 		block::FullPosition pointingPos;
 		block::FullPosition newPos;
+		bool isSelected;
 
-		glm::mat4 chunkPos;
 		MainGameWPtr mainGame;
 
 	public:
 		explicit SelectedBlock(MainGamePtr& mainGame);
 		~SelectedBlock() override;
+
+		const block::FullPosition &getPointingPos() const;
+		const block::FullPosition &getNewPos() const;
+		bool isSelected1() const;
 
 		void update();
 	};

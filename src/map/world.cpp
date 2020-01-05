@@ -56,7 +56,7 @@ map::ChunkPtr map::World::ejectChunk(const Coord2D &position) {
 }
 
 void map::World::loadForPlayer(game::PlayerPtr &player) {
-	auto playerChunk = player->getCurrentChunk();
+	auto playerChunk = player->getFullPosition().getChunk();
 	auto chunkLoadDistance = player->getChunkUnloadDistance();
 
 	// ładowanie chunków

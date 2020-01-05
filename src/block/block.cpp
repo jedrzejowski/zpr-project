@@ -4,9 +4,9 @@
 block::Block::Block() {
 }
 
-void block::Block::setPosition(map::Chunk *chunk, const Coord3D &pos) {
+void block::Block::setPosition(map::ChunkPtr &chunkPtr, const Coord3D &pos) {
 	this->position = pos;
-	this->chunk = chunk;
+	this->chunk = chunkPtr;
 }
 
 block::Block *block::Block::getNeighbor(CoordDim dx, CoordDim dy, CoordDim dz) const {
@@ -19,34 +19,34 @@ block::Block *block::Block::getNeighbor(CoordDim dx, CoordDim dy, CoordDim dz) c
 	if (z != std::clamp(z, (CoordDim) 0, map::Chunk::Size.y - 1)) return nullptr;
 
 	while (x < 0) {
-		targetChunk = targetChunk->getNeighbor(-1, 0).operator->();
+		targetChunk = targetChunk.lock()->getNeighbor(-1, 0);
 		x += map::Chunk::Size.x;
 
-		if (targetChunk == nullptr) return nullptr;
+		if (targetChunk.expired()) return nullptr;
 	}
 
 	while (x >= map::Chunk::Size.x) {
-		targetChunk = targetChunk->getNeighbor(+1, 0).operator->();
+		targetChunk = targetChunk.lock()->getNeighbor(+1, 0);
 		x -= map::Chunk::Size.x;
 
-		if (targetChunk == nullptr) return nullptr;
+		if (targetChunk.expired()) return nullptr;
 	}
 
 	while (y < 0) {
-		targetChunk = targetChunk->getNeighbor(0, -1).operator->();
+		targetChunk = targetChunk.lock()->getNeighbor(0, -1);
 		y += map::Chunk::Size.y;
 
-		if (targetChunk == nullptr) return nullptr;
+		if (targetChunk.expired()) return nullptr;
 	}
 
 	while (y >= map::Chunk::Size.y) {
-		targetChunk = targetChunk->getNeighbor(0, +1).operator->();
+		targetChunk = targetChunk.lock()->getNeighbor(0, +1);
 		y -= map::Chunk::Size.y;
 
-		if (targetChunk == nullptr) return nullptr;
+		if (targetChunk.expired()) return nullptr;
 	}
 
-	return targetChunk->getBlock(Coord3D(x, y, z));
+	return targetChunk.lock()->getBlock(Coord3D(x, y, z));
 }
 
 bool block::Block::isSolid() {

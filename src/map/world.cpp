@@ -19,11 +19,11 @@ bool map::World::hasChunk(const Coord2D &position) {
 	return chunks.count(position) == 1;
 }
 
-map::ChunkPtr map::World::getChunk(const Coord2D &position) {
+map::ChunkWPtr map::World::getChunk(const Coord2D &position) {
 	if (hasChunk(position))
 		return chunks[position];
 
-	return nullptr;
+	return map::ChunkWPtr();
 }
 
 void map::World::requestChunk(Coord2D position) {

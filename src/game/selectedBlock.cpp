@@ -2,6 +2,8 @@
 #include "src/block/wall.h"
 #include "mainGame.h"
 #include "player.h"
+#include "src/map/world.h"
+#include "src/map/chunk.h"
 
 game::SelectedBlock::SelectedBlock(MainGamePtr &mainGame) :
 		mainGame(mainGame) {
@@ -31,6 +33,10 @@ void game::SelectedBlock::update() {
 			for (dz = -handRange; dz <= handRange; dz++) {
 				auto blockPos = headPosition.getNeighbor(dx, dy, dz);
 				if (!blockPos.isValid()) continue;
+
+				auto chunk = map->getChunk(blockPos.getChunk());
+				if (chunk.expired())continue;
+				if (chunk.lock()->getBlock(blockPos.getBlock()) == nullptr) continue;
 
 				auto vec = blockPos.toVec();
 

@@ -9,7 +9,7 @@ namespace block {
 
 	class Block {
 	protected:
-		map::Chunk *chunk;
+		map::ChunkWPtr chunk;
 		Coord3D position;
 
 	public:
@@ -19,7 +19,7 @@ namespace block {
 
 		Block();
 
-		void setPosition(map::Chunk *chunk, const Coord3D &pos);
+		void setPosition(map::ChunkPtr& chunkPtr, const Coord3D &pos);
 
 		virtual void insertToBuffers(std::vector<engine::Point3DeX> &vertices,
 									 std::vector<engine::SimpleTriangle> &indices) = 0;

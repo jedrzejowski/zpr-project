@@ -21,8 +21,8 @@ block::Block *map::Chunk::getBlock(const Coord3D &position) {
 }
 
 bool map::Chunk::setBlock(const Coord3D &position, block::Block *block) {
-	block->setPosition(this, position);
-
+	auto self = this->shared_from_this();
+	block->setPosition(self, position);
 	blocks[position] = block;
 	return false;
 }
@@ -35,7 +35,7 @@ const Coord2D &map::Chunk::getPosition() const {
 	return position;
 }
 
-map::ChunkPtr map::Chunk::getNeighbor(CoordDim dx, CoordDim dy) const {
+map::ChunkWPtr map::Chunk::getNeighbor(CoordDim dx, CoordDim dy) const {
 	auto neighborPos = position;
 	neighborPos.x += dx;
 	neighborPos.y += dy;

@@ -25,7 +25,7 @@ namespace map {
 		~World() override;
 
 		bool hasChunk(const Coord2D &position);
-		ChunkPtr getChunk(const Coord2D &position);
+		ChunkWPtr getChunk(const Coord2D &position);
 		void loadForPlayer(game::PlayerPtr &player);
 
 		void requestChunk(Coord2D position);

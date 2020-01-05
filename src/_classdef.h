@@ -157,6 +157,7 @@ namespace map {
 	class Chunk;
 
 	typedef std::shared_ptr<Chunk> ChunkPtr;
+	typedef std::weak_ptr<Chunk> ChunkWPtr;
 
 	class ChunkRenderer;
 

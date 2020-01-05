@@ -7,7 +7,7 @@
 #include "src/block/Blocks.h"
 
 namespace map {
-	class Chunk : public Object {
+	class Chunk : public Object, public virtual_enable_shared_from_this<Chunk> {
 		friend ChunkRenderer;
 		friend ChunkGenerator;
 		friend ChunkLoader;
@@ -27,7 +27,7 @@ namespace map {
 		std::map<Coord3D, block::Block *> &getAllBlocks();
 
 		const Coord2D &getPosition() const;
-		ChunkPtr getNeighbor(CoordDim dx, CoordDim dy) const;
+		ChunkWPtr getNeighbor(CoordDim dx, CoordDim dy) const;
 
 		json toJSON() const;
 

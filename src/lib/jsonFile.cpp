@@ -51,7 +51,7 @@ const std::string &JsonFile::getConfigDir() {
 	if (cfgDir.empty()) {
 
 		char temp[MAX_PATH];
-		get_user_config_folder(temp, sizeof(temp), AppName.c_str());
+		get_user_config_folder(temp, sizeof(temp), global::AppName.c_str());
 		if (temp[0] == 0)
 			throw zprException("error while getting user config path");
 

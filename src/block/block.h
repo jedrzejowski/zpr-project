@@ -11,9 +11,6 @@ namespace block {
 		Coord3D position;
 
 	public:
-		static const float TexColumns;
-		static const float TexRows;
-		static std::tuple<glm::vec2, glm::vec2> getBlockText(int x, int y);
 
 		Block();
 		~Block() override;
@@ -33,5 +30,6 @@ namespace block {
 	};
 
 	extern const BlockWPtr Air;
+	engine::SquareTextureReference getBlockTexture(int x, int y);
 }
 

@@ -94,6 +94,8 @@ namespace engine {
 	typedef std::weak_ptr<InputInterface> InputInterfaceWPtr;
 
 	class FpsCounter;
+
+	struct SquareTextureReference;
 }
 
 namespace gui {

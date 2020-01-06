@@ -1,8 +1,16 @@
 #include "solidblock.h"
 #include "src/engine/Engine.h"
+#include "wall.h"
 
-block::SolidBlock::SolidBlock() : Block() {
+
+block::SolidBlock::SolidBlock(const Coord2D &top,
+							  const Coord2D &side,
+							  const Coord2D &bottom
+) : texTop(getBlockTexture(top.x, top.y)),
+	texSide(getBlockTexture(side.x, side.y)),
+	texBottom(getBlockTexture(bottom.x, bottom.y)) {
 }
+
 
 void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices,
 										std::vector<engine::SimpleTriangle> &indices) {
@@ -11,91 +19,95 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	auto vOffest = vertices.size();
 	auto iOffest = indices.size();
 
-	static float texCols = 3;
-	static float texRows = 4;
 
-	auto tex_xx = engine::TexCoord((float(texSide.x) - 1) / texCols, (float(texSide.y) - 1) / texRows);
-	auto tex_xX = engine::TexCoord(float(texSide.x) / texCols, (float(texSide.y) - 1) / texRows);
-	auto tex_XX = engine::TexCoord(float(texSide.x) / texCols, float(texSide.y) / texRows);
-	auto tex_Xx = engine::TexCoord((float(texSide.x) - 1) / texCols, float(texSide.y) / texRows);
+	// płaszczna Z
+	if (!(block = this->getNeighbor(0, 0, +1).lock()) || !block->isSolid()) {
+		auto wall = getWall(position, Direction::Z_PLUS);
 
-	// płaszczna z
+		vertices.emplace_back(engine::Point3D(wall.firstPoint), texTop.getTexCoord_xy());
+		vertices.emplace_back(engine::Point3D(wall.secondPoint), texTop.getTexCoord_Xy());
+		vertices.emplace_back(engine::Point3D(wall.thirdPoint), texTop.getTexCoord_XY());
+		vertices.emplace_back(engine::Point3D(wall.fourthPoint), texTop.getTexCoord_xY());
 
-	if (!(block = this->getNeighbor(0, 0, -1).lock()) || !block->isSolid()) {
-		vertices.emplace_back(engine::Point3D(position.x, position.y, position.z), tex_xx);
-		vertices.emplace_back(engine::Point3D(position.x + 1, position.y, position.z), tex_xX);
-		vertices.emplace_back(engine::Point3D(position.x + 1, position.y + 1, position.z), tex_XX);
-		vertices.emplace_back(engine::Point3D(position.x, position.y + 1, position.z), tex_Xx);
-
-		indices.push_back(engine::SimpleTriangle(0, 1, 2) + vOffest);
-		indices.push_back(engine::SimpleTriangle(2, 3, 0) + vOffest);
+		indices.push_back(engine::SimpleTriangle(1, 3, 2) - 1 + vOffest);
+		indices.push_back(engine::SimpleTriangle(1, 4, 3) - 1 + vOffest);
 
 		vOffest += 4;
 	}
 
-	// płaszczna Z
-	if (!(block = this->getNeighbor(0, 0, +1).lock()) || !block->isSolid()) {
-		vertices.emplace_back(engine::Point3D(position.x, position.y, position.z + 1), tex_xx);
-		vertices.emplace_back(engine::Point3D(position.x + 1, position.y, position.z + 1), tex_xX);
-		vertices.emplace_back(engine::Point3D(position.x + 1, position.y + 1, position.z + 1), tex_XX);
-		vertices.emplace_back(engine::Point3D(position.x, position.y + 1, position.z + 1), tex_Xx);
+	// płaszczna z
 
-		indices.push_back(engine::SimpleTriangle(2, 1, 0) + vOffest);
-		indices.push_back(engine::SimpleTriangle(0, 3, 2) + vOffest);
+	if (!(block = this->getNeighbor(0, 0, -1).lock()) || !block->isSolid()) {
+		auto wall = getWall(position, Direction::Z_MINUS);
+
+		vertices.emplace_back(engine::Point3D(wall.firstPoint), texBottom.getTexCoord_xy());
+		vertices.emplace_back(engine::Point3D(wall.secondPoint), texBottom.getTexCoord_Xy());
+		vertices.emplace_back(engine::Point3D(wall.thirdPoint), texBottom.getTexCoord_XY());
+		vertices.emplace_back(engine::Point3D(wall.fourthPoint), texBottom.getTexCoord_xY());
+
+		indices.push_back(engine::SimpleTriangle(1, 3, 2) - 1 + vOffest);
+		indices.push_back(engine::SimpleTriangle(1, 4, 3) - 1 + vOffest);
 
 		vOffest += 4;
 	}
 
 	// płaszczna x
 	if (!(block = this->getNeighbor(-1, 0, 0).lock()) || !block->isSolid()) {
-		vertices.emplace_back(engine::Point3D(position.x, position.y, position.z), tex_xx);
-		vertices.emplace_back(engine::Point3D(position.x, position.y + 1, position.z), tex_xX);
-		vertices.emplace_back(engine::Point3D(position.x, position.y + 1, position.z + 1), tex_XX);
-		vertices.emplace_back(engine::Point3D(position.x, position.y, position.z + 1), tex_Xx);
+		auto wall = getWall(position, Direction::X_MINUS);
 
-		indices.push_back(engine::SimpleTriangle(0, 1, 2) + vOffest);
-		indices.push_back(engine::SimpleTriangle(2, 3, 0) + vOffest);
+		vertices.emplace_back(engine::Point3D(wall.firstPoint), texSide.getTexCoord_xy());
+		vertices.emplace_back(engine::Point3D(wall.secondPoint), texSide.getTexCoord_Xy());
+		vertices.emplace_back(engine::Point3D(wall.thirdPoint), texSide.getTexCoord_XY());
+		vertices.emplace_back(engine::Point3D(wall.fourthPoint), texSide.getTexCoord_xY());
+
+		indices.push_back(engine::SimpleTriangle(1, 3, 2) - 1 + vOffest);
+		indices.push_back(engine::SimpleTriangle(1, 4, 3) - 1 + vOffest);
 
 		vOffest += 4;
 	}
 
 	// płaszczna X
 	if (!(block = this->getNeighbor(+1, 0, 0).lock()) || !block->isSolid()) {
-		vertices.emplace_back(engine::Point3D(position.x + 1, position.y, position.z), tex_xx);
-		vertices.emplace_back(engine::Point3D(position.x + 1, position.y + 1, position.z), tex_xX);
-		vertices.emplace_back(engine::Point3D(position.x + 1, position.y + 1, position.z + 1), tex_XX);
-		vertices.emplace_back(engine::Point3D(position.x + 1, position.y, position.z + 1), tex_Xx);
+		auto wall = getWall(position, Direction::X_PLUS);
 
-		indices.push_back(engine::SimpleTriangle(2, 1, 0) + vOffest);
-		indices.push_back(engine::SimpleTriangle(0, 3, 2) + vOffest);
+		vertices.emplace_back(engine::Point3D(wall.firstPoint), texSide.getTexCoord_xy());
+		vertices.emplace_back(engine::Point3D(wall.secondPoint), texSide.getTexCoord_Xy());
+		vertices.emplace_back(engine::Point3D(wall.thirdPoint), texSide.getTexCoord_XY());
+		vertices.emplace_back(engine::Point3D(wall.fourthPoint), texSide.getTexCoord_xY());
+
+		indices.push_back(engine::SimpleTriangle(1, 3, 2) - 1 + vOffest);
+		indices.push_back(engine::SimpleTriangle(1, 4, 3) - 1 + vOffest);
 
 		vOffest += 4;
 	}
 
 	// płaszczna y
 	if (!(block = this->getNeighbor(0, -1, 0).lock()) || !block->isSolid()) {
-		vertices.emplace_back(engine::Point3D(position.x, position.y, position.z), tex_xx);
-		vertices.emplace_back(engine::Point3D(position.x + 1, position.y, position.z), tex_xX);
-		vertices.emplace_back(engine::Point3D(position.x + 1, position.y, position.z + 1), tex_XX);
-		vertices.emplace_back(engine::Point3D(position.x, position.y, position.z + 1), tex_Xx);
+		auto wall = getWall(position, Direction::Y_MINUS);
 
-		indices.push_back(engine::SimpleTriangle(0, 1, 2) + vOffest);
-		indices.push_back(engine::SimpleTriangle(2, 3, 0) + vOffest);
+		vertices.emplace_back(engine::Point3D(wall.firstPoint), texSide.getTexCoord_xy());
+		vertices.emplace_back(engine::Point3D(wall.secondPoint), texSide.getTexCoord_Xy());
+		vertices.emplace_back(engine::Point3D(wall.thirdPoint), texSide.getTexCoord_XY());
+		vertices.emplace_back(engine::Point3D(wall.fourthPoint), texSide.getTexCoord_xY());
+
+		indices.push_back(engine::SimpleTriangle(1, 3, 2) - 1 + vOffest);
+		indices.push_back(engine::SimpleTriangle(1, 4, 3) - 1 + vOffest);
 
 		vOffest += 4;
 	}
 
 	// płaszczna Y
 	if (!(block = this->getNeighbor(0, +1, 0).lock()) || !block->isSolid()) {
-		vertices.emplace_back(engine::Point3D(position.x, position.y + 1, position.z), tex_xx);
-		vertices.emplace_back(engine::Point3D(position.x + 1, position.y + 1, position.z), tex_xX);
-		vertices.emplace_back(engine::Point3D(position.x + 1, position.y + 1, position.z + 1), tex_XX);
-		vertices.emplace_back(engine::Point3D(position.x, position.y + 1, position.z + 1), tex_Xx);
+		auto wall = getWall(position, Direction::Y_PLUS);
 
-		indices.push_back(engine::SimpleTriangle(2, 1, 0) + vOffest);
-		indices.push_back(engine::SimpleTriangle(0, 3, 2) + vOffest);
+		vertices.emplace_back(engine::Point3D(wall.firstPoint), texSide.getTexCoord_xy());
+		vertices.emplace_back(engine::Point3D(wall.secondPoint), texSide.getTexCoord_Xy());
+		vertices.emplace_back(engine::Point3D(wall.thirdPoint), texSide.getTexCoord_XY());
+		vertices.emplace_back(engine::Point3D(wall.fourthPoint), texSide.getTexCoord_xY());
+
+		indices.push_back(engine::SimpleTriangle(1, 3, 2) - 1 + vOffest);
+		indices.push_back(engine::SimpleTriangle(1, 4, 3) - 1 + vOffest);
 
 		vOffest += 4;
 	}
 }
-

@@ -5,10 +5,12 @@
 #include <src/block/Blocks.h>
 #include "stone.h"
 
-block::Stone::Stone() : SolidBlock() {
-	texTop = Coord2D(1, 3);
-	texSide = Coord2D(1, 3);
-	texBottom = Coord2D(1, 3);
+block::Stone::Stone() :
+		SolidBlock(
+				Coord2D(1, 3),
+				Coord2D(1, 3),
+				Coord2D(1, 3)
+		) {
 }
 
 int block::Stone::typeId() {

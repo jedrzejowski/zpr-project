@@ -62,6 +62,10 @@ namespace engine {
 		SimpleTriangle operator+(const int &n);
 
 		SimpleTriangle &operator+=(const int &n);
+
+		SimpleTriangle operator-(const int &n);
+
+		SimpleTriangle &operator-=(const int &n);
 	};
 
 	inline std::ostream &operator<<(std::ostream &out, const SimpleTriangle &tringle) {

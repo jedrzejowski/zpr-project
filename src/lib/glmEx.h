@@ -20,14 +20,30 @@ namespace glm {
 
 	class Square {
 	public:
-		Triangle first{}, second{};
+		Triangle firstTriangle{}, secondTriangle{};
+		glm::vec3 firstPoint{}, secondPoint{}, thirdPoint{}, fourthPoint{};
 
 		Square() = default;
 
-		Square(const Triangle &first,
-			   const Triangle &second) :
-				first(first),
-				second(second) {}
+		Square(const Triangle &firstTriangle,
+			   const Triangle &secondTriangle) :
+				firstTriangle(firstTriangle),
+				secondTriangle(secondTriangle),
+				firstPoint(firstTriangle.first),
+				secondPoint(firstTriangle.third),
+				thirdPoint(firstTriangle.second),
+				fourthPoint(firstTriangle.second) {}
+
+		Square(const vec3 &firstPoint,
+			   const vec3 &secondPoint,
+			   const vec3 &thirdPoint,
+			   const vec3 &fourthPoint) :
+				firstPoint(firstPoint),
+				secondPoint(secondPoint),
+				thirdPoint(thirdPoint),
+				fourthPoint(fourthPoint),
+				firstTriangle(firstPoint, thirdPoint, secondPoint),
+				secondTriangle(firstPoint, fourthPoint, thirdPoint) {}
 
 		template<typename T>
 		bool intersectRay(
@@ -38,17 +54,17 @@ namespace glm {
 			return glm::intersectRayTriangle(
 					orig,
 					dir,
-					first.first,
-					first.second,
-					first.third,
+					firstTriangle.first,
+					firstTriangle.second,
+					firstTriangle.third,
 					baryPosition,
 					distance
 			) || glm::intersectRayTriangle(
 					orig,
 					dir,
-					second.first,
-					second.second,
-					second.third,
+					secondTriangle.first,
+					secondTriangle.second,
+					secondTriangle.third,
 					baryPosition,
 					distance
 			);

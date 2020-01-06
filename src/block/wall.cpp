@@ -13,86 +13,50 @@ glm::Square block::getWall(FullPosition pos, block::Direction dir) {
 
 		case Z_PLUS:
 			return glm::Square(
-					glm::Triangle(
-							vec + glm::vec3(1, 1, 1),
-							vec + glm::vec3(1, 0, 1),
-							vec + glm::vec3(0, 0, 1)
-					),
-					glm::Triangle(
-							vec + glm::vec3(0, 0, 1),
-							vec + glm::vec3(0, 1, 1),
-							vec + glm::vec3(1, 1, 1)
-					)
+					vec + glm::vec3(0, 0, 1),
+					vec + glm::vec3(0, 1, 1),
+					vec + glm::vec3(1, 1, 1),
+					vec + glm::vec3(1, 0, 1)
 			);
 
 		case Z_MINUS:
 			return glm::Square(
-					glm::Triangle(
-							vec + glm::vec3(0, 0, 0),
-							vec + glm::vec3(1, 0, 0),
-							vec + glm::vec3(1, 1, 0)
-					),
-					glm::Triangle(
-							vec + glm::vec3(1, 1, 0),
-							vec + glm::vec3(0, 1, 0),
-							vec + glm::vec3(0, 0, 0)
-					)
+					vec + glm::vec3(0, 0, 0),
+					vec + glm::vec3(1, 0, 0),
+					vec + glm::vec3(1, 1, 0),
+					vec + glm::vec3(0, 1, 0)
 			);
 
 		case X_PLUS:
 			return glm::Square(
-					glm::Triangle(
-							vec + glm::vec3(1, 1, 1),
-							vec + glm::vec3(1, 1, 0),
-							vec + glm::vec3(1, 0, 0)
-					),
-					glm::Triangle(
-							vec + glm::vec3(1, 0, 0),
-							vec + glm::vec3(1, 0, 1),
-							vec + glm::vec3(1, 1, 1)
-					)
+					vec + glm::vec3(1, 0, 0),
+					vec + glm::vec3(1, 0, 1),
+					vec + glm::vec3(1, 1, 1),
+					vec + glm::vec3(1, 1, 0)
 			);
 
 		case X_MINUS:
 			return glm::Square(
-					glm::Triangle(
-							vec + glm::vec3(0, 0, 0),
-							vec + glm::vec3(0, 1, 0),
-							vec + glm::vec3(0, 1, 1)
-					),
-					glm::Triangle(
-							vec + glm::vec3(0, 1, 1),
-							vec + glm::vec3(0, 0, 1),
-							vec + glm::vec3(0, 0, 0)
-					)
+					vec + glm::vec3(0, 0, 0),
+					vec + glm::vec3(0, 1, 0),
+					vec + glm::vec3(0, 1, 1),
+					vec + glm::vec3(0, 0, 1)
 			);
 
 		case Y_PLUS:
 			return glm::Square(
-					glm::Triangle(
-							vec + glm::vec3(1, 1, 1),
-							vec + glm::vec3(1, 1, 0),
-							vec + glm::vec3(0, 1, 0)
-					),
-					glm::Triangle(
-							vec + glm::vec3(0, 1, 0),
-							vec + glm::vec3(0, 1, 1),
-							vec + glm::vec3(1, 1, 1)
-					)
+					vec + glm::vec3(0, 1, 0),
+					vec + glm::vec3(1, 1, 0),
+					vec + glm::vec3(1, 1, 1),
+					vec + glm::vec3(0, 1, 1)
 			);
 
 		case Y_MINUS:
 			return glm::Square(
-					glm::Triangle(
-							vec + glm::vec3(0, 0, 0),
-							vec + glm::vec3(1, 0, 0),
-							vec + glm::vec3(1, 0, 1)
-					),
-					glm::Triangle(
-							vec + glm::vec3(1, 0, 1),
-							vec + glm::vec3(0, 0, 1),
-							vec + glm::vec3(0, 0, 0)
-					)
+					vec + glm::vec3(0, 0, 0),
+					vec + glm::vec3(0, 0, 1),
+					vec + glm::vec3(1, 0, 1),
+					vec + glm::vec3(1, 0, 0)
 			);
 	}
 

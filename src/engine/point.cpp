@@ -76,3 +76,14 @@ SimpleTriangle &SimpleTriangle::operator+=(const int &n) {
 	this->third += n;
 	return *this;
 }
+
+SimpleTriangle SimpleTriangle::operator-(const int &n) {
+	return SimpleTriangle(this->first - n, this->second - n, this->third - n);
+}
+
+SimpleTriangle &SimpleTriangle::operator-=(const int &n) {
+	this->first -= n;
+	this->second -= n;
+	this->third -= n;
+	return *this;
+}

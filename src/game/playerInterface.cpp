@@ -40,8 +40,8 @@ game::PlayerInterfacePtr game::PlayerInterface::create(game::MainGamePtr &scene)
 void game::PlayerInterface::addItem(int texX, int texY) {
 	auto rec = std::make_shared<gui::RectangleObj>(this->shared_from_this());
 
-	auto texVecs = block::Block::getBlockText(texX, texY);
-	rec->setTexture(std::get<0>(texVecs), std::get<1>(texVecs), 2);
+	auto texVecs = block::getBlockTexture(texX, texY);
+	rec->setTexture(texVecs.start, texVecs.end, 2);
 
 	items.push_back(rec);
 	setItemState(items.size() - 1, items.size() == 1);

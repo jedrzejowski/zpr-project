@@ -208,6 +208,16 @@ namespace game {
 
 	typedef std::shared_ptr<SelectedBlock> SelectedBlockPtr;
 	typedef std::weak_ptr<SelectedBlock> SelectedBlockWPtr;
+
+	class PlayerItem;
+
+	typedef std::shared_ptr<PlayerItem> PlayerItemPtr;
+	typedef std::weak_ptr<PlayerItem> PlayerItemWPtr;
+
+	class PlayerBlockItem;
+
+	typedef std::shared_ptr<PlayerBlockItem> PlayerBlockItemPtr;
+	typedef std::weak_ptr<PlayerBlockItem> PlayerBlockItemWPtr;
 }
 
 namespace menu {

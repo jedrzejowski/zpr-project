@@ -12,6 +12,8 @@ namespace game {
 		map::WorldPtr worldMap;
 		map::WorldRendererPtr mapRenderer;
 		PlayerPtr player;
+		PlayerInterfacePtr playerInterface;
+
 
 		SelectedBlockPtr selectedBlock;
 
@@ -34,5 +36,6 @@ namespace game {
 		const map::WorldRendererPtr &getMapRenderer() const;
 		const PlayerPtr &getPlayer() const;
 		const SelectedBlockPtr &getSelectedBlock() const;
+		const PlayerInterfacePtr &getPlayerInterface() const;
 	};
 }

@@ -33,7 +33,7 @@ gui::Interface::Interface() : Abs3DObj() {
 }
 
 
-void gui::Interface::render(const engine::ScenePtr scene) {
+void gui::Interface::render(const engine::ScenePtr& scene) {
 	auto windowWPtr = scene->getWindow();
 
 	if (windowWPtr.expired()) {

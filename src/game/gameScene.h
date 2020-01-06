@@ -18,7 +18,6 @@ namespace game {
 		GameSceneState interfaceState;
 
 		MainGamePtr mainGame;
-		PlayerInterfacePtr playerInterface;
 		InGameMenuPtr inGameMenu;
 
 		GameScene();
@@ -26,13 +25,12 @@ namespace game {
 	public:
 		~GameScene() override;
 		static GameScenePtr create();
-		void render(engine::WindowPtr window) override;
+		void render(engine::WindowPtr& window) override;
 
 		GameSceneState getInterfaceState() const;
 		void setInterfaceState(GameSceneState interfaceState);
 
 		const MainGamePtr &getMainGame() const;
-		const PlayerInterfacePtr &getPlayerInterface() const;
 		const InGameMenuPtr &getInGameMenu() const;
 
 		void pollEvents() override;

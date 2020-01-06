@@ -26,6 +26,6 @@ namespace map {
 
 
 		void render(const engine::Camera &camera,
-					const engine::ScenePtr scene);
+					const engine::ScenePtr& scene);
 	};
 }

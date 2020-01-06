@@ -17,7 +17,7 @@ namespace gui {
 
 	public:
 		explicit Interface();
-		void render(const engine::ScenePtr scene) override;
+		void render(const engine::ScenePtr& scene) override;
 
 		engine::InputInterfacePtr getInputInterface();
 

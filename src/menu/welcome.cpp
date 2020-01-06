@@ -56,10 +56,11 @@ void menu::WelcomeScene::initBtnActions() {
 }
 
 
-void menu::WelcomeScene::render(engine::WindowPtr window) {
+void menu::WelcomeScene::render(engine::WindowPtr& window) {
 	auto ptr = this->shared_from_this();
 	interface->render(ptr);
 }
+
 menu::WelcomeScene::~WelcomeScene() {
 	logger.log("usuwanie WelcomeScene");
 }

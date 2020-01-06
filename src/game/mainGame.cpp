@@ -22,6 +22,8 @@ game::MainGamePtr game::MainGame::create(game::GameScenePtr &scene) {
 
 	self->player = std::make_shared<Player>();
 
+	self->playerInterface = PlayerInterface::create(self);
+
 	self->mapRenderer = map::WorldRenderer::create(self->worldMap);
 
 	self->selectedBlock = std::make_shared<game::SelectedBlock>(self);
@@ -33,10 +35,15 @@ game::MainGamePtr game::MainGame::create(game::GameScenePtr &scene) {
 
 
 void game::MainGame::renderWorld() {
+	auto scene = gameScene.lock();
+
 	mapRenderer->render(
 			player->getCamera(),
-			gameScene.lock()
+			scene
 	);
+
+	if (scene->getInterfaceState() == Game)
+		playerInterface->render(scene);
 }
 
 void game::MainGame::initInputInterface() {
@@ -47,28 +54,28 @@ void game::MainGame::initInputInterface() {
 
 	mouse->setAttachedToCenter(true);
 
-	keyboard->W.onPress([this, keyboard] {
-		player->moveForward(keyboard->getDeltaTimeOfState());
+	keyboard->W.onPress([this] {
+		player->moveForward(inputInterface->getKeyboard()->getDeltaTimeOfState());
 	});
 
-	keyboard->S.onPress([this, keyboard] {
-		player->moveBackward(keyboard->getDeltaTimeOfState());
+	keyboard->S.onPress([this] {
+		player->moveBackward(inputInterface->getKeyboard()->getDeltaTimeOfState());
 	});
 
-	keyboard->D.onPress([this, keyboard] {
-		player->moveRight(keyboard->getDeltaTimeOfState());
+	keyboard->D.onPress([this] {
+		player->moveRight(inputInterface->getKeyboard()->getDeltaTimeOfState());
 	});
 
-	keyboard->A.onPress([this, keyboard] {
-		player->moveLeft(keyboard->getDeltaTimeOfState());
+	keyboard->A.onPress([this] {
+		player->moveLeft(inputInterface->getKeyboard()->getDeltaTimeOfState());
 	});
 
-	keyboard->Space.onPress([this, keyboard] {
-		player->moveUp(keyboard->getDeltaTimeOfState());
+	keyboard->Space.onPress([this] {
+		player->moveUp(inputInterface->getKeyboard()->getDeltaTimeOfState());
 	});
 
-	keyboard->LShift.onPress([this, keyboard] {
-		player->moveDown(keyboard->getDeltaTimeOfState());
+	keyboard->LShift.onPress([this] {
+		player->moveDown(inputInterface->getKeyboard()->getDeltaTimeOfState());
 	});
 
 	keyboard->Escape.onPressed([this, keyboard] {
@@ -89,52 +96,52 @@ void game::MainGame::initInputInterface() {
 
 		auto fullPos = selectedBlock->getPointingPos();
 
-		if (auto chunk = worldMap->getChunk(fullPos.getChunk()).lock()) {
+		if (auto chunk = worldMap->getChunk(fullPos.getChunk()).lock())
 			chunk->setAir(fullPos.getBlock());
-		}
 	});
 
 	mouse->Right.onPressed([&] {
+		playerInterface->useItem();
 	});
 
 	keyboard->Num1.onPressed([this] {
-		if (gameScene.expired()) return;
-		gameScene.lock()->getPlayerInterface()->setItem(0);
+		playerInterface->selectItem(0);
 	});
 
 	keyboard->Num2.onPressed([this] {
-		if (gameScene.expired()) return;
-		gameScene.lock()->getPlayerInterface()->setItem(1);
+		playerInterface->selectItem(1);
 	});
 
 	keyboard->Num3.onPressed([this] {
-		if (gameScene.expired()) return;
-		gameScene.lock()->getPlayerInterface()->setItem(2);
+		playerInterface->selectItem(2);
 	});
 
 	keyboard->Num4.onPressed([this] {
-		if (gameScene.expired()) return;
-		gameScene.lock()->getPlayerInterface()->setItem(3);
+		playerInterface->selectItem(3);
 	});
 
 	keyboard->Num5.onPressed([this] {
-		if (gameScene.expired()) return;
-		gameScene.lock()->getPlayerInterface()->setItem(4);
+		playerInterface->selectItem(4);
 	});
 
 	keyboard->Num6.onPressed([this] {
-		if (gameScene.expired()) return;
-		gameScene.lock()->getPlayerInterface()->setItem(5);
+		playerInterface->selectItem(5);
 	});
 
 	keyboard->Num7.onPressed([this] {
-		if (gameScene.expired()) return;
-		gameScene.lock()->getPlayerInterface()->setItem(6);
+		playerInterface->selectItem(6);
 	});
 
 	keyboard->Num8.onPressed([this] {
-		if (gameScene.expired()) return;
-		gameScene.lock()->getPlayerInterface()->setItem(7);
+		playerInterface->selectItem(7);
+	});
+
+	keyboard->Num9.onPressed([this] {
+//		playerInterface->selectItem(8);
+	});
+
+	keyboard->Num0.onPressed([this] {
+//		playerInterface->selectItem(9);
 	});
 }
 
@@ -166,4 +173,8 @@ const game::PlayerPtr &game::MainGame::getPlayer() const {
 
 const game::SelectedBlockPtr &game::MainGame::getSelectedBlock() const {
 	return selectedBlock;
+}
+
+const game::PlayerInterfacePtr &game::MainGame::getPlayerInterface() const {
+	return playerInterface;
 }

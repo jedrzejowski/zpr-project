@@ -31,6 +31,7 @@ map::WorldRendererPtr map::WorldRenderer::create(const map::WorldPtr &worldMap) 
 
 void map::WorldRenderer::initEvents() {
 	auto tt = this->shared_from_this();
+
 	worldMap->onChunkInserted(this->shared_from_this(), [&](const map::ChunkPtr& chunk) {
 
 		auto self = this->shared_from_this();
@@ -49,7 +50,7 @@ map::WorldRenderer::~WorldRenderer() {
 }
 
 void map::WorldRenderer::render(const engine::Camera &camera,
-								const engine::ScenePtr scene) {
+								const engine::ScenePtr& scene) {
 	auto window = scene->getWindow().lock();
 	window->setViewPort(engine::ViewPort::OneTwoOne);
 

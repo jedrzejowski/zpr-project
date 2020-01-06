@@ -35,7 +35,6 @@ map::ChunkPtr map::ChunkGenerator::newVirginChunk(const Coord2D &position) {
 			) + (Chunk::Size.z / 2);
 
 			z = std::clamp(z, (CoordDim) 0, Chunk::Size.z - 1);
-			logger.log("z").log(z);
 
 			int dirtLeft = 3;
 

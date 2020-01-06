@@ -7,6 +7,6 @@ namespace menu {
 
 	class SettingsScene : public engine::Scene {
 	public:
-		void render(engine::WindowPtr window) override;
+		void render(engine::WindowPtr& window) override;
 	};
 }

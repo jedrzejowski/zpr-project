@@ -20,7 +20,7 @@ namespace engine {
 	public:
 		const Signal<> onWindowChanged;
 
-		virtual void render(WindowPtr window) = 0;
+		virtual void render(WindowPtr& window) = 0;
 
 		WindowWPtr getWindow() const;
 		void setWindow(WindowWPtr window);

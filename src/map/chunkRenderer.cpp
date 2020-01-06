@@ -42,6 +42,9 @@ void map::ChunkRenderer::updateBuffers() {
 									  0
 							  ));
 
+	verticesBuf.clear();
+	indicesBuf.clear();
+
 	for (const auto &iter : chunk->getAllBlocks()) {
 		if (iter.second == nullptr) continue;
 		iter.second->insertToBuffers(verticesBuf, indicesBuf);
@@ -50,7 +53,7 @@ void map::ChunkRenderer::updateBuffers() {
 	setNeedRefreshBuffers(false);
 }
 
-void map::ChunkRenderer::render(const engine::ScenePtr scene) {
+void map::ChunkRenderer::render(const engine::ScenePtr& scene) {
 	worldRenderer.lock()->getShader()->setChunkPos(chunkPos);
 	drawTriangles();
 }

@@ -6,7 +6,7 @@
 namespace game {
 	class PlayerInterface : public gui::Interface, public virtual_enable_shared_from_this<PlayerInterface> {
 	private:
-		explicit PlayerInterface(game::GameScenePtr &scene);
+		explicit PlayerInterface(game::MainGamePtr &scene);
 
 		std::vector<gui::RectangleObjPtr> items;
 		gui::RectangleObjPtr background;
@@ -16,9 +16,11 @@ namespace game {
 		void setItemState(int index, bool selected);
 
 	public:
-		static PlayerInterfacePtr create(game::GameScenePtr &scene);
+		static PlayerInterfacePtr create(MainGamePtr &scene);
 		~PlayerInterface() override;
 
-		void setItem(int index);
+		void selectItem(int index);
+
+		void useItem();
 	};
 }

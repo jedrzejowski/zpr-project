@@ -23,7 +23,7 @@ namespace engine {
 		~Abs3DObj();
 
 		void updateBuffers() override;
-		virtual void render(const ScenePtr scene) = 0;
+		virtual void render(const ScenePtr& scene) = 0;
 
 		bool isNeedRefreshBuffers() const override;
 		void setNeedRefreshBuffers(bool needRefreshBuffers) override;

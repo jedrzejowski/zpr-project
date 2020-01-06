@@ -6,6 +6,6 @@
 namespace menu {
 	class WorldsScene : public engine::Scene {
 	public:
-		void render(engine::WindowPtr window) override;
+		void render(engine::WindowPtr& window) override;
 	};
 }

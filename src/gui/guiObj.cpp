@@ -1,10 +1,11 @@
 #include "guiObj.h"
 #include "interface.h"
 
-gui::GuiObject::GuiObject(InterfacePtr interface) :
+gui::GuiObject::GuiObject(gui::InterfacePtr interface) :
 		Sub3DObj(interface),
 		interface(interface) {
 }
+
 
 gui::GuiObject::GuiObject(GuiObjectPtr parent) :
 		Sub3DObj(parent),

@@ -5,5 +5,5 @@
 #include <X11/X.h>
 #include "settings.h"
 
-void menu::SettingsScene::render(engine::WindowPtr window) {
+void menu::SettingsScene::render(engine::WindowPtr& window) {
 }

@@ -17,7 +17,7 @@ namespace menu {
 	public:
 		static WelcomeScenePtr create();
 		~WelcomeScene();
-		void render(engine::WindowPtr window) override;
+		void render(engine::WindowPtr& window) override;
 	};
 }
 

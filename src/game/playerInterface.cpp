@@ -1,7 +1,7 @@
 #include "playerInterface.h"
 #include "src/block/Blocks.h"
 
-game::PlayerInterface::PlayerInterface(game::GameScenePtr &scene) {
+game::PlayerInterface::PlayerInterface(game::MainGamePtr &scene) {
 	logger.constructor(this);
 }
 
@@ -9,9 +9,9 @@ game::PlayerInterface::~PlayerInterface() {
 	logger.destructor(this);
 }
 
-game::PlayerInterfacePtr game::PlayerInterface::create(game::GameScenePtr &scene) {
+game::PlayerInterfacePtr game::PlayerInterface::create(game::MainGamePtr &scene) {
 	struct trick : PlayerInterface {
-		trick(game::GameScenePtr &scene) : PlayerInterface(scene) {}
+		trick(game::MainGamePtr &scene) : PlayerInterface(scene) {}
 	};
 
 	game::PlayerInterfacePtr self = std::make_shared<trick>(scene);
@@ -27,10 +27,6 @@ game::PlayerInterfacePtr game::PlayerInterface::create(game::GameScenePtr &scene
 
 	// Background
 	self->background = std::make_shared<gui::RectangleObj>(self->shared_from_this());
-//	auto model = glm::mat4(1);
-//	model = glm::translate(model, glm::vec3(0, 0.88, 0.1));
-//	model = glm::scale(model, glm::vec3(1, 0.13, 1));
-//	self->background->setModel(model);
 	self->background->setPosition(glm::vec2(0, 0.88));
 	self->background->setSize(glm::vec2(1, 0.13));
 	self->background->setTexture(
@@ -59,8 +55,13 @@ void game::PlayerInterface::setItemState(int index, bool selected) {
 	rec->setSize(glm::vec2(selected ? 0.09 : 0.06));
 }
 
-void game::PlayerInterface::setItem(int index) {
+void game::PlayerInterface::selectItem(int index) {
 	setItemState(selected, false);
 	selected = index;
 	setItemState(selected, true);
 }
+
+void game::PlayerInterface::useItem() {
+
+}
+

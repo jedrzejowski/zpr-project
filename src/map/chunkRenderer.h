@@ -21,6 +21,6 @@ namespace map {
 
 		void updateBuffers() override;
 
-		void render(const engine::ScenePtr scene) override;
+		void render(const engine::ScenePtr& scene) override;
 	};
 }

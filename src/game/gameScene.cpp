@@ -21,7 +21,6 @@ game::GameScenePtr game::GameScene::create() {
 
 	self->mainGame = MainGame::create(self);
 	self->inGameMenu = InGameMenu::create(self);
-	self->playerInterface = PlayerInterface::create(self);
 
 	self->setInterfaceState(Game);
 
@@ -48,7 +47,7 @@ void game::GameScene::initEvents() {
 }
 
 
-void game::GameScene::render(engine::WindowPtr window) {
+void game::GameScene::render(engine::WindowPtr& window) {
 
 	mainGame->renderWorld();
 
@@ -57,8 +56,6 @@ void game::GameScene::render(engine::WindowPtr window) {
 
 	auto me = shared_from_this();
 
-	if (interfaceState == Game)
-		playerInterface->render(me);
 	if (interfaceState == Menu)
 		inGameMenu->render(me);
 }
@@ -88,10 +85,6 @@ void game::GameScene::pollEvents() {
 
 const game::MainGamePtr &game::GameScene::getMainGame() const {
 	return mainGame;
-}
-
-const game::PlayerInterfacePtr &game::GameScene::getPlayerInterface() const {
-	return playerInterface;
 }
 
 const game::InGameMenuPtr &game::GameScene::getInGameMenu() const {

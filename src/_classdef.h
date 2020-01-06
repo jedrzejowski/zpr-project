@@ -91,6 +91,7 @@ namespace engine {
 	class InputInterface;
 
 	typedef std::shared_ptr<InputInterface> InputInterfacePtr;
+	typedef std::weak_ptr<InputInterface> InputInterfaceWPtr;
 
 	class FpsCounter;
 }
@@ -128,6 +129,9 @@ namespace block {
 	typedef int BlockTypeId;
 
 	class Block;
+
+	typedef std::shared_ptr<Block> BlockPtr;
+	typedef std::weak_ptr<Block> BlockWPtr;
 
 	class FullPosition;
 

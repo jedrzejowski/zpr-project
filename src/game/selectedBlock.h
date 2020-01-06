@@ -9,8 +9,8 @@ namespace game {
 	class SelectedBlock : public Object {
 	private:
 		block::FullPosition pointingPos;
-		block::FullPosition newPos;
-		bool isSelected;
+		block::FullPosition newBlockPos;
+		bool selected;
 
 		MainGameWPtr mainGame;
 
@@ -19,8 +19,8 @@ namespace game {
 		~SelectedBlock() override;
 
 		const block::FullPosition &getPointingPos() const;
-		const block::FullPosition &getNewPos() const;
-		bool isSelected1() const;
+		const block::FullPosition &getNewBlockPos() const;
+		bool isSelected() const;
 
 		void update();
 	};

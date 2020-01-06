@@ -24,6 +24,8 @@ map::ChunkGenerator::ChunkGenerator(World *world) {
 map::ChunkPtr map::ChunkGenerator::newVirginChunk(const Coord2D &position) {
 	auto chunk = std::make_shared<map::Chunk>(world, position);
 
+	block::BlockPtr block;
+
 	for (CoordDim x = 0; x < Chunk::Size.x; x++) {
 		for (CoordDim y = 0; y < Chunk::Size.y; y++) {
 
@@ -33,15 +35,18 @@ map::ChunkPtr map::ChunkGenerator::newVirginChunk(const Coord2D &position) {
 			) + (Chunk::Size.z / 2);
 
 			z = std::clamp(z, (CoordDim) 0, Chunk::Size.z - 1);
+			logger.log("z").log(z);
 
 			int dirtLeft = 3;
 
 			for (; z >= 0; z--) {
 				if (dirtLeft > 0) {
-					chunk->setBlock(Coord3D(x, y, z), new block::Dirt());
+					block = std::make_shared<block::Dirt>();
 					dirtLeft--;
+					chunk->setBlock(Coord3D(x, y, z), block);
 				} else {
-					chunk->setBlock(Coord3D(x, y, z), new block::Stone());
+					block = std::make_shared<block::Stone>();
+					chunk->setBlock(Coord3D(x, y, z), block);
 				}
 			}
 		}

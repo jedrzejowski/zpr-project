@@ -14,20 +14,30 @@ map::Chunk::~Chunk() {
 	logger.destructor(this);
 }
 
-block::Block *map::Chunk::getBlock(const Coord3D &position) {
-	if (blocks.count(position) == 1)
-		return blocks[position];
-	return nullptr;
+block::BlockPtr map::Chunk::getBlock(const Coord3D &position) {
+	return blocks[position];
 }
 
-bool map::Chunk::setBlock(const Coord3D &position, block::Block *block) {
+bool map::Chunk::setBlock(const Coord3D &position, block::BlockPtr &block) {
+	if (block.get() == nullptr)
+		throw zprException("map::Chunk::setBlock() setting empty block");
+
 	auto self = this->shared_from_this();
 	block->setPosition(self, position);
 	blocks[position] = block;
 	return false;
 }
 
-std::map<Coord3D, block::Block *> &map::Chunk::getAllBlocks() {
+bool map::Chunk::setAir(const Coord3D &position) {
+	blocks.erase(position);
+	return false;
+}
+
+bool map::Chunk::isAir(const Coord3D &position) {
+	return blocks.count(position) == 0;
+}
+
+const std::map<Coord3D, block::BlockPtr> &map::Chunk::getAllBlocks() const {
 	return blocks;
 }
 

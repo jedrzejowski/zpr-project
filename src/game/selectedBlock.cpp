@@ -34,9 +34,9 @@ void game::SelectedBlock::update() {
 				auto blockPos = headPosition.getNeighbor(dx, dy, dz);
 				if (!blockPos.isValid()) continue;
 
-				auto chunk = map->getChunk(blockPos.getChunk());
-				if (chunk.expired())continue;
-				if (chunk.lock()->getBlock(blockPos.getBlock()) == nullptr) continue;
+				if (auto chunk = map->getChunk(blockPos.getChunk()).lock()) {
+					if (chunk->isAir(blockPos.getBlock())) continue;
+				} else continue;
 
 				auto vec = blockPos.toVec();
 
@@ -49,7 +49,7 @@ void game::SelectedBlock::update() {
 					found = true;
 					distance = newDistance;
 					pointingPos = blockPos;
-					newPos = blockPos.getNeighbor(0, 0, +1);
+					newBlockPos = blockPos.getNeighbor(0, 0, +1);
 				}
 
 
@@ -62,7 +62,7 @@ void game::SelectedBlock::update() {
 					found = true;
 					distance = newDistance;
 					pointingPos = blockPos;
-					newPos = blockPos.getNeighbor(0, 0, -1);
+					newBlockPos = blockPos.getNeighbor(0, 0, -1);
 				}
 
 
@@ -75,7 +75,7 @@ void game::SelectedBlock::update() {
 					found = true;
 					distance = newDistance;
 					pointingPos = blockPos;
-					newPos = blockPos.getNeighbor(1, 0, 0);
+					newBlockPos = blockPos.getNeighbor(1, 0, 0);
 				}
 
 				wall = block::getWall(blockPos, block::Direction::X_MINUS);
@@ -87,7 +87,7 @@ void game::SelectedBlock::update() {
 					found = true;
 					distance = newDistance;
 					pointingPos = blockPos;
-					newPos = blockPos.getNeighbor(-1, 0, 0);
+					newBlockPos = blockPos.getNeighbor(-1, 0, 0);
 				}
 
 				wall = block::getWall(blockPos, block::Direction::Y_PLUS);
@@ -99,7 +99,7 @@ void game::SelectedBlock::update() {
 					found = true;
 					distance = newDistance;
 					pointingPos = blockPos;
-					newPos = blockPos.getNeighbor(0, 1, 0);
+					newBlockPos = blockPos.getNeighbor(0, 1, 0);
 				}
 
 				wall = block::getWall(blockPos, block::Direction::Y_MINUS);
@@ -111,14 +111,14 @@ void game::SelectedBlock::update() {
 					found = true;
 					distance = newDistance;
 					pointingPos = blockPos;
-					newPos = blockPos.getNeighbor(0, -1, 0);
+					newBlockPos = blockPos.getNeighbor(0, -1, 0);
 				}
 			}
 
-	isSelected = found;
+	selected = found;
 
-	if (isSelected) {
-		logger.log("player is looking at").log(pointingPos);
+	if (selected) {
+		logger.log("player is looking at").log(pointingPos).log("to place").log(newBlockPos);
 	}
 }
 
@@ -126,10 +126,10 @@ const block::FullPosition &game::SelectedBlock::getPointingPos() const {
 	return pointingPos;
 }
 
-const block::FullPosition &game::SelectedBlock::getNewPos() const {
-	return newPos;
+const block::FullPosition &game::SelectedBlock::getNewBlockPos() const {
+	return newBlockPos;
 }
 
-bool game::SelectedBlock::isSelected1() const {
-	return isSelected;
+bool game::SelectedBlock::isSelected() const {
+	return selected;
 }

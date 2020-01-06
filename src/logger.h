@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include <mutex>
 
 //https://stackoverflow.com/questions/9158150/colored-output-in-c
 #define TTY_COLOR_RESET   "\033[0m"
@@ -31,25 +32,10 @@
 
 class Logger {
 public:
-	Logger(const char *file, int line) {
-		std::cout << "[ " << currentDateTime() << " @ " << file << ":" << line << " ]";
-	}
+	Logger(const char *file, int line);
+	~Logger();
 
-	~Logger() {
-		std::cout << TTY_COLOR_RESET << std::endl << std::flush;
-	}
-
-	std::string currentDateTime() {
-		//https://stackoverflow.com/questions/997946/how-to-get-current-time-and-date-in-c
-		time_t now = time(0);
-		struct tm tstruct;
-		char buf[80];
-		tstruct = *localtime(&now);
-
-		strftime(buf, sizeof(buf), "%Y-%m-%d %X", &tstruct);
-
-		return buf;
-	}
+	std::string currentDateTime();
 
 	template<typename T>
 	Logger &msg(const T &obj, const std::string &color = TTY_COLOR_RESET) {
@@ -83,6 +69,7 @@ public:
 		std::cout << std::endl;
 		return *this;
 	}
+
 	template<typename T>
 	Logger &constructor(const T *obj) {
 		return msg(std::string("") + typeid(obj).name() + "()").log(obj);

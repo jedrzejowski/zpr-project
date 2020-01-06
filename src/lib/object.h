@@ -73,9 +73,6 @@ public:
 
 
 class Object {
-private:
-	Object *parent = nullptr;
-
 public:
 	explicit Object();
 	virtual ~Object();

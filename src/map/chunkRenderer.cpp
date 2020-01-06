@@ -15,7 +15,6 @@ map::ChunkRenderer::~ChunkRenderer() {
 }
 
 void map::ChunkRenderer::updateBuffers() {
-	this->visibleBlocks = chunk->getAllBlocks();
 
 	auto coord = chunk->getPosition();
 	chunkPos = glm::translate(glm::mat4(1),
@@ -25,9 +24,10 @@ void map::ChunkRenderer::updateBuffers() {
 									  0
 							  ));
 
-	for (auto iter : visibleBlocks) {
-		auto block = iter.second;
-		block->insertToBuffers(verticesBuf, indicesBuf);
+	for (const auto& iter : chunk->getAllBlocks()) {
+//		if()
+		logger.log("stąd wyszedł SIGSEGV").log(iter.first).log(iter.second);
+		iter.second->insertToBuffers(verticesBuf, indicesBuf);
 	}
 
 	setNeedRefreshBuffers(false);

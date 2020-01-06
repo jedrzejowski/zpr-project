@@ -1,49 +1,56 @@
 #include "block.h"
 #include "src/map/Map.h"
 
+const block::BlockWPtr block::Air = block::BlockWPtr();
+
 block::Block::Block() {
+//	logger.constructor(this);
 }
+block::Block::~Block() {
+//	logger.destructor(this);
+}
+
 
 void block::Block::setPosition(map::ChunkPtr &chunkPtr, const Coord3D &pos) {
 	this->position = pos;
 	this->chunk = chunkPtr;
 }
 
-block::Block *block::Block::getNeighbor(CoordDim dx, CoordDim dy, CoordDim dz) const {
+block::BlockWPtr block::Block::getNeighbor(CoordDim dx, CoordDim dy, CoordDim dz) const {
 	auto targetChunk = this->chunk;
 
 	CoordDim x = position.x + dx,
 			y = position.y + dy,
 			z = position.z + dz;
 
-	if (z != std::clamp(z, (CoordDim) 0, map::Chunk::Size.y - 1)) return nullptr;
+	if (z != std::clamp(z, (CoordDim) 0, map::Chunk::Size.y - 1)) return block::Air;
 
 	while (x < 0) {
 		targetChunk = targetChunk.lock()->getNeighbor(-1, 0);
 		x += map::Chunk::Size.x;
 
-		if (targetChunk.expired()) return nullptr;
+		if (targetChunk.expired()) return block::Air;
 	}
 
 	while (x >= map::Chunk::Size.x) {
 		targetChunk = targetChunk.lock()->getNeighbor(+1, 0);
 		x -= map::Chunk::Size.x;
 
-		if (targetChunk.expired()) return nullptr;
+		if (targetChunk.expired()) return block::Air;
 	}
 
 	while (y < 0) {
 		targetChunk = targetChunk.lock()->getNeighbor(0, -1);
 		y += map::Chunk::Size.y;
 
-		if (targetChunk.expired()) return nullptr;
+		if (targetChunk.expired()) return block::Air;
 	}
 
 	while (y >= map::Chunk::Size.y) {
 		targetChunk = targetChunk.lock()->getNeighbor(0, +1);
 		y -= map::Chunk::Size.y;
 
-		if (targetChunk.expired()) return nullptr;
+		if (targetChunk.expired()) return block::Air;
 	}
 
 	return targetChunk.lock()->getBlock(Coord3D(x, y, z));

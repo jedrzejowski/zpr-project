@@ -10,7 +10,7 @@ namespace game {
 		GameSceneWPtr gameScene;
 		engine::InputInterfacePtr inputInterface;
 		map::WorldPtr worldMap;
-		map::WorldRendererPtr mapRenderer = nullptr;
+		map::WorldRendererPtr mapRenderer;
 		PlayerPtr player;
 
 		SelectedBlockPtr selectedBlock;

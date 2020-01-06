@@ -80,8 +80,22 @@ void game::MainGame::initInputInterface() {
 		player->rotateDown(delta.y);
 	});
 
-	mouse->onLeave([&]() {
+	mouse->onLeave([&] {
 		onMenuRequest();
+	});
+
+	mouse->Left.onPressed([&] {
+		if (!selectedBlock->isSelected()) return;
+
+		auto fullPos = selectedBlock->getPointingPos();
+
+		if (auto chunk = worldMap->getChunk(fullPos.getChunk()).lock()) {
+
+			chunk->setAir(fullPos.getBlock());
+		}
+	});
+
+	mouse->Right.onPressed([&] {
 	});
 
 	keyboard->Num1.onPressed([this] {

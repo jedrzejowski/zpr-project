@@ -5,9 +5,7 @@
 
 namespace block {
 
-
-
-	class Block {
+	class Block : public virtual_enable_shared_from_this<Block> {
 	protected:
 		map::ChunkWPtr chunk;
 		Coord3D position;
@@ -18,8 +16,9 @@ namespace block {
 		static std::tuple<glm::vec2, glm::vec2> getBlockText(int x, int y);
 
 		Block();
+		~Block() override;
 
-		void setPosition(map::ChunkPtr& chunkPtr, const Coord3D &pos);
+		void setPosition(map::ChunkPtr &chunkPtr, const Coord3D &pos);
 
 		virtual void insertToBuffers(std::vector<engine::Point3DeX> &vertices,
 									 std::vector<engine::SimpleTriangle> &indices) = 0;
@@ -30,7 +29,9 @@ namespace block {
 
 		virtual int typeId() = 0;
 
-		Block *getNeighbor(CoordDim dx, CoordDim dy, CoordDim dz) const;
+		BlockWPtr getNeighbor(CoordDim dx, CoordDim dy, CoordDim dz) const;
 	};
+
+	extern const BlockWPtr Air;
 }
 

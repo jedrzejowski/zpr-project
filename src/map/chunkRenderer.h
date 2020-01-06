@@ -12,9 +12,6 @@ namespace map {
 		ChunkPtr chunk;
 		glm::mat4 chunkPos;
 		WorldRenderer *worldRenderer = nullptr;
-
-		std::map<Coord3D, block::Block *> visibleBlocks;
-
 	public:
 		explicit ChunkRenderer(WorldRenderer *renderer, ChunkPtr chunk);
 		~ChunkRenderer() override;

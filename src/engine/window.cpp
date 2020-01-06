@@ -115,11 +115,10 @@ void Window::mainLoop() {
 	if (currentScene != nullptr) {
 		auto currentInputInterface = currentScene->getInputInterface();
 
-		if (currentInputInterface != nullptr) {
-			if (lastInputInterface == currentInputInterface)
-				currentInputInterface->updateState(glfwWin);
-			else currentInputInterface->initState(glfwWin);
-		}
+		if (lastInputInterface.lock().get() == currentInputInterface.get())
+			currentInputInterface->updateState(glfwWin);
+		else
+			currentInputInterface->initState(glfwWin);
 
 		lastInputInterface = currentInputInterface;
 	}

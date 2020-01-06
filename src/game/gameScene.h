@@ -17,9 +17,9 @@ namespace game {
 	private:
 		GameSceneState interfaceState;
 
-		MainGamePtr mainGame = nullptr;
-		PlayerInterfacePtr playerInterface = nullptr;
-		InGameMenuPtr inGameMenu = nullptr;
+		MainGamePtr mainGame;
+		PlayerInterfacePtr playerInterface;
+		InGameMenuPtr inGameMenu;
 
 		GameScene();
 		void initEvents();

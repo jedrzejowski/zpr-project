@@ -1,5 +1,6 @@
 #pragma once
 
+#include <src/engine/camera.h>
 #include "opengl.h"
 
 namespace glm {
@@ -46,25 +47,24 @@ namespace glm {
 				secondTriangle(firstPoint, fourthPoint, thirdPoint) {}
 
 		template<typename T>
-		bool intersectRay(
-				const glm::vec3 &orig,
-				const glm::vec3 &dir,
+		bool intersectCamera(
+				engine::Camera &camera,
 				glm::vec2 &baryPosition,
 				T &distance) {
 			return glm::intersectRayTriangle(
-					orig,
-					dir,
-					firstTriangle.first,
-					firstTriangle.second,
-					firstTriangle.third,
+					camera.position,
+					camera.front,
+					firstPoint,
+					thirdPoint,
+					secondPoint,
 					baryPosition,
 					distance
 			) || glm::intersectRayTriangle(
-					orig,
-					dir,
-					secondTriangle.first,
-					secondTriangle.second,
-					secondTriangle.third,
+					camera.position,
+					camera.front,
+					firstPoint,
+					fourthPoint,
+					thirdPoint,
 					baryPosition,
 					distance
 			);

@@ -15,6 +15,10 @@ block::FullPosition block::FullPosition::getNeighbor(CoordDim dx, CoordDim dy, C
 
 	FullPosition position = *this;
 
+	position.block.x += dx;
+	position.block.y += dy;
+	position.block.z += dz;
+
 	while (position.block.x < 0) {
 		position.chunk.x -= 1;
 		position.block.x += map::Chunk::Size.x;
@@ -34,8 +38,6 @@ block::FullPosition block::FullPosition::getNeighbor(CoordDim dx, CoordDim dy, C
 		position.chunk.y += 1;
 		position.block.y -= map::Chunk::Size.y;
 	}
-
-	position.block.z += dz;
 
 	return position;
 }

@@ -71,9 +71,9 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 		auto wall = getWall(position, Direction::X_PLUS);
 
 		vertices.emplace_back(engine::Point3D(wall.firstPoint), texSide.getTexCoord_xy());
-		vertices.emplace_back(engine::Point3D(wall.secondPoint), texSide.getTexCoord_Xy());
+		vertices.emplace_back(engine::Point3D(wall.secondPoint), texSide.getTexCoord_xY());
 		vertices.emplace_back(engine::Point3D(wall.thirdPoint), texSide.getTexCoord_XY());
-		vertices.emplace_back(engine::Point3D(wall.fourthPoint), texSide.getTexCoord_xY());
+		vertices.emplace_back(engine::Point3D(wall.fourthPoint), texSide.getTexCoord_Xy());
 
 		indices.push_back(engine::SimpleTriangle(1, 3, 2) - 1 + vOffest);
 		indices.push_back(engine::SimpleTriangle(1, 4, 3) - 1 + vOffest);
@@ -86,9 +86,9 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 		auto wall = getWall(position, Direction::Y_MINUS);
 
 		vertices.emplace_back(engine::Point3D(wall.firstPoint), texSide.getTexCoord_xy());
-		vertices.emplace_back(engine::Point3D(wall.secondPoint), texSide.getTexCoord_Xy());
+		vertices.emplace_back(engine::Point3D(wall.secondPoint), texSide.getTexCoord_xY());
 		vertices.emplace_back(engine::Point3D(wall.thirdPoint), texSide.getTexCoord_XY());
-		vertices.emplace_back(engine::Point3D(wall.fourthPoint), texSide.getTexCoord_xY());
+		vertices.emplace_back(engine::Point3D(wall.fourthPoint), texSide.getTexCoord_Xy());
 
 		indices.push_back(engine::SimpleTriangle(1, 3, 2) - 1 + vOffest);
 		indices.push_back(engine::SimpleTriangle(1, 4, 3) - 1 + vOffest);

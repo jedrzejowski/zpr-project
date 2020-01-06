@@ -17,6 +17,7 @@ game::SelectedBlock::~SelectedBlock() {
 void game::SelectedBlock::update() {
 	auto &player = mainGame.lock()->getPlayer();
 	auto &map = mainGame.lock()->getWorldMap();
+	auto camera = player->getCamera();
 	auto headPosition = player->getFullPosition();
 
 	static const CoordDim handRange = 4;
@@ -24,101 +25,89 @@ void game::SelectedBlock::update() {
 	float distance = handRange * 10, newDistance = handRange * 11;
 	bool found = false;
 
-	glm::vec2 baryPosition;//nie mam pojęcia do czego to jest ale glm tego chce'
+	glm::vec2 baryPosition;//nie mam pojęcia do czego to jest ale glm tego chce
 	CoordDim dx, dy, dz;
-
 
 	for (dx = -handRange; dx <= handRange; dx++)
 		for (dy = -handRange; dy <= handRange; dy++)
 			for (dz = -handRange; dz <= handRange; dz++) {
+
 				auto blockPos = headPosition.getNeighbor(dx, dy, dz);
 				if (!blockPos.isValid()) continue;
-
 				if (auto chunk = map->getChunk(blockPos.getChunk()).lock()) {
 					if (chunk->isAir(blockPos.getBlock())) continue;
 				} else continue;
 
-				auto vec = blockPos.toVec();
 
 				auto wall = block::getWall(blockPos, block::Direction::Z_PLUS);
-				if (wall.intersectRay(player->getCamera().position,
-									  player->getCamera().front,
-									  baryPosition,
-									  newDistance) &&
-					newDistance < distance) {
-					found = true;
-					distance = newDistance;
-					pointingPos = blockPos;
-					newBlockPos = blockPos.getNeighbor(0, 0, +1);
-				}
+				if (wall.intersectCamera(camera, baryPosition, newDistance))
+					if (newDistance < distance) {
 
+						found = true;
+						distance = newDistance;
+						pointingPos = blockPos;
+						newBlockPos = blockPos.getNeighbor(0, 0, +1);
+					}
 
 				wall = block::getWall(blockPos, block::Direction::Z_MINUS);
-				if (wall.intersectRay(player->getCamera().position,
-									  player->getCamera().front,
-									  baryPosition,
-									  newDistance) &&
-					newDistance < distance) {
-					found = true;
-					distance = newDistance;
-					pointingPos = blockPos;
-					newBlockPos = blockPos.getNeighbor(0, 0, -1);
-				}
+				if (wall.intersectCamera(camera, baryPosition, newDistance))
+					if (newDistance < distance) {
 
-
-				wall = block::getWall(blockPos, block::Direction::X_PLUS);
-				if (wall.intersectRay(player->getCamera().position,
-									  player->getCamera().front,
-									  baryPosition,
-									  newDistance) &&
-					newDistance < distance) {
-					found = true;
-					distance = newDistance;
-					pointingPos = blockPos;
-					newBlockPos = blockPos.getNeighbor(1, 0, 0);
-				}
-
-				wall = block::getWall(blockPos, block::Direction::X_MINUS);
-				if (wall.intersectRay(player->getCamera().position,
-									  player->getCamera().front,
-									  baryPosition,
-									  newDistance) &&
-					newDistance < distance) {
-					found = true;
-					distance = newDistance;
-					pointingPos = blockPos;
-					newBlockPos = blockPos.getNeighbor(-1, 0, 0);
-				}
+						found = true;
+						distance = newDistance;
+						pointingPos = blockPos;
+						newBlockPos = blockPos.getNeighbor(0, 0, -1);
+					}
 
 				wall = block::getWall(blockPos, block::Direction::Y_PLUS);
-				if (wall.intersectRay(player->getCamera().position,
-									  player->getCamera().front,
-									  baryPosition,
-									  newDistance) &&
-					newDistance < distance) {
-					found = true;
-					distance = newDistance;
-					pointingPos = blockPos;
-					newBlockPos = blockPos.getNeighbor(0, 1, 0);
-				}
+				if (wall.intersectCamera(camera, baryPosition, newDistance))
+					if (newDistance < distance) {
+
+						found = true;
+						distance = newDistance;
+						pointingPos = blockPos;
+						newBlockPos = blockPos.getNeighbor(0, +1, 0);
+					}
 
 				wall = block::getWall(blockPos, block::Direction::Y_MINUS);
-				if (wall.intersectRay(player->getCamera().position,
-									  player->getCamera().front,
-									  baryPosition,
-									  newDistance) &&
-					newDistance < distance) {
-					found = true;
-					distance = newDistance;
-					pointingPos = blockPos;
-					newBlockPos = blockPos.getNeighbor(0, -1, 0);
-				}
+				if (wall.intersectCamera(camera, baryPosition, newDistance))
+					if (newDistance < distance) {
+
+						found = true;
+						distance = newDistance;
+						pointingPos = blockPos;
+						newBlockPos = blockPos.getNeighbor(0, -1, 0);
+					}
+
+				wall = block::getWall(blockPos, block::Direction::X_PLUS);
+				if (wall.intersectCamera(camera, baryPosition, newDistance))
+					if (newDistance < distance) {
+
+						found = true;
+						distance = newDistance;
+						pointingPos = blockPos;
+						newBlockPos = blockPos.getNeighbor(+1, 0, 0);
+					}
+
+				wall = block::getWall(blockPos, block::Direction::X_MINUS);
+				if (wall.intersectCamera(camera, baryPosition, newDistance))
+					if (newDistance < distance) {
+
+						found = true;
+						distance = newDistance;
+						pointingPos = blockPos;
+						newBlockPos = blockPos.getNeighbor(-1, 0, 0);
+					}
+
 			}
 
 	selected = found;
 
 	if (selected) {
-		logger.log("player is looking at").log(pointingPos).log("to place").log(newBlockPos);
+		logger.log("player is looking at").
+						log(pointingPos)
+				.log("to place").
+						log(newBlockPos);
 	}
 }
 

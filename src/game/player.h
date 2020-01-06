@@ -11,7 +11,7 @@ namespace game {
 
 		float angleV = 0, angleH = 0;
 		float mousePrecision = 20;
-		float keyboardPrecision = 20;
+		float keyboardPrecision = 2;
 		CoordDim chunkRenderDistance = 4, chunkUnloadDistance = 6;
 
 		glm::vec3 topVec() const;

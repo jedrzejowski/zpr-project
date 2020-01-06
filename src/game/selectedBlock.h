@@ -1,5 +1,6 @@
 #pragma once
 
+#include <src/block/wall.h>
 #include "_classdef.h"
 #include "src/engine/Engine.h"
 #include "src/block/fullPosition.h"
@@ -15,7 +16,7 @@ namespace game {
 		MainGameWPtr mainGame;
 
 	public:
-		explicit SelectedBlock(MainGamePtr& mainGame);
+		explicit SelectedBlock(MainGamePtr &mainGame);
 		~SelectedBlock() override;
 
 		const block::FullPosition &getPointingPos() const;

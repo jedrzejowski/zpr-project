@@ -11,11 +11,9 @@
 AppSettings::AppSettings() {
 	logger.constructor(this);
 
-	{
-		char temp[256];
-		get_user_config_folder(temp, sizeof(temp), "ZprCraft");
-		cfgDir = temp[0] == 0 ? "." : temp;
-	}
+	char temp[256];
+	get_user_config_folder(temp, sizeof(temp), "ZprCraft");
+	cfgDir = temp[0] == 0 ? "." : temp;
 }
 
 AppSettings &AppSettings::get() {

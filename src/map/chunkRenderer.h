@@ -9,11 +9,14 @@ namespace map {
 
 	class ChunkRenderer : public Object, public engine::Abs3DObj {
 	private:
-		ChunkPtr chunk;
-		glm::mat4 chunkPos;
-		WorldRenderer *worldRenderer = nullptr;
+		const ChunkPtr chunk;
+		glm::mat4 chunkPos{};
+		WorldRendererWPtr worldRenderer;
+
+		explicit ChunkRenderer(WorldRendererPtr& renderer, const ChunkPtr& chunkPtr);
+		void initEvents();
 	public:
-		explicit ChunkRenderer(WorldRenderer *renderer, ChunkPtr chunk);
+		static ChunkRendererPtr create(WorldRendererPtr& renderer, const ChunkPtr& chunkPtr);
 		~ChunkRenderer() override;
 
 		void updateBuffers() override;

@@ -15,21 +15,30 @@ map::Chunk::~Chunk() {
 }
 
 block::BlockPtr map::Chunk::getBlock(const Coord3D &position) {
+
+	// tu jest ciekawa opcja, bo gdy weżmiemy sobie nie istaniejący blok to mapa utworzy go z konstruktorem domyślnym
+	// https://stackoverflow.com/questions/6952486/recommended-way-to-insert-elements-into-map
+
+	if (isAir(position)) throw zprException("getting air block");
+
 	return blocks[position];
 }
 
 bool map::Chunk::setBlock(const Coord3D &position, block::BlockPtr &block) {
+//	logger.log("map::Chunk::setBlock").log(block);
 	if (block.get() == nullptr)
 		throw zprException("map::Chunk::setBlock() setting empty block");
 
 	auto self = this->shared_from_this();
 	block->setPosition(self, position);
 	blocks[position] = block;
+	onBlockChange(position);
 	return false;
 }
 
 bool map::Chunk::setAir(const Coord3D &position) {
 	blocks.erase(position);
+	onBlockChange(position);
 	return false;
 }
 

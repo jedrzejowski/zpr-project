@@ -3,12 +3,30 @@
 #include "chunk.h"
 #include "worldShader.h"
 
-map::ChunkRenderer::ChunkRenderer(map::WorldRenderer *renderer, map::ChunkPtr chunk) : Abs3DObj() {
+map::ChunkRenderer::ChunkRenderer(map::WorldRendererPtr &renderer, const map::ChunkPtr &chunkPtr) :
+		Abs3DObj(),
+		worldRenderer(renderer),
+		chunk(chunkPtr) {
 	logger.constructor(this);
-	this->worldRenderer = renderer;
-	this->chunk = chunk;
 }
 
+map::ChunkRendererPtr map::ChunkRenderer::create(map::WorldRendererPtr &renderer, const map::ChunkPtr &chunkPtr) {
+	struct Self : ChunkRenderer {
+		Self(map::WorldRendererPtr &renderer, const map::ChunkPtr &chunkPtr) : ChunkRenderer(renderer, chunkPtr) {}
+	};
+
+	auto self = std::make_shared<Self>(renderer, chunkPtr);
+
+	self->initEvents();
+
+	return self;
+}
+
+void map::ChunkRenderer::initEvents() {
+	chunk->onBlockChange([&](const Coord3D &pos) {
+		setNeedRefreshBuffers(true);
+	});
+}
 
 map::ChunkRenderer::~ChunkRenderer() {
 	logger.destructor(this);
@@ -24,9 +42,8 @@ void map::ChunkRenderer::updateBuffers() {
 									  0
 							  ));
 
-	for (const auto& iter : chunk->getAllBlocks()) {
-//		if()
-		logger.log("stąd wyszedł SIGSEGV").log(iter.first).log(iter.second);
+	for (const auto &iter : chunk->getAllBlocks()) {
+		if (iter.second == nullptr) continue;
 		iter.second->insertToBuffers(verticesBuf, indicesBuf);
 	}
 
@@ -34,7 +51,6 @@ void map::ChunkRenderer::updateBuffers() {
 }
 
 void map::ChunkRenderer::render(const engine::ScenePtr scene) {
-	worldRenderer->getShader()->setChunkPos(chunkPos);
+	worldRenderer.lock()->getShader()->setChunkPos(chunkPos);
 	drawTriangles();
 }
-

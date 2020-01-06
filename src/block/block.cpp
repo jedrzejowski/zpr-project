@@ -17,43 +17,52 @@ void block::Block::setPosition(map::ChunkPtr &chunkPtr, const Coord3D &pos) {
 }
 
 block::BlockWPtr block::Block::getNeighbor(CoordDim dx, CoordDim dy, CoordDim dz) const {
-	auto targetChunk = this->chunk;
+	if (auto targetChunk = this->chunk.lock()) {
 
-	CoordDim x = position.x + dx,
-			y = position.y + dy,
-			z = position.z + dz;
+		CoordDim x = position.x + dx,
+				y = position.y + dy,
+				z = position.z + dz;
 
-	if (z != std::clamp(z, (CoordDim) 0, map::Chunk::Size.y - 1)) return block::Air;
+		if (z != std::clamp(z, (CoordDim) 0, map::Chunk::Size.y - 1)) return block::Air;
 
-	while (x < 0) {
-		targetChunk = targetChunk.lock()->getNeighbor(-1, 0);
-		x += map::Chunk::Size.x;
+		while (x < 0) {
+			targetChunk = targetChunk->getNeighbor(-1, 0).lock();
 
-		if (targetChunk.expired()) return block::Air;
+			if (targetChunk) {
+				x += map::Chunk::Size.x;
+			} else return block::Air;
+		}
+
+		while (x >= map::Chunk::Size.x) {
+			targetChunk = targetChunk->getNeighbor(+1, 0).lock();
+
+			if (targetChunk) {
+				x -= map::Chunk::Size.x;
+			} else return block::Air;
+		}
+
+		while (y < 0) {
+			targetChunk = targetChunk->getNeighbor(0, -1).lock();
+
+			if (targetChunk) {
+				y += map::Chunk::Size.y;
+			} else return block::Air;
+		}
+
+		while (y >= map::Chunk::Size.y) {
+			targetChunk = targetChunk->getNeighbor(0, +1).lock();
+
+			if (targetChunk) {
+				y -= map::Chunk::Size.y;
+			} else return block::Air;
+		}
+
+		auto pos = Coord3D(x, y, z);
+
+		return targetChunk->isAir(pos) ? block::Air : targetChunk->getBlock(pos);
+	} else {
+		return block::Air;
 	}
-
-	while (x >= map::Chunk::Size.x) {
-		targetChunk = targetChunk.lock()->getNeighbor(+1, 0);
-		x -= map::Chunk::Size.x;
-
-		if (targetChunk.expired()) return block::Air;
-	}
-
-	while (y < 0) {
-		targetChunk = targetChunk.lock()->getNeighbor(0, -1);
-		y += map::Chunk::Size.y;
-
-		if (targetChunk.expired()) return block::Air;
-	}
-
-	while (y >= map::Chunk::Size.y) {
-		targetChunk = targetChunk.lock()->getNeighbor(0, +1);
-		y -= map::Chunk::Size.y;
-
-		if (targetChunk.expired()) return block::Air;
-	}
-
-	return targetChunk.lock()->getBlock(Coord3D(x, y, z));
 }
 
 bool block::Block::isSolid() {

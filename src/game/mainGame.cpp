@@ -90,7 +90,6 @@ void game::MainGame::initInputInterface() {
 		auto fullPos = selectedBlock->getPointingPos();
 
 		if (auto chunk = worldMap->getChunk(fullPos.getChunk()).lock()) {
-
 			chunk->setAir(fullPos.getBlock());
 		}
 	});

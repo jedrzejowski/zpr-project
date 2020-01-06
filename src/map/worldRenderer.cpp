@@ -31,9 +31,10 @@ map::WorldRendererPtr map::WorldRenderer::create(const map::WorldPtr &worldMap) 
 
 void map::WorldRenderer::initEvents() {
 	auto tt = this->shared_from_this();
-	worldMap->onChunkInserted(this->shared_from_this(), [&](const map::ChunkPtr &chunk) {
+	worldMap->onChunkInserted(this->shared_from_this(), [&](const map::ChunkPtr& chunk) {
 
-		auto cr = std::make_shared<ChunkRenderer>(this, chunk);
+		auto self = this->shared_from_this();
+		auto cr = ChunkRenderer::create(self, chunk);
 		chunkRenderers[chunk->getPosition()] = cr;
 	});
 

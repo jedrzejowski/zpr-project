@@ -33,7 +33,7 @@ namespace map {
 
 		json toJSON() const;
 
-		const Signal<const Coord3D &, block::BlockWPtr &, block::BlockWPtr &> onBlockChange;
+		const Signal<const Coord3D &> onBlockChange;
 
 		void save();
 	};

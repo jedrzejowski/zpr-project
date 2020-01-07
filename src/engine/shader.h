@@ -12,9 +12,7 @@ namespace engine {
 		Shader(const std::string &vertexPath, const std::string &fragmentPath);
 		const ShaderProgram& getProgram() const;
 
-		virtual glm::vec2 getPointInWindow(const glm::vec3& vec) = 0;
-
-		void bind();
-		void unbind();
+		virtual void bind();
+		virtual void unbind();
 	};
 }

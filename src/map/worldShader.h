@@ -8,7 +8,6 @@ namespace map {
 
 	public:
 		explicit WorldShader();
-		glm::vec2 getPointInWindow(const glm::vec3 &vec) override;
 
 		void setCamera(const engine::Camera& camera);
 

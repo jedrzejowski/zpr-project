@@ -26,11 +26,10 @@ void game::SelectedBlock::update() {
 	bool found = false;
 
 	glm::vec2 baryPosition;//nie mam pojęcia do czego to jest ale glm tego chce
-	CoordDim dx, dy, dz;
 
-	for (dx = -handRange; dx <= handRange; dx++)
-		for (dy = -handRange; dy <= handRange; dy++)
-			for (dz = -handRange; dz <= handRange; dz++) {
+	for (CoordDim dx = -handRange; dx <= handRange; dx++)
+		for (CoordDim dy = -handRange; dy <= handRange; dy++)
+			for (CoordDim dz = -handRange; dz <= handRange; dz++) {
 
 				auto blockPos = headPosition.getNeighbor(dx, dy, dz);
 				if (!blockPos.isValid()) continue;
@@ -38,6 +37,9 @@ void game::SelectedBlock::update() {
 					if (chunk->isAir(blockPos.getBlock())) continue;
 				} else continue;
 
+				// tu się inaczej nie da, musimy za każdym razem mieć dostęp do wielu zmiennych,
+				// jak i operować na enumach i wartościach wektorów, można by zrobić wektor pomocniczy,
+				// a potem iterować po nim, ale wiązało by się to z wprowadzenie wilu nowych struktur
 
 				auto wall = block::getWall(blockPos, block::Direction::Z_PLUS);
 				if (wall.intersectCamera(camera, baryPosition, newDistance))
@@ -102,13 +104,6 @@ void game::SelectedBlock::update() {
 			}
 
 	selected = found;
-
-	if (selected) {
-		logger.log("player is looking at").
-						log(pointingPos)
-				.log("to place").
-						log(newBlockPos);
-	}
 }
 
 const block::FullPosition &game::SelectedBlock::getPointingPos() const {

@@ -1,5 +1,5 @@
-#include <src/block/Blocks.h>
 #include "dirt.h"
+#include "../type_ids.h"
 
 block::Dirt::Dirt() :
 		SolidBlock(

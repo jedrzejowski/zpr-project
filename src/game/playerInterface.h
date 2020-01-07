@@ -8,18 +8,20 @@ namespace game {
 	private:
 		explicit PlayerInterface(game::MainGamePtr &scene);
 
-		std::vector<gui::RectangleObjPtr> items;
+		int itemLimit;
+
+		std::vector<PlayerItemPtr> items;
 		gui::RectangleObjPtr background;
 		int selected = 0;
 
-		void addItem(int texX, int texY);
-		void setItemState(int index, bool selected);
+		void updateItemModel(int index);
 
 	public:
 		static PlayerInterfacePtr create(MainGamePtr &scene);
 		~PlayerInterface() override;
 
 		void selectItem(int index);
+		void setItem(int index, PlayerItemPtr &item);
 
 		void useItem();
 	};

@@ -4,38 +4,37 @@
 
 #include "interfaceShader.h"
 
-gui::InterfaceShader::InterfaceShader() {
-	shader = new engine::ShaderProgram("shader/interface.vert", "shader/interface.frag");
+gui::InterfaceShader::InterfaceShader() : Shader("shader/interface.vert", "shader/interface.frag") {
 	guiTexture = engine::Resources::get().getTexture("texture/gui.png");
 	fontTexture = engine::Resources::get().getTexture("texture/font.png");
 	blockTexture = engine::Resources::get().getTexture("texture/block.png");
 
-	shader->bind();
-	shader->setUniformNameToId("guiTexture", 0);
-	shader->setUniformNameToId("fontTexture", 1);
-	shader->setUniformNameToId("blockTexture", 2);
-	shader->unbind();
+	program.bind();
+	program.setUniformNameToId("blockTexture", global::TextureBlocksNo);
+	program.setUniformNameToId("guiTexture", global::TextureGuiNo);
+	program.setUniformNameToId("fontTexture", global::TextureFontNo);
+	program.unbind();
 }
 
 void gui::InterfaceShader::bind() {
 	glClear(GL_DEPTH_BUFFER_BIT);
-	shader->bind();
+	program.bind();
 
 	glEnable(GL_BLEND);
 	glBlendFuncSeparate(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ZERO);
 
-	guiTexture->use(0);
-	fontTexture->use(1);
-	blockTexture->use(2);
+	blockTexture->use(global::TextureBlocksNo);
+	guiTexture->use(global::TextureGuiNo);
+	fontTexture->use(global::TextureFontNo);
 }
 
 void gui::InterfaceShader::unbind() {
 	glDisable(GL_BLEND);
-	shader->unbind();
+	program.unbind();
 }
 
 void gui::InterfaceShader::setModel(const glm::mat4 &model) {
-	shader->setMat4("model", model);
+	program.setMat4("model", model);
 }
 
 

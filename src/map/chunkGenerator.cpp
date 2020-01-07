@@ -38,15 +38,19 @@ map::ChunkPtr map::ChunkGenerator::newVirginChunk(const Coord2D &position) {
 
 			int dirtLeft = 3;
 
-			for (; z >= 0; z--) {
-				if (dirtLeft > 0) {
+			for (auto i = z; i >= 0; i--) {
+
+				if (i == z) {
+					block = std::make_shared<block::Grass>();
+					dirtLeft--;
+				} else if (dirtLeft > 0) {
 					block = std::make_shared<block::Dirt>();
 					dirtLeft--;
-					chunk->setBlock(Coord3D(x, y, z), block);
 				} else {
 					block = std::make_shared<block::Stone>();
-					chunk->setBlock(Coord3D(x, y, z), block);
 				}
+
+				chunk->setBlock(Coord3D(x, y, i), block);
 			}
 		}
 	}

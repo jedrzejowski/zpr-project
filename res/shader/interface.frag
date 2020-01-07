@@ -12,15 +12,15 @@ void main() {
     vec4 outColor;
 
     if (TexNum == uint(0)) {
-        outColor = texture(guiTexture, TexCoord);
+        outColor = texture(blockTexture, TexCoord);
     }
 
     if (TexNum == uint(1)) {
-        outColor = texture(fontTexture, TexCoord);
+        outColor = texture(guiTexture, TexCoord);
     }
 
     if (TexNum == uint(2)) {
-        outColor = texture(blockTexture, TexCoord);
+        outColor = texture(fontTexture, TexCoord);
     }
 
     FragColor = outColor;

@@ -9,18 +9,19 @@ engine::Sub3DObj::Sub3DObj(engine::Sub3DObjPtr parent) {
 	setParent(parent);
 }
 
-engine::Sub3DObjPtr engine::Sub3DObj::getParent() const {
-	return parent.lock();
+engine::Sub3DObjWPtr engine::Sub3DObj::getParent() const {
+	return parentWPtr;
 }
 
 void engine::Sub3DObj::setParent(engine::Sub3DObjPtr newParent) {
-	if (!this->parent.expired())
-		this->parent.lock()->children.remove(this);
+	if (auto parentPtr = this->parentWPtr.lock())
+		parentPtr->children.remove(this);
 
-	this->parent = newParent;
+	this->parentWPtr = newParent;
 
 	if (newParent != nullptr)
-		this->parent.lock()->children.push_back(this);
+		if (auto parentPtr = this->parentWPtr.lock())
+			parentPtr->children.push_back(this);
 }
 
 const std::list<engine::Sub3DObj *> &engine::Sub3DObj::getChildren() const {
@@ -51,4 +52,9 @@ bool engine::Sub3DObj::isNeedRefreshBuffers() const {
 
 void engine::Sub3DObj::setNeedRefreshBuffers(bool needRefreshBuffers) {
 	Sub3DObj::needRefreshBuffers = needRefreshBuffers;
+}
+
+engine::Sub3DObj::~Sub3DObj() {
+	if (auto parentPtr = this->parentWPtr.lock())
+		parentPtr->children.remove(this);
 }

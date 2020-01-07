@@ -44,27 +44,39 @@ void gui::Button::setState(gui::ButtonState state) {
 
 	switch (state) {
 		case Idle:
-			setTexture(
-					glm::vec2(0, 1 / 3.f),
-					glm::vec2(1, 2 / 3.f)
+			setTextureReference(
+					engine::SquareTextureReference(
+							glm::vec2(0, 1 / 3.f),
+							glm::vec2(1, 2 / 3.f),
+							global::TextureGuiNo
+					)
 			);
 			break;
 		case Hover:
-			setTexture(
-					glm::vec2(0, 2 / 3.f),
-					glm::vec2(1, 1)
+			setTextureReference(
+					engine::SquareTextureReference(
+							glm::vec2(0, 2 / 3.f),
+							glm::vec2(1, 1),
+							global::TextureGuiNo
+					)
 			);
 			break;
 		case Clicked:
-			setTexture(
-					glm::vec2(0, 0),
-					glm::vec2(1, 1 / 3.f)
+			setTextureReference(
+					engine::SquareTextureReference(
+							glm::vec2(0, 0),
+							glm::vec2(1, 1 / 3.f),
+							global::TextureGuiNo
+					)
 			);
 			break;
 		case Disabled:
-			setTexture(
-					glm::vec2(0, 0),
-					glm::vec2(1, 1 / 3.f)
+			setTextureReference(
+					engine::SquareTextureReference(
+							glm::vec2(0, 0),
+							glm::vec2(1, 1 / 3.f),
+							global::TextureGuiNo
+					)
 			);
 			break;
 	}

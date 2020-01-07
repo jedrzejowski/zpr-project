@@ -19,15 +19,10 @@ namespace gui {
 		TextPtr text;
 
 	private:
-
 		explicit Button(InterfacePtr& interface);
+
 	public:
-
 		static ButtonPtr create(InterfacePtr interface);
-
-
-		const std::string &getLabel() const;
-		void setLabel(const std::string &label);
 
 		ButtonState getState() const;
 		void setState(ButtonState state);

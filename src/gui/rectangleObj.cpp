@@ -60,41 +60,6 @@ void gui::RectangleObj::setSize(const glm::vec2 &size) {
 	refreshModel();
 }
 
-const glm::vec2 &gui::RectangleObj::getTextureStart() const {
-	return textureStart;
-}
-
-void gui::RectangleObj::setTextureStart(const glm::vec2 &textureStart) {
-	RectangleObj::textureStart = textureStart;
-
-	setNeedRefreshBuffers(true);
-}
-
-const glm::vec2 &gui::RectangleObj::getTextureEnd() const {
-	return textureEnd;
-}
-
-void gui::RectangleObj::setTextureEnd(const glm::vec2 &textureEnd) {
-	RectangleObj::textureEnd = textureEnd;
-
-	setNeedRefreshBuffers(true);
-}
-
-uint32_t gui::RectangleObj::getTextureNo() const {
-	return textureNo;
-}
-
-void gui::RectangleObj::setTextureNo(uint32_t textureNo) {
-	RectangleObj::textureNo = textureNo;
-
-	setNeedRefreshBuffers(true);
-}
-
-void gui::RectangleObj::setTexture(const glm::vec2 &textureStart, const glm::vec2 &textureEnd, uint32_t textureNo) {
-	setTextureStart(textureStart);
-	setTextureEnd(textureEnd);
-	setTextureNo(textureNo);
-}
 
 void gui::RectangleObj::refreshModel() {
 	auto recModel = glm::mat4(1);
@@ -114,10 +79,10 @@ void gui::RectangleObj::updateBuffers() {
 	point_xY = getModel() * glm::vec4(0, baseSize.y, 0, 1);
 
 	verticesBuf.clear();
-	verticesBuf.emplace_back(point_xy, engine::TexCoord(textureStart.x, textureStart.y, textureNo));
-	verticesBuf.emplace_back(point_Xy, engine::TexCoord(textureEnd.x, textureStart.y, textureNo));
-	verticesBuf.emplace_back(point_XY, engine::TexCoord(textureEnd.x, textureEnd.y, textureNo));
-	verticesBuf.emplace_back(point_xY, engine::TexCoord(textureStart.x, textureEnd.y, textureNo));
+	verticesBuf.emplace_back(point_xy, textureReference.getTexCoord_xy());
+	verticesBuf.emplace_back(point_Xy, textureReference.getTexCoord_Xy());
+	verticesBuf.emplace_back(point_XY, textureReference.getTexCoord_XY());
+	verticesBuf.emplace_back(point_xY, textureReference.getTexCoord_xY());
 
 	indicesBuf.clear();
 	indicesBuf.emplace_back(0, 1, 2);
@@ -128,4 +93,12 @@ gui::RectangleObj::~RectangleObj() {
 	logger.log("~RectangleObj()");
 }
 
+const engine::SquareTextureReference &gui::RectangleObj::getTextureReference() const {
+	return textureReference;
+}
+
+void gui::RectangleObj::setTextureReference(const engine::SquareTextureReference &textureReference) {
+	RectangleObj::textureReference = textureReference;
+	setNeedRefreshBuffers(true);
+}
 

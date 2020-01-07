@@ -17,7 +17,7 @@ namespace game {
 		void setTextureNo(uint32_t textureNo);
 
 	public:
-		explicit PlayerItem(PlayerInterfacePtr playerInterfacePtr);
+		explicit PlayerItem(const PlayerInterfacePtr &playerInterfacePtr);
 
 		const glm::vec2 &getTextureStart() const;
 		const glm::vec2 &getTextureEnd() const;
@@ -27,10 +27,14 @@ namespace game {
 		virtual void useItem(map::WorldPtr &worldMap, PlayerPtr &player) = 0;
 	};
 
-	class PlayerBlockItem : public PlayerItem {
-		block::BlockPtr& block;
+	class PlayerSolidBlockItem : public PlayerItem, public virtual_enable_shared_from_this<PlayerSolidBlockItem> {
+		block::SolidBlockPtr block;
+		PlayerSolidBlockItem(PlayerInterfacePtr &playerInterfacePtr, block::SolidBlockPtr &block);
 	public:
-		PlayerBlockItem(PlayerInterfacePtr playerInterfacePtr, block::BlockPtr& block);
+		~PlayerSolidBlockItem();
+		static PlayerBlockItemPtr create(PlayerInterfacePtr &playerInterfacePtr, block::SolidBlockPtr& block);
+		void updateBuffers() override;
 		void useItem(map::WorldPtr &worldMap, PlayerPtr &player) override;
+
 	};
 }

@@ -9,10 +9,6 @@ map::WorldShader::WorldShader() : Shader("shader/game.vert", "shader/game.frag")
 	program.setInt("material.diffuse", 0);
 }
 
-glm::vec2 map::WorldShader::getPointInWindow(const glm::vec3 &vec) {
-	return glm::vec2();
-}
-
 void map::WorldShader::setCamera(const engine::Camera &camera) {
 	program.setMat4("camera", camera.getMatrix());
 	program.setVec3("cameraPos", camera.position);

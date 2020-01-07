@@ -35,10 +35,14 @@ void gui::Text::updateBuffers() {
 		glm::vec4 point_XY = getModel() * glm::vec4(1 + charInd, 1, 0, 1);
 		glm::vec4 point_xY = getModel() * glm::vec4(0 + charInd, 1, 0, 1);
 
-		verticesBuf.emplace_back(point_xy, engine::TexCoord((float) x / 16, (float) y / 16, 1));
-		verticesBuf.emplace_back(point_Xy, engine::TexCoord((float) (x + 1) / 16, (float) y / 16, 1));
-		verticesBuf.emplace_back(point_XY, engine::TexCoord((float) (x + 1) / 16, (float) (y + 1) / 16, 1));
-		verticesBuf.emplace_back(point_xY, engine::TexCoord((float) x / 16, (float) (y + 1) / 16, 1));
+		verticesBuf.emplace_back(point_xy,
+								 engine::TexCoord((float) x / 16, (float) y / 16, global::TextureFontNo));
+		verticesBuf.emplace_back(point_Xy,
+								 engine::TexCoord((float) (x + 1) / 16, (float) y / 16, global::TextureFontNo));
+		verticesBuf.emplace_back(point_XY,
+								 engine::TexCoord((float) (x + 1) / 16, (float) (y + 1) / 16, global::TextureFontNo));
+		verticesBuf.emplace_back(point_xY,
+								 engine::TexCoord((float) x / 16, (float) (y + 1) / 16, global::TextureFontNo));
 
 		indicesBuf.push_back(engine::SimpleTriangle(0, 1, 2) + offset);
 		indicesBuf.push_back(engine::SimpleTriangle(2, 3, 0) + offset);

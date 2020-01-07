@@ -10,7 +10,7 @@ namespace engine {
 	class Sub3DObj {
 	private:
 		std::list<Sub3DObj *> children;
-		Sub3DObjWPtr parent;
+		Sub3DObjWPtr parentWPtr;
 		bool needRefreshBuffers = true;
 
 	protected:
@@ -20,8 +20,9 @@ namespace engine {
 
 	public:
 		explicit Sub3DObj(Sub3DObjPtr parent);
+		~Sub3DObj();
 
-		Sub3DObjPtr getParent() const;
+		Sub3DObjWPtr getParent() const;
 		void setParent(Sub3DObjPtr parent);
 
 		const std::list<Sub3DObj *> &getChildren() const;

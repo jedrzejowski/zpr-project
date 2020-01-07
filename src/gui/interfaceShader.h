@@ -4,10 +4,9 @@
 
 namespace gui {
 
-	class InterfaceShader {
+	class InterfaceShader : engine::Shader {
 	private:
 
-		engine::ShaderProgram *shader = nullptr;
 		const engine::Texture *guiTexture = nullptr;
 		const engine::Texture *fontTexture = nullptr;
 		const engine::Texture *blockTexture = nullptr;
@@ -15,10 +14,10 @@ namespace gui {
 	public:
 		explicit InterfaceShader();
 
-		void bind();
-		void unbind();
+		void bind() override;
+		void unbind() override;
 
-		void setModel(const glm::mat4& model);
+		void setModel(const glm::mat4 &model);
 	};
 }
 

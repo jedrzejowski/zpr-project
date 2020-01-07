@@ -3,6 +3,7 @@
 #include "src/_classdef.h"
 #include "src/lib/object.h"
 #include "guiObj.h"
+#include "src/engine/textureReference.h"
 
 namespace gui {
 
@@ -17,8 +18,7 @@ namespace gui {
 				point_xY,
 				point_XY;
 
-		glm::vec2 textureStart, textureEnd;
-		uint32_t textureNo;
+		engine::SquareTextureReference textureReference;
 
 		bool isMouseIn = false;
 
@@ -45,13 +45,8 @@ namespace gui {
 			return glm::vec2(1, 1);
 		}
 
-		const glm::vec2 &getTextureStart() const;
-		void setTextureStart(const glm::vec2 &textureStart);
-		const glm::vec2 &getTextureEnd() const;
-		void setTextureEnd(const glm::vec2 &textureEnd);
-		uint32_t getTextureNo() const;
-		void setTextureNo(uint32_t textureNo);
-		void setTexture(const glm::vec2 &textureStart, const glm::vec2 &textureEnd, uint32_t textureNo = 0);
+		const engine::SquareTextureReference &getTextureReference() const;
+		void setTextureReference(const engine::SquareTextureReference &textureReference);
 	};
 }
 

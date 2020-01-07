@@ -139,6 +139,10 @@ namespace block {
 
 	class SolidBlock;
 
+	typedef std::shared_ptr<SolidBlock> SolidBlockPtr;
+	typedef std::weak_ptr<SolidBlock> SolidBlockWPtr;
+
+
 	class Stone;
 
 	class Dirt;
@@ -216,10 +220,10 @@ namespace game {
 	typedef std::shared_ptr<PlayerItem> PlayerItemPtr;
 	typedef std::weak_ptr<PlayerItem> PlayerItemWPtr;
 
-	class PlayerBlockItem;
+	class PlayerSolidBlockItem;
 
-	typedef std::shared_ptr<PlayerBlockItem> PlayerBlockItemPtr;
-	typedef std::weak_ptr<PlayerBlockItem> PlayerBlockItemWPtr;
+	typedef std::shared_ptr<PlayerSolidBlockItem> PlayerBlockItemPtr;
+	typedef std::weak_ptr<PlayerSolidBlockItem> PlayerBlockItemWPtr;
 }
 
 namespace menu {

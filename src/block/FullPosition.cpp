@@ -1,6 +1,8 @@
-//
-// Created by adam on 05.01.2020.
-//
+/**
+ * @file FullPosition.cpp
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include "FullPosition.h"
 #include "src/map/Chunk.h"

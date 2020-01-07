@@ -1,3 +1,9 @@
+/**
+ * @file PerlinNoise.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "PerlinNoise.h"
 //http://www.gamedev.net/topic/637715-terrain-generation/
 //https://en.wikipedia.org/wiki/Perlin_noise

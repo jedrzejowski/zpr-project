@@ -1,3 +1,9 @@
+/**
+ * @file Window.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "Window.h"
 
 #include <mutex>

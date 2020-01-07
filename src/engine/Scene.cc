@@ -1,3 +1,9 @@
+/**
+ * @file Scene.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "Scene.h"
 #include "Point.hpp"
 #include "InputInterface.h"

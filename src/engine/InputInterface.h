@@ -1,3 +1,9 @@
+/**
+ * @file InputInterface.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "src/_classdef.h"
 #include "src/lib/Object.hpp"
 #include "Mouse.h"

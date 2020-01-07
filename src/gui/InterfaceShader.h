@@ -1,3 +1,9 @@
+/**
+ * @file InterfaceShader.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include "src/engine/Engine.h"

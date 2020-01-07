@@ -1,3 +1,9 @@
+/**
+ * @file Vars.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "Vars.h"
 
 const std::string global::AppName = "ZprCraft";

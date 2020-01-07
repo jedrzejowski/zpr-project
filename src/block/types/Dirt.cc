@@ -1,3 +1,9 @@
+/**
+ * @file Dirt.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "Dirt.h"
 #include "../type_ids.h"
 

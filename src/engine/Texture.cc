@@ -1,6 +1,8 @@
-//
-// Created by adam on 08.04.18.
-//
+/**
+ * @file Texture.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #define STB_IMAGE_IMPLEMENTATION
 

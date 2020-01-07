@@ -1,5 +1,7 @@
-//
-// Created by adam on 19.04.18.
-//
+/**
+ * @file Camera.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include "Camera.h"

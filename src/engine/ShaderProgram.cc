@@ -1,6 +1,8 @@
-//
-// Created by adam on 07.04.18.
-//
+/**
+ * @file ShaderProgram.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include <src/Logger.h>
 #include "src/Exception.hpp"

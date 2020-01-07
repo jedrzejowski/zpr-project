@@ -1,3 +1,9 @@
+/**
+ * @file Solidblock.cpp
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "Solidblock.h"
 #include "src/engine/Engine.h"
 #include "Wall.h"

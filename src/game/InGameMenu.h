@@ -1,10 +1,16 @@
+/**
+ * @file InGameMenu.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include "src/_classdef.h"
 #include "src/gui/GUI.h"
 
 namespace game {
-	class InGameMenu : public gui::Interface, public virtual_enable_shared_from_this<InGameMenu> {
+	class InGameMenu : public gui::Interface, public VirtualSharePtrObject<InGameMenu> {
 	private:
 
 		gui::ButtonPtr resumeBtn, saveBtn;

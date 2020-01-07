@@ -1,3 +1,9 @@
+/**
+ * @file GameScene.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include "src/_classdef.h"
@@ -12,8 +18,8 @@ namespace game {
 		Menu
 	};
 
-	class GameScene : public engine::Scene, public virtual_enable_shared_from_this<GameScene> {
-		using virtual_enable_shared_from_this<GameScene>::shared_from_this;
+	class GameScene : public engine::Scene, public VirtualSharePtrObject<GameScene> {
+		using VirtualSharePtrObject<GameScene>::shared_from_this;
 	private:
 		GameSceneState interfaceState;
 

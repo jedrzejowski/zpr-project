@@ -1,6 +1,8 @@
-//
-// Created by adam on 24.10.2019.
-//
+/**
+ * @file FpsCounter.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include "FpsCounter.h"
 #include "src/OpenGL.h"

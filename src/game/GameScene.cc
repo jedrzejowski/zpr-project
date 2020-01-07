@@ -1,3 +1,9 @@
+/**
+ * @file GameScene.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "GameScene.h"
 #include "Player.h"
 #include "InGameMenu.h"

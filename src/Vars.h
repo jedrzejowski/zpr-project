@@ -1,3 +1,9 @@
+/**
+ * @file Vars.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 

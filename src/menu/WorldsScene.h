@@ -1,3 +1,9 @@
+/**
+ * @file WorldsScene.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include "src/_classdef.h"

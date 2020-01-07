@@ -1,6 +1,8 @@
-//
-// Created by adam on 07.04.18.
-//
+/**
+ * @file Abs3Dobj.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include "Abs3Dobj.h"
 #include "Point.hpp"

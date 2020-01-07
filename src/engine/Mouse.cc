@@ -1,6 +1,8 @@
-//
-// Created by adam on 22.10.2019.
-//
+/**
+ * @file Mouse.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include "Mouse.h"
 #include "Window.h"

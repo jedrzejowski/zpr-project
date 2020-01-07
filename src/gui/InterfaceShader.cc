@@ -1,6 +1,8 @@
-//
-// Created by adam on 06.11.2019.
-//
+/**
+ * @file InterfaceShader.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include "InterfaceShader.h"
 

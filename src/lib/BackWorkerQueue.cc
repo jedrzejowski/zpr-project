@@ -1,6 +1,8 @@
-//
-// Created by adam on 08.11.2019.
-//
+/**
+ * @file BackWorkerQueue.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include "BackWorkerQueue.h"
 

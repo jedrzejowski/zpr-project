@@ -1,3 +1,9 @@
+/**
+ * @file GuiObject.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "GuiObject.h"
 #include "Interface.h"
 

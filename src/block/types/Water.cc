@@ -1,6 +1,8 @@
-//
-// Created by adam on 15.10.2019.
-//
+/**
+ * @file Water.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include <src/block/Blocks.h>
 #include "Water.h"

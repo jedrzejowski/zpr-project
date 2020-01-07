@@ -1,6 +1,8 @@
-//
-// Created by adam on 08.11.2019.
-//
+/**
+ * @file AppSettings.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include <fstream>
 #include <iomanip>

@@ -1,6 +1,8 @@
-//
-// Created by adam on 07.11.2019.
-//
+/**
+ * @file WelcomeScene.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include "WelcomeScene.h"
 #include "SettingsScene.h"

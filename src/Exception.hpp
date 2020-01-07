@@ -1,3 +1,9 @@
+/**
+ * @file Exception.hpp
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include <string>

@@ -1,3 +1,9 @@
+/**
+ * @file SelectedBlock.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include <src/block/Wall.h>

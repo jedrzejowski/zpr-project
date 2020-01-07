@@ -1,3 +1,9 @@
+/**
+ * @file WorldRenderer.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include "src/_classdef.h"
@@ -6,7 +12,7 @@
 #include "World.h"
 
 namespace map {
-	class WorldRenderer : public Object, public virtual_enable_shared_from_this<WorldRenderer> {
+	class WorldRenderer : public Object, public VirtualSharePtrObject<WorldRenderer> {
 	private:
 		const WorldPtr worldMap;
 		const engine::Texture *blockTexture = nullptr;

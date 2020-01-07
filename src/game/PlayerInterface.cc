@@ -1,3 +1,9 @@
+/**
+ * @file PlayerInterface.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "PlayerInterface.h"
 #include "src/block/Blocks.h"
 #include "PlayerItem.h"

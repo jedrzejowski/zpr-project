@@ -1,6 +1,8 @@
-//
-// Created by adam on 15.10.2019.
-//
+/**
+ * @file Stone.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include <src/block/Blocks.h>
 #include "Stone.h"

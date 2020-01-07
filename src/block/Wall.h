@@ -1,3 +1,9 @@
+/**
+ * @file Wall.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include "src/lib/glmEx.h"

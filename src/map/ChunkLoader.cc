@@ -1,6 +1,8 @@
-//
-// Created by adam on 08.11.2019.
-//
+/**
+ * @file ChunkLoader.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include "ChunkLoader.h"
 #include "Chunk.h"

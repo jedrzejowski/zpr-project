@@ -1,4 +1,10 @@
 /**
+ * @file cfgpath.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
+/**
  * @file  cfgpath.h
  * @brief Cross platform methods for obtaining paths to configuration files.
  *

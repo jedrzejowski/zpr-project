@@ -1,3 +1,9 @@
+/**
+ * @file Point.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include <math.h>
 
 #include "Point.hpp"

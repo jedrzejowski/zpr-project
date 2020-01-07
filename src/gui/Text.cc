@@ -1,3 +1,9 @@
+/**
+ * @file Text.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 
 #include "Text.h"
 

@@ -1,3 +1,9 @@
+/**
+ * @file Object.hpp
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include <list>

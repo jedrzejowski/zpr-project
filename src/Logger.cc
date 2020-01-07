@@ -1,3 +1,9 @@
+/**
+ * @file Logger.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include <src/block/Block.h>
 #include "Logger.h"
 

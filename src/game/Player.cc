@@ -1,3 +1,9 @@
+/**
+ * @file Player.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include <cmath>
 #include "Player.h"
 #include "src/lib/Coord.hpp"

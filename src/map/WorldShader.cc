@@ -1,6 +1,8 @@
-//
-// Created by adam on 05.01.2020.
-//
+/**
+ * @file WorldShader.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include "WorldShader.h"
 

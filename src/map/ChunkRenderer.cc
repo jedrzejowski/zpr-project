@@ -1,3 +1,9 @@
+/**
+ * @file ChunkRenderer.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "ChunkRenderer.h"
 #include "WorldRenderer.h"
 #include "Chunk.h"

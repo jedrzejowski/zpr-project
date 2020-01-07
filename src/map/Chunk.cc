@@ -1,3 +1,9 @@
+/**
+ * @file Chunk.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "Chunk.h"
 #include "World.h"
 #include "lib/AppSettings.h"

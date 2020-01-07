@@ -1,6 +1,8 @@
-//
-// Created by adam on 25.10.2019.
-//
+/**
+ * @file Interface.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include "Interface.h"
 

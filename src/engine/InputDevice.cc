@@ -1,3 +1,9 @@
+/**
+ * @file InputDevice.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "InputDevice.h"
 #include "InputInterface.h"
 #include "Scene.h"

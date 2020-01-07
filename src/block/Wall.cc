@@ -1,3 +1,9 @@
+/**
+ * @file Wall.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "_classdef.h"
 #include "Wall.h"
 

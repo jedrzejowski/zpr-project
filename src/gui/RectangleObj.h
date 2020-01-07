@@ -1,3 +1,9 @@
+/**
+ * @file RectangleObj.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include "src/_classdef.h"
@@ -7,7 +13,7 @@
 
 namespace gui {
 
-	class RectangleObj : public GuiObject, public virtual_enable_shared_from_this<RectangleObj> {
+	class RectangleObj : public GuiObject, public VirtualSharePtrObject<RectangleObj> {
 	private:
 
 		glm::vec2 position = glm::vec2(0);

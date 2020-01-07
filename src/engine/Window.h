@@ -1,3 +1,9 @@
+/**
+ * @file Window.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include <mutex>
@@ -16,7 +22,7 @@ namespace engine {
 		Square,
 	};
 
-	class Window : public Object, public virtual_enable_shared_from_this<Window> {
+	class Window : public Object, public VirtualSharePtrObject<Window> {
 	private:
 		std::mutex rendering;
 

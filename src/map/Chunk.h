@@ -1,3 +1,9 @@
+/**
+ * @file Chunk.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include "src/_classdef.h"
@@ -7,7 +13,7 @@
 #include "src/block/Blocks.h"
 
 namespace map {
-	class Chunk : public Object, public virtual_enable_shared_from_this<Chunk> {
+	class Chunk : public Object, public VirtualSharePtrObject<Chunk> {
 		friend ChunkRenderer;
 		friend ChunkGenerator;
 		friend ChunkLoader;

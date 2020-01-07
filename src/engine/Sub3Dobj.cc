@@ -1,6 +1,8 @@
-//
-// Created by adam on 05.11.2019.
-//
+/**
+ * @file Sub3Dobj.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include "Sub3Dobj.h"
 #include "Point.hpp"

@@ -1,6 +1,8 @@
-//
-// Created by adam on 06.01.2020.
-//
+/**
+ * @file PlayerItem.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include "PlayerItem.h"
 

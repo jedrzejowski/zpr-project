@@ -1,3 +1,9 @@
+/**
+ * @file Keyboard.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "Keyboard.h"
 #include "Window.h"
 #include "InputInterface.h"

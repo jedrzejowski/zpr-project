@@ -1,3 +1,9 @@
+/**
+ * @file Player.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "src/_classdef.h"
 #include "src/lib/Coord.hpp"
 #include "src/engine/Engine.h"

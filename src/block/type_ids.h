@@ -1,3 +1,9 @@
+/**
+ * @file type_ids.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 namespace block {

@@ -1,3 +1,9 @@
+/**
+ * @file PlayerItem.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include "_classdef.h"
@@ -27,7 +33,7 @@ namespace game {
 		virtual void useItem(map::WorldPtr &worldMap, PlayerPtr &player) = 0;
 	};
 
-	class PlayerSolidBlockItem : public PlayerItem, public virtual_enable_shared_from_this<PlayerSolidBlockItem> {
+	class PlayerSolidBlockItem : public PlayerItem, public VirtualSharePtrObject<PlayerSolidBlockItem> {
 		block::SolidBlockPtr block;
 		PlayerSolidBlockItem(PlayerInterfacePtr &playerInterfacePtr, block::SolidBlockPtr &block);
 	public:

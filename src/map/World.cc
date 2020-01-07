@@ -1,3 +1,9 @@
+/**
+ * @file World.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "World.h"
 #include "Chunk.h"
 #include "src/game/Game.h"

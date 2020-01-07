@@ -1,10 +1,16 @@
+/**
+ * @file PlayerInterface.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include "src/_classdef.h"
 #include "src/gui/GUI.h"
 
 namespace game {
-	class PlayerInterface : public gui::Interface, public virtual_enable_shared_from_this<PlayerInterface> {
+	class PlayerInterface : public gui::Interface, public VirtualSharePtrObject<PlayerInterface> {
 	private:
 		explicit PlayerInterface(game::MainGamePtr &scene);
 

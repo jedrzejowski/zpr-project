@@ -1,3 +1,9 @@
+/**
+ * @file Block.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "Block.h"
 #include "src/map/Map.h"
 

@@ -1,3 +1,9 @@
+/**
+ * @file Coord.hpp
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include <cinttypes>

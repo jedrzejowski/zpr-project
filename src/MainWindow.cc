@@ -1,6 +1,8 @@
-//
-// Created by adam on 16.10.2019.
-//
+/**
+ * @file MainWindow.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include "MainWindow.h"
 #include "src/game/Game.h"

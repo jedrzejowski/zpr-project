@@ -1,3 +1,9 @@
+/**
+ * @file Grass.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "Grass.h"
 #include "../type_ids.h"
 

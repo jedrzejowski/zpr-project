@@ -1,3 +1,9 @@
+/**
+ * @file _classdef.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include <utility>
@@ -244,4 +250,4 @@ namespace menu {
 #include "src/Vars.h"
 #include "src/Logger.h"
 #include "src/Exception.hpp"
-#include "src/lib/virtual_enable_shared_from_this.h"
+#include "src/lib/VirtualSharePtrObject.hpp"

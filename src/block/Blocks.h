@@ -1,3 +1,9 @@
+/**
+ * @file Blocks.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 

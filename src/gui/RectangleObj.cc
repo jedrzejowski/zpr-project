@@ -1,3 +1,9 @@
+/**
+ * @file RectangleObj.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "RectangleObj.h"
 #include "Interface.h"
 

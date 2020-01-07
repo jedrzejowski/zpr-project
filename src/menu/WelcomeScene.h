@@ -1,3 +1,9 @@
+/**
+ * @file WelcomeScene.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include "src/_classdef.h"
@@ -6,8 +12,8 @@
 
 namespace menu {
 
-	class WelcomeScene : public engine::Scene, public virtual_enable_shared_from_this<WelcomeScene> {
-		using virtual_enable_shared_from_this<WelcomeScene>::shared_from_this;
+	class WelcomeScene : public engine::Scene, public VirtualSharePtrObject<WelcomeScene> {
+		using VirtualSharePtrObject<WelcomeScene>::shared_from_this;
 	private:
 		gui::InterfacePtr interface;
 		gui::ButtonPtr playBtn, settingsBtn, quitBtn;

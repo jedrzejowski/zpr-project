@@ -1,3 +1,9 @@
+/**
+ * @file OpenGL.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #define GLM_ENABLE_EXPERIMENTAL 1

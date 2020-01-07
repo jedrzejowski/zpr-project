@@ -1,3 +1,9 @@
+/**
+ * @file FullPosition.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include "_classdef.h"

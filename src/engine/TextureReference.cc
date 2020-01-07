@@ -1,6 +1,8 @@
-//
-// Created by adam on 06.01.2020.
-//
+/**
+ * @file TextureReference.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include "TextureReference.h"
 #include "src/engine/Point.hpp"

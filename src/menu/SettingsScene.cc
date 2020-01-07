@@ -1,6 +1,8 @@
-//
-// Created by adam on 07.11.2019.
-//
+/**
+ * @file SettingsScene.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include <X11/X.h>
 #include "SettingsScene.h"

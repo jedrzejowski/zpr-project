@@ -1,3 +1,9 @@
+/**
+ * @file Mouse.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include "src/OpenGL.h"

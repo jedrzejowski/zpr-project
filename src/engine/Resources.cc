@@ -1,3 +1,9 @@
+/**
+ * @file Resources.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "Resources.h"
 #include "Texture.h"
 

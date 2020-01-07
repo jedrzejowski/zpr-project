@@ -1,4 +1,10 @@
 /**
+ * @file main.cpp
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
+/**
  *
  */
 

@@ -1,3 +1,9 @@
+/**
+ * @file SelectedBlock.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "SelectedBlock.h"
 #include "src/block/Wall.h"
 #include "MainGame.h"

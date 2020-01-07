@@ -1,6 +1,8 @@
-//
-// Created by adam on 05.01.2020.
-//
+/**
+ * @file Shader.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include "Shader.h"
 

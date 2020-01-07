@@ -1,3 +1,9 @@
+/**
+ * @file PerlinNoise.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 class PerlinNoise {

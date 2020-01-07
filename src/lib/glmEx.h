@@ -1,3 +1,9 @@
+/**
+ * @file glmEx.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include <src/engine/Camera.h>

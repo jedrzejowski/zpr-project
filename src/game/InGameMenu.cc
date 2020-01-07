@@ -1,6 +1,8 @@
-//
-// Created by adam on 24.10.2019.
-//
+/**
+ * @file InGameMenu.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include "InGameMenu.h"
 #include "GameScene.h"

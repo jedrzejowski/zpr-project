@@ -1,3 +1,9 @@
+/**
+ * @file Sub3Dobj.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include <list>

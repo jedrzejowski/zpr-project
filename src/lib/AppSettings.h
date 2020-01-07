@@ -1,3 +1,9 @@
+/**
+ * @file AppSettings.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include <boost/filesystem/path.hpp>

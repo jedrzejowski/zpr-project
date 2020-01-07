@@ -1,3 +1,9 @@
+/**
+ * @file InputButton.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "InputButton.h"
 
 void engine::InputButton::updateState(GLFWwindow *window) {

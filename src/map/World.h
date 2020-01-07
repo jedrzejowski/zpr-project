@@ -1,3 +1,9 @@
+/**
+ * @file World.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include <map>
@@ -8,7 +14,7 @@
 #include "ChunkLoader.h"
 
 namespace map {
-	class World : public Object, public virtual_enable_shared_from_this<World> {
+	class World : public Object, public VirtualSharePtrObject<World> {
 		friend ChunkLoader;
 		friend ChunkGenerator;
 	protected:

@@ -1,3 +1,9 @@
+/**
+ * @file BackWorkerQueue.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include <mutex>

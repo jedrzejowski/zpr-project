@@ -1,3 +1,9 @@
+/**
+ * @file Block.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include "src/_classdef.h"
@@ -5,7 +11,7 @@
 
 namespace block {
 
-	class Block : public virtual_enable_shared_from_this<Block> {
+	class Block : public VirtualSharePtrObject<Block> {
 	protected:
 		map::ChunkWPtr chunk;
 		Coord3D position;

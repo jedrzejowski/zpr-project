@@ -1,3 +1,9 @@
+/**
+ * @file Button.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "Button.h"
 #include "src/lib/Object.hpp"
 

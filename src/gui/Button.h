@@ -1,3 +1,9 @@
+/**
+ * @file Button.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include "src/_classdef.h"
@@ -14,7 +20,7 @@ namespace gui {
 		Disabled
 	};
 
-	class Button : public RectangleObj,  public virtual_enable_shared_from_this<Button> {
+	class Button : public RectangleObj,  public VirtualSharePtrObject<Button> {
 		ButtonState state;
 		TextPtr text;
 

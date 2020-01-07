@@ -1,3 +1,9 @@
+/**
+ * @file Scene.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include "src/_classdef.h"
@@ -9,7 +15,7 @@
 
 namespace engine {
 
-	class Scene : public Object, public virtual_enable_shared_from_this<Scene> {
+	class Scene : public Object, public VirtualSharePtrObject<Scene> {
 	private:
 		WindowWPtr window;
 		InputInterfacePtr inputInterface;

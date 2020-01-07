@@ -1,6 +1,8 @@
-//
-// Created by adam on 23.10.2019.
-//
+/**
+ * @file ChunkGenerator.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
 
 #include "ChunkGenerator.h"
 #include "Chunk.h"

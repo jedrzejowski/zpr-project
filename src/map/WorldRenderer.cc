@@ -1,3 +1,9 @@
+/**
+ * @file WorldRenderer.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "WorldRenderer.h"
 
 #include <utility>

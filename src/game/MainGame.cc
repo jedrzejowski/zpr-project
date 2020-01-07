@@ -1,3 +1,9 @@
+/**
+ * @file MainGame.cc
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #include "MainGame.h"
 #include "src/engine/Engine.h"
 #include "src/map/Map.h"

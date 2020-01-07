@@ -4,14 +4,14 @@
  * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
  */
 
-#include <src/block/Blocks.h>
 #include "Water.h"
+#include "../type_ids.h"
 
 block::Water::Water() :
 		SolidBlock(
-				Coord2D(1, 3),
-				Coord2D(1, 3),
-				Coord2D(1, 3)
+				Coord2D(3, 1),
+				Coord2D(3, 1),
+				Coord2D(3, 1)
 		) {
 }
 

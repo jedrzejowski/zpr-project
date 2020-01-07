@@ -18,3 +18,4 @@
 #include "src/block/types/Dirt.h"
 #include "src/block/types/Grass.h"
 #include "src/block/types/Water.h"
+#include "src/block/types/Sand.h"

@@ -24,15 +24,6 @@ game::PlayerInterfacePtr game::PlayerInterface::create(game::MainGamePtr &scene)
 
 	game::PlayerInterfacePtr self = std::make_shared<trick>(scene);
 
-//	self->addItem(1, 1);
-//	self->addItem(1, 2);
-//	self->addItem(1, 3);
-//	self->addItem(1, 4);
-//	self->addItem(2, 1);
-//	self->addItem(2, 3);
-//	self->addItem(2, 4);
-//	self->addItem(3, 1);
-
 	{ // kamień
 		block::SolidBlockPtr block = std::make_shared<block::Stone>();
 		PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
@@ -49,6 +40,18 @@ game::PlayerInterfacePtr game::PlayerInterface::create(game::MainGamePtr &scene)
 		block::SolidBlockPtr block = std::make_shared<block::Grass>();
 		PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
 		self->setItem(2, item);
+	}
+
+	{ // piasek
+		block::SolidBlockPtr block = std::make_shared<block::Sand>();
+		PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
+		self->setItem(3, item);
+	}
+
+	{ // woda
+		block::SolidBlockPtr block = std::make_shared<block::Water>();
+		PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
+		self->setItem(4, item);
 	}
 
 	// Background

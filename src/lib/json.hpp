@@ -1,9 +1,3 @@
-/**
- * @file json.hpp
- *
- * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
- */
-
 /*
     __ _____ _____ _____
  __|  |   __|     |   | |  JSON for Modern C++

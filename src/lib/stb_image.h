@@ -1,9 +1,3 @@
-/**
- * @file stb_image.h
- *
- * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
- */
-
 /* stb_image - v2.19 - public domain image loader - http://nothings.org/stb
                                   no warranty implied; use at your own risk
 

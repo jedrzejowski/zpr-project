@@ -1,4 +1,4 @@
-#include "src/lib/object.h"
+#include "src/lib/Object.hpp"
 
 std::list<Object *> listOfObjects;
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "inGameMenu.h"
-#include "gameScene.h"
-#include "mainGame.h"
-#include "player.h"
+#include "InGameMenu.h"
+#include "GameScene.h"
+#include "MainGame.h"
+#include "Player.h"

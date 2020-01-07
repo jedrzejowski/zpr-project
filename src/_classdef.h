@@ -30,7 +30,7 @@ namespace engine {
 	struct Normal;
 	struct Color;
 	struct TexCoord;
-	struct SimpleTriangle;
+	struct EboTriangle;
 
 	class Abs3DObj;
 
@@ -119,6 +119,7 @@ namespace gui {
 	class Button;
 
 	typedef std::shared_ptr<Button> ButtonPtr;
+	typedef std::weak_ptr<Button> ButtonWPtr;
 
 	class Text;
 
@@ -141,7 +142,6 @@ namespace block {
 
 	typedef std::shared_ptr<SolidBlock> SolidBlockPtr;
 	typedef std::weak_ptr<SolidBlock> SolidBlockWPtr;
-
 
 	class Stone;
 
@@ -177,8 +177,6 @@ namespace map {
 	class ChunkGenerator;
 
 	class ChunkLoader;
-
-	typedef std::shared_ptr<ChunkLoader> ChunkLoaderPtr;
 }
 
 namespace game {
@@ -243,7 +241,7 @@ namespace menu {
 	typedef std::weak_ptr<WorldScene> WorldSceneWPtr;
 }
 
-#include "src/vars.h"
-#include "src/logger.h"
-#include "src/exception.h"
+#include "src/Vars.h"
+#include "src/Logger.h"
+#include "src/Exception.hpp"
 #include "src/lib/virtual_enable_shared_from_this.h"

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <src/engine/camera.h>
-#include "opengl.h"
+#include <src/engine/Camera.h>
+#include "OpenGL.h"
 
 namespace glm {
 

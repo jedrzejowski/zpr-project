@@ -6,7 +6,7 @@ enable_testing()
 
 add_executable(test_lib_object
         test/lib/object.cpp
-        src/lib/object.cpp)
+        src/lib/Object.cc)
 
 add_test(lib_object test_lib_object)
 target_link_libraries(test_lib_object ${LIBRARIES})
@@ -15,7 +15,7 @@ target_link_libraries(test_lib_object ${LIBRARIES})
 
 add_executable(test_lib_backWorkerQueue
         test/lib/backWorkerQueue.cpp
-        src/lib/backWorkerQueue.cpp)
+        src/lib/BackWorkerQueue.cc)
 
 add_test(lib_backWorkerQueue test_lib_backWorkerQueue)
 target_link_libraries(test_lib_backWorkerQueue ${LIBRARIES})

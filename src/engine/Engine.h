@@ -2,23 +2,23 @@
 
 #include "src/_classdef.h"
 
-#include "src/exception.h"
-#include "point.h"
+#include "src/Exception.hpp"
+#include "Point.hpp"
 
-#include "resources.h"
+#include "Resources.h"
 
-#include "texture.h"
-#include "light.h"
-#include "shaderProgram.h"
-#include "camera.h"
-#include "shader.h"
+#include "Texture.h"
+#include "Light.h"
+#include "ShaderProgram.h"
+#include "Camera.h"
+#include "Shader.h"
 
-#include "window.h"
-#include "scene.h"
-#include "abs3Dobj.h"
-#include "sub3Dobj.h"
+#include "Window.h"
+#include "Scene.h"
+#include "Abs3Dobj.h"
+#include "Sub3Dobj.h"
 
-#include "mouse.h"
-#include "keyboard.h"
-#include "inputInterface.h"
+#include "Mouse.h"
+#include "Keyboard.h"
+#include "InputInterface.h"
 

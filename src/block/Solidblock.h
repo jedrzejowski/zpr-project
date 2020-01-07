@@ -7,9 +7,9 @@
 namespace block {
 	class SolidBlock : public Block {
 	protected:
-		engine::SquareTextureReference textureTop;
-		engine::SquareTextureReference textureSide;
-		engine::SquareTextureReference textureBottom;
+		engine::SquareTextureReference texture_top;
+		engine::SquareTextureReference texture_side;
+		engine::SquareTextureReference texture_bottom;
 
 		SolidBlock(
 				const Coord2D& top,

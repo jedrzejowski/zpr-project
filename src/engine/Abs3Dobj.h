@@ -19,14 +19,14 @@ namespace engine {
 
 	public:
 
-		Abs3DObj(Sub3DObjPtr parent = nullptr);
+		explicit Abs3DObj(Sub3DObjPtr parent = nullptr);
 		~Abs3DObj();
 
 		void updateBuffers() override;
 		virtual void render(const ScenePtr& scene) = 0;
 
 		bool isNeedRefreshBuffers() const override;
-		void setNeedRefreshBuffers(bool needRefreshBuffers) override;
+		void setNeedRefreshBuffers(bool need) override;
 
 	};
 }

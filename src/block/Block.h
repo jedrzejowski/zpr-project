@@ -15,7 +15,7 @@ namespace block {
 		Block();
 		~Block() override;
 
-		void setPosition(map::ChunkPtr &chunkPtr, const Coord3D &pos);
+		void setPosition(map::ChunkPtr &chunk_ptr, const Coord3D &pos);
 
 		virtual void insertToBuffers(std::vector<engine::Point3DeX> &vertices,
 									 std::vector<engine::EboTriangle> &indices) = 0;

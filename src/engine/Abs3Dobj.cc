@@ -60,8 +60,8 @@ bool Abs3DObj::isNeedRefreshBuffers() const {
 	return out;
 }
 
-void Abs3DObj::setNeedRefreshBuffers(bool needRefreshBuffers) {
-	Abs3DObj::needRefreshBuffers = needRefreshBuffers;
+void Abs3DObj::setNeedRefreshBuffers(bool need) {
+	needRefreshBuffers = need;
 }
 
 

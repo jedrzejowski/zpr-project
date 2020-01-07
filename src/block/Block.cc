@@ -11,9 +11,9 @@ block::Block::~Block() {
 }
 
 
-void block::Block::setPosition(map::ChunkPtr &chunkPtr, const Coord3D &pos) {
+void block::Block::setPosition(map::ChunkPtr &chunk_ptr, const Coord3D &pos) {
 	this->position = pos;
-	this->chunk = chunkPtr;
+	this->chunk = chunk_ptr;
 }
 
 block::BlockWPtr block::Block::getNeighbor(CoordDim dx, CoordDim dy, CoordDim dz) const {

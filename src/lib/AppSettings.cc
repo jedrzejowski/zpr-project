@@ -18,6 +18,11 @@ AppSettings::AppSettings() {
 	cfgDir = temp[0] == 0 ? "." : temp;
 }
 
+AppSettings::~AppSettings() {
+	logger.destructor(this);
+}
+
+
 AppSettings &AppSettings::get() {
 	static AppSettings as;
 	return as;

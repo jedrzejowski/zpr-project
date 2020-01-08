@@ -13,15 +13,19 @@ class AppSettings {
 	AppSettings();
 	boost::filesystem::path cfgDir;
 public:
+	AppSettings(const AppSettings &) = delete;
+	void operator=(const AppSettings &) = delete;
 
-	static AppSettings& get();
+	~AppSettings();
 
-	boost::filesystem::path getCfgDir();
+	static AppSettings &get();
 
-	std::string loadFile(boost::filesystem::path);
+	[[nodiscard]] boost::filesystem::path getCfgDir();
+
+	[[nodiscard]] std::string loadFile(boost::filesystem::path);
 	void saveFile(boost::filesystem::path, std::string content);
 
-	json loadJSON(boost::filesystem::path path);
+	[[nodiscard]] json loadJSON(boost::filesystem::path path);
 	void saveJSON(boost::filesystem::path path, json content);
 };
 

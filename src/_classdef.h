@@ -28,6 +28,8 @@ class JsonFile;
 
 class AppSettings;
 
+class SaveableObject;
+
 namespace engine {
 	class exception;
 

@@ -7,13 +7,14 @@
 #pragma once
 
 #include "src/_classdef.h"
+#include "src/lib/SaveableObject.h"
 #include "src/lib/Coord.hpp"
 #include "src/lib/Object.hpp"
 #include "src/engine/Engine.h"
 #include "src/block/Blocks.h"
 
 namespace map {
-	class Chunk : public Object, public VirtualSharePtrObject<Chunk> {
+	class Chunk : public Object, public VirtualSharePtrObject<Chunk>, public SaveableObject {
 		friend ChunkRenderer;
 		friend ChunkGenerator;
 		friend ChunkLoader;
@@ -22,11 +23,13 @@ namespace map {
 		const Coord2D position;
 		std::map<Coord3D, block::BlockPtr> blocks;
 
-		Chunk(const WorldPtr& worldMap, const Coord2D &position);
+		Chunk(const WorldPtr &worldMap, const Coord2D &position);
+		void acceptState(json &json_data) override;
+
 	public:
 		static const Coord3D Size;
 
-		static ChunkPtr create(const WorldPtr& worldMap, const Coord2D &position);
+		static ChunkPtr create(const WorldPtr &worldMap, const Coord2D &position);
 
 		~Chunk() override;
 
@@ -39,11 +42,10 @@ namespace map {
 		const Coord2D &getPosition() const;
 		ChunkWPtr getNeighbor(CoordDim dx, CoordDim dy) const;
 
-		json toJSON() const;
-
 		const Signal<const Coord3D &> onBlockChange;
 
-		void save();
+		boost::filesystem::path getSavePath(AppSettings &app_settings) const override;
+		void toJSON(json &json_obj) const override;
 	};
 }
 

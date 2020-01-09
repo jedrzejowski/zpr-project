@@ -24,16 +24,10 @@ namespace map {
 		std::list<Coord2D> chunksToRemove;
 		std::list<Coord2D> unloadingChunksCoords;
 
-
 		std::list<Coord2D> loadingChunksCoords;
 		std::list<map::ChunkPtr> chunksToAdd;
 
-
 		std::mutex chunkListAccess;
-
-		ChunkPtr readChunkFromFile(const Coord2D &coord);
-		ChunkPtr generateNewChunk(const Coord2D &coord);
-		void saveChunkToFile(ChunkPtr chunk);
 
 	public:
 		explicit ChunkLoader(World* world);

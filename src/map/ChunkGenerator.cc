@@ -23,9 +23,7 @@ map::ChunkGenerator::ChunkGenerator(World *world) {
 
 }
 
-map::ChunkPtr map::ChunkGenerator::newVirginChunk(const Coord2D &position) {
-	auto worldMapPtr = world->shared_from_this();
-	auto chunk = map::Chunk::create(worldMapPtr, position);
+void map::ChunkGenerator::fillChunk(ChunkPtr& chunk) {
 
 	block::BlockPtr block;
 
@@ -79,6 +77,4 @@ map::ChunkPtr map::ChunkGenerator::newVirginChunk(const Coord2D &position) {
 			}
 		}
 	}
-
-	return chunk;
 }

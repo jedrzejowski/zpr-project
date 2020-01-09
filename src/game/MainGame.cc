@@ -36,6 +36,14 @@ game::MainGamePtr game::MainGame::create(game::GameScenePtr &scene) {
 	return self;
 }
 
+game::MainGame::~MainGame() {
+
+	worldMap->saveObjectToFile();
+	// zapisanie wszystkich chunków
+	for (const auto &it : worldMap->getLoadedChunks())
+		it.second->saveObjectToFile();
+}
+
 
 void game::MainGame::renderWorld() {
 	auto scene = gameScene.lock();

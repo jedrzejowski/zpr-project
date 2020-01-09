@@ -25,6 +25,7 @@ namespace game {
 		explicit MainGame(GameScenePtr& scene);
 	public:
 		static MainGamePtr create(GameScenePtr& scene);
+		virtual ~MainGame();
 
 		void renderWorld();
 

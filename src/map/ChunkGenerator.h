@@ -18,6 +18,6 @@ namespace map {
 	public:
 		explicit ChunkGenerator(World* world);
 
-		map::ChunkPtr newVirginChunk(const Coord2D &position);
+		void fillChunk(ChunkPtr& chunk);
 	};
 }

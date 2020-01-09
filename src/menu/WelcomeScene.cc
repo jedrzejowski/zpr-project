@@ -64,5 +64,5 @@ void menu::WelcomeScene::render(engine::WindowPtr& window) {
 }
 
 menu::WelcomeScene::~WelcomeScene() {
-	logger.log("usuwanie WelcomeScene");
+	logger(1).log("usuwanie WelcomeScene");
 }

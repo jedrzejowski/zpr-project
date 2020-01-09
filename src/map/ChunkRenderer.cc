@@ -13,7 +13,7 @@ map::ChunkRenderer::ChunkRenderer(map::WorldRendererPtr &renderer, const map::Ch
 		Abs3DObj(),
 		worldRenderer(renderer),
 		chunk(chunkPtr) {
-	logger.constructor(this);
+	logger(5).constructor(this);
 }
 
 map::ChunkRendererPtr map::ChunkRenderer::create(map::WorldRendererPtr &renderer, const map::ChunkPtr &chunkPtr) {
@@ -35,7 +35,7 @@ void map::ChunkRenderer::initEvents() {
 }
 
 map::ChunkRenderer::~ChunkRenderer() {
-	logger.destructor(this);
+	logger(5).destructor(this);
 }
 
 void map::ChunkRenderer::updateBuffers() {

@@ -15,7 +15,7 @@
 
 map::WorldRenderer::WorldRenderer(const map::WorldPtr& worldMap) :
 		worldMap(worldMap) {
-	logger.constructor(this);
+	logger(1).constructor(this);
 
 	shader = std::make_shared<map::WorldShader>();
 	blockTexture = engine::Resources::get().getTexture("texture/block.png");
@@ -51,7 +51,7 @@ void map::WorldRenderer::initEvents() {
 
 
 map::WorldRenderer::~WorldRenderer() {
-	logger.destructor(this);
+	logger(1).destructor(this);
 }
 
 void map::WorldRenderer::render(const engine::Camera &camera,

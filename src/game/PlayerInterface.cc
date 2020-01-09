@@ -14,11 +14,11 @@ game::PlayerInterface::PlayerInterface(game::MainGamePtr &scene) :
 		sceneWPtr(scene),
 		item_limit(8),
 		items(item_limit) {
-	logger.constructor(this);
+	logger(1).constructor(this);
 }
 
 game::PlayerInterface::~PlayerInterface() {
-	logger.destructor(this);
+	logger(1).destructor(this);
 }
 
 game::PlayerInterfacePtr game::PlayerInterface::create(game::MainGamePtr &scene) {

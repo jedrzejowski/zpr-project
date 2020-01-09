@@ -13,15 +13,20 @@
  */
 std::mutex mutex = std::mutex();
 
-Logger::Logger(const char *file, int line) {
+int Logger::VisibleLogLevel = 3;
+
+Logger::Logger(const char *file, int line, int level) : level(level) {
+	if (VisibleLogLevel <= level) return;
 	mutex.lock();
 	std::cout << "[ " << currentDateTime() << " @ " << file << ":" << line << " ]";
 }
 
 Logger::~Logger() {
+	if (VisibleLogLevel <= level) return;
 	std::cout << TTY_COLOR_RESET << std::endl << std::flush;
 	mutex.unlock();
 }
+
 std::string Logger::currentDateTime() {
 	//https://stackoverflow.com/questions/997946/how-to-get-current-time-and-date-in-c
 	time_t now = time(0);

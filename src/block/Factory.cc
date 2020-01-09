@@ -15,7 +15,7 @@
 
 block::BlockPtr block::Factory::create(json &data) {
 
-	if (!data[TYPE_ID_ATTR_NAME].is_number_unsigned())
+	if (!data[TYPE_ID_ATTR_NAME].is_number_integer())
 		throw zprException("solid_block::Factory::create", "wrong json");
 
 	BlockTypeId type_id = data[TYPE_ID_ATTR_NAME];
@@ -45,11 +45,8 @@ block::BlockPtr block::Factory::create(json &data) {
 			break;
 
 		default:
-			logger.warn("solid_block::Factory::create").log("wrong json").log(data);
+			throw WrongJsonException();
 	}
-
-	if (block == nullptr)
-		throw zprException("solid_block::Factory::create", "wrong json");
 
 	return block;
 }

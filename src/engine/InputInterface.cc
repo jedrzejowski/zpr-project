@@ -9,14 +9,14 @@
 #include <memory>
 
 engine::InputInterface::InputInterface() {
-	logger.constructor(this);
+	logger(1).constructor(this);
 
 	mouse = MousePtr(new Mouse(this));
 	keyboard = KeyboardPtr(new Keyboard(this));
 }
 
 engine::InputInterface::~InputInterface() {
-	logger.destructor(this);
+	logger(1).destructor(this);
 }
 
 engine::MousePtr engine::InputInterface::getMouse() {
@@ -47,11 +47,11 @@ void engine::InputInterface::attachToScene(SceneWPtr scene) {
 }
 
 void engine::InputInterface::unattachFromScene() {
-	logger.log("odpinanie od sceny").log(this);
+	logger(1).log("odpinanie od sceny").log(this);
 	onUnattached();
-	logger.log("odpinanie od sceny2");
+	logger(1).log("odpinanie od sceny2");
 	this->scene = SceneWPtr();
-	logger.log("odpinanie od sceny3");
+	logger(1).log("odpinanie od sceny3");
 }
 
 engine::SceneWPtr engine::InputInterface::getScene() const {

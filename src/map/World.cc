@@ -13,11 +13,11 @@ map::World::World(const std::string &codeName) :
 		codeName(codeName),
 		chunkLoader(this),
 		chunkGenerator(this) {
-	logger.constructor(this);
+	logger(1).constructor(this);
 }
 
 map::World::~World() {
-	logger.destructor(this);
+	logger(1).destructor(this);
 }
 
 map::WorldPtr map::World::create(const std::string &codeName) {
@@ -110,6 +110,21 @@ const std::string &map::World::getCodeName() const {
 	return codeName;
 }
 
-boost::filesystem::path map::World::getDirectory() {
+boost::filesystem::path map::World::getDirectory() const {
 	return AppSettings::get().getCfgDir() / "worlds" / getCodeName();
+}
+
+boost::filesystem::path map::World::getSavePath(AppSettings &app_settings) const {
+	return getDirectory() / "worldinfo";
+}
+
+json map::World::toJSON() const {
+	return json();
+}
+
+void map::World::acceptState(json &json_obj) {
+}
+
+const std::map<Coord2D, map::ChunkPtr> &map::World::getLoadedChunks() const {
+	return chunks;
 }

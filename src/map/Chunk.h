@@ -7,24 +7,29 @@
 #pragma once
 
 #include "src/_classdef.h"
-#include "src/lib/SaveableObject.h"
+#include "src/lib/SavableObject.h"
 #include "src/lib/Coord.hpp"
 #include "src/lib/Object.hpp"
 #include "src/engine/Engine.h"
 #include "src/block/Blocks.h"
 
 namespace map {
-	class Chunk : public Object, public VirtualSharePtrObject<Chunk>, public SaveableObject {
+	class Chunk : public Object, public VirtualSharePtrObject<Chunk>, public SavableObject {
 		friend ChunkRenderer;
 		friend ChunkGenerator;
 		friend ChunkLoader;
-	protected:
+	private:
+		const char *JSON_ATTR_BLOCKS = "blocks";
+
 		const WorldWPtr worldMapWPtr;
 		const Coord2D position;
-		std::map<Coord3D, block::BlockPtr> blocks;
+		mutable std::map<Coord3D, block::BlockPtr> blocks;
 
 		Chunk(const WorldPtr &worldMap, const Coord2D &position);
-		void acceptState(json &json_data) override;
+
+
+	protected:
+		void acceptState(json &data) override;
 
 	public:
 		static const Coord3D Size;
@@ -35,8 +40,8 @@ namespace map {
 
 		bool setBlock(const Coord3D &position, block::BlockPtr &block);
 		bool setAir(const Coord3D &position);
-		bool isAir(const Coord3D &position);
-		block::BlockPtr getBlock(const Coord3D &position);
+		bool isAir(const Coord3D &position) const;
+		block::BlockPtr getBlock(const Coord3D &position) const;
 		const std::map<Coord3D, block::BlockPtr> &getAllBlocks() const;
 
 		const Coord2D &getPosition() const;

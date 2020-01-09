@@ -51,7 +51,7 @@ ShaderProgram::ShaderProgram(const std::string &vertexPath, const std::string &f
 		GLchar infoLog[512];
 		glGetProgramInfoLog(shaderId, sizeof(infoLog), nullptr, infoLog);
 		std::string msg = std::string("ShaderProgram program linking:\n") + infoLog;
-		logger.info(std::string("Błąd podczas kompilacji szejdera:\n") + infoLog);
+		logger(1).info(std::string("Błąd podczas kompilacji szejdera:\n") + infoLog);
 		throw zprException("ShaderProgram::ShaderProgram", msg);
 	}
 

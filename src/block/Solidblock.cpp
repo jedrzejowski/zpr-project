@@ -13,7 +13,7 @@ block::SolidBlock::SolidBlock(json &data) : Block(data) {
 }
 
 
-void block::SolidBlock::initTextureReferences() {
+void block::SolidBlock::initTextureReferences() const {
 	auto top = getTopTextureCoord();
 	auto side = getSideTextureCoord();
 	auto bottom = getBottomTextureCoord();
@@ -131,14 +131,23 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 }
 
 const engine::SquareTextureReference &block::SolidBlock::getTopTextureReference() const {
+	if (is_texture_reference_init_required)
+		initTextureReferences();
+
 	return texture_top;
 }
 
 const engine::SquareTextureReference &block::SolidBlock::getSideTextureReference() const {
+	if (is_texture_reference_init_required)
+		initTextureReferences();
+
 	return texture_side;
 }
 
 const engine::SquareTextureReference &block::SolidBlock::getBottomTextureReference() const {
+	if (is_texture_reference_init_required)
+		initTextureReferences();
+
 	return texture_bottom;
 }
 

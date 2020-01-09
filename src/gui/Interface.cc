@@ -39,7 +39,7 @@ void gui::Interface::render(const engine::ScenePtr& scene) {
 	auto windowWPtr = scene->getWindow();
 
 	if (windowWPtr.expired()) {
-		logger.err("gui::Interface::render(): rendering with expired Window object");
+		logger(1).err("gui::Interface::render(): rendering with expired Window object");
 		return;
 	}
 

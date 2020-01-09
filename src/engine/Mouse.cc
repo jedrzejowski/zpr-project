@@ -10,7 +10,7 @@
 
 engine::Mouse::Mouse(engine::InputInterface *ii) :
 		InputDevice(ii) {
-	logger.constructor(this);
+	logger(1).constructor(this);
 
 	addBtn(Left);
 	addBtn(Right);
@@ -107,7 +107,7 @@ void engine::Mouse::setGlfwPosition(GLFWwindow *window, const glm::vec2 &pos) {
 }
 
 engine::Mouse::~Mouse() {
-	logger.destructor(this);
+	logger(1).destructor(this);
 }
 
 

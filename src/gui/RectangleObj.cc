@@ -96,7 +96,7 @@ void gui::RectangleObj::updateBuffers() {
 }
 
 gui::RectangleObj::~RectangleObj() {
-	logger.log("~RectangleObj()");
+	logger(1).log("~RectangleObj()");
 }
 
 const engine::SquareTextureReference &gui::RectangleObj::getTextureReference() const {

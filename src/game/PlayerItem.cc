@@ -56,11 +56,11 @@ game::PlayerSolidBlockItem::PlayerSolidBlockItem(game::PlayerInterfacePtr &playe
 		PlayerItem(playerInterfacePtr),
 		solid_block_ptr(block),
 		block_ptr(block) {
-	logger.constructor(this);
+	logger(1).constructor(this);
 }
 
 game::PlayerSolidBlockItem::~PlayerSolidBlockItem() {
-	logger.destructor(this);
+	logger(1).destructor(this);
 }
 
 game::PlayerBlockItemPtr

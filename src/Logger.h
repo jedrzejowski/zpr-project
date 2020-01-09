@@ -31,23 +31,27 @@
 #define TTY_COLOR_BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
 #define TTY_COLOR_BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
 
-//#define GET_MACRO(_1,_2,_3,NAME,...) NAME
-//#define logger(...) GET_MACRO(__VA_ARGS__, FOO3, FOO2)(__VA_ARGS__)
-#define logger (Logger(__FILE__, __LINE__))
-//#define fastLog(var) (logger.log(#var).log("=").log(var))
+#define logger(level) (Logger(__FILE__, __LINE__, level))
+//#define fastLog(var) (logger(1).log(#var).log("=").log(var))
 
 //#define logger //
 
+
+
 class Logger {
+private:
+	int level;
 public:
-	Logger(const char *file, int line);
-//	Logger(const char *file, int line, in);
+	static int VisibleLogLevel;
+
+	Logger(const char *file, int line, int level);
 	~Logger();
 
 	std::string currentDateTime();
 
 	template<typename T>
 	Logger &msg(const T &obj, const std::string &color = TTY_COLOR_RESET) {
+		if (VisibleLogLevel <= level) return *this;
 
 		std::cout << " " << color << obj << TTY_COLOR_RESET;
 

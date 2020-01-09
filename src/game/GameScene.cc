@@ -12,10 +12,10 @@
 #include "src/menu/WelcomeScene.h"
 
 game::GameScene::GameScene() {
-	logger.constructor(this);
+	logger(1).constructor(this);
 }
 game::GameScene::~GameScene() {
-	logger.destructor(this);
+	logger(1).destructor(this);
 }
 
 

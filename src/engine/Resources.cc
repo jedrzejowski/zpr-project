@@ -18,7 +18,7 @@ void engine::Resources::load(std::string &path) {
 
 std::string engine::Resources::loadTextFile(const std::string &path) {
 
-	logger.log("engine::Resources::loadTextFile loading \"" + path + "\"");
+	logger(1).log("engine::Resources::loadTextFile loading \"" + path + "\"");
 
 	std::ifstream file;
 	file.exceptions(std::ifstream::badbit);

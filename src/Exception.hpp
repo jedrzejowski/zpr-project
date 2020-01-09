@@ -8,6 +8,8 @@
 
 #include <string>
 #include <iostream>
+#include <boost/filesystem/path.hpp>
+#include "Logger.h"
 
 class ZprException : std::exception {
 private:
@@ -19,25 +21,60 @@ private:
 public:
 
 	ZprException(const char *file, int line, const char *where, std::string &msg) :
-			where(where), file(file), line(line), msg(msg) {};
+			where(where), file(file), line(line), msg(msg) {
+		logger(1).err("ZprException(): creating at").log(file).log(line);
+	};
 
 	ZprException(const char *file, int line, const char *where, const char *msg) :
-			where(where), file(file), line(line), msg(msg) {};
+			where(where), file(file), line(line), msg(msg) {
+		logger(1).err("ZprException(): creating at").log(file).log(line);
+	};
 
 	ZprException(const char *file, int line, const char *where, char *msg) :
-			where(where), file(file), line(line), msg(msg) {};
+			where(where), file(file), line(line), msg(msg) {
+		logger(1).err("ZprException(): creating at").log(file).log(line);
+	};
 
-	const std::string &getFile() const {
+	[[nodiscard]] const std::string &getFile() const {
 		return file;
 	}
 
-	const int &getLine() const {
+	[[nodiscard]] const int &getLine() const {
 		return line;
 	}
 
-	const char *what() const noexcept override {
+	[[nodiscard]] const char *what() const noexcept override {
 		return msg.c_str();
 	};
+};
+
+class FileInputException : std::exception {
+private:
+	std::string file;
+public:
+	explicit FileInputException(const char *file) : file(file) {};
+	explicit FileInputException(std::string &file) : file(file) {};
+	explicit FileInputException(boost::filesystem::path &file) : file(file.string()) {};
+
+	[[nodiscard]] const std::string &getFile() const {
+		return file;
+	}
+};
+
+class FileOutputException : std::exception {
+private:
+	std::string file;
+public:
+	explicit FileOutputException(const char *file) : file(file) {};
+	explicit FileOutputException(std::string &file) : file(file) {};
+	explicit FileOutputException(boost::filesystem::path &file) : file(file.string()) {};
+
+	[[nodiscard]] const std::string &getFile() const {
+		return file;
+	}
+};
+
+class WrongJsonException : std::exception {
 };
 
 #define zprException(where, what) ZprException(__FILE__, __LINE__, where, what)

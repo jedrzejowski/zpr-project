@@ -15,10 +15,10 @@ namespace block {
 
 
 	protected:
-		engine::SquareTextureReference texture_top;
-		engine::SquareTextureReference texture_side;
-		engine::SquareTextureReference texture_bottom;
-		bool is_texture_reference_init_required = true;
+		mutable engine::SquareTextureReference texture_top{};
+		mutable engine::SquareTextureReference texture_side{};
+		mutable engine::SquareTextureReference texture_bottom{};
+		mutable bool is_texture_reference_init_required = true;
 
 		explicit SolidBlock() = default;
 		explicit SolidBlock(json &data);
@@ -28,7 +28,8 @@ namespace block {
 		virtual Coord2D getBottomTextureCoord() const = 0;
 
 	private:
-		void initTextureReferences();
+		void initTextureReferences() const;
+
 	protected:
 		void setIsTextureReferenceInitRequired(bool isTextureReferenceInitRequired);
 		bool isTextureReferenceInitRequired() const;

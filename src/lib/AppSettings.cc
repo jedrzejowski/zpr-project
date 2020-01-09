@@ -11,7 +11,7 @@
 #include "cfgpath.h"
 
 AppSettings::AppSettings() {
-	logger.constructor(this);
+	logger(1).constructor(this);
 
 	char temp[256];
 	get_user_config_folder(temp, sizeof(temp), global::AppName.c_str());
@@ -19,7 +19,7 @@ AppSettings::AppSettings() {
 }
 
 AppSettings::~AppSettings() {
-	logger.destructor(this);
+	logger(1).destructor(this);
 }
 
 
@@ -44,7 +44,7 @@ json AppSettings::loadJSON(boost::filesystem::path path) {
 	std::ifstream fileStream(path);
 
 	if (!fileStream.is_open())
-		throw zprException("AppSettings::loadJSON", "cant read file");
+		throw FileInputException(path);
 
 	json data;
 	fileStream >> data;
@@ -59,7 +59,7 @@ void AppSettings::saveJSON(boost::filesystem::path path, json content) {
 	std::ofstream fileStream(path);
 
 	if (!fileStream.is_open())
-		throw zprException("AppSettings::saveJSON", "cant write file");
+		throw FileOutputException(path);
 
 	fileStream << std::setw(4) << content << std::endl;
 }

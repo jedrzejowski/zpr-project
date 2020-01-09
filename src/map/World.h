@@ -12,9 +12,10 @@
 #include "src/lib/Object.hpp"
 #include "ChunkGenerator.h"
 #include "ChunkLoader.h"
+#include "src/lib/SavableObject.h"
 
 namespace map {
-	class World : public Object, public VirtualSharePtrObject<World> {
+	class World : public Object, public VirtualSharePtrObject<World>, public SavableObject {
 		friend ChunkLoader;
 		friend ChunkGenerator;
 	protected:
@@ -28,6 +29,7 @@ namespace map {
 		void insertChunk(map::ChunkPtr chunk);
 
 		explicit World(const std::string& codeName);
+		void acceptState(json &json_obj) override;
 	public:
 		static WorldPtr create(const std::string& codeName);
 		~World() override;
@@ -35,16 +37,19 @@ namespace map {
 		bool hasChunk(const Coord2D &position);
 		ChunkWPtr getChunk(const Coord2D &position);
 		void loadForPlayer(game::PlayerPtr &player);
-
 		void requestChunk(Coord2D position);
 
 		void syncChunkWithLoader();
 
-		boost::filesystem::path getDirectory();
+		boost::filesystem::path getDirectory() const;
+		boost::filesystem::path getSavePath(AppSettings &app_settings) const override;
+		json toJSON() const override;
 
 		const std::string &getDisplayName() const;
 		void setDisplayName(const std::string &displayName);
 		const std::string &getCodeName() const;
+
+		const std::map<Coord2D, map::ChunkPtr> &getLoadedChunks() const;
 
 		const Signal<ChunkPtr> onChunkInserted;
 		const Signal<ChunkPtr> onChunkEjected;

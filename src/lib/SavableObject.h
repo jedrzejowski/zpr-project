@@ -1,5 +1,5 @@
 /**
- * @file SaveableObject.h
+ * @file SavableObject.h
  *
  * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
  */
@@ -12,20 +12,21 @@
 
 using json = nlohmann::json;
 
-class SaveableObject {
+class SavableObject {
 private:
 	bool need_save = true;
 
 protected:
 	virtual void acceptState(json &json_obj) = 0;
 	void setNeedSave(bool needSave);
-	void readObject();
-public:
-	[[nodiscard]] virtual boost::filesystem::path getSavePath(AppSettings &app_settings) const = 0;
-	virtual json toJSON() const = 0;
+	void loadObjectFromFile();
 
-	void saveObject() const;
-	void saveObjectIfNeed() const;
+	bool hasSavedFile();
+public:
+	[[nodiscard]] virtual boost::filesystem::path getSavePath(AppSettings &app_settings = AppSettings::get()) const = 0;
+	[[nodiscard]] virtual json toJSON() const = 0;
+
+	void saveObjectToFile() const;
 	[[nodiscard]] virtual bool isNeedSave() const;
 };
 

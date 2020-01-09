@@ -20,37 +20,33 @@ BackWorkerQueue::~BackWorkerQueue() {
 
 
 void BackWorkerQueue::threadWorker() {
+	Function function;
+
 	while (!endWorker) {
-		queueAccess.lock();
 
-		if (queue.empty()) {
-			queueAccess.unlock();
-			waitingForData.lock();
-
-			if (endWorker) return;
-
+		{
 			waitingForData.lock();
 			waitingForData.unlock();
-
-			queueAccess.lock();
 		}
 
-		if (endWorker) return;
-
-		Function function = queue.front();
-		queue.pop();
-		queueAccess.unlock();
+		{
+			std::lock_guard<std::mutex> lock(queueAccess);
+			if (queue.empty()) {
+				waitingForData.lock();
+				continue;
+			}
+			function = queue.front();
+			queue.pop();
+		}
 
 		function();
 	}
 }
 
 void BackWorkerQueue::push(const BackWorkerQueue::Function &function) {
-	queueAccess.lock();
-
+	std::lock_guard<std::mutex> lock(queueAccess);
 	queue.push(function);
 
-	queueAccess.unlock();
 	waitingForData.unlock();
 }
 

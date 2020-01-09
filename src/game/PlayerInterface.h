@@ -12,22 +12,26 @@
 namespace game {
 	class PlayerInterface : public gui::Interface, public VirtualSharePtrObject<PlayerInterface> {
 	private:
+		game::MainGameWPtr sceneWPtr;
 		explicit PlayerInterface(game::MainGamePtr &scene);
 
-		int itemLimit;
+		const int item_limit;
 
 		std::vector<PlayerItemPtr> items;
 		gui::RectangleObjPtr background;
-		int selected = 0;
+		int selected_slot_index = 0;
 
 		void updateItemModel(int index);
+
+		void assertIndexValid(int index);
 
 	public:
 		static PlayerInterfacePtr create(MainGamePtr &scene);
 		~PlayerInterface() override;
 
-		void selectItem(int index);
-		void setItem(int index, PlayerItemPtr &item);
+		void setSlot(int index, PlayerItemPtr &item);
+		void selectSlot(int index);
+		bool isItemSlotEmpty(int index);
 
 		void useItem();
 	};

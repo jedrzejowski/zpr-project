@@ -137,14 +137,17 @@ namespace gui {
 
 namespace block {
 
-	typedef int BlockTypeId;
+	typedef uint32_t BlockTypeId;
 
 	class Block;
 
 	typedef std::shared_ptr<Block> BlockPtr;
 	typedef std::weak_ptr<Block> BlockWPtr;
 
+	class Factory;
+
 	class FullPosition;
+	// NIE ROBIĆ SMART POINTERÓW
 
 	class SolidBlock;
 
@@ -154,6 +157,12 @@ namespace block {
 	class Stone;
 
 	class Dirt;
+
+	class Water;
+
+	class Sand;
+
+	class Grass;
 }
 
 namespace map {
@@ -183,14 +192,17 @@ namespace map {
 	typedef std::weak_ptr<ChunkRenderer> ChunkRendererWPtr;
 
 	class ChunkGenerator;
+	// NIE ROBIĆ SMART POINTERÓW
 
 	class ChunkLoader;
+	// NIE ROBIĆ SMART POINTERÓW
 }
 
 namespace game {
 	class Player;
 
 	typedef std::shared_ptr<Player> PlayerPtr;
+	typedef std::weak_ptr<Player> PlayerWPtr;
 
 	class MainWindow;
 
@@ -215,11 +227,6 @@ namespace game {
 
 	typedef std::shared_ptr<PlayerInterface> PlayerInterfacePtr;
 	typedef std::weak_ptr<PlayerInterface> PlayerInterfaceWPtr;
-
-	class SelectedBlock;
-
-	typedef std::shared_ptr<SelectedBlock> SelectedBlockPtr;
-	typedef std::weak_ptr<SelectedBlock> SelectedBlockWPtr;
 
 	class PlayerItem;
 

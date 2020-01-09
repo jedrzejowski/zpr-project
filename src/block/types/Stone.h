@@ -11,8 +11,13 @@
 
 namespace block {
 	class Stone : public SolidBlock {
+	protected:
+		Coord2D getTopTextureCoord() const override;
+		Coord2D getSideTextureCoord() const override;
+		Coord2D getBottomTextureCoord() const override;
 	public:
-		Stone();
+		explicit Stone() = default;
+		explicit Stone(json &data);
 		int typeId() override;
 	};
 }

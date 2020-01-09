@@ -9,13 +9,8 @@
 
 const block::BlockWPtr block::Air = block::BlockWPtr();
 
-block::Block::Block() {
-//	logger.constructor(this);
+block::Block::Block(json &data) {
 }
-block::Block::~Block() {
-//	logger.destructor(this);
-}
-
 
 void block::Block::setPosition(map::ChunkPtr &chunk_ptr, const Coord3D &pos) {
 	this->position = pos;
@@ -78,7 +73,7 @@ bool block::Block::isSolid() {
 json block::Block::toJSON() {
 	json j;
 
-	j["typeId"] = typeId();
+	j[TYPE_ID_ATTR_NAME] = typeId();
 
 	return j;
 }

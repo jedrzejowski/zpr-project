@@ -62,7 +62,7 @@ void map::ChunkLoader::syncWithWorld() {
 
 		worker.push([this, chunk] {
 
-			chunk->save();
+			chunk->saveObjectIfNeed();
 
 			chunkListAccess.lock();
 			unloadingChunksCoords.remove(chunk->getPosition());

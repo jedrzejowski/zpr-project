@@ -35,15 +35,15 @@ block::BlockPtr map::Chunk::getBlock(const Coord3D &position) {
 	// tu jest ciekawa opcja, bo gdy weżmiemy sobie nie istaniejący blok to mapa utworzy go z konstruktorem domyślnym
 	// https://stackoverflow.com/questions/6952486/recommended-way-to-insert-elements-into-map
 
-	if (isAir(position)) throw zprException("getting air block");
+	if (isAir(position)) throw zprException("map::Chunk::getBlock", "getting air solid_block");
 
 	return blocks[position];
 }
 
 bool map::Chunk::setBlock(const Coord3D &position, block::BlockPtr &block) {
-//	logger.log("map::Chunk::setBlock").log(block);
+//	logger.log("map::Chunk::setBlock").log(solid_block);
 	if (block.get() == nullptr)
-		throw zprException("map::Chunk::setBlock() setting empty block");
+		throw zprException("map::Chunk::setBlock", "setting empty solid_block");
 
 	auto self = this->shared_from_this();
 	block->setPosition(self, position);
@@ -80,7 +80,7 @@ map::ChunkWPtr map::Chunk::getNeighbor(CoordDim dx, CoordDim dy) const {
 	else return map::ChunkWPtr();
 }
 
-json map::Chunk::toJSON(json &json_obj) const {
+json map::Chunk::toJSON() const {
 	json j;
 
 	j["coord"] = getPosition().toJSON();

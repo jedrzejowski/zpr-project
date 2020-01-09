@@ -11,10 +11,9 @@
 #include "ChunkRenderer.h"
 #include "src/game/Player.h"
 #include "src/engine/Engine.h"
-#include "src/game/SelectedBlock.h"
 #include "WorldShader.h"
 
-map::WorldRenderer::WorldRenderer(const map::WorldPtr &worldMap) :
+map::WorldRenderer::WorldRenderer(const map::WorldPtr& worldMap) :
 		worldMap(worldMap) {
 	logger.constructor(this);
 

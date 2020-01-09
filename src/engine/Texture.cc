@@ -40,19 +40,21 @@ void Texture::loadTexture(const std::string &path) {
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
 
 	auto data = stbi_load(path.c_str(),
-						  &width, &height, &nrChannels, 0);
+						  &width, &height, &number_of_channels, 0);
 
 	if (data) {
-		logger.log(path).log(nrChannels);
+		logger.log(path).log(number_of_channels);
 
-		if (nrChannels == 3)
+		if (number_of_channels == 3)
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-		if (nrChannels == 4)
+		if (number_of_channels == 4)
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 
 		glGenerateMipmap(GL_TEXTURE_2D);
-	} else
-		throw zprException("Failed to load texture");
+	} else {
+		logger.warn("Texture::loadTexture()").log("failed to load texture from path").log(path);
+//		throw zprException("Texture::loadTexture", "failed to load texture");
+	}
 
 	stbi_image_free(data);
 }
@@ -71,7 +73,7 @@ int Texture::getHeight() const {
 }
 
 int Texture::getNrChannels() const {
-	return nrChannels;
+	return number_of_channels;
 }
 
 Color Texture::getColor(int x, int y) {

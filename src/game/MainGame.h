@@ -14,14 +14,11 @@ namespace game {
 	class MainGame : public Object {
 	private:
 		GameSceneWPtr gameScene;
-		engine::InputInterfacePtr inputInterface;
+		engine::InputInterfacePtr input_interface;
 		map::WorldPtr worldMap;
 		map::WorldRendererPtr mapRenderer;
 		PlayerPtr player;
-		PlayerInterfacePtr playerInterface;
-
-
-		SelectedBlockPtr selectedBlock;
+		PlayerInterfacePtr player_interface;
 
 		void initInputInterface();
 
@@ -41,7 +38,6 @@ namespace game {
 		const map::WorldPtr &getWorldMap() const;
 		const map::WorldRendererPtr &getMapRenderer() const;
 		const PlayerPtr &getPlayer() const;
-		const SelectedBlockPtr &getSelectedBlock() const;
 		const PlayerInterfacePtr &getPlayerInterface() const;
 	};
 }

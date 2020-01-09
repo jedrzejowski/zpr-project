@@ -34,7 +34,8 @@ namespace game {
 	};
 
 	class PlayerSolidBlockItem : public PlayerItem, public VirtualSharePtrObject<PlayerSolidBlockItem> {
-		block::SolidBlockPtr block;
+		block::SolidBlockPtr solid_block_ptr;
+		block::BlockPtr block_ptr;
 		PlayerSolidBlockItem(PlayerInterfacePtr &playerInterfacePtr, block::SolidBlockPtr &block);
 	public:
 		~PlayerSolidBlockItem();

@@ -19,7 +19,7 @@ Window::Window() {
 void Window::open() {
 
 	if (glfwInit() != GL_TRUE)
-		throw zprException("GLFW initialization failed");
+		throw zprException("Window::open", "GLFW initialization failed");
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -28,16 +28,16 @@ void Window::open() {
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
-	glfwWin = glfwCreateWindow(winWidth, winHeight, getTitle().c_str(), nullptr, nullptr);
+	glfwWin = glfwCreateWindow(window_width, window_height, getTitle().c_str(), nullptr, nullptr);
 
 	if (glfwWin == nullptr)
-		throw zprException("Can't open GLFW window");
+		throw zprException("Window::open", "Can't open GLFW window");
 
 	glfwMakeContextCurrent(glfwWin);
 
 	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK)
-		throw zprException("GLEW initialization failed");
+		throw zprException("Window::open", "GLEW initialization failed");
 
 	glEnable(GL_DEPTH_TEST);
 
@@ -96,13 +96,13 @@ void Window::mainLoop() {
 	{
 		//https://www.glfw.org/docs/latest/window_guide.html#window_size
 		glfwGetWindowSize(glfwWin,
-						  &winWidth,
-						  &winHeight);
+						  &window_width,
+						  &window_height);
 		glfwGetWindowFrameSize(glfwWin,
-							   &winLeftOffset,
-							   &winTopOffset,
-							   &winRightOffset,
-							   &winBottomOffset);;
+							   &window_left_offset,
+							   &window_top_offset,
+							   &window_right_offset,
+							   &win_bottom_offset);;
 	}
 
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -139,27 +139,27 @@ GLFWwindow *Window::getGlfwWindow() const {
 
 
 int Window::getWinWidth() const {
-	return winWidth;
+	return window_width;
 }
 
 int Window::getWinHeight() const {
-	return winHeight;
+	return window_height;
 }
 
 int Window::getWinTopOffset() const {
-	return winTopOffset;
+	return window_top_offset;
 }
 
 int Window::getWinLeftOffset() const {
-	return winLeftOffset;
+	return window_left_offset;
 }
 
 int Window::getWinRightOffset() const {
-	return winRightOffset;
+	return window_right_offset;
 }
 
 int Window::getWinBottomOffset() const {
-	return winBottomOffset;
+	return win_bottom_offset;
 }
 
 ViewPort Window::getViewPort() const {
@@ -171,22 +171,22 @@ void Window::setViewPort(ViewPort viewPort) {
 
 	switch (viewPort) {
 		case OneTwoOne:
-			glViewport(winLeftOffset, winBottomOffset, winWidth, winHeight);
+			glViewport(window_left_offset, win_bottom_offset, window_width, window_height);
 			break;
 		case Square:
-			auto size = std::min(winWidth, winHeight);
-			glViewport((winWidth - size) / 2, (winHeight - size) / 2, size, size);
+			auto size = std::min(window_width, window_height);
+			glViewport((window_width - size) / 2, (window_height - size) / 2, size, size);
 			break;
 	}
 }
 
 glm::vec2 Window::scalePixelPosToViewPortPos(ViewPort viewPort, glm::vec2 pos) {
-	if (winWidth > winHeight) {
-		pos.x -= float(winWidth - winHeight) / 2;
-		pos /= winHeight;
+	if (window_width > window_height) {
+		pos.x -= float(window_width - window_height) / 2;
+		pos /= window_height;
 	} else {
-		pos.y -= float(winHeight - winWidth) / 2;
-		pos /= winWidth;
+		pos.y -= float(window_height - window_width) / 2;
+		pos /= window_width;
 	}
 	return pos;
 }

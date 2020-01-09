@@ -66,5 +66,5 @@ glm::Square block::getWall(FullPosition pos, block::Direction dir) {
 			);
 	}
 
-	throw zprException("enum not matched");
+	throw zprException("solid_block::getWall", "enum not matched");
 }

@@ -44,7 +44,7 @@ block::FullPosition block::FullPosition::getNeighbor(CoordDim dx, CoordDim dy, C
 	return position;
 }
 
-const Coord2D &block::FullPosition::getChunk() const {
+const Coord2D &block::FullPosition::getChunkCoord() const {
 	return chunk;
 }
 
@@ -52,11 +52,11 @@ void block::FullPosition::setChunk(const Coord2D &chunk) {
 	FullPosition::chunk = chunk;
 }
 
-const Coord3D &block::FullPosition::getBlock() const {
+const Coord3D &block::FullPosition::getBlockCoord() const {
 	return block;
 }
 
-void block::FullPosition::setBlock(const Coord3D &block) {
+void block::FullPosition::setBlockCoord(const Coord3D &block) {
 	FullPosition::block = block;
 }
 

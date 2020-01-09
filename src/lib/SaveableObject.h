@@ -22,7 +22,7 @@ protected:
 	void readObject();
 public:
 	[[nodiscard]] virtual boost::filesystem::path getSavePath(AppSettings &app_settings) const = 0;
-	virtual void toJSON(json &json_obj) const = 0;
+	virtual json toJSON() const = 0;
 
 	void saveObject() const;
 	void saveObjectIfNeed() const;

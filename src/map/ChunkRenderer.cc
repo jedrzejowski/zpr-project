@@ -48,12 +48,12 @@ void map::ChunkRenderer::updateBuffers() {
 									  0
 							  ));
 
-	verticesBuf.clear();
-	indicesBuf.clear();
+	vertices_buffer.clear();
+	indices_buffer.clear();
 
 	for (const auto &iter : chunk->getAllBlocks()) {
 		if (iter.second == nullptr) continue;
-		iter.second->insertToBuffers(verticesBuf, indicesBuf);
+		iter.second->insertToBuffers(vertices_buffer, indices_buffer);
 	}
 
 	setNeedRefreshBuffers(false);

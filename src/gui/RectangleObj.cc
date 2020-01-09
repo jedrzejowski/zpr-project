@@ -84,15 +84,15 @@ void gui::RectangleObj::updateBuffers() {
 	point_XY = getModel() * glm::vec4(baseSize.x, baseSize.y, 0, 1);
 	point_xY = getModel() * glm::vec4(0, baseSize.y, 0, 1);
 
-	verticesBuf.clear();
-	verticesBuf.emplace_back(point_xy, textureReference.getTexCoord_xy());
-	verticesBuf.emplace_back(point_Xy, textureReference.getTexCoord_Xy());
-	verticesBuf.emplace_back(point_XY, textureReference.getTexCoord_XY());
-	verticesBuf.emplace_back(point_xY, textureReference.getTexCoord_xY());
+	vertices_buffer.clear();
+	vertices_buffer.emplace_back(point_xy, textureReference.getTexCoord_xy());
+	vertices_buffer.emplace_back(point_Xy, textureReference.getTexCoord_Xy());
+	vertices_buffer.emplace_back(point_XY, textureReference.getTexCoord_XY());
+	vertices_buffer.emplace_back(point_xY, textureReference.getTexCoord_xY());
 
-	indicesBuf.clear();
-	indicesBuf.emplace_back(0, 1, 2);
-	indicesBuf.emplace_back(2, 3, 0);
+	indices_buffer.clear();
+	indices_buffer.emplace_back(0, 1, 2);
+	indices_buffer.emplace_back(2, 3, 0);
 }
 
 gui::RectangleObj::~RectangleObj() {

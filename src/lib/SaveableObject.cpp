@@ -17,7 +17,8 @@ void SaveableObject::setNeedSave(bool needSave) {
 void SaveableObject::saveObject() const {
 	static auto &app_settings = AppSettings::get();
 
-	app_settings.saveJSON(getSavePath(app_settings), toJSON());
+	if (isNeedSave())
+		app_settings.saveJSON(getSavePath(app_settings), toJSON());
 }
 
 void SaveableObject::readObject() {

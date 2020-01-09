@@ -7,8 +7,8 @@
 #pragma once
 
 #include <map>
+#include "boost/filesystem/path.hpp"
 #include "src/_classdef.h"
-#include "src/engine/Engine.h"
 #include "src/lib/Object.hpp"
 #include "ChunkGenerator.h"
 #include "ChunkLoader.h"

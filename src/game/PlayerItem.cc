@@ -6,9 +6,13 @@
 
 #include "PlayerItem.h"
 
+#include "Player.h"
 #include "PlayerInterface.h"
 #include "src/gui/Interface.h"
 #include "src/block/Solidblock.h"
+#include "src/map/World.h"
+#include "src/map/Chunk.h"
+#include "src/block/Factory.h"
 
 game::PlayerItem::PlayerItem(const game::PlayerInterfacePtr &playerInterfacePtr) :
 		gui::GuiObject(std::static_pointer_cast<gui::Interface>(playerInterfacePtr)),
@@ -50,7 +54,8 @@ const game::PlayerInterfaceWPtr &game::PlayerItem::getPlayerInterface() const {
 game::PlayerSolidBlockItem::PlayerSolidBlockItem(game::PlayerInterfacePtr &playerInterfacePtr,
 												 block::SolidBlockPtr &block) :
 		PlayerItem(playerInterfacePtr),
-		block(block) {
+		solid_block_ptr(block),
+		block_ptr(block) {
 	logger.constructor(this);
 }
 
@@ -72,13 +77,13 @@ game::PlayerSolidBlockItem::create(PlayerInterfacePtr &playerInterfacePtr, block
 
 void game::PlayerSolidBlockItem::updateBuffers() {
 
-	verticesBuf.clear();
-	indicesBuf.clear();
+	vertices_buffer.clear();
+	indices_buffer.clear();
 
-	auto vOffest = indicesBuf.size();
+	auto vOffest = indices_buffer.size();
 
-	auto &topTex = block->getTextureTop();
-	auto &sideTex = block->getTextureSide();
+	auto &topTex = solid_block_ptr->getTopTextureReference();
+	auto &sideTex = solid_block_ptr->getSideTextureReference();
 
 	{ // Góra
 		auto point_xy = getModel() * glm::vec4(0, 0, 0, 1);
@@ -86,13 +91,13 @@ void game::PlayerSolidBlockItem::updateBuffers() {
 		auto point_XY = getModel() * glm::vec4(0, -1, 0, 1);
 		auto point_xY = getModel() * glm::vec4(1, -0.5, 0, 1);
 
-		verticesBuf.emplace_back(point_xy, topTex.getTexCoord_xy());
-		verticesBuf.emplace_back(point_Xy, topTex.getTexCoord_Xy());
-		verticesBuf.emplace_back(point_XY, topTex.getTexCoord_XY());
-		verticesBuf.emplace_back(point_xY, topTex.getTexCoord_xY());
+		vertices_buffer.emplace_back(point_xy, topTex.getTexCoord_xy());
+		vertices_buffer.emplace_back(point_Xy, topTex.getTexCoord_Xy());
+		vertices_buffer.emplace_back(point_XY, topTex.getTexCoord_XY());
+		vertices_buffer.emplace_back(point_xY, topTex.getTexCoord_xY());
 
-		indicesBuf.emplace_back(engine::EboTriangle(0, 2, 1) + vOffest);
-		indicesBuf.emplace_back(engine::EboTriangle(0, 3, 2) + vOffest);
+		indices_buffer.emplace_back(engine::EboTriangle(0, 2, 1) + vOffest);
+		indices_buffer.emplace_back(engine::EboTriangle(0, 3, 2) + vOffest);
 
 		vOffest += 4;
 	}
@@ -103,13 +108,13 @@ void game::PlayerSolidBlockItem::updateBuffers() {
 		auto point_XY = getModel() * glm::vec4(-1, 0.5, 0, 1);
 		auto point_xY = getModel() * glm::vec4(-1, -0.5, 0, 1);
 
-		verticesBuf.emplace_back(point_xy, sideTex.getTexCoord_xy());
-		verticesBuf.emplace_back(point_Xy, sideTex.getTexCoord_Xy());
-		verticesBuf.emplace_back(point_XY, sideTex.getTexCoord_XY());
-		verticesBuf.emplace_back(point_xY, sideTex.getTexCoord_xY());
+		vertices_buffer.emplace_back(point_xy, sideTex.getTexCoord_xy());
+		vertices_buffer.emplace_back(point_Xy, sideTex.getTexCoord_Xy());
+		vertices_buffer.emplace_back(point_XY, sideTex.getTexCoord_XY());
+		vertices_buffer.emplace_back(point_xY, sideTex.getTexCoord_xY());
 
-		indicesBuf.emplace_back(engine::EboTriangle(0, 2, 1) + vOffest);
-		indicesBuf.emplace_back(engine::EboTriangle(0, 3, 2) + vOffest);
+		indices_buffer.emplace_back(engine::EboTriangle(0, 2, 1) + vOffest);
+		indices_buffer.emplace_back(engine::EboTriangle(0, 3, 2) + vOffest);
 
 		vOffest += 4;
 	}
@@ -120,17 +125,25 @@ void game::PlayerSolidBlockItem::updateBuffers() {
 		auto point_XY = getModel() * glm::vec4(1, 0.5, 0, 1);
 		auto point_xY = getModel() * glm::vec4(0, 1, 0, 1);
 
-		verticesBuf.emplace_back(point_xy, sideTex.getTexCoord_xy());
-		verticesBuf.emplace_back(point_Xy, sideTex.getTexCoord_Xy());
-		verticesBuf.emplace_back(point_XY, sideTex.getTexCoord_XY());
-		verticesBuf.emplace_back(point_xY, sideTex.getTexCoord_xY());
+		vertices_buffer.emplace_back(point_xy, sideTex.getTexCoord_xy());
+		vertices_buffer.emplace_back(point_Xy, sideTex.getTexCoord_Xy());
+		vertices_buffer.emplace_back(point_XY, sideTex.getTexCoord_XY());
+		vertices_buffer.emplace_back(point_xY, sideTex.getTexCoord_xY());
 
-		indicesBuf.emplace_back(engine::EboTriangle(0, 2, 1) + vOffest);
-		indicesBuf.emplace_back(engine::EboTriangle(0, 3, 2) + vOffest);
+		indices_buffer.emplace_back(engine::EboTriangle(0, 2, 1) + vOffest);
+		indices_buffer.emplace_back(engine::EboTriangle(0, 3, 2) + vOffest);
 
 		vOffest += 4;
 	}
 }
 
 void game::PlayerSolidBlockItem::useItem(map::WorldPtr &worldMap, game::PlayerPtr &player) {
+	if (!player->isPointingBlock()) return;
+
+	auto new_position = player->getNewBlockPosition();
+
+	if (auto chunk = worldMap->getChunk(new_position.getChunkCoord()).lock()) {
+		auto new_block = block::Factory::clone(block_ptr);
+		chunk->setBlock(new_position.getBlockCoord(), new_block);
+	}
 }

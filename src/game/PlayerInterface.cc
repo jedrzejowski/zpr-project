@@ -7,9 +7,13 @@
 #include "PlayerInterface.h"
 #include "src/block/Blocks.h"
 #include "PlayerItem.h"
+#include "MainGame.h"
+#include "Player.h"
 
 game::PlayerInterface::PlayerInterface(game::MainGamePtr &scene) :
-		itemLimit(8), items(itemLimit) {
+		sceneWPtr(scene),
+		item_limit(8),
+		items(item_limit) {
 	logger.constructor(this);
 }
 
@@ -27,31 +31,31 @@ game::PlayerInterfacePtr game::PlayerInterface::create(game::MainGamePtr &scene)
 	{ // kamień
 		block::SolidBlockPtr block = std::make_shared<block::Stone>();
 		PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
-		self->setItem(0, item);
+		self->setSlot(0, item);
 	}
 
 	{ // ziemia
 		block::SolidBlockPtr block = std::make_shared<block::Dirt>();
 		PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
-		self->setItem(1, item);
+		self->setSlot(1, item);
 	}
 
 	{ // trawa
 		block::SolidBlockPtr block = std::make_shared<block::Grass>();
 		PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
-		self->setItem(2, item);
+		self->setSlot(2, item);
 	}
 
 	{ // piasek
 		block::SolidBlockPtr block = std::make_shared<block::Sand>();
 		PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
-		self->setItem(3, item);
+		self->setSlot(3, item);
 	}
 
 	{ // woda
 		block::SolidBlockPtr block = std::make_shared<block::Water>();
 		PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
-		self->setItem(4, item);
+		self->setSlot(4, item);
 	}
 
 	// Background
@@ -69,48 +73,46 @@ game::PlayerInterfacePtr game::PlayerInterface::create(game::MainGamePtr &scene)
 	return self;
 }
 
-//void game::PlayerInterface::addItem(int texX, int texY) {
-//	auto rec = std::make_shared<gui::RectangleObj>(this->shared_from_this());
-//
-//	auto texVecs = block::getBlockTexture(texX, texY);
-//	rec->setTexture(texVecs.start, texVecs.end, 2);
-//
-//	items.push_back(rec);
-//	setItemState(items.size() - 1, items.size() == 1);
-//}
-//
-//void game::PlayerInterface::setItemState(int index, bool selected) {
-//
-//	auto &rec = items[index];
-//
-//	rec->setPosition(glm::vec2(0.1 + 0.1 * index, 0.89));
-//	rec->setSize(glm::vec2(selected ? 0.09 : 0.06));
-//}
+void game::PlayerInterface::assertIndexValid(int index) {
+	if (index < 0 || index >= item_limit)
+		throw zprException("game::PlayerInterface::setSlot", "wrong index");
+}
 
-
-void game::PlayerInterface::setItem(int index, game::PlayerItemPtr &item) {
-	if (index < 0 || index >= itemLimit)
-		throw zprException("game::PlayerInterface::setItem(): wrong index");
+void game::PlayerInterface::setSlot(int index, game::PlayerItemPtr &item) {
+	assertIndexValid(index);
 
 	items[index] = item;
 	updateItemModel(index);
 }
 
 
-void game::PlayerInterface::selectItem(int index) {
-//	setItemState(selected, false);
-	selected = index;
-//	setItemState(selected, true);
+void game::PlayerInterface::selectSlot(int index) {
+	assertIndexValid(index);
+
+//	setItemState(selected_slotindex, false);
+	selected_slot_index = index;
+//	setItemState(selected_slotindex, true);
 }
 
 void game::PlayerInterface::useItem() {
+	if (isItemSlotEmpty(selected_slot_index))return;
+
+	if (auto scene = sceneWPtr.lock())
+		if (auto worldPtr = scene->getWorldMap())
+			if (auto player = scene->getPlayer()) {
+				items[selected_slot_index]->useItem(worldPtr, player);
+			}
 }
 
 void game::PlayerInterface::updateItemModel(int index) {
 	auto model = glm::mat4(1);
 
-	model = glm::translate(model, glm::vec3((2 * (float(index) + 1) - 1) / (2 * float(itemLimit)), 0.94, 0));
+	model = glm::translate(model, glm::vec3((2 * (float(index) + 1) - 1) / (2 * float(item_limit)), 0.94, 0));
 	model = glm::scale(model, glm::vec3(0.05));
 
 	items[index]->setModel(model);
+}
+
+bool game::PlayerInterface::isItemSlotEmpty(int index) {
+	return items[index].get() == nullptr;
 }

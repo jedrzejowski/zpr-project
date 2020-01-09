@@ -26,9 +26,9 @@ namespace engine {
 	private:
 		std::mutex rendering;
 
-		int winWidth = 800, winHeight = 600,
-				winTopOffset = 0, winLeftOffset = 0,
-				winRightOffset = 0, winBottomOffset = 0;
+		int window_width = 800, window_height = 600,
+				window_top_offset = 0, window_left_offset = 0,
+				window_right_offset = 0, win_bottom_offset = 0;
 
 		GLFWwindow *glfwWin = nullptr;
 		ScenePtr currentScene;

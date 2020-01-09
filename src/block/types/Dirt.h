@@ -11,8 +11,13 @@
 
 namespace block {
 	class Dirt : public SolidBlock {
+	protected:
+		Coord2D getTopTextureCoord() const override;
+		Coord2D getSideTextureCoord() const override;
+		Coord2D getBottomTextureCoord() const override;
 	public:
-		Dirt();
+		explicit Dirt() = default;
+		Dirt(json &data);
 		int typeId() override;
 	};
 }

@@ -11,8 +11,13 @@
 
 namespace block {
 	class Sand : public SolidBlock {
+	protected:
+		Coord2D getTopTextureCoord() const override;
+		Coord2D getSideTextureCoord() const override;
+		Coord2D getBottomTextureCoord() const override;
 	public:
-		Sand();
+		explicit Sand() = default;
+		explicit Sand(json &data);
 		int typeId() override;
 	};
 }

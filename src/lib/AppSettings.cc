@@ -44,7 +44,7 @@ json AppSettings::loadJSON(boost::filesystem::path path) {
 	std::ifstream fileStream(path);
 
 	if (!fileStream.is_open())
-		throw zprException("cant read file");
+		throw zprException("AppSettings::loadJSON", "cant read file");
 
 	json data;
 	fileStream >> data;
@@ -59,7 +59,7 @@ void AppSettings::saveJSON(boost::filesystem::path path, json content) {
 	std::ofstream fileStream(path);
 
 	if (!fileStream.is_open())
-		throw zprException("cant write file");
+		throw zprException("AppSettings::saveJSON", "cant write file");
 
 	fileStream << std::setw(4) << content << std::endl;
 }

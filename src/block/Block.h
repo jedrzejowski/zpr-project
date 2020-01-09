@@ -8,6 +8,10 @@
 
 #include "src/_classdef.h"
 #include "src/lib/Coord.hpp"
+#include "lib/json.hpp"
+
+using json = nlohmann::json;
+
 
 namespace block {
 
@@ -18,8 +22,9 @@ namespace block {
 
 	public:
 
-		Block();
-		~Block() override;
+		explicit Block() = default;
+		explicit Block(json &data);
+		~Block() override = default;
 
 		void setPosition(map::ChunkPtr &chunk_ptr, const Coord3D &pos);
 

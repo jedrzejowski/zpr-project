@@ -9,7 +9,7 @@
 #include "src/game/Game.h"
 #include "lib/AppSettings.h"
 
-map::World::World(const std::string& codeName) :
+map::World::World(const std::string &codeName) :
 		codeName(codeName),
 		chunkLoader(this),
 		chunkGenerator(this) {
@@ -53,7 +53,7 @@ void map::World::syncChunkWithLoader() {
 
 void map::World::insertChunk(map::ChunkPtr chunk) {
 	if (hasChunk(chunk->getPosition()))
-		throw zprException("inserting chunk which position already exist");
+		throw zprException("map::World::insertChunk", "inserting chunk which position already exist");
 
 	chunks[chunk->getPosition()] = chunk;
 	onChunkInserted(chunk);
@@ -61,7 +61,7 @@ void map::World::insertChunk(map::ChunkPtr chunk) {
 
 map::ChunkPtr map::World::ejectChunk(const Coord2D &position) {
 	if (!hasChunk(position))
-		throw zprException("ejecting chunk not inserted chunk");
+		throw zprException("map::World::ejectChunk", "ejecting chunk not inserted chunk");
 
 	auto chunk = chunks[position];
 	chunks.erase(position);
@@ -72,7 +72,7 @@ map::ChunkPtr map::World::ejectChunk(const Coord2D &position) {
 }
 
 void map::World::loadForPlayer(game::PlayerPtr &player) {
-	auto playerChunk = player->getFullPosition().getChunk();
+	auto playerChunk = player->getFullPosition().getChunkCoord();
 	auto chunkLoadDistance = player->getChunkUnloadDistance();
 
 	// ładowanie chunków

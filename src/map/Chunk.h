@@ -45,7 +45,7 @@ namespace map {
 		const Signal<const Coord3D &> onBlockChange;
 
 		boost::filesystem::path getSavePath(AppSettings &app_settings) const override;
-		void toJSON(json &json_obj) const override;
+		json toJSON() const override;
 	};
 }
 

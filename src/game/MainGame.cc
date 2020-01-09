@@ -10,7 +10,6 @@
 #include "Player.h"
 #include "GameScene.h"
 #include "PlayerInterface.h"
-#include "SelectedBlock.h"
 
 game::MainGame::MainGame(GameScenePtr &scene) {
 	gameScene = scene;
@@ -26,13 +25,11 @@ game::MainGamePtr game::MainGame::create(game::GameScenePtr &scene) {
 
 	self->worldMap = map::World::create("default");
 
-	self->player = std::make_shared<Player>();
+	self->player = Player::create(self);
 
-	self->playerInterface = PlayerInterface::create(self);
+	self->player_interface = PlayerInterface::create(self);
 
 	self->mapRenderer = map::WorldRenderer::create(self->worldMap);
-
-	self->selectedBlock = std::make_shared<game::SelectedBlock>(self);
 
 	self->initInputInterface();
 
@@ -49,39 +46,39 @@ void game::MainGame::renderWorld() {
 	);
 
 	if (scene->getInterfaceState() == Game)
-		playerInterface->render(scene);
+		player_interface->render(scene);
 }
 
 void game::MainGame::initInputInterface() {
-	inputInterface = std::make_shared<engine::InputInterface>();
+	input_interface = std::make_shared<engine::InputInterface>();
 
-	auto keyboard = inputInterface->getKeyboard();
-	auto mouse = inputInterface->getMouse();
+	auto keyboard = input_interface->getKeyboard();
+	auto mouse = input_interface->getMouse();
 
 	mouse->setAttachedToCenter(true);
 
 	keyboard->W.onPress([this] {
-		player->moveForward(inputInterface->getKeyboard()->getDeltaTimeOfState());
+		player->moveForward(input_interface->getKeyboard()->getDeltaTimeOfState());
 	});
 
 	keyboard->S.onPress([this] {
-		player->moveBackward(inputInterface->getKeyboard()->getDeltaTimeOfState());
+		player->moveBackward(input_interface->getKeyboard()->getDeltaTimeOfState());
 	});
 
 	keyboard->D.onPress([this] {
-		player->moveRight(inputInterface->getKeyboard()->getDeltaTimeOfState());
+		player->moveRight(input_interface->getKeyboard()->getDeltaTimeOfState());
 	});
 
 	keyboard->A.onPress([this] {
-		player->moveLeft(inputInterface->getKeyboard()->getDeltaTimeOfState());
+		player->moveLeft(input_interface->getKeyboard()->getDeltaTimeOfState());
 	});
 
 	keyboard->Space.onPress([this] {
-		player->moveUp(inputInterface->getKeyboard()->getDeltaTimeOfState());
+		player->moveUp(input_interface->getKeyboard()->getDeltaTimeOfState());
 	});
 
 	keyboard->LShift.onPress([this] {
-		player->moveDown(inputInterface->getKeyboard()->getDeltaTimeOfState());
+		player->moveDown(input_interface->getKeyboard()->getDeltaTimeOfState());
 	});
 
 	keyboard->Escape.onPressed([this, keyboard] {
@@ -98,67 +95,67 @@ void game::MainGame::initInputInterface() {
 	});
 
 	mouse->Left.onPressed([&] {
-		if (!selectedBlock->isSelected()) return;
+		if (!player->isPointingBlock()) return;
 
-		auto fullPos = selectedBlock->getPointingPos();
+		auto fullPos = player->getPointingBlockPosition();
 
-		if (auto chunk = worldMap->getChunk(fullPos.getChunk()).lock())
-			chunk->setAir(fullPos.getBlock());
+		if (auto chunk = worldMap->getChunk(fullPos.getChunkCoord()).lock())
+			chunk->setAir(fullPos.getBlockCoord());
 	});
 
 	mouse->Right.onPressed([&] {
-		playerInterface->useItem();
+		player_interface->useItem();
 	});
 
 	keyboard->Num1.onPressed([this] {
-		playerInterface->selectItem(0);
+		player_interface->selectSlot(0);
 	});
 
 	keyboard->Num2.onPressed([this] {
-		playerInterface->selectItem(1);
+		player_interface->selectSlot(1);
 	});
 
 	keyboard->Num3.onPressed([this] {
-		playerInterface->selectItem(2);
+		player_interface->selectSlot(2);
 	});
 
 	keyboard->Num4.onPressed([this] {
-		playerInterface->selectItem(3);
+		player_interface->selectSlot(3);
 	});
 
 	keyboard->Num5.onPressed([this] {
-		playerInterface->selectItem(4);
+		player_interface->selectSlot(4);
 	});
 
 	keyboard->Num6.onPressed([this] {
-		playerInterface->selectItem(5);
+		player_interface->selectSlot(5);
 	});
 
 	keyboard->Num7.onPressed([this] {
-		playerInterface->selectItem(6);
+		player_interface->selectSlot(6);
 	});
 
 	keyboard->Num8.onPressed([this] {
-		playerInterface->selectItem(7);
+		player_interface->selectSlot(7);
 	});
 
 	keyboard->Num9.onPressed([this] {
-//		playerInterface->selectItem(8);
+		player_interface->selectSlot(8);
 	});
 
 	keyboard->Num0.onPressed([this] {
-//		playerInterface->selectItem(9);
+		player_interface->selectSlot(9);
 	});
 }
 
 engine::InputInterfacePtr game::MainGame::getInputInterface() {
-	return inputInterface;
+	return input_interface;
 }
 
 void game::MainGame::pollEvents() {
 	worldMap->syncChunkWithLoader();
 	worldMap->loadForPlayer(player);
-	selectedBlock->update();
+	player->resetBlockPointing();
 }
 
 const game::GameSceneWPtr &game::MainGame::getGameScene() const {
@@ -177,10 +174,6 @@ const game::PlayerPtr &game::MainGame::getPlayer() const {
 	return player;
 }
 
-const game::SelectedBlockPtr &game::MainGame::getSelectedBlock() const {
-	return selectedBlock;
-}
-
 const game::PlayerInterfacePtr &game::MainGame::getPlayerInterface() const {
-	return playerInterface;
+	return player_interface;
 }

@@ -19,17 +19,12 @@ namespace map {
 		friend ChunkGenerator;
 		friend ChunkLoader;
 	private:
-		const char *JSON_ATTR_BLOCKS = "blocks";
 
 		const WorldWPtr worldMapWPtr;
 		const Coord2D position;
 		mutable std::map<Coord3D, block::BlockPtr> blocks;
 
 		Chunk(const WorldPtr &worldMap, const Coord2D &position);
-
-
-	protected:
-		void acceptState(json &data) override;
 
 	public:
 		static const Coord3D Size;
@@ -49,8 +44,15 @@ namespace map {
 
 		const Signal<const Coord3D &> onBlockChange;
 
+		//region SavableObject
+		
+	protected:
+		void acceptState(json &data) override;
+	public:
 		boost::filesystem::path getSavePath(AppSettings &app_settings) const override;
 		json toJSON() const override;
+
+		//endregion
 	};
 }
 

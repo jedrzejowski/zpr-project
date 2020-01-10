@@ -11,9 +11,13 @@
 #include "src/map/Chunk.h"
 #include "src/map/World.h"
 
-game::Player::Player(game::MainGamePtr &main_game) :
-		main_game(main_game) {
-	initWithDefaultValues();
+game::Player::Player(map::WorldPtr &world_map_ptr) :
+		world_map_ptr(world_map_ptr) {
+	logger(4).constructor(this);
+}
+
+game::Player::~Player() {
+	logger(4).destructor(this);
 }
 
 void game::Player::initWithDefaultValues() {
@@ -22,17 +26,36 @@ void game::Player::initWithDefaultValues() {
 	mouse_precision = 20;
 	keyboard_precision = 10;
 	chunk_render_distance = 4;
-	chunk_unload_distance = 6;
 	position = glm::vec3(4.0f);
 }
 
-game::PlayerPtr game::Player::create(game::MainGamePtr &main_game) {
+game::PlayerPtr game::Player::create(map::WorldPtr &world_map_ptr) {
 	struct Self : Player {
-		Self(game::MainGamePtr &main_game) : Player(main_game) {}
+		Self(map::WorldPtr &world_map_ptr) : Player(world_map_ptr) {}
 	};
 
-	game::PlayerPtr self = std::make_shared<Self>(main_game);
+	game::PlayerPtr self = std::make_shared<Self>(world_map_ptr);
 
+	try {
+
+		if (self->hasSavedFile())
+			self->loadObjectFromFile();
+		else
+			self->initWithDefaultValues();
+	} catch (WrongJsonException &exception) {
+
+		logger(0).err("Error during parsing player_ptr data.")
+				.err("I will reset player_ptr to default state");
+
+		self->initWithDefaultValues();
+	} catch (FileInputException &exception) {
+
+		logger(0).err("Error during reading player_ptr data from file:").enter()
+				.err(exception.getFile()).enter()
+				.err("I will reset player_ptr to default state");
+
+		self->initWithDefaultValues();
+	}
 
 	return self;
 }
@@ -59,6 +82,7 @@ void game::Player::moveForward(float time) {
 	forward = glm::rotateZ(forward, glm::radians(eye_angle_horizontal));
 	forward *= time * keyboard_precision;
 	position += forward;
+	setNeedSave(true);
 }
 
 void game::Player::moveBackward(float time) {
@@ -69,6 +93,7 @@ void game::Player::moveUp(float time) {
 	auto vec = topVec();
 	vec *= time * keyboard_precision;
 	position += vec;
+	setNeedSave(true);
 }
 
 void game::Player::moveDown(float time) {
@@ -79,6 +104,7 @@ void game::Player::moveLeft(float time) {
 	auto vec = leftVec();
 	vec *= time * keyboard_precision;
 	position += vec;
+	setNeedSave(true);
 }
 
 void game::Player::moveRight(float time) {
@@ -88,6 +114,7 @@ void game::Player::moveRight(float time) {
 void game::Player::rotateUp(float dy) {
 	eye_angle_vertical = std::clamp(eye_angle_vertical + dy / mouse_precision,
 									-80.f, 80.f);
+	setNeedSave(true);
 }
 
 void game::Player::rotateDown(float dy) {
@@ -96,6 +123,7 @@ void game::Player::rotateDown(float dy) {
 
 void game::Player::rotateRight(float dx) {
 	eye_angle_horizontal = fmod(eye_angle_horizontal + dx / mouse_precision, 360);
+	setNeedSave(true);
 }
 
 void game::Player::rotateLeft(float dx) {
@@ -115,7 +143,7 @@ float game::Player::getChunkRenderDistance() const {
 }
 
 float game::Player::getChunkUnloadDistance() const {
-	return chunk_unload_distance;
+	return chunk_render_distance + 2;
 }
 
 block::FullPosition game::Player::getFullPosition() const {
@@ -132,7 +160,7 @@ block::FullPosition game::Player::getFullPosition() const {
 	);
 }
 
-//#region Block Pointing
+//region Block Pointing
 
 void game::Player::resetBlockPointing() {
 	need_block_point_calculate = true;
@@ -141,93 +169,92 @@ void game::Player::resetBlockPointing() {
 void game::Player::recalculateBlockPointing() const {
 	if (!need_block_point_calculate) return;
 
-	auto &map = main_game.lock()->getWorldMap();
 	auto camera = getCamera();
-	auto headPosition = getFullPosition();
+	auto head_position = getFullPosition();
 
-	static const CoordDim handRange = 4;
+	static const CoordDim hand_range = 6;
 
-	float distance = handRange * 10, newDistance = handRange * 11;
+	float distance = hand_range + 1, new_distance = hand_range + 2;
 	bool found = false;
 
-	glm::vec2 baryPosition;//nie mam pojęcia do czego to jest ale glm tego chce
+	glm::vec2 bary_position; //nie mam pojęcia do czego to jest ale glm tego chce
 
-	for (CoordDim dx = -handRange; dx <= handRange; dx++)
-		for (CoordDim dy = -handRange; dy <= handRange; dy++)
-			for (CoordDim dz = -handRange; dz <= handRange; dz++) {
+	for (CoordDim dx = -hand_range; dx <= hand_range; dx++)
+		for (CoordDim dy = -hand_range; dy <= hand_range; dy++)
+			for (CoordDim dz = -hand_range; dz <= hand_range; dz++) {
 
-				auto blockPos = headPosition.getNeighbor(dx, dy, dz);
-				if (!blockPos.isValid()) continue;
-				if (auto chunk = map->getChunk(blockPos.getChunkCoord()).lock()) {
-					if (chunk->isAir(blockPos.getBlockCoord())) continue;
+				auto block_position = head_position.getNeighbor(dx, dy, dz);
+				if (!block_position.isValid()) continue;
+				if (auto chunk = world_map_ptr->getChunk(block_position.getChunkCoord()).lock()) {
+					if (chunk->isAir(block_position.getBlockCoord())) continue;
 				} else continue;
 
 				// tu się inaczej nie da, musimy za każdym razem mieć dostęp do wielu zmiennych tymczasowych,
 				// jak i operować na enumach i wartościach wektorów, można by zrobić wektor pomocniczy,
 				// a potem iterować po nim, ale wiązało by się to z wprowadzenie wilu nowych struktur
 
-				auto wall = block::getWall(blockPos, block::Direction::Z_PLUS);
-				if (wall.intersectCamera(camera, baryPosition, newDistance))
-					if (newDistance < distance) {
+				auto wall = block::getWall(block_position, block::Direction::Z_PLUS);
+				if (wall.intersectCamera(camera, bary_position, new_distance))
+					if (new_distance < distance) {
 
 						found = true;
-						distance = newDistance;
-						pointing_block_position = blockPos;
-						new_block_position = blockPos.getNeighbor(0, 0, +1);
+						distance = new_distance;
+						pointing_block_position = block_position;
+						new_block_position = block_position.getNeighbor(0, 0, +1);
 					}
 
-				wall = block::getWall(blockPos, block::Direction::Z_MINUS);
-				if (wall.intersectCamera(camera, baryPosition, newDistance))
-					if (newDistance < distance) {
+				wall = block::getWall(block_position, block::Direction::Z_MINUS);
+				if (wall.intersectCamera(camera, bary_position, new_distance))
+					if (new_distance < distance) {
 
 						found = true;
-						distance = newDistance;
-						pointing_block_position = blockPos;
-						new_block_position = blockPos.getNeighbor(0, 0, -1);
+						distance = new_distance;
+						pointing_block_position = block_position;
+						new_block_position = block_position.getNeighbor(0, 0, -1);
 					}
 
-				wall = block::getWall(blockPos, block::Direction::Y_PLUS);
-				if (wall.intersectCamera(camera, baryPosition, newDistance))
-					if (newDistance < distance) {
+				wall = block::getWall(block_position, block::Direction::Y_PLUS);
+				if (wall.intersectCamera(camera, bary_position, new_distance))
+					if (new_distance < distance) {
 
 						found = true;
-						distance = newDistance;
-						pointing_block_position = blockPos;
-						new_block_position = blockPos.getNeighbor(0, +1, 0);
+						distance = new_distance;
+						pointing_block_position = block_position;
+						new_block_position = block_position.getNeighbor(0, +1, 0);
 					}
 
-				wall = block::getWall(blockPos, block::Direction::Y_MINUS);
-				if (wall.intersectCamera(camera, baryPosition, newDistance))
-					if (newDistance < distance) {
+				wall = block::getWall(block_position, block::Direction::Y_MINUS);
+				if (wall.intersectCamera(camera, bary_position, new_distance))
+					if (new_distance < distance) {
 
 						found = true;
-						distance = newDistance;
-						pointing_block_position = blockPos;
-						new_block_position = blockPos.getNeighbor(0, -1, 0);
+						distance = new_distance;
+						pointing_block_position = block_position;
+						new_block_position = block_position.getNeighbor(0, -1, 0);
 					}
 
-				wall = block::getWall(blockPos, block::Direction::X_PLUS);
-				if (wall.intersectCamera(camera, baryPosition, newDistance))
-					if (newDistance < distance) {
+				wall = block::getWall(block_position, block::Direction::X_PLUS);
+				if (wall.intersectCamera(camera, bary_position, new_distance))
+					if (new_distance < distance) {
 
 						found = true;
-						distance = newDistance;
-						pointing_block_position = blockPos;
-						new_block_position = blockPos.getNeighbor(+1, 0, 0);
+						distance = new_distance;
+						pointing_block_position = block_position;
+						new_block_position = block_position.getNeighbor(+1, 0, 0);
 					}
 
-				wall = block::getWall(blockPos, block::Direction::X_MINUS);
-				if (wall.intersectCamera(camera, baryPosition, newDistance))
-					if (newDistance < distance) {
+				wall = block::getWall(block_position, block::Direction::X_MINUS);
+				if (wall.intersectCamera(camera, bary_position, new_distance))
+					if (new_distance < distance) {
 
 						found = true;
-						distance = newDistance;
-						pointing_block_position = blockPos;
-						new_block_position = blockPos.getNeighbor(-1, 0, 0);
+						distance = new_distance;
+						pointing_block_position = block_position;
+						new_block_position = block_position.getNeighbor(-1, 0, 0);
 					}
 			}
 
-	is_pointing_block = found;
+	is_pointing_block = hand_range >= distance && found;
 }
 
 const block::FullPosition &game::Player::getPointingBlockPosition() const {
@@ -245,4 +272,45 @@ bool game::Player::isPointingBlock() const {
 	return is_pointing_block;
 }
 
-//#endregion
+//endregion
+
+//region SavableObject
+
+const char *JSON_ATTR_POSITION = "position";
+const char *JSON_ATTR_EYE_ANGLE_VERTICAL = "eye_angle_vertical";
+const char *JSON_ATTR_EYE_ANGLE_HORIZONTAL = "eye_angle_horizontal";
+const char *JSON_ATTR_MOUSE_PRECISION = "mouse_precision";
+const char *JSON_ATTR_KEYBOARD_PRECISION = "keyboard_precision";
+const char *JSON_ATTR_CHUNK_RENDER_DISTANCE = "chunk_render_distance";
+
+boost::filesystem::path game::Player::getSavePath(AppSettings &app_settings) const {
+	return world_map_ptr->getDirectory() / "player";
+}
+
+json game::Player::toJSON() const {
+	json json_obj;
+
+	json_obj[JSON_ATTR_POSITION] = json::array({position.x, position.y, position.z});
+	json_obj[JSON_ATTR_EYE_ANGLE_VERTICAL] = eye_angle_vertical;
+	json_obj[JSON_ATTR_EYE_ANGLE_HORIZONTAL] = eye_angle_horizontal;
+	json_obj[JSON_ATTR_MOUSE_PRECISION] = mouse_precision;
+	json_obj[JSON_ATTR_KEYBOARD_PRECISION] = keyboard_precision;
+	json_obj[JSON_ATTR_CHUNK_RENDER_DISTANCE] = chunk_render_distance;
+
+	return json_obj;
+}
+
+void game::Player::acceptState(json &json_obj) {
+
+	position = assertGetVec3(json_obj[JSON_ATTR_POSITION]);
+	eye_angle_vertical = assertGetNumber(json_obj[JSON_ATTR_EYE_ANGLE_VERTICAL]);
+	eye_angle_horizontal = assertGetNumber(json_obj[JSON_ATTR_EYE_ANGLE_HORIZONTAL]);
+	mouse_precision = assertGetNumber(json_obj[JSON_ATTR_MOUSE_PRECISION]);
+	keyboard_precision = assertGetNumber(json_obj[JSON_ATTR_KEYBOARD_PRECISION]);
+	chunk_render_distance = assertGetNumber(json_obj[JSON_ATTR_CHUNK_RENDER_DISTANCE]);
+
+	setNeedSave(false);
+}
+
+//endregion
+

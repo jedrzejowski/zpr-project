@@ -13,11 +13,11 @@ map::World::World(const std::string &codeName) :
 		codeName(codeName),
 		chunkLoader(this),
 		chunkGenerator(this) {
-	logger(1).constructor(this);
+	logger(4).constructor(this);
 }
 
 map::World::~World() {
-	logger(1).destructor(this);
+	logger(4).destructor(this);
 }
 
 map::WorldPtr map::World::create(const std::string &codeName) {

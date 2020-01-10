@@ -82,10 +82,15 @@ map::ChunkWPtr map::Chunk::getNeighbor(CoordDim dx, CoordDim dy) const {
 	else return map::ChunkWPtr();
 }
 
+//region SavableObject
+
+const char *JSON_ATTR_BLOCKS = "blocks";
+const char *JSON_ATTR_COORD = "blocks";
+
 json map::Chunk::toJSON() const {
 	json j;
 
-	j["coord"] = getPosition().toJSON();
+	j[JSON_ATTR_COORD] = getPosition().toJSON();
 
 	auto row_x = json::array();
 	for (CoordDim x = 0; x < Chunk::Size.x; x++) {
@@ -114,7 +119,7 @@ json map::Chunk::toJSON() const {
 boost::filesystem::path map::Chunk::getSavePath(AppSettings &app_settings) const {
 	if (auto worldMapPtr = worldMapWPtr.lock()) {
 		return (worldMapPtr->getDirectory() / "surface1") / (position.toStringId() + ".chunk");
-	} else throw zprException("map::Chunk::save", "saving chunk when WorldMap object is gone");
+	} else throw zprException("map::Chunk::getSavePath", "saving chunk when WorldMap object is gone");
 }
 
 void map::Chunk::acceptState(json &data) {
@@ -156,3 +161,4 @@ void map::Chunk::acceptState(json &data) {
 	setNeedSave(false);
 }
 
+//endregion

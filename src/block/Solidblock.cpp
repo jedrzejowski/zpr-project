@@ -78,7 +78,6 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 		vertices.emplace_back(engine::Point3D(wall.thirdPoint), texture_side.getTexCoord_xy());
 		vertices.emplace_back(engine::Point3D(wall.fourthPoint), texture_side.getTexCoord_Xy());
 
-
 		indices.push_back(engine::EboTriangle(1, 3, 2) - 1 + vOffest);
 		indices.push_back(engine::EboTriangle(1, 4, 3) - 1 + vOffest);
 
@@ -93,7 +92,6 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 		vertices.emplace_back(engine::Point3D(wall.secondPoint), texture_side.getTexCoord_xy());
 		vertices.emplace_back(engine::Point3D(wall.thirdPoint), texture_side.getTexCoord_Xy());
 		vertices.emplace_back(engine::Point3D(wall.fourthPoint), texture_side.getTexCoord_XY());
-
 
 		indices.push_back(engine::EboTriangle(1, 3, 2) - 1 + vOffest);
 		indices.push_back(engine::EboTriangle(1, 4, 3) - 1 + vOffest);

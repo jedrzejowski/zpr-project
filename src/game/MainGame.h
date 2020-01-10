@@ -13,12 +13,12 @@
 namespace game {
 	class MainGame : public Object {
 	private:
-		GameSceneWPtr gameScene;
+		GameSceneWPtr game_scene;
 		engine::InputInterfacePtr input_interface;
-		map::WorldPtr worldMap;
-		map::WorldRendererPtr mapRenderer;
-		PlayerPtr player;
-		PlayerInterfacePtr player_interface;
+		map::WorldPtr world_map_ptr;
+		map::WorldRendererPtr map_renderer_ptr;
+		PlayerPtr player_ptr;
+		PlayerInterfacePtr player_interface_ptr;
 
 		void initInputInterface();
 

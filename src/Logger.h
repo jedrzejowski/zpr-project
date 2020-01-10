@@ -41,6 +41,8 @@
 class Logger {
 private:
 	int level;
+
+	bool isVisible();
 public:
 	static int VisibleLogLevel;
 
@@ -51,7 +53,7 @@ public:
 
 	template<typename T>
 	Logger &msg(const T &obj, const std::string &color = TTY_COLOR_RESET) {
-		if (VisibleLogLevel <= level) return *this;
+		if (isVisible()) return *this;
 
 		std::cout << " " << color << obj << TTY_COLOR_RESET;
 

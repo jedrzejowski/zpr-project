@@ -9,6 +9,7 @@
 #include <boost/filesystem/path.hpp>
 #include "json.hpp"
 #include "AppSettings.h"
+#include "src/OpenGL.h"
 
 using json = nlohmann::json;
 
@@ -28,6 +29,9 @@ public:
 
 	void saveObjectToFile() const;
 	[[nodiscard]] virtual bool isNeedSave() const;
+
+	static json& assertGetNumber(json& maybe_number);
+	static glm::vec3 assertGetVec3(json& maybe_vector);
 };
 
 

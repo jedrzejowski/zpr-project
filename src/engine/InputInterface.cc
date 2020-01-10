@@ -47,11 +47,8 @@ void engine::InputInterface::attachToScene(SceneWPtr scene) {
 }
 
 void engine::InputInterface::unattachFromScene() {
-	logger(1).log("odpinanie od sceny").log(this);
 	onUnattached();
-	logger(1).log("odpinanie od sceny2");
 	this->scene = SceneWPtr();
-	logger(1).log("odpinanie od sceny3");
 }
 
 engine::SceneWPtr engine::InputInterface::getScene() const {

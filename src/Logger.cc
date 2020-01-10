@@ -13,16 +13,16 @@
  */
 std::mutex mutex = std::mutex();
 
-int Logger::VisibleLogLevel = 3;
+int Logger::VisibleLogLevel = 4;
 
 Logger::Logger(const char *file, int line, int level) : level(level) {
-	if (VisibleLogLevel <= level) return;
+	if (isVisible()) return;
 	mutex.lock();
 	std::cout << "[ " << currentDateTime() << " @ " << file << ":" << line << " ]";
 }
 
 Logger::~Logger() {
-	if (VisibleLogLevel <= level) return;
+	if (isVisible()) return;
 	std::cout << TTY_COLOR_RESET << std::endl << std::flush;
 	mutex.unlock();
 }
@@ -37,4 +37,8 @@ std::string Logger::currentDateTime() {
 	strftime(buf, sizeof(buf), "%Y-%m-%d %X", &tstruct);
 
 	return buf;
+}
+
+bool Logger::isVisible() {
+	return VisibleLogLevel < level;
 }

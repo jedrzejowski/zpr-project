@@ -36,3 +36,20 @@ bool SavableObject::hasSavedFile() {
 	return boost::filesystem::exists(getSavePath());
 }
 
+json &SavableObject::assertGetNumber(json &maybe_number) {
+	if (maybe_number.is_number())
+		return maybe_number;
+	else throw WrongJsonException();
+}
+
+glm::vec3 SavableObject::assertGetVec3(json &maybe_vector) {
+	if (!maybe_vector.is_array() || maybe_vector.size() != 3)
+		throw WrongJsonException();
+
+	return glm::vec3(
+			assertGetNumber(maybe_vector[0]),
+			assertGetNumber(maybe_vector[1]),
+			assertGetNumber(maybe_vector[2])
+	);
+}
+

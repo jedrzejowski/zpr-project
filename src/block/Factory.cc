@@ -7,11 +7,7 @@
 #include "Factory.h"
 #include "type_ids.h"
 
-#include "types/Stone.h"
-#include "types/Dirt.h"
-#include "types/Water.h"
-#include "types/Grass.h"
-#include "types/Sand.h"
+#include "Blocks.h"
 
 block::BlockPtr block::Factory::create(json &data) {
 
@@ -42,6 +38,10 @@ block::BlockPtr block::Factory::create(json &data) {
 
 		case TYPE_ID_SAND:
 			block = std::make_shared<Sand>(data);
+			break;
+
+		case TYPE_ID_BRICK:
+			block = std::make_shared<Brick>(data);
 			break;
 
 		default:

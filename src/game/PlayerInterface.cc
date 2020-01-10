@@ -28,34 +28,46 @@ game::PlayerInterfacePtr game::PlayerInterface::create(game::MainGamePtr &scene)
 
 	game::PlayerInterfacePtr self = std::make_shared<trick>(scene);
 
-	{ // kamień
-		block::SolidBlockPtr block = std::make_shared<block::Stone>();
-		PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
-		self->setSlot(0, item);
-	}
+	{
+		/**
+		 * Inicjowanie przykładowego ekwipunku
+		 */
 
-	{ // ziemia
-		block::SolidBlockPtr block = std::make_shared<block::Dirt>();
-		PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
-		self->setSlot(1, item);
-	}
+		{ // kamień
+			block::SolidBlockPtr block = std::make_shared<block::Stone>();
+			PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
+			self->setSlot(0, item);
+		}
 
-	{ // trawa
-		block::SolidBlockPtr block = std::make_shared<block::Grass>();
-		PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
-		self->setSlot(2, item);
-	}
+		{ // ziemia
+			block::SolidBlockPtr block = std::make_shared<block::Dirt>();
+			PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
+			self->setSlot(1, item);
+		}
 
-	{ // piasek
-		block::SolidBlockPtr block = std::make_shared<block::Sand>();
-		PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
-		self->setSlot(3, item);
-	}
+		{ // trawa
+			block::SolidBlockPtr block = std::make_shared<block::Grass>();
+			PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
+			self->setSlot(2, item);
+		}
 
-	{ // woda
-		block::SolidBlockPtr block = std::make_shared<block::Water>();
-		PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
-		self->setSlot(4, item);
+		{ // piasek
+			block::SolidBlockPtr block = std::make_shared<block::Sand>();
+			PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
+			self->setSlot(3, item);
+		}
+
+		{ // woda
+			block::SolidBlockPtr block = std::make_shared<block::Water>();
+			PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
+			self->setSlot(4, item);
+		}
+
+		{ // cegła
+			block::SolidBlockPtr block = std::make_shared<block::Brick>();
+			PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
+			self->setSlot(5, item);
+		}
 	}
 
 	// Background

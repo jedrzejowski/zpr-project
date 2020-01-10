@@ -163,6 +163,16 @@ namespace block {
 	class Sand;
 
 	class Grass;
+
+	class Brick;
+
+	class CobbleStone;
+
+	class TreeLog;
+
+	class Wood;
+
+	class Leaf;
 }
 
 namespace map {

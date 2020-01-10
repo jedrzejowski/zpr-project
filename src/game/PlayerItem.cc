@@ -108,10 +108,10 @@ void game::PlayerSolidBlockItem::updateBuffers() {
 		auto point_XY = getModel() * glm::vec4(-1, 0.5, 0, 1);
 		auto point_xY = getModel() * glm::vec4(-1, -0.5, 0, 1);
 
-		vertices_buffer.emplace_back(point_xy, sideTex.getTexCoord_xy());
-		vertices_buffer.emplace_back(point_Xy, sideTex.getTexCoord_Xy());
-		vertices_buffer.emplace_back(point_XY, sideTex.getTexCoord_XY());
-		vertices_buffer.emplace_back(point_xY, sideTex.getTexCoord_xY());
+		vertices_buffer.emplace_back(point_xy, sideTex.getTexCoord_xY());
+		vertices_buffer.emplace_back(point_Xy, sideTex.getTexCoord_xy());
+		vertices_buffer.emplace_back(point_XY, sideTex.getTexCoord_Xy());
+		vertices_buffer.emplace_back(point_xY, sideTex.getTexCoord_XY());
 
 		indices_buffer.emplace_back(engine::EboTriangle(0, 2, 1) + vOffest);
 		indices_buffer.emplace_back(engine::EboTriangle(0, 3, 2) + vOffest);

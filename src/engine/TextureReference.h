@@ -21,10 +21,10 @@ namespace engine {
 		SquareTextureReference(const glm::vec2 &start, const glm::vec2 &end, uint32_t no) :
 				start(start), end(end), no(no) {}
 
-		engine::TexCoord getTexCoord_xy() const;
-		engine::TexCoord getTexCoord_Xy() const;
-		engine::TexCoord getTexCoord_xY() const;
-		engine::TexCoord getTexCoord_XY() const;
+		[[nodiscard]] engine::TexCoord getTexCoord_xy() const;
+		[[nodiscard]] engine::TexCoord getTexCoord_Xy() const;
+		[[nodiscard]] engine::TexCoord getTexCoord_xY() const;
+		[[nodiscard]] engine::TexCoord getTexCoord_XY() const;
 	};
 }
 

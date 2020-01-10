@@ -166,7 +166,7 @@ namespace block {
 
 	class Brick;
 
-	class CobbleStone;
+	class Cobblestone;
 
 	class TreeLog;
 

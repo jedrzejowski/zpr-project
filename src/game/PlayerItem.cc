@@ -139,11 +139,17 @@ void game::PlayerSolidBlockItem::updateBuffers() {
 
 void game::PlayerSolidBlockItem::useItem(map::WorldPtr &worldMap, game::PlayerPtr &player) {
 	if (!player->isPointingBlock()) return;
+	try {
 
-	auto new_position = player->getNewBlockPosition();
+		auto new_position = player->getNewBlockPosition();
 
-	if (auto chunk = worldMap->getChunk(new_position.getChunkCoord()).lock()) {
-		auto new_block = block::Factory::clone(block_ptr);
-		chunk->setBlock(new_position.getBlockCoord(), new_block);
+		if (auto chunk = worldMap->getChunk(new_position.getChunkCoord()).lock()) {
+			auto new_block = block::Factory::clone(block_ptr);
+			chunk->setBlock(new_position.getBlockCoord(), new_block);
+		}
+	} catch (WrongJsonException &exception) {
+		logger(0).err("Error during block placing.").log("Mostly likely somethiung is not implemented ...");
+	} catch (std::exception &exception) {
+		logger(0).err("Fatal error during block placing.").log("Can't place block");
 	}
 }

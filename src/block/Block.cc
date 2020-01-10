@@ -73,7 +73,7 @@ bool block::Block::isSolid() {
 json block::Block::toJSON() {
 	json j;
 
-	j[TYPE_ID_ATTR_NAME] = typeId();
+	j[JSON_ATTR_TYPE_ID] = typeId();
 
 	return j;
 }

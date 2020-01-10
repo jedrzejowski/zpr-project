@@ -32,6 +32,7 @@ public:
 
 	static json& assertGetNumber(json& maybe_number);
 	static glm::vec3 assertGetVec3(json& maybe_vector);
+	static std::string assertGetString(json& maybe_string);
 };
 
 

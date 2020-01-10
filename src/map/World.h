@@ -22,16 +22,15 @@ namespace map {
 		ChunkLoader chunkLoader;
 		ChunkGenerator chunkGenerator;
 		std::map<Coord2D, map::ChunkPtr> chunks;
-		std::string codeName;
-		std::string displayName;
+		std::string code_name;
+		std::string display_name;
 
 		ChunkPtr ejectChunk(const Coord2D &position);
 		void insertChunk(map::ChunkPtr chunk);
 
-		explicit World(const std::string& codeName);
-		void acceptState(json &json_obj) override;
+		explicit World(const std::string &codeName);
 	public:
-		static WorldPtr create(const std::string& codeName);
+		static WorldPtr create(const std::string &codeName);
 		~World() override;
 
 		bool hasChunk(const Coord2D &position);
@@ -41,10 +40,6 @@ namespace map {
 
 		void syncChunkWithLoader();
 
-		boost::filesystem::path getDirectory() const;
-		boost::filesystem::path getSavePath(AppSettings &app_settings) const override;
-		json toJSON() const override;
-
 		const std::string &getDisplayName() const;
 		void setDisplayName(const std::string &displayName);
 		const std::string &getCodeName() const;
@@ -53,5 +48,14 @@ namespace map {
 
 		const Signal<ChunkPtr> onChunkInserted;
 		const Signal<ChunkPtr> onChunkEjected;
+
+		//region SavableObject
+	public:
+		boost::filesystem::path getDirectory() const;
+		boost::filesystem::path getSavePath(AppSettings &app_settings) const override;
+		json toJSON() const override;
+	protected:
+		void acceptState(json &json_obj) override;
+		//endregion
 	};
 }

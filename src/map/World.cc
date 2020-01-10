@@ -10,9 +10,10 @@
 #include "lib/AppSettings.h"
 
 map::World::World(const std::string &codeName) :
-		codeName(codeName),
+		code_name(codeName),
 		chunkLoader(this),
-		chunkGenerator(this) {
+		chunkGenerator(this),
+		display_name(codeName) {
 	logger(4).constructor(this);
 }
 
@@ -99,32 +100,47 @@ void map::World::loadForPlayer(game::PlayerPtr &player) {
 }
 
 const std::string &map::World::getDisplayName() const {
-	return displayName;
+	return display_name;
 }
 
 void map::World::setDisplayName(const std::string &displayName) {
-	World::displayName = displayName;
+	World::display_name = displayName;
+	setNeedSave(true);
 }
 
 const std::string &map::World::getCodeName() const {
-	return codeName;
+	return code_name;
 }
 
 boost::filesystem::path map::World::getDirectory() const {
 	return AppSettings::get().getCfgDir() / "worlds" / getCodeName();
 }
 
+const std::map<Coord2D, map::ChunkPtr> &map::World::getLoadedChunks() const {
+	return chunks;
+}
+
+//region SavableObject
+
+const char *JSON_ATTR_DISPLAY_NAME = "display_name";
+
 boost::filesystem::path map::World::getSavePath(AppSettings &app_settings) const {
 	return getDirectory() / "worldinfo";
 }
 
 json map::World::toJSON() const {
-	return json();
+	json json_obj;
+
+	json_obj[JSON_ATTR_DISPLAY_NAME] = display_name;
+
+	return json_obj;
 }
 
 void map::World::acceptState(json &json_obj) {
+
+	display_name = assertGetString(json_obj[JSON_ATTR_DISPLAY_NAME]);
+
+	setNeedSave(false);
 }
 
-const std::map<Coord2D, map::ChunkPtr> &map::World::getLoadedChunks() const {
-	return chunks;
-}
+//endregion

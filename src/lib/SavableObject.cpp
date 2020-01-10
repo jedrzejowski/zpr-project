@@ -53,3 +53,9 @@ glm::vec3 SavableObject::assertGetVec3(json &maybe_vector) {
 	);
 }
 
+std::string SavableObject::assertGetString(json &maybe_string) {
+	if (maybe_string.is_string())
+		return maybe_string;
+	else throw WrongJsonException();
+}
+

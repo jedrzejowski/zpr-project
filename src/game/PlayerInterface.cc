@@ -12,7 +12,7 @@
 
 game::PlayerInterface::PlayerInterface(game::MainGamePtr &scene) :
 		sceneWPtr(scene),
-		item_limit(8),
+		item_limit(10),
 		items(item_limit) {
 	logger(1).constructor(this);
 }
@@ -68,6 +68,24 @@ game::PlayerInterfacePtr game::PlayerInterface::create(game::MainGamePtr &scene)
 			PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
 			self->setSlot(5, item);
 		}
+
+		{ // kłoda
+			block::SolidBlockPtr block = std::make_shared<block::Log>();
+			PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
+			self->setSlot(6, item);
+		}
+
+		{ // bruk
+			block::SolidBlockPtr block = std::make_shared<block::Cobblestone>();
+			PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
+			self->setSlot(7, item);
+		}
+
+		{ // drewno
+			block::SolidBlockPtr block = std::make_shared<block::Wood>();
+			PlayerItemPtr item = PlayerSolidBlockItem::create(self, block);
+			self->setSlot(8, item);
+		}
 	}
 
 	// Background
@@ -101,9 +119,11 @@ void game::PlayerInterface::setSlot(int index, game::PlayerItemPtr &item) {
 void game::PlayerInterface::selectSlot(int index) {
 	assertIndexValid(index);
 
-//	setItemState(selected_slotindex, false);
+	auto old_index = selected_slot_index;
 	selected_slot_index = index;
-//	setItemState(selected_slotindex, true);
+
+	updateItemModel(old_index);
+	updateItemModel(selected_slot_index);
 }
 
 void game::PlayerInterface::useItem() {
@@ -117,10 +137,12 @@ void game::PlayerInterface::useItem() {
 }
 
 void game::PlayerInterface::updateItemModel(int index) {
+	if (isItemSlotEmpty(index)) return;
+
 	auto model = glm::mat4(1);
 
 	model = glm::translate(model, glm::vec3((2 * (float(index) + 1) - 1) / (2 * float(item_limit)), 0.94, 0));
-	model = glm::scale(model, glm::vec3(0.05));
+	model = glm::scale(model, glm::vec3(index == selected_slot_index ? 0.043 : 0.03));
 
 	items[index]->setModel(model);
 }

@@ -11,10 +11,10 @@
 
 block::BlockPtr block::Factory::create(json &data) {
 
-	if (!data[TYPE_ID_ATTR_NAME].is_number_integer())
+	if (!data[JSON_ATTR_TYPE_ID].is_number_integer())
 		throw zprException("solid_block::Factory::create", "wrong json");
 
-	BlockTypeId type_id = data[TYPE_ID_ATTR_NAME];
+	BlockTypeId type_id = data[JSON_ATTR_TYPE_ID];
 
 	block::BlockPtr block = nullptr;
 
@@ -43,6 +43,19 @@ block::BlockPtr block::Factory::create(json &data) {
 		case TYPE_ID_BRICK:
 			block = std::make_shared<Brick>(data);
 			break;
+
+		case TYPE_ID_LOG:
+			block = std::make_shared<Log>(data);
+			break;
+
+		case TYPE_ID_COBBLESTONE:
+			block = std::make_shared<Cobblestone>(data);
+			break;
+
+		case TYPE_ID_WOOD:
+			block = std::make_shared<Wood>(data);
+			break;
+
 
 		default:
 			throw WrongJsonException();

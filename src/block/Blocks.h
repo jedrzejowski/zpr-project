@@ -20,3 +20,6 @@
 #include "src/block/types/Water.h"
 #include "src/block/types/Sand.h"
 #include "src/block/types/Brick.h"
+#include "src/block/types/Log.h"
+#include "src/block/types/Cobblestone.h"
+#include "src/block/types/Wood.h"

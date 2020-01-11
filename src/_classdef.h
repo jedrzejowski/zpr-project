@@ -138,6 +138,11 @@ namespace gui {
 
 	typedef std::shared_ptr<Text> TextPtr;
 	typedef std::weak_ptr<Text> TextWPtr;
+
+	class TriButton;
+
+	typedef std::shared_ptr<TriButton> TriButtonPtr;
+	typedef std::weak_ptr<TriButton> TriButtonWPtr;
 }
 
 namespace block {

@@ -19,7 +19,7 @@ namespace menu {
 		gui::ButtonPtr play_button, settings_button, quit_button;
 
 		explicit WelcomeScene();
-		void initEvents();
+		void constructorWelcomeScene();
 	public:
 		static WelcomeScenePtr create();
 		~WelcomeScene();

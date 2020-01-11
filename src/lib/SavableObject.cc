@@ -1,5 +1,5 @@
 /**
- * @file SavableObject.cpp
+ * @file SavableObject.cc
  *
  * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
  */

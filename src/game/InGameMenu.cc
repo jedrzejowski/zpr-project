@@ -7,27 +7,13 @@
 #include "InGameMenu.h"
 #include "GameScene.h"
 
-game::InGameMenu::InGameMenu(game::GameScenePtr &scene) :
-		Interface() {
+game::InGameMenu::InGameMenu(game::GameScenePtr &scene) : Interface() {}
 
-
+void game::InGameMenu::constructorInGameMenu() {
 	getInputInterface()->getKeyboard()->Escape.onPressed([&] {
 		onMenuExit();
 	});
-}
 
-game::InGameMenuPtr game::InGameMenu::create(game::GameScenePtr &scene) {
-	struct trick : InGameMenu {
-		trick(game::GameScenePtr &scene) : InGameMenu(scene) {}
-	};
-
-	InGameMenuPtr self = std::make_shared<trick>(scene);
-	self->initEvents();
-
-	return self;
-}
-
-void game::InGameMenu::initEvents() {
 	resume_button_ptr = gui::Button::create(this->shared_from_this());
 	resume_button_ptr->setText("Wznow gre");
 	resume_button_ptr->setPosition(glm::vec2(0, 0.3));
@@ -42,3 +28,14 @@ void game::InGameMenu::initEvents() {
 		onSaveAndExit();
 	});
 }
+
+game::InGameMenuPtr game::InGameMenu::create(game::GameScenePtr &scene) {
+	struct Self : InGameMenu {
+		Self(game::GameScenePtr &scene) : InGameMenu(scene) {}
+	};
+
+	InGameMenuPtr self = std::make_shared<Self>(scene);
+	self->constructorInGameMenu();
+	return self;
+}
+

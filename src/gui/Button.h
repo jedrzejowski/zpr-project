@@ -20,21 +20,27 @@ namespace gui {
 		Disabled
 	};
 
-	class Button : public RectangleObj,  public VirtualSharePtrObject<Button> {
+	class Button : public RectangleObj, public VirtualSharePtrObject<Button> {
+		using VirtualSharePtrObject<Button>::shared_from_this;
 		ButtonState state;
 		TextPtr text;
 
 	protected:
-		explicit Button(InterfacePtr& interface);
+		explicit Button(InterfacePtr &interface);
+		explicit Button(GuiObjectPtr &gui_object);
+		void constructorButton();
+
+		void updateTextModel();
 
 	public:
 		static ButtonPtr create(InterfacePtr interface);
+		static ButtonPtr create(GuiObjectPtr gui_object);
 
 		ButtonState getState() const;
 		void setState(ButtonState state);
 
-		const std::string& getText();
-		void setText(const std::string& text);
+		const std::string &getText();
+		void setText(const std::string &new_text);
 
 		glm::vec2 getBaseSize() override;
 

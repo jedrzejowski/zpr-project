@@ -12,3 +12,4 @@
 #include "InterfaceShader.h"
 #include "RectangleObj.h"
 #include "Button.h"
+#include "TriButton.h"

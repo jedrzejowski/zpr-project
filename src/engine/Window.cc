@@ -126,14 +126,14 @@ void Window::mainLoop() {
 
 	glfwPollEvents();
 	if (current_scene_ptr != nullptr) {
-		auto current_input_interface_wptr = current_scene_ptr->getInputInterface();
+		auto current_input_interface_ptr = current_scene_ptr->getInputInterface();
 
-		if (lastInputInterface.lock().get() == current_input_interface_wptr.get())
-			current_input_interface_wptr->updateState(glfw_window);
+		if (last_input_interface_wptr.lock().get() == current_input_interface_ptr.get())
+			current_input_interface_ptr->updateState(glfw_window);
 		else
-			current_input_interface_wptr->initState(glfw_window);
+			current_input_interface_ptr->initState(glfw_window);
 
-		lastInputInterface = current_input_interface_wptr;
+		last_input_interface_wptr = current_input_interface_ptr;
 	}
 
 	if (current_scene_ptr != nullptr)

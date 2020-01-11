@@ -40,6 +40,6 @@ namespace engine {
 		virtual void updateBuffers() = 0;
 
 		[[nodiscard]] virtual bool isNeedRefreshBuffers() const;
-		virtual void setNeedRefreshBuffers(bool needRefreshBuffers);
+		virtual void setNeedRefreshBuffers(bool need);
 	};
 }

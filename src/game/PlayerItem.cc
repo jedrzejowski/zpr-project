@@ -135,6 +135,8 @@ void game::PlayerSolidBlockItem::updateBuffers() {
 
 		vOffest += 4;
 	}
+
+	setNeedRefreshBuffers(false);
 }
 
 void game::PlayerSolidBlockItem::useItem(map::WorldPtr &worldMap, game::PlayerPtr &player) {

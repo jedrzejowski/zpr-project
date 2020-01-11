@@ -49,11 +49,16 @@ void engine::Sub3DObj::insertToBuffers(std::vector<engine::Point3DeX> &vertices,
 }
 
 bool engine::Sub3DObj::isNeedRefreshBuffers() const {
-	return is_need_refresh_buffers;
+	bool out = is_need_refresh_buffers;
+
+	for (auto &child : getChildren())
+		out = out || child->isNeedRefreshBuffers();
+
+	return out;
 }
 
-void engine::Sub3DObj::setNeedRefreshBuffers(bool needRefreshBuffers) {
-	Sub3DObj::is_need_refresh_buffers = needRefreshBuffers;
+void engine::Sub3DObj::setNeedRefreshBuffers(bool need) {
+	is_need_refresh_buffers = need;
 }
 
 engine::Sub3DObj::~Sub3DObj() {

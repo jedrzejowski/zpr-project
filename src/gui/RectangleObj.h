@@ -32,19 +32,20 @@ namespace gui {
 
 	protected:
 
-		void initInputInterface();
+		void constructorRectangleObj();
 
 	public:
 
 		explicit RectangleObj(InterfacePtr interface);
+		explicit RectangleObj(GuiObjectPtr gui_object);
 
 		bool isCollisionWithMouse(const glm::vec2 &mousePosition);
 		void updateBuffers() override;
 
 		const glm::vec2 &getPosition() const;
-		void setPosition(const glm::vec2 &position);
+		void setPosition(const glm::vec2 &new_position);
 		const glm::vec2 &getSize() const;
-		void setSize(const glm::vec2 &size);
+		void setSize(const glm::vec2 &new_size);
 
 		virtual glm::vec2 getBaseSize() {
 			return glm::vec2(1, 1);
@@ -52,6 +53,9 @@ namespace gui {
 
 		const engine::SquareTextureReference &getTextureReference() const;
 		void setTextureReference(const engine::SquareTextureReference &textureReference);
+
+		const Signal<const glm::vec2&, const glm::vec2&> onSizeChanged;
+		const Signal<const glm::vec2&, const glm::vec2&> onPositionChanged;
 	};
 }
 

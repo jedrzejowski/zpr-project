@@ -34,7 +34,7 @@ namespace engine {
 		ScenePtr current_scene_ptr;
 		ScenePtr next_scene_ptr;
 		ViewPort viewPort;
-		InputInterfaceWPtr lastInputInterface;
+		InputInterfaceWPtr last_input_interface_wptr;
 
 		void mainLoop();
 		void swapScene();

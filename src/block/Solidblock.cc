@@ -1,5 +1,5 @@
 /**
- * @file Solidblock.cpp
+ * @file Solidblock.cc
  *
  * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
  */

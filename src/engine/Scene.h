@@ -20,12 +20,9 @@ namespace engine {
 	private:
 		WindowWPtr window_wptr;
 		InputInterfacePtr input_interface_ptr;
-
 	protected:
 		Scene();
-
 	public:
-		const Signal<> onWindowChanged;
 
 		virtual void render(WindowPtr& window) = 0;
 
@@ -39,5 +36,6 @@ namespace engine {
 		virtual void pollEvents() {};
 
 		const Signal<> onRefreshBuffers;
+		const Signal<> onWindowChanged;
 	};
 }

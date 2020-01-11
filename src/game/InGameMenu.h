@@ -16,7 +16,7 @@ namespace game {
 		gui::ButtonPtr resume_button_ptr, save_btn_ptr;
 
 		explicit InGameMenu(GameScenePtr& scene);
-		void initEvents();
+		void constructorInGameMenu();
 	public:
 		static InGameMenuPtr create(GameScenePtr& scene);
 

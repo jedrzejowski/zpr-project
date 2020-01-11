@@ -19,9 +19,11 @@ const std::string &gui::Text::getContent() const {
 	return content;
 }
 
-void gui::Text::setContent(const std::string &content) {
-	Text::content = content;
+void gui::Text::setContent(const std::string &new_content) {
+	auto old_content = content;
+	content = new_content;
 	setNeedRefreshBuffers(true);
+	onContentChanged(old_content, new_content);
 }
 
 void gui::Text::updateBuffers() {
@@ -46,7 +48,8 @@ void gui::Text::updateBuffers() {
 		vertices_buffer.emplace_back(point_Xy,
 									 engine::TexCoord((float) (x + 1) / 16, (float) y / 16, global::TextureFontNo));
 		vertices_buffer.emplace_back(point_XY,
-									 engine::TexCoord((float) (x + 1) / 16, (float) (y + 1) / 16, global::TextureFontNo));
+									 engine::TexCoord((float) (x + 1) / 16, (float) (y + 1) / 16,
+													  global::TextureFontNo));
 		vertices_buffer.emplace_back(point_xY,
 									 engine::TexCoord((float) x / 16, (float) (y + 1) / 16, global::TextureFontNo));
 
@@ -56,4 +59,10 @@ void gui::Text::updateBuffers() {
 		offset += 4;
 		charInd++;
 	}
+
+	setNeedRefreshBuffers(false);
+}
+
+float gui::Text::getContentLength() const {
+	return content.length();
 }

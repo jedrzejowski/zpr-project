@@ -2152,7 +2152,7 @@ static int stbi__jpeg_decode_block_prog_ac(stbi__jpeg *j, short data[64], stbi__
 // take a -128..127 value and stbi__clamp it and convert to 0..255
 stbi_inline static stbi_uc stbi__clamp(int x)
 {
-   // trick to use a single test to catch both cases
+   // Self to use a single test to catch both cases
    if ((unsigned int) x > 255) {
       if (x < 0) return 0;
       if (x > 255) return 255;

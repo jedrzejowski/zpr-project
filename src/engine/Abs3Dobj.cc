@@ -29,7 +29,6 @@ Abs3DObj::~Abs3DObj() {
 
 void Abs3DObj::insertToGPU() {
 	updateBuffers();
-	id_need_refresh_buffers = false;
 
 	glBindVertexArray(VAO);
 
@@ -53,19 +52,6 @@ void Abs3DObj::drawTriangles() {
 	glDrawElements(GL_TRIANGLES, 3 * indices_length_in_buffer, GL_UNSIGNED_INT, nullptr);
 }
 
-bool Abs3DObj::isNeedRefreshBuffers() const {
-	bool out = id_need_refresh_buffers;
-
-	for (auto &child : getChildren())
-		out = out || child->isNeedRefreshBuffers();
-
-	return out;
-}
-
-void Abs3DObj::setNeedRefreshBuffers(bool need) {
-	id_need_refresh_buffers = need;
-}
-
 
 void recursiveUpdateBuffers(Sub3DObj *obj) {
 
@@ -87,4 +73,6 @@ void Abs3DObj::updateBuffers() {
 		recursiveUpdateBuffers(child);
 		child->insertToBuffers(vertices_buffer, indices_buffer);
 	}
+
+	setNeedRefreshBuffers(false);
 }

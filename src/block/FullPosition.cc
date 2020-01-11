@@ -1,5 +1,5 @@
 /**
- * @file FullPosition.cpp
+ * @file FullPosition.cc
  *
  * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
  */

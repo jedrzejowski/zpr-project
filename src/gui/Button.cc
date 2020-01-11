@@ -8,8 +8,13 @@
 #include "src/lib/Object.hpp"
 #include "src/OpenGL.h"
 
-gui::Button::Button(InterfacePtr &interface) :
-		RectangleObj(interface) {
+gui::Button::Button(InterfacePtr &interface) : RectangleObj(interface) {}
+
+gui::Button::Button(gui::GuiObjectPtr &gui_object) : RectangleObj(gui_object) {}
+
+void gui::Button::constructorButton() {
+	RectangleObj::constructorRectangleObj();
+
 	setState(Idle);
 
 	onEnter([&] {
@@ -23,22 +28,36 @@ gui::Button::Button(InterfacePtr &interface) :
 	onPressed([&] {
 		onClicked();
 	});
+
+	text = std::make_shared<Text>(this->shared_from_this());
+	updateTextModel();
+
+	onSizeChanged([&](const glm::vec2 &old_size, const glm::vec2 &new_size) {
+		updateTextModel();
+	});
+
+	text->onContentChanged([&](const std::string &old_content, const std::string &new_content) {
+		updateTextModel();
+	});
 }
 
 gui::ButtonPtr gui::Button::create(gui::InterfacePtr interface) {
-	struct trick : Button {
-		trick(InterfacePtr &interface) : Button(interface) {}
+	struct Self : Button {
+		Self(InterfacePtr &interface) : Button(interface) {}
 	};
 
-	auto self = std::make_shared<trick>(interface);
-	self->initInputInterface();
+	auto self = std::make_shared<Self>(interface);
+	self->constructorButton();
+	return self;
+}
 
-	self->text = std::make_shared<Text>(self);
-	auto model = self->text->getModel();
-	model = glm::translate(model, glm::vec3(0, 0.13 / 4, -.1));
-	model = glm::scale(model, glm::vec3(0.13 / 2, 0.13 / 2, 1));
-	self->text->setModel(model);
+gui::ButtonPtr gui::Button::create(gui::GuiObjectPtr gui_object) {
+	struct Self : Button {
+		Self(GuiObjectPtr &gui_object) : Button(gui_object) {}
+	};
 
+	auto self = std::make_shared<Self>(gui_object);
+	self->constructorButton();
 	return self;
 }
 
@@ -97,6 +116,20 @@ const std::string &gui::Button::getText() {
 	return text->getContent();
 }
 
-void gui::Button::setText(const std::string &text) {
-	this->text->setContent(text);
+void gui::Button::setText(const std::string &new_text) {
+	text->setContent(new_text);
+}
+
+void gui::Button::updateTextModel() {
+	auto model = glm::mat4(1);
+	auto base_size = getBaseSize();
+
+	model = glm::translate(model, glm::vec3(
+			0.5 - text->getContentLength() * base_size.y / 4,
+			base_size.y / 4,
+			-.1));
+
+	model = glm::scale(model, glm::vec3(base_size.y / 2 / getSize().x, base_size.y / 2, 1));
+
+	text->setModel(model);
 }

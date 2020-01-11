@@ -21,9 +21,19 @@ namespace gui {
 		explicit Text(GuiObjectPtr parent);
 
 		const std::string &getContent() const;
-		void setContent(const std::string &content);
+		void setContent(const std::string &new_content);
+
+		float getContentLength() const;
 
 		void updateBuffers() override;
+
+		const Signal<const std::string &, const std::string &> onContentChanged;
+
+		enum HorizontalAlign {
+			Left,
+			Center,
+			Right
+		};
 	};
 }
 

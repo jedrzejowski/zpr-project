@@ -15,61 +15,57 @@ menu::WelcomeScene::WelcomeScene() {
 	logger(4).constructor(this);
 }
 
-menu::WelcomeScene::~WelcomeScene() {
-	logger(4).destructor(this);
-}
+void menu::WelcomeScene::constructorWelcomeScene() {
+	interface = std::make_shared<gui::Interface>();
+	setInputInterface(interface->getInputInterface());
 
-menu::WelcomeScenePtr menu::WelcomeScene::create() {
-	struct trick : public WelcomeScene {
-	};
-	auto self = std::make_shared<trick>();
-
-	self->interface = std::make_shared<gui::Interface>();
-	self->setInputInterface(self->interface->getInputInterface());
-
-	self->play_button = gui::Button::create(self->interface);
-	self->play_button->setPosition(glm::vec2(0, 0.3));
-	self->play_button->setText("Graj");
-
-	self->settings_button = gui::Button::create(self->interface);
-	self->settings_button->setPosition(glm::vec2(0, 0.5));
-	self->settings_button->setText("Ustawienia");
-
-	self->quit_button = gui::Button::create(self->interface);
-	self->quit_button->setPosition(glm::vec2(0, 0.7));
-	self->quit_button->setText("Koniec");
-
-	self->initEvents();
-
-	return self;
-}
-
-
-void menu::WelcomeScene::initEvents() {
+	play_button = gui::Button::create(interface);
+	play_button->setPosition(glm::vec2(0, 0.3));
+	play_button->setText("Graj");
 	play_button->onClicked([&] {
 
-		auto winWPtr = getWindow();
-		if (winWPtr.expired()) return;
-		auto winPtr = winWPtr.lock();
+		if (auto window_ptr = getWindow().lock()) {
 
-		auto newScene = game::GameScene::create();
-
-		winPtr->setScene(newScene);
+			auto newScene = game::GameScene::create();
+			window_ptr->setScene(newScene);
+		}
 	});
 
-
+	settings_button = gui::Button::create(interface);
+	settings_button->setPosition(glm::vec2(0, 0.5));
+	settings_button->setText("Ustawienia");
 	settings_button->onClicked([&] {
-//		getWindow()->setScene(new SettingsScene);
+		if (auto window_ptr = getWindow().lock()) {
+
+			auto newScene = menu::SettingsScene::create();
+			window_ptr->setScene(newScene);
+		}
 	});
 
+	quit_button = gui::Button::create(interface);
+	quit_button->setPosition(glm::vec2(0, 0.7));
+	quit_button->setText("Koniec");
 	quit_button->onClicked([&] {
 		if (auto window_ptr = getWindow().lock())
 			window_ptr->close();
 	});
 }
 
+menu::WelcomeScene::~WelcomeScene() {
+	logger(4).destructor(this);
+}
+
+menu::WelcomeScenePtr menu::WelcomeScene::create() {
+	struct Self : public WelcomeScene {
+	};
+	auto self = std::make_shared<Self>();
+
+	self->constructorWelcomeScene();
+
+	return self;
+}
+
 
 void menu::WelcomeScene::render(engine::WindowPtr &window) {
-	auto ptr = this->shared_from_this();
-	interface->render(ptr);
+	interface->render(this->shared_from_this());
 }

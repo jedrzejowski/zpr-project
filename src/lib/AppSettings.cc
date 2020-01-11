@@ -15,7 +15,7 @@ AppSettings::AppSettings() {
 
 	char temp[256];
 	get_user_config_folder(temp, sizeof(temp), global::AppName.c_str());
-	cfgDir = temp[0] == 0 ? "." : temp;
+	cfg_dir = temp[0] == 0 ? "." : temp;
 }
 
 AppSettings::~AppSettings() {
@@ -36,7 +36,7 @@ void AppSettings::saveFile(boost::filesystem::path path, std::string content) {
 }
 
 boost::filesystem::path AppSettings::getCfgDir() {
-	return cfgDir;
+	return cfg_dir;
 }
 
 json AppSettings::loadJSON(boost::filesystem::path path) {

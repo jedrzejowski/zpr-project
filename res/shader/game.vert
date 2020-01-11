@@ -8,11 +8,11 @@ out vec2 TexCoord;
 uniform mat4 model = mat4(1);
 uniform mat4 camera;
 uniform mat4 projection;
-uniform mat4 chunkPos = mat4(1);
+uniform mat4 chunk_position = mat4(1);
 
 void main() {
 
-    vec4 pos = model * chunkPos * vec4(iPosition, 1.0f);
+    vec4 pos = model * chunk_position * vec4(iPosition, 1.0f);
 
     gl_Position = projection * camera * pos;
 

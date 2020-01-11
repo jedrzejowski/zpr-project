@@ -38,18 +38,18 @@ ShaderProgram::ShaderProgram(const std::string &vertexPath, const std::string &f
 	GLuint fragmentId = compileShader(fragmentCode.c_str(), GL_FRAGMENT_SHADER);
 
 	// link ShaderProgram program
-	shaderId = glCreateProgram();
-	glAttachShader(shaderId, vertexId);
-	glAttachShader(shaderId, fragmentId);
-	glLinkProgram(shaderId);
+	shader_id = glCreateProgram();
+	glAttachShader(shader_id, vertexId);
+	glAttachShader(shader_id, fragmentId);
+	glLinkProgram(shader_id);
 
 
 	// Print linking errors if any
 	GLint success;
-	glGetProgramiv(shaderId, GL_LINK_STATUS, &success);
+	glGetProgramiv(shader_id, GL_LINK_STATUS, &success);
 	if (!success) {
 		GLchar infoLog[512];
-		glGetProgramInfoLog(shaderId, sizeof(infoLog), nullptr, infoLog);
+		glGetProgramInfoLog(shader_id, sizeof(infoLog), nullptr, infoLog);
 		std::string msg = std::string("ShaderProgram program linking:\n") + infoLog;
 		logger(1).info(std::string("Błąd podczas kompilacji szejdera:\n") + infoLog);
 		throw zprException("ShaderProgram::ShaderProgram", msg);

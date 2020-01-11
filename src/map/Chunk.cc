@@ -12,7 +12,7 @@
 const Coord3D map::Chunk::Size = Coord3D(16, 16, 16);
 
 map::Chunk::Chunk(const WorldPtr &worldMap, const Coord2D &position) :
-		worldMapWPtr(worldMap),
+		world_map_wptr(worldMap),
 		position(position) {
 	logger(5).constructor(this);
 }
@@ -77,7 +77,7 @@ map::ChunkWPtr map::Chunk::getNeighbor(CoordDim dx, CoordDim dy) const {
 	neighborPos.x += dx;
 	neighborPos.y += dy;
 
-	if (auto worldMapPtr = worldMapWPtr.lock())
+	if (auto worldMapPtr = world_map_wptr.lock())
 		return worldMapPtr->getChunk(neighborPos);
 	else return map::ChunkWPtr();
 }
@@ -117,7 +117,7 @@ json map::Chunk::toJSON() const {
 }
 
 boost::filesystem::path map::Chunk::getSavePath(AppSettings &app_settings) const {
-	if (auto worldMapPtr = worldMapWPtr.lock()) {
+	if (auto worldMapPtr = world_map_wptr.lock()) {
 		return (worldMapPtr->getDirectory() / "surface1") / (position.toStringId() + ".chunk");
 	} else throw zprException("map::Chunk::getSavePath", "saving chunk when WorldMap object is gone");
 }

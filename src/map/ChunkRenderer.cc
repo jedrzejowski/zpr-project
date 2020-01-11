@@ -11,7 +11,7 @@
 
 map::ChunkRenderer::ChunkRenderer(map::WorldRendererPtr &renderer, const map::ChunkPtr &chunkPtr) :
 		Abs3DObj(),
-		worldRenderer(renderer),
+		world_renderer_wptr(renderer),
 		chunk(chunkPtr) {
 	logger(5).constructor(this);
 }
@@ -41,8 +41,8 @@ map::ChunkRenderer::~ChunkRenderer() {
 void map::ChunkRenderer::updateBuffers() {
 
 	auto coord = chunk->getPosition();
-	chunkPos = glm::translate(glm::mat4(1),
-							  glm::vec3(
+	chunk_position = glm::translate(glm::mat4(1),
+									glm::vec3(
 									  coord.x * Chunk::Size.x,
 									  coord.y * Chunk::Size.y,
 									  0
@@ -60,6 +60,6 @@ void map::ChunkRenderer::updateBuffers() {
 }
 
 void map::ChunkRenderer::render(const engine::ScenePtr& scene) {
-	worldRenderer.lock()->getShader()->setChunkPos(chunkPos);
+	world_renderer_wptr.lock()->getShader()->setChunkPos(chunk_position);
 	drawTriangles();
 }

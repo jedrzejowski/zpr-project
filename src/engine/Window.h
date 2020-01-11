@@ -30,9 +30,9 @@ namespace engine {
 				window_top_offset = 0, window_left_offset = 0,
 				window_right_offset = 0, win_bottom_offset = 0;
 
-		GLFWwindow *glfwWin = nullptr;
-		ScenePtr currentScene;
-		ScenePtr nextScene;
+		GLFWwindow *glfw_window = nullptr;
+		ScenePtr current_scene_ptr;
+		ScenePtr next_scene_ptr;
 		ViewPort viewPort;
 		InputInterfaceWPtr lastInputInterface;
 

@@ -14,9 +14,9 @@ namespace engine {
 	class InputButton : public Object {
 		friend InputDevice;
 	private:
-		double timeOfLastChange = glfwGetTime();
-		int lastState = GLFW_RELEASE;
-		int currentState = GLFW_RELEASE;
+		double time_of_last_change = glfwGetTime();
+		int last_state = GLFW_RELEASE;
+		int current_state = GLFW_RELEASE;
 
 		const int btnCode;
 
@@ -31,11 +31,11 @@ namespace engine {
 
 		void clearSignals();
 
-		inline bool isPressed() const { return currentState == GLFW_PRESS; }
+		inline bool isPressed() const { return current_state == GLFW_PRESS; }
 
-		inline bool isReleased() const { return currentState == GLFW_RELEASE; }
+		inline bool isReleased() const { return current_state == GLFW_RELEASE; }
 
-		inline double getTimeOfLastChange() const { return timeOfLastChange; }
+		inline double getTimeOfLastChange() const { return time_of_last_change; }
 
 		const Signal<> onPress;
 		const Signal<> onPressed;

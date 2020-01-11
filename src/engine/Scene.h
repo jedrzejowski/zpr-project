@@ -17,8 +17,8 @@ namespace engine {
 
 	class Scene : public Object, public VirtualSharePtrObject<Scene> {
 	private:
-		WindowWPtr window;
-		InputInterfacePtr inputInterface;
+		WindowWPtr window_wptr;
+		InputInterfacePtr input_interface_ptr;
 
 	protected:
 		Scene();
@@ -33,7 +33,7 @@ namespace engine {
 		bool isInWindow();
 
 		InputInterfacePtr getInputInterface();
-		void setInputInterface(InputInterfacePtr interfacePtr);
+		void setInputInterface(InputInterfacePtr interface_ptr);
 
 		virtual void pollEvents() {};
 

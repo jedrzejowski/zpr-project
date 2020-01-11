@@ -21,13 +21,13 @@ namespace map {
 		World* world;
 		BackWorkerQueue worker;
 
-		std::list<Coord2D> chunksToRemove;
-		std::list<Coord2D> unloadingChunksCoords;
+		std::list<Coord2D> chunks_to_remove;
+		std::list<Coord2D> unloading_chunks_coords;
 
-		std::list<Coord2D> loadingChunksCoords;
-		std::list<map::ChunkPtr> chunksToAdd;
+		std::list<Coord2D> loading_chunks_coords;
+		std::list<map::ChunkPtr> chunks_to_add;
 
-		std::mutex chunkListAccess;
+		std::mutex chunk_list_access;
 
 	public:
 		explicit ChunkLoader(World* world);

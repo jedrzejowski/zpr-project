@@ -15,9 +15,9 @@ namespace engine {
 	class Abs3DObj : public Sub3DObj {
 	private:
 		GLuint VAO, VBO, EBO;
-		bool needRefreshBuffers = true;
-		std::size_t verticesLengthInBuffer = 0,
-				indicesLengthInBuffer = 0;
+		bool id_need_refresh_buffers = true;
+		std::size_t vertices_length_in_buffer = 0,
+				indices_length_in_buffer = 0;
 	protected:
 
 		void drawTriangles();
@@ -31,7 +31,7 @@ namespace engine {
 		void updateBuffers() override;
 		virtual void render(const ScenePtr& scene) = 0;
 
-		bool isNeedRefreshBuffers() const override;
+		[[nodiscard]] bool isNeedRefreshBuffers() const override;
 		void setNeedRefreshBuffers(bool need) override;
 
 	};

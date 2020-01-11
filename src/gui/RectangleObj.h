@@ -24,9 +24,9 @@ namespace gui {
 				point_xY,
 				point_XY;
 
-		engine::SquareTextureReference textureReference;
+		engine::SquareTextureReference texture_reference;
 
-		bool isMouseIn = false;
+		bool is_mouse_in = false;
 
 		void refreshModel();
 

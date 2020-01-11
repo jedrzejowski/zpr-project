@@ -11,7 +11,7 @@
 
 class AppSettings {
 	AppSettings();
-	boost::filesystem::path cfgDir;
+	boost::filesystem::path cfg_dir;
 public:
 	AppSettings(const AppSettings &) = delete;
 	void operator=(const AppSettings &) = delete;

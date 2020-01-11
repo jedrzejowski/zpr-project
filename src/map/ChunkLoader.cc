@@ -18,7 +18,7 @@ void map::ChunkLoader::load(Coord2D coord) {
 	if (isChunkUnloading(coord)) return;
 	if (isChunkLoading(coord)) return;
 
-	loadingChunksCoords.push_back(coord);
+	loading_chunks_coords.push_back(coord);
 
 	worker.push([this, coord] {
 		auto worldMapPtr = world->shared_from_this();
@@ -34,18 +34,18 @@ void map::ChunkLoader::load(Coord2D coord) {
 
 				logger(0).err("Error during parsing chunk data.").err("I will generate new one");
 
-				world->chunkGenerator.fillChunk(chunk);
+				world->chunk_generator.fillChunk(chunk);
 			} catch (FileInputException &exception) {
 
 				logger(0).err("Error during reading chunk from file:").enter()
 						.err(exception.getFile()).enter()
 						.err("I will generate new one");
 
-				world->chunkGenerator.fillChunk(chunk);
+				world->chunk_generator.fillChunk(chunk);
 			}
 
 		else {
-			world->chunkGenerator.fillChunk(chunk);
+			world->chunk_generator.fillChunk(chunk);
 
 			try {
 
@@ -57,36 +57,36 @@ void map::ChunkLoader::load(Coord2D coord) {
 		}
 
 
-		std::lock_guard<std::mutex> lock(chunkListAccess);
-		chunksToAdd.push_back(chunk);
+		std::lock_guard<std::mutex> lock(chunk_list_access);
+		chunks_to_add.push_back(chunk);
 	});
 }
 
 void map::ChunkLoader::unload(Coord2D coord) {
 	if (!isChunkLoaded(coord)) return;
 
-	chunksToRemove.push_back(coord);
+	chunks_to_remove.push_back(coord);
 }
 
 map::ChunkLoader::~ChunkLoader() {
 }
 
 void map::ChunkLoader::syncWithWorld() {
-	std::lock_guard<std::mutex> lock(chunkListAccess);
+	std::lock_guard<std::mutex> lock(chunk_list_access);
 
-	if (chunksToAdd.empty() && chunksToRemove.empty()) return;
+	if (chunks_to_add.empty() && chunks_to_remove.empty()) return;
 
 
-	while (!chunksToAdd.empty()) {
-		auto chunk = chunksToAdd.front();
-		chunksToAdd.pop_front();
+	while (!chunks_to_add.empty()) {
+		auto chunk = chunks_to_add.front();
+		chunks_to_add.pop_front();
 
 		world->insertChunk(chunk);
 	}
 
-	while (!chunksToRemove.empty()) {
-		auto pos = chunksToRemove.front();
-		chunksToRemove.pop_front();
+	while (!chunks_to_remove.empty()) {
+		auto pos = chunks_to_remove.front();
+		chunks_to_remove.pop_front();
 
 		auto chunk = world->ejectChunk(pos);
 
@@ -94,8 +94,8 @@ void map::ChunkLoader::syncWithWorld() {
 
 			chunk->saveObjectToFile();
 
-			std::lock_guard<std::mutex> lock(chunkListAccess);
-			unloadingChunksCoords.remove(chunk->getPosition());
+			std::lock_guard<std::mutex> lock(chunk_list_access);
+			unloading_chunks_coords.remove(chunk->getPosition());
 		});
 	}
 }
@@ -105,9 +105,9 @@ bool map::ChunkLoader::isChunkLoaded(const Coord2D &coord) {
 }
 
 bool map::ChunkLoader::isChunkLoading(const Coord2D &coord) {
-	return std::find(loadingChunksCoords.begin(), loadingChunksCoords.end(), coord) != loadingChunksCoords.end();
+	return std::find(loading_chunks_coords.begin(), loading_chunks_coords.end(), coord) != loading_chunks_coords.end();
 }
 
 bool map::ChunkLoader::isChunkUnloading(const Coord2D &coord) {
-	return std::find(unloadingChunksCoords.begin(), unloadingChunksCoords.end(), coord) != unloadingChunksCoords.end();;
+	return std::find(unloading_chunks_coords.begin(), unloading_chunks_coords.end(), coord) != unloading_chunks_coords.end();;
 }

@@ -13,7 +13,7 @@ namespace game {
 	class InGameMenu : public gui::Interface, public VirtualSharePtrObject<InGameMenu> {
 	private:
 
-		gui::ButtonPtr resumeBtn, saveBtn;
+		gui::ButtonPtr resume_button_ptr, save_btn_ptr;
 
 		explicit InGameMenu(GameScenePtr& scene);
 		void initEvents();

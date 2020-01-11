@@ -14,7 +14,7 @@
 namespace engine {
 
 	class ShaderProgram {
-		GLuint shaderId;
+		GLuint shader_id;
 	public:
 		ShaderProgram(const std::string &vertexPath, const std::string &fragmentPath);
 		~ShaderProgram();
@@ -23,8 +23,8 @@ namespace engine {
 		virtual void unbind();
 
 		// returns program ID
-		inline GLuint getID() const {
-			return shaderId;
+		[[nodiscard]] inline GLuint getID() const {
+			return shader_id;
 		}
 
 		void setBool(const std::string &name, bool value);

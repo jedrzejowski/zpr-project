@@ -14,11 +14,10 @@
 #include "WorldShader.h"
 
 map::WorldRenderer::WorldRenderer(const map::WorldPtr& worldMap) :
-		worldMap(worldMap) {
+		world_map_ptr(worldMap) {
 	logger(1).constructor(this);
 
 	shader = std::make_shared<map::WorldShader>();
-	blockTexture = engine::Resources::get().getTexture("texture/block.png");
 }
 
 map::WorldRendererPtr map::WorldRenderer::create(const map::WorldPtr &worldMap) {
@@ -37,15 +36,15 @@ map::WorldRendererPtr map::WorldRenderer::create(const map::WorldPtr &worldMap) 
 void map::WorldRenderer::initEvents() {
 	auto tt = this->shared_from_this();
 
-	worldMap->onChunkInserted(this->shared_from_this(), [&](const map::ChunkPtr& chunk) {
+	world_map_ptr->onChunkInserted(this->shared_from_this(), [&](const map::ChunkPtr& chunk) {
 
 		auto self = this->shared_from_this();
 		auto cr = ChunkRenderer::create(self, chunk);
-		chunkRenderers[chunk->getPosition()] = cr;
+		chunk_renderers[chunk->getPosition()] = cr;
 	});
 
-	worldMap->onChunkEjected(this->shared_from_this(), [&](const map::ChunkPtr &chunk) {
-		chunkRenderers.erase(chunk->getPosition());
+	world_map_ptr->onChunkEjected(this->shared_from_this(), [&](const map::ChunkPtr &chunk) {
+		chunk_renderers.erase(chunk->getPosition());
 	});
 }
 
@@ -62,7 +61,6 @@ void map::WorldRenderer::render(const engine::Camera &camera,
 	glClear(GL_DEPTH_BUFFER_BIT);
 
 	shader->bind();
-	blockTexture->use();
 
 //	glEnable(GL_CULL_FACE); // tak aby tyły nie były renderowane
 
@@ -73,7 +71,7 @@ void map::WorldRenderer::render(const engine::Camera &camera,
 
 	shader->setCamera(camera);
 
-	for (const auto &it : chunkRenderers)
+	for (const auto &it : chunk_renderers)
 		it.second->render(scene);
 
 	shader->unbind();

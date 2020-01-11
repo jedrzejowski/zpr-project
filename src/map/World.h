@@ -19,8 +19,8 @@ namespace map {
 		friend ChunkLoader;
 		friend ChunkGenerator;
 	protected:
-		ChunkLoader chunkLoader;
-		ChunkGenerator chunkGenerator;
+		ChunkLoader chunk_loader;
+		ChunkGenerator chunk_generator;
 		std::map<Coord2D, map::ChunkPtr> chunks;
 		std::string code_name;
 		std::string display_name;

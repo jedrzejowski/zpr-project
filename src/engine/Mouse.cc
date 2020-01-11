@@ -18,7 +18,7 @@ engine::Mouse::Mouse(engine::InputInterface *ii) :
 }
 
 void engine::Mouse::initState(GLFWwindow *window) {
-	lastPosition = currentPosition = getGlfwPosition(window);
+	last_position = current_position = getGlfwPosition(window);
 
 	if (isAttachedToCenter()) {
 		int width, height;
@@ -33,14 +33,14 @@ void engine::Mouse::initState(GLFWwindow *window) {
 
 void engine::Mouse::updateState(GLFWwindow *window) {
 
-	lastPosition = currentPosition;
-	currentPosition = getGlfwPosition(window);
+	last_position = current_position;
+	current_position = getGlfwPosition(window);
 
 	{
-		bool was = inWindow;
-		inWindow = glfwGetWindowAttrib(window, GLFW_FOCUSED);
+		bool was = is_in_window;
+		is_in_window = glfwGetWindowAttrib(window, GLFW_FOCUSED);
 
-		if (was != inWindow) {
+		if (was != is_in_window) {
 			if (was) onLeave.emit();
 			else onEnter.emit();
 		}
@@ -66,31 +66,31 @@ void engine::Mouse::updateState(GLFWwindow *window) {
 
 
 bool engine::Mouse::isInWindow() const {
-	return inWindow;
+	return is_in_window;
 }
 
 bool engine::Mouse::isAttachedToCenter() const {
-	return attachedToCenter;
+	return attached_to_center;
 }
 
 void engine::Mouse::setAttachedToCenter(bool attachedToCenter) {
-	Mouse::attachedToCenter = attachedToCenter;
+	Mouse::attached_to_center = attachedToCenter;
 }
 
 const glm::vec2 &engine::Mouse::getLastPosition() const {
-	return lastPosition;
+	return last_position;
 }
 
 const glm::vec2 &engine::Mouse::getCurrentPosition() const {
-	return currentPosition;
+	return current_position;
 }
 
 glm::vec2 engine::Mouse::getDeltaX() const {
-	return lastPosition - currentPosition;
+	return last_position - current_position;
 }
 
 glm::vec2 engine::Mouse::getDeltaY() const {
-	return lastPosition - currentPosition;
+	return last_position - current_position;
 }
 
 glm::vec2 engine::Mouse::getGlfwPosition(GLFWwindow *window) {
@@ -103,7 +103,7 @@ void engine::Mouse::setGlfwPosition(GLFWwindow *window, const glm::vec2 &pos) {
 
 	glfwSetCursorPos(window, pos.x, pos.y);
 
-	lastPosition = currentPosition = pos;
+	last_position = current_position = pos;
 }
 
 engine::Mouse::~Mouse() {

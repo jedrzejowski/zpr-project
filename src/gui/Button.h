@@ -24,7 +24,7 @@ namespace gui {
 		ButtonState state;
 		TextPtr text;
 
-	private:
+	protected:
 		explicit Button(InterfacePtr& interface);
 
 	public:

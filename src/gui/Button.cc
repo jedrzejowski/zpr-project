@@ -6,6 +6,7 @@
 
 #include "Button.h"
 #include "src/lib/Object.hpp"
+#include "src/OpenGL.h"
 
 gui::Button::Button(InterfacePtr &interface) :
 		RectangleObj(interface) {

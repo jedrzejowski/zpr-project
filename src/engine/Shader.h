@@ -16,7 +16,7 @@ namespace engine {
 		ShaderProgram program;
 	public:
 		Shader(const std::string &vertexPath, const std::string &fragmentPath);
-		const ShaderProgram& getProgram() const;
+		[[nodiscard]] const ShaderProgram& getProgram() const;
 
 		virtual void bind();
 		virtual void unbind();

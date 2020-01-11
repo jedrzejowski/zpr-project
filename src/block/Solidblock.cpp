@@ -42,10 +42,10 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	if (!(block = this->getNeighbor(0, 0, +1).lock()) || !block->isSolid()) {
 		auto wall = getWall(position, Direction::Z_PLUS);
 
-		vertices.emplace_back(engine::Point3D(wall.firstPoint), texture_top.getTexCoord_XY());
-		vertices.emplace_back(engine::Point3D(wall.secondPoint), texture_top.getTexCoord_Xy());
-		vertices.emplace_back(engine::Point3D(wall.thirdPoint), texture_top.getTexCoord_xy());
-		vertices.emplace_back(engine::Point3D(wall.fourthPoint), texture_top.getTexCoord_xY());
+		vertices.emplace_back(engine::Point3D(wall.first_point), texture_top.getTexCoord_XY());
+		vertices.emplace_back(engine::Point3D(wall.second_point), texture_top.getTexCoord_Xy());
+		vertices.emplace_back(engine::Point3D(wall.third_point), texture_top.getTexCoord_xy());
+		vertices.emplace_back(engine::Point3D(wall.fourth_point), texture_top.getTexCoord_xY());
 
 		indices.push_back(engine::EboTriangle(1, 3, 2) - 1 + vOffest);
 		indices.push_back(engine::EboTriangle(1, 4, 3) - 1 + vOffest);
@@ -58,10 +58,10 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	if (!(block = this->getNeighbor(0, 0, -1).lock()) || !block->isSolid()) {
 		auto wall = getWall(position, Direction::Z_MINUS);
 
-		vertices.emplace_back(engine::Point3D(wall.firstPoint), texture_bottom.getTexCoord_xy());
-		vertices.emplace_back(engine::Point3D(wall.secondPoint), texture_bottom.getTexCoord_Xy());
-		vertices.emplace_back(engine::Point3D(wall.thirdPoint), texture_bottom.getTexCoord_XY());
-		vertices.emplace_back(engine::Point3D(wall.fourthPoint), texture_bottom.getTexCoord_xY());
+		vertices.emplace_back(engine::Point3D(wall.first_point), texture_bottom.getTexCoord_xy());
+		vertices.emplace_back(engine::Point3D(wall.second_point), texture_bottom.getTexCoord_Xy());
+		vertices.emplace_back(engine::Point3D(wall.third_point), texture_bottom.getTexCoord_XY());
+		vertices.emplace_back(engine::Point3D(wall.fourth_point), texture_bottom.getTexCoord_xY());
 
 		indices.push_back(engine::EboTriangle(1, 3, 2) - 1 + vOffest);
 		indices.push_back(engine::EboTriangle(1, 4, 3) - 1 + vOffest);
@@ -73,10 +73,10 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	if (!(block = this->getNeighbor(-1, 0, 0).lock()) || !block->isSolid()) {
 		auto wall = getWall(position, Direction::X_MINUS);
 
-		vertices.emplace_back(engine::Point3D(wall.firstPoint), texture_side.getTexCoord_XY());
-		vertices.emplace_back(engine::Point3D(wall.secondPoint), texture_side.getTexCoord_xY());
-		vertices.emplace_back(engine::Point3D(wall.thirdPoint), texture_side.getTexCoord_xy());
-		vertices.emplace_back(engine::Point3D(wall.fourthPoint), texture_side.getTexCoord_Xy());
+		vertices.emplace_back(engine::Point3D(wall.first_point), texture_side.getTexCoord_XY());
+		vertices.emplace_back(engine::Point3D(wall.second_point), texture_side.getTexCoord_xY());
+		vertices.emplace_back(engine::Point3D(wall.third_point), texture_side.getTexCoord_xy());
+		vertices.emplace_back(engine::Point3D(wall.fourth_point), texture_side.getTexCoord_Xy());
 
 		indices.push_back(engine::EboTriangle(1, 3, 2) - 1 + vOffest);
 		indices.push_back(engine::EboTriangle(1, 4, 3) - 1 + vOffest);
@@ -88,10 +88,10 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	if (!(block = this->getNeighbor(+1, 0, 0).lock()) || !block->isSolid()) {
 		auto wall = getWall(position, Direction::X_PLUS);
 
-		vertices.emplace_back(engine::Point3D(wall.firstPoint), texture_side.getTexCoord_xY());
-		vertices.emplace_back(engine::Point3D(wall.secondPoint), texture_side.getTexCoord_xy());
-		vertices.emplace_back(engine::Point3D(wall.thirdPoint), texture_side.getTexCoord_Xy());
-		vertices.emplace_back(engine::Point3D(wall.fourthPoint), texture_side.getTexCoord_XY());
+		vertices.emplace_back(engine::Point3D(wall.first_point), texture_side.getTexCoord_xY());
+		vertices.emplace_back(engine::Point3D(wall.second_point), texture_side.getTexCoord_xy());
+		vertices.emplace_back(engine::Point3D(wall.third_point), texture_side.getTexCoord_Xy());
+		vertices.emplace_back(engine::Point3D(wall.fourth_point), texture_side.getTexCoord_XY());
 
 		indices.push_back(engine::EboTriangle(1, 3, 2) - 1 + vOffest);
 		indices.push_back(engine::EboTriangle(1, 4, 3) - 1 + vOffest);
@@ -103,10 +103,10 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	if (!(block = this->getNeighbor(0, -1, 0).lock()) || !block->isSolid()) {
 		auto wall = getWall(position, Direction::Y_MINUS);
 
-		vertices.emplace_back(engine::Point3D(wall.firstPoint), texture_side.getTexCoord_xY());
-		vertices.emplace_back(engine::Point3D(wall.secondPoint), texture_side.getTexCoord_xy());
-		vertices.emplace_back(engine::Point3D(wall.thirdPoint), texture_side.getTexCoord_Xy());
-		vertices.emplace_back(engine::Point3D(wall.fourthPoint), texture_side.getTexCoord_XY());
+		vertices.emplace_back(engine::Point3D(wall.first_point), texture_side.getTexCoord_xY());
+		vertices.emplace_back(engine::Point3D(wall.second_point), texture_side.getTexCoord_xy());
+		vertices.emplace_back(engine::Point3D(wall.third_point), texture_side.getTexCoord_Xy());
+		vertices.emplace_back(engine::Point3D(wall.fourth_point), texture_side.getTexCoord_XY());
 
 		indices.push_back(engine::EboTriangle(1, 3, 2) - 1 + vOffest);
 		indices.push_back(engine::EboTriangle(1, 4, 3) - 1 + vOffest);
@@ -118,10 +118,10 @@ void block::SolidBlock::insertToBuffers(std::vector<engine::Point3DeX> &vertices
 	if (!(block = this->getNeighbor(0, +1, 0).lock()) || !block->isSolid()) {
 		auto wall = getWall(position, Direction::Y_PLUS);
 
-		vertices.emplace_back(engine::Point3D(wall.firstPoint), texture_side.getTexCoord_XY());
-		vertices.emplace_back(engine::Point3D(wall.secondPoint), texture_side.getTexCoord_xY());
-		vertices.emplace_back(engine::Point3D(wall.thirdPoint), texture_side.getTexCoord_xy());
-		vertices.emplace_back(engine::Point3D(wall.fourthPoint), texture_side.getTexCoord_Xy());
+		vertices.emplace_back(engine::Point3D(wall.first_point), texture_side.getTexCoord_XY());
+		vertices.emplace_back(engine::Point3D(wall.second_point), texture_side.getTexCoord_xY());
+		vertices.emplace_back(engine::Point3D(wall.third_point), texture_side.getTexCoord_xy());
+		vertices.emplace_back(engine::Point3D(wall.fourth_point), texture_side.getTexCoord_Xy());
 
 		indices.push_back(engine::EboTriangle(1, 3, 2) - 1 + vOffest);
 		indices.push_back(engine::EboTriangle(1, 4, 3) - 1 + vOffest);

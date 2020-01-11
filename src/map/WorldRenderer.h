@@ -14,13 +14,12 @@
 namespace map {
 	class WorldRenderer : public Object, public VirtualSharePtrObject<WorldRenderer> {
 	private:
-		const WorldPtr worldMap;
-		const engine::Texture *blockTexture = nullptr;
+		const WorldPtr world_map_ptr;
 		WorldShaderPtr shader;
 
 		BackWorkerQueue worker;
 
-		std::map<Coord2D, ChunkRendererPtr> chunkRenderers;
+		std::map<Coord2D, ChunkRendererPtr> chunk_renderers;
 
 		explicit WorldRenderer(const WorldPtr& worldMap);
 		void initEvents();

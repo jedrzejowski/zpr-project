@@ -4,23 +4,23 @@ out vec4 FragColor;
 in vec2 TexCoord;
 flat in uint TexNum;
 
-uniform sampler2D guiTexture;
-uniform sampler2D fontTexture;
-uniform sampler2D blockTexture;
+uniform sampler2D gui_texture;
+uniform sampler2D font_texture;
+uniform sampler2D block_texture;
 
 void main() {
     vec4 outColor;
 
     if (TexNum == uint(0)) {
-        outColor = texture(blockTexture, TexCoord);
+        outColor = texture(block_texture, TexCoord);
     }
 
     if (TexNum == uint(1)) {
-        outColor = texture(guiTexture, TexCoord);
+        outColor = texture(gui_texture, TexCoord);
     }
 
     if (TexNum == uint(2)) {
-        outColor = texture(fontTexture, TexCoord);
+        outColor = texture(font_texture, TexCoord);
     }
 
     FragColor = outColor;

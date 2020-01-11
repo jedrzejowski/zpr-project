@@ -27,30 +27,30 @@ namespace glm {
 
 	class Square {
 	public:
-		Triangle firstTriangle{}, secondTriangle{};
-		glm::vec3 firstPoint{}, secondPoint{}, thirdPoint{}, fourthPoint{};
+		Triangle first_triangle{}, second_triangle{};
+		glm::vec3 first_point{}, second_point{}, third_point{}, fourth_point{};
 
 		Square() = default;
 
 		Square(const Triangle &firstTriangle,
 			   const Triangle &secondTriangle) :
-				firstTriangle(firstTriangle),
-				secondTriangle(secondTriangle),
-				firstPoint(firstTriangle.first),
-				secondPoint(firstTriangle.third),
-				thirdPoint(firstTriangle.second),
-				fourthPoint(firstTriangle.second) {}
+				first_triangle(firstTriangle),
+				second_triangle(secondTriangle),
+				first_point(firstTriangle.first),
+				second_point(firstTriangle.third),
+				third_point(firstTriangle.second),
+				fourth_point(firstTriangle.second) {}
 
-		Square(const vec3 &firstPoint,
-			   const vec3 &secondPoint,
-			   const vec3 &thirdPoint,
-			   const vec3 &fourthPoint) :
-				firstPoint(firstPoint),
-				secondPoint(secondPoint),
-				thirdPoint(thirdPoint),
-				fourthPoint(fourthPoint),
-				firstTriangle(firstPoint, thirdPoint, secondPoint),
-				secondTriangle(firstPoint, fourthPoint, thirdPoint) {}
+		Square(const vec3 &first_point,
+			   const vec3 &second_point,
+			   const vec3 &third_point,
+			   const vec3 &fourth_point) :
+				first_point(first_point),
+				second_point(second_point),
+				third_point(third_point),
+				fourth_point(fourth_point),
+				first_triangle(first_point, third_point, second_point),
+				second_triangle(first_point, fourth_point, third_point) {}
 
 		template<typename T>
 		bool intersectCamera(
@@ -60,17 +60,17 @@ namespace glm {
 			return glm::intersectRayTriangle(
 					camera.position,
 					camera.front,
-					firstPoint,
-					thirdPoint,
-					secondPoint,
+					first_point,
+					third_point,
+					second_point,
 					baryPosition,
 					distance
 			) || glm::intersectRayTriangle(
 					camera.position,
 					camera.front,
-					firstPoint,
-					fourthPoint,
-					thirdPoint,
+					first_point,
+					fourth_point,
+					third_point,
 					baryPosition,
 					distance
 			);

@@ -20,7 +20,7 @@ private:
 	std::mutex objectAlive;
 
 	std::queue<Function> queue;
-	std::mutex waitingForData, queueAccess;
+	std::mutex waiting_for_data, queue_access;
 	std::thread thread;
 
 	bool endWorker = false;

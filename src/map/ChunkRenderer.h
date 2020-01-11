@@ -16,8 +16,8 @@ namespace map {
 	class ChunkRenderer : public Object, public engine::Abs3DObj {
 	private:
 		const ChunkPtr chunk;
-		glm::mat4 chunkPos{};
-		WorldRendererWPtr worldRenderer;
+		glm::mat4 chunk_position{};
+		WorldRendererWPtr world_renderer_wptr;
 
 		explicit ChunkRenderer(WorldRendererPtr& renderer, const ChunkPtr& chunkPtr);
 		void initEvents();

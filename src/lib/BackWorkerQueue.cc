@@ -13,7 +13,7 @@ BackWorkerQueue::BackWorkerQueue() :
 
 BackWorkerQueue::~BackWorkerQueue() {
 	endWorker = true;
-	waitingForData.unlock();
+	waiting_for_data.unlock();
 
 	thread.join();
 }
@@ -25,14 +25,14 @@ void BackWorkerQueue::threadWorker() {
 	while (!endWorker) {
 
 		{
-			waitingForData.lock();
-			waitingForData.unlock();
+			waiting_for_data.lock();
+			waiting_for_data.unlock();
 		}
 
 		{
-			std::lock_guard<std::mutex> lock(queueAccess);
+			std::lock_guard<std::mutex> lock(queue_access);
 			if (queue.empty()) {
-				waitingForData.lock();
+				waiting_for_data.lock();
 				continue;
 			}
 			function = queue.front();
@@ -44,10 +44,10 @@ void BackWorkerQueue::threadWorker() {
 }
 
 void BackWorkerQueue::push(const BackWorkerQueue::Function &function) {
-	std::lock_guard<std::mutex> lock(queueAccess);
+	std::lock_guard<std::mutex> lock(queue_access);
 	queue.push(function);
 
-	waitingForData.unlock();
+	waiting_for_data.unlock();
 }
 
 bool BackWorkerQueue::isDestroying() {
@@ -56,7 +56,7 @@ bool BackWorkerQueue::isDestroying() {
 
 void BackWorkerQueue::awaitForQueueEnd() {
 	endWorker = true;
-	waitingForData.unlock();
+	waiting_for_data.unlock();
 
 	thread.join();
 	thread = std::thread(&BackWorkerQueue::threadWorker, this);

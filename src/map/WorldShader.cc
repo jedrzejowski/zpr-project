@@ -8,6 +8,7 @@
 
 map::WorldShader::WorldShader() : Shader("shader/game.vert", "shader/game.frag") {
 
+	block_texture = engine::Resources::get().getTexture("texture/block.png");
 	program.setInt("material.diffuse", 0);
 }
 
@@ -19,7 +20,13 @@ void map::WorldShader::setCamera(const engine::Camera &camera) {
 void map::WorldShader::setProjection(const glm::mat4 &mat) {
 	program.setMat4("projection", mat);
 }
+
 void map::WorldShader::setChunkPos(const glm::mat4 &mat) {
-	program.setMat4("chunkPos", mat);
+	program.setMat4("chunk_position", mat);
+}
+
+void map::WorldShader::bind() {
+	block_texture->use();
+	Shader::bind();
 }
 

@@ -14,28 +14,28 @@ Scene::Scene() {
 }
 
 WindowWPtr Scene::getWindow() const {
-	return window;
+	return window_wptr;
 }
 
 void Scene::setWindow(WindowWPtr window) {
-	Scene::window = window;
+	Scene::window_wptr = window;
 	onWindowChanged.emit();
 }
 
 InputInterfacePtr Scene::getInputInterface() {
-	return this->inputInterface;
+	return this->input_interface_ptr;
 }
 
-void Scene::setInputInterface(InputInterfacePtr interfacePtr) {
-	if (this->inputInterface)
-		this->inputInterface->unattachFromScene();
+void Scene::setInputInterface(InputInterfacePtr interface_ptr) {
+	if (this->input_interface_ptr)
+		this->input_interface_ptr->unattachFromScene();
 
-	this->inputInterface = std::move(interfacePtr);
+	this->input_interface_ptr = std::move(interface_ptr);
 
-	if (this->inputInterface != nullptr)
-		this->inputInterface->attachToScene(this->shared_from_this());
+	if (this->input_interface_ptr != nullptr)
+		this->input_interface_ptr->attachToScene(this->shared_from_this());
 }
 
 bool Scene::isInWindow() {
-	return window.expired();
+	return window_wptr.expired();
 }

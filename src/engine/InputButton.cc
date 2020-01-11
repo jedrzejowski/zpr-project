@@ -8,19 +8,19 @@
 
 void engine::InputButton::updateState(GLFWwindow *window) {
 
-	lastState = currentState;
-	currentState = getGlfwState(window);
+	last_state = current_state;
+	current_state = getGlfwState(window);
 
-	if (currentState == GLFW_RELEASE) {
-		if (lastState == GLFW_PRESS) {
+	if (current_state == GLFW_RELEASE) {
+		if (last_state == GLFW_PRESS) {
 			onReleased.emit();
-			timeOfLastChange = glfwGetTime();
+			time_of_last_change = glfwGetTime();
 		}
 		onRelease.emit();
 	} else {//GLFW_PRESS
-		if (lastState == GLFW_RELEASE) {
+		if (last_state == GLFW_RELEASE) {
 			onPressed.emit();
-			timeOfLastChange = glfwGetTime();
+			time_of_last_change = glfwGetTime();
 		}
 		onPress.emit();
 	}
@@ -34,7 +34,7 @@ void engine::InputButton::clearSignals() {
 }
 
 void engine::InputButton::initState(GLFWwindow *window) {
-	currentState = lastState = glfwGetKey(window, btnCode);
+	current_state = last_state = glfwGetKey(window, btnCode);
 }
 
 const int engine::InputButton::getBtnCode() const {

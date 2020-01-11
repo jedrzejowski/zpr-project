@@ -29,17 +29,17 @@ Abs3DObj::~Abs3DObj() {
 
 void Abs3DObj::insertToGPU() {
 	updateBuffers();
-	needRefreshBuffers = false;
+	id_need_refresh_buffers = false;
 
 	glBindVertexArray(VAO);
 
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	verticesLengthInBuffer = sizeof(Point3DeX) * vertices_buffer.size();
-	glBufferData(GL_ARRAY_BUFFER, verticesLengthInBuffer, &vertices_buffer[0], GL_STATIC_DRAW);
+	vertices_length_in_buffer = sizeof(Point3DeX) * vertices_buffer.size();
+	glBufferData(GL_ARRAY_BUFFER, vertices_length_in_buffer, &vertices_buffer[0], GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	indicesLengthInBuffer = sizeof(EboTriangle) * indices_buffer.size();
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesLengthInBuffer, &indices_buffer[0], GL_STATIC_DRAW);
+	indices_length_in_buffer = sizeof(EboTriangle) * indices_buffer.size();
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices_length_in_buffer, &indices_buffer[0], GL_STATIC_DRAW);
 
 	setNeedRefreshBuffers(false);
 }
@@ -50,11 +50,11 @@ void Abs3DObj::drawTriangles() {
 		insertToGPU();
 
 	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, 3 * indicesLengthInBuffer, GL_UNSIGNED_INT, nullptr);
+	glDrawElements(GL_TRIANGLES, 3 * indices_length_in_buffer, GL_UNSIGNED_INT, nullptr);
 }
 
 bool Abs3DObj::isNeedRefreshBuffers() const {
-	bool out = needRefreshBuffers;
+	bool out = id_need_refresh_buffers;
 
 	for (auto &child : getChildren())
 		out = out || child->isNeedRefreshBuffers();
@@ -63,7 +63,7 @@ bool Abs3DObj::isNeedRefreshBuffers() const {
 }
 
 void Abs3DObj::setNeedRefreshBuffers(bool need) {
-	needRefreshBuffers = need;
+	id_need_refresh_buffers = need;
 }
 
 

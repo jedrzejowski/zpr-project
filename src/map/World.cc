@@ -11,8 +11,8 @@
 
 map::World::World(const std::string &codeName) :
 		code_name(codeName),
-		chunkLoader(this),
-		chunkGenerator(this),
+		chunk_loader(this),
+		chunk_generator(this),
 		display_name(codeName) {
 	logger(4).constructor(this);
 }
@@ -44,12 +44,12 @@ map::ChunkWPtr map::World::getChunk(const Coord2D &position) {
 }
 
 void map::World::requestChunk(Coord2D position) {
-	chunkLoader.load(position);
+	chunk_loader.load(position);
 }
 
 
 void map::World::syncChunkWithLoader() {
-	chunkLoader.syncWithWorld();
+	chunk_loader.syncWithWorld();
 }
 
 void map::World::insertChunk(map::ChunkPtr chunk) {
@@ -94,7 +94,7 @@ void map::World::loadForPlayer(game::PlayerPtr &player) {
 			pos.y > playerChunk.y + chunkLoadDistance ||
 			pos.y < playerChunk.y - chunkLoadDistance) {
 
-			chunkLoader.unload(pos);
+			chunk_loader.unload(pos);
 		}
 	}
 }

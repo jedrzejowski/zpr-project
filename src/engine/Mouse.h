@@ -23,10 +23,10 @@ namespace engine {
 	class Mouse : public InputDevice {
 		friend InputInterface;
 	private:
-		glm::vec2 lastPosition;
-		glm::vec2 currentPosition;
-		bool inWindow = false;
-		bool attachedToCenter = false;
+		glm::vec2 last_position;
+		glm::vec2 current_position;
+		bool is_in_window = false;
+		bool attached_to_center = false;
 
 		glm::vec2 getGlfwPosition(GLFWwindow *window);
 		void setGlfwPosition(GLFWwindow *window, const glm::vec2 &pos);

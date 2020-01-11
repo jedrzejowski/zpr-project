@@ -28,17 +28,17 @@ game::InGameMenuPtr game::InGameMenu::create(game::GameScenePtr &scene) {
 }
 
 void game::InGameMenu::initEvents() {
-	resumeBtn = gui::Button::create(this->shared_from_this());
-	resumeBtn->setText("Wznow gre");
-	resumeBtn->setPosition(glm::vec2(0, 0.3));
-	resumeBtn->onClicked([&] {
+	resume_button_ptr = gui::Button::create(this->shared_from_this());
+	resume_button_ptr->setText("Wznow gre");
+	resume_button_ptr->setPosition(glm::vec2(0, 0.3));
+	resume_button_ptr->onClicked([&] {
 		onMenuExit();
 	});
 
-	saveBtn = gui::Button::create(this->shared_from_this());
-	saveBtn->setText("Zapisz i wyjdz");
-	saveBtn->setPosition(glm::vec2(0, 0.5));
-	saveBtn->onClicked([&] {
+	save_btn_ptr = gui::Button::create(this->shared_from_this());
+	save_btn_ptr->setText("Zapisz i wyjdz");
+	save_btn_ptr->setPosition(glm::vec2(0, 0.5));
+	save_btn_ptr->onClicked([&] {
 		onSaveAndExit();
 	});
 }

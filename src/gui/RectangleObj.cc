@@ -23,23 +23,23 @@ void gui::RectangleObj::initInputInterface() {
 		bool isCollision = isCollisionWithMouse(mousePosition);
 
 		if (isCollision) {
-			if (!isMouseIn)
+			if (!is_mouse_in)
 				onEnter();
 			onHover();
 		} else {
-			if (isMouseIn)
+			if (is_mouse_in)
 				onLeave();
 		}
 
-		isMouseIn = isCollision;
+		is_mouse_in = isCollision;
 	});
 
 	ii->getMouse()->Left.onPressed(self, [&] {
-		if (isMouseIn) onPressed();
+		if (is_mouse_in) onPressed();
 	});
 
 	ii->getMouse()->Left.onReleased(self, [&] {
-		if (isMouseIn) onReleased();
+		if (is_mouse_in) onReleased();
 	});
 }
 
@@ -85,10 +85,10 @@ void gui::RectangleObj::updateBuffers() {
 	point_xY = getModel() * glm::vec4(0, baseSize.y, 0, 1);
 
 	vertices_buffer.clear();
-	vertices_buffer.emplace_back(point_xy, textureReference.getTexCoord_xy());
-	vertices_buffer.emplace_back(point_Xy, textureReference.getTexCoord_Xy());
-	vertices_buffer.emplace_back(point_XY, textureReference.getTexCoord_XY());
-	vertices_buffer.emplace_back(point_xY, textureReference.getTexCoord_xY());
+	vertices_buffer.emplace_back(point_xy, texture_reference.getTexCoord_xy());
+	vertices_buffer.emplace_back(point_Xy, texture_reference.getTexCoord_Xy());
+	vertices_buffer.emplace_back(point_XY, texture_reference.getTexCoord_XY());
+	vertices_buffer.emplace_back(point_xY, texture_reference.getTexCoord_xY());
 
 	indices_buffer.clear();
 	indices_buffer.emplace_back(0, 1, 2);
@@ -100,11 +100,11 @@ gui::RectangleObj::~RectangleObj() {
 }
 
 const engine::SquareTextureReference &gui::RectangleObj::getTextureReference() const {
-	return textureReference;
+	return texture_reference;
 }
 
 void gui::RectangleObj::setTextureReference(const engine::SquareTextureReference &textureReference) {
-	RectangleObj::textureReference = textureReference;
+	RectangleObj::texture_reference = textureReference;
 	setNeedRefreshBuffers(true);
 }
 

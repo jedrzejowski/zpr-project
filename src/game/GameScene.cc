@@ -25,8 +25,8 @@ game::GameScenePtr game::GameScene::create() {
 
 	GameScenePtr self = std::make_shared<Self>();
 
-	self->mainGame = MainGame::create(self);
-	self->inGameMenu = InGameMenu::create(self);
+	self->main_game = MainGame::create(self);
+	self->in_game_menu = InGameMenu::create(self);
 
 	self->setInterfaceState(Game);
 
@@ -36,15 +36,15 @@ game::GameScenePtr game::GameScene::create() {
 }
 
 void game::GameScene::initEvents() {
-	mainGame->onMenuRequest([&]() {
+	main_game->onMenuRequest([&]() {
 		setInterfaceState(Menu);
 	});
 
-	inGameMenu->onMenuExit([&]() {
+	in_game_menu->onMenuExit([&]() {
 		setInterfaceState(Game);
 	});
 
-	inGameMenu->onSaveAndExit([&] {
+	in_game_menu->onSaveAndExit([&] {
 		auto winWPtr = getWindow();
 		if (winWPtr.expired()) return;
 		auto winPtr = winWPtr.lock();
@@ -55,44 +55,44 @@ void game::GameScene::initEvents() {
 
 void game::GameScene::render(engine::WindowPtr& window) {
 
-	mainGame->renderWorld();
+	main_game->renderWorld();
 
 	// Renderowanie interfejsu użytkownika
 	glClear(GL_DEPTH_BUFFER_BIT); // Musimy wyczyścić sprawdzanie głębi ponieważ rysujemy interfejs
 
 	auto me = shared_from_this();
 
-	if (interfaceState == Menu)
-		inGameMenu->render(me);
+	if (interface_state == Menu)
+		in_game_menu->render(me);
 }
 
 
 game::GameSceneState game::GameScene::getInterfaceState() const {
-	return interfaceState;
+	return interface_state;
 }
 
 void game::GameScene::setInterfaceState(game::GameSceneState interfaceState) {
-	this->interfaceState = interfaceState;
+	this->interface_state = interfaceState;
 
 
 	switch (interfaceState) {
 		case Game:
-			setInputInterface(mainGame->getInputInterface());
+			setInputInterface(main_game->getInputInterface());
 			break;
 		case Menu:
-			setInputInterface(inGameMenu->getInputInterface());
+			setInputInterface(in_game_menu->getInputInterface());
 			break;
 	}
 }
 
 void game::GameScene::pollEvents() {
-	mainGame->pollEvents();
+	main_game->pollEvents();
 }
 
 const game::MainGamePtr &game::GameScene::getMainGame() const {
-	return mainGame;
+	return main_game;
 }
 
 const game::InGameMenuPtr &game::GameScene::getInGameMenu() const {
-	return inGameMenu;
+	return in_game_menu;
 }

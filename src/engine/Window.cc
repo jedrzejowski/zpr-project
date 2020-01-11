@@ -28,12 +28,12 @@ void Window::open() {
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
-	glfwWin = glfwCreateWindow(window_width, window_height, getTitle().c_str(), nullptr, nullptr);
+	glfw_window = glfwCreateWindow(window_width, window_height, getTitle().c_str(), nullptr, nullptr);
 
-	if (glfwWin == nullptr)
-		throw zprException("Window::open", "Can't open GLFW window");
+	if (glfw_window == nullptr)
+		throw zprException("Window::open", "Can't open GLFW window_wptr");
 
-	glfwMakeContextCurrent(glfwWin);
+	glfwMakeContextCurrent(glfw_window);
 
 	glewExperimental = GL_TRUE;
 	if (glewInit() != GLEW_OK)
@@ -44,12 +44,13 @@ void Window::open() {
 //	vsync
 //	glfwSwapInterval(0);
 
+	// rysuj same linie, przydane do debugowania
 //	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 	initObjects();
 
 	double lastTime = -1, nowTime = 0;
-	while (!glfwWindowShouldClose(glfwWin)) {
+	while (!glfwWindowShouldClose(glfw_window)) {
 
 		lastTime = nowTime;
 		nowTime = glfwGetTime();
@@ -65,76 +66,77 @@ void Window::open() {
 }
 
 void Window::setScene(ScenePtr scene) {
-	nextScene = scene;
+	next_scene_ptr = scene;
 	//TODO dodać zwracanie wyjątku kiedy jest już jakaś scena w kolejce
 }
 
 void Window::swapScene() {
-	if (nextScene == nullptr) return;
+	if (next_scene_ptr == nullptr) return;
 
-	auto oldScene = this->currentScene;
-	currentScene = nextScene;
-	nextScene = nullptr;
+	auto old_scene_ptr = this->current_scene_ptr;
+	current_scene_ptr = next_scene_ptr;
+	next_scene_ptr = nullptr;
 
-	if (oldScene) oldScene->setWindow(std::weak_ptr<Window>());
-	if (currentScene) currentScene->setWindow(this->shared_from_this());
+	if (old_scene_ptr) old_scene_ptr->setWindow(std::weak_ptr<Window>());
+	if (current_scene_ptr) current_scene_ptr->setWindow(this->shared_from_this());
 
-	onSceneChanged.emit(oldScene, currentScene);
+	onSceneChanged.emit(old_scene_ptr, current_scene_ptr);
 }
 
 ScenePtr Window::getScene() const {
-	return currentScene;
+	return current_scene_ptr;
 }
 
 void Window::mainLoop() {
-	if (currentScene != nullptr)
-		currentScene->onRefreshBuffers.emit();
+	if (current_scene_ptr != nullptr)
+		current_scene_ptr->onRefreshBuffers.emit();
 
 	std::lock_guard<std::mutex> guard(rendering);
 
 	// Sprawdzanie wielkosci okna
 	{
 		//https://www.glfw.org/docs/latest/window_guide.html#window_size
-		glfwGetWindowSize(glfwWin,
+		glfwGetWindowSize(glfw_window,
 						  &window_width,
 						  &window_height);
-		glfwGetWindowFrameSize(glfwWin,
+		glfwGetWindowFrameSize(glfw_window,
 							   &window_left_offset,
 							   &window_top_offset,
 							   &window_right_offset,
 							   &win_bottom_offset);;
 	}
 
-	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+	// teoretycznie można by zrobić jakieś niebo ale to zbyteczne na obecną chwilę
+	glClearColor(0.564705882f, 0.752941176f, 0.91372549f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	//https://stackoverflow.com/questions/7240747/how-to-draw-2d-3d-stuffs-in-opengl-together
 
-	if (currentScene != nullptr) {
+	if (current_scene_ptr != nullptr) {
 		auto ptr = this->shared_from_this();
-		currentScene->render(ptr);
+		current_scene_ptr->render(ptr);
 	}
 
-	glfwSwapBuffers(glfwWin);
+	glfwSwapBuffers(glfw_window);
 
 	glfwPollEvents();
-	if (currentScene != nullptr) {
-		auto currentInputInterface = currentScene->getInputInterface();
+	if (current_scene_ptr != nullptr) {
+		auto current_input_interface_wptr = current_scene_ptr->getInputInterface();
 
-		if (lastInputInterface.lock().get() == currentInputInterface.get())
-			currentInputInterface->updateState(glfwWin);
+		if (lastInputInterface.lock().get() == current_input_interface_wptr.get())
+			current_input_interface_wptr->updateState(glfw_window);
 		else
-			currentInputInterface->initState(glfwWin);
+			current_input_interface_wptr->initState(glfw_window);
 
-		lastInputInterface = currentInputInterface;
+		lastInputInterface = current_input_interface_wptr;
 	}
 
-	if (currentScene != nullptr)
-		currentScene->pollEvents();
+	if (current_scene_ptr != nullptr)
+		current_scene_ptr->pollEvents();
 }
 
 GLFWwindow *Window::getGlfwWindow() const {
-	return glfwWin;
+	return glfw_window;
 }
 
 

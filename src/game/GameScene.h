@@ -21,10 +21,10 @@ namespace game {
 	class GameScene : public engine::Scene, public VirtualSharePtrObject<GameScene> {
 		using VirtualSharePtrObject<GameScene>::shared_from_this;
 	private:
-		GameSceneState interfaceState;
+		GameSceneState interface_state;
 
-		MainGamePtr mainGame;
-		InGameMenuPtr inGameMenu;
+		MainGamePtr main_game;
+		InGameMenuPtr in_game_menu;
 
 		GameScene();
 		void initEvents();

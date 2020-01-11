@@ -20,7 +20,7 @@ namespace map {
 		friend ChunkLoader;
 	private:
 
-		const WorldWPtr worldMapWPtr;
+		const WorldWPtr world_map_wptr;
 		const Coord2D position;
 		mutable std::map<Coord3D, block::BlockPtr> blocks;
 
@@ -45,7 +45,7 @@ namespace map {
 		const Signal<const Coord3D &> onBlockChange;
 
 		//region SavableObject
-		
+
 	protected:
 		void acceptState(json &data) override;
 	public:

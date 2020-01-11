@@ -78,3 +78,26 @@ void map::ChunkGenerator::fillChunk(ChunkPtr& chunk) {
 		}
 	}
 }
+
+
+//region SavableObject
+
+const char *JSON_ATTR_SEED = "seed";
+const char *JSON_ATTR_SEED_PERSISTENCE = "persistence";
+const char *JSON_ATTR_SEED_FREQUENCY = "frequency";
+const char *JSON_ATTR_SEED_AMPLITUDE = "amplitude";
+const char *JSON_ATTR_SEED_OCTAVES = "octaves";
+const char *JSON_ATTR_SEED_RANDOMSEED = "randomseed";
+
+boost::filesystem::path map::ChunkGenerator::getSavePath(AppSettings &app_settings) const {
+	return boost::filesystem::path();
+}
+
+json map::ChunkGenerator::toJSON() const {
+	return json();
+}
+
+void map::ChunkGenerator::acceptState(json &json_obj) {
+}
+
+//endregion

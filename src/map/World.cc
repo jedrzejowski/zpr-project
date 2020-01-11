@@ -124,6 +124,7 @@ const std::map<Coord2D, map::ChunkPtr> &map::World::getLoadedChunks() const {
 
 const char *JSON_ATTR_DISPLAY_NAME = "display_name";
 
+
 boost::filesystem::path map::World::getSavePath(AppSettings &app_settings) const {
 	return getDirectory() / "worldinfo";
 }

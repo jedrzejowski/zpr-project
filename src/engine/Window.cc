@@ -18,6 +18,8 @@ Window::Window() {
 
 void Window::open() {
 
+	onOpening();
+
 	if (glfwInit() != GL_TRUE)
 		throw zprException("Window::open", "GLFW initialization failed");
 
@@ -49,13 +51,14 @@ void Window::open() {
 
 	initObjects();
 
-	double lastTime = -1, nowTime = 0;
+	onOpened();
+
+//	double lastTime = -1, nowTime = 0;
 	while (!glfwWindowShouldClose(glfw_window)) {
 
-		lastTime = nowTime;
-		nowTime = glfwGetTime();
-		auto delta = nowTime - lastTime;
-
+//		lastTime = nowTime;
+//		nowTime = glfwGetTime();
+//		auto delta = nowTime - lastTime;
 //		logger(1).log("fps").log(1 / delta);
 
 		mainLoop();
@@ -63,6 +66,8 @@ void Window::open() {
 	}
 
 	glfwTerminate();
+
+	onClosed();
 }
 
 void Window::setScene(ScenePtr scene) {
@@ -191,4 +196,9 @@ glm::vec2 Window::scalePixelPosToViewPortPos(ViewPort viewPort, glm::vec2 pos) {
 		pos /= window_width;
 	}
 	return pos;
+}
+
+void Window::close() {
+	onClosing();
+	glfwSetWindowShouldClose(glfw_window, true);
 }

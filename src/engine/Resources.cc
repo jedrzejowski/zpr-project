@@ -16,8 +16,6 @@ boost::filesystem::path engine::Resources::absPath(const std::string &path) {
 std::string engine::Resources::loadTextFile(std::string path) {
 	path = absPath(path).string();
 
-	logger(1).log("engine::Resources::loadTextFile loading \"" + path + "\"");
-
 	std::ifstream file(path);
 
 	if (!file.is_open())

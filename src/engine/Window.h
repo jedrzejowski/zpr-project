@@ -44,6 +44,12 @@ namespace engine {
 		virtual void initObjects() = 0;
 
 		void open();
+		void close();
+
+		const Signal<> onOpening;
+		const Signal<> onOpened;
+		const Signal<> onClosing;
+		const Signal<> onClosed;
 
 		void setScene(ScenePtr scene);
 		ScenePtr getScene() const;

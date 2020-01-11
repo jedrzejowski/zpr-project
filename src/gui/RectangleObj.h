@@ -37,7 +37,6 @@ namespace gui {
 	public:
 
 		explicit RectangleObj(InterfacePtr interface);
-		~RectangleObj();
 
 		bool isCollisionWithMouse(const glm::vec2 &mousePosition);
 		void updateBuffers() override;

@@ -7,8 +7,7 @@
 #include "RectangleObj.h"
 #include "Interface.h"
 
-gui::RectangleObj::RectangleObj(InterfacePtr interface) :
-		GuiObject(interface) {
+gui::RectangleObj::RectangleObj(InterfacePtr interface) : GuiObject(interface) {
 }
 
 void gui::RectangleObj::initInputInterface() {
@@ -93,10 +92,6 @@ void gui::RectangleObj::updateBuffers() {
 	indices_buffer.clear();
 	indices_buffer.emplace_back(0, 1, 2);
 	indices_buffer.emplace_back(2, 3, 0);
-}
-
-gui::RectangleObj::~RectangleObj() {
-	logger(1).log("~RectangleObj()");
 }
 
 const engine::SquareTextureReference &gui::RectangleObj::getTextureReference() const {

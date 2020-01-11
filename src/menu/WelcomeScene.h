@@ -16,10 +16,10 @@ namespace menu {
 		using VirtualSharePtrObject<WelcomeScene>::shared_from_this;
 	private:
 		gui::InterfacePtr interface;
-		gui::ButtonPtr playBtn, settingsBtn, quitBtn;
+		gui::ButtonPtr play_button, settings_button, quit_button;
 
 		explicit WelcomeScene();
-		void initBtnActions();
+		void initEvents();
 	public:
 		static WelcomeScenePtr create();
 		~WelcomeScene();

@@ -13,9 +13,9 @@ namespace gui {
 	class InterfaceShader : engine::Shader {
 	private:
 
-		const engine::Texture *gui_texture = nullptr;
-		const engine::Texture *font_texture = nullptr;
-		const engine::Texture *block_texture = nullptr;
+		engine::TexturePtr gui_texture;
+		engine::TexturePtr font_texture;
+		engine::TexturePtr block_texture;
 
 	public:
 		explicit InterfaceShader();

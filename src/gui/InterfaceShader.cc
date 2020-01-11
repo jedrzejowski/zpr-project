@@ -7,9 +7,10 @@
 #include "InterfaceShader.h"
 
 gui::InterfaceShader::InterfaceShader() : Shader("shader/interface.vert", "shader/interface.frag") {
-	gui_texture = engine::Resources::get().getTexture("texture/gui.png");
-	font_texture = engine::Resources::get().getTexture("texture/font.png");
-	block_texture = engine::Resources::get().getTexture("texture/block.png");
+	static auto &resources = engine::Resources::get();
+	gui_texture = resources.getTexture("texture/gui.png");
+	font_texture = resources.getTexture("texture/font.png");
+	block_texture = resources.getTexture("texture/block.png");
 
 	program.bind();
 	program.setUniformNameToId("block_texture", global::TextureBlocksNo);

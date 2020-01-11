@@ -21,20 +21,19 @@ namespace engine {
 
 		void loadTexture(const std::string &path);
 
-	public:
 		Texture();
-
-		explicit Texture(const std::string &path);
+	public:
+		static TexturePtr create(const std::string &path);
 
 		void use(const int &num = 0) const;
 
-		GLuint getID() const {
+		[[nodiscard]] GLuint getID() const {
 			return texture_id;
 		}
 
-		int getWidth() const;
-		int getHeight() const;
-		int getNrChannels() const;
+		[[nodiscard]] int getWidth() const;
+		[[nodiscard]] int getHeight() const;
+		[[nodiscard]] int getNrChannels() const;
 
 		Color getColor(int x, int y);
 	};

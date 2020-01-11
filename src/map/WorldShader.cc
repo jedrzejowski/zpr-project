@@ -8,8 +8,8 @@
 #include "src/lib/AppSettings.h"
 
 map::WorldShader::WorldShader() : Shader("shader/game.vert", "shader/game.frag") {
-
-	block_texture = engine::Resources::get().getTexture("texture/block.png");
+	static auto &resources = engine::Resources::get();
+	block_texture = resources.getTexture("texture/block.png");
 	program.setInt("material.diffuse", 0);
 }
 

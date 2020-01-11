@@ -13,16 +13,16 @@ boost::filesystem::path engine::Resources::absPath(const std::string &path) {
 	return executablePath / "res" / path;
 }
 
-void engine::Resources::load(std::string &path) {
-}
-
-std::string engine::Resources::loadTextFile(const std::string &path) {
+std::string engine::Resources::loadTextFile(std::string path) {
+	path = absPath(path).string();
 
 	logger(1).log("engine::Resources::loadTextFile loading \"" + path + "\"");
 
-	std::ifstream file;
-	file.exceptions(std::ifstream::badbit);
-	file.open(absPath(path).string());
+	std::ifstream file(path);
+
+	if (!file.is_open())
+		throw FileInputException(path);
+
 	std::stringstream shader_stream;
 	shader_stream << file.rdbuf();
 	file.close();
@@ -34,13 +34,13 @@ engine::Resources &engine::Resources::get() {
 	return resources;
 }
 
-const engine::Texture *engine::Resources::getTexture(std::string path) {
+engine::TexturePtr engine::Resources::getTexture(std::string path) {
 	path = absPath(path).string();
 
 	if (textures.count(path))
 		return textures[path];
 
-	return textures[path] = new Texture(path);
+	return textures[path] = Texture::create(path);
 }
 
 void engine::Resources::setExecutablePath(char *path) {

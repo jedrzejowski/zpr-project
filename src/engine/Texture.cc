@@ -16,9 +16,18 @@ using namespace engine;
 
 Texture::Texture() = default;
 
-Texture::Texture(const std::string &path) {
-	loadTexture(path);
+
+TexturePtr Texture::create(const std::string &path) {
+	struct Self : Texture {
+	};
+
+	TexturePtr self = std::make_shared<Self>();
+
+	self->loadTexture(path);
+
+	return self;
 }
+
 
 void Texture::loadTexture(const std::string &path) {
 
@@ -28,7 +37,7 @@ void Texture::loadTexture(const std::string &path) {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
-	// To jest aby tektury wygladały jak kwadratowe, czyli jak w MC
+	// To jest aby tektury wygladały jak kwadratowe, czyli jak w minecrafcie
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
@@ -52,8 +61,9 @@ void Texture::loadTexture(const std::string &path) {
 
 		glGenerateMipmap(GL_TEXTURE_2D);
 	} else {
-		logger(1).warn("Texture::loadTexture()").log("failed to load texture from path").log(path);
-//		throw zprException("Texture::loadTexture", "failed to load texture");
+		logger(0).err("Failed to load texture from file:").enter().log(path);
+
+		// w sumie gra nie powinna się wywalić jak nie wczyta textury
 	}
 
 	stbi_image_free(data);

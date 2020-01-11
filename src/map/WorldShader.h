@@ -12,7 +12,7 @@ namespace map {
 
 	class WorldShader : public engine::Shader {
 	private:
-		const engine::Texture *block_texture = nullptr;
+		engine::TexturePtr block_texture;
 	public:
 		explicit WorldShader();
 

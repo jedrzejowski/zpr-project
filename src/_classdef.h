@@ -78,6 +78,8 @@ namespace engine {
 
 	class Texture;
 
+	typedef std::shared_ptr<Texture> TexturePtr;
+
 	class Window;
 
 	typedef std::shared_ptr<Window> WindowPtr;

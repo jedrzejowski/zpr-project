@@ -37,10 +37,7 @@ game::MainGamePtr game::MainGame::create(game::GameScenePtr &scene) {
 game::MainGame::~MainGame() {
 
 	player_ptr->saveObjectToFile();
-
-	world_map_ptr->saveObjectToFile();
-	for (const auto &it : world_map_ptr->getLoadedChunks())
-		it.second->saveObjectToFile();
+	world_map_ptr->fullSave();
 }
 
 

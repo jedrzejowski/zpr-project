@@ -8,10 +8,17 @@
 
 #include <boost/filesystem/path.hpp>
 #include "_classdef.h"
+#include "LiveData.hpp"
+
 
 class AppSettings {
+private:
 	AppSettings();
 	boost::filesystem::path cfg_dir;
+
+	json toJSON();
+	void fromJSON(json &json_obj);
+	void initDefaults();
 public:
 	AppSettings(const AppSettings &) = delete;
 	void operator=(const AppSettings &) = delete;
@@ -22,11 +29,16 @@ public:
 
 	[[nodiscard]] boost::filesystem::path getCfgDir();
 
-	[[nodiscard]] std::string loadFile(boost::filesystem::path);
-	void saveFile(boost::filesystem::path, std::string content);
-
 	[[nodiscard]] json loadJSON(boost::filesystem::path path);
 	void saveJSON(boost::filesystem::path path, json content);
+
+	//region SavableObject
+	//endregion
+
+	//region Settings
+	const LiveData<float> playerCameraAngle;
+	const LiveData<float> chunkRenderDistance;
+	//endregion
 };
 
 

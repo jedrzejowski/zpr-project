@@ -23,13 +23,37 @@ void SavableObject::saveObjectToFile() const {
 	}
 }
 
-void SavableObject::loadObjectFromFile() {
+void SavableObject::loadObjectFromFile(const std::function<void()> &onFailed) {
 	static auto &app_settings = AppSettings::get();
+	boost::filesystem::path path;
 
-	auto json_data = app_settings.loadJSON(getSavePath(app_settings));
+	try {
 
-	need_save = false;
-	acceptState(json_data);
+		path = getSavePath(app_settings);
+		auto json_data = app_settings.loadJSON(path);
+
+		need_save = false;
+		acceptState(json_data);
+
+	} catch (FileInputException &exception) {
+
+		logger(0).err("Error occurred while parsing data from file:").enter().err(path);
+
+		onFailed();
+
+	} catch (WrongJsonException &exception) {
+
+		logger(0).err("Error occurred while reading file:").enter().err(path);
+
+		onFailed();
+
+	} catch (std::exception &exception) {
+
+		logger(0).err("Fatal error occurred while reading file:").enter().err(path);
+
+		onFailed();
+
+	}
 }
 
 bool SavableObject::hasSavedFile() {

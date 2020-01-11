@@ -8,6 +8,7 @@
 
 #include "src/_classdef.h"
 #include "src/lib/Object.hpp"
+#include "src/lib/Signal.hpp"
 
 #include "Light.h"
 #include "ShaderProgram.h"

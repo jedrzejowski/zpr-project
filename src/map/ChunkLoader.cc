@@ -24,37 +24,19 @@ void map::ChunkLoader::load(Coord2D coord) {
 		auto worldMapPtr = world->shared_from_this();
 		auto chunk = map::Chunk::create(worldMapPtr, coord);
 
-
-		if (chunk->hasSavedFile())
-
-			try {
-
-				chunk->loadObjectFromFile();
-			} catch (WrongJsonException &exception) {
-
-				logger(0).err("Error during parsing chunk data.").err("I will generate new one");
-
-				world->chunk_generator.fillChunk(chunk);
-			} catch (FileInputException &exception) {
-
-				logger(0).err("Error during reading chunk from file:").enter()
-						.err(exception.getFile()).enter()
-						.err("I will generate new one");
-
-				world->chunk_generator.fillChunk(chunk);
-			}
-
-		else {
+		auto genChunk = [&] {
 			world->chunk_generator.fillChunk(chunk);
 
 			try {
-
 				chunk->saveObjectToFile();
 			} catch (FileOutputException &exception) {
-
-				logger(0).err("Error during chunk saving to file.");
+				logger(0).err("Error occured while saving chunk to file:").enter().log(exception.getFile());
 			}
-		}
+		};
+
+		if (chunk->hasSavedFile())
+			chunk->loadObjectFromFile(genChunk);
+		else genChunk();
 
 
 		std::lock_guard<std::mutex> lock(chunk_list_access);
@@ -109,5 +91,6 @@ bool map::ChunkLoader::isChunkLoading(const Coord2D &coord) {
 }
 
 bool map::ChunkLoader::isChunkUnloading(const Coord2D &coord) {
-	return std::find(unloading_chunks_coords.begin(), unloading_chunks_coords.end(), coord) != unloading_chunks_coords.end();;
+	return std::find(unloading_chunks_coords.begin(), unloading_chunks_coords.end(), coord) !=
+		   unloading_chunks_coords.end();;
 }

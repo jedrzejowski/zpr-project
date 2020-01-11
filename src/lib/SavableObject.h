@@ -20,9 +20,11 @@ private:
 protected:
 	virtual void acceptState(json &json_obj) = 0;
 	void setNeedSave(bool needSave);
-	void loadObjectFromFile();
+	void loadObjectFromFile(const std::function<void()>& onFailed = []{});
 
 	bool hasSavedFile();
+
+
 public:
 	[[nodiscard]] virtual boost::filesystem::path getSavePath(AppSettings &app_settings = AppSettings::get()) const = 0;
 	[[nodiscard]] virtual json toJSON() const = 0;

@@ -48,7 +48,7 @@ public:
 	};
 };
 
-class FileInputException : std::exception {
+class FileInputException : public std::exception {
 private:
 	std::string file;
 public:
@@ -61,7 +61,7 @@ public:
 	}
 };
 
-class FileOutputException : std::exception {
+class FileOutputException : public std::exception {
 private:
 	std::string file;
 public:
@@ -74,7 +74,7 @@ public:
 	}
 };
 
-class WrongJsonException : std::exception {
+class WrongJsonException : public std::exception {
 };
 
 #define zprException(where, what) ZprException(__FILE__, __LINE__, where, what)

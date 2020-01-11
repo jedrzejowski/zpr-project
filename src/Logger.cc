@@ -30,7 +30,7 @@ Logger::~Logger() {
 std::string Logger::currentDateTime() {
 	//https://stackoverflow.com/questions/997946/how-to-get-current-time-and-date-in-c
 	time_t now = time(0);
-	struct tm tstruct;
+	struct tm tstruct{};
 	char buf[80];
 	tstruct = *localtime(&now);
 

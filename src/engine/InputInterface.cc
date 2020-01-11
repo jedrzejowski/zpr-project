@@ -9,14 +9,14 @@
 #include <memory>
 
 engine::InputInterface::InputInterface() {
-	logger(1).constructor(this);
+	logger(4).constructor(this);
 
 	mouse = MousePtr(new Mouse(this));
 	keyboard = KeyboardPtr(new Keyboard(this));
 }
 
 engine::InputInterface::~InputInterface() {
-	logger(1).destructor(this);
+	logger(4).destructor(this);
 }
 
 engine::MousePtr engine::InputInterface::getMouse() {

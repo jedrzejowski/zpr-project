@@ -9,6 +9,7 @@
 #include "src/OpenGL.h"
 #include "src/_classdef.h"
 #include "src/lib/Object.hpp"
+#include "src/lib/Signal.hpp"
 
 namespace engine {
 	class InputButton : public Object {

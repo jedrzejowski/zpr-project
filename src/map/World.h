@@ -10,9 +10,10 @@
 #include "boost/filesystem/path.hpp"
 #include "src/_classdef.h"
 #include "src/lib/Object.hpp"
+#include "src/lib/Signal.hpp"
+#include "src/lib/SavableObject.h"
 #include "ChunkGenerator.h"
 #include "ChunkLoader.h"
-#include "src/lib/SavableObject.h"
 
 namespace map {
 	class World : public Object, public VirtualSharePtrObject<World>, public SavableObject {
@@ -54,6 +55,7 @@ namespace map {
 		boost::filesystem::path getDirectory() const;
 		boost::filesystem::path getSavePath(AppSettings &app_settings) const override;
 		json toJSON() const override;
+		void fullSave();
 	protected:
 		void acceptState(json &json_obj) override;
 		//endregion

@@ -32,10 +32,6 @@
 #define TTY_COLOR_BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
 
 #define logger(level) (Logger(__FILE__, __LINE__, level))
-//#define fastLog(var) (logger(1).log(#var).log("=").log(var))
-
-//#define logger //
-
 
 
 class Logger {
@@ -52,7 +48,7 @@ public:
 	std::string currentDateTime();
 
 	template<typename T>
-	Logger &msg(const T &obj, const std::string &color = TTY_COLOR_RESET) {
+	inline Logger &msg(const T &obj, const std::string &color = TTY_COLOR_RESET) {
 		if (isVisible()) return *this;
 
 		std::cout << " " << color << obj << TTY_COLOR_RESET;
@@ -61,37 +57,37 @@ public:
 	}
 
 	template<typename T>
-	Logger &err(const T &obj) {
+	inline Logger &err(const T &obj) {
 		return msg(obj, TTY_COLOR_RED);
 	}
 
 	template<typename T>
-	Logger &warn(const T &obj) {
+	inline Logger &warn(const T &obj) {
 		return msg(obj, TTY_COLOR_YELLOW);
 	}
 
 	template<typename T>
-	Logger &info(const T &obj) {
+	inline Logger &info(const T &obj) {
 		return msg(obj, TTY_COLOR_CYAN);
 	}
 
 	template<typename T>
-	Logger &log(const T &obj) {
+	inline Logger &log(const T &obj) {
 		return msg(obj, TTY_COLOR_WHITE);
 	}
 
-	Logger &enter() {
+	inline Logger &enter() {
 		std::cout << std::endl;
 		return *this;
 	}
 
 	template<typename T>
-	Logger &constructor(const T *obj) {
+	inline Logger &constructor(const T *obj) {
 		return msg(std::string("") + typeid(obj).name() + "()").log(obj);
 	}
 
 	template<typename T>
-	Logger &destructor(const T *obj) {
+	inline Logger &destructor(const T *obj) {
 		return msg(std::string("~") + typeid(obj).name() + "()").log(obj);
 	}
 };

@@ -4,7 +4,6 @@
  * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
  */
 
-#include <sstream>
 #include "Object.hpp"
 
 

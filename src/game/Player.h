@@ -19,7 +19,6 @@ namespace game {
 
 		float eye_angle_vertical, eye_angle_horizontal;
 		float mouse_precision, keyboard_precision;
-		CoordDim chunk_render_distance;
 
 		[[nodiscard]] glm::vec3 topVec() const;
 		[[nodiscard]] glm::vec3 frontVec() const;

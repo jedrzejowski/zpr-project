@@ -13,9 +13,9 @@
 #include "src/engine/Engine.h"
 #include "WorldShader.h"
 
-map::WorldRenderer::WorldRenderer(const map::WorldPtr& worldMap) :
+map::WorldRenderer::WorldRenderer(const map::WorldPtr &worldMap) :
 		world_map_ptr(worldMap) {
-	logger(1).constructor(this);
+	logger(4).constructor(this);
 
 	shader = std::make_shared<map::WorldShader>();
 }
@@ -36,7 +36,7 @@ map::WorldRendererPtr map::WorldRenderer::create(const map::WorldPtr &worldMap) 
 void map::WorldRenderer::initEvents() {
 	auto tt = this->shared_from_this();
 
-	world_map_ptr->onChunkInserted(this->shared_from_this(), [&](const map::ChunkPtr& chunk) {
+	world_map_ptr->onChunkInserted(this->shared_from_this(), [&](const map::ChunkPtr &chunk) {
 
 		auto self = this->shared_from_this();
 		auto cr = ChunkRenderer::create(self, chunk);
@@ -50,13 +50,13 @@ void map::WorldRenderer::initEvents() {
 
 
 map::WorldRenderer::~WorldRenderer() {
-	logger(1).destructor(this);
+	logger(4).destructor(this);
 }
 
 void map::WorldRenderer::render(const engine::Camera &camera,
-								const engine::ScenePtr& scene) {
-	auto window = scene->getWindow().lock();
-	window->setViewPort(engine::ViewPort::OneTwoOne);
+								const engine::ScenePtr &scene) {
+	auto window_ptr = scene->getWindow().lock();
+	window_ptr->setViewPort(engine::ViewPort::OneTwoOne);
 
 	glClear(GL_DEPTH_BUFFER_BIT);
 
@@ -64,11 +64,7 @@ void map::WorldRenderer::render(const engine::Camera &camera,
 
 //	glEnable(GL_CULL_FACE); // tak aby tyły nie były renderowane
 
-	shader->setProjection(glm::perspective(glm::radians(45.0f),
-										   (float) window->getWinWidth() /
-										   (float) window->getWinHeight(),
-										   0.1f, 100.0f));
-
+	shader->updateProjection(window_ptr);
 	shader->setCamera(camera);
 
 	for (const auto &it : chunk_renderers)

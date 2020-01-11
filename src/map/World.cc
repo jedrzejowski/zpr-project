@@ -144,4 +144,13 @@ void map::World::acceptState(json &json_obj) {
 	setNeedSave(false);
 }
 
+void map::World::fullSave() {
+	saveObjectToFile();
+
+	chunk_generator.saveObjectToFile();
+
+	for (const auto &it : chunks)
+		it.second->saveObjectToFile();
+}
+
 //endregion

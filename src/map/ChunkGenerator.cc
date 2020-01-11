@@ -23,7 +23,7 @@ map::ChunkGenerator::ChunkGenerator(World *world) {
 
 }
 
-void map::ChunkGenerator::fillChunk(ChunkPtr& chunk) {
+void map::ChunkGenerator::fillChunk(ChunkPtr &chunk) {
 
 	block::BlockPtr block;
 
@@ -82,22 +82,36 @@ void map::ChunkGenerator::fillChunk(ChunkPtr& chunk) {
 
 //region SavableObject
 
-const char *JSON_ATTR_SEED = "seed";
-const char *JSON_ATTR_SEED_PERSISTENCE = "persistence";
-const char *JSON_ATTR_SEED_FREQUENCY = "frequency";
-const char *JSON_ATTR_SEED_AMPLITUDE = "amplitude";
-const char *JSON_ATTR_SEED_OCTAVES = "octaves";
-const char *JSON_ATTR_SEED_RANDOMSEED = "randomseed";
+const char *JSON_ATTR_PERSISTENCE = "persistence";
+const char *JSON_ATTR_FREQUENCY = "frequency";
+const char *JSON_ATTR_AMPLITUDE = "amplitude";
+const char *JSON_ATTR_OCTAVES = "octaves";
+const char *JSON_ATTR_RANDOMSEED = "randomseed";
 
 boost::filesystem::path map::ChunkGenerator::getSavePath(AppSettings &app_settings) const {
-	return boost::filesystem::path();
+	return world->getDirectory() / "seed";
 }
 
 json map::ChunkGenerator::toJSON() const {
-	return json();
+	json json_obj;
+
+	json_obj[JSON_ATTR_PERSISTENCE] = noise.getPersistence();
+	json_obj[JSON_ATTR_FREQUENCY] = noise.getFrequency();
+	json_obj[JSON_ATTR_AMPLITUDE] = noise.getAmplitude();
+	json_obj[JSON_ATTR_OCTAVES] = noise.getOctaves();
+	json_obj[JSON_ATTR_RANDOMSEED] = noise.getRandomSeed();
+
+	return json_obj;
 }
 
 void map::ChunkGenerator::acceptState(json &json_obj) {
+
+	noise.setPersistence(assertGetNumber(json_obj[JSON_ATTR_PERSISTENCE]));
+	noise.setFrequency(assertGetNumber(json_obj[JSON_ATTR_FREQUENCY]));
+	noise.setAmplitude(assertGetNumber(json_obj[JSON_ATTR_AMPLITUDE]));
+	noise.setOctaves(assertGetNumber(json_obj[JSON_ATTR_OCTAVES]));
+	noise.setRandomSeed(assertGetNumber(json_obj[JSON_ATTR_RANDOMSEED]));
+
 }
 
 //endregion

@@ -25,7 +25,6 @@ void game::Player::initWithDefaultValues() {
 	eye_angle_horizontal = 0;
 	mouse_precision = 20;
 	keyboard_precision = 10;
-	chunk_render_distance = 4;
 	position = glm::vec3(4.0f);
 }
 
@@ -36,26 +35,12 @@ game::PlayerPtr game::Player::create(map::WorldPtr &world_map_ptr) {
 
 	game::PlayerPtr self = std::make_shared<Self>(world_map_ptr);
 
-	try {
-
-		if (self->hasSavedFile())
-			self->loadObjectFromFile();
-		else
+	if (self->hasSavedFile())
+		self->loadObjectFromFile([&] {
 			self->initWithDefaultValues();
-	} catch (WrongJsonException &exception) {
-
-		logger(0).err("Error during parsing player_ptr data.")
-				.err("I will reset player_ptr to default state");
-
+		});
+	else
 		self->initWithDefaultValues();
-	} catch (FileInputException &exception) {
-
-		logger(0).err("Error during reading player_ptr data from file:").enter()
-				.err(exception.getFile()).enter()
-				.err("I will reset player_ptr to default state");
-
-		self->initWithDefaultValues();
-	}
 
 	return self;
 }
@@ -139,11 +124,12 @@ engine::Camera game::Player::getCamera() const {
 }
 
 float game::Player::getChunkRenderDistance() const {
-	return chunk_render_distance;
+	static auto &app_setting = AppSettings::get();
+	return app_setting.chunkRenderDistance.get();
 }
 
 float game::Player::getChunkUnloadDistance() const {
-	return chunk_render_distance + 2;
+	return getChunkRenderDistance() + 2;
 }
 
 block::FullPosition game::Player::getFullPosition() const {
@@ -281,7 +267,6 @@ const char *JSON_ATTR_EYE_ANGLE_VERTICAL = "eye_angle_vertical";
 const char *JSON_ATTR_EYE_ANGLE_HORIZONTAL = "eye_angle_horizontal";
 const char *JSON_ATTR_MOUSE_PRECISION = "mouse_precision";
 const char *JSON_ATTR_KEYBOARD_PRECISION = "keyboard_precision";
-const char *JSON_ATTR_CHUNK_RENDER_DISTANCE = "chunk_render_distance";
 
 boost::filesystem::path game::Player::getSavePath(AppSettings &app_settings) const {
 	return world_map_ptr->getDirectory() / "player";
@@ -295,7 +280,6 @@ json game::Player::toJSON() const {
 	json_obj[JSON_ATTR_EYE_ANGLE_HORIZONTAL] = eye_angle_horizontal;
 	json_obj[JSON_ATTR_MOUSE_PRECISION] = mouse_precision;
 	json_obj[JSON_ATTR_KEYBOARD_PRECISION] = keyboard_precision;
-	json_obj[JSON_ATTR_CHUNK_RENDER_DISTANCE] = chunk_render_distance;
 
 	return json_obj;
 }
@@ -307,7 +291,6 @@ void game::Player::acceptState(json &json_obj) {
 	eye_angle_horizontal = assertGetNumber(json_obj[JSON_ATTR_EYE_ANGLE_HORIZONTAL]);
 	mouse_precision = assertGetNumber(json_obj[JSON_ATTR_MOUSE_PRECISION]);
 	keyboard_precision = assertGetNumber(json_obj[JSON_ATTR_KEYBOARD_PRECISION]);
-	chunk_render_distance = assertGetNumber(json_obj[JSON_ATTR_CHUNK_RENDER_DISTANCE]);
 
 	setNeedSave(false);
 }

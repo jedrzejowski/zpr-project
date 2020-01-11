@@ -30,6 +30,9 @@ class AppSettings;
 
 class SavableObject;
 
+template<typename T>
+class LiveData;
+
 namespace engine {
 	class exception;
 

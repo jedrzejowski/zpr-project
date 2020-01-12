@@ -94,6 +94,9 @@ void AppSettings::saveJSON(boost::filesystem::path path, json content) {
 	if (!fileStream.is_open())
 		throw FileOutputException(path);
 
-	fileStream << std::setw(4) << content << std::endl;
+	fileStream
+//			<< std::setw(4) // ładne formatowanie
+			<< content
+			<< std::endl;
 }
 

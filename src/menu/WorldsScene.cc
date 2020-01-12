@@ -24,14 +24,10 @@ void menu::WorldsScene::constructorWorldsScene() {
 
 	input_interface->getKeyboard()->Escape.onPressed([&] { backToWelcomeScene(); });
 
-	// iterowanie po światach
-	for (const auto &code_name : map::WorldManager::get().getAllCodeNames())
-		newWorldButton(code_name);
-
 	add_button = gui::Button::create(interface);
 	add_button->setText("Nowy swiat");
 	add_button->onClicked([&] {
-		auto new_world=map::WorldManager::get().newWorld();
+		auto new_world = map::WorldManager::get().newWorld();
 		openWorld(new_world->getCodeName());
 	});
 
@@ -39,7 +35,7 @@ void menu::WorldsScene::constructorWorldsScene() {
 	return_button->setText("Wroc");
 	return_button->onClicked([&] { backToWelcomeScene(); });
 
-	updateButtonsPositions();
+	recreateWorldButtons();
 }
 
 menu::WorldsScene::~WorldsScene() {
@@ -59,6 +55,19 @@ void menu::WorldsScene::render(engine::WindowPtr &window) {
 	interface->render(this->shared_from_this());
 }
 
+void menu::WorldsScene::recreateWorldButtons() {
+
+	for (const auto &it : worlds_button)
+		it->setParent(nullptr);
+	worlds_button.clear();
+
+	// iterowanie po światach
+	for (const auto &code_name : map::WorldManager::get().getAllCodeNames())
+		newWorldButton(code_name);
+
+	updateButtonsPositions();
+}
+
 void menu::WorldsScene::newWorldButton(const std::string &code_name) {
 	auto world_ptr = map::WorldManager::get().openWorld(code_name);
 
@@ -69,10 +78,12 @@ void menu::WorldsScene::newWorldButton(const std::string &code_name) {
 
 	button->onMainClick([&, code_name] { openWorld(code_name); });
 
-	button->onPositiveClick([&] {
+	button->onPositiveClick([&, code_name] {
+		map::WorldManager::get().clearWorld(code_name);
 	});
 
-	button->onNegativeClick([&] {
+	button->onNegativeClick([&, code_name] {
+		map::WorldManager::get().deleteWorld(code_name);
 	});
 }
 

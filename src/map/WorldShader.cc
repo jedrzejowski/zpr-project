@@ -6,6 +6,7 @@
 
 #include "WorldShader.h"
 #include "src/lib/AppSettings.h"
+#include "Chunk.h"
 
 map::WorldShader::WorldShader() : Shader("shader/game.vert", "shader/game.frag") {
 	static auto &resources = engine::Resources::get();
@@ -30,9 +31,11 @@ void map::WorldShader::updateProjection(const engine::WindowPtr &window_ptr) {
 			glm::perspective(
 					glm::radians(app_settings.playerCameraAngle.get()),
 					(float) window_ptr->getWinWidth() / (float) window_ptr->getWinHeight(),
-					0.1f, 100.0f
+					0.1f,
+					app_settings.chunkRenderDistance.get() * float(map::Chunk::Size.x + map::Chunk::Size.y) / 2
 			)
 	);
+
 }
 
 void map::WorldShader::setChunkPos(const glm::mat4 &mat) {

@@ -14,7 +14,6 @@ BackWorkerQueue::BackWorkerQueue() :
 BackWorkerQueue::~BackWorkerQueue() {
 	endWorker = true;
 	waiting_for_data.unlock();
-
 	thread.join();
 }
 

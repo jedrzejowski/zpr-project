@@ -59,6 +59,8 @@ void map::World::insertChunk(map::ChunkPtr chunk) {
 	if (hasChunk(chunk->getPosition()))
 		throw zprException("map::World::insertChunk", "inserting chunk which position already exist");
 
+	if (isDeleted()) chunk->deleteThisObjectAsFile();
+
 	chunks[chunk->getPosition()] = chunk;
 	onChunkInserted(chunk);
 }

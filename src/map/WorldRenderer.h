@@ -20,8 +20,6 @@ namespace map {
 		const WorldPtr world_map_ptr;
 		WorldShaderPtr shader;
 
-		BackWorkerQueue worker;
-
 		std::map<Coord2D, ChunkRendererPtr> chunk_renderers;
 
 		explicit WorldRenderer(const WorldPtr& worldMap);

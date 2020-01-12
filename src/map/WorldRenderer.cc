@@ -21,11 +21,11 @@ map::WorldRenderer::WorldRenderer(const map::WorldPtr &worldMap) :
 }
 
 map::WorldRendererPtr map::WorldRenderer::create(const map::WorldPtr &worldMap) {
-	struct trick : WorldRenderer {
-		trick(const map::WorldPtr &worldMap) : WorldRenderer(worldMap) {}
+	struct Self : WorldRenderer {
+		Self(const map::WorldPtr &worldMap) : WorldRenderer(worldMap) {}
 	};
 
-	map::WorldRendererPtr self = std::make_shared<trick>(worldMap);
+	map::WorldRendererPtr self = std::make_shared<Self>(worldMap);
 	self->constructorWorldRenderer();
 	return self;
 }

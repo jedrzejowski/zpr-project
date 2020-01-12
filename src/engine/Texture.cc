@@ -52,7 +52,6 @@ void Texture::loadTexture(const std::string &path) {
 						  &width, &height, &number_of_channels, 0);
 
 	if (data) {
-		logger(1).log(path).log(number_of_channels);
 
 		if (number_of_channels == 3)
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);

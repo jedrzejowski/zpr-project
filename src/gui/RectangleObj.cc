@@ -14,7 +14,6 @@ gui::RectangleObj::RectangleObj(GuiObjectPtr gui_object) : GuiObject(gui_object)
 }
 
 void gui::RectangleObj::constructorRectangleObj() {
-	logger(0).log("gui::RectangleObj::constructorRectangleObj()");
 
 	auto ii = getInterface()->getInputInterface();
 	auto self = this->shared_from_this();

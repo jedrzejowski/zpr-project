@@ -24,6 +24,9 @@ typedef std::weak_ptr<Object> ObjectWPtr;
 
 class BackWorkerQueue;
 
+typedef std::shared_ptr<BackWorkerQueue> BackWorkerQueuePtr;
+typedef std::weak_ptr<BackWorkerQueue> BackWorkerQueueWPtr;
+
 class JsonFile;
 
 class AppSettings;

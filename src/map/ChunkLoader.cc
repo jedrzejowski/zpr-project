@@ -20,12 +20,12 @@ void map::ChunkLoader::load(Coord2D coord) {
 
 	loading_chunks_coords.push_back(coord);
 
-	worker.push([this, coord] {
-		auto worldMapPtr = world->shared_from_this();
-		auto chunk = map::Chunk::create(worldMapPtr, coord);
+	auto world_ptr = world->shared_from_this();
+	getWorker()->push([this, world_ptr, coord] {
+		auto chunk = map::Chunk::create(world_ptr, coord);
 
 		auto genChunk = [&] {
-			world->chunk_generator.fillChunk(chunk);
+			world_ptr->chunk_generator.fillChunk(chunk);
 
 			try {
 				chunk->saveObjectToFile();
@@ -50,9 +50,6 @@ void map::ChunkLoader::unload(Coord2D coord) {
 	chunks_to_remove.push_back(coord);
 }
 
-map::ChunkLoader::~ChunkLoader() {
-}
-
 void map::ChunkLoader::syncWithWorld() {
 	std::lock_guard<std::mutex> lock(chunk_list_access);
 
@@ -72,7 +69,7 @@ void map::ChunkLoader::syncWithWorld() {
 
 		auto chunk = world->ejectChunk(pos);
 
-		worker.push([this, chunk] {
+		getWorker()->push([this, chunk] {
 
 			chunk->saveObjectToFile();
 
@@ -93,4 +90,11 @@ bool map::ChunkLoader::isChunkLoading(const Coord2D &coord) {
 bool map::ChunkLoader::isChunkUnloading(const Coord2D &coord) {
 	return std::find(unloading_chunks_coords.begin(), unloading_chunks_coords.end(), coord) !=
 		   unloading_chunks_coords.end();;
+}
+
+BackWorkerQueuePtr &map::ChunkLoader::getWorker() {
+	if (worker_ptr == nullptr)
+		worker_ptr = std::make_shared<BackWorkerQueue>();
+
+	return worker_ptr;
 }

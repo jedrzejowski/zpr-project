@@ -22,6 +22,7 @@ namespace map {
 		using VirtualSharePtrObject<World>::weak_from_this;
 		friend ChunkLoader;
 		friend ChunkGenerator;
+		friend WorldManager;
 	protected:
 		ChunkLoader chunk_loader;
 		ChunkGenerator chunk_generator;

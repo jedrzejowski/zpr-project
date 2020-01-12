@@ -27,6 +27,7 @@ namespace menu {
 
 		void backToWelcomeScene();
 		void updateButtonsPositions();
+		void recreateWorldButtons();
 		void openWorld(const std::string& code_name);
 	public:
 		static WorldsScenePtr create();

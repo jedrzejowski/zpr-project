@@ -19,7 +19,8 @@ namespace map {
 
 		WorldPtr newWorld();
 		WorldPtr openWorld(const std::string &code_name);
-		WorldPtr deleteWorld(const std::string &code_name);
+		void deleteWorld(const std::string &code_name);
+		WorldPtr clearWorld(const std::string &code_name);
 		[[nodiscard]] const std::vector<std::string> &getAllCodeNames() const;
 	};
 }

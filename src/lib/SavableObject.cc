@@ -15,11 +15,12 @@ void SavableObject::setNeedSave(bool needSave) {
 	need_save = needSave;
 }
 
-void SavableObject::saveObjectToFile() const {
+void SavableObject::saveObjectToFile() {
 	static auto &app_settings = AppSettings::get();
 
-	if (isNeedSave()) {
+	if (isNeedSave() && !isDeleted()) {
 		app_settings.saveJSON(getSavePath(), toJSON());
+		setNeedSave(false);
 	}
 }
 
@@ -81,5 +82,14 @@ std::string SavableObject::assertGetString(json &maybe_string) {
 	if (maybe_string.is_string())
 		return maybe_string;
 	else throw WrongJsonException();
+}
+
+bool SavableObject::isDeleted() const {
+	return is_deleted;
+}
+
+void SavableObject::deleteThisObjectAsFile() {
+	is_deleted = true;
+
 }
 

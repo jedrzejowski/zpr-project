@@ -28,6 +28,8 @@ map::WorldPtr map::World::create(const std::string &codeName) {
 
 	map::WorldPtr self = std::make_shared<Self>(codeName);
 
+	self->loadObjectFromFile();
+
 	return self;
 }
 
@@ -112,9 +114,6 @@ const std::string &map::World::getCodeName() const {
 	return code_name;
 }
 
-boost::filesystem::path map::World::getDirectory() const {
-	return AppSettings::get().getCfgDir() / "worlds" / getCodeName();
-}
 
 const std::map<Coord2D, map::ChunkPtr> &map::World::getLoadedChunks() const {
 	return chunks;
@@ -124,6 +123,13 @@ const std::map<Coord2D, map::ChunkPtr> &map::World::getLoadedChunks() const {
 
 const char *JSON_ATTR_DISPLAY_NAME = "display_name";
 
+boost::filesystem::path map::World::getDirectory() const {
+	return getBaseDirectory() / getCodeName();
+}
+
+boost::filesystem::path map::World::getBaseDirectory() {
+	return AppSettings::get().getCfgDir() / "worlds";
+}
 
 boost::filesystem::path map::World::getSavePath(AppSettings &app_settings) const {
 	return getDirectory() / "worldinfo";

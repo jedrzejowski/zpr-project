@@ -23,7 +23,7 @@ game::MainGamePtr game::MainGame::create(game::GameScenePtr &scene) {
 
 	game::MainGamePtr self = std::make_shared<trick>(scene);
 
-	self->world_map_ptr = map::World::create("default");
+	self->world_map_ptr = map::World::create(scene->getWorldCodeName());
 	self->player_ptr = Player::create(self->world_map_ptr);
 
 	self->map_renderer_ptr = map::WorldRenderer::create(self->world_map_ptr);

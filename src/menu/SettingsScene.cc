@@ -67,7 +67,6 @@ void menu::SettingsScene::newNumberSettings(const LiveData<T> &live_data,
 	button->setPosition(glm::vec2(0, new_settings_position));
 	new_settings_position += 0.2;
 
-
 	live_data.onChange(this, [button_wptr, title](const float &old_value, const float &new_value) {
 		if (auto button_ptr = button_wptr.lock()) {
 			auto title_noconst = title;

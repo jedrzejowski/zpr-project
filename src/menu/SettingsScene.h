@@ -19,8 +19,6 @@ namespace menu {
 		using VirtualSharePtrObject<SettingsScene>::weak_from_this;
 	private:
 		gui::InterfacePtr interface;
-		gui::TriButtonPtr camera_angle_button;
-		gui::TriButtonPtr chunk_render_button;
 		std::vector<gui::GuiObjectPtr> children;
 		float new_settings_position = 0.1;
 

@@ -25,14 +25,15 @@ namespace game {
 	private:
 		GameSceneState interface_state;
 
+		const std::string code_name;
 		MainGamePtr main_game;
 		InGameMenuPtr in_game_menu;
 
-		GameScene();
+		explicit GameScene(const std::string& code_name);
 		void initEvents();
 	public:
 		~GameScene() override;
-		static GameScenePtr create();
+		static GameScenePtr create(const std::string& code_name);
 		void render(engine::WindowPtr& window) override;
 
 		GameSceneState getInterfaceState() const;
@@ -40,6 +41,7 @@ namespace game {
 
 		const MainGamePtr &getMainGame() const;
 		const InGameMenuPtr &getInGameMenu() const;
+		const std::string &getWorldCodeName() const;
 
 		void pollEvents() override;
 	};

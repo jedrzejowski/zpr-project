@@ -11,7 +11,8 @@
 #include "PlayerInterface.h"
 #include "src/menu/WelcomeScene.h"
 
-game::GameScene::GameScene() {
+game::GameScene::GameScene(const std::string &code_name) :
+		code_name(code_name) {
 	logger(4).constructor(this);
 }
 game::GameScene::~GameScene() {
@@ -19,11 +20,12 @@ game::GameScene::~GameScene() {
 }
 
 
-game::GameScenePtr game::GameScene::create() {
+game::GameScenePtr game::GameScene::create(const std::string &code_name) {
 	struct Self : GameScene {
+		Self(const std::string &code_name) : GameScene(code_name) {}
 	};
 
-	GameScenePtr self = std::make_shared<Self>();
+	GameScenePtr self = std::make_shared<Self>(code_name);
 
 	self->main_game = MainGame::create(self);
 	self->in_game_menu = InGameMenu::create(self);
@@ -53,7 +55,7 @@ void game::GameScene::initEvents() {
 }
 
 
-void game::GameScene::render(engine::WindowPtr& window) {
+void game::GameScene::render(engine::WindowPtr &window) {
 
 	main_game->renderWorld();
 
@@ -95,4 +97,7 @@ const game::MainGamePtr &game::GameScene::getMainGame() const {
 
 const game::InGameMenuPtr &game::GameScene::getInGameMenu() const {
 	return in_game_menu;
+}
+const std::string &game::GameScene::getWorldCodeName() const {
+	return code_name;
 }

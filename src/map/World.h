@@ -55,6 +55,7 @@ namespace map {
 
 		//region SavableObject
 	public:
+		static boost::filesystem::path getBaseDirectory();
 		boost::filesystem::path getDirectory() const;
 		boost::filesystem::path getSavePath(AppSettings &app_settings) const override;
 		json toJSON() const override;

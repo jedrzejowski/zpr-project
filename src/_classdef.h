@@ -270,10 +270,10 @@ namespace menu {
 	typedef std::shared_ptr<SettingsScene> SettingsScenePtr;
 	typedef std::weak_ptr<SettingsScene> CSettingsSceneWPtr;
 
-	class WorldScene;
+	class WorldsScene;
 
-	typedef std::shared_ptr<WorldScene> WorldScenePtr;
-	typedef std::weak_ptr<WorldScene> WorldSceneWPtr;
+	typedef std::shared_ptr<WorldsScene> WorldsScenePtr;
+	typedef std::weak_ptr<WorldsScene> WorldsSceneWPtr;
 }
 
 #include "src/Vars.h"

@@ -3,6 +3,7 @@
  *
  * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
  */
+#pragma once
 
 #include "_classdef.h"
 #include "src/lib/Signal.hpp"

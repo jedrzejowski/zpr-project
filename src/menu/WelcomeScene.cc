@@ -23,10 +23,8 @@ void menu::WelcomeScene::constructorWelcomeScene() {
 	play_button->setPosition(glm::vec2(0, 0.3));
 	play_button->setText("Graj");
 	play_button->onClicked([&] {
-
 		if (auto window_ptr = getWindow().lock()) {
-
-			auto newScene = game::GameScene::create();
+			auto newScene = menu::WorldsScene::create();
 			window_ptr->setScene(newScene);
 		}
 	});
@@ -36,7 +34,6 @@ void menu::WelcomeScene::constructorWelcomeScene() {
 	settings_button->setText("Ustawienia");
 	settings_button->onClicked([&] {
 		if (auto window_ptr = getWindow().lock()) {
-
 			auto newScene = menu::SettingsScene::create();
 			window_ptr->setScene(newScene);
 		}

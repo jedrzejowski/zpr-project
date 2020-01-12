@@ -74,7 +74,7 @@ boost::filesystem::path AppSettings::getCfgDir() {
 
 json AppSettings::loadJSON(boost::filesystem::path path) {
 
-	std::ifstream fileStream(path);
+	std::ifstream fileStream(path.string());
 
 	if (!fileStream.is_open())
 		throw FileInputException(path);
@@ -89,7 +89,7 @@ json AppSettings::loadJSON(boost::filesystem::path path) {
 void AppSettings::saveJSON(boost::filesystem::path path, json content) {
 	boost::filesystem::create_directories(path.parent_path());
 
-	std::ofstream fileStream(path);
+	std::ofstream fileStream(path.string());
 
 	if (!fileStream.is_open())
 		throw FileOutputException(path);

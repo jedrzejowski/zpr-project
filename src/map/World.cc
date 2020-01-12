@@ -6,6 +6,7 @@
 
 #include "World.h"
 #include "Chunk.h"
+#include "WorldManager.h"
 #include "src/game/Game.h"
 #include "lib/AppSettings.h"
 
@@ -124,11 +125,7 @@ const std::map<Coord2D, map::ChunkPtr> &map::World::getLoadedChunks() const {
 const char *JSON_ATTR_DISPLAY_NAME = "display_name";
 
 boost::filesystem::path map::World::getDirectory() const {
-	return getBaseDirectory() / getCodeName();
-}
-
-boost::filesystem::path map::World::getBaseDirectory() {
-	return AppSettings::get().getCfgDir() / "worlds";
+	return WorldManager::getWorldsDirectory() / getCodeName();
 }
 
 boost::filesystem::path map::World::getSavePath(AppSettings &app_settings) const {

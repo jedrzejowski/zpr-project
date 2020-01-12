@@ -8,6 +8,7 @@
 #include "WelcomeScene.h"
 #include "src/gui/Interface.h"
 #include "src/map/World.h"
+#include "src/map/WorldManager.h"
 #include "src/gui/TriButton.h"
 #include "src/game/GameScene.h"
 
@@ -23,27 +24,20 @@ void menu::WorldsScene::constructorWorldsScene() {
 
 	input_interface->getKeyboard()->Escape.onPressed([&] { backToWelcomeScene(); });
 
-	// scrolling
-	input_interface->getMouse()->onMove([&](const glm::vec2 &delta) {
-		updateButtonsPositions();
-	});
-
 	// iterowanie po światach
-	for (auto iterator = boost::filesystem::directory_iterator(map::World::getBaseDirectory());
-		 iterator != boost::filesystem::directory_iterator{}; iterator++) {
-
-		auto code_name = iterator->path().leaf().string();
+	for (const auto &code_name : map::WorldManager::get().getAllCodeNames())
 		newWorldButton(code_name);
-	}
 
 	add_button = gui::Button::create(interface);
 	add_button->setText("Nowy swiat");
-	add_button->onClicked([&] { initNewWorld(); });
+	add_button->onClicked([&] {
+		auto new_world=map::WorldManager::get().newWorld();
+		openWorld(new_world->getCodeName());
+	});
 
 	return_button = gui::Button::create(interface);
 	return_button->setText("Wroc");
 	return_button->onClicked([&] { backToWelcomeScene(); });
-
 
 	updateButtonsPositions();
 }
@@ -66,19 +60,14 @@ void menu::WorldsScene::render(engine::WindowPtr &window) {
 }
 
 void menu::WorldsScene::newWorldButton(const std::string &code_name) {
-	auto world_ptr = map::World::create(code_name);
+	auto world_ptr = map::WorldManager::get().openWorld(code_name);
 
 	auto button = gui::TriButton::create(interface);
 	worlds_button.push_back(button);
 
 	button->setText("X", world_ptr->getDisplayName(), "R");
 
-	button->onMainClick([&, code_name] {
-		if (auto window_ptr = getWindow().lock()) {
-			auto newScene = game::GameScene::create(code_name);
-			window_ptr->setScene(newScene);
-		}
-	});
+	button->onMainClick([&, code_name] { openWorld(code_name); });
 
 	button->onPositiveClick([&] {
 	});
@@ -116,9 +105,6 @@ void menu::WorldsScene::updateButtonsPositions() {
 	return_button->setPosition(glm::vec2(0, new_settings_position));
 }
 
-void menu::WorldsScene::initNewWorld() {
-}
-
 void menu::WorldsScene::pollEvents() {
 
 	// scrolling
@@ -130,16 +116,25 @@ void menu::WorldsScene::pollEvents() {
 		if (mouse->isInWindow()) {
 
 			auto mouse_pos = mouse->getCurrentPosition();
+			auto win_height = float(window_ptr->getWinHeight());
+			auto time = float(mouse->getDeltaTimeOfState());
 
-			if (mouse_pos.y <= scroll_threshold * window_ptr->getWinHeight()) {
-				scroll_offset -= speed_ratio * mouse->getDeltaTimeOfState();
+			if (mouse_pos.y <= scroll_threshold * win_height) {
+
+				scroll_offset -= speed_ratio * time;
 				updateButtonsPositions();
-			}
+			} else if (mouse_pos.y >= (1 - scroll_threshold) * win_height) {
 
-			if (mouse_pos.y >= (1 - scroll_threshold) * window_ptr->getWinHeight()) {
-				scroll_offset += speed_ratio * mouse->getDeltaTimeOfState();
+				scroll_offset += speed_ratio * time;
 				updateButtonsPositions();
 			}
 		}
+	}
+}
+
+void menu::WorldsScene::openWorld(const std::string &code_name) {
+	if (auto window_ptr = getWindow().lock()) {
+		auto newScene = game::GameScene::create(code_name);
+		window_ptr->setScene(newScene);
 	}
 }

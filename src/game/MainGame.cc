@@ -6,7 +6,9 @@
 
 #include "MainGame.h"
 #include "src/engine/Engine.h"
-#include "src/map/Map.h"
+#include "src/map/World.h"
+#include "src/map/Chunk.h"
+#include "src/map/WorldManager.h"
 #include "Player.h"
 #include "GameScene.h"
 #include "PlayerInterface.h"
@@ -23,7 +25,7 @@ game::MainGamePtr game::MainGame::create(game::GameScenePtr &scene) {
 
 	game::MainGamePtr self = std::make_shared<trick>(scene);
 
-	self->world_map_ptr = map::World::create(scene->getWorldCodeName());
+	self->world_map_ptr = map::WorldManager::get().openWorld(scene->getWorldCodeName());
 	self->player_ptr = Player::create(self->world_map_ptr);
 
 	self->map_renderer_ptr = map::WorldRenderer::create(self->world_map_ptr);

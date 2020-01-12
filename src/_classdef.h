@@ -186,6 +186,8 @@ namespace block {
 }
 
 namespace map {
+	class WorldManager; // singelton, bez wskaźników
+
 	class World;
 
 	typedef std::shared_ptr<World> WorldPtr;

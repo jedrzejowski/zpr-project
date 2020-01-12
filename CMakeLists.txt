@@ -69,8 +69,6 @@ add_executable(${APP_TARGET}
 
 file(COPY res/ DESTINATION res)
 
-include(tests.cmake)
-
 target_link_libraries(${APP_TARGET} ${LIBRARIES})
 
 

@@ -8,34 +8,35 @@
 #include "Point.hpp"
 #include "InputInterface.h"
 
-using namespace engine;
 
-Scene::Scene() {
+engine::Scene::Scene() {
 }
 
-WindowWPtr Scene::getWindow() const {
+engine::WindowWPtr engine::Scene::getWindow() const {
 	return window_wptr;
 }
 
-void Scene::setWindow(WindowWPtr window) {
+void engine::Scene::setWindow(WindowWPtr window) {
 	Scene::window_wptr = window;
 	onWindowChanged.emit();
 }
 
-InputInterfacePtr Scene::getInputInterface() {
+engine::InputInterfacePtr engine::Scene::getInputInterface() {
 	return this->input_interface_ptr;
 }
 
-void Scene::setInputInterface(InputInterfacePtr interface_ptr) {
+void engine::Scene::setInputInterface(InputInterfacePtr interface_ptr) {
 	if (this->input_interface_ptr)
 		this->input_interface_ptr->unattachFromScene();
 
 	this->input_interface_ptr = std::move(interface_ptr);
 
-	if (this->input_interface_ptr != nullptr)
-		this->input_interface_ptr->attachToScene(this->shared_from_this());
+	if (this->input_interface_ptr != nullptr) {
+		auto tmp = shared_from_this();
+		this->input_interface_ptr->attachToScene(tmp);
+	}
 }
 
-bool Scene::isInWindow() {
+bool engine::Scene::isInWindow() {
 	return window_wptr.expired();
 }

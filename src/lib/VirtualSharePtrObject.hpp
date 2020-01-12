@@ -10,14 +10,18 @@
 
 #include <memory>
 
-struct virtual_enable_shared_from_this_base :
-		std::enable_shared_from_this<virtual_enable_shared_from_this_base> {
-	virtual ~virtual_enable_shared_from_this_base() {}
+struct VirtualEnableSharedFromThisBase :
+		std::enable_shared_from_this<VirtualEnableSharedFromThisBase> {
+	virtual ~VirtualEnableSharedFromThisBase() {}
 };
 
 template<typename T>
-struct VirtualSharePtrObject : virtual virtual_enable_shared_from_this_base {
+struct VirtualSharePtrObject : virtual VirtualEnableSharedFromThisBase {
 	std::shared_ptr<T> shared_from_this() {
-		return std::dynamic_pointer_cast<T>(virtual_enable_shared_from_this_base::shared_from_this());
+		return std::dynamic_pointer_cast<T>(VirtualEnableSharedFromThisBase::shared_from_this());
+	}
+
+	std::weak_ptr<T> weak_from_this() {
+		return std::dynamic_pointer_cast<T>(VirtualEnableSharedFromThisBase::shared_from_this());
 	}
 };

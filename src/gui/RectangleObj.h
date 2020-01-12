@@ -14,6 +14,9 @@
 namespace gui {
 
 	class RectangleObj : public GuiObject, public VirtualSharePtrObject<RectangleObj> {
+	public:
+		using VirtualSharePtrObject<RectangleObj>::shared_from_this;
+		using VirtualSharePtrObject<RectangleObj>::weak_from_this;
 	private:
 
 		glm::vec2 position = glm::vec2(0);

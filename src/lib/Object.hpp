@@ -10,7 +10,7 @@
 #include "src/_classdef.h"
 
 
-class Object {
+class Object : public VirtualSharePtrObject<Object> {
 public:
 	explicit Object();
 	virtual ~Object();

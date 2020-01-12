@@ -10,6 +10,9 @@
 
 namespace gui {
 	class TriButton : public GuiObject, public VirtualSharePtrObject<TriButton> {
+	public:
+		using VirtualSharePtrObject<TriButton>::shared_from_this;
+		using VirtualSharePtrObject<TriButton>::weak_from_this;
 	private:
 
 		glm::vec2 position = glm::vec2(0);
@@ -31,12 +34,16 @@ namespace gui {
 
 		void updateBuffers() override;
 
-
-
 		const glm::vec2 &getPosition() const;
 		void setPosition(const glm::vec2 &new_position);
 		const glm::vec2 &getSize() const;
 		void setSize(const glm::vec2 &new_size);
+
+		const ButtonPtr &getNegativeButton() const;
+		const ButtonPtr &getMainButton() const;
+		const ButtonPtr &getPositiveButton() const;
+
+		void setText(const std::string &negative_text, const std::string &main_text, const std::string &positive_text);
 
 		const Signal<> onMainClick;
 		const Signal<> onPositiveClick;

@@ -11,6 +11,9 @@
 
 namespace game {
 	class PlayerInterface : public gui::Interface, public VirtualSharePtrObject<PlayerInterface> {
+	public:
+		using VirtualSharePtrObject<PlayerInterface>::shared_from_this;
+		using VirtualSharePtrObject<PlayerInterface>::weak_from_this;
 	private:
 		game::MainGameWPtr sceneWPtr;
 		explicit PlayerInterface(game::MainGamePtr &scene);

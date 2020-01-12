@@ -15,29 +15,33 @@ gui::Button::Button(gui::GuiObjectPtr &gui_object) : RectangleObj(gui_object) {}
 void gui::Button::constructorButton() {
 	RectangleObj::constructorRectangleObj();
 
+	text_size = 1;
+
 	setState(Idle);
 
 	onEnter([&] {
-		setState(Hover);
+		if (state != Disabled)
+			setState(Hover);
 	});
 
 	onLeave([&] {
-		setState(Idle);
+		if (state != Disabled)
+			setState(Idle);
 	});
 
 	onPressed([&] {
-		onClicked();
+		if (state != Disabled)
+			onClicked();
 	});
 
 	text = std::make_shared<Text>(this->shared_from_this());
-	updateTextModel();
 
 	onSizeChanged([&](const glm::vec2 &old_size, const glm::vec2 &new_size) {
-		updateTextModel();
+		setNeedRefreshBuffers(true);
 	});
 
 	text->onContentChanged([&](const std::string &old_content, const std::string &new_content) {
-		updateTextModel();
+		setNeedRefreshBuffers(true);
 	});
 }
 
@@ -112,7 +116,7 @@ glm::vec2 gui::Button::getBaseSize() {
 	return glm::vec2(1, 0.13);
 }
 
-const std::string &gui::Button::getText() {
+const std::string &gui::Button::getText() const {
 	return text->getContent();
 }
 
@@ -124,12 +128,28 @@ void gui::Button::updateTextModel() {
 	auto model = glm::mat4(1);
 	auto base_size = getBaseSize();
 
+	auto text_factor = base_size.y * text_size / 2;
+
 	model = glm::translate(model, glm::vec3(
-			0.5 - text->getContentLength() * base_size.y / 4,
-			base_size.y / 4,
+			(base_size.x - text->getContentLength() * text_factor / getSize().x) / 2,
+			(base_size.y - text_factor) / 2,
 			-.1));
 
-	model = glm::scale(model, glm::vec3(base_size.y / 2 / getSize().x, base_size.y / 2, 1));
+	model = glm::scale(model, glm::vec3(text_factor / getSize().x, text_factor, 1));
 
 	text->setModel(model);
+}
+
+float gui::Button::getTextSize() const {
+	return text_size;
+}
+
+void gui::Button::setTextSize(float new_size) {
+	text_size = new_size;
+	setNeedRefreshBuffers(true);
+}
+
+void gui::Button::updateBuffers() {
+	updateTextModel();
+	RectangleObj::updateBuffers();
 }

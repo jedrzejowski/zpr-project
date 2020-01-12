@@ -15,6 +15,9 @@
 
 namespace map {
 	class Chunk : public Object, public VirtualSharePtrObject<Chunk>, public SavableObject {
+	public:
+		using VirtualSharePtrObject<Chunk>::shared_from_this;
+		using VirtualSharePtrObject<Chunk>::weak_from_this;
 		friend ChunkRenderer;
 		friend ChunkGenerator;
 		friend ChunkLoader;

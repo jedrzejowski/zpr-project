@@ -17,6 +17,9 @@
 
 namespace map {
 	class World : public Object, public VirtualSharePtrObject<World>, public SavableObject {
+	public:
+		using VirtualSharePtrObject<World>::shared_from_this;
+		using VirtualSharePtrObject<World>::weak_from_this;
 		friend ChunkLoader;
 		friend ChunkGenerator;
 	protected:

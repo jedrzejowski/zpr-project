@@ -13,6 +13,7 @@
 namespace menu {
 
 	class WelcomeScene : public engine::Scene, public VirtualSharePtrObject<WelcomeScene> {
+	public:
 		using VirtualSharePtrObject<WelcomeScene>::shared_from_this;
 	private:
 		gui::InterfacePtr interface;

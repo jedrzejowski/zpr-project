@@ -21,7 +21,9 @@ namespace gui {
 	};
 
 	class Button : public RectangleObj, public VirtualSharePtrObject<Button> {
+	public:
 		using VirtualSharePtrObject<Button>::shared_from_this;
+		float text_size;
 		ButtonState state;
 		TextPtr text;
 
@@ -36,11 +38,15 @@ namespace gui {
 		static ButtonPtr create(InterfacePtr interface);
 		static ButtonPtr create(GuiObjectPtr gui_object);
 
+		void updateBuffers() override;
+
 		ButtonState getState() const;
 		void setState(ButtonState state);
 
-		const std::string &getText();
+		const std::string &getText() const;
 		void setText(const std::string &new_text);
+		float getTextSize() const;
+		void setTextSize(float textSize);
 
 		glm::vec2 getBaseSize() override;
 

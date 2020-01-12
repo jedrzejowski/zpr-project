@@ -17,6 +17,9 @@
 namespace engine {
 
 	class Scene : public Object, public VirtualSharePtrObject<Scene> {
+	public:
+		using VirtualSharePtrObject<Scene>::shared_from_this;
+		using VirtualSharePtrObject<Scene>::weak_from_this;
 	private:
 		WindowWPtr window_wptr;
 		InputInterfacePtr input_interface_ptr;

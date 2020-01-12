@@ -11,6 +11,7 @@
 #include <map>
 
 #include "src/_classdef.h"
+#include "Object.hpp"
 
 
 template<typename... Args>
@@ -65,6 +66,10 @@ public:
 
 	void operator()(const ObjectWPtr inst, const Func &func) const {
 		connect(inst, func);
+	}
+
+	void operator()(Object* inst, const Func &func) const {
+		connect(inst->weak_from_this(), func);
 	}
 
 	void operator()(const Func &func) const {

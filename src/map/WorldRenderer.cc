@@ -26,24 +26,21 @@ map::WorldRendererPtr map::WorldRenderer::create(const map::WorldPtr &worldMap) 
 	};
 
 	map::WorldRendererPtr self = std::make_shared<trick>(worldMap);
-
-	self->initEvents();
-
+	self->constructorWorldRenderer();
 	return self;
 }
 
 
-void map::WorldRenderer::initEvents() {
-	auto tt = this->shared_from_this();
+void map::WorldRenderer::constructorWorldRenderer() {
+	auto self = this->shared_from_this();
 
-	world_map_ptr->onChunkInserted(this->shared_from_this(), [&](const map::ChunkPtr &chunk) {
-
+	world_map_ptr->onChunkInserted(self, [&](const map::ChunkPtr &chunk) {
 		auto self = this->shared_from_this();
 		auto cr = ChunkRenderer::create(self, chunk);
 		chunk_renderers[chunk->getPosition()] = cr;
 	});
 
-	world_map_ptr->onChunkEjected(this->shared_from_this(), [&](const map::ChunkPtr &chunk) {
+	world_map_ptr->onChunkEjected(self, [&](const map::ChunkPtr &chunk) {
 		chunk_renderers.erase(chunk->getPosition());
 	});
 }

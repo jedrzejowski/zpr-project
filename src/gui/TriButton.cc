@@ -19,9 +19,15 @@ gui::TriButton::TriButton(gui::GuiObjectPtr &parent) : GuiObject(parent) {
 void gui::TriButton::constructorTriButton() {
 	auto self = this->shared_from_this();
 
-	main_button_ptr = Button::create(self);
-	positive_button_ptr = Button::create(self);
 	negative_button_ptr = Button::create(self);
+	negative_button_ptr->onClicked([&] { onNegativeClick(); });
+
+	main_button_ptr = Button::create(self);
+	main_button_ptr->onClicked([&] { onMainClick(); });
+
+	positive_button_ptr = Button::create(self);
+	positive_button_ptr->onClicked([&] { onPositiveClick(); });
+
 }
 
 gui::TriButton::~TriButton() {
@@ -84,25 +90,43 @@ void gui::TriButton::updateModel() {
 					 - padding_vec - glm::vec2(negative_size.x, 0)
 					 - padding_vec - glm::vec2(positive_size.x, 0);
 
-	main_button_ptr->setSize(main_size);
 	negative_button_ptr->setSize(negative_size);
+	main_button_ptr->setSize(main_size);
 	positive_button_ptr->setSize(positive_size);
 
-	main_button_ptr->setPosition(glm::vec2(0));
-	negative_button_ptr->setPosition(
-			main_button_ptr->getPosition() +
-			glm::vec2(main_button_ptr->getSize().x, 0) +
-			padding_vec);
-	positive_button_ptr->setPosition(
+	negative_button_ptr->setPosition(glm::vec2(0));
+	main_button_ptr->setPosition(
 			negative_button_ptr->getPosition() +
 			glm::vec2(negative_button_ptr->getSize().x, 0) +
 			padding_vec);
+	positive_button_ptr->setPosition(
+			main_button_ptr->getPosition() +
+			glm::vec2(main_button_ptr->getSize().x, 0) +
+			padding_vec);
 
-
-	logger(0).log("main_size").log(main_size).log("positive_size").log(positive_size);
 
 	auto recModel = glm::mat4(1);
 	recModel = glm::translate(recModel, glm::vec3(position, 0));
 	recModel = glm::scale(recModel, glm::vec3(size, 1));
 	setModel(recModel);
+}
+
+const gui::ButtonPtr &gui::TriButton::getMainButton() const {
+	return main_button_ptr;
+}
+
+const gui::ButtonPtr &gui::TriButton::getPositiveButton() const {
+	return positive_button_ptr;
+}
+
+const gui::ButtonPtr &gui::TriButton::getNegativeButton() const {
+	return negative_button_ptr;
+}
+
+void gui::TriButton::setText(const std::string &negative_text,
+							 const std::string &main_text,
+							 const std::string &positive_text) {
+	negative_button_ptr->setText(negative_text);
+	main_button_ptr->setText(main_text);
+	positive_button_ptr->setText(positive_text);
 }

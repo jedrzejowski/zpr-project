@@ -19,7 +19,9 @@ namespace game {
 	};
 
 	class GameScene : public engine::Scene, public VirtualSharePtrObject<GameScene> {
+	public:
 		using VirtualSharePtrObject<GameScene>::shared_from_this;
+		using VirtualSharePtrObject<GameScene>::weak_from_this;
 	private:
 		GameSceneState interface_state;
 

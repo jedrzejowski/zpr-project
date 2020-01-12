@@ -13,6 +13,9 @@
 
 namespace map {
 	class WorldRenderer : public Object, public VirtualSharePtrObject<WorldRenderer> {
+	public:
+		using VirtualSharePtrObject<WorldRenderer>::shared_from_this;
+		using VirtualSharePtrObject<WorldRenderer>::weak_from_this;
 	private:
 		const WorldPtr world_map_ptr;
 		WorldShaderPtr shader;
@@ -22,7 +25,7 @@ namespace map {
 		std::map<Coord2D, ChunkRendererPtr> chunk_renderers;
 
 		explicit WorldRenderer(const WorldPtr& worldMap);
-		void initEvents();
+		void constructorWorldRenderer();
 	public:
 		static WorldRendererPtr create(const WorldPtr &worldMap);
 		~WorldRenderer() override;

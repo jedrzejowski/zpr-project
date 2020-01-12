@@ -23,6 +23,9 @@ namespace engine {
 	};
 
 	class Window : public Object, public VirtualSharePtrObject<Window> {
+	public:
+		using VirtualSharePtrObject<Window>::shared_from_this;
+		using VirtualSharePtrObject<Window>::weak_from_this;
 	private:
 		std::mutex rendering;
 

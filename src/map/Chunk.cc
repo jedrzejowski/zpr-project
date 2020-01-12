@@ -9,7 +9,7 @@
 #include "lib/AppSettings.h"
 #include "src/block/Factory.h"
 
-const Coord3D map::Chunk::Size = Coord3D(16, 16, 16);
+const Coord3D map::Chunk::Size = Coord3D(16, 16, 32);
 
 map::Chunk::Chunk(const WorldPtr &worldMap, const Coord2D &position) :
 		world_map_wptr(worldMap),
@@ -77,8 +77,8 @@ map::ChunkWPtr map::Chunk::getNeighbor(CoordDim dx, CoordDim dy) const {
 	neighborPos.x += dx;
 	neighborPos.y += dy;
 
-	if (auto worldMapPtr = world_map_wptr.lock())
-		return worldMapPtr->getChunk(neighborPos);
+	if (auto world_ptr = world_map_wptr.lock())
+		return world_ptr->getChunk(neighborPos);
 	else return map::ChunkWPtr();
 }
 

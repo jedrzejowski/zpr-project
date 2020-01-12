@@ -16,16 +16,19 @@ namespace map {
 	class ChunkRenderer : public Object, public engine::Abs3DObj {
 	private:
 		const ChunkPtr chunk;
-		glm::mat4 chunk_position{};
+		glm::mat4 chunk_position_matrix{};
 		WorldRendererWPtr world_renderer_wptr;
 
 		explicit ChunkRenderer(WorldRendererPtr& renderer, const ChunkPtr& chunkPtr);
-		void initEvents();
+		void constructorChunkRenderer();
 	public:
 		static ChunkRendererPtr create(WorldRendererPtr& renderer, const ChunkPtr& chunkPtr);
 		~ChunkRenderer() override;
 
 		void updateBuffers() override;
+
+		ChunkRendererWPtr getNeighbor(CoordDim dx, CoordDim dy) const;
+
 
 		void render(const engine::ScenePtr& scene) override;
 	};

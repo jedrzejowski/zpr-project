@@ -145,6 +145,8 @@ void game::PlayerSolidBlockItem::useItem(map::WorldPtr &worldMap, game::PlayerPt
 
 		auto new_position = player->getNewBlockPosition();
 
+		if (!new_position.isValid()) return;
+
 		if (auto chunk = worldMap->getChunk(new_position.getChunkCoord()).lock()) {
 			auto new_block = block::Factory::clone(block_ptr);
 			chunk->setBlock(new_position.getBlockCoord(), new_block);

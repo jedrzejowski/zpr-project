@@ -73,3 +73,8 @@ void map::WorldRenderer::render(const engine::Camera &camera,
 map::WorldShaderPtr map::WorldRenderer::getShader() const {
 	return shader;
 }
+map::ChunkRendererWPtr map::WorldRenderer::getChunkRenderer(const Coord2D &position) {
+	if (chunk_renderers.count(position) == 1) {
+		return chunk_renderers[position];
+	} else return map::ChunkRendererWPtr();
+}

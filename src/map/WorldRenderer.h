@@ -30,6 +30,7 @@ namespace map {
 
 		WorldShaderPtr getShader() const;
 
+		ChunkRendererWPtr getChunkRenderer(const Coord2D& position);
 
 		void render(const engine::Camera &camera,
 					const engine::ScenePtr& scene);

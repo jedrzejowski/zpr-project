@@ -7,20 +7,24 @@
 #include "ChunkGenerator.h"
 #include "Chunk.h"
 #include "World.h"
+#include "boost/random.hpp"
+#include <bits/stdc++.h>
+
+
+boost::mt19937 rng;
+boost::uniform_int<> seedGen(26849 - 100, 26849 + 100);
 
 map::ChunkGenerator::ChunkGenerator(World *world) {
 	this->world = world;
 	noise.set(1, 0.03, 4, 3, 26849);
 
-//	lenght=8192
-//	width=8192
-//	amplitude=200
-//	frequency=0.03
-//	octaves=3
-//	persistence=1
-//	randomseed=26849
-//	lowgraphic=false
-
+	noise.set(
+			1,
+			0.03,
+			double(Chunk::Size.z) / 8,
+			3,
+			seedGen(rng)
+	);
 }
 
 void map::ChunkGenerator::fillChunk(ChunkPtr &chunk) {
@@ -111,7 +115,6 @@ void map::ChunkGenerator::acceptState(json &json_obj) {
 	noise.setAmplitude(assertGetNumber(json_obj[JSON_ATTR_AMPLITUDE]));
 	noise.setOctaves(assertGetNumber(json_obj[JSON_ATTR_OCTAVES]));
 	noise.setRandomSeed(assertGetNumber(json_obj[JSON_ATTR_RANDOMSEED]));
-
 }
 
 //endregion

@@ -16,6 +16,28 @@ map::ChunkRenderer::ChunkRenderer(map::WorldRendererPtr &renderer, const map::Ch
 	logger(5).constructor(this);
 }
 
+void map::ChunkRenderer::constructorChunkRenderer() {
+	chunk->onBlockChange([&](const Coord3D &pos) {
+		setNeedRefreshBuffers(true);
+
+		if (pos.x == 0)
+			if (auto chunk_renderer = getNeighbor(-1, 0).lock())
+				chunk_renderer->setNeedRefreshBuffers(true);
+
+		if (pos.y == 0)
+			if (auto chunk_renderer = getNeighbor(0, -1).lock())
+				chunk_renderer->setNeedRefreshBuffers(true);
+
+		if (pos.x == Chunk::Size.x - 1)
+			if (auto chunk_renderer = getNeighbor(+1, 0).lock())
+				chunk_renderer->setNeedRefreshBuffers(true);
+
+		if (pos.y == Chunk::Size.y - 1)
+			if (auto chunk_renderer = getNeighbor(0, +1).lock())
+				chunk_renderer->setNeedRefreshBuffers(true);
+	});
+}
+
 map::ChunkRendererPtr map::ChunkRenderer::create(map::WorldRendererPtr &renderer, const map::ChunkPtr &chunkPtr) {
 	struct Self : ChunkRenderer {
 		Self(map::WorldRendererPtr &renderer, const map::ChunkPtr &chunkPtr) : ChunkRenderer(renderer, chunkPtr) {}
@@ -23,15 +45,9 @@ map::ChunkRendererPtr map::ChunkRenderer::create(map::WorldRendererPtr &renderer
 
 	auto self = std::make_shared<Self>(renderer, chunkPtr);
 
-	self->initEvents();
+	self->constructorChunkRenderer();
 
 	return self;
-}
-
-void map::ChunkRenderer::initEvents() {
-	chunk->onBlockChange([&](const Coord3D &pos) {
-		setNeedRefreshBuffers(true);
-	});
 }
 
 map::ChunkRenderer::~ChunkRenderer() {
@@ -41,12 +57,12 @@ map::ChunkRenderer::~ChunkRenderer() {
 void map::ChunkRenderer::updateBuffers() {
 
 	auto coord = chunk->getPosition();
-	chunk_position = glm::translate(glm::mat4(1),
-									glm::vec3(
-									  coord.x * Chunk::Size.x,
-									  coord.y * Chunk::Size.y,
-									  0
-							  ));
+	chunk_position_matrix = glm::translate(glm::mat4(1),
+										   glm::vec3(
+												   coord.x * Chunk::Size.x,
+												   coord.y * Chunk::Size.y,
+												   0
+										   ));
 
 	vertices_buffer.clear();
 	indices_buffer.clear();
@@ -59,7 +75,17 @@ void map::ChunkRenderer::updateBuffers() {
 	setNeedRefreshBuffers(false);
 }
 
-void map::ChunkRenderer::render(const engine::ScenePtr& scene) {
-	world_renderer_wptr.lock()->getShader()->setChunkPos(chunk_position);
+void map::ChunkRenderer::render(const engine::ScenePtr &scene) {
+	world_renderer_wptr.lock()->getShader()->setChunkPos(chunk_position_matrix);
 	drawTriangles();
+}
+
+map::ChunkRendererWPtr map::ChunkRenderer::getNeighbor(CoordDim dx, CoordDim dy) const {
+	auto neighbor_pos = chunk->getPosition();
+	neighbor_pos.x += dx;
+	neighbor_pos.y += dy;
+
+	if (auto world_renderer_ptr = world_renderer_wptr.lock())
+		return world_renderer_ptr->getChunkRenderer(neighbor_pos);
+	else return map::ChunkRendererWPtr();
 }

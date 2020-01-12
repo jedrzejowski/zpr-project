@@ -32,6 +32,7 @@ namespace engine {
 		void setParent(Sub3DObjPtr parent);
 
 		[[nodiscard]] const std::list<Sub3DObj *> &getChildren() const;
+		[[nodiscard]] size_t getChildCount() const;
 
 		void insertToBuffers(
 				std::vector<engine::Point3DeX> &vertices,

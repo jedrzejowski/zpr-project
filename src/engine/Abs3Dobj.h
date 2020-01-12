@@ -9,7 +9,7 @@
 #include <vector>
 #include "src/_classdef.h"
 #include "Scene.h"
-#include "Sub3Dobj.h"
+#include "Sub3DObj.h"
 
 namespace engine {
 	class Abs3DObj : public Sub3DObj {

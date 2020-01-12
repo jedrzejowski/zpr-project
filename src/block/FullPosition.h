@@ -17,16 +17,16 @@ namespace block {
 		FullPosition();
 		FullPosition(const Coord2D &chunk, const Coord3D &block);
 
-		const Coord2D &getChunkCoord() const;
+		[[nodiscard]] const Coord2D &getChunkCoord() const;
 		void setChunk(const Coord2D &chunk);
-		const Coord3D &getBlockCoord() const;
+		[[nodiscard]] const Coord3D &getBlockCoord() const;
 		void setBlockCoord(const Coord3D &block);
 
 		bool isValid();
 
-		glm::vec3 toVec() const;
+		[[nodiscard]] glm::vec3 toVec() const;
 
-		FullPosition getNeighbor(CoordDim dx, CoordDim dy, CoordDim dz) const;
+		[[nodiscard]] FullPosition getNeighbor(CoordDim dx, CoordDim dy, CoordDim dz) const;
 	};
 }
 
@@ -36,4 +36,8 @@ inline std::ostream &operator<<(std::ostream &out, const block::FullPosition &po
 
 inline bool operator==(const block::FullPosition &left, const block::FullPosition &right) {
 	return left.getChunkCoord() == right.getChunkCoord() && left.getBlockCoord() == right.getBlockCoord();
+}
+
+inline bool operator!=(const block::FullPosition &left, const block::FullPosition &right) {
+	return left.getChunkCoord() != right.getChunkCoord() || left.getBlockCoord() != right.getBlockCoord();
 }

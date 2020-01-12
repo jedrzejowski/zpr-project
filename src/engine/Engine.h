@@ -22,7 +22,7 @@
 #include "Window.h"
 #include "Scene.h"
 #include "Abs3Dobj.h"
-#include "Sub3Dobj.h"
+#include "Sub3DObj.h"
 
 #include "Mouse.h"
 #include "Keyboard.h"

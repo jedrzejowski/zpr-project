@@ -4,7 +4,7 @@
  * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
  */
 
-#include "Sub3Dobj.h"
+#include "Sub3DObj.h"
 #include "Point.hpp"
 
 engine::Sub3DObj::Sub3DObj(engine::Sub3DObjPtr parent) {
@@ -64,4 +64,8 @@ void engine::Sub3DObj::setNeedRefreshBuffers(bool need) {
 engine::Sub3DObj::~Sub3DObj() {
 	if (auto parentPtr = this->parent_wptr.lock())
 		parentPtr->children.remove(this);
+}
+
+size_t engine::Sub3DObj::getChildCount() const {
+	return children.size();
 }

@@ -11,7 +11,7 @@
 block::Water::Water(json &data) : SolidBlock(data) {
 }
 
-int block::Water::typeId() {
+int block::Water::typeId() const {
 	return TYPE_ID_WATER;
 }
 

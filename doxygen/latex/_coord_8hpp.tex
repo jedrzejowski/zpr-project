@@ -1,0 +1,71 @@
+\hypertarget{_coord_8hpp}{}\doxysection{Dokumentacja pliku src/lib/\+Coord.hpp}
+\label{_coord_8hpp}\index{src/lib/Coord.hpp@{src/lib/Coord.hpp}}
+{\ttfamily \#include $<$cinttypes$>$}\newline
+{\ttfamily \#include \char`\"{}src/\+Open\+G\+L.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}json.\+hpp\char`\"{}}\newline
+\doxysubsection*{Komponenty}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_coord3_d}{Coord3D}}
+\begin{DoxyCompactList}\small\item\em Implementacja współrzędnych jednostkowych w przestrzeni trój wymiarowej. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_coord2_d}{Coord2D}}
+\begin{DoxyCompactList}\small\item\em Implementacja współrzędnych jednostkowych w przestrzeni dwu wymiarowej. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Definicje typów}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_coord_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}\label{_coord_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}} 
+using {\bfseries json} = \mbox{\hyperlink{namespacenlohmann_a2bfd99e845a2e5cd90aeaf1b1431f474}{nlohmann\+::json}}
+\item 
+\mbox{\Hypertarget{_coord_8hpp_a03c74187bd558f01800d5a720d29fc4a}\label{_coord_8hpp_a03c74187bd558f01800d5a720d29fc4a}} 
+typedef int64\+\_\+t {\bfseries Coord\+Dim}
+\end{DoxyCompactItemize}
+\doxysubsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{_coord_8hpp_a9aafdfc0a8be245846d4ae2bcdcb9f2b}{coord\+Dim2string}} (Coord\+Dim dim)
+\begin{DoxyCompactList}\small\item\em Zamienia wymiar na tekst przyjazny systemowi plików (1 -\/$>$ p1, -\/1 -\/$>$ m1) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{_coord_8hpp_ae1196931f5c9023884a5386155b70dc1}\label{_coord_8hpp_ae1196931f5c9023884a5386155b70dc1}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&out, const \mbox{\hyperlink{struct_coord3_d}{Coord3D}} \&coord)
+\item 
+\mbox{\Hypertarget{_coord_8hpp_a74896d4b091df50aedd7cc282290f335}\label{_coord_8hpp_a74896d4b091df50aedd7cc282290f335}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&out, const \mbox{\hyperlink{struct_coord2_d}{Coord2D}} \&coord)
+\item 
+\mbox{\Hypertarget{_coord_8hpp_a017b3c08fe2100565514059949156a0b}\label{_coord_8hpp_a017b3c08fe2100565514059949156a0b}} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{struct_coord2_d}{Coord2D}} \&left, const \mbox{\hyperlink{struct_coord2_d}{Coord2D}} \&right)
+\item 
+\mbox{\Hypertarget{_coord_8hpp_ac2263209fc3944f40424a02cbd59163f}\label{_coord_8hpp_ac2263209fc3944f40424a02cbd59163f}} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{struct_coord2_d}{Coord2D}} \&left, const \mbox{\hyperlink{struct_coord2_d}{Coord2D}} \&right)
+\item 
+\mbox{\Hypertarget{_coord_8hpp_a0eea11ff9f444ee8a467c9c1a30a5977}\label{_coord_8hpp_a0eea11ff9f444ee8a467c9c1a30a5977}} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{struct_coord3_d}{Coord3D}} \&left, const \mbox{\hyperlink{struct_coord3_d}{Coord3D}} \&right)
+\item 
+\mbox{\Hypertarget{_coord_8hpp_adaf8fe563520ab159b6be4893d2f09cf}\label{_coord_8hpp_adaf8fe563520ab159b6be4893d2f09cf}} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{struct_coord3_d}{Coord3D}} \&left, const \mbox{\hyperlink{struct_coord3_d}{Coord3D}} \&right)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+\begin{DoxyAuthor}{Autor}
+Adam Jędrzejowski \href{mailto:adam@jedrzejowski.pl}{\texttt{ adam@jedrzejowski.\+pl}} 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Dokumentacja funkcji}
+\mbox{\Hypertarget{_coord_8hpp_a9aafdfc0a8be245846d4ae2bcdcb9f2b}\label{_coord_8hpp_a9aafdfc0a8be245846d4ae2bcdcb9f2b}} 
+\index{Coord.hpp@{Coord.hpp}!coordDim2string@{coordDim2string}}
+\index{coordDim2string@{coordDim2string}!Coord.hpp@{Coord.hpp}}
+\doxysubsubsection{\texorpdfstring{coordDim2string()}{coordDim2string()}}
+{\footnotesize\ttfamily std\+::string coord\+Dim2string (\begin{DoxyParamCaption}\item[{Coord\+Dim}]{dim }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Zamienia wymiar na tekst przyjazny systemowi plików (1 -\/$>$ p1, -\/1 -\/$>$ m1) 
+
+
+\begin{DoxyParams}{Parametry}
+{\em dim} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+
+\end{DoxyReturn}

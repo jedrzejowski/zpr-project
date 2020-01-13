@@ -1,0 +1,65 @@
+\hypertarget{class_live_data}{}\doxysection{Dokumentacja szablonu klasy Live\+Data$<$ T $>$}
+\label{class_live_data}\index{LiveData$<$ T $>$@{LiveData$<$ T $>$}}
+
+
+Klasa naśladująca \mbox{\hyperlink{class_live_data}{Live\+Data}} z Android\textquotesingle{}a.  
+
+
+
+
+{\ttfamily \#include $<$Live\+Data.\+hpp$>$}
+
+\doxysubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_live_data_ab14739e78612eeaab025c993018f1736}\label{class_live_data_ab14739e78612eeaab025c993018f1736}} 
+{\bfseries Live\+Data} (T new\+\_\+obj)
+\item 
+\mbox{\Hypertarget{class_live_data_aef9e07029de97ee09c0ef15c692aff4a}\label{class_live_data_aef9e07029de97ee09c0ef15c692aff4a}} 
+{\bfseries Live\+Data} (const \mbox{\hyperlink{class_live_data}{Live\+Data}} \&)=delete
+\item 
+\mbox{\Hypertarget{class_live_data_af3e25d8bdf4bf305d01ed6d69f946f88}\label{class_live_data_af3e25d8bdf4bf305d01ed6d69f946f88}} 
+void {\bfseries operator=} (const \mbox{\hyperlink{class_object}{Object}} \&)=delete
+\item 
+\mbox{\Hypertarget{class_live_data_aa38a5fe85278962c20d01a750dc8b56a}\label{class_live_data_aa38a5fe85278962c20d01a750dc8b56a}} 
+{\bfseries Live\+Data} (const \mbox{\hyperlink{class_live_data}{Live\+Data}} \&\&)=delete
+\item 
+\mbox{\Hypertarget{class_live_data_a6164dfe6babf5c5ab7db74f510ab13ba}\label{class_live_data_a6164dfe6babf5c5ab7db74f510ab13ba}} 
+void {\bfseries operator=} (const \mbox{\hyperlink{class_live_data}{Live\+Data}} \&\&)=delete
+\item 
+\mbox{\Hypertarget{class_live_data_ab431088b784d4b2180c32fe2f6cdc665}\label{class_live_data_ab431088b784d4b2180c32fe2f6cdc665}} 
+void {\bfseries set} (T new\+\_\+obj) const
+\item 
+\mbox{\Hypertarget{class_live_data_a843104d0df5f88f8e104056df56816ff}\label{class_live_data_a843104d0df5f88f8e104056df56816ff}} 
+const T \& {\bfseries get} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_live_data_a803b8863a72f2dd930cefd3ce64df402}\label{class_live_data_a803b8863a72f2dd930cefd3ce64df402}} 
+const \mbox{\hyperlink{class_signal}{Signal}}$<$ const T \&, const T \& $>$ \mbox{\hyperlink{class_live_data_a803b8863a72f2dd930cefd3ce64df402}{on\+Change}}
+\begin{DoxyCompactList}\small\item\em sygnał zmiany \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+\subsubsection*{template$<$typename T$>$\newline
+class Live\+Data$<$ T $>$}
+
+Klasa naśladująca \mbox{\hyperlink{class_live_data}{Live\+Data}} z Android\textquotesingle{}a. 
+
+Klasa ma za zadzanie przechowywać proste obiekty(struktury) danych które mogą się zmieniać w czasie działania aplikacji, obsługuje wielowątkowość.
+
+\begin{DoxySeeAlso}{Zobacz również}
+\href{https://developer.android.com/topic/libraries/architecture/livedata}{\texttt{ https\+://developer.\+android.\+com/topic/libraries/architecture/livedata}} 
+\end{DoxySeeAlso}
+
+\begin{DoxyTemplParams}{Parametry Szablonu}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+
+Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{__classdef_8h}{\+\_\+classdef.\+h}}\item 
+src/lib/\mbox{\hyperlink{_live_data_8hpp}{Live\+Data.\+hpp}}\end{DoxyCompactItemize}

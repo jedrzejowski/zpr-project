@@ -18,7 +18,7 @@ namespace block {
 	public:
 		explicit Stone() = default;
 		explicit Stone(json &data);
-		int typeId() override;
+		int typeId() const override;
 	};
 }
 

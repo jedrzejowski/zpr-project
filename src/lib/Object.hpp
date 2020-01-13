@@ -9,7 +9,9 @@
 
 #include "src/_classdef.h"
 
-
+/**
+ * @brief Klasa obiektu, na obecną chwile, nie ma sensu, ale na początku była bardzo potrzebna, obsługiwała sygnały
+ */
 class Object : public VirtualSharePtrObject<Object> {
 public:
 	explicit Object();

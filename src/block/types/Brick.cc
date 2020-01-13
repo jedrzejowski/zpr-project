@@ -9,7 +9,7 @@
 
 block::Brick::Brick(json &data) : SolidBlock(data) {}
 
-int block::Brick::typeId() {
+int block::Brick::typeId() const {
 	return TYPE_ID_BRICK;
 }
 

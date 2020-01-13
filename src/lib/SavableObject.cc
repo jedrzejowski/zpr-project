@@ -18,6 +18,11 @@ void SavableObject::setNeedSave(bool needSave) {
 void SavableObject::saveObjectToFile() {
 	static auto &app_settings = AppSettings::get();
 
+	logger(0).log("test1");
+#ifdef TEST
+	logger(0).log("test2");
+#endif
+
 	if (isNeedSave() && !isDeleted()) {
 		app_settings.saveJSON(getSavePath(), toJSON());
 		setNeedSave(false);
@@ -35,25 +40,21 @@ void SavableObject::loadObjectFromFile(const std::function<void()> &onFailed) {
 
 		need_save = false;
 		acceptState(json_data);
-
 	} catch (FileInputException &exception) {
 
 		logger(0).err("Error occurred while parsing data from file:").enter().err(path);
 
 		onFailed();
-
 	} catch (WrongJsonException &exception) {
 
 		logger(0).err("Error occurred while reading file:").enter().err(path);
 
 		onFailed();
-
 	} catch (std::exception &exception) {
 
 		logger(0).err("Fatal error occurred while reading file:").enter().err(path);
 
 		onFailed();
-
 	}
 }
 
@@ -90,6 +91,5 @@ bool SavableObject::isDeleted() const {
 
 void SavableObject::deleteThisObjectAsFile() {
 	is_deleted = true;
-
 }
 

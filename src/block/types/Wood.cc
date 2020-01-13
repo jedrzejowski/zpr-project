@@ -9,7 +9,7 @@
 
 block::Wood::Wood(json &data) : SolidBlock(data) {}
 
-int block::Wood::typeId() {
+int block::Wood::typeId() const {
 	return TYPE_ID_WOOD;
 }
 

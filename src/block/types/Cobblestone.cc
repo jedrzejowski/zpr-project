@@ -9,7 +9,7 @@
 
 block::Cobblestone::Cobblestone(json &data) : SolidBlock(data) {}
 
-int block::Cobblestone::typeId() {
+int block::Cobblestone::typeId() const {
 	return TYPE_ID_COBBLESTONE;
 }
 

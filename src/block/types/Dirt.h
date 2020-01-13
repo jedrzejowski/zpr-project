@@ -18,7 +18,7 @@ namespace block {
 	public:
 		explicit Dirt() = default;
 		Dirt(json &data);
-		int typeId() override;
+		int typeId() const override;
 	};
 }
 

@@ -35,7 +35,7 @@ namespace block {
 
 		virtual json toJSON();
 
-		virtual int typeId() = 0;
+		virtual int typeId() const = 0;
 
 		BlockWPtr getNeighbor(CoordDim dx, CoordDim dy, CoordDim dz) const;
 	};

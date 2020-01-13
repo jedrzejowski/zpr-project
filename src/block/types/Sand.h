@@ -18,7 +18,7 @@ namespace block {
 	public:
 		explicit Sand() = default;
 		explicit Sand(json &data);
-		int typeId() override;
+		int typeId() const override;
 	};
 }
 

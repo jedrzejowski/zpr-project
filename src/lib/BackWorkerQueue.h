@@ -13,6 +13,9 @@
 
 #include "src/_classdef.h"
 
+/**
+ * @brief Implementuje kolejkę funkcji, które wykonując się w tle
+ */
 class BackWorkerQueue {
 	typedef std::function<void()> Function;
 private:

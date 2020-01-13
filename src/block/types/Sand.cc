@@ -10,7 +10,7 @@
 
 block::Sand::Sand(json &data) : SolidBlock(data) {}
 
-int block::Sand::typeId() {
+int block::Sand::typeId() const {
 	return TYPE_ID_SAND;
 }
 

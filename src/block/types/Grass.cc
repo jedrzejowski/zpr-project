@@ -9,7 +9,7 @@
 
 block::Grass::Grass(json &data) : SolidBlock(data) {}
 
-int block::Grass::typeId() {
+int block::Grass::typeId() const {
 	return TYPE_ID_GRASS;
 }
 

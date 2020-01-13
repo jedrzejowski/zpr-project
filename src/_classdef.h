@@ -10,9 +10,6 @@
 #include <vector>
 #include <tuple>
 #include <memory>
-#include "lib/json.hpp"
-
-using json = nlohmann::json;
 
 template<typename... Args>
 class Signal;
@@ -27,8 +24,6 @@ class BackWorkerQueue;
 typedef std::shared_ptr<BackWorkerQueue> BackWorkerQueuePtr;
 typedef std::weak_ptr<BackWorkerQueue> BackWorkerQueueWPtr;
 
-class JsonFile;
-
 class AppSettings;
 
 class SavableObject;
@@ -36,9 +31,13 @@ class SavableObject;
 template<typename T>
 class LiveData;
 
+/**
+ * @brief namespace dla silnika graficznego
+ */
 namespace engine {
 	class exception;
 
+	// NIE ROBIĆ SMART POINTERÓW DLA TYCH STRUKTUR
 	struct Point3DeX;
 	struct Point3D;
 	struct Normal;
@@ -57,6 +56,7 @@ namespace engine {
 	typedef std::weak_ptr<Sub3DObj> Sub3DObjWPtr;
 
 	class Camera;
+	// NIE ROBIĆ SMART POINTERÓW
 
 	class Light;
 
@@ -89,16 +89,20 @@ namespace engine {
 	typedef std::weak_ptr<Window> WindowWPtr;
 
 	class InputDevice;
+	// NIE ROBIĆ SMART POINTERÓW
 
 	class InputButton;
+	// NIE ROBIĆ SMART POINTERÓW
 
 	class KeyboardBtn;
+	// NIE ROBIĆ SMART POINTERÓW
 
 	class Keyboard;
 
 	typedef std::shared_ptr<Keyboard> KeyboardPtr;
 
 	class MouseBtn;
+	// NIE ROBIĆ SMART POINTERÓW
 
 	class Mouse;
 
@@ -112,8 +116,12 @@ namespace engine {
 	class FpsCounter;
 
 	struct SquareTextureReference;
+	// NIE ROBIĆ SMART POINTERÓW
 }
 
+/**
+ * @brief namespace rozszerzenia silnika graficznego do interfejsu użytkownika
+ */
 namespace gui {
 	class Interface;
 
@@ -148,6 +156,9 @@ namespace gui {
 	typedef std::weak_ptr<TriButton> TriButtonWPtr;
 }
 
+/**
+ * @brief namespace dla bloków i wszystkiego co związane z samymi blokami
+ */
 namespace block {
 
 	typedef uint32_t BlockTypeId;
@@ -160,12 +171,13 @@ namespace block {
 	class Factory;
 
 	class FullPosition;
-	// NIE ROBIĆ SMART POINTERÓW
 
 	class SolidBlock;
 
 	typedef std::shared_ptr<SolidBlock> SolidBlockPtr;
 	typedef std::weak_ptr<SolidBlock> SolidBlockWPtr;
+
+	// NIE ROBIĆ SMART POINTERÓW DLA KLAS PONIŻEJ
 
 	class Stone;
 
@@ -188,6 +200,9 @@ namespace block {
 	class Leaf;
 }
 
+/**
+ * @brief namespace dla struktury mapy i wszystkiego co z nią jest związane
+ */
 namespace map {
 	class WorldManager; // singelton, bez wskaźników
 

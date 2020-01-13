@@ -9,7 +9,7 @@
 
 block::Stone::Stone(json &data) : SolidBlock(data) {}
 
-int block::Stone::typeId() {
+int block::Stone::typeId() const {
 	return TYPE_ID_STONE;
 }
 

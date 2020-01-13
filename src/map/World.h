@@ -34,8 +34,8 @@ namespace map {
 		void insertChunk(map::ChunkPtr chunk);
 
 		explicit World(const std::string &codeName);
-	public:
 		static WorldPtr create(const std::string &codeName);
+	public:
 		~World() override;
 
 		bool hasChunk(const Coord2D &position);

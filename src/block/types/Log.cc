@@ -11,7 +11,7 @@
 block::Log::Log(json &data) : SolidBlock(data) {
 }
 
-int block::Log::typeId() {
+int block::Log::typeId() const {
 	return TYPE_ID_LOG;
 }
 

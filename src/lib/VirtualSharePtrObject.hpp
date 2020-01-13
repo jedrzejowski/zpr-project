@@ -15,6 +15,11 @@ struct VirtualEnableSharedFromThisBase :
 	virtual ~VirtualEnableSharedFromThisBase() {}
 };
 
+/**
+ * @brief Klasa do obsługi wewnętrznych wskaźników
+ *
+ * @tparam T
+ */
 template<typename T>
 struct VirtualSharePtrObject : virtual VirtualEnableSharedFromThisBase {
 	std::shared_ptr<T> shared_from_this() {

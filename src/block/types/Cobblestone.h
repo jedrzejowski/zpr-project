@@ -18,7 +18,7 @@ namespace block {
 	public:
 		explicit Cobblestone() = default;
 		explicit Cobblestone(json &data);
-		int typeId() override;
+		int typeId() const override;
 	};
 }
 

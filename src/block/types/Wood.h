@@ -18,7 +18,7 @@ namespace block {
 	public:
 		explicit Wood() = default;
 		explicit Wood(json &data);
-		int typeId() override;
+		int typeId() const override;
 	};
 }
 

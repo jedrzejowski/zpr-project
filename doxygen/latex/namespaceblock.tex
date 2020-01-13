@@ -1,0 +1,90 @@
+\hypertarget{namespaceblock}{}\doxysection{Dokumentacja przestrzeni nazw block}
+\label{namespaceblock}\index{block@{block}}
+
+
+namespace dla bloków i wszystkiego co związane z samymi blokami  
+
+
+\doxysubsection*{Komponenty}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classblock_1_1_block}{Block}}
+\item 
+class \mbox{\hyperlink{classblock_1_1_brick}{Brick}}
+\item 
+class \mbox{\hyperlink{classblock_1_1_cobblestone}{Cobblestone}}
+\item 
+class \mbox{\hyperlink{classblock_1_1_dirt}{Dirt}}
+\item 
+class \mbox{\hyperlink{classblock_1_1_factory}{Factory}}
+\item 
+class \mbox{\hyperlink{classblock_1_1_full_position}{Full\+Position}}
+\item 
+class \mbox{\hyperlink{classblock_1_1_grass}{Grass}}
+\item 
+class \mbox{\hyperlink{classblock_1_1_log}{Log}}
+\item 
+class \mbox{\hyperlink{classblock_1_1_sand}{Sand}}
+\item 
+class \mbox{\hyperlink{classblock_1_1_solid_block}{Solid\+Block}}
+\item 
+class \mbox{\hyperlink{classblock_1_1_stone}{Stone}}
+\item 
+class \mbox{\hyperlink{classblock_1_1_water}{Water}}
+\item 
+class \mbox{\hyperlink{classblock_1_1_wood}{Wood}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Definicje typów}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceblock_a60db9f7ab0997a6bf6d79c03a428a168}\label{namespaceblock_a60db9f7ab0997a6bf6d79c03a428a168}} 
+typedef uint32\+\_\+t {\bfseries Block\+Type\+Id}
+\item 
+\mbox{\Hypertarget{namespaceblock_a8e31b9e669ddb572577e33b718fb862a}\label{namespaceblock_a8e31b9e669ddb572577e33b718fb862a}} 
+typedef std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classblock_1_1_block}{Block}} $>$ {\bfseries Block\+Ptr}
+\item 
+\mbox{\Hypertarget{namespaceblock_a43d381892749aafe95157e5e15c5abb9}\label{namespaceblock_a43d381892749aafe95157e5e15c5abb9}} 
+typedef std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classblock_1_1_block}{Block}} $>$ {\bfseries Block\+W\+Ptr}
+\item 
+\mbox{\Hypertarget{namespaceblock_a9e24e23c765bfd44c18d1ea1cd31ad3a}\label{namespaceblock_a9e24e23c765bfd44c18d1ea1cd31ad3a}} 
+typedef std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classblock_1_1_solid_block}{Solid\+Block}} $>$ {\bfseries Solid\+Block\+Ptr}
+\item 
+\mbox{\Hypertarget{namespaceblock_a85a47a448fb563c68ef0b27482bac40a}\label{namespaceblock_a85a47a448fb563c68ef0b27482bac40a}} 
+typedef std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classblock_1_1_solid_block}{Solid\+Block}} $>$ {\bfseries Solid\+Block\+W\+Ptr}
+\end{DoxyCompactItemize}
+\doxysubsection*{Wyliczenia}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceblock_afac5fc74781a817ff635c66fa7ecc856}\label{namespaceblock_afac5fc74781a817ff635c66fa7ecc856}} 
+enum {\bfseries Direction} \{ \newline
+{\bfseries Z\+\_\+\+P\+L\+US}, 
+{\bfseries Z\+\_\+\+M\+I\+N\+US}, 
+{\bfseries X\+\_\+\+P\+L\+US}, 
+{\bfseries X\+\_\+\+M\+I\+N\+US}, 
+\newline
+{\bfseries Y\+\_\+\+P\+L\+US}, 
+{\bfseries Y\+\_\+\+M\+I\+N\+US}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Funkcje}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceblock_a07a00d5e796af2be0094fcf3dbfa7e07}\label{namespaceblock_a07a00d5e796af2be0094fcf3dbfa7e07}} 
+\mbox{\hyperlink{structengine_1_1_square_texture_reference}{engine\+::\+Square\+Texture\+Reference}} {\bfseries get\+Block\+Texture} (int x, int y)
+\item 
+\mbox{\Hypertarget{namespaceblock_a12500c2b306bcf2dfd9d85c1c192f30b}\label{namespaceblock_a12500c2b306bcf2dfd9d85c1c192f30b}} 
+\mbox{\hyperlink{classglm_1_1_square}{glm\+::\+Square}} {\bfseries get\+Wall} (\mbox{\hyperlink{struct_coord3_d}{Coord3D}} pos, Direction dir)
+\item 
+\mbox{\Hypertarget{namespaceblock_a536dbd0b98a710f59795486e33ed7d07}\label{namespaceblock_a536dbd0b98a710f59795486e33ed7d07}} 
+\mbox{\hyperlink{classglm_1_1_square}{glm\+::\+Square}} {\bfseries get\+Wall} (\mbox{\hyperlink{classblock_1_1_full_position}{Full\+Position}} pos, Direction dir)
+\end{DoxyCompactItemize}
+\doxysubsection*{Zmienne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceblock_a7de65bc97fa8fb24ab629b0f928fbf47}\label{namespaceblock_a7de65bc97fa8fb24ab629b0f928fbf47}} 
+const Block\+W\+Ptr {\bfseries Air} = block\+::\+Block\+W\+Ptr()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+namespace dla bloków i wszystkiego co związane z samymi blokami 

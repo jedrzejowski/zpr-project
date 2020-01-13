@@ -9,7 +9,7 @@
 
 block::Dirt::Dirt(json &data) : SolidBlock(data) {}
 
-int block::Dirt::typeId() {
+int block::Dirt::typeId() const {
 	return TYPE_ID_DIRT;
 }
 

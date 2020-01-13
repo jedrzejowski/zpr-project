@@ -18,7 +18,7 @@ namespace block {
 	public:
 		explicit Grass() = default;
 		explicit Grass(json &data);
-		int typeId() override;
+		int typeId() const override;
 	};
 }
 

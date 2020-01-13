@@ -1,0 +1,41 @@
+Gra jest wynikiem projektu na przedmiot Z\+PR\hypertarget{index_autotoc_md1}{}\doxysection{Podgląd gry}\label{index_autotoc_md1}
+ \hypertarget{index_autotoc_md2}{}\doxysection{Budowanie}\label{index_autotoc_md2}
+\hypertarget{index_autotoc_md3}{}\doxysubsection{Biblioteki}\label{index_autotoc_md3}
+Do kompilacji potrzebne są następujące programy/biblioteki\+: cmake, boost, Open\+GL, G\+LM, G\+L\+EW, glfw3 i git. Każda dystrybucja Linuxa zawiera te biblioteki i najczęściej są one już w systemie po instalacji systemu
+
+Poniżej przedstawiono kilka przykładowe komendy do instalacji na wybranych systemach operacyjnych\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ System }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Komenda  }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ System }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Komenda  }\\\cline{1-2}
+\endhead
+Ubuntu &{\ttfamily \# apt-\/get install git cmake libboost-\/filesystem-\/dev libboost-\/test-\/dev libglm-\/dev libglew-\/dev libglfw3-\/dev g++}  \\\cline{1-2}
+Arch\+Linux &{\ttfamily \# pacman -\/S git cmake glew glm boost glfw-\/x11 g++}  \\\cline{1-2}
+\end{longtabu}
+\hypertarget{index_autotoc_md4}{}\doxysubsection{Kompilacja}\label{index_autotoc_md4}
+Poniżej przedstawiono skrypt do kompilacji na systemie Linux
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd /tmp \# tu można zmienić wedle upodobania}
+\DoxyCodeLine{}
+\DoxyCodeLine{git clone https://github.com/jedrzejowski/zpr-\/project zpr-\/craft-\/jedrzejowski-\/kretkowski}
+\DoxyCodeLine{cd zpr-\/craft-\/jedrzejowski-\/kretkowski}
+\DoxyCodeLine{}
+\DoxyCodeLine{mkdir bin}
+\DoxyCodeLine{cd bin}
+\DoxyCodeLine{cmake ..}
+\DoxyCodeLine{make}
+\DoxyCodeLine{ctest}
+\DoxyCodeLine{./zpr\_app}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md5}{}\doxysection{Autorzy}\label{index_autotoc_md5}
+Adam Jędrzejowski $<$\href{mailto:adam@jedrzejowski.pl}{\texttt{ adam@jedrzejowski.\+pl}}$>$
+
+Marcin Kretkowski 

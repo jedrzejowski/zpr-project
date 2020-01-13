@@ -11,6 +11,9 @@
 #include <filesystem>
 #include "Logger.h"
 
+/**
+ * @brief Wyjątek ogólny
+ */
 class ZprException : std::exception {
 private:
 	std::string msg;
@@ -48,6 +51,9 @@ public:
 	};
 };
 
+/**
+ * @brief Wyjątek dla błędu wczytywania pliku
+ */
 class FileInputException : public std::exception {
 private:
 	std::string file;
@@ -61,6 +67,9 @@ public:
 	}
 };
 
+/**
+ * @brief Wyjątek dla błędu zapisywania pliku
+ */
 class FileOutputException : public std::exception {
 private:
 	std::string file;
@@ -74,7 +83,13 @@ public:
 	}
 };
 
+/**
+ * @brief Wyjątek dla błędu złego pliku json
+ */
 class WrongJsonException : public std::exception {
 };
 
+/**
+ * @brief Makro do tworzenia głównej klasy wyjątku
+ */
 #define zprException(where, what) ZprException(__FILE__, __LINE__, where, what)

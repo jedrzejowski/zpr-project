@@ -18,7 +18,7 @@ namespace block {
 	public:
 		explicit Brick() = default;
 		explicit Brick(json &data);
-		int typeId() override;
+		int typeId() const override;
 	};
 }
 

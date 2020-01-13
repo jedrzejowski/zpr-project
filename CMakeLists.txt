@@ -75,5 +75,7 @@ add_executable(${TEST_TARGET} ${HEADER_FILES} ${SOURCE_FILES} ${TEST_FILES})
 target_link_libraries(${APP_TARGET} ${LIBRARIES})
 target_link_libraries(${TEST_TARGET} ${LIBRARIES})
 
+target_compile_definitions(${TEST_TARGET} PUBLIC TEST)
+
 # Pliki (obrazy/szejdery/itp)
 file(COPY res/ DESTINATION res)

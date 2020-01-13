@@ -14,10 +14,19 @@ using json = nlohmann::json;
 
 typedef int64_t CoordDim;
 
+/**
+ * @brief Zamienia wymiar na tekst przyjazny systemowi plików (1 -> p1, -1 -> m1)
+ * @param dim
+ * @return
+ */
 inline std::string coordDim2string(CoordDim dim) {
 	return std::string(dim < 0 ? "m" : "p") + std::to_string(std::abs(dim));
 }
 
+
+/**
+ * @brief Implementacja współrzędnych jednostkowych w przestrzeni trój wymiarowej
+ */
 struct Coord3D {
 	CoordDim x, y, z;
 
@@ -43,11 +52,18 @@ struct Coord3D {
 		return j;
 	}
 
+	/**
+	 * @brief Funkcja wykorzystywana do tworzenia nazw plików
+	 * @return
+	 */
 	[[nodiscard]] std::string toStringId() const {
 		return coordDim2string(x) + "_" + coordDim2string(y) + "_" + coordDim2string(z);
 	}
 };
 
+/**
+ * @brief Implementacja współrzędnych jednostkowych w przestrzeni dwu wymiarowej
+ */
 struct Coord2D {
 	CoordDim x, y;
 
@@ -68,6 +84,10 @@ struct Coord2D {
 		return j;
 	}
 
+	/**
+	 * @brief Funkcja wykorzystywana do tworzenia nazw plików
+	 * @return
+	 */
 	[[nodiscard]] std::string toStringId() const {
 		return coordDim2string(x) + "_" + coordDim2string(y);
 	}

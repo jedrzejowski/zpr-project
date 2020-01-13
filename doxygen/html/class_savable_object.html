@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ZprCraft: Dokumentacja klasy SavableObject</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ZprCraft
+   &#160;<span id="projectnumber">1.0.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#pub-static-methods">Statyczne metody publiczne</a> &#124;
+<a href="#pro-methods">Metody chronione</a> &#124;
+<a href="class_savable_object-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentacja klasy SavableObject<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+Diagram dziedziczenia dla SavableObject</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_savable_object.png" usemap="#SavableObject_map" alt=""/>
+  <map id="SavableObject_map" name="SavableObject_map">
+<area href="classgame_1_1_player.html" alt="game::Player" shape="rect" coords="0,56,134,80"/>
+<area href="classmap_1_1_chunk.html" alt="map::Chunk" shape="rect" coords="144,56,278,80"/>
+<area href="classmap_1_1_chunk_generator.html" alt="map::ChunkGenerator" shape="rect" coords="288,56,422,80"/>
+<area href="classmap_1_1_world.html" alt="map::World" shape="rect" coords="432,56,566,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a285a45332305e3230563f09ae8e6f363"><td class="memItemLeft" align="right" valign="top"><a id="a285a45332305e3230563f09ae8e6f363"></a>
+virtual std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>getSavePath</b> () const =0</td></tr>
+<tr class="separator:a285a45332305e3230563f09ae8e6f363"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50ce9166a0df0f0ab80bb4f1a15eae8b"><td class="memItemLeft" align="right" valign="top"><a id="a50ce9166a0df0f0ab80bb4f1a15eae8b"></a>
+virtual <a class="el" href="classnlohmann_1_1basic__json.html">json</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toJSON</b> () const =0</td></tr>
+<tr class="separator:a50ce9166a0df0f0ab80bb4f1a15eae8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22d6db1b95351991db8b2039489b2dad"><td class="memItemLeft" align="right" valign="top"><a id="a22d6db1b95351991db8b2039489b2dad"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>saveObjectToFile</b> ()</td></tr>
+<tr class="separator:a22d6db1b95351991db8b2039489b2dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f1150d5ad1144831090c48fe0acd564"><td class="memItemLeft" align="right" valign="top"><a id="a5f1150d5ad1144831090c48fe0acd564"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>isNeedSave</b> () const</td></tr>
+<tr class="separator:a5f1150d5ad1144831090c48fe0acd564"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77d4b83ad5f0290f293cea6392597809"><td class="memItemLeft" align="right" valign="top"><a id="a77d4b83ad5f0290f293cea6392597809"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>isDeleted</b> () const</td></tr>
+<tr class="separator:a77d4b83ad5f0290f293cea6392597809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5724729ae1efe41a59fcc59d24ea7e31"><td class="memItemLeft" align="right" valign="top"><a id="a5724729ae1efe41a59fcc59d24ea7e31"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteThisObjectAsFile</b> ()</td></tr>
+<tr class="separator:a5724729ae1efe41a59fcc59d24ea7e31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Statyczne metody publiczne</h2></td></tr>
+<tr class="memitem:afc661c148a11f5179d44441b0784af92"><td class="memItemLeft" align="right" valign="top"><a id="afc661c148a11f5179d44441b0784af92"></a>
+static <a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>assertGetNumber</b> (<a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;maybe_number)</td></tr>
+<tr class="separator:afc661c148a11f5179d44441b0784af92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53f54992ae4d6510f11c6219b9bccbcc"><td class="memItemLeft" align="right" valign="top"><a id="a53f54992ae4d6510f11c6219b9bccbcc"></a>
+static glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>assertGetVec3</b> (<a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;maybe_vector)</td></tr>
+<tr class="separator:a53f54992ae4d6510f11c6219b9bccbcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63652c8ef98b21f8e06a6e697ac974b5"><td class="memItemLeft" align="right" valign="top"><a id="a63652c8ef98b21f8e06a6e697ac974b5"></a>
+static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>assertGetString</b> (<a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;maybe_string)</td></tr>
+<tr class="separator:a63652c8ef98b21f8e06a6e697ac974b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Metody chronione</h2></td></tr>
+<tr class="memitem:a270202c224b2bbd0755781ceee912f64"><td class="memItemLeft" align="right" valign="top"><a id="a270202c224b2bbd0755781ceee912f64"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>acceptState</b> (<a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;json_obj)=0</td></tr>
+<tr class="separator:a270202c224b2bbd0755781ceee912f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49a5fb08a97c0a34ef6addc2c293eead"><td class="memItemLeft" align="right" valign="top"><a id="a49a5fb08a97c0a34ef6addc2c293eead"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setNeedSave</b> (bool needSave)</td></tr>
+<tr class="separator:a49a5fb08a97c0a34ef6addc2c293eead"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8da37408ed34e569710818041f47f6f"><td class="memItemLeft" align="right" valign="top"><a id="ab8da37408ed34e569710818041f47f6f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>loadObjectFromFile</b> (const std::function&lt; void()&gt; &amp;onFailed=[]{})</td></tr>
+<tr class="separator:ab8da37408ed34e569710818041f47f6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6260fe0985a6909fb80b5ec975c72609"><td class="memItemLeft" align="right" valign="top"><a id="a6260fe0985a6909fb80b5ec975c72609"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasSavedFile</b> ()</td></tr>
+<tr class="separator:a6260fe0985a6909fb80b5ec975c72609"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
+<li>src/lib/<a class="el" href="_savable_object_8h_source.html">SavableObject.h</a></li>
+<li>src/lib/<a class="el" href="_savable_object_8cc.html">SavableObject.cc</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

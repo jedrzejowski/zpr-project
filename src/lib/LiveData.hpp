@@ -9,6 +9,15 @@
 #include "_classdef.h"
 #include "Signal.hpp"
 
+/**
+ * @brief Klasa naśladująca LiveData z Android'a
+ *
+ * Klasa ma za zadzanie przechowywać proste obiekty(struktury) danych które mogą się zmieniać w czasie działania
+ * aplikacji, obsługuje wielowątkowość.
+ *
+ * @see https://developer.android.com/topic/libraries/architecture/livedata
+ * @tparam T typ wartości
+ */
 template<typename T>
 class LiveData {
 private:
@@ -44,5 +53,8 @@ public:
 		return data_obj;
 	}
 
+	/**
+	 * @brief sygnał zmiany
+	 */
 	const Signal<const T &, const T &> onChange;
 };

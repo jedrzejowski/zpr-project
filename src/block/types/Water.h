@@ -14,7 +14,7 @@ namespace block {
 	public:
 		explicit Water()= default;
 		explicit Water(json& data);
-		int typeId() override;
+		int typeId() const override;
 	protected:
 		Coord2D getTopTextureCoord() const override;
 		Coord2D getSideTextureCoord() const override;

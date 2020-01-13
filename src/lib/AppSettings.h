@@ -9,8 +9,13 @@
 #include <filesystem>
 #include "_classdef.h"
 #include "LiveData.hpp"
+#include "lib/json.hpp"
 
+using json = nlohmann::json;
 
+/**
+ * @brief Odpowiada za ustawienia użytkownika o raz zapis wszystkich plików *.json
+ */
 class AppSettings {
 private:
 	AppSettings();

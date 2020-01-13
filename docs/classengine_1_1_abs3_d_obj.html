@@ -74,13 +74,18 @@ $(function() {
 <div class="title">Dokumentacja klasy engine::Abs3DObj<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Obiekt graficzny z własnych VAO, VBO i EBO.  
+ <a href="classengine_1_1_abs3_d_obj.html#details">Więcej...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_abs3_dobj_8h_source.html">Abs3Dobj.h</a>&gt;</code></p>
 <div class="dynheader">
 Diagram dziedziczenia dla engine::Abs3DObj</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classengine_1_1_abs3_d_obj.png" usemap="#engine::Abs3DObj_map" alt=""/>
   <map id="engine::Abs3DObj_map" name="engine::Abs3DObj_map">
-<area href="classengine_1_1_sub3_d_obj.html" alt="engine::Sub3DObj" shape="rect" coords="145,0,280,24"/>
+<area href="classengine_1_1_sub3_d_obj.html" title="Podstawowy obiekt graficzny implementujący drzewo obiektów." alt="engine::Sub3DObj" shape="rect" coords="145,0,280,24"/>
 <area href="classgui_1_1_interface.html" alt="gui::Interface" shape="rect" coords="72,112,207,136"/>
 <area href="classmap_1_1_chunk_renderer.html" alt="map::ChunkRenderer" shape="rect" coords="217,112,352,136"/>
 <area href="classgame_1_1_in_game_menu.html" alt="game::InGameMenu" shape="rect" coords="0,168,135,192"/>
@@ -94,7 +99,8 @@ Metody publiczne</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Abs3DObj</b> (Sub3DObjPtr parent=nullptr)</td></tr>
 <tr class="separator:ae6e863379c700d439fb844bad23c0027"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a856333f0581edc585bbc6c0b94a5b859"><td class="memItemLeft" align="right" valign="top"><a id="a856333f0581edc585bbc6c0b94a5b859"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>updateBuffers</b> () override</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classengine_1_1_abs3_d_obj.html#a856333f0581edc585bbc6c0b94a5b859">updateBuffers</a> () override</td></tr>
+<tr class="memdesc:a856333f0581edc585bbc6c0b94a5b859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizacja buforów vertices_buffer i indices_buffer Nie trzeba odświarzać buforów dzieci, ale można. <br /></td></tr>
 <tr class="separator:a856333f0581edc585bbc6c0b94a5b859"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7759c94e04a3071a9094e31ddebe711c"><td class="memItemLeft" align="right" valign="top"><a id="a7759c94e04a3071a9094e31ddebe711c"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>render</b> (const ScenePtr &amp;scene)=0</td></tr>
@@ -144,7 +150,10 @@ std::vector&lt; <a class="el" href="structengine_1_1_point3_de_x.html">engine::P
 std::vector&lt; <a class="el" href="structengine_1_1_ebo_triangle.html">engine::EboTriangle</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>indices_buffer</b></td></tr>
 <tr class="separator:a72d650f0e37402a552d9b33966a01fc0 inherit pro_attribs_classengine_1_1_sub3_d_obj"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Obiekt graficzny z własnych VAO, VBO i EBO. </p>
+<p>Jest głównym elementem graficznych czubkiem drzewa składającego się z Sub3dObj </p>
+</div><hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
 <li>src/engine/<a class="el" href="_abs3_dobj_8h_source.html">Abs3Dobj.h</a></li>
 <li>src/engine/<a class="el" href="_abs3_dobj_8cc.html">Abs3Dobj.cc</a></li>
 </ul>

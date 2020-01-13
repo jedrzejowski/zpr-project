@@ -15,6 +15,9 @@
 
 namespace engine {
 
+	/**
+	 * @brief Implementacja przycisku na klawiaturze
+	 */
 	class KeyboardBtn : public InputButton {
 		friend Keyboard;
 		int getGlfwState(GLFWwindow *window) override;

@@ -83,9 +83,9 @@ Diagram dziedziczenia dla game::PlayerInterface</div>
 <area href="classgui_1_1_interface.html" alt="gui::Interface" shape="rect" coords="128,168,375,192"/>
 <area href="struct_virtual_share_ptr_object.html" alt="VirtualSharePtrObject&lt; PlayerInterface &gt;" shape="rect" coords="514,168,761,192"/>
 <area href="class_object.html" title="Klasa obiektu, na obecną chwile, nie ma sensu, ale na początku była bardzo potrzebna,..." alt="Object" shape="rect" coords="0,112,247,136"/>
-<area href="classengine_1_1_abs3_d_obj.html" alt="engine::Abs3DObj" shape="rect" coords="257,112,504,136"/>
+<area href="classengine_1_1_abs3_d_obj.html" title="Obiekt graficzny z własnych VAO, VBO i EBO." alt="engine::Abs3DObj" shape="rect" coords="257,112,504,136"/>
 <area href="struct_virtual_share_ptr_object.html" alt="VirtualSharePtrObject&lt; Object &gt;" shape="rect" coords="0,56,247,80"/>
-<area href="classengine_1_1_sub3_d_obj.html" alt="engine::Sub3DObj" shape="rect" coords="257,56,504,80"/>
+<area href="classengine_1_1_sub3_d_obj.html" title="Podstawowy obiekt graficzny implementujący drzewo obiektów." alt="engine::Sub3DObj" shape="rect" coords="257,56,504,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -147,7 +147,8 @@ std::weak_ptr&lt; <a class="el" href="class_object.html">Object</a> &gt;&#160;</
 &#160;</td><td class="memItemRight" valign="bottom"><b>Abs3DObj</b> (Sub3DObjPtr parent=nullptr)</td></tr>
 <tr class="separator:ae6e863379c700d439fb844bad23c0027 inherit pub_methods_classengine_1_1_abs3_d_obj"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a856333f0581edc585bbc6c0b94a5b859 inherit pub_methods_classengine_1_1_abs3_d_obj"><td class="memItemLeft" align="right" valign="top"><a id="a856333f0581edc585bbc6c0b94a5b859"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>updateBuffers</b> () override</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classengine_1_1_abs3_d_obj.html#a856333f0581edc585bbc6c0b94a5b859">updateBuffers</a> () override</td></tr>
+<tr class="memdesc:a856333f0581edc585bbc6c0b94a5b859 inherit pub_methods_classengine_1_1_abs3_d_obj"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizacja buforów vertices_buffer i indices_buffer Nie trzeba odświarzać buforów dzieci, ale można. <br /></td></tr>
 <tr class="separator:a856333f0581edc585bbc6c0b94a5b859 inherit pub_methods_classengine_1_1_abs3_d_obj"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classengine_1_1_sub3_d_obj"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classengine_1_1_sub3_d_obj')"><img src="closed.png" alt="-"/>&#160;Metody publiczne dziedziczone z <a class="el" href="classengine_1_1_sub3_d_obj.html">engine::Sub3DObj</a></td></tr>
 <tr class="memitem:a96986f30f328dc2f6d137d9d5b305182 inherit pub_methods_classengine_1_1_sub3_d_obj"><td class="memItemLeft" align="right" valign="top"><a id="a96986f30f328dc2f6d137d9d5b305182"></a>

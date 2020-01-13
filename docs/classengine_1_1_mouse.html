@@ -81,7 +81,7 @@ Diagram dziedziczenia dla engine::Mouse</div>
  <div class="center">
   <img src="classengine_1_1_mouse.png" usemap="#engine::Mouse_map" alt=""/>
   <map id="engine::Mouse_map" name="engine::Mouse_map">
-<area href="classengine_1_1_input_device.html" alt="engine::InputDevice" shape="rect" coords="0,168,209,192"/>
+<area href="classengine_1_1_input_device.html" title="Implementacja urządzenia wejścia." alt="engine::InputDevice" shape="rect" coords="0,168,209,192"/>
 <area href="class_object.html" title="Klasa obiektu, na obecną chwile, nie ma sensu, ale na początku była bardzo potrzebna,..." alt="Object" shape="rect" coords="0,112,209,136"/>
 <area href="struct_virtual_share_ptr_object.html" alt="VirtualSharePtrObject&lt; Object &gt;" shape="rect" coords="0,56,209,80"/>
   </map>
@@ -146,14 +146,16 @@ std::weak_ptr&lt; <a class="el" href="class_object.html">Object</a> &gt;&#160;</
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Atrybuty publiczne</h2></td></tr>
-<tr class="memitem:a14ccb9b48d76ffa6e8ebbd83f156f83c"><td class="memItemLeft" align="right" valign="top"><a id="a14ccb9b48d76ffa6e8ebbd83f156f83c"></a>
-const <a class="el" href="class_signal.html">Signal</a>&lt; const glm::vec2 &amp; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>onMove</b></td></tr>
+<tr class="memitem:a14ccb9b48d76ffa6e8ebbd83f156f83c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_signal.html">Signal</a>&lt; const glm::vec2 &amp; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classengine_1_1_mouse.html#a14ccb9b48d76ffa6e8ebbd83f156f83c">onMove</a></td></tr>
+<tr class="memdesc:a14ccb9b48d76ffa6e8ebbd83f156f83c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sygnał zmiany pozycji myszki.  <a href="classengine_1_1_mouse.html#a14ccb9b48d76ffa6e8ebbd83f156f83c">Więcej...</a><br /></td></tr>
 <tr class="separator:a14ccb9b48d76ffa6e8ebbd83f156f83c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af87e85e482b3ec98908870f9a8b5eed2"><td class="memItemLeft" align="right" valign="top"><a id="af87e85e482b3ec98908870f9a8b5eed2"></a>
-const <a class="el" href="class_signal.html">Signal</a>&#160;</td><td class="memItemRight" valign="bottom"><b>onLeave</b></td></tr>
+const <a class="el" href="class_signal.html">Signal</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classengine_1_1_mouse.html#af87e85e482b3ec98908870f9a8b5eed2">onLeave</a></td></tr>
+<tr class="memdesc:af87e85e482b3ec98908870f9a8b5eed2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sygnał wyjścia myszki z okna. <br /></td></tr>
 <tr class="separator:af87e85e482b3ec98908870f9a8b5eed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a72a256b96e4d41c5c019a782069440"><td class="memItemLeft" align="right" valign="top"><a id="a6a72a256b96e4d41c5c019a782069440"></a>
-const <a class="el" href="class_signal.html">Signal</a>&#160;</td><td class="memItemRight" valign="bottom"><b>onEnter</b></td></tr>
+const <a class="el" href="class_signal.html">Signal</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classengine_1_1_mouse.html#a6a72a256b96e4d41c5c019a782069440">onEnter</a></td></tr>
+<tr class="memdesc:a6a72a256b96e4d41c5c019a782069440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sygnał wejścia myszki z okna. <br /></td></tr>
 <tr class="separator:a6a72a256b96e4d41c5c019a782069440"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd9eaa7707529ac2c62db37a8d547aa7"><td class="memItemLeft" align="right" valign="top"><a id="acd9eaa7707529ac2c62db37a8d547aa7"></a>
 <a class="el" href="classengine_1_1_mouse_btn.html">MouseBtn</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Left</b> = GLFW_MOUSE_BUTTON_LEFT</td></tr>
@@ -182,6 +184,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateState</b> (GLFW
 void&#160;</td><td class="memItemRight" valign="bottom"><b>addBtn</b> (<a class="el" href="classengine_1_1_input_button.html">InputButton</a> &amp;btn)</td></tr>
 <tr class="separator:ad0c5dbc8bdb257d9fe615d737a207868 inherit pro_methods_classengine_1_1_input_device"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Dokumentacja atrybutów składowych</h2>
+<a id="a14ccb9b48d76ffa6e8ebbd83f156f83c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14ccb9b48d76ffa6e8ebbd83f156f83c">&#9670;&nbsp;</a></span>onMove</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_signal.html">Signal</a>&lt;const glm::vec2 &amp;&gt; engine::Mouse::onMove</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sygnał zmiany pozycji myszki. </p>
+<p>argument to przesunięcie w współrzędnych 1:1 </p>
+
+</div>
+</div>
 <hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
 <li>src/engine/<a class="el" href="_mouse_8h_source.html">Mouse.h</a></li>
 <li>src/engine/<a class="el" href="_mouse_8cc.html">Mouse.cc</a></li>

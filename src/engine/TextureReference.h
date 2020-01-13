@@ -11,6 +11,13 @@
 #include "src/OpenGL.h"
 
 namespace engine {
+
+	/**
+	 * @brief Referencja do współrzędnych tekstury
+	 *
+	 * W cały projekcie każda tekstura ma swój numer, ta struktura niejako pokazuje,
+	 * o którą teksturę chodzi wraz ze współrzędnymi
+	 */
 	struct SquareTextureReference {
 		glm::vec2 start;
 		glm::vec2 end;

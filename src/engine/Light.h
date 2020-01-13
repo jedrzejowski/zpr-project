@@ -11,6 +11,9 @@
 
 namespace engine {
 
+	/**
+	 * @brief Światło, nie używane
+	 */
 	class Light {
 	public:
 

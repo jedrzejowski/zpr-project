@@ -17,6 +17,10 @@
 #include "src/_classdef.h"
 
 namespace engine {
+
+	/**
+	 * @brief Singleton odpowiadający za ładowanie tekstur i shaderów
+	 */
 	class Resources {
 	private:
 

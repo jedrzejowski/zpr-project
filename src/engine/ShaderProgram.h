@@ -13,6 +13,9 @@
 
 namespace engine {
 
+	/**
+	 * @brief Reprezentacja programu w karcie graficznej
+	 */
 	class ShaderProgram {
 		GLuint shader_id;
 	public:

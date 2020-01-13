@@ -13,6 +13,13 @@
 #include "Point.hpp"
 
 namespace engine {
+
+	/**
+	 * @brief Podstawowy obiekt graficzny implementujący drzewo obiektów
+	 *
+	 * Obiekt posiada własny buffor dla punktów i lini, oraz zestaw dzieci, NIE PRZECHOWUJE SMART POINTERÓW
+	 * Obiekt współuczestniczy w wypełnianiu buforów dla Abs3DObj, i jet implementacją drzewa obiektów
+	 */
 	class Sub3DObj {
 	private:
 		std::list<Sub3DObj *> children;
@@ -38,6 +45,10 @@ namespace engine {
 				std::vector<engine::Point3DeX> &vertices,
 				std::vector<engine::EboTriangle> &indices);
 
+		/**
+		 * @brief Aktualizacja buforów vertices_buffer i indices_buffer
+		 * Nie trzeba odświarzać buforów dzieci, ale można
+		 */
 		virtual void updateBuffers() = 0;
 
 		[[nodiscard]] virtual bool isNeedRefreshBuffers() const;

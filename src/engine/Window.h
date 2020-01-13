@@ -22,6 +22,9 @@ namespace engine {
 		Square,
 	};
 
+	/**
+	 * @brief Klasa głównego okna aplikacji wraz z pętlą programu
+	 */
 	class Window : public Object, public VirtualSharePtrObject<Window> {
 	public:
 		using VirtualSharePtrObject<Window>::shared_from_this;

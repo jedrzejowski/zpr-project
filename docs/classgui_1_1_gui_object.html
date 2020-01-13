@@ -81,7 +81,7 @@ Diagram dziedziczenia dla gui::GuiObject</div>
   <img src="classgui_1_1_gui_object.png" usemap="#gui::GuiObject_map" alt=""/>
   <map id="gui::GuiObject_map" name="gui::GuiObject_map">
 <area href="class_object.html" title="Klasa obiektu, na obecną chwile, nie ma sensu, ale na początku była bardzo potrzebna,..." alt="Object" shape="rect" coords="219,112,428,136"/>
-<area href="classengine_1_1_sub3_d_obj.html" alt="engine::Sub3DObj" shape="rect" coords="438,112,647,136"/>
+<area href="classengine_1_1_sub3_d_obj.html" title="Podstawowy obiekt graficzny implementujący drzewo obiektów." alt="engine::Sub3DObj" shape="rect" coords="438,112,647,136"/>
 <area href="struct_virtual_share_ptr_object.html" alt="VirtualSharePtrObject&lt; Object &gt;" shape="rect" coords="219,56,428,80"/>
 <area href="classgame_1_1_player_item.html" alt="game::PlayerItem" shape="rect" coords="0,224,209,248"/>
 <area href="classgui_1_1_rectangle_obj.html" alt="gui::RectangleObj" shape="rect" coords="219,224,428,248"/>
@@ -155,7 +155,8 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getChildCount</b> (
 void&#160;</td><td class="memItemRight" valign="bottom"><b>insertToBuffers</b> (std::vector&lt; <a class="el" href="structengine_1_1_point3_de_x.html">engine::Point3DeX</a> &gt; &amp;vertices, std::vector&lt; <a class="el" href="structengine_1_1_ebo_triangle.html">engine::EboTriangle</a> &gt; &amp;indices)</td></tr>
 <tr class="separator:a40094fba2e71f910cc94f42c7f4eac8e inherit pub_methods_classengine_1_1_sub3_d_obj"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5796920efb5dd985e8c681c39dadb20b inherit pub_methods_classengine_1_1_sub3_d_obj"><td class="memItemLeft" align="right" valign="top"><a id="a5796920efb5dd985e8c681c39dadb20b"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>updateBuffers</b> ()=0</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classengine_1_1_sub3_d_obj.html#a5796920efb5dd985e8c681c39dadb20b">updateBuffers</a> ()=0</td></tr>
+<tr class="memdesc:a5796920efb5dd985e8c681c39dadb20b inherit pub_methods_classengine_1_1_sub3_d_obj"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizacja buforów vertices_buffer i indices_buffer Nie trzeba odświarzać buforów dzieci, ale można. <br /></td></tr>
 <tr class="separator:a5796920efb5dd985e8c681c39dadb20b inherit pub_methods_classengine_1_1_sub3_d_obj"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2071518a166078d207043f6bd12d1ed2 inherit pub_methods_classengine_1_1_sub3_d_obj"><td class="memItemLeft" align="right" valign="top"><a id="a2071518a166078d207043f6bd12d1ed2"></a>
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>isNeedRefreshBuffers</b> () const</td></tr>

@@ -78,23 +78,24 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceengine.html">engine</a> {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classengine_1_1_camera.html">   14</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classengine_1_1_camera.html">Camera</a> {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        glm::vec3 position;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        glm::vec3 front;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        glm::vec3 up;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        [[nodiscard]] glm::mat4 getMatrix()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordflow">return</span> glm::lookAt(position, position + front, up);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    };</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classengine_1_1_camera.html">   17</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classengine_1_1_camera.html">Camera</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        glm::vec3 position;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        glm::vec3 front;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        glm::vec3 up;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classengine_1_1_camera.html#a3283a2067aa7b4fac981bf8edd2a036a">   27</a></span>&#160;        [[nodiscard]] glm::mat4 <a class="code" href="classengine_1_1_camera.html#a3283a2067aa7b4fac981bf8edd2a036a">getMatrix</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keywordflow">return</span> glm::lookAt(position, position + front, up);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    };</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="a_open_g_l_8h_html"><div class="ttname"><a href="_open_g_l_8h.html">OpenGL.h</a></div></div>
 <div class="ttc" id="anamespaceengine_html"><div class="ttname"><a href="namespaceengine.html">engine</a></div><div class="ttdoc">namespace dla silnika graficznego</div><div class="ttdef"><b>Definition:</b> _classdef.h:37</div></div>
 <div class="ttc" id="a__classdef_8h_html"><div class="ttname"><a href="__classdef_8h.html">_classdef.h</a></div></div>
-<div class="ttc" id="aclassengine_1_1_camera_html"><div class="ttname"><a href="classengine_1_1_camera.html">engine::Camera</a></div><div class="ttdef"><b>Definition:</b> Camera.h:14</div></div>
+<div class="ttc" id="aclassengine_1_1_camera_html_a3283a2067aa7b4fac981bf8edd2a036a"><div class="ttname"><a href="classengine_1_1_camera.html#a3283a2067aa7b4fac981bf8edd2a036a">engine::Camera::getMatrix</a></div><div class="ttdeci">glm::mat4 getMatrix() const</div><div class="ttdoc">Tworzy macierz kamery.</div><div class="ttdef"><b>Definition:</b> Camera.h:27</div></div>
+<div class="ttc" id="aclassengine_1_1_camera_html"><div class="ttname"><a href="classengine_1_1_camera.html">engine::Camera</a></div><div class="ttdoc">Implementacja kamery.</div><div class="ttdef"><b>Definition:</b> Camera.h:17</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Wygenerowano przez &#160;<a href="http://www.doxygen.org/index.html">

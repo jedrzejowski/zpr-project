@@ -12,6 +12,12 @@
 #include "Sub3DObj.h"
 
 namespace engine {
+
+	/**
+	 * @brief Obiekt graficzny z własnych VAO, VBO i EBO
+	 *
+	 * Jest głównym elementem graficznych czubkiem drzewa składającego się z Sub3dObj
+	 */
 	class Abs3DObj : public Sub3DObj {
 	private:
 		GLuint VAO, VBO, EBO;

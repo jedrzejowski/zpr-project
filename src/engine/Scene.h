@@ -16,6 +16,12 @@
 
 namespace engine {
 
+	/**
+	 * @brief Klasa sceny
+	 *
+	 * Okno wyświetlają sceny, które mogą się zmieniać w czasie działania programu.
+	 * Sceny powinny mieć przynajmniej jeden interfejs wejściowy
+	 */
 	class Scene : public Object, public VirtualSharePtrObject<Scene> {
 	public:
 		using VirtualSharePtrObject<Scene>::shared_from_this;

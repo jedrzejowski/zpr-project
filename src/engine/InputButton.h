@@ -12,6 +12,10 @@
 #include "src/lib/Signal.hpp"
 
 namespace engine {
+
+	/**
+	 * @brief Baza dla implementacja przycisku od myszki i klawiatury
+	 */
 	class InputButton : public Object {
 		friend InputDevice;
 	private:

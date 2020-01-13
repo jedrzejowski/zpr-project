@@ -11,7 +11,9 @@
 
 namespace engine {
 
-
+	/**
+	 * @brief Implementacja punkty w 3D
+	 */
 	struct Point3D {
 
 		static float DistanceBetween(const Point3D &point1, const Point3D &point2);
@@ -44,6 +46,9 @@ namespace engine {
 		Normal(float x, float y, float z) : x(x), y(y), z(z) {}
 	};
 
+	/**
+	 * @brief Współrzędne tekstury
+	 */
 	struct TexCoord {
 
 		float x = 0.0f;
@@ -55,6 +60,9 @@ namespace engine {
 		TexCoord(float x, float y, uint32_t no) : x(x), y(y), no(no) {}
 	};
 
+	/**
+	 * @brief Trójkąt EBO z OpenGL
+	 */
 	struct EboTriangle {
 		uint32_t first;
 		uint32_t second;
@@ -94,6 +102,9 @@ namespace engine {
 		Color(float r, float g, float b, float a) : r(r), g(g), b(b), a(a) {}
 	};
 
+	/**
+	 * @brief Pełny punkt VertexAttribPointer
+	 */
 	struct Point3DeX {
 
 		static void BindGlVAP();

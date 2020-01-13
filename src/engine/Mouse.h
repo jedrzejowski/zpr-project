@@ -14,6 +14,10 @@
 
 
 namespace engine {
+
+	/**
+	 * @brief Implementacja przycisku myszki
+	 */
 	class MouseBtn : public InputButton {
 		friend Mouse;
 		int getGlfwState(GLFWwindow *window) override;
@@ -39,8 +43,21 @@ namespace engine {
 	public:
 		~Mouse() override;
 
+		/**
+		 * @brief Sygnał zmiany pozycji myszki
+		 *
+		 * argument to przesunięcie w współrzędnych 1:1
+		 */
 		const Signal<const glm::vec2 &> onMove;
+
+		/**
+		 * @brief Sygnał wyjścia myszki z okna
+		 */
 		const Signal<> onLeave;
+
+		/**
+		 * @brief Sygnał wejścia myszki z okna
+		 */
 		const Signal<> onEnter;
 
 		MouseBtn Left = GLFW_MOUSE_BUTTON_LEFT;

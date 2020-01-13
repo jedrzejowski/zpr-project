@@ -14,6 +14,9 @@
 
 namespace engine {
 
+	/**
+	 * @brief Obiekt wczytanej tekstury w buforze graficznym
+	 */
 	class Texture {
 	private:
 		GLuint texture_id;

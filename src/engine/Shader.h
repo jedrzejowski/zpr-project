@@ -11,6 +11,9 @@
 
 namespace engine {
 
+	/**
+	 * @brief Podstawa klasy dla shaderów
+	 */
 	class Shader {
 	protected:
 		ShaderProgram program;

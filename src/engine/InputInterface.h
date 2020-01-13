@@ -10,6 +10,12 @@
 #include "Keyboard.h"
 
 namespace engine {
+
+	/**
+	 * @brief Interfejs wejścia
+	 *
+	 * Gromadzi wejście myszki i klawiatury, interfejsów może być wiele, ale tylko jeden dostaje powiadomienia od okna
+	 */
 	class InputInterface : public Object {
 		friend Window;
 	private:

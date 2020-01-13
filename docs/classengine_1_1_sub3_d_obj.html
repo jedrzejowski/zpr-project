@@ -74,13 +74,18 @@ $(function() {
 <div class="title">Dokumentacja klasy engine::Sub3DObj<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Podstawowy obiekt graficzny implementujący drzewo obiektów.  
+ <a href="classengine_1_1_sub3_d_obj.html#details">Więcej...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_sub3_d_obj_8h_source.html">Sub3DObj.h</a>&gt;</code></p>
 <div class="dynheader">
 Diagram dziedziczenia dla engine::Sub3DObj</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classengine_1_1_sub3_d_obj.png" usemap="#engine::Sub3DObj_map" alt=""/>
   <map id="engine::Sub3DObj_map" name="engine::Sub3DObj_map">
-<area href="classengine_1_1_abs3_d_obj.html" alt="engine::Abs3DObj" shape="rect" coords="176,56,342,80"/>
+<area href="classengine_1_1_abs3_d_obj.html" title="Obiekt graficzny z własnych VAO, VBO i EBO." alt="engine::Abs3DObj" shape="rect" coords="176,56,342,80"/>
 <area href="classgui_1_1_gui_object.html" alt="gui::GuiObject" shape="rect" coords="704,56,870,80"/>
 <area href="classgui_1_1_interface.html" alt="gui::Interface" shape="rect" coords="88,112,254,136"/>
 <area href="classmap_1_1_chunk_renderer.html" alt="map::ChunkRenderer" shape="rect" coords="264,112,430,136"/>
@@ -116,7 +121,8 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getChildCount</b> (
 void&#160;</td><td class="memItemRight" valign="bottom"><b>insertToBuffers</b> (std::vector&lt; <a class="el" href="structengine_1_1_point3_de_x.html">engine::Point3DeX</a> &gt; &amp;vertices, std::vector&lt; <a class="el" href="structengine_1_1_ebo_triangle.html">engine::EboTriangle</a> &gt; &amp;indices)</td></tr>
 <tr class="separator:a40094fba2e71f910cc94f42c7f4eac8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5796920efb5dd985e8c681c39dadb20b"><td class="memItemLeft" align="right" valign="top"><a id="a5796920efb5dd985e8c681c39dadb20b"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>updateBuffers</b> ()=0</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classengine_1_1_sub3_d_obj.html#a5796920efb5dd985e8c681c39dadb20b">updateBuffers</a> ()=0</td></tr>
+<tr class="memdesc:a5796920efb5dd985e8c681c39dadb20b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aktualizacja buforów vertices_buffer i indices_buffer Nie trzeba odświarzać buforów dzieci, ale można. <br /></td></tr>
 <tr class="separator:a5796920efb5dd985e8c681c39dadb20b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2071518a166078d207043f6bd12d1ed2"><td class="memItemLeft" align="right" valign="top"><a id="a2071518a166078d207043f6bd12d1ed2"></a>
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>isNeedRefreshBuffers</b> () const</td></tr>
@@ -134,7 +140,10 @@ std::vector&lt; <a class="el" href="structengine_1_1_point3_de_x.html">engine::P
 std::vector&lt; <a class="el" href="structengine_1_1_ebo_triangle.html">engine::EboTriangle</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>indices_buffer</b></td></tr>
 <tr class="separator:a72d650f0e37402a552d9b33966a01fc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Podstawowy obiekt graficzny implementujący drzewo obiektów. </p>
+<p>Obiekt posiada własny buffor dla punktów i lini, oraz zestaw dzieci, NIE PRZECHOWUJE SMART POINTERÓW Obiekt współuczestniczy w wypełnianiu buforów dla <a class="el" href="classengine_1_1_abs3_d_obj.html" title="Obiekt graficzny z własnych VAO, VBO i EBO.">Abs3DObj</a>, i jet implementacją drzewa obiektów </p>
+</div><hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
 <li>src/engine/<a class="el" href="_sub3_d_obj_8h_source.html">Sub3DObj.h</a></li>
 <li>src/engine/<a class="el" href="_sub3_d_obj_8cc.html">Sub3DObj.cc</a></li>
 </ul>

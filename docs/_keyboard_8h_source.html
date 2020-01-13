@@ -82,53 +82,53 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceengine.html">engine</a> {</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classengine_1_1_keyboard_btn.html">   18</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> : <span class="keyword">public</span> <a class="code" href="classengine_1_1_input_button.html">InputButton</a> {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">friend</span> <a class="code" href="classengine_1_1_keyboard.html">Keyboard</a>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">int</span> getGlfwState(GLFWwindow *window) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a>(<span class="keywordtype">int</span> btnCode) : <a class="code" href="classengine_1_1_input_button.html">InputButton</a>(btnCode) {};</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    };</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classengine_1_1_keyboard.html">   24</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classengine_1_1_keyboard.html">Keyboard</a> : <span class="keyword">public</span> <a class="code" href="classengine_1_1_input_device.html">InputDevice</a> {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">friend</span> <a class="code" href="classengine_1_1_input_interface.html">InputInterface</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classengine_1_1_keyboard.html">Keyboard</a>(<a class="code" href="classengine_1_1_input_interface.html">InputInterface</a> *ii);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> W = GLFW_KEY_W;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> A = GLFW_KEY_A;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> S = GLFW_KEY_S;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> D = GLFW_KEY_D;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> LShift = GLFW_KEY_LEFT_SHIFT;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> RShift = GLFW_KEY_RIGHT_SHIFT;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Space = GLFW_KEY_SPACE;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Escape = GLFW_KEY_ESCAPE;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num0 = GLFW_KEY_0;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num1 = GLFW_KEY_1;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num2 = GLFW_KEY_2;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num3 = GLFW_KEY_3;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num4 = GLFW_KEY_4;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num5 = GLFW_KEY_5;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num6 = GLFW_KEY_6;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num7 = GLFW_KEY_7;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num8 = GLFW_KEY_8;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num9 = GLFW_KEY_9;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">bool</span> isShiftPressed() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    };</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classengine_1_1_keyboard_btn.html">   21</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> : <span class="keyword">public</span> <a class="code" href="classengine_1_1_input_button.html">InputButton</a> {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">friend</span> <a class="code" href="classengine_1_1_keyboard.html">Keyboard</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">int</span> getGlfwState(GLFWwindow *window) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a>(<span class="keywordtype">int</span> btnCode) : <a class="code" href="classengine_1_1_input_button.html">InputButton</a>(btnCode) {};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    };</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classengine_1_1_keyboard.html">   27</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classengine_1_1_keyboard.html">Keyboard</a> : <span class="keyword">public</span> <a class="code" href="classengine_1_1_input_device.html">InputDevice</a> {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">friend</span> <a class="code" href="classengine_1_1_input_interface.html">InputInterface</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classengine_1_1_keyboard.html">Keyboard</a>(<a class="code" href="classengine_1_1_input_interface.html">InputInterface</a> *ii);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> W = GLFW_KEY_W;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> A = GLFW_KEY_A;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> S = GLFW_KEY_S;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> D = GLFW_KEY_D;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> LShift = GLFW_KEY_LEFT_SHIFT;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> RShift = GLFW_KEY_RIGHT_SHIFT;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Space = GLFW_KEY_SPACE;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Escape = GLFW_KEY_ESCAPE;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num0 = GLFW_KEY_0;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num1 = GLFW_KEY_1;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num2 = GLFW_KEY_2;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num3 = GLFW_KEY_3;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num4 = GLFW_KEY_4;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num5 = GLFW_KEY_5;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num6 = GLFW_KEY_6;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num7 = GLFW_KEY_7;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num8 = GLFW_KEY_8;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="classengine_1_1_keyboard_btn.html">KeyboardBtn</a> Num9 = GLFW_KEY_9;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">bool</span> isShiftPressed() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    };</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassengine_1_1_input_button_html"><div class="ttname"><a href="classengine_1_1_input_button.html">engine::InputButton</a></div><div class="ttdef"><b>Definition:</b> InputButton.h:15</div></div>
+<div class="ttc" id="aclassengine_1_1_input_button_html"><div class="ttname"><a href="classengine_1_1_input_button.html">engine::InputButton</a></div><div class="ttdoc">Baza dla implementacja przycisku od myszki i klawiatury.</div><div class="ttdef"><b>Definition:</b> InputButton.h:19</div></div>
 <div class="ttc" id="a_input_device_8h_html"><div class="ttname"><a href="_input_device_8h.html">InputDevice.h</a></div></div>
-<div class="ttc" id="aclassengine_1_1_keyboard_html"><div class="ttname"><a href="classengine_1_1_keyboard.html">engine::Keyboard</a></div><div class="ttdef"><b>Definition:</b> Keyboard.h:24</div></div>
+<div class="ttc" id="aclassengine_1_1_keyboard_html"><div class="ttname"><a href="classengine_1_1_keyboard.html">engine::Keyboard</a></div><div class="ttdef"><b>Definition:</b> Keyboard.h:27</div></div>
 <div class="ttc" id="a_open_g_l_8h_html"><div class="ttname"><a href="_open_g_l_8h.html">OpenGL.h</a></div></div>
-<div class="ttc" id="aclassengine_1_1_keyboard_btn_html"><div class="ttname"><a href="classengine_1_1_keyboard_btn.html">engine::KeyboardBtn</a></div><div class="ttdef"><b>Definition:</b> Keyboard.h:18</div></div>
-<div class="ttc" id="aclassengine_1_1_input_device_html"><div class="ttname"><a href="classengine_1_1_input_device.html">engine::InputDevice</a></div><div class="ttdef"><b>Definition:</b> InputDevice.h:16</div></div>
+<div class="ttc" id="aclassengine_1_1_keyboard_btn_html"><div class="ttname"><a href="classengine_1_1_keyboard_btn.html">engine::KeyboardBtn</a></div><div class="ttdoc">Implementacja przycisku na klawiaturze.</div><div class="ttdef"><b>Definition:</b> Keyboard.h:21</div></div>
+<div class="ttc" id="aclassengine_1_1_input_device_html"><div class="ttname"><a href="classengine_1_1_input_device.html">engine::InputDevice</a></div><div class="ttdoc">Implementacja urządzenia wejścia.</div><div class="ttdef"><b>Definition:</b> InputDevice.h:19</div></div>
 <div class="ttc" id="a_object_8hpp_html"><div class="ttname"><a href="_object_8hpp.html">Object.hpp</a></div></div>
 <div class="ttc" id="anamespaceengine_html"><div class="ttname"><a href="namespaceengine.html">engine</a></div><div class="ttdoc">namespace dla silnika graficznego</div><div class="ttdef"><b>Definition:</b> _classdef.h:37</div></div>
 <div class="ttc" id="a__classdef_8h_html"><div class="ttname"><a href="__classdef_8h.html">_classdef.h</a></div></div>
 <div class="ttc" id="a_input_button_8h_html"><div class="ttname"><a href="_input_button_8h.html">InputButton.h</a></div></div>
-<div class="ttc" id="aclassengine_1_1_input_interface_html"><div class="ttname"><a href="classengine_1_1_input_interface.html">engine::InputInterface</a></div><div class="ttdef"><b>Definition:</b> InputInterface.h:13</div></div>
+<div class="ttc" id="aclassengine_1_1_input_interface_html"><div class="ttname"><a href="classengine_1_1_input_interface.html">engine::InputInterface</a></div><div class="ttdoc">Interfejs wejścia.</div><div class="ttdef"><b>Definition:</b> InputInterface.h:19</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Wygenerowano przez &#160;<a href="http://www.doxygen.org/index.html">

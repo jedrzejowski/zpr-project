@@ -13,6 +13,9 @@
 
 namespace engine {
 
+	/**
+	 * @brief Implementacja urządzenia wejścia
+	 */
 	class InputDevice : public Object {
 		friend InputInterface;
 	private:

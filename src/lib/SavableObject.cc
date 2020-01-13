@@ -4,7 +4,7 @@
  * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
  */
 
-#include <boost/filesystem/operations.hpp>
+#include <filesystem>
 #include "SavableObject.h"
 
 bool SavableObject::isNeedSave() const {
@@ -26,11 +26,11 @@ void SavableObject::saveObjectToFile() {
 
 void SavableObject::loadObjectFromFile(const std::function<void()> &onFailed) {
 	static auto &app_settings = AppSettings::get();
-	boost::filesystem::path path;
+	std::filesystem::path path;
 
 	try {
 
-		path = getSavePath(app_settings);
+		path = getSavePath();
 		auto json_data = app_settings.loadJSON(path);
 
 		need_save = false;
@@ -58,7 +58,7 @@ void SavableObject::loadObjectFromFile(const std::function<void()> &onFailed) {
 }
 
 bool SavableObject::hasSavedFile() {
-	return boost::filesystem::exists(getSavePath());
+	return std::filesystem::exists(getSavePath());
 }
 
 json &SavableObject::assertGetNumber(json &maybe_number) {

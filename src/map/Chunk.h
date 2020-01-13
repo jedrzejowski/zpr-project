@@ -52,7 +52,7 @@ namespace map {
 	protected:
 		void acceptState(json &data) override;
 	public:
-		boost::filesystem::path getSavePath(AppSettings &app_settings) const override;
+		std::filesystem::path getSavePath() const override;
 		json toJSON() const override;
 
 		//endregion

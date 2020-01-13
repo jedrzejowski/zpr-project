@@ -6,7 +6,7 @@
 
 #include <fstream>
 #include <iomanip>
-#include <boost/filesystem/operations.hpp>
+#include <filesystem>
 #include "AppSettings.h"
 #include "SavableObject.h"
 #include "cfgpath.h"
@@ -68,11 +68,11 @@ void AppSettings::initDefaults() {
 }
 
 
-boost::filesystem::path AppSettings::getCfgDir() {
+std::filesystem::path AppSettings::getCfgDir() {
 	return cfg_dir;
 }
 
-json AppSettings::loadJSON(boost::filesystem::path path) {
+json AppSettings::loadJSON(std::filesystem::path path) {
 
 	std::ifstream fileStream(path.string());
 
@@ -86,8 +86,8 @@ json AppSettings::loadJSON(boost::filesystem::path path) {
 	return data;
 }
 
-void AppSettings::saveJSON(boost::filesystem::path path, json content) {
-	boost::filesystem::create_directories(path.parent_path());
+void AppSettings::saveJSON(std::filesystem::path path, json content) {
+	std::filesystem::create_directories(path.parent_path());
 
 	std::ofstream fileStream(path.string());
 

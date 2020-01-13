@@ -8,7 +8,7 @@
 
 #include <string>
 #include <iostream>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include "Logger.h"
 
 class ZprException : std::exception {
@@ -54,7 +54,7 @@ private:
 public:
 	explicit FileInputException(const char *file) : file(file) {};
 	explicit FileInputException(std::string &file) : file(file) {};
-	explicit FileInputException(boost::filesystem::path &file) : file(file.string()) {};
+	explicit FileInputException(std::filesystem::path &file) : file(file.string()) {};
 
 	[[nodiscard]] const std::string &getFile() const {
 		return file;
@@ -67,7 +67,7 @@ private:
 public:
 	explicit FileOutputException(const char *file) : file(file) {};
 	explicit FileOutputException(std::string &file) : file(file) {};
-	explicit FileOutputException(boost::filesystem::path &file) : file(file.string()) {};
+	explicit FileOutputException(std::filesystem::path &file) : file(file.string()) {};
 
 	[[nodiscard]] const std::string &getFile() const {
 		return file;

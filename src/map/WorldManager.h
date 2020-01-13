@@ -1,3 +1,9 @@
+/**
+ * @file WorldManager.h
+ *
+ * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
+ */
+
 #pragma once
 
 #include "_classdef.h"
@@ -15,7 +21,7 @@ namespace map {
 	public:
 		static WorldManager &get();
 
-		static boost::filesystem::path getWorldsDirectory();
+		static std::filesystem::path getWorldsDirectory();
 
 		WorldPtr newWorld();
 		WorldPtr openWorld(const std::string &code_name);

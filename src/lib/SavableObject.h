@@ -27,7 +27,7 @@ protected:
 
 
 public:
-	[[nodiscard]] virtual std::filesystem::path getSavePath(AppSettings &app_settings = AppSettings::get()) const = 0;
+	[[nodiscard]] virtual std::filesystem::path getSavePath() const = 0;
 	[[nodiscard]] virtual json toJSON() const = 0;
 
 	void saveObjectToFile();
@@ -37,7 +37,7 @@ public:
 	static glm::vec3 assertGetVec3(json& maybe_vector);
 	static std::string assertGetString(json& maybe_string);
 
-	bool isDeleted() const;
+	[[nodiscard]] bool isDeleted() const;
 	void deleteThisObjectAsFile();
 
 };

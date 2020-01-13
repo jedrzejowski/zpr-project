@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ZprCraft: Dokumentacja szablonu klasy Signal&lt; Args &gt;</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ZprCraft
+   &#160;<span id="projectnumber">1.0.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Komponenty</a> &#124;
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="class_signal-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentacja szablonu klasy Signal&lt; Args &gt;</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Implementacja obsługi sygnałów z argumentami takimi jak w QT.  
+ <a href="class_signal.html#details">Więcej...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_signal_8hpp_source.html">Signal.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a8d8099f1b3e5326acffe252d325f74aa"><td class="memItemLeft" align="right" valign="top"><a id="a8d8099f1b3e5326acffe252d325f74aa"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>connect</b> (const ObjectWPtr inst, const Func &amp;func) const</td></tr>
+<tr class="separator:a8d8099f1b3e5326acffe252d325f74aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21698ec9de83c4e64eb32184ac93067d"><td class="memItemLeft" align="right" valign="top"><a id="a21698ec9de83c4e64eb32184ac93067d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>connect</b> (const Func &amp;func) const</td></tr>
+<tr class="separator:a21698ec9de83c4e64eb32184ac93067d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa5baeceb017aeac5b6ef9fb1c30967c"><td class="memItemLeft" align="right" valign="top"><a id="afa5baeceb017aeac5b6ef9fb1c30967c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnect</b> (int id) const</td></tr>
+<tr class="separator:afa5baeceb017aeac5b6ef9fb1c30967c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8160ad17cfabbf5df4c39dcc38397a48"><td class="memItemLeft" align="right" valign="top"><a id="a8160ad17cfabbf5df4c39dcc38397a48"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnectAll</b> () const</td></tr>
+<tr class="separator:a8160ad17cfabbf5df4c39dcc38397a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa24938eec9a24f511236ee6ecaa59f9f"><td class="memItemLeft" align="right" valign="top"><a id="aa24938eec9a24f511236ee6ecaa59f9f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>emit</b> (Args... p) const</td></tr>
+<tr class="separator:aa24938eec9a24f511236ee6ecaa59f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c20433839d15ded2f359936fc0ac38f"><td class="memItemLeft" align="right" valign="top"><a id="a7c20433839d15ded2f359936fc0ac38f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const ObjectWPtr inst, const Func &amp;func) const</td></tr>
+<tr class="separator:a7c20433839d15ded2f359936fc0ac38f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a072f6d1272aeed785c1193a61d0122"><td class="memItemLeft" align="right" valign="top"><a id="a7a072f6d1272aeed785c1193a61d0122"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (<a class="el" href="class_object.html">Object</a> *inst, const Func &amp;func) const</td></tr>
+<tr class="separator:a7a072f6d1272aeed785c1193a61d0122"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab56368d575d7fe83854f032b40672b21"><td class="memItemLeft" align="right" valign="top"><a id="ab56368d575d7fe83854f032b40672b21"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const Func &amp;func) const</td></tr>
+<tr class="separator:ab56368d575d7fe83854f032b40672b21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dda4f9d0fc97dbea5362ea2cf436d4d"><td class="memItemLeft" align="right" valign="top"><a id="a3dda4f9d0fc97dbea5362ea2cf436d4d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (Args... p) const</td></tr>
+<tr class="separator:a3dda4f9d0fc97dbea5362ea2cf436d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af395595bdb8108c0bb0befd1b3ebed5d"><td class="memItemLeft" align="right" valign="top"><a id="af395595bdb8108c0bb0befd1b3ebed5d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Signal</b> (const <a class="el" href="class_signal.html">Signal</a> &amp;)=delete</td></tr>
+<tr class="separator:af395595bdb8108c0bb0befd1b3ebed5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7590f5c85797445d38cabd8f8982a47"><td class="memItemLeft" align="right" valign="top"><a id="ae7590f5c85797445d38cabd8f8982a47"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_signal.html">Signal</a> &amp;)=delete</td></tr>
+<tr class="separator:ae7590f5c85797445d38cabd8f8982a47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ea92cf3f2bb7210dece371d8a8a844a"><td class="memItemLeft" align="right" valign="top"><a id="a5ea92cf3f2bb7210dece371d8a8a844a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Signal</b> (const <a class="el" href="class_signal.html">Signal</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:a5ea92cf3f2bb7210dece371d8a8a844a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9824ccb5126e27b756dfee39a434a9d"><td class="memItemLeft" align="right" valign="top"><a id="ae9824ccb5126e27b756dfee39a434a9d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_signal.html">Signal</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:ae9824ccb5126e27b756dfee39a434a9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><h3>template&lt;typename... Args&gt;<br />
+class Signal&lt; Args &gt;</h3>
+
+<p>Implementacja obsługi sygnałów z argumentami takimi jak w QT. </p>
+<p>Implementuje rozchodzenie się informacji o zdarzeniach, które nastąpiło w obiekcie. Do tworzenia funkcji używa wyrażeń lambda</p>
+<dl class="section see"><dt>Zobacz również</dt><dd><a href="https://doc.qt.io/qt-5/signalsandslots.html">https://doc.qt.io/qt-5/signalsandslots.html</a> </dd></dl>
+<dl class="tparams"><dt>Parametry Szablonu</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Args</td><td>lista argumentów przesyłanych za pomocą sygnału </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
+<li>src/<a class="el" href="__classdef_8h_source.html">_classdef.h</a></li>
+<li>src/lib/<a class="el" href="_signal_8hpp_source.html">Signal.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

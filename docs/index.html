@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ZprCraft: ZprCraft - projekt na przedmiot ZPR</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ZprCraft
+   &#160;<span id="projectnumber">1.0.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">ZprCraft - projekt na przedmiot ZPR </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>Gra jest wynikiem projektu na przedmiot ZPR</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Podgląd gry</h1>
+<p><img src="./res/preview1.png" alt="" class="inline"/> <img src="./res/preview2.png" alt="" class="inline"/></p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Budowanie</h1>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Biblioteki</h2>
+<p>Do kompilacji potrzebne są następujące programy/biblioteki: cmake, boost, OpenGL, GLM, GLEW, glfw3 i git. Każda dystrybucja Linuxa zawiera te biblioteki i najczęściej są one już w systemie po instalacji systemu</p>
+<p>Poniżej przedstawiono kilka przykładowe komendy do instalacji na wybranych systemach operacyjnych:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">System </th><th class="markdownTableHeadNone">Komenda  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Ubuntu </td><td class="markdownTableBodyNone"><code># apt-get install git cmake libboost-filesystem-dev libboost-test-dev libglm-dev libglew-dev libglfw3-dev g++</code>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">ArchLinux </td><td class="markdownTableBodyNone"><code># pacman -S git cmake glew glm boost glfw-x11 g++</code>  </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Kompilacja</h2>
+<p>Poniżej przedstawiono skrypt do kompilacji na systemie Linux</p>
+<div class="fragment"><div class="line">cd /tmp # tu można zmienić wedle upodobania</div>
+<div class="line"> </div>
+<div class="line">git clone https://github.com/jedrzejowski/zpr-project zpr-craft-jedrzejowski-kretkowski</div>
+<div class="line">cd zpr-craft-jedrzejowski-kretkowski</div>
+<div class="line"> </div>
+<div class="line">mkdir bin</div>
+<div class="line">cd bin</div>
+<div class="line">cmake ..</div>
+<div class="line">make</div>
+<div class="line">ctest</div>
+<div class="line">./zpr_app</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
+Autorzy</h1>
+<p>Adam Jędrzejowski &lt;<a href="#" onclick="location.href='mai'+'lto:'+'ada'+'m@'+'jed'+'rz'+'ejo'+'ws'+'ki.'+'pl'; return false;">adam@jedrzejowski.pl</a>&gt;</p>
+<p>Marcin Kretkowski </p>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

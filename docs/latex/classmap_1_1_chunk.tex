@@ -1,0 +1,114 @@
+\hypertarget{classmap_1_1_chunk}{}\doxysection{Dokumentacja klasy map\+::Chunk}
+\label{classmap_1_1_chunk}\index{map::Chunk@{map::Chunk}}
+Diagram dziedziczenia dla map\+::Chunk\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.440860cm]{classmap_1_1_chunk}
+\end{center}
+\end{figure}
+\doxysubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmap_1_1_chunk_a770fb7b9ea9efc81563bbe7d3606005c}\label{classmap_1_1_chunk_a770fb7b9ea9efc81563bbe7d3606005c}} 
+bool {\bfseries set\+Block} (const \mbox{\hyperlink{struct_coord3_d}{Coord3D}} \&position, block\+::\+Block\+Ptr \&block)
+\item 
+\mbox{\Hypertarget{classmap_1_1_chunk_ad72890dbcb9a6397b437e16d340056d6}\label{classmap_1_1_chunk_ad72890dbcb9a6397b437e16d340056d6}} 
+bool {\bfseries set\+Air} (const \mbox{\hyperlink{struct_coord3_d}{Coord3D}} \&position)
+\item 
+\mbox{\Hypertarget{classmap_1_1_chunk_a62062b2ae0080e4089ae873be8f4ad01}\label{classmap_1_1_chunk_a62062b2ae0080e4089ae873be8f4ad01}} 
+bool {\bfseries is\+Air} (const \mbox{\hyperlink{struct_coord3_d}{Coord3D}} \&position) const
+\item 
+\mbox{\Hypertarget{classmap_1_1_chunk_a0a2bb4a4a12393fc52bd9109f4c6dd06}\label{classmap_1_1_chunk_a0a2bb4a4a12393fc52bd9109f4c6dd06}} 
+block\+::\+Block\+Ptr {\bfseries get\+Block} (const \mbox{\hyperlink{struct_coord3_d}{Coord3D}} \&position) const
+\item 
+\mbox{\Hypertarget{classmap_1_1_chunk_af917c881328a31a8446dc8c98602df2e}\label{classmap_1_1_chunk_af917c881328a31a8446dc8c98602df2e}} 
+const std\+::map$<$ \mbox{\hyperlink{struct_coord3_d}{Coord3D}}, block\+::\+Block\+Ptr $>$ \& {\bfseries get\+All\+Blocks} () const
+\item 
+\mbox{\Hypertarget{classmap_1_1_chunk_a852a4a343c102f1b549a812589cbf2c7}\label{classmap_1_1_chunk_a852a4a343c102f1b549a812589cbf2c7}} 
+const \mbox{\hyperlink{struct_coord2_d}{Coord2D}} \& {\bfseries get\+Position} () const
+\item 
+\mbox{\Hypertarget{classmap_1_1_chunk_a13af4605d06b2ce0b7f8c72a60596408}\label{classmap_1_1_chunk_a13af4605d06b2ce0b7f8c72a60596408}} 
+Chunk\+W\+Ptr {\bfseries get\+Neighbor} (\mbox{\hyperlink{_coord_8hpp_aee68c378b4f5efe1f90f5e02456e9b11}{Coord\+Dim}} dx, \mbox{\hyperlink{_coord_8hpp_aee68c378b4f5efe1f90f5e02456e9b11}{Coord\+Dim}} dy) const
+\item 
+\mbox{\Hypertarget{classmap_1_1_chunk_ae98bcdd800f9944cc1006ec0298481c6}\label{classmap_1_1_chunk_ae98bcdd800f9944cc1006ec0298481c6}} 
+std\+::filesystem\+::path {\bfseries get\+Save\+Path} () const override
+\item 
+\mbox{\hyperlink{classnlohmann_1_1basic__json}{json}} \mbox{\hyperlink{classmap_1_1_chunk_a7e0e7da9fc06d0a079dc7ba1e2f13fe0}{to\+J\+S\+ON}} () const override
+\begin{DoxyCompactList}\small\item\em Generator obiektu json ze stanu obiektu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Statyczne metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmap_1_1_chunk_a55d5d4e799fa2bb9c269431fb833d21b}\label{classmap_1_1_chunk_a55d5d4e799fa2bb9c269431fb833d21b}} 
+static Chunk\+Ptr {\bfseries create} (const World\+Ptr \&world\+Map, const \mbox{\hyperlink{struct_coord2_d}{Coord2D}} \&position)
+\end{DoxyCompactItemize}
+\doxysubsection*{Atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmap_1_1_chunk_ad56e7038bf3aea1e77f23c8f8feb20e8}\label{classmap_1_1_chunk_ad56e7038bf3aea1e77f23c8f8feb20e8}} 
+friend {\bfseries Chunk\+Renderer}
+\item 
+\mbox{\Hypertarget{classmap_1_1_chunk_a0b1ea2a21e32d491678df4254652f110}\label{classmap_1_1_chunk_a0b1ea2a21e32d491678df4254652f110}} 
+friend {\bfseries Chunk\+Generator}
+\item 
+\mbox{\Hypertarget{classmap_1_1_chunk_a4f1c8bac78b202c153d7b272ed615ca1}\label{classmap_1_1_chunk_a4f1c8bac78b202c153d7b272ed615ca1}} 
+friend {\bfseries Chunk\+Loader}
+\item 
+\mbox{\Hypertarget{classmap_1_1_chunk_a87a93f5848ac33743696992f52e338df}\label{classmap_1_1_chunk_a87a93f5848ac33743696992f52e338df}} 
+const \mbox{\hyperlink{class_signal}{Signal}}$<$ const \mbox{\hyperlink{struct_coord3_d}{Coord3D}} \& $>$ {\bfseries on\+Block\+Change}
+\end{DoxyCompactItemize}
+\doxysubsection*{Statyczne atrybuty publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmap_1_1_chunk_a6399efcf38c494efc8e3c4925f944a8e}\label{classmap_1_1_chunk_a6399efcf38c494efc8e3c4925f944a8e}} 
+static const \mbox{\hyperlink{struct_coord3_d}{Coord3D}} {\bfseries Size} = \mbox{\hyperlink{struct_coord3_d}{Coord3D}}(16, 16, 32)
+\end{DoxyCompactItemize}
+\doxysubsection*{Metody chronione}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classmap_1_1_chunk_a1b923a1c482a8286ea63a11d83f7d47e}{accept\+State}} (\mbox{\hyperlink{classnlohmann_1_1basic__json}{json}} \&data) override
+\begin{DoxyCompactList}\small\item\em Funkcja, która ma za zadanie przyjmować obiekt z pliku. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\mbox{\Hypertarget{classmap_1_1_chunk_a1b923a1c482a8286ea63a11d83f7d47e}\label{classmap_1_1_chunk_a1b923a1c482a8286ea63a11d83f7d47e}} 
+\index{map::Chunk@{map::Chunk}!acceptState@{acceptState}}
+\index{acceptState@{acceptState}!map::Chunk@{map::Chunk}}
+\doxysubsubsection{\texorpdfstring{acceptState()}{acceptState()}}
+{\footnotesize\ttfamily void map\+::\+Chunk\+::accept\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classnlohmann_1_1basic__json}{json}} \&}]{json\+\_\+obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Funkcja, która ma za zadanie przyjmować obiekt z pliku. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em json\+\_\+obj} & \\
+\hline
+\end{DoxyParams}
+
+
+Implementuje \mbox{\hyperlink{class_savable_object_a270202c224b2bbd0755781ceee912f64}{Savable\+Object}}.
+
+\mbox{\Hypertarget{classmap_1_1_chunk_a7e0e7da9fc06d0a079dc7ba1e2f13fe0}\label{classmap_1_1_chunk_a7e0e7da9fc06d0a079dc7ba1e2f13fe0}} 
+\index{map::Chunk@{map::Chunk}!toJSON@{toJSON}}
+\index{toJSON@{toJSON}!map::Chunk@{map::Chunk}}
+\doxysubsubsection{\texorpdfstring{toJSON()}{toJSON()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classnlohmann_1_1basic__json}{json}} map\+::\+Chunk\+::to\+J\+S\+ON (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Generator obiektu json ze stanu obiektu. 
+
+\begin{DoxyReturn}{Zwraca}
+
+\end{DoxyReturn}
+
+
+Implementuje \mbox{\hyperlink{class_savable_object_a50ce9166a0df0f0ab80bb4f1a15eae8b}{Savable\+Object}}.
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+\item 
+src/map/\mbox{\hyperlink{_chunk_8h}{Chunk.\+h}}\item 
+src/map/\mbox{\hyperlink{_chunk_8cc}{Chunk.\+cc}}\end{DoxyCompactItemize}

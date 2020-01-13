@@ -24,7 +24,7 @@ block::BlockWPtr block::Block::getNeighbor(CoordDim dx, CoordDim dy, CoordDim dz
 				y = position.y + dy,
 				z = position.z + dz;
 
-		if (z != std::clamp(z, (CoordDim) 0, map::Chunk::Size.y - 1)) return block::Air;
+		if (z != std::clamp(z, CoordDim(0), CoordDim(map::Chunk::Size.z - 1))) return block::Air;
 
 		while (x < 0) {
 			targetChunk = targetChunk->getNeighbor(-1, 0).lock();

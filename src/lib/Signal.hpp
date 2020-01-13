@@ -13,7 +13,15 @@
 #include "src/_classdef.h"
 #include "Object.hpp"
 
-
+/**
+ * @brief Implementacja obsługi sygnałów z argumentami takimi jak w QT
+ *
+ * Implementuje rozchodzenie się informacji o zdarzeniach, które nastąpiło w obiekcie.
+ * Do tworzenia funkcji używa wyrażeń lambda
+ *
+ * @see https://doc.qt.io/qt-5/signalsandslots.html
+ * @tparam Args lista argumentów przesyłanych za pomocą sygnału
+ */
 template<typename... Args>
 class Signal {
 	typedef std::function<void(Args...)> Func;

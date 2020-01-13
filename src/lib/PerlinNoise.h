@@ -6,6 +6,9 @@
 
 #pragma once
 
+/**
+ * @brief Implementacja szumu perlina
+ */
 class PerlinNoise {
 private:
 

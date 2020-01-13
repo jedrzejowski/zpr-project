@@ -1,0 +1,162 @@
+\hypertarget{class_savable_object}{}\doxysection{Dokumentacja klasy Savable\+Object}
+\label{class_savable_object}\index{SavableObject@{SavableObject}}
+
+
+Implementacja obiektu, który ma reprezentacje w pliku.  
+
+
+
+
+{\ttfamily \#include $<$Savable\+Object.\+h$>$}
+
+Diagram dziedziczenia dla Savable\+Object\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.971831cm]{class_savable_object}
+\end{center}
+\end{figure}
+\doxysubsection*{Metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_savable_object_a285a45332305e3230563f09ae8e6f363}\label{class_savable_object_a285a45332305e3230563f09ae8e6f363}} 
+virtual std\+::filesystem\+::path {\bfseries get\+Save\+Path} () const =0
+\item 
+virtual \mbox{\hyperlink{classnlohmann_1_1basic__json}{json}} \mbox{\hyperlink{class_savable_object_a50ce9166a0df0f0ab80bb4f1a15eae8b}{to\+J\+S\+ON}} () const =0
+\begin{DoxyCompactList}\small\item\em Generator obiektu json ze stanu obiektu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_savable_object_a22d6db1b95351991db8b2039489b2dad}\label{class_savable_object_a22d6db1b95351991db8b2039489b2dad}} 
+void {\bfseries save\+Object\+To\+File} ()
+\item 
+\mbox{\Hypertarget{class_savable_object_a5f1150d5ad1144831090c48fe0acd564}\label{class_savable_object_a5f1150d5ad1144831090c48fe0acd564}} 
+virtual bool {\bfseries is\+Need\+Save} () const
+\item 
+\mbox{\Hypertarget{class_savable_object_a77d4b83ad5f0290f293cea6392597809}\label{class_savable_object_a77d4b83ad5f0290f293cea6392597809}} 
+bool {\bfseries is\+Deleted} () const
+\item 
+\mbox{\Hypertarget{class_savable_object_a5724729ae1efe41a59fcc59d24ea7e31}\label{class_savable_object_a5724729ae1efe41a59fcc59d24ea7e31}} 
+void {\bfseries delete\+This\+Object\+As\+File} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Statyczne metody publiczne}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classnlohmann_1_1basic__json}{json}} \& \mbox{\hyperlink{class_savable_object_afc661c148a11f5179d44441b0784af92}{assert\+Get\+Number}} (\mbox{\hyperlink{classnlohmann_1_1basic__json}{json}} \&maybe\+\_\+number)
+\begin{DoxyCompactList}\small\item\em Funkcja pomocnicza do pobierania liczby z obiektu. \end{DoxyCompactList}\item 
+static glm\+::vec3 \mbox{\hyperlink{class_savable_object_a53f54992ae4d6510f11c6219b9bccbcc}{assert\+Get\+Vec3}} (\mbox{\hyperlink{classnlohmann_1_1basic__json}{json}} \&maybe\+\_\+vector)
+\begin{DoxyCompactList}\small\item\em Funkcja pomocnicza do pobierania wektora z obiektu. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{class_savable_object_a63652c8ef98b21f8e06a6e697ac974b5}{assert\+Get\+String}} (\mbox{\hyperlink{classnlohmann_1_1basic__json}{json}} \&maybe\+\_\+string)
+\begin{DoxyCompactList}\small\item\em Funkcja pomocnicza do pobierania tekstu z obiektu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Metody chronione}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_savable_object_a270202c224b2bbd0755781ceee912f64}{accept\+State}} (\mbox{\hyperlink{classnlohmann_1_1basic__json}{json}} \&json\+\_\+obj)=0
+\begin{DoxyCompactList}\small\item\em Funkcja, która ma za zadanie przyjmować obiekt z pliku. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_savable_object_a49a5fb08a97c0a34ef6addc2c293eead}\label{class_savable_object_a49a5fb08a97c0a34ef6addc2c293eead}} 
+void {\bfseries set\+Need\+Save} (bool need\+Save)
+\item 
+\mbox{\Hypertarget{class_savable_object_ab8da37408ed34e569710818041f47f6f}\label{class_savable_object_ab8da37408ed34e569710818041f47f6f}} 
+void {\bfseries load\+Object\+From\+File} (const std\+::function$<$ void()$>$ \&on\+Failed=\mbox{[}$\,$\mbox{]}\{\})
+\item 
+\mbox{\Hypertarget{class_savable_object_a6260fe0985a6909fb80b5ec975c72609}\label{class_savable_object_a6260fe0985a6909fb80b5ec975c72609}} 
+bool {\bfseries has\+Saved\+File} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Opis szczegółowy}
+Implementacja obiektu, który ma reprezentacje w pliku. 
+
+\doxysubsection{Dokumentacja funkcji składowych}
+\mbox{\Hypertarget{class_savable_object_a270202c224b2bbd0755781ceee912f64}\label{class_savable_object_a270202c224b2bbd0755781ceee912f64}} 
+\index{SavableObject@{SavableObject}!acceptState@{acceptState}}
+\index{acceptState@{acceptState}!SavableObject@{SavableObject}}
+\doxysubsubsection{\texorpdfstring{acceptState()}{acceptState()}}
+{\footnotesize\ttfamily virtual void Savable\+Object\+::accept\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classnlohmann_1_1basic__json}{json}} \&}]{json\+\_\+obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Funkcja, która ma za zadanie przyjmować obiekt z pliku. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em json\+\_\+obj} & \\
+\hline
+\end{DoxyParams}
+
+
+Implementowany w \mbox{\hyperlink{classmap_1_1_world_a850110f9799f37f52ba53bf7953f53d3}{map\+::\+World}}, \mbox{\hyperlink{classgame_1_1_player_a342bfd05a7688e232d847daca6809e8e}{game\+::\+Player}}, \mbox{\hyperlink{classmap_1_1_chunk_generator_a12abea04baf35ba85b1661c59b4a73ce}{map\+::\+Chunk\+Generator}} i \mbox{\hyperlink{classmap_1_1_chunk_a1b923a1c482a8286ea63a11d83f7d47e}{map\+::\+Chunk}}.
+
+\mbox{\Hypertarget{class_savable_object_afc661c148a11f5179d44441b0784af92}\label{class_savable_object_afc661c148a11f5179d44441b0784af92}} 
+\index{SavableObject@{SavableObject}!assertGetNumber@{assertGetNumber}}
+\index{assertGetNumber@{assertGetNumber}!SavableObject@{SavableObject}}
+\doxysubsubsection{\texorpdfstring{assertGetNumber()}{assertGetNumber()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classnlohmann_1_1basic__json}{json}} \& Savable\+Object\+::assert\+Get\+Number (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classnlohmann_1_1basic__json}{json}} \&}]{maybe\+\_\+number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Funkcja pomocnicza do pobierania liczby z obiektu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em maybe\+\_\+number} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_savable_object_a63652c8ef98b21f8e06a6e697ac974b5}\label{class_savable_object_a63652c8ef98b21f8e06a6e697ac974b5}} 
+\index{SavableObject@{SavableObject}!assertGetString@{assertGetString}}
+\index{assertGetString@{assertGetString}!SavableObject@{SavableObject}}
+\doxysubsubsection{\texorpdfstring{assertGetString()}{assertGetString()}}
+{\footnotesize\ttfamily std\+::string Savable\+Object\+::assert\+Get\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classnlohmann_1_1basic__json}{json}} \&}]{maybe\+\_\+string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Funkcja pomocnicza do pobierania tekstu z obiektu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em maybe\+\_\+number} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_savable_object_a53f54992ae4d6510f11c6219b9bccbcc}\label{class_savable_object_a53f54992ae4d6510f11c6219b9bccbcc}} 
+\index{SavableObject@{SavableObject}!assertGetVec3@{assertGetVec3}}
+\index{assertGetVec3@{assertGetVec3}!SavableObject@{SavableObject}}
+\doxysubsubsection{\texorpdfstring{assertGetVec3()}{assertGetVec3()}}
+{\footnotesize\ttfamily glm\+::vec3 Savable\+Object\+::assert\+Get\+Vec3 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classnlohmann_1_1basic__json}{json}} \&}]{maybe\+\_\+vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Funkcja pomocnicza do pobierania wektora z obiektu. 
+
+
+\begin{DoxyParams}{Parametry}
+{\em maybe\+\_\+number} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Zwraca}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_savable_object_a50ce9166a0df0f0ab80bb4f1a15eae8b}\label{class_savable_object_a50ce9166a0df0f0ab80bb4f1a15eae8b}} 
+\index{SavableObject@{SavableObject}!toJSON@{toJSON}}
+\index{toJSON@{toJSON}!SavableObject@{SavableObject}}
+\doxysubsubsection{\texorpdfstring{toJSON()}{toJSON()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classnlohmann_1_1basic__json}{json}} Savable\+Object\+::to\+J\+S\+ON (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Generator obiektu json ze stanu obiektu. 
+
+\begin{DoxyReturn}{Zwraca}
+
+\end{DoxyReturn}
+
+
+Implementowany w \mbox{\hyperlink{classmap_1_1_world_a71756142cc723c5324a3f582912c69ff}{map\+::\+World}}, \mbox{\hyperlink{classgame_1_1_player_a67bba2188fad83777ce1f9c3a02c29fb}{game\+::\+Player}}, \mbox{\hyperlink{classmap_1_1_chunk_a7e0e7da9fc06d0a079dc7ba1e2f13fe0}{map\+::\+Chunk}} i \mbox{\hyperlink{classmap_1_1_chunk_generator_a0e633f06ad2cc9513560a82a8704a69f}{map\+::\+Chunk\+Generator}}.
+
+
+
+Dokumentacja dla tej klasy została wygenerowana z plików\+:\begin{DoxyCompactItemize}
+\item 
+src/lib/\mbox{\hyperlink{_savable_object_8h}{Savable\+Object.\+h}}\item 
+src/lib/\mbox{\hyperlink{_savable_object_8cc}{Savable\+Object.\+cc}}\end{DoxyCompactItemize}

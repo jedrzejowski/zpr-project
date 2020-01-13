@@ -10,6 +10,10 @@
 #include "src/block/Solidblock.h"
 
 namespace block {
+
+	/**
+	 * @brief Piasek, a bez fizyki
+	 */
 	class Sand : public SolidBlock {
 	protected:
 		Coord2D getTopTextureCoord() const override;

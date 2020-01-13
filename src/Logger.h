@@ -31,9 +31,12 @@
 #define TTY_COLOR_BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
 #define TTY_COLOR_BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
 
-#define logger(level) (Logger(__FILE__, __LINE__, level))
 
-
+/**
+ * @brief Klasa zajmująca się tworzeniem logów w czasie działania programu
+ *
+ * Przy używaniu loggera należy używać makra "logger(x)"
+ */
 class Logger {
 private:
 	int level;
@@ -91,3 +94,8 @@ public:
 		return msg(std::string("~") + typeid(obj).name() + "()").log(obj);
 	}
 };
+
+/**
+ * @brief Przy używaniu loggera należy używać makra
+ */
+#define logger(level) (Logger(__FILE__, __LINE__, level))

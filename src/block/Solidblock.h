@@ -11,8 +11,11 @@
 #include "src/engine/TextureReference.h"
 
 namespace block {
-	class SolidBlock : public Block {
 
+	/**
+	 * @brief Solidny blok wypełniający całość bloku
+	 */
+	class SolidBlock : public Block {
 
 	protected:
 		mutable engine::SquareTextureReference texture_top{};

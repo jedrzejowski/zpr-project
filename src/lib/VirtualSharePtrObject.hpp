@@ -10,10 +10,16 @@
 
 #include <memory>
 
+/**
+ * \cond HIDDEN_SYMBOLS
+ */
 struct VirtualEnableSharedFromThisBase :
 		std::enable_shared_from_this<VirtualEnableSharedFromThisBase> {
 	virtual ~VirtualEnableSharedFromThisBase() {}
 };
+/**
+ * \endcond
+ */
 
 /**
  * @brief Klasa do obsługi wewnętrznych wskaźników

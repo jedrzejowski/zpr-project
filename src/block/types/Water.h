@@ -10,6 +10,10 @@
 #include "src/block/Solidblock.h"
 
 namespace block {
+
+	/**
+	 * @brief Woda
+	 */
 	class Water : public SolidBlock {
 	public:
 		explicit Water()= default;

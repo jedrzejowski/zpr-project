@@ -44,7 +44,7 @@ void map::ChunkGenerator::fillChunk(ChunkPtr &chunk) {
 					y + chunk->position.y * Chunk::Size.y
 			) + waterLevel;
 
-			z = std::clamp(z, (CoordDim) 0, Chunk::Size.z - 1);
+			z = std::clamp(z, CoordDim(0), CoordDim(map::Chunk::Size.z - 1));
 
 			auto is_water_near = false;
 			for (CoordDim x2 = -sandWaterOffset; x2 < x + sandWaterOffset; x2++)

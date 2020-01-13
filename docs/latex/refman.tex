@@ -1,0 +1,563 @@
+\let\mypdfximage\pdfximage\def\pdfximage{\immediate\mypdfximage}\documentclass[twoside]{book}
+
+%% moved from doxygen.sty due to workaround for LaTex 2019 version and unmaintained tabu package
+\usepackage{ifthen}
+\ifx\requestedLaTeXdate\undefined
+\usepackage{array}
+\else
+\usepackage{array}[=2016-10-06]
+\fi
+%%
+% Packages required by doxygen
+\usepackage{fixltx2e}
+\usepackage{calc}
+\usepackage{doxygen}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{makeidx}
+\usepackage{multicol}
+\usepackage{multirow}
+\PassOptionsToPackage{warn}{textcomp}
+\usepackage{textcomp}
+\usepackage[nointegrals]{wasysym}
+\usepackage[table]{xcolor}
+\usepackage{ifpdf,ifxetex}
+
+% NLS support packages
+\usepackage[polish]{babel}
+\let\lll\undefined
+
+% Font selection
+\usepackage[T1]{fontenc}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\usepackage{amssymb}
+\usepackage{sectsty}
+\renewcommand{\familydefault}{\sfdefault}
+\allsectionsfont{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+\renewcommand{\DoxyLabelFont}{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+\newcommand{\+}{\discretionary{\mbox{\scriptsize$\hookleftarrow$}}{}{}}
+
+% Arguments of doxygenemoji:
+% 1) ':<text>:' form of the emoji, already "LaTeX"-escaped
+% 2) file with the name of the emoji without the .png extension
+% in case image exist use this otherwise use the ':<text>:' form
+\newcommand{\doxygenemoji}[2]{%
+  \IfFileExists{./#2.png}{\raisebox{-0.1em}{\includegraphics[height=0.9em]{./#2.png}}}{#1}%
+}
+% Page & text layout
+\usepackage{geometry}
+\geometry{%
+  a4paper,%
+  top=2.5cm,%
+  bottom=2.5cm,%
+  left=2.5cm,%
+  right=2.5cm%
+}
+\tolerance=750
+\hfuzz=15pt
+\hbadness=750
+\setlength{\emergencystretch}{15pt}
+\setlength{\parindent}{0cm}
+\newcommand{\doxynormalparskip}{\setlength{\parskip}{3ex plus 2ex minus 2ex}}
+\newcommand{\doxytocparskip}{\setlength{\parskip}{1ex plus 0ex minus 0ex}}
+\doxynormalparskip
+\makeatletter
+\renewcommand{\paragraph}{%
+  \@startsection{paragraph}{4}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@parafont%
+  }%
+}
+\renewcommand{\subparagraph}{%
+  \@startsection{subparagraph}{5}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@subparafont%
+  }%
+}
+\makeatother
+
+\makeatletter
+\newcommand\hrulefilll{\leavevmode\leaders\hrule\hskip 0pt plus 1filll\kern\z@}
+\makeatother
+
+% Headers & footers
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead[LE]{\fancyplain{}{\bfseries\thepage}}
+\fancyhead[CE]{\fancyplain{}{}}
+\fancyhead[RE]{\fancyplain{}{\bfseries\leftmark}}
+\fancyhead[LO]{\fancyplain{}{\bfseries\rightmark}}
+\fancyhead[CO]{\fancyplain{}{}}
+\fancyhead[RO]{\fancyplain{}{\bfseries\thepage}}
+\fancyfoot[LE]{\fancyplain{}{}}
+\fancyfoot[CE]{\fancyplain{}{}}
+\fancyfoot[RE]{\fancyplain{}{\bfseries\scriptsize Wygenerowano przez Doxygen }}
+\fancyfoot[LO]{\fancyplain{}{\bfseries\scriptsize Wygenerowano przez Doxygen }}
+\fancyfoot[CO]{\fancyplain{}{}}
+\fancyfoot[RO]{\fancyplain{}{}}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\chaptermark}[1]{%
+  \markboth{#1}{}%
+}
+\renewcommand{\sectionmark}[1]{%
+  \markright{\thesection\ #1}%
+}
+
+% Indices & bibliography
+\usepackage{natbib}
+\usepackage[titles]{tocloft}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{5}
+\makeindex
+
+\usepackage{newunicodechar}
+  \newunicodechar{⁻}{${}^{-}$}% Superscript minus
+  \newunicodechar{²}{${}^{2}$}% Superscript two
+  \newunicodechar{³}{${}^{3}$}% Superscript three
+
+% Hyperlinks (required, but should be loaded last)
+\ifpdf
+  \usepackage[pdftex,pagebackref=true]{hyperref}
+\else
+  \ifxetex
+    \usepackage[pagebackref=true]{hyperref}
+  \else
+    \usepackage[ps2pdf,pagebackref=true]{hyperref}
+  \fi
+\fi
+
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  unicode%
+}
+
+% Custom commands
+\newcommand{\clearemptydoublepage}{%
+  \newpage{\pagestyle{empty}\cleardoublepage}%
+}
+
+\usepackage{caption}
+\captionsetup{labelsep=space,justification=centering,font={bf},singlelinecheck=off,skip=4pt,position=top}
+
+\usepackage{etoc}
+\etocsettocstyle{\doxytocparskip}{\doxynormalparskip}
+\renewcommand{\numberline}[1]{#1~}
+%===== C O N T E N T S =====
+
+\begin{document}
+
+% Titlepage & ToC
+\hypersetup{pageanchor=false,
+             bookmarksnumbered=true,
+             pdfencoding=unicode
+            }
+\pagenumbering{alph}
+\begin{titlepage}
+\vspace*{7cm}
+\begin{center}%
+{\Large Zpr\+Craft \\[1ex]\large 1.\+0.\+0 }\\
+\vspace*{1cm}
+{\large Wygenerowano przez Doxygen 1.8.17}\\
+\end{center}
+\end{titlepage}
+\clearemptydoublepage
+\pagenumbering{roman}
+\tableofcontents
+\clearemptydoublepage
+\pagenumbering{arabic}
+\hypersetup{pageanchor=true}
+
+%--- Begin generated contents ---
+\chapter{Zpr\+Craft -\/ projekt na przedmiot Z\+PR}
+\label{index}\hypertarget{index}{}\input{index}
+\chapter{Lista elementów do wycofania}
+\label{deprecated}
+\Hypertarget{deprecated}
+\input{deprecated}
+\chapter{Indeks przestrzeni nazw}
+\input{namespaces}
+\chapter{Indeks hierarchiczny}
+\input{hierarchy}
+\chapter{Indeks klas}
+\input{annotated}
+\chapter{Indeks plików}
+\input{files}
+\chapter{Dokumentacja przestrzeni nazw}
+\input{namespaceblock}
+\input{namespaceengine}
+\input{namespacegui}
+\input{namespacemap}
+\input{namespacenlohmann}
+\input{namespacenlohmann_1_1detail}
+\input{namespacenlohmann_1_1detail_1_1dtoa__impl}
+\chapter{Dokumentacja klas}
+\input{classengine_1_1_abs3_d_obj}
+\input{structnlohmann_1_1adl__serializer}
+\input{class_app_settings}
+\input{class_back_worker_queue}
+\input{classnlohmann_1_1basic__json}
+\input{classnlohmann_1_1detail_1_1binary__reader}
+\input{classnlohmann_1_1detail_1_1binary__writer}
+\input{classblock_1_1_block}
+\input{structnlohmann_1_1detail_1_1dtoa__impl_1_1boundaries}
+\input{classblock_1_1_brick}
+\input{classgui_1_1_button}
+\input{structnlohmann_1_1detail_1_1dtoa__impl_1_1cached__power}
+\input{classengine_1_1_camera}
+\input{classmap_1_1_chunk}
+\input{classmap_1_1_chunk_generator}
+\input{classmap_1_1_chunk_loader}
+\input{classmap_1_1_chunk_renderer}
+\input{classblock_1_1_cobblestone}
+\input{structengine_1_1_color}
+\input{structnlohmann_1_1detail_1_1conjunction}
+\input{structnlohmann_1_1detail_1_1conjunction_3_01_b1_01_4}
+\input{structnlohmann_1_1detail_1_1conjunction_3_01_b1_00_01_bn_8_8_8_01_4}
+\input{struct_coord2_d}
+\input{struct_coord3_d}
+\input{structnlohmann_1_1detail_1_1detector}
+\input{structnlohmann_1_1detail_1_1detector_3_01_default_00_01void__t_3_01_op_3_01_args_8_8_8_01_4_01_4_00_01_op_00_01_args_8_8_8_01_4}
+\input{classblock_1_1_dirt}
+\input{structnlohmann_1_1detail_1_1dtoa__impl_1_1diyfp}
+\input{structengine_1_1_ebo_triangle}
+\input{classnlohmann_1_1detail_1_1exception}
+\input{structnlohmann_1_1detail_1_1external__constructor}
+\input{structnlohmann_1_1detail_1_1external__constructor_3_01value__t_1_1array_01_4}
+\input{structnlohmann_1_1detail_1_1external__constructor_3_01value__t_1_1boolean_01_4}
+\input{structnlohmann_1_1detail_1_1external__constructor_3_01value__t_1_1number__float_01_4}
+\input{structnlohmann_1_1detail_1_1external__constructor_3_01value__t_1_1number__integer_01_4}
+\input{structnlohmann_1_1detail_1_1external__constructor_3_01value__t_1_1number__unsigned_01_4}
+\input{structnlohmann_1_1detail_1_1external__constructor_3_01value__t_1_1object_01_4}
+\input{structnlohmann_1_1detail_1_1external__constructor_3_01value__t_1_1string_01_4}
+\input{classblock_1_1_factory}
+\input{classnlohmann_1_1detail_1_1file__input__adapter}
+\input{class_file_input_exception}
+\input{class_file_output_exception}
+\input{classengine_1_1_fps_counter}
+\input{structnlohmann_1_1detail_1_1from__json__fn}
+\input{classblock_1_1_full_position}
+\input{classgame_1_1_game_scene}
+\input{classblock_1_1_grass}
+\input{classgui_1_1_gui_object}
+\input{structnlohmann_1_1detail_1_1has__from__json}
+\input{structnlohmann_1_1detail_1_1has__from__json_3_01_basic_json_type_00_01_t_00_01enable__if__t_3_01e29213c543deddccc314d19cbaf9f3b4}
+\input{structnlohmann_1_1detail_1_1has__non__default__from__json}
+\input{structnlohmann_1_1detail_1_1has__non__default__from__json_3_01_basic_json_type_00_01_t_00_01enab81bd4c814ac1146ff15f3f4636933207}
+\input{structnlohmann_1_1detail_1_1has__to__json}
+\input{structnlohmann_1_1detail_1_1has__to__json_3_01_basic_json_type_00_01_t_00_01enable__if__t_3_01nob111e71d40e2273c290d1ce5c6a3b84f}
+\input{structstd_1_1hash_3_01nlohmann_1_1json_01_4}
+\input{structnlohmann_1_1detail_1_1index__sequence}
+\input{classgame_1_1_in_game_menu}
+\input{classnlohmann_1_1detail_1_1input__adapter}
+\input{structnlohmann_1_1detail_1_1input__adapter__protocol}
+\input{classnlohmann_1_1detail_1_1input__buffer__adapter}
+\input{classnlohmann_1_1detail_1_1input__stream__adapter}
+\input{classengine_1_1_input_button}
+\input{classengine_1_1_input_device}
+\input{classengine_1_1_input_interface}
+\input{classgui_1_1_interface}
+\input{classgui_1_1_interface_shader}
+\input{structnlohmann_1_1detail_1_1internal__iterator}
+\input{classnlohmann_1_1detail_1_1invalid__iterator}
+\input{structnlohmann_1_1detail_1_1is__basic__json}
+\input{structnlohmann_1_1detail_1_1is__basic__json_3_01_n_l_o_h_m_a_n_n___b_a_s_i_c___j_s_o_n___t_p_l_01_4}
+\input{structnlohmann_1_1detail_1_1is__compatible__array__type}
+\input{structnlohmann_1_1detail_1_1is__compatible__array__type__impl}
+\input{structnlohmann_1_1detail_1_1is__compatible__array__type__impl_3_01_basic_json_type_00_01_compati04c4671a9fa75002365be1949a74f972}
+\input{structnlohmann_1_1detail_1_1is__compatible__integer__type}
+\input{structnlohmann_1_1detail_1_1is__compatible__integer__type__impl}
+\input{structnlohmann_1_1detail_1_1is__compatible__integer__type__impl_3_01_real_integer_type_00_01_com5aa74bcf254245a639da00509f4d2655}
+\input{structnlohmann_1_1detail_1_1is__compatible__object__type}
+\input{structnlohmann_1_1detail_1_1is__compatible__object__type__impl}
+\input{structnlohmann_1_1detail_1_1is__compatible__object__type__impl_3_01_basic_json_type_00_01_compatfbe9a153c4ecce445c98bbdd2d65f605}
+\input{structnlohmann_1_1detail_1_1is__compatible__string__type}
+\input{structnlohmann_1_1detail_1_1is__compatible__string__type__impl}
+\input{structnlohmann_1_1detail_1_1is__compatible__string__type__impl_3_01_basic_json_type_00_01_compat6590904cab40fc73f430e4c7518179a2}
+\input{structnlohmann_1_1detail_1_1is__compatible__type}
+\input{structnlohmann_1_1detail_1_1is__compatible__type__impl}
+\input{structnlohmann_1_1detail_1_1is__compatible__type__impl_3_01_basic_json_type_00_01_compatible_typ632bee7ec037fc0233f1bbe9dd7d8874}
+\input{structnlohmann_1_1detail_1_1is__complete__type}
+\input{structnlohmann_1_1detail_1_1is__complete__type_3_01_t_00_01decltype_07void_07sizeof_07_t_08_08_08_4}
+\input{structnlohmann_1_1detail_1_1is__constructible__array__type}
+\input{structnlohmann_1_1detail_1_1is__constructible__array__type__impl}
+\input{structnlohmann_1_1detail_1_1is__constructible__array__type__impl_3_01_basic_json_type_00_01_cons437c79c936c626a4ffcf289ee9218c26}
+\input{structnlohmann_1_1detail_1_1is__constructible__array__type__impl_3_01_basic_json_type_00_01_cons8cf88e17d5eaa68665a8fb4b97604b0e}
+\input{structnlohmann_1_1detail_1_1is__constructible__object__type}
+\input{structnlohmann_1_1detail_1_1is__constructible__object__type__impl}
+\input{structnlohmann_1_1detail_1_1is__constructible__object__type__impl_3_01_basic_json_type_00_01_con6e3270de8050717120afcafe87648413}
+\input{structnlohmann_1_1detail_1_1is__constructible__string__type}
+\input{structnlohmann_1_1detail_1_1is__constructible__string__type__impl}
+\input{structnlohmann_1_1detail_1_1is__constructible__string__type__impl_3_01_basic_json_type_00_01_con83e8ebfe9593f851a60fdb8360df1512}
+\input{structnlohmann_1_1detail_1_1is__constructible__tuple}
+\input{structnlohmann_1_1detail_1_1is__constructible__tuple_3_01_t1_00_01std_1_1tuple_3_01_args_8_8_8_01_4_01_4}
+\input{structnlohmann_1_1detail_1_1is__iterator__traits}
+\input{structnlohmann_1_1detail_1_1is__iterator__traits_3_01iterator__traits_3_01_t_01_4_01_4}
+\input{structnlohmann_1_1detail_1_1is__sax}
+\input{structnlohmann_1_1detail_1_1is__sax__static__asserts}
+\input{classnlohmann_1_1detail_1_1iter__impl}
+\input{classnlohmann_1_1detail_1_1iteration__proxy}
+\input{classnlohmann_1_1detail_1_1iteration__proxy__value}
+\input{structnlohmann_1_1detail_1_1iterator__traits}
+\input{structnlohmann_1_1detail_1_1iterator__traits_3_01_t_01_5_00_01enable__if__t_3_01std_1_1is__objec8d960665487688165530972cda4f1bea}
+\input{structnlohmann_1_1detail_1_1iterator__traits_3_01_t_00_01enable__if__t_3_01_9std_1_1is__pointer_3_01_t_01_4_1_1value_01_4_01_4}
+\input{structnlohmann_1_1detail_1_1iterator__types}
+\input{structnlohmann_1_1detail_1_1iterator__types_3_01_it_00_01void__t_3_01typename_01_it_1_1differenc4a413e9bd546446175f10f15c5631361}
+\input{classnlohmann_1_1json__pointer}
+\input{classnlohmann_1_1detail_1_1json__ref}
+\input{classnlohmann_1_1detail_1_1json__reverse__iterator}
+\input{structnlohmann_1_1json__sax}
+\input{classnlohmann_1_1detail_1_1json__sax__acceptor}
+\input{classnlohmann_1_1detail_1_1json__sax__dom__callback__parser}
+\input{classnlohmann_1_1detail_1_1json__sax__dom__parser}
+\input{classengine_1_1_keyboard}
+\input{classengine_1_1_keyboard_btn}
+\input{structstd_1_1less_3_1_1nlohmann_1_1detail_1_1value__t_01_4}
+\input{classnlohmann_1_1detail_1_1lexer}
+\input{classengine_1_1_light}
+\input{class_live_data}
+\input{classblock_1_1_log}
+\input{class_logger}
+\input{classgame_1_1_main_game}
+\input{class_main_window}
+\input{structnlohmann_1_1detail_1_1make__index__sequence}
+\input{structnlohmann_1_1detail_1_1make__index__sequence_3_010_01_4}
+\input{structnlohmann_1_1detail_1_1make__index__sequence_3_011_01_4}
+\input{structnlohmann_1_1detail_1_1make__void}
+\input{structnlohmann_1_1detail_1_1merge__and__renumber}
+\input{structnlohmann_1_1detail_1_1merge__and__renumber_3_01index__sequence_3_01_i1_8_8_8_01_4_00_01indf5ec8c9c7b5107e4b381e3ca4c1be2ca}
+\input{classengine_1_1_mouse}
+\input{classengine_1_1_mouse_btn}
+\input{structnlohmann_1_1detail_1_1nonesuch}
+\input{structengine_1_1_normal}
+\input{class_object}
+\input{classnlohmann_1_1detail_1_1other__error}
+\input{classnlohmann_1_1detail_1_1out__of__range}
+\input{classnlohmann_1_1detail_1_1output__adapter}
+\input{structnlohmann_1_1detail_1_1output__adapter__protocol}
+\input{classnlohmann_1_1detail_1_1output__stream__adapter}
+\input{classnlohmann_1_1detail_1_1output__string__adapter}
+\input{classnlohmann_1_1detail_1_1output__vector__adapter}
+\input{classnlohmann_1_1detail_1_1parse__error}
+\input{classnlohmann_1_1detail_1_1parser}
+\input{class_perlin_noise}
+\input{classgame_1_1_player}
+\input{classgame_1_1_player_interface}
+\input{classgame_1_1_player_item}
+\input{classgame_1_1_player_solid_block_item}
+\input{structengine_1_1_point3_d}
+\input{structengine_1_1_point3_de_x}
+\input{structnlohmann_1_1detail_1_1position__t}
+\input{classnlohmann_1_1detail_1_1primitive__iterator__t}
+\input{structnlohmann_1_1detail_1_1priority__tag}
+\input{structnlohmann_1_1detail_1_1priority__tag_3_010_01_4}
+\input{classgui_1_1_rectangle_obj}
+\input{classengine_1_1_resources}
+\input{classblock_1_1_sand}
+\input{class_savable_object}
+\input{classengine_1_1_scene}
+\input{classnlohmann_1_1detail_1_1serializer}
+\input{classmenu_1_1_settings_scene}
+\input{classengine_1_1_shader}
+\input{classengine_1_1_shader_program}
+\input{class_signal}
+\input{classblock_1_1_solid_block}
+\input{classglm_1_1_square}
+\input{structengine_1_1_square_texture_reference}
+\input{structnlohmann_1_1detail_1_1static__const}
+\input{structstbi__io__callbacks}
+\input{classblock_1_1_stone}
+\input{classengine_1_1_sub3_d_obj}
+\input{structengine_1_1_tex_coord}
+\input{classgui_1_1_text}
+\input{classengine_1_1_texture}
+\input{structnlohmann_1_1detail_1_1to__json__fn}
+\input{structglm_1_1_triangle}
+\input{classgui_1_1_tri_button}
+\input{classstd_1_1tuple__element_3_01_n_00_01_1_1nlohmann_1_1detail_1_1iteration__proxy__value_3_01_iterator_type_01_4_01_4}
+\input{classstd_1_1tuple__size_3_1_1nlohmann_1_1detail_1_1iteration__proxy__value_3_01_iterator_type_01_4_01_4}
+\input{classnlohmann_1_1detail_1_1type__error}
+\input{struct_virtual_share_ptr_object}
+\input{classblock_1_1_water}
+\input{classmenu_1_1_welcome_scene}
+\input{classnlohmann_1_1detail_1_1wide__string__input__adapter}
+\input{structnlohmann_1_1detail_1_1wide__string__input__helper}
+\input{structnlohmann_1_1detail_1_1wide__string__input__helper_3_01_wide_string_type_00_012_01_4}
+\input{classengine_1_1_window}
+\input{classblock_1_1_wood}
+\input{classmap_1_1_world}
+\input{classmap_1_1_world_manager}
+\input{classmap_1_1_world_renderer}
+\input{classmap_1_1_world_shader}
+\input{classmenu_1_1_worlds_scene}
+\input{class_wrong_json_exception}
+\input{class_zpr_exception}
+\chapter{Dokumentacja plików}
+\input{__classdef_8h}
+\input{_block_8cc}
+\input{_block_8h}
+\input{_blocks_8h}
+\input{_factory_8cc}
+\input{_factory_8h}
+\input{_factory_8test_8cc}
+\input{_full_position_8cc}
+\input{_full_position_8h}
+\input{_full_position_8test_8cc}
+\input{_solidblock_8cc}
+\input{_solidblock_8h}
+\input{type__ids_8h}
+\input{_brick_8cc}
+\input{_brick_8h}
+\input{_cobblestone_8cc}
+\input{_cobblestone_8h}
+\input{_dirt_8cc}
+\input{_dirt_8h}
+\input{_grass_8cc}
+\input{_grass_8h}
+\input{_log_8h}
+\input{_stone_8cc}
+\input{_stone_8h}
+\input{_water_8cc}
+\input{_water_8h}
+\input{_wood_8cc}
+\input{_wood_8h}
+\input{_wall_8cc}
+\input{_wall_8h}
+\input{_abs3_dobj_8cc}
+\input{_abs3_dobj_8h}
+\input{_camera_8cc}
+\input{_camera_8h}
+\input{_engine_8h}
+\input{_fps_counter_8cc}
+\input{_fps_counter_8h}
+\input{_input_button_8cc}
+\input{_input_button_8h}
+\input{_input_device_8cc}
+\input{_input_device_8h}
+\input{_input_interface_8cc}
+\input{_input_interface_8h}
+\input{_keyboard_8cc}
+\input{_keyboard_8h}
+\input{_light_8cc}
+\input{_light_8h}
+\input{_mouse_8cc}
+\input{_mouse_8h}
+\input{_point_8cc}
+\input{_point_8hpp}
+\input{_resources_8cc}
+\input{_resources_8h}
+\input{_scene_8cc}
+\input{_scene_8h}
+\input{_shader_8cc}
+\input{_shader_8h}
+\input{_shader_program_8cc}
+\input{_shader_program_8h}
+\input{_sub3_d_obj_8cc}
+\input{_sub3_d_obj_8h}
+\input{_sub3_d_obj_8test_8cc}
+\input{_texture_8cc}
+\input{_texture_8h}
+\input{_texture_reference_8cc}
+\input{_texture_reference_8h}
+\input{_window_8cc}
+\input{_window_8h}
+\input{_exception_8hpp}
+\input{_game_8h}
+\input{_game_scene_8cc}
+\input{_game_scene_8h}
+\input{_in_game_menu_8cc}
+\input{_in_game_menu_8h}
+\input{_main_game_8cc}
+\input{_main_game_8h}
+\input{_player_8cc}
+\input{_player_8h}
+\input{_player_interface_8cc}
+\input{_player_interface_8h}
+\input{_player_item_8cc}
+\input{_player_item_8h}
+\input{_button_8cc}
+\input{_button_8h}
+\input{_g_u_i_8h}
+\input{_gui_object_8cc}
+\input{_gui_object_8h}
+\input{_interface_8cc}
+\input{_interface_8h}
+\input{_interface_shader_8cc}
+\input{_interface_shader_8h}
+\input{_rectangle_obj_8cc}
+\input{_rectangle_obj_8h}
+\input{_text_8cc}
+\input{_text_8h}
+\input{_tri_button_8cc}
+\input{_tri_button_8h}
+\input{_app_settings_8cc}
+\input{_app_settings_8h}
+\input{_back_worker_queue_8cc}
+\input{_back_worker_queue_8h}
+\input{_back_worker_queue_8test_8cc}
+\input{cfgpath_8h}
+\input{_coord_8hpp}
+\input{_coord_8test_8cc}
+\input{glm_ex_8h}
+\input{_live_data_8hpp}
+\input{_live_data_8test_8cc}
+\input{_object_8cc}
+\input{_object_8hpp}
+\input{_perlin_noise_8cc}
+\input{_perlin_noise_8h}
+\input{_savable_object_8cc}
+\input{_savable_object_8h}
+\input{_savable_object_8test_8cc}
+\input{_signal_8hpp}
+\input{_signal_8test_8cc}
+\input{_virtual_share_ptr_object_8hpp}
+\input{_logger_8cc}
+\input{_logger_8h}
+\input{main_8cpp}
+\input{main_8test_8cpp}
+\input{_main_window_8cc}
+\input{_main_window_8h}
+\input{_chunk_8cc}
+\input{_chunk_8h}
+\input{_chunk_generator_8cc}
+\input{_chunk_generator_8h}
+\input{_chunk_loader_8cc}
+\input{_chunk_loader_8h}
+\input{_chunk_renderer_8cc}
+\input{_chunk_renderer_8h}
+\input{_map_8h}
+\input{_world_8cc}
+\input{_world_8h}
+\input{_world_manager_8cc}
+\input{_world_manager_8h}
+\input{_world_renderer_8cc}
+\input{_world_renderer_8h}
+\input{_world_shader_8cc}
+\input{_world_shader_8h}
+\input{_menu_8h}
+\input{_settings_scene_8cc}
+\input{_settings_scene_8h}
+\input{_welcome_scene_8cc}
+\input{_welcome_scene_8h}
+\input{_worlds_scene_8cc}
+\input{_worlds_scene_8h}
+\input{_open_g_l_8h}
+\input{_vars_8cc}
+\input{_vars_8h}
+%--- End generated contents ---
+
+% Index
+\backmatter
+\newpage
+\phantomsection
+\clearemptydoublepage
+\addcontentsline{toc}{chapter}{\indexname}
+\printindex
+
+\end{document}

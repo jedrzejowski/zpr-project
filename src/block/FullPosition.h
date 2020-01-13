@@ -10,6 +10,14 @@
 #include "src/lib/Coord.hpp"
 
 namespace block {
+
+	/**
+	 * @brief Implementacja Pełnej pozycji bloku
+	 *
+	 * Bloki nie posiadają jednej współrzędnej, posiadają współrzędna chunk'a i współrzędną w chunk'u.
+	 * Dzięki temu mapa ma wielkość (2^(C+4))x(2^(C+4)), gdzie C to ilość bitów CoordDim
+	 *
+	 */
 	class FullPosition {
 		Coord2D chunk;
 		Coord3D block;

@@ -10,6 +10,10 @@
 #include "src/block/Solidblock.h"
 
 namespace block {
+
+	/**
+	 * @brief Ziemia(gleba) z trawą na górze
+	 */
 	class Grass : public SolidBlock {
 	protected:
 		Coord2D getTopTextureCoord() const override;

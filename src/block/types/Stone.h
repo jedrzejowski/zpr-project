@@ -10,6 +10,10 @@
 #include "src/block/Solidblock.h"
 
 namespace block {
+
+	/**
+	 * @brief Kamień
+	 */
 	class Stone : public SolidBlock {
 	protected:
 		Coord2D getTopTextureCoord() const override;

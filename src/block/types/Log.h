@@ -10,6 +10,10 @@
 #include "src/block/Solidblock.h"
 
 namespace block {
+
+	/**
+	 * @brief Kłoda
+	 */
 	class Log : public SolidBlock {
 	public:
 		explicit Log()= default;

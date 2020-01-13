@@ -4,8 +4,8 @@ Gra jest wynikiem projektu na przedmiot ZPR
 
 ## Podgląd gry
 
-![](res/preview1.png)
-![](res/preview2.png)
+![](./res/preview1.png)
+![](./res/preview2.png)
 
 ## Budowanie
 

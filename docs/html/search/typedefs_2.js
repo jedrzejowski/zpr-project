@@ -1,8 +1,0 @@
-var searchData=
-[
-  ['const_5fiterator_1199',['const_iterator',['../classnlohmann_1_1basic__json.html#a7a09a580613f00c73015c19e5e7c44ba',1,'nlohmann::basic_json']]],
-  ['const_5fpointer_1200',['const_pointer',['../classnlohmann_1_1basic__json.html#a2c77adc1436dd4c62960d2679e4befee',1,'nlohmann::basic_json']]],
-  ['const_5freference_1201',['const_reference',['../classnlohmann_1_1basic__json.html#ae83ab5539e404c901ab216aafc9dc6d9',1,'nlohmann::basic_json']]],
-  ['const_5freverse_5fiterator_1202',['const_reverse_iterator',['../classnlohmann_1_1basic__json.html#a59564ce7bf7dad8be7d4d8184be05d91',1,'nlohmann::basic_json']]],
-  ['coorddim_1203',['CoordDim',['../_coord_8hpp.html#aee68c378b4f5efe1f90f5e02456e9b11',1,'Coord.hpp']]]
-];

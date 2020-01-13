@@ -43,6 +43,6 @@ namespace engine {
 		const Signal<> onRelease;
 		const Signal<> onReleased;
 
-		const int getBtnCode() const;
+		const int& getBtnCode() const;
 	};
 }

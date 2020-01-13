@@ -9,7 +9,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-BOOST_AUTO_TEST_CASE(BackWorkerQueue_1) {
+BOOST_AUTO_TEST_CASE(test_BackWorkerQueue_1) {
 
 	std::mutex mutex;
 	int counter = 0;

@@ -1,5 +1,5 @@
 /**
- * @file Object.hpp
+ * @file Signal.hpp
  *
  * @author Adam Jędrzejowski <adam@jedrzejowski.pl>
  */

@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include "json.hpp"
 #include "AppSettings.h"
 #include "src/OpenGL.h"
@@ -27,7 +27,7 @@ protected:
 
 
 public:
-	[[nodiscard]] virtual boost::filesystem::path getSavePath(AppSettings &app_settings = AppSettings::get()) const = 0;
+	[[nodiscard]] virtual std::filesystem::path getSavePath(AppSettings &app_settings = AppSettings::get()) const = 0;
 	[[nodiscard]] virtual json toJSON() const = 0;
 
 	void saveObjectToFile();

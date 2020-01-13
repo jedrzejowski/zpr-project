@@ -8,7 +8,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-BOOST_AUTO_TEST_CASE(block_FullPosition_getNeighbor) {
+BOOST_AUTO_TEST_CASE(test_block_FullPosition_getNeighbor) {
 
 	auto pos1 = block::FullPosition(
 			Coord2D(7, 6),

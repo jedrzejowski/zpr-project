@@ -17,7 +17,7 @@ namespace engine {
 		glm::vec3 front;
 		glm::vec3 up;
 
-		glm::mat4 getMatrix() const {
+		[[nodiscard]] glm::mat4 getMatrix() const {
 			return glm::lookAt(position, position + front, up);
 		}
 	};

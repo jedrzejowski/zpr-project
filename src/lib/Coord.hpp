@@ -10,6 +10,8 @@
 #include "src/OpenGL.h"
 #include "json.hpp"
 
+using json = nlohmann::json;
+
 typedef int64_t CoordDim;
 
 inline std::string coordDim2string(CoordDim dim) {
@@ -33,7 +35,7 @@ struct Coord3D {
 		return z < sec.z;
 	}
 
-	json toJSON() const {
+	[[nodiscard]] json toJSON() const {
 		json j;
 		j["x"] = x;
 		j["y"] = y;
@@ -41,7 +43,7 @@ struct Coord3D {
 		return j;
 	}
 
-	std::string toStringId() const {
+	[[nodiscard]] std::string toStringId() const {
 		return coordDim2string(x) + "_" + coordDim2string(y) + "_" + coordDim2string(z);
 	}
 };
@@ -59,14 +61,14 @@ struct Coord2D {
 		return y < sec.y;
 	}
 
-	json toJSON() const {
+	[[nodiscard]] json toJSON() const {
 		json j;
 		j["x"] = x;
 		j["y"] = y;
 		return j;
 	}
 
-	std::string toStringId() const {
+	[[nodiscard]] std::string toStringId() const {
 		return coordDim2string(x) + "_" + coordDim2string(y);
 	}
 };

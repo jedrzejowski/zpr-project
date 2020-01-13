@@ -8,7 +8,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-BOOST_AUTO_TEST_CASE(engine_Sub3DObj_parenting) {
+BOOST_AUTO_TEST_CASE(test_engine_Sub3DObj_parenting) {
 
 	struct Sub3DObj2 : engine::Sub3DObj {
 		explicit Sub3DObj2(engine::Sub3DObjPtr parent) : Sub3DObj(parent) {}

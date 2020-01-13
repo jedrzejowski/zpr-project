@@ -37,6 +37,6 @@ void engine::InputButton::initState(GLFWwindow *window) {
 	current_state = last_state = glfwGetKey(window, btnCode);
 }
 
-const int engine::InputButton::getBtnCode() const {
+const int& engine::InputButton::getBtnCode() const {
 	return btnCode;
 }

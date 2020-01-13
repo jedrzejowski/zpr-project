@@ -17,14 +17,19 @@ private:
 public:
 	LiveData(T new_obj) : data_obj(new_obj) {}
 
-	void set(T &new_obj) const {
-		std::lock_guard<std::mutex> lock(mutex);
+	LiveData(const LiveData &) = delete;
+	void operator=(const Object &) = delete;
+	LiveData(const LiveData &&) = delete;
+	void operator=(const LiveData &&) = delete;
 
-		auto old_obj = data_obj;
-		data_obj = new_obj;
-
-		onChange(old_obj, new_obj);
-	}
+//	void set(T &new_obj) const {
+//		std::lock_guard<std::mutex> lock(mutex);
+//
+//		auto old_obj = data_obj;
+//		data_obj = new_obj;
+//
+//		onChange(old_obj, new_obj);
+//	}
 
 	void set(T new_obj) const {
 		std::lock_guard<std::mutex> lock(mutex);
@@ -39,5 +44,5 @@ public:
 		return data_obj;
 	}
 
-	const Signal<T &, T &> onChange;
+	const Signal<const T &, const T &> onChange;
 };

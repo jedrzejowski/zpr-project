@@ -6,6 +6,7 @@
 
 #include "WorldManager.h"
 
+#include <boost/filesystem/operations.hpp>
 #include <boost/test/unit_test.hpp>
 
 const char *TEST1_CN = "test1";

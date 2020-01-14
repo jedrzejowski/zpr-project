@@ -9,7 +9,7 @@
 #include <map>
 #include "boost/filesystem/path.hpp"
 #include "src/_classdef.h"
-#include "src/lib/Object.hpp"
+#include "src/lib/Object.h"
 #include "src/lib/Signal.hpp"
 #include "src/lib/SavableObject.h"
 #include "ChunkGenerator.h"

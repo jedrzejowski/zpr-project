@@ -35,7 +35,7 @@ public:
 	[[nodiscard]] std::filesystem::path getCfgDir();
 
 	[[nodiscard]] json loadJSON(std::filesystem::path path);
-	void saveJSON(std::filesystem::path path, json content);
+	void saveJSON(std::filesystem::path path, const json& content);
 
 	//region SavableObject
 	//endregion

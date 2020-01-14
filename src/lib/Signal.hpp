@@ -11,13 +11,17 @@
 #include <map>
 
 #include "src/_classdef.h"
-#include "Object.hpp"
+#include "Object.h"
 
 /**
  * @brief Implementacja obsługi sygnałów z argumentami takimi jak w QT
  *
  * Implementuje rozchodzenie się informacji o zdarzeniach, które nastąpiło w obiekcie.
- * Do tworzenia funkcji używa wyrażeń lambda
+ * Do tworzenia funkcji używa wyrażeń lambda.
+ * W klasie jest pewien problem, obiekty należy tworzyć jako const aby nie można było ich nadpisać. Ale wtedy connect i
+ * emit muszą być const aby dało się je wywołać, daje to możliwość wywołania sygnału z poza obiektu, co stanowi pewien
+ * problem bezpieczeństwa, można by to rozwiązać tworząc rozbudowane makro, ale tego chcieliśmy uniknąć.
+ * UWAGA: Sygnały nie są bezieczne w systuacjach wielowątkowych.
  *
  * @see https://doc.qt.io/qt-5/signalsandslots.html
  * @tparam Args lista argumentów przesyłanych za pomocą sygnału

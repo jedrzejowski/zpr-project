@@ -283,6 +283,9 @@ namespace game {
 	typedef std::weak_ptr<PlayerSolidBlockItem> PlayerBlockItemWPtr;
 }
 
+/**
+ * @brief Namespace dla reszty scen gry
+ */
 namespace menu {
 	class WelcomeScene;
 
@@ -292,7 +295,7 @@ namespace menu {
 	class SettingsScene;
 
 	typedef std::shared_ptr<SettingsScene> SettingsScenePtr;
-	typedef std::weak_ptr<SettingsScene> CSettingsSceneWPtr;
+	typedef std::weak_ptr<SettingsScene> SettingsSceneWPtr;
 
 	class WorldsScene;
 

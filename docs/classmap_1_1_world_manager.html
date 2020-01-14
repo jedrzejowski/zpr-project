@@ -74,6 +74,11 @@ $(function() {
 <div class="title">Dokumentacja klasy map::WorldManager</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Manager chunk'ów.  
+ <a href="classmap_1_1_world_manager.html#details">Więcej...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_world_manager_8h_source.html">WorldManager.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Metody publiczne</h2></td></tr>
@@ -92,6 +97,9 @@ WorldPtr&#160;</td><td class="memItemRight" valign="bottom"><b>clearWorld</b> (c
 <tr class="memitem:a89be5f6d415ad5379eb1160ca531d9a2"><td class="memItemLeft" align="right" valign="top"><a id="a89be5f6d415ad5379eb1160ca531d9a2"></a>
 const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getAllCodeNames</b> () const</td></tr>
 <tr class="separator:a89be5f6d415ad5379eb1160ca531d9a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36375e13a7c3009bd5aa27a38bcac2ad"><td class="memItemLeft" align="right" valign="top"><a id="a36375e13a7c3009bd5aa27a38bcac2ad"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>exists</b> (const std::string &amp;code_name)</td></tr>
+<tr class="separator:a36375e13a7c3009bd5aa27a38bcac2ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Statyczne metody publiczne</h2></td></tr>
@@ -102,7 +110,10 @@ static <a class="el" href="classmap_1_1_world_manager.html">WorldManager</a> &am
 static std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>getWorldsDirectory</b> ()</td></tr>
 <tr class="separator:ae274fc07aff0209601eaa49fcd261ada"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Manager chunk'ów. </p>
+<p>Nie jest dobrym, aby powstało wiele obiektów <a class="el" href="classmap_1_1_world.html" title="Świat gry.">World</a> do tego samego świata, z uwagi na to, że te obiekty posiadają reprezentacje w plikach, więc utworzenie ich miało by fatalne skutki, dlatego ta klasa, odpowiada, za zarządzanie dostępnością obiektów <a class="el" href="classmap_1_1_world.html" title="Świat gry.">World</a> </p>
+</div><hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
 <li>src/map/<a class="el" href="_world_manager_8h_source.html">WorldManager.h</a></li>
 <li>src/map/<a class="el" href="_world_manager_8cc.html">WorldManager.cc</a></li>
 </ul>

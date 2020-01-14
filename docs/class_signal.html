@@ -123,7 +123,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const 
 class Signal&lt; Args &gt;</h3>
 
 <p>Implementacja obsługi sygnałów z argumentami takimi jak w QT. </p>
-<p>Implementuje rozchodzenie się informacji o zdarzeniach, które nastąpiło w obiekcie. Do tworzenia funkcji używa wyrażeń lambda</p>
+<p>Implementuje rozchodzenie się informacji o zdarzeniach, które nastąpiło w obiekcie. Do tworzenia funkcji używa wyrażeń lambda. W klasie jest pewien problem, obiekty należy tworzyć jako const aby nie można było ich nadpisać. Ale wtedy connect i emit muszą być const aby dało się je wywołać, daje to możliwość wywołania sygnału z poza obiektu, co stanowi pewien problem bezpieczeństwa, można by to rozwiązać tworząc rozbudowane makro, ale tego chcieliśmy uniknąć. UWAGA: Sygnały nie są bezieczne w systuacjach wielowątkowych.</p>
 <dl class="section see"><dt>Zobacz również</dt><dd><a href="https://doc.qt.io/qt-5/signalsandslots.html">https://doc.qt.io/qt-5/signalsandslots.html</a> </dd></dl>
 <dl class="tparams"><dt>Parametry Szablonu</dt><dd>
   <table class="tparams">

@@ -12,7 +12,7 @@
 namespace block {
 
 	/**
-	 * @brief Piasek, a bez fizyki
+	 * @brief Piasek, ale bez fizyki
 	 */
 	class Sand : public SolidBlock {
 	protected:

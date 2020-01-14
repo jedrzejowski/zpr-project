@@ -34,7 +34,7 @@ void Point3DeX::BindGlVAP() {
 void Point3DeX::CalcNormals(Point3DeX *points, size_t pSize, EboTriangle *triangles, size_t tSize) {
 	glm::vec3 temp1, temp2, temp3, temp4;
 
-	for (uint32_t i = 0; i < tSize; i++) {
+	for (uint32_t i = 0; i < tSize; ++i) {
 		temp1 = glm::vec3(points[triangles[i].first].point.x,
 						  points[triangles[i].first].point.y,
 						  points[triangles[i].first].point.z);

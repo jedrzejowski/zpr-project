@@ -7,7 +7,7 @@
 #pragma once
 
 #include "src/_classdef.h"
-#include "src/lib/Object.hpp"
+#include "src/lib/Object.h"
 #include "GuiObject.h"
 
 namespace gui {

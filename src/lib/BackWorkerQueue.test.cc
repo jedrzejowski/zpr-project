@@ -16,7 +16,7 @@ BOOST_AUTO_TEST_CASE(test_BackWorkerQueue_1) {
 
 	auto bump = [&]() {
 		mutex.lock();
-		counter++;
+		++counter;
 		mutex.unlock();
 	};
 
@@ -46,6 +46,8 @@ BOOST_AUTO_TEST_CASE(test_BackWorkerQueue_1) {
 		sleep(4);
 		bump();
 	});
+
+	sleep(10);
 
 	worker1->awaitForQueueEnd();
 	worker2->awaitForQueueEnd();

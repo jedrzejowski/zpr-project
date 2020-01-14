@@ -8,7 +8,7 @@
 
 #include <list>
 #include "src/_classdef.h"
-#include "src/lib/Object.hpp"
+#include "src/lib/Object.h"
 #include "src/engine/Engine.h"
 #include "InterfaceShader.h"
 

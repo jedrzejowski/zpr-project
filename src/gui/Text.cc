@@ -57,7 +57,7 @@ void gui::Text::updateBuffers() {
 		indices_buffer.push_back(engine::EboTriangle(2, 3, 0) + offset);
 
 		offset += 4;
-		charInd++;
+		++charInd;
 	}
 
 	setNeedRefreshBuffers(false);

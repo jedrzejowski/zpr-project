@@ -29,7 +29,8 @@ map::WorldPtr map::World::create(const std::string &codeName) {
 
 	map::WorldPtr self = std::make_shared<Self>(codeName);
 
-	self->loadObjectFromFile();
+	if (self->hasSavedFile())
+		self->loadObjectFromFile();
 
 	return self;
 }
@@ -82,8 +83,8 @@ void map::World::loadForPlayer(game::PlayerPtr &player) {
 	auto chunkLoadDistance = player->getChunkUnloadDistance();
 
 	// ładowanie chunków
-	for (CoordDim x = playerChunk.x - chunkLoadDistance; x < playerChunk.x + chunkLoadDistance; x++) {
-		for (CoordDim y = playerChunk.y - chunkLoadDistance; y < playerChunk.y + chunkLoadDistance; y++) {
+	for (CoordDim x = playerChunk.x - chunkLoadDistance; x < playerChunk.x + chunkLoadDistance; ++x) {
+		for (CoordDim y = playerChunk.y - chunkLoadDistance; y < playerChunk.y + chunkLoadDistance; ++y) {
 			requestChunk(Coord2D(x, y));
 		}
 	}

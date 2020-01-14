@@ -9,7 +9,7 @@
 #include "src/_classdef.h"
 #include "src/lib/SavableObject.h"
 #include "src/lib/Coord.hpp"
-#include "src/lib/Object.hpp"
+#include "src/lib/Object.h"
 #include "src/engine/Engine.h"
 #include "src/block/Blocks.h"
 

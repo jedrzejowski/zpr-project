@@ -8,7 +8,7 @@
 
 #include "src/OpenGL.h"
 #include "src/_classdef.h"
-#include "src/lib/Object.hpp"
+#include "src/lib/Object.h"
 #include "src/lib/Signal.hpp"
 
 namespace engine {
@@ -42,11 +42,27 @@ namespace engine {
 
 		inline double getTimeOfLastChange() const { return time_of_last_change; }
 
+		/**
+		 * @brief Sygnał, który jest wywoływany co pętle mówiący, że przycisk jest wciśnięty
+		 */
 		const Signal<> onPress;
+
+		/**
+		 * @brief Sygnał, który jest wywoływany gdy przycisk zmienił swój stan na wciśnięty
+		 */
 		const Signal<> onPressed;
+
+		/**
+		 * @brief Sygnał, który jest wywoływany co pętle mówiący, że przycisk jest wyciśnięty
+		 */
 		const Signal<> onRelease;
+
+		/**
+		 * @brief Sygnał, który jest wywoływany gdy przycisk zmienił swój stan na wyciśnięty
+		 */
 		const Signal<> onReleased;
 
 		const int& getBtnCode() const;
+
 	};
 }

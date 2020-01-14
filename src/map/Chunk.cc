@@ -93,11 +93,11 @@ json map::Chunk::toJSON() const {
 	j[JSON_ATTR_COORD] = getPosition().toJSON();
 
 	auto row_x = json::array();
-	for (CoordDim x = 0; x < Chunk::Size.x; x++) {
+	for (CoordDim x = 0; x < Chunk::Size.x; ++x) {
 		auto row_y = json::array();
-		for (CoordDim y = 0; y < Chunk::Size.y; y++) {
+		for (CoordDim y = 0; y < Chunk::Size.y; ++y) {
 			auto row_z = json::array();
-			for (CoordDim z = 0; z < Chunk::Size.z; z++) {
+			for (CoordDim z = 0; z < Chunk::Size.z; ++z) {
 
 				auto coord = Coord3D(x, y, z);
 
@@ -151,11 +151,11 @@ void map::Chunk::acceptState(json &data) {
 					setBlock(Coord3D(x, y, z), block);
 				}
 
-				z++;
+				++z;
 			}
-			y++;
+			++y;
 		}
-		x++;
+		++x;
 	}
 
 	setNeedSave(false);

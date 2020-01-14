@@ -77,6 +77,11 @@ $(function() {
 <div class="title">Dokumentacja klasy map::World</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Świat gry.  
+ <a href="classmap_1_1_world.html#details">Więcej...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_world_8h_source.html">World.h</a>&gt;</code></p>
 <div class="dynheader">
 Diagram dziedziczenia dla map::World</div>
 <div class="dyncontent">
@@ -92,17 +97,16 @@ Diagram dziedziczenia dla map::World</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Metody publiczne</h2></td></tr>
-<tr class="memitem:a36b9294435e19367d139aa3e232edeb6"><td class="memItemLeft" align="right" valign="top"><a id="a36b9294435e19367d139aa3e232edeb6"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasChunk</b> (const <a class="el" href="struct_coord2_d.html">Coord2D</a> &amp;position)</td></tr>
+<tr class="memitem:a36b9294435e19367d139aa3e232edeb6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmap_1_1_world.html#a36b9294435e19367d139aa3e232edeb6">hasChunk</a> (const <a class="el" href="struct_coord2_d.html">Coord2D</a> &amp;position)</td></tr>
 <tr class="separator:a36b9294435e19367d139aa3e232edeb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25c93a040478b175f9c237c219a6ec42"><td class="memItemLeft" align="right" valign="top"><a id="a25c93a040478b175f9c237c219a6ec42"></a>
 ChunkWPtr&#160;</td><td class="memItemRight" valign="bottom"><b>getChunk</b> (const <a class="el" href="struct_coord2_d.html">Coord2D</a> &amp;position)</td></tr>
 <tr class="separator:a25c93a040478b175f9c237c219a6ec42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a134ae2e440186a080f14e6133d208440"><td class="memItemLeft" align="right" valign="top"><a id="a134ae2e440186a080f14e6133d208440"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>loadForPlayer</b> (game::PlayerPtr &amp;player)</td></tr>
+<tr class="memitem:a134ae2e440186a080f14e6133d208440"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmap_1_1_world.html#a134ae2e440186a080f14e6133d208440">loadForPlayer</a> (game::PlayerPtr &amp;player)</td></tr>
+<tr class="memdesc:a134ae2e440186a080f14e6133d208440"><td class="mdescLeft">&#160;</td><td class="mdescRight">prośba o wczytanie chunk'u dla gracza  <a href="classmap_1_1_world.html#a134ae2e440186a080f14e6133d208440">Więcej...</a><br /></td></tr>
 <tr class="separator:a134ae2e440186a080f14e6133d208440"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa60a345b27dc2332a556e82ba367b3ae"><td class="memItemLeft" align="right" valign="top"><a id="aa60a345b27dc2332a556e82ba367b3ae"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>requestChunk</b> (<a class="el" href="struct_coord2_d.html">Coord2D</a> position)</td></tr>
+<tr class="memitem:aa60a345b27dc2332a556e82ba367b3ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmap_1_1_world.html#aa60a345b27dc2332a556e82ba367b3ae">requestChunk</a> (<a class="el" href="struct_coord2_d.html">Coord2D</a> position)</td></tr>
+<tr class="memdesc:aa60a345b27dc2332a556e82ba367b3ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">prośba o wczytanie chunk'u  <a href="classmap_1_1_world.html#aa60a345b27dc2332a556e82ba367b3ae">Więcej...</a><br /></td></tr>
 <tr class="separator:aa60a345b27dc2332a556e82ba367b3ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13630ef80d8dee9c4a76cabb837be3ca"><td class="memItemLeft" align="right" valign="top"><a id="a13630ef80d8dee9c4a76cabb837be3ca"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>syncChunkWithLoader</b> ()</td></tr>
@@ -113,8 +117,7 @@ const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>ge
 <tr class="memitem:a7d6b253d9ba4f0f070ed10d4e7359726"><td class="memItemLeft" align="right" valign="top"><a id="a7d6b253d9ba4f0f070ed10d4e7359726"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setDisplayName</b> (const std::string &amp;displayName)</td></tr>
 <tr class="separator:a7d6b253d9ba4f0f070ed10d4e7359726"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63b4f67e6f02402e46bcadc98600e6b7"><td class="memItemLeft" align="right" valign="top"><a id="a63b4f67e6f02402e46bcadc98600e6b7"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getCodeName</b> () const</td></tr>
+<tr class="memitem:a63b4f67e6f02402e46bcadc98600e6b7"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmap_1_1_world.html#a63b4f67e6f02402e46bcadc98600e6b7">getCodeName</a> () const</td></tr>
 <tr class="separator:a63b4f67e6f02402e46bcadc98600e6b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8158fb2c7826c4531c3c9add80b510e2"><td class="memItemLeft" align="right" valign="top"><a id="a8158fb2c7826c4531c3c9add80b510e2"></a>
 const std::map&lt; <a class="el" href="struct_coord2_d.html">Coord2D</a>, map::ChunkPtr &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getLoadedChunks</b> () const</td></tr>
@@ -252,7 +255,16 @@ Dodatkowe Dziedziczone Składowe</h2></td></tr>
 <tr class="memdesc:a63652c8ef98b21f8e06a6e697ac974b5 inherit pub_static_methods_class_savable_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja pomocnicza do pobierania tekstu z obiektu.  <a href="class_savable_object.html#a63652c8ef98b21f8e06a6e697ac974b5">Więcej...</a><br /></td></tr>
 <tr class="separator:a63652c8ef98b21f8e06a6e697ac974b5 inherit pub_static_methods_class_savable_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Świat gry. </p>
+<p>Cały świat gry jest w czterech klasach, na początku był jedna, ale tak się rozrosła, że postanowiliśmy podzielić ją na cztery:</p><ul>
+<li><a class="el" href="classmap_1_1_world.html" title="Świat gry.">World</a> - do trzymania danych</li>
+<li><a class="el" href="classmap_1_1_chunk_loader.html" title="Ładowanie chunk&#39;ów, patrz World.">ChunkLoader</a> - do ładowania chunk'ów</li>
+<li><a class="el" href="classmap_1_1_chunk_generator.html" title="Generator chunk&#39;ów, patrz World.">ChunkGenerator</a> - do generowania chunk'ów</li>
+<li><a class="el" href="classmap_1_1_world_manager.html" title="Manager chunk&#39;ów.">WorldManager</a> - do zarządzania obiektami <a class="el" href="classmap_1_1_world.html" title="Świat gry.">World</a></li>
+</ul>
+<p>Świat posiada dwie nazwy: kodową i użytkownika, pierwsza to rzeczywista nazwa świata, druga to ta pokazywana graczowi. </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
 <a id="a850110f9799f37f52ba53bf7953f53d3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a850110f9799f37f52ba53bf7953f53d3">&#9670;&nbsp;</a></span>acceptState()</h2>
 
@@ -286,6 +298,101 @@ Dodatkowe Dziedziczone Składowe</h2></td></tr>
 </dl>
 
 <p>Implementuje <a class="el" href="class_savable_object.html#a270202c224b2bbd0755781ceee912f64">SavableObject</a>.</p>
+
+</div>
+</div>
+<a id="a63b4f67e6f02402e46bcadc98600e6b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63b4f67e6f02402e46bcadc98600e6b7">&#9670;&nbsp;</a></span>getCodeName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string &amp; map::World::getCodeName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Nazwa kodowa świata </p><dl class="section return"><dt>Zwraca</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a36b9294435e19367d139aa3e232edeb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36b9294435e19367d139aa3e232edeb6">&#9670;&nbsp;</a></span>hasChunk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool map::World::hasChunk </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_coord2_d.html">Coord2D</a> &amp;&#160;</td>
+          <td class="paramname"><em>position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zapytanie, czy chunk jest dostępny </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a134ae2e440186a080f14e6133d208440"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a134ae2e440186a080f14e6133d208440">&#9670;&nbsp;</a></span>loadForPlayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void map::World::loadForPlayer </td>
+          <td>(</td>
+          <td class="paramtype">game::PlayerPtr &amp;&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>prośba o wczytanie chunk'u dla gracza </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa60a345b27dc2332a556e82ba367b3ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa60a345b27dc2332a556e82ba367b3ae">&#9670;&nbsp;</a></span>requestChunk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void map::World::requestChunk </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_coord2_d.html">Coord2D</a>&#160;</td>
+          <td class="paramname"><em>position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>prośba o wczytanie chunk'u </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

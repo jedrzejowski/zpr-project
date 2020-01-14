@@ -56,7 +56,7 @@ double PerlinNoise::total(double i, double j) const {
 	double _amplitude = 1;
 	double freq = frequency;
 
-	for (int k = 0; k < octaves; k++) {
+	for (int k = 0; k < octaves; ++k) {
 		t += getValue(j * freq + randomseed, i * freq + randomseed) * _amplitude;
 		_amplitude *= persistence;
 		freq *= 2;

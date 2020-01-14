@@ -8,7 +8,7 @@
 
 #include "src/_classdef.h"
 #include "src/lib/Coord.hpp"
-#include "src/lib/Object.hpp"
+#include "src/lib/Object.h"
 #include "src/lib/BackWorkerQueue.h"
 #include "ChunkGenerator.h"
 

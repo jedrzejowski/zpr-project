@@ -11,14 +11,27 @@
 engine::Keyboard::Keyboard(InputInterface *ii) :
 		InputDevice(ii) {
 
+	addBtn(Q);
 	addBtn(W);
+	addBtn(E);
+	addBtn(R);
+
 	addBtn(A);
 	addBtn(S);
 	addBtn(D);
+	addBtn(F);
+
+	addBtn(Z);
+	addBtn(X);
+	addBtn(C);
+	addBtn(V);
+
 	addBtn(LShift);
 	addBtn(RShift);
 	addBtn(Space);
 	addBtn(Escape);
+
+	addBtn(Tilde);
 	addBtn(Num0);
 	addBtn(Num1);
 	addBtn(Num2);

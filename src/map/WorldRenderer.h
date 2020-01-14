@@ -8,7 +8,7 @@
 
 #include "src/_classdef.h"
 #include "src/engine/Engine.h"
-#include "src/lib/Object.hpp"
+#include "src/lib/Object.h"
 #include "World.h"
 
 namespace map {

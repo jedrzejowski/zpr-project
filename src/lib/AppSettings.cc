@@ -18,11 +18,16 @@ AppSettings::AppSettings() :
 		chunkRenderDistance(0) {
 	logger(4).constructor(this);
 
+#ifdef IS_TESTING_SCOPE
+	cfg_dir = std::filesystem::temp_directory_path() / global::AppName;
+#else
 	char temp[256];
 	get_user_config_folder(temp, sizeof(temp), global::AppName.c_str());
 	cfg_dir = temp[0] == 0 ? "." : temp;
+#endif
 
 	try {
+		std::filesystem::create_directories(cfg_dir);
 		auto json_obj = loadJSON(cfg_dir / SETTINGS_FILENAME);
 		fromJSON(json_obj);
 	} catch (std::exception &) {
@@ -38,6 +43,10 @@ AppSettings::~AppSettings() {
 	} catch (FileOutputException &exception) {
 		logger(0).err("Fatal error occurred while saving to file:").enter().err(exception.getFile());
 	}
+
+#ifdef IS_TESTING_SCOPE
+	std::filesystem::remove_all(cfg_dir);
+#endif
 }
 
 const char *JSON_ATTR_PLAYER_CAMERA_ANGLE = "playerCameraAngle";
@@ -86,7 +95,7 @@ json AppSettings::loadJSON(std::filesystem::path path) {
 	return data;
 }
 
-void AppSettings::saveJSON(std::filesystem::path path, json content) {
+void AppSettings::saveJSON(std::filesystem::path path, const json& content) {
 	std::filesystem::create_directories(path.parent_path());
 
 	std::ofstream fileStream(path.string());

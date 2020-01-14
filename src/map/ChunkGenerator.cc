@@ -38,8 +38,8 @@ void map::ChunkGenerator::fillChunk(ChunkPtr &chunk) {
 
 	auto chunk_position = chunk->getPosition();
 
-	for (CoordDim x = 0; x < Chunk::Size.x; x++) {
-		for (CoordDim y = 0; y < Chunk::Size.y; y++) {
+	for (CoordDim x = 0; x < Chunk::Size.x; ++x) {
+		for (CoordDim y = 0; y < Chunk::Size.y; ++y) {
 
 			CoordDim z = noise.getHeight(
 					x + chunk_position.x * Chunk::Size.x,
@@ -49,8 +49,8 @@ void map::ChunkGenerator::fillChunk(ChunkPtr &chunk) {
 			z = std::clamp(z, CoordDim(0), CoordDim(map::Chunk::Size.z - 1));
 
 			auto is_water_near = false;
-			for (CoordDim x2 = -sandWaterOffset; x2 < x + sandWaterOffset; x2++)
-				for (CoordDim y2 = -sandWaterOffset; y2 <= y + sandWaterOffset; y2++)
+			for (CoordDim x2 = -sandWaterOffset; x2 < x + sandWaterOffset; ++x2)
+				for (CoordDim y2 = -sandWaterOffset; y2 <= y + sandWaterOffset; ++y2)
 					if (z <= waterLevel) {
 						is_water_near = true;
 						goto waterEnd;

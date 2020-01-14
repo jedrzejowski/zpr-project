@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(Threads REQUIRED)
 
 ## boost
-find_package(Boost COMPONENTS system filesystem unit_test_framework REQUIRED)
+find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 include_directories(${BOOST_INCLUDE_DIR})
 link_libraries(${Boost_LIBRARIES})
 
@@ -40,8 +40,6 @@ link_libraries(${GLM_LIBRARY_DIRS})
 
 set(LIBRARIES
         ${CMAKE_THREAD_LIBS_INIT}
-        ${Boost_FILESYSTEM_LIBRARY}
-        ${Boost_SYSTEM_LIBRARY}
         ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
         glfw
         ${OPENGL_LIBRARIES}
@@ -51,17 +49,22 @@ set(LIBRARIES
 
 # Główny projekt
 
+## Pliki projetku
+
 include_directories(${PROJECT_SOURCE_DIR})
-
-
-# Pliki projetku
 include_directories(${PROJECT_SOURCE_DIR}/src)
+
+## Pliki źródłowe
 file(GLOB_RECURSE SOURCE_FILES
         "${PROJECT_SOURCE_DIR}/src/*.cc"
         "${PROJECT_SOURCE_DIR}/src/*.cpp")
+
+## Pliki testów
 file(GLOB_RECURSE TEST_FILES
         "${PROJECT_SOURCE_DIR}/src/*.test.cc"
         "${PROJECT_SOURCE_DIR}/src/*.test.cpp")
+
+## Pliki nagłówków
 file(GLOB_RECURSE HEADER_FILES
         "${PROJECT_SOURCE_DIR}/src/*.h"
         "${PROJECT_SOURCE_DIR}/src/*.hpp")
@@ -75,7 +78,7 @@ add_executable(${TEST_TARGET} ${HEADER_FILES} ${SOURCE_FILES} ${TEST_FILES})
 target_link_libraries(${APP_TARGET} ${LIBRARIES})
 target_link_libraries(${TEST_TARGET} ${LIBRARIES})
 
-target_compile_definitions(${TEST_TARGET} PUBLIC TEST)
+target_compile_definitions(${TEST_TARGET} PUBLIC IS_TESTING_SCOPE)
 
-# Pliki (obrazy/szejdery/itp)
+# Pliki RES (obrazy/szejdery/itp)
 file(COPY res/ DESTINATION res)

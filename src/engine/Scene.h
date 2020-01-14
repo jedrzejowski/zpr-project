@@ -7,7 +7,7 @@
 #pragma once
 
 #include "src/_classdef.h"
-#include "src/lib/Object.hpp"
+#include "src/lib/Object.h"
 #include "src/lib/Signal.hpp"
 
 #include "Light.h"
@@ -19,9 +19,9 @@ namespace engine {
 	/**
 	 * @brief Klasa sceny
 	 *
-	 * Okno wyświetlają sceny, które mogą się zmieniać w czasie działania programu.
-	 * Sceny powinny mieć przynajmniej jeden interfejs wejściowy
-	 * Cykl życia sceny render() -> eventy z InputInterface -> pollEvents()
+	 * Klasa Window wyświetla sceny, które mogą się zmieniać w czasie działania programu.
+	 * Sceny powinny mieć przynajmniej jeden interfejs wejściowy(obsługa myszki i klawiatury).
+	 * Cykl sceny w pętli głównej to: render() -> eventy z InputInterface -> pollEvents()
 	 */
 	class Scene : public Object, public VirtualSharePtrObject<Scene> {
 	public:

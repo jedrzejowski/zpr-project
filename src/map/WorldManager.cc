@@ -28,7 +28,7 @@ map::WorldPtr map::WorldManager::newWorld() {
 
 	map::WorldPtr world_ptr;
 
-	for (int i = 0; true; i++) {
+	for (int i = 0; true; ++i) {
 		auto code_name = std::string("default") + std::to_string(i);
 
 		if (std::filesystem::is_directory(base_dir / code_name)) continue;
@@ -59,27 +59,25 @@ map::WorldPtr map::WorldManager::openWorld(const std::string &code_name) {
 		world_ptr->fullSave();
 		updateCodeNames();
 
-		logger(0).log(code_name).log("counts").log(world_ptr.use_count());
 		return world_ptr;
 	}
 }
 
 const std::vector<std::string> &map::WorldManager::getAllCodeNames() const {
-	return all_code_names;
+	return code_names;
 }
 
 void map::WorldManager::updateCodeNames() {
-	logger(0).log("udpating");
-	all_code_names.clear();
+	code_names.clear();
 
 	if (!std::filesystem::is_directory(getWorldsDirectory()))
 		std::filesystem::create_directories(getWorldsDirectory());
 
 	for (auto iterator = std::filesystem::directory_iterator(getWorldsDirectory());
-		 iterator != std::filesystem::directory_iterator{}; iterator++) {
+		 iterator != std::filesystem::directory_iterator{}; ++iterator) {
 
 		auto code_name = iterator->path().filename().string();
-		all_code_names.push_back(code_name);
+		code_names.push_back(code_name);
 	}
 }
 
@@ -102,5 +100,9 @@ map::WorldPtr map::WorldManager::clearWorld(const std::string &code_name) {
 
 	std::filesystem::remove_all(getWorldsDirectory() / code_name / "surface1");
 	return world_ptr;
+}
+
+bool map::WorldManager::exists(const std::string &code_name) {
+	return std::count(code_names.begin(), code_names.end(), code_name) == 1;
 }
 

@@ -7,7 +7,7 @@
 #pragma once
 
 #include "_classdef.h"
-#include "src/lib/Object.hpp"
+#include "src/lib/Object.h"
 #include "src/OpenGL.h"
 #include "src/gui/GuiObject.h"
 

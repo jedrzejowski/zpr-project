@@ -39,7 +39,7 @@ void engine::Sub3DObj::insertToBuffers(std::vector<engine::Point3DeX> &vertices,
 	auto iOffset = indices.size();
 	indices.insert(indices.end(), indices_buffer.begin(), indices_buffer.end());
 
-	for (int i = iOffset; i < indices.size(); i++)
+	for (int i = iOffset; i < indices.size(); ++i)
 		indices[i] += vOffset;
 
 	setNeedRefreshBuffers(false);

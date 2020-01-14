@@ -9,7 +9,7 @@
 #include <mutex>
 
 #include "src/_classdef.h"
-#include "src/lib/Object.hpp"
+#include "src/lib/Object.h"
 
 #include "Camera.h"
 #include "Scene.h"
@@ -24,6 +24,8 @@ namespace engine {
 
 	/**
 	 * @brief Klasa głównego okna aplikacji wraz z pętlą programu
+	 *
+	 * Odpowiada za przejęcie głównej pętli programu.
 	 */
 	class Window : public Object, public VirtualSharePtrObject<Window> {
 	public:

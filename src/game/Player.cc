@@ -165,7 +165,7 @@ void game::Player::recalculateBlockPointing() const {
 
 	glm::vec2 bary_position; //nie mam pojęcia do czego to jest ale glm tego chce
 
-	for (CoordDim dx = -hand_range; dx <= hand_range; d++x)
+	for (CoordDim dx = -hand_range; dx <= hand_range; ++dx)
 		for (CoordDim dy = -hand_range; dy <= hand_range; ++dy)
 			for (CoordDim dz = -hand_range; dz <= hand_range; ++dz) {
 

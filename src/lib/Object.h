@@ -16,6 +16,8 @@
 class Object : public VirtualSharePtrObject<Object> {
 public:
 
+	Object() = default;
+
 	Object(const Object &) = delete;
 	void operator=(const Object &) = delete;
 	Object(const Object &&) = delete;

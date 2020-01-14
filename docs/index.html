@@ -72,7 +72,10 @@ Podgląd gry</h1>
 <p><img src="./res/preview1.png" alt="" class="inline"/> <img src="./res/preview2.png" alt="" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Opis gry</h1>
-<p>Gra to taka kopia Minecraft'a. Użytkownik zaczyna na ekranie początkowym z trzema przyciskami</p>
+<p>Gra to taka kopia Minecraft'a. Użytkownik zaczyna na ekranie początkowym z trzema przyciskami: <code>Graj</code>, <code>Ustawienia</code> i <code>Koniec</code>. Kierującymi odpowiednio do: ekranu z wyborem światów, ustawień i do wyjścia.</p>
+<p>W menu wyboru światów, użytkownik ma możliwość utworzenia nowego świata, usunięcia świata (przcisk <code>X</code> po lewo od nazwy świata), resetu świata (przcisk <code>R</code> po prawo od nazwy świata), utworzenia świata lub powrotu. Po utworzeniu świata lub wybraniu istniejącego, gracz kierowany jest do świata gry. W przypadku istnienia wielu światów, które nie mieszczą się na ekranie, można je scrollować kierując myszkę w górne lub dolne części ekranu.</p>
+<p>Gracz porusza się za pomocą popularnej kombinacji klawiszy <code>WASD</code>, wybór bloku odbywa się za pomoć przycisków od <code>1</code> do <code>9</code>. Aby polecieć do góry należy wcisnąć <code>Space</code>, a w dół <code>Shift</code>. Aby wyjść do menu należy kliknąć <code>Esc</code> na klawiaturze. Bloki stawiamy prawym przyciskiem myszy a niszczymy lewym.</p>
+<p>Użytkownik ma możliwość zmiany dwóch parametrów rozgrywki: zasięgu renderowania i kąta widzenia.</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Kod źródłowy</h1>
 <p>Cały projekt jest napisany w <code>C++</code>.</p>
@@ -82,7 +85,7 @@ Kod źródłowy</h1>
 <p>Światy zapisane w pliku są dość pokaźnej wielkości, około <code>10 MB</code> w początkowej formie i szybko rosną. Dlatego po skończonych próbach programu polecam usunąć folder <code>~/.config/ZprCraft</code> lub zmienić zmienną <code>cfg_dir</code> w pliku <code><a class="el" href="_app_settings_8cc.html">src/lib/AppSettings.cc</a>:23</code> na inną dowolną.</p>
 <h2><a class="anchor" id="autotoc_md5"></a>
 Sprytne wskaźniki</h2>
-<p>Na początku chcieliśmy zrobić obiektu w rodzaju drzewa obiektów z <code>QT</code>, ale wraz z rozwojem kodu i jego skomplikowania przenieśliśmy się na sprytne wskaźniki.</p>
+<p>Na początku chcieliśmy zrobić obiektu w rodzaju drzewa obiektów z <code>QT</code>, ale wraz z rozwojem kodu i jego skomplikowania przenieśliśmy się na sprytne wskaźniki. Ułatwiło to znalezienie licznych wycieków pamięci oraz zwiększyło czytelność kodu.</p>
 <p>Użyliśmy typu <code>std::shared_ptr</code>. Dodatkowo zdecydowana większość klas dziedziczy wirtualnie po klasie <code>std::enable_shared_from_this</code>.</p>
 <p>W pewnym momencie, mieliśmy problem z funkcją <code>shared_from_this()</code>, okazuje się, że nie można wywołać jej w konstruktorze obiektu. Dlatego ukryliśmy większość konstruktorów i zrobiliśmy funkcje statyczną <code>create</code>, która tworzy za nas obiekt i wywołuje inne instrukcje, które normalnie były by w konstruktorze. Dzięki czemu mamy pewność, że obiekt będzie utworzony wraz ze sprytnym wskaźnikiem i ukrywamy wtedy brzydkie części biblioteki standardowej.</p>
 <p>Pod koniec doszliśmy do wniosku, że implementacja sprytnych wskaźników wszędzie była błędem. Program działa nam powolno(ale działa). Bloki, jako proste struktury danych powinny być zrobione jako normalne wskaźniki.</p>

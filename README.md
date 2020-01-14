@@ -10,7 +10,19 @@ Gra jest wynikiem projektu na przedmiot ZPR
 ## Opis gry
 
 Gra to taka kopia Minecraft'a.
-Użytkownik zaczyna na ekranie początkowym z trzema przyciskami
+Użytkownik zaczyna na ekranie początkowym z trzema przyciskami: `Graj`, `Ustawienia` i `Koniec`.
+Kierującymi odpowiednio do: ekranu z wyborem światów, ustawień i do wyjścia.
+
+W menu wyboru światów, użytkownik ma możliwość utworzenia nowego świata, usunięcia świata (przcisk `X` po lewo od nazwy świata), resetu świata (przcisk `R` po prawo od nazwy świata), utworzenia świata lub powrotu.
+Po utworzeniu świata lub wybraniu istniejącego, gracz kierowany jest do świata gry.
+W przypadku istnienia wielu światów, które nie mieszczą się na ekranie, można je scrollować kierując myszkę w górne lub dolne części ekranu.
+
+Gracz porusza się za pomocą popularnej kombinacji klawiszy `WASD`, wybór bloku odbywa się za pomoć przycisków od `1` do `9`.
+Aby polecieć do góry należy wcisnąć `Space`, a w dół `Shift`.
+Aby wyjść do menu należy kliknąć `Esc` na klawiaturze.
+Bloki stawiamy prawym przyciskiem myszy a niszczymy lewym.
+
+Użytkownik ma możliwość zmiany dwóch parametrów rozgrywki: zasięgu renderowania i kąta widzenia. 
 
 ## Kod źródłowy
 
@@ -28,6 +40,7 @@ Dlatego po skończonych próbach programu polecam usunąć folder `~/.config/Zpr
 ### Sprytne wskaźniki
 
 Na początku chcieliśmy zrobić obiektu w rodzaju drzewa obiektów z `QT`, ale wraz z rozwojem kodu i jego skomplikowania przenieśliśmy się na sprytne wskaźniki.
+Ułatwiło to znalezienie licznych wycieków pamięci oraz zwiększyło czytelność kodu.
  
 Użyliśmy typu `std::shared_ptr`.
 Dodatkowo zdecydowana większość klas dziedziczy wirtualnie po klasie `std::enable_shared_from_this`.

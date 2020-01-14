@@ -3,7 +3,7 @@ project(zpr_project)
 find_package(PkgConfig)
 
 set(APP_TARGET zpr_app)
-set(TEST_TARGET test)
+set(TEST_TARGET test_app)
 
 set(CMAKE_CXX_STANDARD 17)
 

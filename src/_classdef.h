@@ -33,6 +33,10 @@ class LiveData;
 
 /**
  * @brief namespace dla silnika graficznego
+ *
+ * UWAGA: to jest spuścizna projektu na przedmiot GKOM Adama Jędrzejowskiego,
+ * która została uzupełniona o dodatkowe elementy, ale niektóre były kiedyś
+ * potrzebne, ale na obecną chwilę są nieużywane.
  */
 namespace engine {
 	class exception;

@@ -10,6 +10,14 @@
 #include "World.h"
 
 namespace map {
+
+	/**
+	 * @brief Manager chunk'ów
+	 *
+	 * Nie jest dobrym, aby powstało wiele obiektów World do tego samego świata, z uwagi na to, że te obiekty
+	 * posiadają reprezentacje w plikach, więc utworzenie ich miało by fatalne skutki, dlatego ta klasa, odpowiada, za
+	 * zarządzanie dostępnością obiektów World
+	 */
 	class WorldManager {
 	private:
 		std::map<std::string, WorldWPtr> worlds_map;

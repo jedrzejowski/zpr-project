@@ -11,6 +11,10 @@
 #include "src/engine/Engine.h"
 
 namespace gui {
+
+	/**
+	 * @brief Obiekt jakieś kontrolki graficznej
+	 */
 	class GuiObject : public Object, public engine::Sub3DObj {
 	private:
 		glm::mat4 model = glm::mat4(1);
@@ -24,7 +28,7 @@ namespace gui {
 		glm::mat4 getModel() const;
 		void setModel(const glm::mat4 &model);
 
-		const InterfacePtr getInterface() const;
+		InterfacePtr getInterface() const;
 		InterfacePtr getInterface();
 
 		GuiObjectPtr getGuiParent() const;

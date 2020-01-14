@@ -13,6 +13,9 @@
 
 namespace gui {
 
+	/**
+	 * @brief Prosty obiekt prostokąta z obsługą myszy
+	 */
 	class RectangleObj : public GuiObject, public VirtualSharePtrObject<RectangleObj> {
 	public:
 		using VirtualSharePtrObject<RectangleObj>::shared_from_this;

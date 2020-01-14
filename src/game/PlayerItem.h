@@ -12,6 +12,10 @@
 #include "src/gui/GuiObject.h"
 
 namespace game {
+
+	/**
+	 * @brief Obiekt ekwipunku gracza
+	 */
 	class PlayerItem : public gui::GuiObject {
 		PlayerInterfaceWPtr playerInterface;
 		glm::vec2 textureStart{}, textureEnd{};
@@ -33,6 +37,11 @@ namespace game {
 		virtual void useItem(map::WorldPtr &worldMap, PlayerPtr &player) = 0;
 	};
 
+	/**
+	 * @brief Solidny blok jako ekwipunek gracza
+	 *
+	 * Używa klonowania do stawiania bloków
+	 */
 	class PlayerSolidBlockItem : public PlayerItem, public VirtualSharePtrObject<PlayerSolidBlockItem> {
 		block::SolidBlockPtr solid_block_ptr;
 		block::BlockPtr block_ptr;

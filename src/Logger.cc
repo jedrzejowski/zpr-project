@@ -13,7 +13,7 @@
  */
 std::mutex mutex = std::mutex();
 
-int Logger::VisibleLogLevel = 3;
+int Logger::VisibleLogLevel = 4;
 
 Logger::Logger(const char *file, int line, int level) : level(level) {
 	if (isVisible()) return;

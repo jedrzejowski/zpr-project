@@ -12,6 +12,9 @@
 #include "src/lib/SavableObject.h"
 
 namespace map {
+	/**
+	 * @brief Generator chunk'ów, patrz World
+	 */
 	class ChunkGenerator : public SavableObject {
 		friend World;
 	private:
@@ -25,8 +28,8 @@ namespace map {
 		//region SavableObject
 
 	public:
-		std::filesystem::path getSavePath() const override;
-		json toJSON() const override;
+		[[nodiscard]] std::filesystem::path getSavePath() const override;
+		[[nodiscard]] json toJSON() const override;
 
 	protected:
 		void acceptState(json &json_obj) override;

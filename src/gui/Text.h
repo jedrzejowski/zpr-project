@@ -12,6 +12,11 @@
 
 namespace gui {
 
+	/**
+	 * @brief Implementacja wyświetlania tekstu
+	 *
+	 * Pozostawia wiele do życzenia
+	 */
 	class Text : public GuiObject {
 	private:
 		std::string content = "Text";

@@ -61,13 +61,18 @@ public:
 	}
 
 	void emit(Args... p) const {
-		for (const auto &it : slots) {
 
-			try {
-				if (it.second.hasPointer == false || !it.second.inst.expired())
-					it.second.func(std::forward<Args>(p)...);
-			} catch (std::exception &exception) {
-				logger(0).err("Error while emitting signal:").err(this).enter().err(exception.what());
+		//https://stackoverflow.com/questions/8234779/how-to-remove-from-a-map-while-iterating-it
+
+		for (auto it = slots.cbegin(); it != slots.cend();) {
+			if (!it->second.hasPointer) {
+				it->second.func(std::forward<Args>(p)...);
+				++it;
+			} else if (auto ptr = it->second.inst.lock()) {
+				it->second.func(std::forward<Args>(p)...);
+				++it;
+			} else {
+				it = slots.erase(it);
 			}
 		}
 	}
@@ -76,7 +81,7 @@ public:
 		connect(inst, func);
 	}
 
-	void operator()(Object* inst, const Func &func) const {
+	void operator()(Object *inst, const Func &func) const {
 		connect(inst->weak_from_this(), func);
 	}
 

@@ -10,6 +10,10 @@
 #include "src/engine/Engine.h"
 
 namespace menu {
+
+	/**
+	 * @brief Scena z wyborem światów
+	 */
 	class WorldsScene : public engine::Scene, public VirtualSharePtrObject<WorldsScene> {
 	public:
 		using VirtualSharePtrObject<WorldsScene>::shared_from_this;

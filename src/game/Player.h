@@ -12,6 +12,12 @@
 #include "src/block/FullPosition.h"
 
 namespace game {
+
+	/**
+	 * @brief Obiekt gracza
+	 *
+	 * Implementuje ruchy gracza oraz znajduje bloki na które trzeba ustawić nowy block
+	 */
 	class Player : public Object, public SavableObject {
 	protected:
 		map::WorldPtr world_map_ptr;
@@ -38,10 +44,10 @@ namespace game {
 		void moveUp(float time);
 		void moveDown(float time);
 
-		void rotateUp(float dy);
-		void rotateDown(float dy);
-		void rotateLeft(float dx);
-		void rotateRight(float dx);
+		void rotateHeadUp(float dy);
+		void rotateHeadDown(float dy);
+		void rotateHeadLeft(float dx);
+		void rotateHeadRight(float dx);
 
 		[[nodiscard]] float getChunkRenderDistance() const;
 		[[nodiscard]] float getChunkUnloadDistance() const;

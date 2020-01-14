@@ -12,6 +12,9 @@
 
 namespace menu {
 
+	/**
+	 * @brief Scena powitalna
+	 */
 	class WelcomeScene : public engine::Scene, public VirtualSharePtrObject<WelcomeScene> {
 	public:
 		using VirtualSharePtrObject<WelcomeScene>::shared_from_this;
@@ -24,7 +27,7 @@ namespace menu {
 	public:
 		static WelcomeScenePtr create();
 		~WelcomeScene();
-		void render(engine::WindowPtr& window) override;
+		void render(engine::WindowPtr &window) override;
 	};
 }
 

@@ -84,13 +84,13 @@ void game::MainGame::initInputInterface() {
 		player_ptr->moveDown(input_interface->getKeyboard()->getDeltaTimeOfState());
 	});
 
-	keyboard->Escape.onPressed([this, keyboard] {
+	keyboard->Escape.onPressed([this] {
 		onMenuRequest();
 	});
 
 	mouse->onMove([&](const glm::vec2 &delta) {
-		player_ptr->rotateRight(delta.x);
-		player_ptr->rotateDown(delta.y);
+		player_ptr->rotateHeadRight(delta.x);
+		player_ptr->rotateHeadDown(delta.y);
 	});
 
 	mouse->onLeave([&] {

@@ -96,23 +96,23 @@ void game::Player::moveRight(float time) {
 	moveLeft(-time);
 }
 
-void game::Player::rotateUp(float dy) {
+void game::Player::rotateHeadUp(float dy) {
 	eye_angle_vertical = std::clamp(eye_angle_vertical + dy / mouse_precision,
 									-80.f, 80.f);
 	setNeedSave(true);
 }
 
-void game::Player::rotateDown(float dy) {
-	rotateUp(-dy);
+void game::Player::rotateHeadDown(float dy) {
+	rotateHeadUp(-dy);
 }
 
-void game::Player::rotateRight(float dx) {
+void game::Player::rotateHeadRight(float dx) {
 	eye_angle_horizontal = fmod(eye_angle_horizontal + dx / mouse_precision, 360);
 	setNeedSave(true);
 }
 
-void game::Player::rotateLeft(float dx) {
-	rotateRight(-dx);
+void game::Player::rotateHeadLeft(float dx) {
+	rotateHeadRight(-dx);
 }
 
 engine::Camera game::Player::getCamera() const {

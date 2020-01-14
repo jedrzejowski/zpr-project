@@ -10,6 +10,9 @@
 
 namespace map {
 
+	/**
+	 * @brief Shader świata
+	 */
 	class WorldShader : public engine::Shader {
 	private:
 		engine::TexturePtr block_texture;

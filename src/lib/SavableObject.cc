@@ -18,11 +18,6 @@ void SavableObject::setNeedSave(bool needSave) {
 void SavableObject::saveObjectToFile() {
 	static auto &app_settings = AppSettings::get();
 
-	logger(0).log("test1");
-#ifdef TEST
-	logger(0).log("test2");
-#endif
-
 	if (isNeedSave() && !isDeleted()) {
 		app_settings.saveJSON(getSavePath(), toJSON());
 		setNeedSave(false);

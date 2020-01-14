@@ -11,6 +11,10 @@
 #include "src/engine/Engine.h"
 
 namespace game {
+
+	/**
+	 * @brief Główny obiekt gry
+	 */
 	class MainGame : public Object {
 	private:
 		GameSceneWPtr game_scene;

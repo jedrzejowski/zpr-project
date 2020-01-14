@@ -14,7 +14,9 @@
 
 namespace map {
 
-
+	/**
+	 * @brief Ładowanie chunk'ów, patrz World
+	 */
 	class ChunkLoader : public Object {
 		friend World;
 	private:

@@ -10,6 +10,10 @@
 #include "GuiObject.h"
 
 namespace gui {
+
+	/**
+	 * @brief Potrójny przycisk
+	 */
 	class TriButton : public GuiObject, public VirtualSharePtrObject<TriButton> {
 	public:
 		using VirtualSharePtrObject<TriButton>::shared_from_this;

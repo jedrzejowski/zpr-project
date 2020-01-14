@@ -15,7 +15,7 @@ using json = nlohmann::json;
 /**
  * @brief Typ liczby całkowitej używanej do obliczeń
  */
-typedef int16_t CoordDim;
+typedef int64_t CoordDim;
 
 /**
  * @brief Zamienia wymiar na tekst przyjazny systemowi plików (1 -> p1, -1 -> m1)

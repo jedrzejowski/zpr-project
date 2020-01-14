@@ -74,6 +74,11 @@ $(function() {
 <div class="title">Dokumentacja klasy game::GameScene</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Głowna scena gry na której gracz gra.  
+ <a href="classgame_1_1_game_scene.html#details">Więcej...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_game_scene_8h_source.html">GameScene.h</a>&gt;</code></p>
 <div class="dynheader">
 Diagram dziedziczenia dla game::GameScene</div>
 <div class="dyncontent">
@@ -90,8 +95,8 @@ Diagram dziedziczenia dla game::GameScene</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Metody publiczne</h2></td></tr>
-<tr class="memitem:adf1cd4ddea20169b04b89a3d112328c9"><td class="memItemLeft" align="right" valign="top"><a id="adf1cd4ddea20169b04b89a3d112328c9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>render</b> (engine::WindowPtr &amp;window) override</td></tr>
+<tr class="memitem:adf1cd4ddea20169b04b89a3d112328c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1_game_scene.html#adf1cd4ddea20169b04b89a3d112328c9">render</a> (engine::WindowPtr &amp;window) override</td></tr>
+<tr class="memdesc:adf1cd4ddea20169b04b89a3d112328c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Główna funkcja w której należy renderować scene.  <a href="classgame_1_1_game_scene.html#adf1cd4ddea20169b04b89a3d112328c9">Więcej...</a><br /></td></tr>
 <tr class="separator:adf1cd4ddea20169b04b89a3d112328c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac977efe0a45a46a49c94da43b4380607"><td class="memItemLeft" align="right" valign="top"><a id="ac977efe0a45a46a49c94da43b4380607"></a>
 GameSceneState&#160;</td><td class="memItemRight" valign="bottom"><b>getInterfaceState</b> () const</td></tr>
@@ -178,6 +183,46 @@ const <a class="el" href="class_signal.html">Signal</a>&#160;</td><td class="mem
 const <a class="el" href="class_signal.html">Signal</a>&#160;</td><td class="memItemRight" valign="bottom"><b>onWindowChanged</b></td></tr>
 <tr class="separator:adab83e0dca514aa9356677a775efedf2 inherit pub_attribs_classengine_1_1_scene"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Głowna scena gry na której gracz gra. </p>
+<p>Scena posiada dwa stany: gry i menu. W pierwszej gram gra w drugiej wyświetla się menu </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="adf1cd4ddea20169b04b89a3d112328c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf1cd4ddea20169b04b89a3d112328c9">&#9670;&nbsp;</a></span>render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game::GameScene::render </td>
+          <td>(</td>
+          <td class="paramtype">engine::WindowPtr &amp;&#160;</td>
+          <td class="paramname"><em>window</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Główna funkcja w której należy renderować scene. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implementuje <a class="el" href="classengine_1_1_scene.html#a43d6243c04a8a67a25114480992e5b36">engine::Scene</a>.</p>
+
+</div>
+</div>
 <hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
 <li>src/game/<a class="el" href="_game_scene_8h_source.html">GameScene.h</a></li>
 <li>src/game/<a class="el" href="_game_scene_8cc.html">GameScene.cc</a></li>

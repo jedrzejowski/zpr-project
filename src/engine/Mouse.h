@@ -24,6 +24,9 @@ namespace engine {
 		MouseBtn(int btnCode) : InputButton(btnCode) {};
 	};
 
+	/**
+	 * @brief Implementacja myszy
+	 */
 	class Mouse : public InputDevice {
 		friend InputInterface;
 	private:

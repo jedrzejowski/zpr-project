@@ -19,9 +19,8 @@ BackWorkerQueue::~BackWorkerQueue() {
 
 
 void BackWorkerQueue::threadWorker() {
-	Function function;
-
 	while (!endWorker) {
+		Function function;
 
 		{
 			waiting_for_data.lock();

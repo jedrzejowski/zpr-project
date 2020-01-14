@@ -31,7 +31,8 @@ map::WorldPtr map::WorldManager::newWorld() {
 	for (int i = 0; true; i++) {
 		auto code_name = std::string("default") + std::to_string(i);
 
-		if (std::filesystem::is_directory(base_dir.concat(code_name))) continue;
+		if (std::filesystem::is_directory(base_dir / code_name)) continue;
+
 
 		world_ptr = map::World::create(code_name);
 		worlds_map[code_name] = world_ptr;
@@ -41,6 +42,8 @@ map::WorldPtr map::WorldManager::newWorld() {
 		break;
 	}
 
+	updateCodeNames();
+
 	return world_ptr;
 }
 
@@ -48,12 +51,15 @@ map::WorldPtr map::WorldManager::openWorld(const std::string &code_name) {
 	std::lock_guard<std::mutex> lock(worlds_mutex);
 
 	if (auto world_ptr = worlds_map[code_name].lock()) {
+		logger(0).log(code_name).log("counts").log(world_ptr.use_count());
 		return world_ptr;
 	} else {
 		world_ptr = map::World::create(code_name);
 		worlds_map[code_name] = world_ptr;
 		world_ptr->fullSave();
 		updateCodeNames();
+
+		logger(0).log(code_name).log("counts").log(world_ptr.use_count());
 		return world_ptr;
 	}
 }
@@ -63,6 +69,7 @@ const std::vector<std::string> &map::WorldManager::getAllCodeNames() const {
 }
 
 void map::WorldManager::updateCodeNames() {
+	logger(0).log("udpating");
 	all_code_names.clear();
 
 	if (!std::filesystem::is_directory(getWorldsDirectory()))

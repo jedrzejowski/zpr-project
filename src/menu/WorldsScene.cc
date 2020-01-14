@@ -84,6 +84,7 @@ void menu::WorldsScene::newWorldButton(const std::string &code_name) {
 
 	button->onNegativeClick([&, code_name] {
 		map::WorldManager::get().deleteWorld(code_name);
+		recreateWorldButtons();
 	});
 }
 

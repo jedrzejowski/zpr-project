@@ -17,7 +17,7 @@ map::ChunkRenderer::ChunkRenderer(map::WorldRendererPtr &renderer, const map::Ch
 }
 
 void map::ChunkRenderer::constructorChunkRenderer() {
-	chunk->onBlockChange([&](const Coord3D &pos) {
+	chunk->onBlockChange(this, [&](const Coord3D &pos) {
 		setNeedRefreshBuffers(true);
 
 		if (pos.x == 0)

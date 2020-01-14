@@ -64,7 +64,6 @@ void map::WorldRenderer::render(const engine::Camera &camera,
 	shader->updateProjection(window_ptr);
 	shader->setCamera(camera);
 
-
 	// tu przedało by się sprawdzać czy dany chunk powinien być renderowany
 	for (const auto &it : chunk_renderers)
 		it.second->render(scene);

@@ -88,17 +88,17 @@ Diagram dziedziczenia dla engine::Scene</div>
 <area href="class_object.html" title="Klasa obiektu, na obecną chwile, nie ma sensu, ale na początku była bardzo potrzebna,..." alt="Object" shape="rect" coords="219,112,428,136"/>
 <area href="struct_virtual_share_ptr_object.html" alt="VirtualSharePtrObject&lt; Scene &gt;" shape="rect" coords="438,112,647,136"/>
 <area href="struct_virtual_share_ptr_object.html" alt="VirtualSharePtrObject&lt; Object &gt;" shape="rect" coords="219,56,428,80"/>
-<area href="classgame_1_1_game_scene.html" alt="game::GameScene" shape="rect" coords="0,224,209,248"/>
-<area href="classmenu_1_1_settings_scene.html" alt="menu::SettingsScene" shape="rect" coords="219,224,428,248"/>
-<area href="classmenu_1_1_welcome_scene.html" alt="menu::WelcomeScene" shape="rect" coords="438,224,647,248"/>
-<area href="classmenu_1_1_worlds_scene.html" alt="menu::WorldsScene" shape="rect" coords="657,224,866,248"/>
+<area href="classgame_1_1_game_scene.html" title="Głowna scena gry na której gracz gra." alt="game::GameScene" shape="rect" coords="0,224,209,248"/>
+<area href="classmenu_1_1_settings_scene.html" title="Scena z ustawieniami użytkownika." alt="menu::SettingsScene" shape="rect" coords="219,224,428,248"/>
+<area href="classmenu_1_1_welcome_scene.html" title="Scena powitalna." alt="menu::WelcomeScene" shape="rect" coords="438,224,647,248"/>
+<area href="classmenu_1_1_worlds_scene.html" title="Scena z wyborem światów." alt="menu::WorldsScene" shape="rect" coords="657,224,866,248"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Metody publiczne</h2></td></tr>
-<tr class="memitem:a43d6243c04a8a67a25114480992e5b36"><td class="memItemLeft" align="right" valign="top"><a id="a43d6243c04a8a67a25114480992e5b36"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>render</b> (WindowPtr &amp;window)=0</td></tr>
+<tr class="memitem:a43d6243c04a8a67a25114480992e5b36"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classengine_1_1_scene.html#a43d6243c04a8a67a25114480992e5b36">render</a> (WindowPtr &amp;window)=0</td></tr>
+<tr class="memdesc:a43d6243c04a8a67a25114480992e5b36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Główna funkcja w której należy renderować scene.  <a href="classengine_1_1_scene.html#a43d6243c04a8a67a25114480992e5b36">Więcej...</a><br /></td></tr>
 <tr class="separator:a43d6243c04a8a67a25114480992e5b36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67d0343a36e162e91a31965d31aa5ff8"><td class="memItemLeft" align="right" valign="top"><a id="a67d0343a36e162e91a31965d31aa5ff8"></a>
 WindowWPtr&#160;</td><td class="memItemRight" valign="bottom"><b>getWindow</b> () const</td></tr>
@@ -157,8 +157,45 @@ const <a class="el" href="class_signal.html">Signal</a>&#160;</td><td class="mem
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
 <div class="textblock"><p>Klasa sceny. </p>
-<p>Okno wyświetlają sceny, które mogą się zmieniać w czasie działania programu. Sceny powinny mieć przynajmniej jeden interfejs wejściowy </p>
-</div><hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
+<p>Okno wyświetlają sceny, które mogą się zmieniać w czasie działania programu. Sceny powinny mieć przynajmniej jeden interfejs wejściowy Cykl życia sceny <a class="el" href="classengine_1_1_scene.html#a43d6243c04a8a67a25114480992e5b36" title="Główna funkcja w której należy renderować scene.">render()</a> -&gt; eventy z <a class="el" href="classengine_1_1_input_interface.html" title="Interfejs wejścia.">InputInterface</a> -&gt; pollEvents() </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="a43d6243c04a8a67a25114480992e5b36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43d6243c04a8a67a25114480992e5b36">&#9670;&nbsp;</a></span>render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void engine::Scene::render </td>
+          <td>(</td>
+          <td class="paramtype">WindowPtr &amp;&#160;</td>
+          <td class="paramname"><em>window</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Główna funkcja w której należy renderować scene. </p>
+<dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implementowany w <a class="el" href="classmenu_1_1_settings_scene.html#ad4ad9d1f9eb4e61d159fb37a30919210">menu::SettingsScene</a>, <a class="el" href="classgame_1_1_game_scene.html#adf1cd4ddea20169b04b89a3d112328c9">game::GameScene</a>, <a class="el" href="classmenu_1_1_worlds_scene.html#a9aa61b92fc38d7f2e2e15a23e584093e">menu::WorldsScene</a> i <a class="el" href="classmenu_1_1_welcome_scene.html#a885bc34e83b750a243053e0b604d0103">menu::WelcomeScene</a>.</p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
 <li>src/engine/<a class="el" href="_scene_8h_source.html">Scene.h</a></li>
 <li>src/engine/<a class="el" href="_scene_8cc.html">Scene.cc</a></li>
 </ul>

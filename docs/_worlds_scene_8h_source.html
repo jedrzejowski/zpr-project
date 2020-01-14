@@ -77,39 +77,41 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_engine_8h.html">src/engine/Engine.h</a>&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>menu {</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classmenu_1_1_worlds_scene.html">   13</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classmenu_1_1_worlds_scene.html">WorldsScene</a> : <span class="keyword">public</span> <a class="code" href="classengine_1_1_scene.html">engine::Scene</a>, <span class="keyword">public</span> <a class="code" href="struct_virtual_share_ptr_object.html">VirtualSharePtrObject</a>&lt;WorldsScene&gt; {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">using</span> <a class="code" href="struct_virtual_share_ptr_object.html">VirtualSharePtrObject&lt;WorldsScene&gt;::shared_from_this</a>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">using</span> <a class="code" href="struct_virtual_share_ptr_object.html">VirtualSharePtrObject&lt;WorldsScene&gt;::weak_from_this</a>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        gui::InterfacePtr interface;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        std::vector&lt;gui::TriButtonPtr&gt; worlds_button;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        gui::ButtonPtr add_button, return_button;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">float</span> scroll_offset = 0;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classmenu_1_1_worlds_scene.html">WorldsScene</a>();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">void</span> constructorWorldsScene();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">void</span> newWorldButton(<span class="keyword">const</span> std::string &amp;code_name);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordtype">void</span> backToWelcomeScene();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">void</span> updateButtonsPositions();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">void</span> recreateWorldButtons();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> openWorld(<span class="keyword">const</span> std::string&amp; code_name);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">static</span> WorldsScenePtr create();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        ~<a class="code" href="classmenu_1_1_worlds_scene.html">WorldsScene</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> render(engine::WindowPtr &amp;window) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">void</span> pollEvents() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    };</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classmenu_1_1_worlds_scene.html">   17</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classmenu_1_1_worlds_scene.html">WorldsScene</a> : <span class="keyword">public</span> <a class="code" href="classengine_1_1_scene.html">engine::Scene</a>, <span class="keyword">public</span> <a class="code" href="struct_virtual_share_ptr_object.html">VirtualSharePtrObject</a>&lt;WorldsScene&gt; {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">using</span> <a class="code" href="struct_virtual_share_ptr_object.html">VirtualSharePtrObject&lt;WorldsScene&gt;::shared_from_this</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">using</span> <a class="code" href="struct_virtual_share_ptr_object.html">VirtualSharePtrObject&lt;WorldsScene&gt;::weak_from_this</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        gui::InterfacePtr interface;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        std::vector&lt;gui::TriButtonPtr&gt; worlds_button;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        gui::ButtonPtr add_button, return_button;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">float</span> scroll_offset = 0;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classmenu_1_1_worlds_scene.html">WorldsScene</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordtype">void</span> constructorWorldsScene();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">void</span> newWorldButton(<span class="keyword">const</span> std::string &amp;code_name);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordtype">void</span> backToWelcomeScene();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">void</span> updateButtonsPositions();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> recreateWorldButtons();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">void</span> openWorld(<span class="keyword">const</span> std::string&amp; code_name);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">static</span> WorldsScenePtr create();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        ~<a class="code" href="classmenu_1_1_worlds_scene.html">WorldsScene</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classmenu_1_1_worlds_scene.html#a9aa61b92fc38d7f2e2e15a23e584093e">render</a>(engine::WindowPtr &amp;window) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">void</span> pollEvents() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    };</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassengine_1_1_scene_html"><div class="ttname"><a href="classengine_1_1_scene.html">engine::Scene</a></div><div class="ttdoc">Klasa sceny.</div><div class="ttdef"><b>Definition:</b> Scene.h:25</div></div>
-<div class="ttc" id="aclassmenu_1_1_worlds_scene_html"><div class="ttname"><a href="classmenu_1_1_worlds_scene.html">menu::WorldsScene</a></div><div class="ttdef"><b>Definition:</b> WorldsScene.h:13</div></div>
+<div class="ttc" id="aclassengine_1_1_scene_html"><div class="ttname"><a href="classengine_1_1_scene.html">engine::Scene</a></div><div class="ttdoc">Klasa sceny.</div><div class="ttdef"><b>Definition:</b> Scene.h:26</div></div>
+<div class="ttc" id="aclassmenu_1_1_worlds_scene_html"><div class="ttname"><a href="classmenu_1_1_worlds_scene.html">menu::WorldsScene</a></div><div class="ttdoc">Scena z wyborem światów.</div><div class="ttdef"><b>Definition:</b> WorldsScene.h:17</div></div>
 <div class="ttc" id="a_engine_8h_html"><div class="ttname"><a href="_engine_8h.html">Engine.h</a></div></div>
 <div class="ttc" id="a__classdef_8h_html"><div class="ttname"><a href="__classdef_8h.html">_classdef.h</a></div></div>
 <div class="ttc" id="astruct_virtual_share_ptr_object_html"><div class="ttname"><a href="struct_virtual_share_ptr_object.html">VirtualSharePtrObject</a></div><div class="ttdoc">Klasa do obsługi wewnętrznych wskaźników.</div><div class="ttdef"><b>Definition:</b> VirtualSharePtrObject.hpp:30</div></div>
+<div class="ttc" id="aclassmenu_1_1_worlds_scene_html_a9aa61b92fc38d7f2e2e15a23e584093e"><div class="ttname"><a href="classmenu_1_1_worlds_scene.html#a9aa61b92fc38d7f2e2e15a23e584093e">menu::WorldsScene::render</a></div><div class="ttdeci">void render(engine::WindowPtr &amp;window) override</div><div class="ttdoc">Główna funkcja w której należy renderować scene.</div><div class="ttdef"><b>Definition:</b> WorldsScene.cc:54</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Wygenerowano przez &#160;<a href="http://www.doxygen.org/index.html">

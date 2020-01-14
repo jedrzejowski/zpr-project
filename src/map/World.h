@@ -16,6 +16,20 @@
 #include "ChunkLoader.h"
 
 namespace map {
+
+	/**
+	 * @brief Świat gry
+	 *
+	 * Cały świat gry jest w czterech klasach, na początku był jedna, ale tak się rozrosła, że postanowiliśmy podzielić
+	 * ją na cztery:
+	 *  - World - do trzymania danych
+	 *  - ChunkLoader - do ładowania chunk'ów
+	 *  - ChunkGenerator - do generowania chunk'ów
+	 *  - WorldManager - do zarządzania obiektami World
+	 *
+	 * Świat posiada dwie nazwy: kodową i użytkownika, pierwsza to rzeczywista nazwa świata, druga to ta pokazywana
+	 * graczowi.
+	 */
 	class World : public Object, public VirtualSharePtrObject<World>, public SavableObject {
 	public:
 		using VirtualSharePtrObject<World>::shared_from_this;
@@ -38,15 +52,35 @@ namespace map {
 	public:
 		~World() override;
 
+		/**
+		 * Zapytanie, czy chunk jest dostępny
+		 * @param position
+		 * @return
+		 */
 		bool hasChunk(const Coord2D &position);
 		ChunkWPtr getChunk(const Coord2D &position);
+
+		/**
+		 * @brief prośba o wczytanie chunk'u dla gracza
+		 * @param position
+		 */
 		void loadForPlayer(game::PlayerPtr &player);
+
+		/**
+		 * @brief prośba o wczytanie chunk'u
+		 * @param position
+		 */
 		void requestChunk(Coord2D position);
 
 		void syncChunkWithLoader();
 
 		const std::string &getDisplayName() const;
 		void setDisplayName(const std::string &displayName);
+
+		/**
+		 * Nazwa kodowa świata
+		 * @return
+		 */
 		const std::string &getCodeName() const;
 
 		const std::map<Coord2D, map::ChunkPtr> &getLoadedChunks() const;

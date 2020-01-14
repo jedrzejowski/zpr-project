@@ -20,9 +20,17 @@ namespace gui {
 		Disabled
 	};
 
+	/**
+	 * @brief Przycisk w interfejsie użytkownika
+	 *
+	 * Jest to maszyna stanów
+	 */
 	class Button : public RectangleObj, public VirtualSharePtrObject<Button> {
 	public:
 		using VirtualSharePtrObject<Button>::shared_from_this;
+		using VirtualSharePtrObject<Button>::weak_from_this;
+
+	private:
 		float text_size;
 		ButtonState state;
 		TextPtr text;

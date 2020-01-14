@@ -47,6 +47,9 @@ namespace engine {
 	public:
 		Window();
 
+		/**
+		 * @brief Początkowe zainicjowanie obiektów
+		 */
 		virtual void initObjects() = 0;
 
 		void open();

@@ -14,6 +14,11 @@
 
 namespace gui {
 
+	/**
+	 * @brief Interfejs 2D wyświetlany użytkownikowi
+	 *
+	 * Działą jak drzewo obiektów na bazie engine::Sub3DObj, ale jest przystosowane do 2D
+	 */
 	class Interface : public Object, public engine::Abs3DObj {
 	private:
 		engine::InputInterfacePtr input_interface_ptr;

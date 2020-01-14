@@ -18,6 +18,11 @@ namespace game {
 		Menu
 	};
 
+	/**
+	 * @brief Głowna scena gry na której gracz gra
+	 *
+	 * Scena posiada dwa stany: gry i menu. W pierwszej gram gra w drugiej wyświetla się menu
+	 */
 	class GameScene : public engine::Scene, public VirtualSharePtrObject<GameScene> {
 	public:
 		using VirtualSharePtrObject<GameScene>::shared_from_this;

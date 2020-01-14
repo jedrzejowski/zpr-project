@@ -14,12 +14,18 @@
 #include "src/block/Blocks.h"
 
 namespace map {
+
+	/**
+	 * @brief Chunk - podstawowa jednostka świata
+	 *
+	 * Chunk to zestaw bloku w świecie posiadający reprezentacje w pliku na dysku.
+	 * Rozmiar chunk'a jest ustalony w zmiennej Size, na potrzeby projektu jest ona
+	 * mniejsza niż zakładana na początku(32 wysokości)
+	 */
 	class Chunk : public Object, public VirtualSharePtrObject<Chunk>, public SavableObject {
 	public:
 		using VirtualSharePtrObject<Chunk>::shared_from_this;
 		using VirtualSharePtrObject<Chunk>::weak_from_this;
-		friend ChunkRenderer;
-		friend ChunkGenerator;
 		friend ChunkLoader;
 	private:
 

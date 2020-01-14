@@ -10,6 +10,10 @@
 #include "src/gui/GUI.h"
 
 namespace game {
+
+	/**
+	 * @brief Implementacja interfejsu wyboru bloków do stawiania
+	 */
 	class PlayerInterface : public gui::Interface, public VirtualSharePtrObject<PlayerInterface> {
 	public:
 		using VirtualSharePtrObject<PlayerInterface>::shared_from_this;

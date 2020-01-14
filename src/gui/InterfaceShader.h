@@ -10,6 +10,9 @@
 
 namespace gui {
 
+	/**
+	 * @brief Shader interfejsu
+	 */
 	class InterfaceShader : engine::Shader {
 	private:
 

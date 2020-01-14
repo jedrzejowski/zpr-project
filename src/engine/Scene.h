@@ -21,6 +21,7 @@ namespace engine {
 	 *
 	 * Okno wyświetlają sceny, które mogą się zmieniać w czasie działania programu.
 	 * Sceny powinny mieć przynajmniej jeden interfejs wejściowy
+	 * Cykl życia sceny render() -> eventy z InputInterface -> pollEvents()
 	 */
 	class Scene : public Object, public VirtualSharePtrObject<Scene> {
 	public:
@@ -33,6 +34,10 @@ namespace engine {
 		Scene();
 	public:
 
+		/**
+		 * @brief Główna funkcja w której należy renderować scene
+		 * @param window
+		 */
 		virtual void render(WindowPtr& window) = 0;
 
 		WindowWPtr getWindow() const;

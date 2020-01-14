@@ -76,15 +76,20 @@ $(function() {
 <div class="title">Dokumentacja klasy gui::Button</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Przycisk w interfejsie użytkownika.  
+ <a href="classgui_1_1_button.html#details">Więcej...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_button_8h_source.html">Button.h</a>&gt;</code></p>
 <div class="dynheader">
 Diagram dziedziczenia dla gui::Button</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classgui_1_1_button.png" usemap="#gui::Button_map" alt=""/>
   <map id="gui::Button_map" name="gui::Button_map">
-<area href="classgui_1_1_rectangle_obj.html" alt="gui::RectangleObj" shape="rect" coords="307,224,543,248"/>
+<area href="classgui_1_1_rectangle_obj.html" title="Prosty obiekt prostokąta z obsługą myszy." alt="gui::RectangleObj" shape="rect" coords="307,224,543,248"/>
 <area href="struct_virtual_share_ptr_object.html" alt="VirtualSharePtrObject&lt; Button &gt;" shape="rect" coords="738,224,974,248"/>
-<area href="classgui_1_1_gui_object.html" alt="gui::GuiObject" shape="rect" coords="123,168,359,192"/>
+<area href="classgui_1_1_gui_object.html" title="Obiekt jakieś kontrolki graficznej." alt="gui::GuiObject" shape="rect" coords="123,168,359,192"/>
 <area href="struct_virtual_share_ptr_object.html" alt="VirtualSharePtrObject&lt; RectangleObj &gt;" shape="rect" coords="492,168,728,192"/>
 <area href="class_object.html" title="Klasa obiektu, na obecną chwile, nie ma sensu, ale na początku była bardzo potrzebna,..." alt="Object" shape="rect" coords="0,112,236,136"/>
 <area href="classengine_1_1_sub3_d_obj.html" title="Podstawowy obiekt graficzny implementujący drzewo obiektów." alt="engine::Sub3DObj" shape="rect" coords="246,112,482,136"/>
@@ -165,7 +170,7 @@ glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>getModel</b> () 
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setModel</b> (const glm::mat4 &amp;model)</td></tr>
 <tr class="separator:aa01ff59725974ed8b27460b091ac6e40 inherit pub_methods_classgui_1_1_gui_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad68ed15b44e67897ecb5c1a00f550f5c inherit pub_methods_classgui_1_1_gui_object"><td class="memItemLeft" align="right" valign="top"><a id="ad68ed15b44e67897ecb5c1a00f550f5c"></a>
-const InterfacePtr&#160;</td><td class="memItemRight" valign="bottom"><b>getInterface</b> () const</td></tr>
+InterfacePtr&#160;</td><td class="memItemRight" valign="bottom"><b>getInterface</b> () const</td></tr>
 <tr class="separator:ad68ed15b44e67897ecb5c1a00f550f5c inherit pub_methods_classgui_1_1_gui_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4194cce8e9206cbe2cb70df03094bd83 inherit pub_methods_classgui_1_1_gui_object"><td class="memItemLeft" align="right" valign="top"><a id="a4194cce8e9206cbe2cb70df03094bd83"></a>
 InterfacePtr&#160;</td><td class="memItemRight" valign="bottom"><b>getInterface</b> ()</td></tr>
@@ -244,15 +249,6 @@ static ButtonPtr&#160;</td><td class="memItemRight" valign="bottom"><b>create</b
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Atrybuty publiczne</h2></td></tr>
-<tr class="memitem:ac66702319a6c31118079b08a769d07ca"><td class="memItemLeft" align="right" valign="top"><a id="ac66702319a6c31118079b08a769d07ca"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>text_size</b></td></tr>
-<tr class="separator:ac66702319a6c31118079b08a769d07ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a194f7f87bb786664d945db38d39dca76"><td class="memItemLeft" align="right" valign="top"><a id="a194f7f87bb786664d945db38d39dca76"></a>
-ButtonState&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
-<tr class="separator:a194f7f87bb786664d945db38d39dca76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abce73e99a97e3c6e613457ba639d2ff7"><td class="memItemLeft" align="right" valign="top"><a id="abce73e99a97e3c6e613457ba639d2ff7"></a>
-TextPtr&#160;</td><td class="memItemRight" valign="bottom"><b>text</b></td></tr>
-<tr class="separator:abce73e99a97e3c6e613457ba639d2ff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9732a19c4e6a0a832a7dcd8565f2dad7"><td class="memItemLeft" align="right" valign="top"><a id="a9732a19c4e6a0a832a7dcd8565f2dad7"></a>
 const <a class="el" href="class_signal.html">Signal</a>&#160;</td><td class="memItemRight" valign="bottom"><b>onClicked</b></td></tr>
 <tr class="separator:a9732a19c4e6a0a832a7dcd8565f2dad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -309,7 +305,10 @@ std::vector&lt; <a class="el" href="structengine_1_1_point3_de_x.html">engine::P
 std::vector&lt; <a class="el" href="structengine_1_1_ebo_triangle.html">engine::EboTriangle</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>indices_buffer</b></td></tr>
 <tr class="separator:a72d650f0e37402a552d9b33966a01fc0 inherit pro_attribs_classengine_1_1_sub3_d_obj"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Przycisk w interfejsie użytkownika. </p>
+<p>Jest to maszyna stanów </p>
+</div><hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
 <li>src/gui/<a class="el" href="_button_8h_source.html">Button.h</a></li>
 <li>src/gui/<a class="el" href="_button_8cc.html">Button.cc</a></li>
 </ul>

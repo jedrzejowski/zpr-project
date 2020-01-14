@@ -31,7 +31,7 @@ void gui::GuiObject::setModel(const glm::mat4 &model) {
 	setNeedRefreshBuffers(true);
 }
 
-const gui::InterfacePtr gui::GuiObject::getInterface() const {
+gui::InterfacePtr gui::GuiObject::getInterface() const {
 	return interface.lock();
 }
 

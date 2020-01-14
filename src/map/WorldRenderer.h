@@ -12,6 +12,10 @@
 #include "World.h"
 
 namespace map {
+
+	/**
+	 * @brief Obiekt renderujący świat
+	 */
 	class WorldRenderer : public Object, public VirtualSharePtrObject<WorldRenderer> {
 	public:
 		using VirtualSharePtrObject<WorldRenderer>::shared_from_this;

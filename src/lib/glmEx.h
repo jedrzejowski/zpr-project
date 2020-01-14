@@ -11,6 +11,9 @@
 
 namespace glm {
 
+	/**
+	 * @brief Trójkąt w przestrzeni 3D
+	 */
 	struct Triangle {
 	public:
 		glm::vec3 first{}, second{}, third{};
@@ -25,6 +28,9 @@ namespace glm {
 				third(third) {}
 	};
 
+	/**
+	 * @brief Kwadrat(prostokąt) w przestrzeni 3D
+	 */
 	class Square {
 	public:
 		Triangle first_triangle{}, second_triangle{};

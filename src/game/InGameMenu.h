@@ -10,6 +10,10 @@
 #include "src/gui/GUI.h"
 
 namespace game {
+
+	/**
+	 * @brief Menu w trakcie gry
+	 */
 	class InGameMenu : public gui::Interface, public VirtualSharePtrObject<InGameMenu> {
 	public:
 		using VirtualSharePtrObject<InGameMenu>::shared_from_this;

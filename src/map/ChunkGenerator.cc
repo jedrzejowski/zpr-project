@@ -36,12 +36,14 @@ void map::ChunkGenerator::fillChunk(ChunkPtr &chunk) {
 
 	CoordDim waterLevel = Chunk::Size.z / 2;
 
+	auto chunk_position = chunk->getPosition();
+
 	for (CoordDim x = 0; x < Chunk::Size.x; x++) {
 		for (CoordDim y = 0; y < Chunk::Size.y; y++) {
 
 			CoordDim z = noise.getHeight(
-					x + chunk->position.x * Chunk::Size.x,
-					y + chunk->position.y * Chunk::Size.y
+					x + chunk_position.x * Chunk::Size.x,
+					y + chunk_position.y * Chunk::Size.y
 			) + waterLevel;
 
 			z = std::clamp(z, CoordDim(0), CoordDim(map::Chunk::Size.z - 1));

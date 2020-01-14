@@ -97,7 +97,7 @@ json map::Chunk::toJSON() const {
 		auto row_y = json::array();
 		for (CoordDim y = 0; y < Chunk::Size.y; y++) {
 			auto row_z = json::array();
-			for (CoordDim z = 0; z < Chunk::Size.y; z++) {
+			for (CoordDim z = 0; z < Chunk::Size.z; z++) {
 
 				auto coord = Coord3D(x, y, z);
 

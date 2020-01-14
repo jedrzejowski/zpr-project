@@ -13,6 +13,9 @@
 
 namespace menu {
 
+	/**
+	 * @brief Scena z ustawieniami użytkownika
+	 */
 	class SettingsScene : public engine::Scene, public VirtualSharePtrObject<SettingsScene> {
 	public:
 		using VirtualSharePtrObject<SettingsScene>::shared_from_this;

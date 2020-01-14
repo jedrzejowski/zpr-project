@@ -20,27 +20,29 @@ void map::ChunkLoader::load(Coord2D coord) {
 
 	loading_chunks_coords.push_back(coord);
 
-	auto world_ptr = world->shared_from_this();
-	getWorker()->push([this, world_ptr, coord] {
-		auto chunk = map::Chunk::create(world_ptr, coord);
+	auto world_wptr = world->weak_from_this();
+	getWorker()->push([this, world_wptr, coord] {
+		if (auto world_ptr = world_wptr.lock()) {
+			auto chunk = map::Chunk::create(world_ptr, coord);
 
-		auto genChunk = [&] {
-			world_ptr->chunk_generator.fillChunk(chunk);
+			auto genChunk = [&] {
+				world_ptr->chunk_generator.fillChunk(chunk);
 
-			try {
-				chunk->saveObjectToFile();
-			} catch (FileOutputException &exception) {
-				logger(0).err("Error occured while saving chunk to file:").enter().log(exception.getFile());
-			}
-		};
+				try {
+					chunk->saveObjectToFile();
+				} catch (FileOutputException &exception) {
+					logger(0).err("Error occured while saving chunk to file:").enter().log(exception.getFile());
+				}
+			};
 
-		if (chunk->hasSavedFile())
-			chunk->loadObjectFromFile(genChunk);
-		else genChunk();
+			if (chunk->hasSavedFile())
+				chunk->loadObjectFromFile(genChunk);
+			else genChunk();
 
 
-		std::lock_guard<std::mutex> lock(chunk_list_access);
-		chunks_to_add.push_back(chunk);
+			std::lock_guard<std::mutex> lock(chunk_list_access);
+			chunks_to_add.push_back(chunk);
+		}
 	});
 }
 

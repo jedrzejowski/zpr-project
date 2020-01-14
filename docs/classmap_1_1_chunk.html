@@ -77,6 +77,11 @@ $(function() {
 <div class="title">Dokumentacja klasy map::Chunk</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="classmap_1_1_chunk.html" title="Chunk - podstawowa jednostka świata.">Chunk</a> - podstawowa jednostka świata.  
+ <a href="classmap_1_1_chunk.html#details">Więcej...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_chunk_8h_source.html">Chunk.h</a>&gt;</code></p>
 <div class="dynheader">
 Diagram dziedziczenia dla map::Chunk</div>
 <div class="dyncontent">
@@ -111,7 +116,7 @@ const std::map&lt; <a class="el" href="struct_coord3_d.html">Coord3D</a>, block:
 const <a class="el" href="struct_coord2_d.html">Coord2D</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getPosition</b> () const</td></tr>
 <tr class="separator:a852a4a343c102f1b549a812589cbf2c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13af4605d06b2ce0b7f8c72a60596408"><td class="memItemLeft" align="right" valign="top"><a id="a13af4605d06b2ce0b7f8c72a60596408"></a>
-ChunkWPtr&#160;</td><td class="memItemRight" valign="bottom"><b>getNeighbor</b> (<a class="el" href="_coord_8hpp.html#aee68c378b4f5efe1f90f5e02456e9b11">CoordDim</a> dx, <a class="el" href="_coord_8hpp.html#aee68c378b4f5efe1f90f5e02456e9b11">CoordDim</a> dy) const</td></tr>
+ChunkWPtr&#160;</td><td class="memItemRight" valign="bottom"><b>getNeighbor</b> (<a class="el" href="_coord_8hpp.html#a03c74187bd558f01800d5a720d29fc4a">CoordDim</a> dx, <a class="el" href="_coord_8hpp.html#a03c74187bd558f01800d5a720d29fc4a">CoordDim</a> dy) const</td></tr>
 <tr class="separator:a13af4605d06b2ce0b7f8c72a60596408"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae98bcdd800f9944cc1006ec0298481c6"><td class="memItemLeft" align="right" valign="top"><a id="ae98bcdd800f9944cc1006ec0298481c6"></a>
 std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>getSavePath</b> () const override</td></tr>
@@ -178,12 +183,6 @@ static ChunkPtr&#160;</td><td class="memItemRight" valign="bottom"><b>create</b>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Atrybuty publiczne</h2></td></tr>
-<tr class="memitem:ad56e7038bf3aea1e77f23c8f8feb20e8"><td class="memItemLeft" align="right" valign="top"><a id="ad56e7038bf3aea1e77f23c8f8feb20e8"></a>
-friend&#160;</td><td class="memItemRight" valign="bottom"><b>ChunkRenderer</b></td></tr>
-<tr class="separator:ad56e7038bf3aea1e77f23c8f8feb20e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b1ea2a21e32d491678df4254652f110"><td class="memItemLeft" align="right" valign="top"><a id="a0b1ea2a21e32d491678df4254652f110"></a>
-friend&#160;</td><td class="memItemRight" valign="bottom"><b>ChunkGenerator</b></td></tr>
-<tr class="separator:a0b1ea2a21e32d491678df4254652f110"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f1c8bac78b202c153d7b272ed615ca1"><td class="memItemLeft" align="right" valign="top"><a id="a4f1c8bac78b202c153d7b272ed615ca1"></a>
 friend&#160;</td><td class="memItemRight" valign="bottom"><b>ChunkLoader</b></td></tr>
 <tr class="separator:a4f1c8bac78b202c153d7b272ed615ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -213,7 +212,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>loadObjectFromFile</b
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasSavedFile</b> ()</td></tr>
 <tr class="separator:a6260fe0985a6909fb80b5ec975c72609 inherit pro_methods_class_savable_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p><a class="el" href="classmap_1_1_chunk.html" title="Chunk - podstawowa jednostka świata.">Chunk</a> - podstawowa jednostka świata. </p>
+<p><a class="el" href="classmap_1_1_chunk.html" title="Chunk - podstawowa jednostka świata.">Chunk</a> to zestaw bloku w świecie posiadający reprezentacje w pliku na dysku. Rozmiar chunk'a jest ustalony w zmiennej Size, na potrzeby projektu jest ona mniejsza niż zakładana na początku(32 wysokości) </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
 <a id="a1b923a1c482a8286ea63a11d83f7d47e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1b923a1c482a8286ea63a11d83f7d47e">&#9670;&nbsp;</a></span>acceptState()</h2>
 

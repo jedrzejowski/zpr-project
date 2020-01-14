@@ -77,27 +77,27 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemap.html">map</a> {</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classmap_1_1_world_shader.html">   13</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classmap_1_1_world_shader.html">WorldShader</a> : <span class="keyword">public</span> <a class="code" href="classengine_1_1_shader.html">engine::Shader</a> {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        engine::TexturePtr block_texture;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classmap_1_1_world_shader.html">WorldShader</a>();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">void</span> setCamera(<span class="keyword">const</span> <a class="code" href="classengine_1_1_camera.html">engine::Camera</a> &amp;camera);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">void</span> setProjection(<span class="keyword">const</span> glm::mat4 &amp;mat);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">void</span> updateProjection(<span class="keyword">const</span> engine::WindowPtr &amp;window_ptr);</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classmap_1_1_world_shader.html">   16</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classmap_1_1_world_shader.html">WorldShader</a> : <span class="keyword">public</span> <a class="code" href="classengine_1_1_shader.html">engine::Shader</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        engine::TexturePtr block_texture;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classmap_1_1_world_shader.html">WorldShader</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">void</span> setCamera(<span class="keyword">const</span> <a class="code" href="classengine_1_1_camera.html">engine::Camera</a> &amp;camera);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">void</span> setChunkPos(<span class="keyword">const</span> glm::mat4 &amp;mat);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">void</span> bind() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    };</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">void</span> setProjection(<span class="keyword">const</span> glm::mat4 &amp;mat);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">void</span> updateProjection(<span class="keyword">const</span> engine::WindowPtr &amp;window_ptr);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">void</span> setChunkPos(<span class="keyword">const</span> glm::mat4 &amp;mat);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">void</span> bind() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    };</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="a_engine_8h_html"><div class="ttname"><a href="_engine_8h.html">Engine.h</a></div></div>
 <div class="ttc" id="aclassengine_1_1_shader_html"><div class="ttname"><a href="classengine_1_1_shader.html">engine::Shader</a></div><div class="ttdoc">Podstawa klasy dla shaderów.</div><div class="ttdef"><b>Definition:</b> Shader.h:17</div></div>
-<div class="ttc" id="aclassmap_1_1_world_shader_html"><div class="ttname"><a href="classmap_1_1_world_shader.html">map::WorldShader</a></div><div class="ttdef"><b>Definition:</b> WorldShader.h:13</div></div>
-<div class="ttc" id="anamespacemap_html"><div class="ttname"><a href="namespacemap.html">map</a></div><div class="ttdoc">namespace dla struktury mapy i wszystkiego co z nią jest związane</div><div class="ttdef"><b>Definition:</b> _classdef.h:206</div></div>
+<div class="ttc" id="aclassmap_1_1_world_shader_html"><div class="ttname"><a href="classmap_1_1_world_shader.html">map::WorldShader</a></div><div class="ttdoc">Shader świata.</div><div class="ttdef"><b>Definition:</b> WorldShader.h:16</div></div>
+<div class="ttc" id="anamespacemap_html"><div class="ttname"><a href="namespacemap.html">map</a></div><div class="ttdoc">namespace dla struktury mapy i wszystkiego co z nią jest związane</div><div class="ttdef"><b>Definition:</b> _classdef.h:210</div></div>
 <div class="ttc" id="aclassengine_1_1_camera_html"><div class="ttname"><a href="classengine_1_1_camera.html">engine::Camera</a></div><div class="ttdoc">Implementacja kamery.</div><div class="ttdef"><b>Definition:</b> Camera.h:17</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -76,6 +76,11 @@ $(function() {
 <div class="title">Dokumentacja klasy game::Player</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Obiekt gracza.  
+ <a href="classgame_1_1_player.html#details">Więcej...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_player_8h_source.html">Player.h</a>&gt;</code></p>
 <div class="dynheader">
 Diagram dziedziczenia dla game::Player</div>
 <div class="dyncontent">
@@ -108,18 +113,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>moveUp</b> (float tim
 <tr class="memitem:a26e227f7bbd058e94588b76574b729a0"><td class="memItemLeft" align="right" valign="top"><a id="a26e227f7bbd058e94588b76574b729a0"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>moveDown</b> (float time)</td></tr>
 <tr class="separator:a26e227f7bbd058e94588b76574b729a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a474781660aabdef3a2b95d93577f8646"><td class="memItemLeft" align="right" valign="top"><a id="a474781660aabdef3a2b95d93577f8646"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>rotateUp</b> (float dy)</td></tr>
-<tr class="separator:a474781660aabdef3a2b95d93577f8646"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1aae0f9bc69e2f490c75ffbafaac2d9f"><td class="memItemLeft" align="right" valign="top"><a id="a1aae0f9bc69e2f490c75ffbafaac2d9f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>rotateDown</b> (float dy)</td></tr>
-<tr class="separator:a1aae0f9bc69e2f490c75ffbafaac2d9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5281e8b88ee40363a7660b26e4a49419"><td class="memItemLeft" align="right" valign="top"><a id="a5281e8b88ee40363a7660b26e4a49419"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>rotateLeft</b> (float dx)</td></tr>
-<tr class="separator:a5281e8b88ee40363a7660b26e4a49419"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac206eba14cada962f0b95ec9683a72e1"><td class="memItemLeft" align="right" valign="top"><a id="ac206eba14cada962f0b95ec9683a72e1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>rotateRight</b> (float dx)</td></tr>
-<tr class="separator:ac206eba14cada962f0b95ec9683a72e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a563221aaceda1ea73128baaabdd542ef"><td class="memItemLeft" align="right" valign="top"><a id="a563221aaceda1ea73128baaabdd542ef"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>rotateHeadUp</b> (float dy)</td></tr>
+<tr class="separator:a563221aaceda1ea73128baaabdd542ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6925cc2e74bc6f068b5942d5eeb72745"><td class="memItemLeft" align="right" valign="top"><a id="a6925cc2e74bc6f068b5942d5eeb72745"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>rotateHeadDown</b> (float dy)</td></tr>
+<tr class="separator:a6925cc2e74bc6f068b5942d5eeb72745"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad16ae0eea404bdb63b765d1097070a84"><td class="memItemLeft" align="right" valign="top"><a id="ad16ae0eea404bdb63b765d1097070a84"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>rotateHeadLeft</b> (float dx)</td></tr>
+<tr class="separator:ad16ae0eea404bdb63b765d1097070a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47fb2ccf9e27e8951a2e0c8cdb85efe9"><td class="memItemLeft" align="right" valign="top"><a id="a47fb2ccf9e27e8951a2e0c8cdb85efe9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>rotateHeadRight</b> (float dx)</td></tr>
+<tr class="separator:a47fb2ccf9e27e8951a2e0c8cdb85efe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace070bf9cd0b7a0d8f148425897bf03e"><td class="memItemLeft" align="right" valign="top"><a id="ace070bf9cd0b7a0d8f148425897bf03e"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>getChunkRenderDistance</b> () const</td></tr>
 <tr class="separator:ace070bf9cd0b7a0d8f148425897bf03e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -252,7 +257,10 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>mouse_precision</b><
 float&#160;</td><td class="memItemRight" valign="bottom"><b>keyboard_precision</b></td></tr>
 <tr class="separator:a56be305361e0e4db60a6925299cc43e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Obiekt gracza. </p>
+<p>Implementuje ruchy gracza oraz znajduje bloki na które trzeba ustawić nowy block </p>
+</div><h2 class="groupheader">Dokumentacja funkcji składowych</h2>
 <a id="a342bfd05a7688e232d847daca6809e8e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a342bfd05a7688e232d847daca6809e8e">&#9670;&nbsp;</a></span>acceptState()</h2>
 

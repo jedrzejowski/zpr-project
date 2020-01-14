@@ -72,11 +72,12 @@ get_filename_component(main_cpp ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp ABSOLUT
 
 list(REMOVE_ITEM SOURCE_FILES ${TEST_FILES} ${main_cpp})
 
-add_executable(${APP_TARGET} ${HEADER_FILES} ${SOURCE_FILES} ${main_cpp} )
+add_executable(${APP_TARGET} ${HEADER_FILES} ${SOURCE_FILES} ${main_cpp})
 add_executable(${TEST_TARGET} ${HEADER_FILES} ${SOURCE_FILES} ${TEST_FILES})
 
 target_link_libraries(${APP_TARGET} ${LIBRARIES})
 target_link_libraries(${TEST_TARGET} ${LIBRARIES})
+add_definitions(-DBOOST_TEST_DYN_LINK)
 
 target_compile_definitions(${TEST_TARGET} PUBLIC IS_TESTING_SCOPE)
 

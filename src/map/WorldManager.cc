@@ -34,7 +34,6 @@ map::WorldPtr map::WorldManager::newWorld() {
 
 		if (boost::filesystem::is_directory(base_dir / code_name)) continue;
 
-
 		world_ptr = map::World::create(code_name);
 		worlds_map[code_name] = world_ptr;
 		world_ptr->setDisplayName(std::string("Swiat ") + std::to_string(i));
@@ -52,7 +51,6 @@ map::WorldPtr map::WorldManager::openWorld(const std::string &code_name) {
 	std::lock_guard<std::mutex> lock(worlds_mutex);
 
 	if (auto world_ptr = worlds_map[code_name].lock()) {
-		logger(0).log(code_name).log("counts").log(world_ptr.use_count());
 		return world_ptr;
 	} else {
 		world_ptr = map::World::create(code_name);

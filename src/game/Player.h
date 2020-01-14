@@ -58,7 +58,7 @@ namespace game {
 
 		//region SavableObject
 	public:
-		std::filesystem::path getSavePath() const override;
+		boost::filesystem::path getSavePath() const override;
 		json toJSON() const override;
 	protected:
 		void acceptState(json &json_obj) override;

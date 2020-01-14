@@ -90,8 +90,8 @@ namespace map {
 
 		//region SavableObject
 	public:
-		std::filesystem::path getDirectory() const;
-		std::filesystem::path getSavePath() const override;
+		boost::filesystem::path getDirectory() const;
+		boost::filesystem::path getSavePath() const override;
 		json toJSON() const override;
 		void fullSave();
 	protected:

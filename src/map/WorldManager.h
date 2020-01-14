@@ -29,7 +29,7 @@ namespace map {
 	public:
 		static WorldManager &get();
 
-		static std::filesystem::path getWorldsDirectory();
+		static boost::filesystem::path getWorldsDirectory();
 
 		WorldPtr newWorld();
 		WorldPtr openWorld(const std::string &code_name);

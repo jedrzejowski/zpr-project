@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <filesystem>
+#include <boost/filesystem/path.hpp>
 #include "json.hpp"
 #include "AppSettings.h"
 #include "src/OpenGL.h"
@@ -36,7 +36,7 @@ protected:
 
 public:
 
-	[[nodiscard]] virtual std::filesystem::path getSavePath() const = 0;
+	[[nodiscard]] virtual boost::filesystem::path getSavePath() const = 0;
 
 	/**
 	 * @brief Generator obiektu json ze stanu obiektu

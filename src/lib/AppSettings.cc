@@ -6,7 +6,8 @@
 
 #include <fstream>
 #include <iomanip>
-#include <filesystem>
+#include <boost/filesystem/path.hpp>
+#include <boost/filesystem/operations.hpp>
 #include "AppSettings.h"
 #include "SavableObject.h"
 #include "cfgpath.h"
@@ -19,7 +20,7 @@ AppSettings::AppSettings() :
 	logger(4).constructor(this);
 
 #ifdef IS_TESTING_SCOPE
-	cfg_dir = std::filesystem::temp_directory_path() / global::AppName;
+	cfg_dir = boost::filesystem::temp_directory_path() / global::AppName;
 #else
 	char temp[256];
 	get_user_config_folder(temp, sizeof(temp), global::AppName.c_str());
@@ -27,7 +28,7 @@ AppSettings::AppSettings() :
 #endif
 
 	try {
-		std::filesystem::create_directories(cfg_dir);
+		boost::filesystem::create_directories(cfg_dir);
 		auto json_obj = loadJSON(cfg_dir / SETTINGS_FILENAME);
 		fromJSON(json_obj);
 	} catch (std::exception &) {
@@ -45,7 +46,7 @@ AppSettings::~AppSettings() {
 	}
 
 #ifdef IS_TESTING_SCOPE
-	std::filesystem::remove_all(cfg_dir);
+	boost::filesystem::remove_all(cfg_dir);
 #endif
 }
 
@@ -77,11 +78,11 @@ void AppSettings::initDefaults() {
 }
 
 
-std::filesystem::path AppSettings::getCfgDir() {
+boost::filesystem::path AppSettings::getCfgDir() {
 	return cfg_dir;
 }
 
-json AppSettings::loadJSON(std::filesystem::path path) {
+json AppSettings::loadJSON(boost::filesystem::path path) {
 
 	std::ifstream fileStream(path.string());
 
@@ -95,8 +96,8 @@ json AppSettings::loadJSON(std::filesystem::path path) {
 	return data;
 }
 
-void AppSettings::saveJSON(std::filesystem::path path, const json& content) {
-	std::filesystem::create_directories(path.parent_path());
+void AppSettings::saveJSON(boost::filesystem::path path, const json& content) {
+	boost::filesystem::create_directories(path.parent_path());
 
 	std::ofstream fileStream(path.string());
 

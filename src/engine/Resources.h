@@ -12,7 +12,7 @@
 #include <fstream>
 #include <sstream>
 #include <map>
-#include <filesystem>
+#include <boost/filesystem/path.hpp>
 
 #include "src/_classdef.h"
 
@@ -27,7 +27,7 @@ namespace engine {
 		std::map<std::string, TexturePtr> textures;
 	public:
 
-		std::filesystem::path absPath(const std::string &path);
+		boost::filesystem::path absPath(const std::string &path);
 
 		std::string loadTextFile(std::string path);
 

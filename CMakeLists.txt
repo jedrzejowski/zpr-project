@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(Threads REQUIRED)
 
 ## boost
-find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+find_package(Boost COMPONENTS system filesystem unit_test_framework REQUIRED)
 include_directories(${BOOST_INCLUDE_DIR})
 link_libraries(${Boost_LIBRARIES})
 

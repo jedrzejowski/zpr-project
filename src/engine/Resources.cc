@@ -6,10 +6,11 @@
 
 #include "Resources.h"
 #include "Texture.h"
+#include <boost/filesystem/operations.hpp>
 
-std::filesystem::path executablePath;
+boost::filesystem::path executablePath;
 
-std::filesystem::path engine::Resources::absPath(const std::string &path) {
+boost::filesystem::path engine::Resources::absPath(const std::string &path) {
 	return executablePath / "res" / path;
 }
 
@@ -42,5 +43,5 @@ engine::TexturePtr engine::Resources::getTexture(std::string path) {
 }
 
 void engine::Resources::setExecutablePath(char *path) {
-	executablePath = std::filesystem::absolute(path).parent_path();
+	executablePath = boost::filesystem::absolute(path).parent_path();
 }

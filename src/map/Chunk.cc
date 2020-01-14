@@ -116,7 +116,7 @@ json map::Chunk::toJSON() const {
 	return j;
 }
 
-std::filesystem::path map::Chunk::getSavePath() const {
+boost::filesystem::path map::Chunk::getSavePath() const {
 	if (auto worldMapPtr = world_map_wptr.lock()) {
 		return (worldMapPtr->getDirectory() / "surface1") / (position.toStringId() + ".chunk");
 	} else throw zprException("map::Chunk::getSavePath", "saving chunk when WorldMap object is gone");

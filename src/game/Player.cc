@@ -268,7 +268,7 @@ const char *JSON_ATTR_EYE_ANGLE_HORIZONTAL = "eye_angle_horizontal";
 const char *JSON_ATTR_MOUSE_PRECISION = "mouse_precision";
 const char *JSON_ATTR_KEYBOARD_PRECISION = "keyboard_precision";
 
-std::filesystem::path game::Player::getSavePath() const {
+boost::filesystem::path game::Player::getSavePath() const {
 	return world_map_ptr->getDirectory() / "player";
 }
 

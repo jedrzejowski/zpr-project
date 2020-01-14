@@ -28,7 +28,7 @@ namespace map {
 		//region SavableObject
 
 	public:
-		[[nodiscard]] std::filesystem::path getSavePath() const override;
+		[[nodiscard]] boost::filesystem::path getSavePath() const override;
 		[[nodiscard]] json toJSON() const override;
 
 	protected:

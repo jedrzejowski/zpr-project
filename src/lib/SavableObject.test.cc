@@ -6,7 +6,7 @@
 
 #include "SavableObject.h"
 #include <boost/test/unit_test.hpp>
-#include <filesystem>
+#include <boost/filesystem/path.hpp>
 
 BOOST_AUTO_TEST_CASE(test_SavableObject) {
 
@@ -20,8 +20,8 @@ BOOST_AUTO_TEST_CASE(test_SavableObject) {
 			loadObjectFromFile(onFailed);
 		}
 
-		[[nodiscard]] std::filesystem::path getSavePath() const override {
-			return std::filesystem::temp_directory_path() / "test_SavableObject";
+		[[nodiscard]] boost::filesystem::path getSavePath() const override {
+			return boost::filesystem::temp_directory_path() / "test_SavableObject";
 		}
 
 		[[nodiscard]] json toJSON() const override {
@@ -43,7 +43,7 @@ BOOST_AUTO_TEST_CASE(test_SavableObject) {
 		auto obj = TestClass();
 
 		// usuwamy plik na wszelki wypadek
-		std::filesystem::remove(obj.getSavePath());
+		boost::filesystem::remove(obj.getSavePath());
 
 		obj.number = 3;
 		obj.text = "test";
@@ -63,6 +63,6 @@ BOOST_AUTO_TEST_CASE(test_SavableObject) {
 
 
 		// usuwamy plik by śmieci nie zostawić
-		std::filesystem::remove(obj.getSavePath());
+		boost::filesystem::remove(obj.getSavePath());
 	}
 }

@@ -24,7 +24,7 @@ Logger::Logger(const char *file, int line, int level) : level(level) {
 	if (isVisible()) return;
 	mutex.lock();
 
-	static auto filename_offset = std::filesystem::path(__FILE__)
+	static auto filename_offset = boost::filesystem::path(__FILE__)
 										  .parent_path() // ./src
 										  .parent_path() // ./
 										  .string()

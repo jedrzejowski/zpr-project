@@ -8,7 +8,7 @@
 
 #include <string>
 #include <iostream>
-#include <filesystem>
+#include <boost/filesystem/path.hpp>
 #include "Logger.h"
 
 /**
@@ -60,7 +60,7 @@ private:
 public:
 	explicit FileInputException(const char *file) : file(file) {};
 	explicit FileInputException(std::string &file) : file(file) {};
-	explicit FileInputException(std::filesystem::path &file) : file(file.string()) {};
+	explicit FileInputException(boost::filesystem::path &file) : file(file.string()) {};
 
 	[[nodiscard]] const std::string &getFile() const {
 		return file;
@@ -76,7 +76,7 @@ private:
 public:
 	explicit FileOutputException(const char *file) : file(file) {};
 	explicit FileOutputException(std::string &file) : file(file) {};
-	explicit FileOutputException(std::filesystem::path &file) : file(file.string()) {};
+	explicit FileOutputException(boost::filesystem::path &file) : file(file.string()) {};
 
 	[[nodiscard]] const std::string &getFile() const {
 		return file;

@@ -94,7 +94,7 @@ const char *JSON_ATTR_AMPLITUDE = "amplitude";
 const char *JSON_ATTR_OCTAVES = "octaves";
 const char *JSON_ATTR_RANDOMSEED = "randomseed";
 
-std::filesystem::path map::ChunkGenerator::getSavePath() const {
+boost::filesystem::path map::ChunkGenerator::getSavePath() const {
 	return world->getDirectory() / "seed";
 }
 

@@ -58,7 +58,7 @@ namespace map {
 	protected:
 		void acceptState(json &data) override;
 	public:
-		std::filesystem::path getSavePath() const override;
+		boost::filesystem::path getSavePath() const override;
 		json toJSON() const override;
 
 		//endregion

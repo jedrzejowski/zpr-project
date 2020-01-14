@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <filesystem>
+#include <boost/filesystem/path.hpp>
 #include "_classdef.h"
 #include "LiveData.hpp"
 #include "lib/json.hpp"
@@ -19,7 +19,7 @@ using json = nlohmann::json;
 class AppSettings {
 private:
 	AppSettings();
-	std::filesystem::path cfg_dir;
+	boost::filesystem::path cfg_dir;
 
 	json toJSON();
 	void fromJSON(json &json_obj);
@@ -32,10 +32,10 @@ public:
 
 	static AppSettings &get();
 
-	[[nodiscard]] std::filesystem::path getCfgDir();
+	[[nodiscard]] boost::filesystem::path getCfgDir();
 
-	[[nodiscard]] json loadJSON(std::filesystem::path path);
-	void saveJSON(std::filesystem::path path, const json& content);
+	[[nodiscard]] json loadJSON(boost::filesystem::path path);
+	void saveJSON(boost::filesystem::path path, const json& content);
 
 	//region SavableObject
 	//endregion

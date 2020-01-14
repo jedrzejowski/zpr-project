@@ -53,6 +53,6 @@ BOOST_AUTO_TEST_CASE(test_map_WorldManager_delete) {
 		BOOST_CHECK(!world_manager.exists(TEST1_CN));
 		BOOST_CHECK(world_manager.exists(TEST2_CN));
 
-		BOOST_CHECK(!std::filesystem::is_directory(world_manager.getWorldsDirectory() / TEST1_CN));
+		BOOST_CHECK(!boost::filesystem::is_directory(world_manager.getWorldsDirectory() / TEST1_CN));
 	}
 }

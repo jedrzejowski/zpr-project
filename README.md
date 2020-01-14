@@ -77,7 +77,7 @@ Poniżej przedstawiono kilka przykładowe komendy do instalacji na wybranych sys
 
 | System | Komenda |
 | ------ | ------- |
-| Ubuntu | `# apt-get install git cmake libboost-test-dev libglm-dev libglew-dev libglfw3-dev g++` |
+| Ubuntu | `# apt-get install git cmake libboost-test-dev libboost-filesystem-dev libglm-dev libglew-dev libglfw3-dev g++` |
 | ArchLinux | `# pacman -S git cmake glew glm boost glfw-x11 g++` |
 
 ### Kompilacja

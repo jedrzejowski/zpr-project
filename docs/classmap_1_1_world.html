@@ -122,13 +122,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setDisplayName</b> (c
 <tr class="memitem:a8158fb2c7826c4531c3c9add80b510e2"><td class="memItemLeft" align="right" valign="top"><a id="a8158fb2c7826c4531c3c9add80b510e2"></a>
 const std::map&lt; <a class="el" href="struct_coord2_d.html">Coord2D</a>, map::ChunkPtr &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getLoadedChunks</b> () const</td></tr>
 <tr class="separator:a8158fb2c7826c4531c3c9add80b510e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb508a110e1d27f65db3b958b2881571"><td class="memItemLeft" align="right" valign="top"><a id="abb508a110e1d27f65db3b958b2881571"></a>
-std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>getDirectory</b> () const</td></tr>
-<tr class="separator:abb508a110e1d27f65db3b958b2881571"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3b2d20764c046fb389dfbfe4881a5f1"><td class="memItemLeft" align="right" valign="top"><a id="ad3b2d20764c046fb389dfbfe4881a5f1"></a>
-std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>getSavePath</b> () const override</td></tr>
-<tr class="separator:ad3b2d20764c046fb389dfbfe4881a5f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71756142cc723c5324a3f582912c69ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classnlohmann_1_1basic__json.html">json</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmap_1_1_world.html#a71756142cc723c5324a3f582912c69ff">toJSON</a> () const override</td></tr>
+<tr class="memitem:ad4b9621d0f97f97be819cdeb154023b9"><td class="memItemLeft" align="right" valign="top"><a id="ad4b9621d0f97f97be819cdeb154023b9"></a>
+boost::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>getDirectory</b> () const</td></tr>
+<tr class="separator:ad4b9621d0f97f97be819cdeb154023b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ea3f42b2ecf086dcb63e2e743a8885f"><td class="memItemLeft" align="right" valign="top"><a id="a5ea3f42b2ecf086dcb63e2e743a8885f"></a>
+boost::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>getSavePath</b> () const override</td></tr>
+<tr class="separator:a5ea3f42b2ecf086dcb63e2e743a8885f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71756142cc723c5324a3f582912c69ff"><td class="memItemLeft" align="right" valign="top">json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmap_1_1_world.html#a71756142cc723c5324a3f582912c69ff">toJSON</a> () const override</td></tr>
 <tr class="memdesc:a71756142cc723c5324a3f582912c69ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generator obiektu json ze stanu obiektu.  <a href="classmap_1_1_world.html#a71756142cc723c5324a3f582912c69ff">Więcej...</a><br /></td></tr>
 <tr class="separator:a71756142cc723c5324a3f582912c69ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7dc6e67d4e1b39e2f6b2ffac15f30f23"><td class="memItemLeft" align="right" valign="top"><a id="a7dc6e67d4e1b39e2f6b2ffac15f30f23"></a>
@@ -204,7 +204,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>insertChunk</b> (map:
 <tr class="memitem:a1aca053d3c3cbe95417bc42ea996aa18"><td class="memItemLeft" align="right" valign="top"><a id="a1aca053d3c3cbe95417bc42ea996aa18"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>World</b> (const std::string &amp;codeName)</td></tr>
 <tr class="separator:a1aca053d3c3cbe95417bc42ea996aa18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a850110f9799f37f52ba53bf7953f53d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmap_1_1_world.html#a850110f9799f37f52ba53bf7953f53d3">acceptState</a> (<a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;json_obj) override</td></tr>
+<tr class="memitem:a850110f9799f37f52ba53bf7953f53d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmap_1_1_world.html#a850110f9799f37f52ba53bf7953f53d3">acceptState</a> (json &amp;json_obj) override</td></tr>
 <tr class="memdesc:a850110f9799f37f52ba53bf7953f53d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja, która ma za zadanie przyjmować obiekt z pliku.  <a href="classmap_1_1_world.html#a850110f9799f37f52ba53bf7953f53d3">Więcej...</a><br /></td></tr>
 <tr class="separator:a850110f9799f37f52ba53bf7953f53d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_class_savable_object"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_savable_object')"><img src="closed.png" alt="-"/>&#160;Metody chronione dziedziczone z <a class="el" href="class_savable_object.html">SavableObject</a></td></tr>
@@ -245,13 +245,13 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>display_name</
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Dodatkowe Dziedziczone Składowe</h2></td></tr>
 <tr class="inherit_header pub_static_methods_class_savable_object"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_savable_object')"><img src="closed.png" alt="-"/>&#160;Statyczne metody publiczne dziedziczone z <a class="el" href="class_savable_object.html">SavableObject</a></td></tr>
-<tr class="memitem:afc661c148a11f5179d44441b0784af92 inherit pub_static_methods_class_savable_object"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_savable_object.html#afc661c148a11f5179d44441b0784af92">assertGetNumber</a> (<a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;maybe_number)</td></tr>
+<tr class="memitem:afc661c148a11f5179d44441b0784af92 inherit pub_static_methods_class_savable_object"><td class="memItemLeft" align="right" valign="top">static json &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_savable_object.html#afc661c148a11f5179d44441b0784af92">assertGetNumber</a> (json &amp;maybe_number)</td></tr>
 <tr class="memdesc:afc661c148a11f5179d44441b0784af92 inherit pub_static_methods_class_savable_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja pomocnicza do pobierania liczby z obiektu.  <a href="class_savable_object.html#afc661c148a11f5179d44441b0784af92">Więcej...</a><br /></td></tr>
 <tr class="separator:afc661c148a11f5179d44441b0784af92 inherit pub_static_methods_class_savable_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53f54992ae4d6510f11c6219b9bccbcc inherit pub_static_methods_class_savable_object"><td class="memItemLeft" align="right" valign="top">static glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_savable_object.html#a53f54992ae4d6510f11c6219b9bccbcc">assertGetVec3</a> (<a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;maybe_vector)</td></tr>
+<tr class="memitem:a53f54992ae4d6510f11c6219b9bccbcc inherit pub_static_methods_class_savable_object"><td class="memItemLeft" align="right" valign="top">static glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_savable_object.html#a53f54992ae4d6510f11c6219b9bccbcc">assertGetVec3</a> (json &amp;maybe_vector)</td></tr>
 <tr class="memdesc:a53f54992ae4d6510f11c6219b9bccbcc inherit pub_static_methods_class_savable_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja pomocnicza do pobierania wektora z obiektu.  <a href="class_savable_object.html#a53f54992ae4d6510f11c6219b9bccbcc">Więcej...</a><br /></td></tr>
 <tr class="separator:a53f54992ae4d6510f11c6219b9bccbcc inherit pub_static_methods_class_savable_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63652c8ef98b21f8e06a6e697ac974b5 inherit pub_static_methods_class_savable_object"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_savable_object.html#a63652c8ef98b21f8e06a6e697ac974b5">assertGetString</a> (<a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;maybe_string)</td></tr>
+<tr class="memitem:a63652c8ef98b21f8e06a6e697ac974b5 inherit pub_static_methods_class_savable_object"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_savable_object.html#a63652c8ef98b21f8e06a6e697ac974b5">assertGetString</a> (json &amp;maybe_string)</td></tr>
 <tr class="memdesc:a63652c8ef98b21f8e06a6e697ac974b5 inherit pub_static_methods_class_savable_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja pomocnicza do pobierania tekstu z obiektu.  <a href="class_savable_object.html#a63652c8ef98b21f8e06a6e697ac974b5">Więcej...</a><br /></td></tr>
 <tr class="separator:a63652c8ef98b21f8e06a6e697ac974b5 inherit pub_static_methods_class_savable_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -277,7 +277,7 @@ Dodatkowe Dziedziczone Składowe</h2></td></tr>
         <tr>
           <td class="memname">void map::World::acceptState </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;&#160;</td>
+          <td class="paramtype">json &amp;&#160;</td>
           <td class="paramname"><em>json_obj</em></td><td>)</td>
           <td></td>
         </tr>
@@ -406,7 +406,7 @@ Dodatkowe Dziedziczone Składowe</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classnlohmann_1_1basic__json.html">json</a> map::World::toJSON </td>
+          <td class="memname">json map::World::toJSON </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>

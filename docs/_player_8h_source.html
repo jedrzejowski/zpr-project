@@ -120,10 +120,10 @@ $(function() {
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="comment">//region SavableObject</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        std::filesystem::path getSavePath() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <a class="code" href="classnlohmann_1_1basic__json.html">json</a> <a class="code" href="classgame_1_1_player.html#a67bba2188fad83777ce1f9c3a02c29fb">toJSON</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        boost::filesystem::path getSavePath() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        json <a class="code" href="classgame_1_1_player.html#a67bba2188fad83777ce1f9c3a02c29fb">toJSON</a>() <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1_player.html#a342bfd05a7688e232d847daca6809e8e">acceptState</a>(<a class="code" href="classnlohmann_1_1basic__json.html">json</a> &amp;json_obj) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgame_1_1_player.html#a342bfd05a7688e232d847daca6809e8e">acceptState</a>(json &amp;json_obj) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">//endregion</span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="comment">//region Block Pointing</span></div>
@@ -154,7 +154,6 @@ $(function() {
 <div class="ttc" id="a_full_position_8h_html"><div class="ttname"><a href="_full_position_8h.html">FullPosition.h</a></div></div>
 <div class="ttc" id="aclassgame_1_1_player_html_a342bfd05a7688e232d847daca6809e8e"><div class="ttname"><a href="classgame_1_1_player.html#a342bfd05a7688e232d847daca6809e8e">game::Player::acceptState</a></div><div class="ttdeci">void acceptState(json &amp;json_obj) override</div><div class="ttdoc">Funkcja, która ma za zadanie przyjmować obiekt z pliku.</div><div class="ttdef"><b>Definition:</b> Player.cc:287</div></div>
 <div class="ttc" id="a_savable_object_8h_html"><div class="ttname"><a href="_savable_object_8h.html">SavableObject.h</a></div></div>
-<div class="ttc" id="aclassnlohmann_1_1basic__json_html"><div class="ttname"><a href="classnlohmann_1_1basic__json.html">nlohmann::basic_json</a></div><div class="ttdoc">a class to store JSON values</div><div class="ttdef"><b>Definition:</b> json.hpp:2421</div></div>
 <div class="ttc" id="aclassengine_1_1_camera_html"><div class="ttname"><a href="classengine_1_1_camera.html">engine::Camera</a></div><div class="ttdoc">Implementacja kamery.</div><div class="ttdef"><b>Definition:</b> Camera.h:17</div></div>
 <div class="ttc" id="aclassblock_1_1_full_position_html"><div class="ttname"><a href="classblock_1_1_full_position.html">block::FullPosition</a></div><div class="ttdoc">Implementacja Pełnej pozycji bloku.</div><div class="ttdef"><b>Definition:</b> FullPosition.h:21</div></div>
 <!-- start footer part -->

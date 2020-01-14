@@ -77,7 +77,7 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_open_g_l_8h.html">src/OpenGL.h</a>&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;json.hpp&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using</span> <a class="code" href="classnlohmann_1_1basic__json.html">json</a> = <a class="code" href="namespacenlohmann.html#a2bfd99e845a2e5cd90aeaf1b1431f474">nlohmann::json</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using</span> json = nlohmann::json;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="_coord_8hpp.html#a03c74187bd558f01800d5a720d29fc4a">   18</a></span>&#160;<span class="keyword">typedef</span> int64_t <a class="code" href="_coord_8hpp.html#a03c74187bd558f01800d5a720d29fc4a">CoordDim</a>;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
@@ -103,8 +103,8 @@ $(function() {
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">return</span> z &lt; sec.z;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    [[nodiscard]] <a class="code" href="classnlohmann_1_1basic__json.html">json</a> toJSON()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="classnlohmann_1_1basic__json.html">json</a> j;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    [[nodiscard]] json toJSON()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        json j;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        j[<span class="stringliteral">&quot;x&quot;</span>] = x;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        j[<span class="stringliteral">&quot;y&quot;</span>] = y;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        j[<span class="stringliteral">&quot;z&quot;</span>] = z;</div>
@@ -129,8 +129,8 @@ $(function() {
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">return</span> y &lt; sec.y;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    [[nodiscard]] <a class="code" href="classnlohmann_1_1basic__json.html">json</a> toJSON()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <a class="code" href="classnlohmann_1_1basic__json.html">json</a> j;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    [[nodiscard]] json toJSON()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        json j;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        j[<span class="stringliteral">&quot;x&quot;</span>] = x;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        j[<span class="stringliteral">&quot;y&quot;</span>] = y;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">return</span> j;</div>
@@ -166,13 +166,11 @@ $(function() {
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astruct_coord3_d_html_a09ae7d7bf8ae65546da7b6dc21ef45f2"><div class="ttname"><a href="struct_coord3_d.html#a09ae7d7bf8ae65546da7b6dc21ef45f2">Coord3D::toStringId</a></div><div class="ttdeci">std::string toStringId() const</div><div class="ttdoc">Funkcja wykorzystywana do tworzenia nazw plików.</div><div class="ttdef"><b>Definition:</b> Coord.hpp:62</div></div>
-<div class="ttc" id="anamespacenlohmann_html_a2bfd99e845a2e5cd90aeaf1b1431f474"><div class="ttname"><a href="namespacenlohmann.html#a2bfd99e845a2e5cd90aeaf1b1431f474">nlohmann::json</a></div><div class="ttdeci">basic_json&lt;&gt; json</div><div class="ttdoc">default JSON class</div><div class="ttdef"><b>Definition:</b> json.hpp:2445</div></div>
 <div class="ttc" id="a_open_g_l_8h_html"><div class="ttname"><a href="_open_g_l_8h.html">OpenGL.h</a></div></div>
 <div class="ttc" id="a_coord_8hpp_html_a9aafdfc0a8be245846d4ae2bcdcb9f2b"><div class="ttname"><a href="_coord_8hpp.html#a9aafdfc0a8be245846d4ae2bcdcb9f2b">coordDim2string</a></div><div class="ttdeci">std::string coordDim2string(CoordDim dim)</div><div class="ttdoc">Zamienia wymiar na tekst przyjazny systemowi plików (1 -&gt; p1, -1 -&gt; m1)</div><div class="ttdef"><b>Definition:</b> Coord.hpp:25</div></div>
 <div class="ttc" id="astruct_coord2_d_html"><div class="ttname"><a href="struct_coord2_d.html">Coord2D</a></div><div class="ttdoc">Implementacja współrzędnych jednostkowych w przestrzeni dwu wymiarowej.</div><div class="ttdef"><b>Definition:</b> Coord.hpp:70</div></div>
 <div class="ttc" id="astruct_coord3_d_html"><div class="ttname"><a href="struct_coord3_d.html">Coord3D</a></div><div class="ttdoc">Implementacja współrzędnych jednostkowych w przestrzeni trój wymiarowej.</div><div class="ttdef"><b>Definition:</b> Coord.hpp:33</div></div>
 <div class="ttc" id="a_coord_8hpp_html_a03c74187bd558f01800d5a720d29fc4a"><div class="ttname"><a href="_coord_8hpp.html#a03c74187bd558f01800d5a720d29fc4a">CoordDim</a></div><div class="ttdeci">int64_t CoordDim</div><div class="ttdoc">Typ liczby całkowitej używanej do obliczeń</div><div class="ttdef"><b>Definition:</b> Coord.hpp:18</div></div>
-<div class="ttc" id="aclassnlohmann_1_1basic__json_html"><div class="ttname"><a href="classnlohmann_1_1basic__json.html">nlohmann::basic_json</a></div><div class="ttdoc">a class to store JSON values</div><div class="ttdef"><b>Definition:</b> json.hpp:2421</div></div>
 <div class="ttc" id="astruct_coord2_d_html_a9dfc1c48c2b2106b7a57ef88c2328f1c"><div class="ttname"><a href="struct_coord2_d.html#a9dfc1c48c2b2106b7a57ef88c2328f1c">Coord2D::toStringId</a></div><div class="ttdeci">std::string toStringId() const</div><div class="ttdoc">Funkcja wykorzystywana do tworzenia nazw plików.</div><div class="ttdef"><b>Definition:</b> Coord.hpp:94</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

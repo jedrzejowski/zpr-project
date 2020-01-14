@@ -91,10 +91,10 @@ Diagram dziedziczenia dla SavableObject</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Metody publiczne</h2></td></tr>
-<tr class="memitem:a285a45332305e3230563f09ae8e6f363"><td class="memItemLeft" align="right" valign="top"><a id="a285a45332305e3230563f09ae8e6f363"></a>
-virtual std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>getSavePath</b> () const =0</td></tr>
-<tr class="separator:a285a45332305e3230563f09ae8e6f363"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50ce9166a0df0f0ab80bb4f1a15eae8b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classnlohmann_1_1basic__json.html">json</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_savable_object.html#a50ce9166a0df0f0ab80bb4f1a15eae8b">toJSON</a> () const =0</td></tr>
+<tr class="memitem:a118e137961713e242e9bb532cc579c9e"><td class="memItemLeft" align="right" valign="top"><a id="a118e137961713e242e9bb532cc579c9e"></a>
+virtual boost::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><b>getSavePath</b> () const =0</td></tr>
+<tr class="separator:a118e137961713e242e9bb532cc579c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50ce9166a0df0f0ab80bb4f1a15eae8b"><td class="memItemLeft" align="right" valign="top">virtual json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_savable_object.html#a50ce9166a0df0f0ab80bb4f1a15eae8b">toJSON</a> () const =0</td></tr>
 <tr class="memdesc:a50ce9166a0df0f0ab80bb4f1a15eae8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generator obiektu json ze stanu obiektu.  <a href="class_savable_object.html#a50ce9166a0df0f0ab80bb4f1a15eae8b">Więcej...</a><br /></td></tr>
 <tr class="separator:a50ce9166a0df0f0ab80bb4f1a15eae8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22d6db1b95351991db8b2039489b2dad"><td class="memItemLeft" align="right" valign="top"><a id="a22d6db1b95351991db8b2039489b2dad"></a>
@@ -112,19 +112,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteThisObjectAsFil
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Statyczne metody publiczne</h2></td></tr>
-<tr class="memitem:afc661c148a11f5179d44441b0784af92"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_savable_object.html#afc661c148a11f5179d44441b0784af92">assertGetNumber</a> (<a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;maybe_number)</td></tr>
+<tr class="memitem:afc661c148a11f5179d44441b0784af92"><td class="memItemLeft" align="right" valign="top">static json &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_savable_object.html#afc661c148a11f5179d44441b0784af92">assertGetNumber</a> (json &amp;maybe_number)</td></tr>
 <tr class="memdesc:afc661c148a11f5179d44441b0784af92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja pomocnicza do pobierania liczby z obiektu.  <a href="class_savable_object.html#afc661c148a11f5179d44441b0784af92">Więcej...</a><br /></td></tr>
 <tr class="separator:afc661c148a11f5179d44441b0784af92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53f54992ae4d6510f11c6219b9bccbcc"><td class="memItemLeft" align="right" valign="top">static glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_savable_object.html#a53f54992ae4d6510f11c6219b9bccbcc">assertGetVec3</a> (<a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;maybe_vector)</td></tr>
+<tr class="memitem:a53f54992ae4d6510f11c6219b9bccbcc"><td class="memItemLeft" align="right" valign="top">static glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_savable_object.html#a53f54992ae4d6510f11c6219b9bccbcc">assertGetVec3</a> (json &amp;maybe_vector)</td></tr>
 <tr class="memdesc:a53f54992ae4d6510f11c6219b9bccbcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja pomocnicza do pobierania wektora z obiektu.  <a href="class_savable_object.html#a53f54992ae4d6510f11c6219b9bccbcc">Więcej...</a><br /></td></tr>
 <tr class="separator:a53f54992ae4d6510f11c6219b9bccbcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63652c8ef98b21f8e06a6e697ac974b5"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_savable_object.html#a63652c8ef98b21f8e06a6e697ac974b5">assertGetString</a> (<a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;maybe_string)</td></tr>
+<tr class="memitem:a63652c8ef98b21f8e06a6e697ac974b5"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_savable_object.html#a63652c8ef98b21f8e06a6e697ac974b5">assertGetString</a> (json &amp;maybe_string)</td></tr>
 <tr class="memdesc:a63652c8ef98b21f8e06a6e697ac974b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja pomocnicza do pobierania tekstu z obiektu.  <a href="class_savable_object.html#a63652c8ef98b21f8e06a6e697ac974b5">Więcej...</a><br /></td></tr>
 <tr class="separator:a63652c8ef98b21f8e06a6e697ac974b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Metody chronione</h2></td></tr>
-<tr class="memitem:a270202c224b2bbd0755781ceee912f64"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_savable_object.html#a270202c224b2bbd0755781ceee912f64">acceptState</a> (<a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;json_obj)=0</td></tr>
+<tr class="memitem:a270202c224b2bbd0755781ceee912f64"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_savable_object.html#a270202c224b2bbd0755781ceee912f64">acceptState</a> (json &amp;json_obj)=0</td></tr>
 <tr class="memdesc:a270202c224b2bbd0755781ceee912f64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funkcja, która ma za zadanie przyjmować obiekt z pliku.  <a href="class_savable_object.html#a270202c224b2bbd0755781ceee912f64">Więcej...</a><br /></td></tr>
 <tr class="separator:a270202c224b2bbd0755781ceee912f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49a5fb08a97c0a34ef6addc2c293eead"><td class="memItemLeft" align="right" valign="top"><a id="a49a5fb08a97c0a34ef6addc2c293eead"></a>
@@ -152,7 +152,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasSavedFile</b> ()</
         <tr>
           <td class="memname">virtual void SavableObject::acceptState </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;&#160;</td>
+          <td class="paramtype">json &amp;&#160;</td>
           <td class="paramname"><em>json_obj</em></td><td>)</td>
           <td></td>
         </tr>
@@ -186,9 +186,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasSavedFile</b> ()</
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp; SavableObject::assertGetNumber </td>
+          <td class="memname">json &amp; SavableObject::assertGetNumber </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;&#160;</td>
+          <td class="paramtype">json &amp;&#160;</td>
           <td class="paramname"><em>maybe_number</em></td><td>)</td>
           <td></td>
         </tr>
@@ -223,7 +223,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasSavedFile</b> ()</
         <tr>
           <td class="memname">std::string SavableObject::assertGetString </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;&#160;</td>
+          <td class="paramtype">json &amp;&#160;</td>
           <td class="paramname"><em>maybe_string</em></td><td>)</td>
           <td></td>
         </tr>
@@ -258,7 +258,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasSavedFile</b> ()</
         <tr>
           <td class="memname">glm::vec3 SavableObject::assertGetVec3 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classnlohmann_1_1basic__json.html">json</a> &amp;&#160;</td>
+          <td class="paramtype">json &amp;&#160;</td>
           <td class="paramname"><em>maybe_vector</em></td><td>)</td>
           <td></td>
         </tr>
@@ -291,7 +291,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasSavedFile</b> ()</
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual <a class="el" href="classnlohmann_1_1basic__json.html">json</a> SavableObject::toJSON </td>
+          <td class="memname">virtual json SavableObject::toJSON </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>

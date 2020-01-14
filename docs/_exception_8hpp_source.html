@@ -75,7 +75,7 @@ $(function() {
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;filesystem&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;boost/filesystem/path.hpp&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_logger_8h.html">Logger.h</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_zpr_exception.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_zpr_exception.html">ZprException</a> : std::exception {</div>
@@ -121,7 +121,7 @@ $(function() {
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_file_input_exception.html">FileInputException</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *file) : file(file) {};</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_file_input_exception.html">FileInputException</a>(std::string &amp;file) : file(file) {};</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_file_input_exception.html">FileInputException</a>(std::filesystem::path &amp;file) : file(file.string()) {};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_file_input_exception.html">FileInputException</a>(boost::filesystem::path &amp;file) : file(file.string()) {};</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    [[nodiscard]] <span class="keyword">const</span> std::string &amp;getFile()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">return</span> file;</div>
@@ -134,7 +134,7 @@ $(function() {
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_file_output_exception.html">FileOutputException</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *file) : file(file) {};</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_file_output_exception.html">FileOutputException</a>(std::string &amp;file) : file(file) {};</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_file_output_exception.html">FileOutputException</a>(std::filesystem::path &amp;file) : file(file.string()) {};</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_file_output_exception.html">FileOutputException</a>(boost::filesystem::path &amp;file) : file(file.string()) {};</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    [[nodiscard]] <span class="keyword">const</span> std::string &amp;getFile()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">return</span> file;</div>

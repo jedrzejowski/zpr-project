@@ -92,11 +92,11 @@ $(function() {
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="comment">//region SavableObject</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        [[nodiscard]] std::filesystem::path getSavePath() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        [[nodiscard]] <a class="code" href="classnlohmann_1_1basic__json.html">json</a> <a class="code" href="classmap_1_1_chunk_generator.html#a0e633f06ad2cc9513560a82a8704a69f">toJSON</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        [[nodiscard]] boost::filesystem::path getSavePath() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        [[nodiscard]] json <a class="code" href="classmap_1_1_chunk_generator.html#a0e633f06ad2cc9513560a82a8704a69f">toJSON</a>() <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classmap_1_1_chunk_generator.html#a12abea04baf35ba85b1661c59b4a73ce">acceptState</a>(<a class="code" href="classnlohmann_1_1basic__json.html">json</a> &amp;json_obj) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classmap_1_1_chunk_generator.html#a12abea04baf35ba85b1661c59b4a73ce">acceptState</a>(json &amp;json_obj) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="comment">//endregion</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    };</div>
@@ -112,7 +112,6 @@ $(function() {
 <div class="ttc" id="aclassmap_1_1_chunk_generator_html"><div class="ttname"><a href="classmap_1_1_chunk_generator.html">map::ChunkGenerator</a></div><div class="ttdoc">Generator chunk'ów, patrz World.</div><div class="ttdef"><b>Definition:</b> ChunkGenerator.h:18</div></div>
 <div class="ttc" id="aclassmap_1_1_chunk_generator_html_a0e633f06ad2cc9513560a82a8704a69f"><div class="ttname"><a href="classmap_1_1_chunk_generator.html#a0e633f06ad2cc9513560a82a8704a69f">map::ChunkGenerator::toJSON</a></div><div class="ttdeci">json toJSON() const override</div><div class="ttdoc">Generator obiektu json ze stanu obiektu.</div><div class="ttdef"><b>Definition:</b> ChunkGenerator.cc:101</div></div>
 <div class="ttc" id="a_savable_object_8h_html"><div class="ttname"><a href="_savable_object_8h.html">SavableObject.h</a></div></div>
-<div class="ttc" id="aclassnlohmann_1_1basic__json_html"><div class="ttname"><a href="classnlohmann_1_1basic__json.html">nlohmann::basic_json</a></div><div class="ttdoc">a class to store JSON values</div><div class="ttdef"><b>Definition:</b> json.hpp:2421</div></div>
 <div class="ttc" id="anamespacemap_html"><div class="ttname"><a href="namespacemap.html">map</a></div><div class="ttdoc">namespace dla struktury mapy i wszystkiego co z nią jest związane</div><div class="ttdef"><b>Definition:</b> _classdef.h:210</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

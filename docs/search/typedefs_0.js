@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['allocator_5ftype_1232',['allocator_type',['../classnlohmann_1_1basic__json.html#a69388a77648e83007af1295aaf350c0f',1,'nlohmann::basic_json']]],
-  ['array_5ft_1233',['array_t',['../classnlohmann_1_1basic__json.html#a69524b1f8f42c0a81b86cee3fc54e034',1,'nlohmann::basic_json']]]
+  ['coorddim_595',['CoordDim',['../_coord_8hpp.html#a03c74187bd558f01800d5a720d29fc4a',1,'Coord.hpp']]]
 ];

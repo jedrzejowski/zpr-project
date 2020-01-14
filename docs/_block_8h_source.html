@@ -77,7 +77,7 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_coord_8hpp.html">src/lib/Coord.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;lib/json.hpp&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using</span> <a class="code" href="classnlohmann_1_1basic__json.html">json</a> = <a class="code" href="namespacenlohmann.html#a2bfd99e845a2e5cd90aeaf1b1431f474">nlohmann::json</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using</span> json = nlohmann::json;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceblock.html">block</a> {</div>
@@ -91,7 +91,7 @@ $(function() {
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classblock_1_1_block.html">Block</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classblock_1_1_block.html">Block</a>(<a class="code" href="classnlohmann_1_1basic__json.html">json</a> &amp;data);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classblock_1_1_block.html">Block</a>(json &amp;data);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        ~<a class="code" href="classblock_1_1_block.html">Block</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
@@ -102,7 +102,7 @@ $(function() {
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classblock_1_1_block.html#a04bc56967e7bd16051c033f7c53a318d">isSolid</a>();</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="classnlohmann_1_1basic__json.html">json</a> toJSON();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keyword">virtual</span> json toJSON();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="classblock_1_1_block.html#a7b91959df967e5a574e7258d5314a2c6">typeId</a>() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
@@ -116,7 +116,6 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassblock_1_1_block_html_a918cd12b00bc9c8f10b24ab00155ad3c"><div class="ttname"><a href="classblock_1_1_block.html#a918cd12b00bc9c8f10b24ab00155ad3c">block::Block::setPosition</a></div><div class="ttdeci">void setPosition(map::ChunkPtr &amp;chunk_ptr, const Coord3D &amp;pos)</div><div class="ttdoc">Wkłada blok do chunk'a.</div><div class="ttdef"><b>Definition:</b> Block.cc:15</div></div>
 <div class="ttc" id="aclassblock_1_1_block_html_a82a7febda5d2301162450c810b9020b6"><div class="ttname"><a href="classblock_1_1_block.html#a82a7febda5d2301162450c810b9020b6">block::Block::getNeighbor</a></div><div class="ttdeci">BlockWPtr getNeighbor(CoordDim dx, CoordDim dy, CoordDim dz) const</div><div class="ttdoc">Pobiera sąsiadujący blok.</div><div class="ttdef"><b>Definition:</b> Block.cc:20</div></div>
-<div class="ttc" id="anamespacenlohmann_html_a2bfd99e845a2e5cd90aeaf1b1431f474"><div class="ttname"><a href="namespacenlohmann.html#a2bfd99e845a2e5cd90aeaf1b1431f474">nlohmann::json</a></div><div class="ttdeci">basic_json&lt;&gt; json</div><div class="ttdoc">default JSON class</div><div class="ttdef"><b>Definition:</b> json.hpp:2445</div></div>
 <div class="ttc" id="a_coord_8hpp_html"><div class="ttname"><a href="_coord_8hpp.html">Coord.hpp</a></div></div>
 <div class="ttc" id="aclassblock_1_1_block_html_a04bc56967e7bd16051c033f7c53a318d"><div class="ttname"><a href="classblock_1_1_block.html#a04bc56967e7bd16051c033f7c53a318d">block::Block::isSolid</a></div><div class="ttdeci">virtual bool isSolid()</div><div class="ttdoc">Określa czy blok wypełnia całą przestrzeń jaką może wypełnić</div><div class="ttdef"><b>Definition:</b> Block.cc:69</div></div>
 <div class="ttc" id="a__classdef_8h_html"><div class="ttname"><a href="__classdef_8h.html">_classdef.h</a></div></div>
@@ -126,7 +125,6 @@ $(function() {
 <div class="ttc" id="a_coord_8hpp_html_a03c74187bd558f01800d5a720d29fc4a"><div class="ttname"><a href="_coord_8hpp.html#a03c74187bd558f01800d5a720d29fc4a">CoordDim</a></div><div class="ttdeci">int64_t CoordDim</div><div class="ttdoc">Typ liczby całkowitej używanej do obliczeń</div><div class="ttdef"><b>Definition:</b> Coord.hpp:18</div></div>
 <div class="ttc" id="astruct_virtual_share_ptr_object_html"><div class="ttname"><a href="struct_virtual_share_ptr_object.html">VirtualSharePtrObject</a></div><div class="ttdoc">Klasa do obsługi wewnętrznych wskaźników.</div><div class="ttdef"><b>Definition:</b> VirtualSharePtrObject.hpp:30</div></div>
 <div class="ttc" id="aclassblock_1_1_block_html_a7b91959df967e5a574e7258d5314a2c6"><div class="ttname"><a href="classblock_1_1_block.html#a7b91959df967e5a574e7258d5314a2c6">block::Block::typeId</a></div><div class="ttdeci">virtual int typeId() const =0</div><div class="ttdoc">Każdy typ bloku musi mieć unikalne ID swojego typu.</div></div>
-<div class="ttc" id="aclassnlohmann_1_1basic__json_html"><div class="ttname"><a href="classnlohmann_1_1basic__json.html">nlohmann::basic_json</a></div><div class="ttdoc">a class to store JSON values</div><div class="ttdef"><b>Definition:</b> json.hpp:2421</div></div>
 <div class="ttc" id="anamespaceblock_html"><div class="ttname"><a href="namespaceblock.html">block</a></div><div class="ttdoc">namespace dla bloków i wszystkiego co związane z samymi blokami</div><div class="ttdef"><b>Definition:</b> _classdef.h:166</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

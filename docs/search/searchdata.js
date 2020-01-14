@@ -1,17 +1,15 @@
 var indexSectionsWithContent =
 {
-  0: "_abcdefghijklmnoprstuvwz~",
-  1: "abcdefghijklmnoprstvwz",
-  2: "bcegmn",
+  0: "_abcdefghiklmnoprstuvwz",
+  1: "abcdefgiklmnoprstvwz",
+  2: "bcegm",
   3: "_abcdefgiklmoprstvw",
-  4: "abcdefghijklmnoprstuvw~",
-  5: "abcilmop",
-  6: "abcdeijnoprstv",
-  7: "deiptv",
-  8: "abdeiklnoprsuv",
-  9: "o",
-  10: "lz",
-  11: "lz"
+  4: "abcghilrstu",
+  5: "mo",
+  6: "c",
+  7: "d",
+  8: "lz",
+  9: "z"
 };
 
 var indexSectionNames =
@@ -24,10 +22,8 @@ var indexSectionNames =
   5: "variables",
   6: "typedefs",
   7: "enums",
-  8: "enumvalues",
-  9: "related",
-  10: "defines",
-  11: "pages"
+  8: "defines",
+  9: "pages"
 };
 
 var indexSectionLabels =
@@ -40,9 +36,7 @@ var indexSectionLabels =
   5: "Zmienne",
   6: "Definicje typów",
   7: "Wyliczenia",
-  8: "Wartości wyliczeń",
-  9: "Przyjaciele",
-  10: "Definicje",
-  11: "Strony"
+  8: "Definicje",
+  9: "Strony"
 };
 

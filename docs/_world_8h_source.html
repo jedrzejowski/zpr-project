@@ -127,12 +127,12 @@ $(function() {
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="comment">//region SavableObject</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        std::filesystem::path getDirectory() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        std::filesystem::path getSavePath() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="classnlohmann_1_1basic__json.html">json</a> <a class="code" href="classmap_1_1_world.html#a71756142cc723c5324a3f582912c69ff">toJSON</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        boost::filesystem::path getDirectory() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        boost::filesystem::path getSavePath() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        json <a class="code" href="classmap_1_1_world.html#a71756142cc723c5324a3f582912c69ff">toJSON</a>() <span class="keyword">const override</span>;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordtype">void</span> fullSave();</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classmap_1_1_world.html#a850110f9799f37f52ba53bf7953f53d3">acceptState</a>(<a class="code" href="classnlohmann_1_1basic__json.html">json</a> &amp;json_obj) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classmap_1_1_world.html#a850110f9799f37f52ba53bf7953f53d3">acceptState</a>(json &amp;json_obj) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="comment">//endregion</span></div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    };</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
@@ -155,7 +155,6 @@ $(function() {
 <div class="ttc" id="aclassmap_1_1_world_html_a134ae2e440186a080f14e6133d208440"><div class="ttname"><a href="classmap_1_1_world.html#a134ae2e440186a080f14e6133d208440">map::World::loadForPlayer</a></div><div class="ttdeci">void loadForPlayer(game::PlayerPtr &amp;player)</div><div class="ttdoc">prośba o wczytanie chunk'u dla gracza</div><div class="ttdef"><b>Definition:</b> World.cc:81</div></div>
 <div class="ttc" id="a_chunk_generator_8h_html"><div class="ttname"><a href="_chunk_generator_8h.html">ChunkGenerator.h</a></div></div>
 <div class="ttc" id="a_savable_object_8h_html"><div class="ttname"><a href="_savable_object_8h.html">SavableObject.h</a></div></div>
-<div class="ttc" id="aclassnlohmann_1_1basic__json_html"><div class="ttname"><a href="classnlohmann_1_1basic__json.html">nlohmann::basic_json</a></div><div class="ttdoc">a class to store JSON values</div><div class="ttdef"><b>Definition:</b> json.hpp:2421</div></div>
 <div class="ttc" id="a_signal_8hpp_html"><div class="ttname"><a href="_signal_8hpp.html">Signal.hpp</a></div></div>
 <div class="ttc" id="anamespacemap_html"><div class="ttname"><a href="namespacemap.html">map</a></div><div class="ttdoc">namespace dla struktury mapy i wszystkiego co z nią jest związane</div><div class="ttdef"><b>Definition:</b> _classdef.h:210</div></div>
 <div class="ttc" id="aclassmap_1_1_world_html_a63b4f67e6f02402e46bcadc98600e6b7"><div class="ttname"><a href="classmap_1_1_world.html#a63b4f67e6f02402e46bcadc98600e6b7">map::World::getCodeName</a></div><div class="ttdeci">const std::string &amp; getCodeName() const</div><div class="ttdef"><b>Definition:</b> World.cc:117</div></div>

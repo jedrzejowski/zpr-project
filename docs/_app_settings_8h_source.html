@@ -73,20 +73,20 @@ $(function() {
 <a href="_app_settings_8h.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;filesystem&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;boost/filesystem/path.hpp&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="__classdef_8h.html">_classdef.h</a>&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_live_data_8hpp.html">LiveData.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;lib/json.hpp&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">using</span> <a class="code" href="classnlohmann_1_1basic__json.html">json</a> = <a class="code" href="namespacenlohmann.html#a2bfd99e845a2e5cd90aeaf1b1431f474">nlohmann::json</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">using</span> json = nlohmann::json;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_app_settings.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_app_settings.html">AppSettings</a> {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="class_app_settings.html">AppSettings</a>();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    std::filesystem::path cfg_dir;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    boost::filesystem::path cfg_dir;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classnlohmann_1_1basic__json.html">json</a> toJSON();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> fromJSON(<a class="code" href="classnlohmann_1_1basic__json.html">json</a> &amp;json_obj);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    json toJSON();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> fromJSON(json &amp;json_obj);</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> initDefaults();</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="class_app_settings.html">AppSettings</a>(<span class="keyword">const</span> <a class="code" href="class_app_settings.html">AppSettings</a> &amp;) = <span class="keyword">delete</span>;</div>
@@ -96,10 +96,10 @@ $(function() {
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_app_settings.html">AppSettings</a> &amp;get();</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    [[nodiscard]] std::filesystem::path getCfgDir();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    [[nodiscard]] boost::filesystem::path getCfgDir();</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    [[nodiscard]] <a class="code" href="classnlohmann_1_1basic__json.html">json</a> loadJSON(std::filesystem::path path);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> saveJSON(std::filesystem::path path, <span class="keyword">const</span> <a class="code" href="classnlohmann_1_1basic__json.html">json</a>&amp; content);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    [[nodiscard]] json loadJSON(boost::filesystem::path path);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> saveJSON(boost::filesystem::path path, <span class="keyword">const</span> json&amp; content);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">//region SavableObject</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">//endregion</span></div>
@@ -113,10 +113,8 @@ $(function() {
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclass_live_data_html"><div class="ttname"><a href="class_live_data.html">LiveData&lt; float &gt;</a></div></div>
-<div class="ttc" id="anamespacenlohmann_html_a2bfd99e845a2e5cd90aeaf1b1431f474"><div class="ttname"><a href="namespacenlohmann.html#a2bfd99e845a2e5cd90aeaf1b1431f474">nlohmann::json</a></div><div class="ttdeci">basic_json&lt;&gt; json</div><div class="ttdoc">default JSON class</div><div class="ttdef"><b>Definition:</b> json.hpp:2445</div></div>
 <div class="ttc" id="a__classdef_8h_html"><div class="ttname"><a href="__classdef_8h.html">_classdef.h</a></div></div>
 <div class="ttc" id="aclass_app_settings_html"><div class="ttname"><a href="class_app_settings.html">AppSettings</a></div><div class="ttdoc">Odpowiada za ustawienia użytkownika o raz zapis wszystkich plików *.json.</div><div class="ttdef"><b>Definition:</b> AppSettings.h:19</div></div>
-<div class="ttc" id="aclassnlohmann_1_1basic__json_html"><div class="ttname"><a href="classnlohmann_1_1basic__json.html">nlohmann::basic_json</a></div><div class="ttdoc">a class to store JSON values</div><div class="ttdef"><b>Definition:</b> json.hpp:2421</div></div>
 <div class="ttc" id="a_live_data_8hpp_html"><div class="ttname"><a href="_live_data_8hpp.html">LiveData.hpp</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

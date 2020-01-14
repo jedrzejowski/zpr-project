@@ -76,30 +76,34 @@ Opis gry</h1>
 <p>W menu wyboru światów, użytkownik ma możliwość utworzenia nowego świata, usunięcia świata (przcisk <code>X</code> po lewo od nazwy świata), resetu świata (przcisk <code>R</code> po prawo od nazwy świata), utworzenia świata lub powrotu. Po utworzeniu świata lub wybraniu istniejącego, gracz kierowany jest do świata gry. W przypadku istnienia wielu światów, które nie mieszczą się na ekranie, można je scrollować kierując myszkę w górne lub dolne części ekranu.</p>
 <p>Gracz porusza się za pomocą popularnej kombinacji klawiszy <code>WASD</code>, wybór bloku odbywa się za pomoć przycisków od <code>1</code> do <code>9</code>. Aby polecieć do góry należy wcisnąć <code>Space</code>, a w dół <code>Shift</code>. Aby wyjść do menu należy kliknąć <code>Esc</code> na klawiaturze. Bloki stawiamy prawym przyciskiem myszy a niszczymy lewym.</p>
 <p>Użytkownik ma możliwość zmiany dwóch parametrów rozgrywki: zasięgu renderowania i kąta widzenia.</p>
+<p>Wszystkie światy i ustawienia są zapisywane do plików w folderze konfiguracji użytkownika. I możne do nich bezpiecznie powrócić, po restarcie gry.</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Kod źródłowy</h1>
 <p>Cały projekt jest napisany w <code>C++</code>.</p>
 <h2><a class="anchor" id="autotoc_md4"></a>
+Architektura</h2>
+<p>Cały program podzielony jest na następujące składowe: ślinik(<code>engine</code>), bloki(<code>blocks</code>), gra główna(<code>engine</code>), mapa(<code>map</code>) i menu(<code>menu</code>). Program wyświetla okno, na którym są wyświetlane sceny(<code><a class="el" href="classengine_1_1_scene.html" title="Klasa sceny.">engine::Scene</a></code>). Sceny mogą mieć interfejsy 2D(<code><a class="el" href="classgui_1_1_interface.html" title="Interfejs 2D wyświetlany użytkownikowi.">gui::Interface</a></code>) i zestawy obiektów 3D(<code><a class="el" href="classengine_1_1_abs3_d_obj.html" title="Obiekt graficzny z własnych VAO, VBO i EBO, który może być renderowany.">engine::Abs3DObj</a></code> i <code><a class="el" href="classengine_1_1_sub3_d_obj.html" title="Podstawowy obiekt graficzny implementujący drzewo obiektów.">engine::Sub3DObj</a></code>), które są na niej wyświetlane.</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Światy i ich zapisywanie</h2>
 <p>W dokumentacji wstępnej napisaliśmy, że świat będzie miał <code>16x16x128</code>. Da się to uzyskać zmieniają <code>map::Chunk::Size</code> w pliku <code><a class="el" href="_chunk_8cc.html">src/map/Chunk.cc</a></code> gdzieś w okolicach 10 lini. Ale odradzam, gra nie jest na tyle zoptymalizowana, żeby komfortowo grać z tak dużym światem.</p>
 <p>Światy zapisane w pliku są dość pokaźnej wielkości, około <code>10 MB</code> w początkowej formie i szybko rosną. Dlatego po skończonych próbach programu polecam usunąć folder <code>~/.config/ZprCraft</code> lub zmienić zmienną <code>cfg_dir</code> w pliku <code><a class="el" href="_app_settings_8cc.html">src/lib/AppSettings.cc</a>:23</code> na inną dowolną.</p>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 Sprytne wskaźniki</h2>
 <p>Na początku chcieliśmy zrobić obiektu w rodzaju drzewa obiektów z <code>QT</code>, ale wraz z rozwojem kodu i jego skomplikowania przenieśliśmy się na sprytne wskaźniki. Ułatwiło to znalezienie licznych wycieków pamięci oraz zwiększyło czytelność kodu.</p>
 <p>Użyliśmy typu <code>std::shared_ptr</code>. Dodatkowo zdecydowana większość klas dziedziczy wirtualnie po klasie <code>std::enable_shared_from_this</code>.</p>
 <p>W pewnym momencie, mieliśmy problem z funkcją <code>shared_from_this()</code>, okazuje się, że nie można wywołać jej w konstruktorze obiektu. Dlatego ukryliśmy większość konstruktorów i zrobiliśmy funkcje statyczną <code>create</code>, która tworzy za nas obiekt i wywołuje inne instrukcje, które normalnie były by w konstruktorze. Dzięki czemu mamy pewność, że obiekt będzie utworzony wraz ze sprytnym wskaźnikiem i ukrywamy wtedy brzydkie części biblioteki standardowej.</p>
 <p>Pod koniec doszliśmy do wniosku, że implementacja sprytnych wskaźników wszędzie była błędem. Program działa nam powolno(ale działa). Bloki, jako proste struktury danych powinny być zrobione jako normalne wskaźniki.</p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Zewnętrzne biblioteki</h2>
 <p>W projekcie znajdują się dodatkowo dwa pliki obcego pochodzenia:</p>
 <ul>
 <li><code><a class="el" href="cfgpath_8h.html" title="Cross platform methods for obtaining paths to configuration files.">cfgpath.h</a></code> - plik nagłówkowy znajdujący się pod <a href="https://github.com/bogdanadnan/ariominer/blob/master/common/cfgpath.h">tym</a> adresem. Autor pozawala na użycie w dowolnym celu. Pozwala na ustalenie folderu z konfiguracją użytkownika</li>
-<li><code><a class="el" href="json_8hpp_source.html">json.hpp</a></code> - biblioteka to formatu JSON na licencji MIT.</li>
-<li><code><a class="el" href="stb__image_8h_source.html">stb_image.h</a></code> - bibliotek do wczytywania plików obrazów. Opublikowana na licencji publicznej.</li>
+<li><code>json.hpp</code> - biblioteka to formatu JSON na licencji MIT.</li>
+<li><code>stb_image.h</code> - bibliotek do wczytywania plików obrazów. Opublikowana na licencji publicznej.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md8"></a>
 Budowanie</h1>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Biblioteki</h2>
 <p>Do kompilacji potrzebne są następujące programy/biblioteki: <code>cmake</code>, <code>boost</code>(tylko testy), <code>OpenGL</code>, <code>GLM</code>, <code>GLEW</code> i <code>glfw3</code>, oraz <code>git</code> do pobrania kod źródłowego. Każda dystrybucja Linuxa zawiera te biblioteki i najczęściej są one już w systemie po instalacji systemu z podstawowymi narzędziami programistycznymi.</p>
 <p>Poniżej przedstawiono kilka przykładowe komendy do instalacji na wybranych systemach operacyjnych:</p>
@@ -107,11 +111,11 @@ Biblioteki</h2>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">System </th><th class="markdownTableHeadNone">Komenda  </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Ubuntu </td><td class="markdownTableBodyNone"><code># apt-get install git cmake libboost-test-dev libglm-dev libglew-dev libglfw3-dev g++</code>  </td></tr>
+<td class="markdownTableBodyNone">Ubuntu </td><td class="markdownTableBodyNone"><code># apt-get install git cmake libboost-test-dev libboost-filesystem-dev libglm-dev libglew-dev libglfw3-dev g++</code>  </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">ArchLinux </td><td class="markdownTableBodyNone"><code># pacman -S git cmake glew glm boost glfw-x11 g++</code>  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Kompilacja</h2>
 <p>Poniżej przedstawiono skrypt do kompilacji na systemie Linux</p>
 <div class="fragment"><div class="line">cd /tmp # tu można zmienić wedle upodobania</div>
@@ -125,7 +129,10 @@ Kompilacja</h2>
 <div class="line">make</div>
 <div class="line">./test # przprowadzenie testów</div>
 <div class="line">./zpr_app # uruchomienie apilakcji</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md10"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md11"></a>
+Inne</h1>
+<p>Niestety nie monitorowaliśmy czasu spędzonego na projekt.</p>
+<h1><a class="anchor" id="autotoc_md12"></a>
 Autorzy</h1>
 <p>Adam Jędrzejowski &lt;<a href="#" onclick="location.href='mai'+'lto:'+'ada'+'m@'+'jed'+'rz'+'ejo'+'ws'+'ki.'+'pl'; return false;">adam@jedrzejowski.pl</a>&gt;</p>
 <p>Marcin Kretkowski </p>

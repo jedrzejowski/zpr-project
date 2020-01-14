@@ -88,7 +88,7 @@ $(function() {
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">mutable</span> <span class="keywordtype">bool</span> is_texture_reference_init_required = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classblock_1_1_solid_block.html">SolidBlock</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classblock_1_1_solid_block.html">SolidBlock</a>(<a class="code" href="classnlohmann_1_1basic__json.html">json</a> &amp;data);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classblock_1_1_solid_block.html">SolidBlock</a>(json &amp;data);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="struct_coord2_d.html">Coord2D</a> getTopTextureCoord() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="struct_coord2_d.html">Coord2D</a> getSideTextureCoord() <span class="keyword">const</span> = 0;</div>
@@ -124,7 +124,6 @@ $(function() {
 <div class="ttc" id="aclassblock_1_1_block_html"><div class="ttname"><a href="classblock_1_1_block.html">block::Block</a></div><div class="ttdoc">Podstawowa klasa bloku, każdy blok dziedziczy po niej.</div><div class="ttdef"><b>Definition:</b> Block.h:21</div></div>
 <div class="ttc" id="astruct_coord2_d_html"><div class="ttname"><a href="struct_coord2_d.html">Coord2D</a></div><div class="ttdoc">Implementacja współrzędnych jednostkowych w przestrzeni dwu wymiarowej.</div><div class="ttdef"><b>Definition:</b> Coord.hpp:70</div></div>
 <div class="ttc" id="astructengine_1_1_square_texture_reference_html"><div class="ttname"><a href="structengine_1_1_square_texture_reference.html">engine::SquareTextureReference</a></div><div class="ttdoc">Referencja do współrzędnych tekstury.</div><div class="ttdef"><b>Definition:</b> TextureReference.h:21</div></div>
-<div class="ttc" id="aclassnlohmann_1_1basic__json_html"><div class="ttname"><a href="classnlohmann_1_1basic__json.html">nlohmann::basic_json</a></div><div class="ttdoc">a class to store JSON values</div><div class="ttdef"><b>Definition:</b> json.hpp:2421</div></div>
 <div class="ttc" id="a_texture_reference_8h_html"><div class="ttname"><a href="_texture_reference_8h.html">TextureReference.h</a></div></div>
 <div class="ttc" id="anamespaceblock_html"><div class="ttname"><a href="namespaceblock.html">block</a></div><div class="ttdoc">namespace dla bloków i wszystkiego co związane z samymi blokami</div><div class="ttdef"><b>Definition:</b> _classdef.h:166</div></div>
 <!-- start footer part -->

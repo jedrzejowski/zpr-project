@@ -14,7 +14,7 @@
 namespace engine {
 
 	/**
-	 * @brief Obiekt graficzny z własnych VAO, VBO i EBO
+	 * @brief Obiekt graficzny z własnych VAO, VBO i EBO, który może być renderowany
 	 *
 	 * Jest głównym elementem graficznych czubkiem drzewa składającego się z Sub3dObj
 	 */

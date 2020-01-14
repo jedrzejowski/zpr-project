@@ -22,11 +22,19 @@ Aby polecieć do góry należy wcisnąć `Space`, a w dół `Shift`.
 Aby wyjść do menu należy kliknąć `Esc` na klawiaturze.
 Bloki stawiamy prawym przyciskiem myszy a niszczymy lewym.
 
-Użytkownik ma możliwość zmiany dwóch parametrów rozgrywki: zasięgu renderowania i kąta widzenia. 
+Użytkownik ma możliwość zmiany dwóch parametrów rozgrywki: zasięgu renderowania i kąta widzenia.
+
+Wszystkie światy i ustawienia są zapisywane do plików w folderze konfiguracji użytkownika.
+I możne do nich bezpiecznie powrócić, po restarcie gry.
 
 ## Kod źródłowy
 
 Cały projekt jest napisany w `C++`.
+
+### Architektura
+
+Cały program podzielony jest na następujące składowe: ślinik(`engine`), bloki(`blocks`), gra główna(`engine`), mapa(`map`) i menu(`menu`).
+Program wyświetla okno, na którym są wyświetlane sceny(`engine::Scene`). Sceny mogą mieć interfejsy 2D(`gui::Interface`) i zestawy obiektów 3D(`engine::Abs3DObj` i `engine::Sub3DObj`), które są na niej wyświetlane.
 
 ### Światy i ich zapisywanie
 
@@ -98,6 +106,10 @@ make
 ./zpr_app # uruchomienie apilakcji
 
 ```
+
+## Inne
+
+Niestety nie monitorowaliśmy czasu spędzonego na projekt.
 
 ## Autorzy
 

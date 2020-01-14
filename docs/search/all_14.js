@@ -1,7 +1,24 @@
 var searchData=
 [
-  ['unflatten_564',['unflatten',['../classnlohmann_1_1basic__json.html#ac63d16a141ee5c2046410d2d0ba4cec8',1,'nlohmann::basic_json']]],
-  ['uninitialized_565',['uninitialized',['../classnlohmann_1_1detail_1_1lexer.html#a3f313cdbe187cababfc5e06f0b69b098a42dd1a73d072bb6bf3f494f22b15db8e',1,'nlohmann::detail::lexer']]],
-  ['update_566',['update',['../classnlohmann_1_1basic__json.html#a6c02637be3d8bd730a14082cc05f7a85',1,'nlohmann::basic_json::update(const_reference j)'],['../classnlohmann_1_1basic__json.html#a0dbd5c8bdff3d633ff6d1d373297b777',1,'nlohmann::basic_json::update(const_iterator first, const_iterator last)']]],
-  ['updatebuffers_567',['updateBuffers',['../classengine_1_1_abs3_d_obj.html#a856333f0581edc585bbc6c0b94a5b859',1,'engine::Abs3DObj::updateBuffers()'],['../classengine_1_1_sub3_d_obj.html#a5796920efb5dd985e8c681c39dadb20b',1,'engine::Sub3DObj::updateBuffers()'],['../classgame_1_1_player_solid_block_item.html#ad05a09c7a96bf163693a4bb66122a435',1,'game::PlayerSolidBlockItem::updateBuffers()'],['../classgui_1_1_button.html#a5a4cafa785349a010e63c71cd459f184',1,'gui::Button::updateBuffers()'],['../classgui_1_1_rectangle_obj.html#ac3f1c1299d93e672754b58901ff1d850',1,'gui::RectangleObj::updateBuffers()'],['../classgui_1_1_text.html#aab311620d101281602ff69dc6b473f82',1,'gui::Text::updateBuffers()'],['../classgui_1_1_tri_button.html#a1081e3a1b49a2325a16bd9c40adbd518',1,'gui::TriButton::updateBuffers()'],['../classmap_1_1_chunk_renderer.html#afd511cb95acd8cdd711b7eece4224fa0',1,'map::ChunkRenderer::updateBuffers()']]]
+  ['vars_2ecc_244',['Vars.cc',['../_vars_8cc.html',1,'']]],
+  ['vars_2eh_245',['Vars.h',['../_vars_8h.html',1,'']]],
+  ['virtualshareptrobject_246',['VirtualSharePtrObject',['../struct_virtual_share_ptr_object.html',1,'']]],
+  ['virtualshareptrobject_2ehpp_247',['VirtualSharePtrObject.hpp',['../_virtual_share_ptr_object_8hpp.html',1,'']]],
+  ['virtualshareptrobject_3c_20block_20_3e_248',['VirtualSharePtrObject&lt; Block &gt;',['../struct_virtual_share_ptr_object.html',1,'']]],
+  ['virtualshareptrobject_3c_20button_20_3e_249',['VirtualSharePtrObject&lt; Button &gt;',['../struct_virtual_share_ptr_object.html',1,'']]],
+  ['virtualshareptrobject_3c_20chunk_20_3e_250',['VirtualSharePtrObject&lt; Chunk &gt;',['../struct_virtual_share_ptr_object.html',1,'']]],
+  ['virtualshareptrobject_3c_20gamescene_20_3e_251',['VirtualSharePtrObject&lt; GameScene &gt;',['../struct_virtual_share_ptr_object.html',1,'']]],
+  ['virtualshareptrobject_3c_20ingamemenu_20_3e_252',['VirtualSharePtrObject&lt; InGameMenu &gt;',['../struct_virtual_share_ptr_object.html',1,'']]],
+  ['virtualshareptrobject_3c_20object_20_3e_253',['VirtualSharePtrObject&lt; Object &gt;',['../struct_virtual_share_ptr_object.html',1,'']]],
+  ['virtualshareptrobject_3c_20playerinterface_20_3e_254',['VirtualSharePtrObject&lt; PlayerInterface &gt;',['../struct_virtual_share_ptr_object.html',1,'']]],
+  ['virtualshareptrobject_3c_20playersolidblockitem_20_3e_255',['VirtualSharePtrObject&lt; PlayerSolidBlockItem &gt;',['../struct_virtual_share_ptr_object.html',1,'']]],
+  ['virtualshareptrobject_3c_20rectangleobj_20_3e_256',['VirtualSharePtrObject&lt; RectangleObj &gt;',['../struct_virtual_share_ptr_object.html',1,'']]],
+  ['virtualshareptrobject_3c_20scene_20_3e_257',['VirtualSharePtrObject&lt; Scene &gt;',['../struct_virtual_share_ptr_object.html',1,'']]],
+  ['virtualshareptrobject_3c_20settingsscene_20_3e_258',['VirtualSharePtrObject&lt; SettingsScene &gt;',['../struct_virtual_share_ptr_object.html',1,'']]],
+  ['virtualshareptrobject_3c_20tributton_20_3e_259',['VirtualSharePtrObject&lt; TriButton &gt;',['../struct_virtual_share_ptr_object.html',1,'']]],
+  ['virtualshareptrobject_3c_20welcomescene_20_3e_260',['VirtualSharePtrObject&lt; WelcomeScene &gt;',['../struct_virtual_share_ptr_object.html',1,'']]],
+  ['virtualshareptrobject_3c_20window_20_3e_261',['VirtualSharePtrObject&lt; Window &gt;',['../struct_virtual_share_ptr_object.html',1,'']]],
+  ['virtualshareptrobject_3c_20world_20_3e_262',['VirtualSharePtrObject&lt; World &gt;',['../struct_virtual_share_ptr_object.html',1,'']]],
+  ['virtualshareptrobject_3c_20worldrenderer_20_3e_263',['VirtualSharePtrObject&lt; WorldRenderer &gt;',['../struct_virtual_share_ptr_object.html',1,'']]],
+  ['virtualshareptrobject_3c_20worldsscene_20_3e_264',['VirtualSharePtrObject&lt; WorldsScene &gt;',['../struct_virtual_share_ptr_object.html',1,'']]]
 ];
